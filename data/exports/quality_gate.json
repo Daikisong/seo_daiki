@@ -1,0 +1,253 @@
+{
+  "generated_at": "2026-05-26T15:34:02.702390+00:00",
+  "status": "pass",
+  "summary": {
+    "evidence_packs": 30,
+    "inventory_urls": 110,
+    "blockers": 0,
+    "warnings": 0
+  },
+  "global_issues": [],
+  "evidence_results": [
+    {
+      "product_id": "baseus-65w",
+      "locale": "en",
+      "source_file": "evidence_packs/en.json",
+      "score": 100,
+      "index_status": "index",
+      "issues": []
+    },
+    {
+      "product_id": "ugreen-100w",
+      "locale": "en",
+      "source_file": "evidence_packs/en.json",
+      "score": 100,
+      "index_status": "index",
+      "issues": []
+    },
+    {
+      "product_id": "essager-cable-100w",
+      "locale": "en",
+      "source_file": "evidence_packs/en.json",
+      "score": 100,
+      "index_status": "index",
+      "issues": []
+    },
+    {
+      "product_id": "toocki-67w",
+      "locale": "en",
+      "source_file": "evidence_packs/en.json",
+      "score": 100,
+      "index_status": "index",
+      "issues": []
+    },
+    {
+      "product_id": "rocoren-140w",
+      "locale": "en",
+      "source_file": "evidence_packs/en.json",
+      "score": 100,
+      "index_status": "index",
+      "issues": []
+    },
+    {
+      "product_id": "kuulaa-30w",
+      "locale": "en",
+      "source_file": "evidence_packs/en.json",
+      "score": 100,
+      "index_status": "index",
+      "issues": []
+    },
+    {
+      "product_id": "essager-240w-cable",
+      "locale": "en",
+      "source_file": "evidence_packs/en.json",
+      "score": 100,
+      "index_status": "index",
+      "issues": []
+    },
+    {
+      "product_id": "zmi-20000-power-bank",
+      "locale": "en",
+      "source_file": "evidence_packs/en.json",
+      "score": 100,
+      "index_status": "index",
+      "issues": []
+    },
+    {
+      "product_id": "hoto-screwdriver-kit",
+      "locale": "en",
+      "source_file": "evidence_packs/en.json",
+      "score": 100,
+      "index_status": "index",
+      "issues": []
+    },
+    {
+      "product_id": "tuya-zigbee-sensor",
+      "locale": "en",
+      "source_file": "evidence_packs/en.json",
+      "score": 100,
+      "index_status": "index",
+      "issues": []
+    },
+    {
+      "product_id": "baseus-65w",
+      "locale": "es",
+      "source_file": "evidence_packs/es.json",
+      "score": 100,
+      "index_status": "index",
+      "issues": []
+    },
+    {
+      "product_id": "ugreen-100w",
+      "locale": "es",
+      "source_file": "evidence_packs/es.json",
+      "score": 100,
+      "index_status": "index",
+      "issues": []
+    },
+    {
+      "product_id": "essager-cable-100w",
+      "locale": "es",
+      "source_file": "evidence_packs/es.json",
+      "score": 100,
+      "index_status": "index",
+      "issues": []
+    },
+    {
+      "product_id": "toocki-67w",
+      "locale": "es",
+      "source_file": "evidence_packs/es.json",
+      "score": 100,
+      "index_status": "index",
+      "issues": []
+    },
+    {
+      "product_id": "rocoren-140w",
+      "locale": "es",
+      "source_file": "evidence_packs/es.json",
+      "score": 100,
+      "index_status": "index",
+      "issues": []
+    },
+    {
+      "product_id": "kuulaa-30w",
+      "locale": "es",
+      "source_file": "evidence_packs/es.json",
+      "score": 100,
+      "index_status": "index",
+      "issues": []
+    },
+    {
+      "product_id": "essager-240w-cable",
+      "locale": "es",
+      "source_file": "evidence_packs/es.json",
+      "score": 100,
+      "index_status": "index",
+      "issues": []
+    },
+    {
+      "product_id": "zmi-20000-power-bank",
+      "locale": "es",
+      "source_file": "evidence_packs/es.json",
+      "score": 100,
+      "index_status": "index",
+      "issues": []
+    },
+    {
+      "product_id": "hoto-screwdriver-kit",
+      "locale": "es",
+      "source_file": "evidence_packs/es.json",
+      "score": 100,
+      "index_status": "index",
+      "issues": []
+    },
+    {
+      "product_id": "tuya-zigbee-sensor",
+      "locale": "es",
+      "source_file": "evidence_packs/es.json",
+      "score": 100,
+      "index_status": "index",
+      "issues": []
+    },
+    {
+      "product_id": "baseus-65w",
+      "locale": "pt-br",
+      "source_file": "evidence_packs/pt-br.json",
+      "score": 100,
+      "index_status": "index",
+      "issues": []
+    },
+    {
+      "product_id": "ugreen-100w",
+      "locale": "pt-br",
+      "source_file": "evidence_packs/pt-br.json",
+      "score": 100,
+      "index_status": "index",
+      "issues": []
+    },
+    {
+      "product_id": "essager-cable-100w",
+      "locale": "pt-br",
+      "source_file": "evidence_packs/pt-br.json",
+      "score": 100,
+      "index_status": "index",
+      "issues": []
+    },
+    {
+      "product_id": "toocki-67w",
+      "locale": "pt-br",
+      "source_file": "evidence_packs/pt-br.json",
+      "score": 100,
+      "index_status": "index",
+      "issues": []
+    },
+    {
+      "product_id": "rocoren-140w",
+      "locale": "pt-br",
+      "source_file": "evidence_packs/pt-br.json",
+      "score": 100,
+      "index_status": "index",
+      "issues": []
+    },
+    {
+      "product_id": "kuulaa-30w",
+      "locale": "pt-br",
+      "source_file": "evidence_packs/pt-br.json",
+      "score": 100,
+      "index_status": "index",
+      "issues": []
+    },
+    {
+      "product_id": "essager-240w-cable",
+      "locale": "pt-br",
+      "source_file": "evidence_packs/pt-br.json",
+      "score": 100,
+      "index_status": "index",
+      "issues": []
+    },
+    {
+      "product_id": "zmi-20000-power-bank",
+      "locale": "pt-br",
+      "source_file": "evidence_packs/pt-br.json",
+      "score": 100,
+      "index_status": "index",
+      "issues": []
+    },
+    {
+      "product_id": "hoto-screwdriver-kit",
+      "locale": "pt-br",
+      "source_file": "evidence_packs/pt-br.json",
+      "score": 100,
+      "index_status": "index",
+      "issues": []
+    },
+    {
+      "product_id": "tuya-zigbee-sensor",
+      "locale": "pt-br",
+      "source_file": "evidence_packs/pt-br.json",
+      "score": 100,
+      "index_status": "index",
+      "issues": []
+    }
+  ]
+}

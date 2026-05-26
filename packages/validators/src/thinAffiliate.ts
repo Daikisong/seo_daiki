@@ -1,0 +1,1 @@
+export { validateThinAffiliate } from "./index";

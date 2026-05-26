@@ -1,0 +1,1104 @@
+[
+  {
+    "canonical_slug": "baseus-65w-gan-pps-usb-c-chargers",
+    "canonical_product": {
+      "product_id": "baseus-65w",
+      "title": "Baseus 65W GaN USB C Charger PPS",
+      "source_url": "https://example.com/source/baseus-65w",
+      "category": "usb-c-chargers",
+      "brand_token": "baseus",
+      "spec_tokens": [
+        "65w",
+        "gan",
+        "pps"
+      ],
+      "model_tokens": [
+        "65w"
+      ],
+      "image_fingerprint": "baseus-65w",
+      "seller": "Baseus Global Store"
+    },
+    "aliases": [
+      "Baseus 65W GaN USB C Charger PPS"
+    ],
+    "source_product_ids": [
+      "baseus-65w"
+    ],
+    "duplicate_candidates": [
+      {
+        "product_id": "toocki-67w",
+        "title": "Toocki 67W GaN USB C Charger",
+        "confidence": 0.28,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.7,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.25,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "zmi-20000-power-bank",
+        "title": "ZMI 20000mAh 65W USB C Power Bank",
+        "confidence": 0.258,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.462,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.25,
+          "seller_overlap": 0.2,
+          "model_number": 0.5
+        }
+      },
+      {
+        "product_id": "rocoren-140w",
+        "title": "Rocoren 140W GaN Charger USB C",
+        "confidence": 0.235,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.548,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.25,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "ugreen-100w",
+        "title": "Ugreen 100W GaN Charger 3C1A",
+        "confidence": 0.23,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.533,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.25,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "kuulaa-30w",
+        "title": "Kuulaa 30W Mini USB C Charger",
+        "confidence": 0.207,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.623,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.0,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      }
+    ],
+    "identity_signals": {
+      "brand_token": "baseus",
+      "spec_tokens": [
+        "65w",
+        "gan",
+        "pps"
+      ],
+      "seller_tokens": [
+        "baseus",
+        "global",
+        "store"
+      ],
+      "image_fingerprint": "baseus-65w"
+    },
+    "confidence": 0.78
+  },
+  {
+    "canonical_slug": "essager-240w-usb-c-cables",
+    "canonical_product": {
+      "product_id": "essager-240w-cable",
+      "title": "Essager 240W USB C Cable E Marker",
+      "source_url": "https://example.com/source/essager-240w-cable",
+      "category": "usb-c-cables",
+      "brand_token": "essager",
+      "spec_tokens": [
+        "240w"
+      ],
+      "model_tokens": [
+        "240w"
+      ],
+      "image_fingerprint": "essager-240w-cable",
+      "seller": "Essager Cable Store"
+    },
+    "aliases": [
+      "Essager 240W USB C Cable E Marker"
+    ],
+    "source_product_ids": [
+      "essager-240w-cable"
+    ],
+    "duplicate_candidates": [
+      {
+        "product_id": "essager-cable-100w",
+        "title": "Essager 100W USB C Cable E Marker",
+        "confidence": 0.532,
+        "decision": "same_brand_different_spec",
+        "score_parts": {
+          "title_similarity": 0.939,
+          "image_hash": 0.0,
+          "brand_token": 1.0,
+          "spec_token": 0.0,
+          "seller_overlap": 1.0,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "kuulaa-30w",
+        "title": "Kuulaa 30W Mini USB C Charger",
+        "confidence": 0.175,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.516,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.0,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "baseus-65w",
+        "title": "Baseus 65W GaN USB C Charger PPS",
+        "confidence": 0.158,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.462,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.0,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "toocki-67w",
+        "title": "Toocki 67W GaN USB C Charger",
+        "confidence": 0.148,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.426,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.0,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "zmi-20000-power-bank",
+        "title": "ZMI 20000mAh 65W USB C Power Bank",
+        "confidence": 0.138,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.394,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.0,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      }
+    ],
+    "identity_signals": {
+      "brand_token": "essager",
+      "spec_tokens": [
+        "240w"
+      ],
+      "seller_tokens": [
+        "essager",
+        "cable",
+        "store"
+      ],
+      "image_fingerprint": "essager-240w-cable"
+    },
+    "confidence": 0.78
+  },
+  {
+    "canonical_slug": "essager-100w-usb-c-cables",
+    "canonical_product": {
+      "product_id": "essager-cable-100w",
+      "title": "Essager 100W USB C Cable E Marker",
+      "source_url": "https://example.com/source/essager-cable",
+      "category": "usb-c-cables",
+      "brand_token": "essager",
+      "spec_tokens": [
+        "100w"
+      ],
+      "model_tokens": [
+        "100w"
+      ],
+      "image_fingerprint": "essager-cable",
+      "seller": "Essager Cable Store"
+    },
+    "aliases": [
+      "Essager 100W USB C Cable E Marker"
+    ],
+    "source_product_ids": [
+      "essager-cable-100w"
+    ],
+    "duplicate_candidates": [
+      {
+        "product_id": "essager-240w-cable",
+        "title": "Essager 240W USB C Cable E Marker",
+        "confidence": 0.532,
+        "decision": "same_brand_different_spec",
+        "score_parts": {
+          "title_similarity": 0.939,
+          "image_hash": 0.0,
+          "brand_token": 1.0,
+          "spec_token": 0.0,
+          "seller_overlap": 1.0,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "ugreen-100w",
+        "title": "Ugreen 100W GaN Charger 3C1A",
+        "confidence": 0.308,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.459,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.5,
+          "seller_overlap": 0.2,
+          "model_number": 0.5
+        }
+      },
+      {
+        "product_id": "kuulaa-30w",
+        "title": "Kuulaa 30W Mini USB C Charger",
+        "confidence": 0.175,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.516,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.0,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "baseus-65w",
+        "title": "Baseus 65W GaN USB C Charger PPS",
+        "confidence": 0.158,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.462,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.0,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "toocki-67w",
+        "title": "Toocki 67W GaN USB C Charger",
+        "confidence": 0.148,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.426,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.0,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      }
+    ],
+    "identity_signals": {
+      "brand_token": "essager",
+      "spec_tokens": [
+        "100w"
+      ],
+      "seller_tokens": [
+        "essager",
+        "cable",
+        "store"
+      ],
+      "image_fingerprint": "essager-cable"
+    },
+    "confidence": 0.78
+  },
+  {
+    "canonical_slug": "hoto-4nm-electric-screwdrivers",
+    "canonical_product": {
+      "product_id": "hoto-screwdriver-kit",
+      "title": "HOTO Electric Screwdriver Kit 4Nm",
+      "source_url": "https://example.com/source/hoto-screwdriver-kit",
+      "category": "electric-screwdrivers",
+      "brand_token": "hoto",
+      "spec_tokens": [
+        "4nm"
+      ],
+      "model_tokens": [
+        "4nm"
+      ],
+      "image_fingerprint": "hoto-screwdriver-kit",
+      "seller": "HOTO Tool Store"
+    },
+    "aliases": [
+      "HOTO Electric Screwdriver Kit 4Nm"
+    ],
+    "source_product_ids": [
+      "hoto-screwdriver-kit"
+    ],
+    "duplicate_candidates": [
+      {
+        "product_id": "rocoren-140w",
+        "title": "Rocoren 140W GaN Charger USB C",
+        "confidence": 0.115,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.317,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.0,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "toocki-67w",
+        "title": "Toocki 67W GaN USB C Charger",
+        "confidence": 0.109,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.295,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.0,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "zmi-20000-power-bank",
+        "title": "ZMI 20000mAh 65W USB C Power Bank",
+        "confidence": 0.102,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.273,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.0,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "kuulaa-30w",
+        "title": "Kuulaa 30W Mini USB C Charger",
+        "confidence": 0.097,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.258,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.0,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "baseus-65w",
+        "title": "Baseus 65W GaN USB C Charger PPS",
+        "confidence": 0.094,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.246,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.0,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      }
+    ],
+    "identity_signals": {
+      "brand_token": "hoto",
+      "spec_tokens": [
+        "4nm"
+      ],
+      "seller_tokens": [
+        "hoto",
+        "tool",
+        "store"
+      ],
+      "image_fingerprint": "hoto-screwdriver-kit"
+    },
+    "confidence": 0.78
+  },
+  {
+    "canonical_slug": "kuulaa-30w-usb-c-chargers",
+    "canonical_product": {
+      "product_id": "kuulaa-30w",
+      "title": "Kuulaa 30W Mini USB C Charger",
+      "source_url": "https://example.com/source/kuulaa-30w",
+      "category": "usb-c-chargers",
+      "brand_token": "kuulaa",
+      "spec_tokens": [
+        "30w"
+      ],
+      "model_tokens": [
+        "30w"
+      ],
+      "image_fingerprint": "kuulaa-30w",
+      "seller": "Kuulaa Charger Store"
+    },
+    "aliases": [
+      "Kuulaa 30W Mini USB C Charger"
+    ],
+    "source_product_ids": [
+      "kuulaa-30w"
+    ],
+    "duplicate_candidates": [
+      {
+        "product_id": "toocki-67w",
+        "title": "Toocki 67W GaN USB C Charger",
+        "confidence": 0.22,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.667,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.0,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "baseus-65w",
+        "title": "Baseus 65W GaN USB C Charger PPS",
+        "confidence": 0.207,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.623,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.0,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "essager-240w-cable",
+        "title": "Essager 240W USB C Cable E Marker",
+        "confidence": 0.175,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.516,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.0,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "essager-cable-100w",
+        "title": "Essager 100W USB C Cable E Marker",
+        "confidence": 0.175,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.516,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.0,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "ugreen-100w",
+        "title": "Ugreen 100W GaN Charger 3C1A",
+        "confidence": 0.167,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.491,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.0,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      }
+    ],
+    "identity_signals": {
+      "brand_token": "kuulaa",
+      "spec_tokens": [
+        "30w"
+      ],
+      "seller_tokens": [
+        "kuulaa",
+        "charger",
+        "store"
+      ],
+      "image_fingerprint": "kuulaa-30w"
+    },
+    "confidence": 0.78
+  },
+  {
+    "canonical_slug": "rocoren-140w-gan-usb-c-chargers",
+    "canonical_product": {
+      "product_id": "rocoren-140w",
+      "title": "Rocoren 140W GaN Charger USB C",
+      "source_url": "https://example.com/source/rocoren-140w",
+      "category": "usb-c-chargers",
+      "brand_token": "rocoren",
+      "spec_tokens": [
+        "140w",
+        "gan"
+      ],
+      "model_tokens": [
+        "140w"
+      ],
+      "image_fingerprint": "rocoren-140w",
+      "seller": "Rocoren Direct Store"
+    },
+    "aliases": [
+      "Rocoren 140W GaN Charger USB C"
+    ],
+    "source_product_ids": [
+      "rocoren-140w"
+    ],
+    "duplicate_candidates": [
+      {
+        "product_id": "ugreen-100w",
+        "title": "Ugreen 100W GaN Charger 3C1A",
+        "confidence": 0.304,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.724,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.333,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "toocki-67w",
+        "title": "Toocki 67W GaN USB C Charger",
+        "confidence": 0.252,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.552,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.333,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "baseus-65w",
+        "title": "Baseus 65W GaN USB C Charger PPS",
+        "confidence": 0.235,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.548,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.25,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "kuulaa-30w",
+        "title": "Kuulaa 30W Mini USB C Charger",
+        "confidence": 0.152,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.441,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.0,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "essager-240w-cable",
+        "title": "Essager 240W USB C Cable E Marker",
+        "confidence": 0.125,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.349,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.0,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      }
+    ],
+    "identity_signals": {
+      "brand_token": "rocoren",
+      "spec_tokens": [
+        "140w",
+        "gan"
+      ],
+      "seller_tokens": [
+        "rocoren",
+        "direct",
+        "store"
+      ],
+      "image_fingerprint": "rocoren-140w"
+    },
+    "confidence": 0.78
+  },
+  {
+    "canonical_slug": "toocki-67w-gan-usb-c-chargers",
+    "canonical_product": {
+      "product_id": "toocki-67w",
+      "title": "Toocki 67W GaN USB C Charger",
+      "source_url": "https://example.com/source/toocki-67w",
+      "category": "usb-c-chargers",
+      "brand_token": "toocki",
+      "spec_tokens": [
+        "67w",
+        "gan"
+      ],
+      "model_tokens": [
+        "67w"
+      ],
+      "image_fingerprint": "toocki-67w",
+      "seller": "Toocki Official Store"
+    },
+    "aliases": [
+      "Toocki 67W GaN USB C Charger"
+    ],
+    "source_product_ids": [
+      "toocki-67w"
+    ],
+    "duplicate_candidates": [
+      {
+        "product_id": "baseus-65w",
+        "title": "Baseus 65W GaN USB C Charger PPS",
+        "confidence": 0.28,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.7,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.25,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "rocoren-140w",
+        "title": "Rocoren 140W GaN Charger USB C",
+        "confidence": 0.252,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.552,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.333,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "ugreen-100w",
+        "title": "Ugreen 100W GaN Charger 3C1A",
+        "confidence": 0.237,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.5,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.333,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "kuulaa-30w",
+        "title": "Kuulaa 30W Mini USB C Charger",
+        "confidence": 0.22,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.667,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.0,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "essager-240w-cable",
+        "title": "Essager 240W USB C Cable E Marker",
+        "confidence": 0.158,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.459,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.0,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      }
+    ],
+    "identity_signals": {
+      "brand_token": "toocki",
+      "spec_tokens": [
+        "67w",
+        "gan"
+      ],
+      "seller_tokens": [
+        "toocki",
+        "official",
+        "store"
+      ],
+      "image_fingerprint": "toocki-67w"
+    },
+    "confidence": 0.78
+  },
+  {
+    "canonical_slug": "tuya-zigbee-smart-home-sensors",
+    "canonical_product": {
+      "product_id": "tuya-zigbee-sensor",
+      "title": "Tuya Zigbee Door Sensor Smart Home",
+      "source_url": "https://example.com/source/tuya-zigbee-sensor",
+      "category": "smart-home-sensors",
+      "brand_token": "tuya",
+      "spec_tokens": [
+        "zigbee"
+      ],
+      "model_tokens": [],
+      "image_fingerprint": "tuya-zigbee-sensor",
+      "seller": "Tuya Smart Store"
+    },
+    "aliases": [
+      "Tuya Zigbee Door Sensor Smart Home"
+    ],
+    "source_product_ids": [
+      "tuya-zigbee-sensor"
+    ],
+    "duplicate_candidates": [
+      {
+        "product_id": "kuulaa-30w",
+        "title": "Kuulaa 30W Mini USB C Charger",
+        "confidence": 0.115,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.317,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.0,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "essager-240w-cable",
+        "title": "Essager 240W USB C Cable E Marker",
+        "confidence": 0.11,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.299,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.0,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "essager-cable-100w",
+        "title": "Essager 100W USB C Cable E Marker",
+        "confidence": 0.11,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.299,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.0,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "hoto-screwdriver-kit",
+        "title": "HOTO Electric Screwdriver Kit 4Nm",
+        "confidence": 0.11,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.299,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.0,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "toocki-67w",
+        "title": "Toocki 67W GaN USB C Charger",
+        "confidence": 0.107,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.29,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.0,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      }
+    ],
+    "identity_signals": {
+      "brand_token": "tuya",
+      "spec_tokens": [
+        "zigbee"
+      ],
+      "seller_tokens": [
+        "tuya",
+        "smart",
+        "store"
+      ],
+      "image_fingerprint": "tuya-zigbee-sensor"
+    },
+    "confidence": 0.78
+  },
+  {
+    "canonical_slug": "ugreen-100w-gan-usb-c-chargers",
+    "canonical_product": {
+      "product_id": "ugreen-100w",
+      "title": "Ugreen 100W GaN Charger 3C1A",
+      "source_url": "https://example.com/source/ugreen-100w",
+      "category": "usb-c-chargers",
+      "brand_token": "ugreen",
+      "spec_tokens": [
+        "100w",
+        "gan"
+      ],
+      "model_tokens": [
+        "100w",
+        "3c1a"
+      ],
+      "image_fingerprint": "ugreen-100w",
+      "seller": "Ugreen Flagship Store"
+    },
+    "aliases": [
+      "Ugreen 100W GaN Charger 3C1A"
+    ],
+    "source_product_ids": [
+      "ugreen-100w"
+    ],
+    "duplicate_candidates": [
+      {
+        "product_id": "essager-cable-100w",
+        "title": "Essager 100W USB C Cable E Marker",
+        "confidence": 0.308,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.459,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.5,
+          "seller_overlap": 0.2,
+          "model_number": 0.5
+        }
+      },
+      {
+        "product_id": "rocoren-140w",
+        "title": "Rocoren 140W GaN Charger USB C",
+        "confidence": 0.304,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.724,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.333,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "toocki-67w",
+        "title": "Toocki 67W GaN USB C Charger",
+        "confidence": 0.237,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.5,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.333,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "baseus-65w",
+        "title": "Baseus 65W GaN USB C Charger PPS",
+        "confidence": 0.23,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.533,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.25,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "kuulaa-30w",
+        "title": "Kuulaa 30W Mini USB C Charger",
+        "confidence": 0.167,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.491,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.0,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      }
+    ],
+    "identity_signals": {
+      "brand_token": "ugreen",
+      "spec_tokens": [
+        "100w",
+        "gan"
+      ],
+      "seller_tokens": [
+        "ugreen",
+        "flagship",
+        "store"
+      ],
+      "image_fingerprint": "ugreen-100w"
+    },
+    "confidence": 0.78
+  },
+  {
+    "canonical_slug": "zmi-20000mah-65w-power-banks",
+    "canonical_product": {
+      "product_id": "zmi-20000-power-bank",
+      "title": "ZMI 20000mAh 65W USB C Power Bank",
+      "source_url": "https://example.com/source/zmi-20000-power-bank",
+      "category": "power-banks",
+      "brand_token": "zmi",
+      "spec_tokens": [
+        "20000mah",
+        "65w"
+      ],
+      "model_tokens": [
+        "20000mah",
+        "65w"
+      ],
+      "image_fingerprint": "zmi-20000-power-bank",
+      "seller": "ZMI Power Store"
+    },
+    "aliases": [
+      "ZMI 20000mAh 65W USB C Power Bank"
+    ],
+    "source_product_ids": [
+      "zmi-20000-power-bank"
+    ],
+    "duplicate_candidates": [
+      {
+        "product_id": "baseus-65w",
+        "title": "Baseus 65W GaN USB C Charger PPS",
+        "confidence": 0.258,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.462,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.25,
+          "seller_overlap": 0.2,
+          "model_number": 0.5
+        }
+      },
+      {
+        "product_id": "essager-240w-cable",
+        "title": "Essager 240W USB C Cable E Marker",
+        "confidence": 0.138,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.394,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.0,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "essager-cable-100w",
+        "title": "Essager 100W USB C Cable E Marker",
+        "confidence": 0.138,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.394,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.0,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "toocki-67w",
+        "title": "Toocki 67W GaN USB C Charger",
+        "confidence": 0.138,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.393,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.0,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      },
+      {
+        "product_id": "ugreen-100w",
+        "title": "Ugreen 100W GaN Charger 3C1A",
+        "confidence": 0.128,
+        "decision": "keep_separate",
+        "score_parts": {
+          "title_similarity": 0.361,
+          "image_hash": 0.0,
+          "brand_token": 0.0,
+          "spec_token": 0.0,
+          "seller_overlap": 0.2,
+          "model_number": 0.0
+        }
+      }
+    ],
+    "identity_signals": {
+      "brand_token": "zmi",
+      "spec_tokens": [
+        "20000mah",
+        "65w"
+      ],
+      "seller_tokens": [
+        "zmi",
+        "power",
+        "store"
+      ],
+      "image_fingerprint": "zmi-20000-power-bank"
+    },
+    "confidence": 0.78
+  }
+]

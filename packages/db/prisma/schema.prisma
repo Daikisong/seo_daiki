@@ -1,0 +1,261 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Product {
+  id                 String          @id @default(cuid())
+  canonicalName      String
+  slug               String          @unique
+  category           String
+  brandClaim         String?
+  identityConfidence Float           @default(0)
+  imageHash          String?
+  archivedAt         DateTime?
+  createdAt          DateTime        @default(now())
+  updatedAt          DateTime        @updatedAt
+
+  variants       Variant[]
+  sellerClaims   SellerClaim[]
+  verifiedClaims VerifiedClaim[]
+  reviewSignals  ReviewSignal[]
+  priceSnapshots PriceSnapshot[]
+  marketRisks    MarketRisk[]
+  labEvidenceAssets LabEvidenceAsset[]
+  evidencePacks  EvidencePack[]
+  articles       Article[]
+
+  @@index([category])
+}
+
+model Variant {
+  id            String   @id @default(cuid())
+  productId     String
+  product       Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  sourceSku     String?
+  optionName    String
+  wattageClaim  Int?
+  plugType      String?
+  cableIncluded Boolean?
+  sourceUrl     String
+  affiliateUrl  String?
+  sellerName    String?
+  sellerId      String?
+  riskFlags     Json?
+  archivedAt    DateTime?
+  createdAt     DateTime @default(now())
+
+  priceSnapshots PriceSnapshot[]
+}
+
+model SellerClaim {
+  id         String   @id @default(cuid())
+  productId  String
+  product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  claimType  String
+  claimValue String
+  rawText    String?
+  sourceUrl  String?
+  capturedAt DateTime @default(now())
+  confidence Float    @default(0.5)
+  archivedAt DateTime?
+
+  @@index([productId, claimType])
+}
+
+model VerifiedClaim {
+  id          String    @id @default(cuid())
+  productId   String
+  product     Product   @relation(fields: [productId], references: [id], onDelete: Cascade)
+  testType    String
+  resultValue String
+  unit        String?
+  method      String
+  evidenceUrl String?
+  confidence  Float     @default(0.8)
+  testedAt    DateTime?
+  archivedAt  DateTime?
+
+  labEvidenceAssets LabEvidenceAsset[]
+
+  @@index([productId, testType])
+}
+
+model LabEvidenceAsset {
+  id              String         @id @default(cuid())
+  productId       String?
+  product         Product?       @relation(fields: [productId], references: [id], onDelete: SetNull)
+  verifiedClaimId String?
+  verifiedClaim   VerifiedClaim? @relation(fields: [verifiedClaimId], references: [id], onDelete: SetNull)
+  measurementType String
+  fileName        String
+  storageKey      String         @unique
+  publicUrl       String
+  mimeType        String
+  sizeBytes       Int
+  checksumSha256  String
+  notes           String?
+  uploadedAt      DateTime       @default(now())
+
+  @@index([productId, measurementType])
+  @@index([verifiedClaimId])
+}
+
+model ReviewSignal {
+  id         String   @id @default(cuid())
+  productId  String
+  product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  locale     String
+  topic      String
+  sentiment  String
+  count      Int
+  confidence Float
+  window     String?
+  capturedAt DateTime @default(now())
+
+  @@index([productId, locale])
+}
+
+model PriceSnapshot {
+  id         String   @id @default(cuid())
+  productId  String
+  product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  variantId  String?
+  variant    Variant? @relation(fields: [variantId], references: [id], onDelete: SetNull)
+  country    String?
+  currency   String
+  price      Decimal  @db.Decimal(10, 2)
+  shipping   Decimal? @db.Decimal(10, 2)
+  coupon     Decimal? @db.Decimal(10, 2)
+  finalPrice Decimal? @db.Decimal(10, 2)
+  capturedAt DateTime @default(now())
+
+  @@index([productId, country, capturedAt])
+}
+
+model MarketRisk {
+  id                   String  @id @default(cuid())
+  productId            String
+  product              Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  locale               String
+  country              String?
+  plugRisk             String?
+  customsRisk          String?
+  certificationRisk    String?
+  returnRisk           String?
+  localAlternativeNote String?
+  score                Float   @default(0.5)
+  archivedAt           DateTime?
+
+  @@index([productId, locale])
+}
+
+model EvidencePack {
+  id        String   @id @default(cuid())
+  productId String?
+  product   Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
+  locale    String
+  packJson  Json
+  archivedAt DateTime?
+  createdAt DateTime @default(now())
+
+  @@index([productId, locale])
+}
+
+model Article {
+  id              String   @id @default(cuid())
+  productId       String?
+  product         Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
+  locale          String
+  slug            String
+  type            String
+  title           String
+  h1              String?
+  metaDescription String?
+  summary         String?
+  contentMdx      String
+  sections        Json?
+  internalLinks   Json?
+  affiliateLinks  Json?
+  evidenceIds     Json?
+  jsonLd          Json?
+  qualityScore    Int      @default(0)
+  indexStatus     String   @default("pending")
+  publishStatus   String   @default("draft")
+  canonicalUrl    String?
+  hreflangMap     Json?
+  archivedAt      DateTime?
+  lastUpdated     DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  affiliateClicks AffiliateClick[]
+
+  @@unique([locale, slug, type])
+  @@index([locale, type, indexStatus])
+}
+
+model AffiliateClick {
+  id        String   @id @default(cuid())
+  articleId String?
+  article   Article? @relation(fields: [articleId], references: [id], onDelete: SetNull)
+  productId String?
+  variantId String?
+  locale    String?
+  targetUrl String
+  clickedAt DateTime @default(now())
+  referrer  String?
+  utm       Json?
+
+  @@index([productId, locale])
+}
+
+model SearchConsoleMetric {
+  id          String   @id @default(cuid())
+  page        String
+  query       String
+  country     String?
+  device      String?
+  clicks      Int      @default(0)
+  impressions Int      @default(0)
+  ctr         Float    @default(0)
+  position    Float    @default(0)
+  startDate   DateTime?
+  endDate     DateTime?
+  importedAt  DateTime @default(now())
+
+  @@index([page, query])
+  @@index([country, device])
+}
+
+model PageRefreshSuggestion {
+  id        String   @id @default(cuid())
+  page      String
+  query     String?
+  reason    String
+  actions   Json
+  status    String   @default("open")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([page, status])
+}
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  entityType String
+  entityId   String
+  action     String
+  actor      String?
+  summary    String?
+  beforeJson Json?
+  afterJson  Json?
+  createdAt  DateTime @default(now())
+
+  @@index([entityType, entityId])
+  @@index([createdAt])
+}

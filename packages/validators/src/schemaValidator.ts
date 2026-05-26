@@ -1,0 +1,1 @@
+export { validateStructuredData } from "./index";

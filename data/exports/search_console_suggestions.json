@@ -1,0 +1,148 @@
+[
+  {
+    "page": "/en/guides/aliexpress-charger-fake-watts/",
+    "query": "aliexpress charger not 65w",
+    "country": "usa",
+    "device": "desktop",
+    "reason": "high_impressions_low_ctr_mid_position",
+    "priority": 46,
+    "diagnostics": {
+      "impressions": 240,
+      "ctr": 0.0125,
+      "position": 14.2,
+      "query_terms": [
+        "aliexpress",
+        "charger",
+        "not",
+        "65w"
+      ],
+      "matched_query_terms": [
+        "aliexpress",
+        "charger"
+      ],
+      "missing_query_terms_in_existing_sections": [
+        "not",
+        "65w"
+      ],
+      "section_match_score": 0.5,
+      "estimated_existing_sections": [
+        "alternative",
+        "claim",
+        "evidence",
+        "fix",
+        "problem",
+        "seller",
+        "symptom",
+        "variant"
+      ]
+    },
+    "missing_sections": [
+      {
+        "heading": "Why this charger may not deliver the advertised wattage",
+        "why": "The query contains terms that are not covered by the estimated page sections: not, 65w.",
+        "intent": "problem_check",
+        "recommended_details": [
+          "state the likely failure mode in the first paragraph",
+          "show the seller claim versus verified evidence",
+          "list the exact SKU or variant trap to avoid"
+        ]
+      }
+    ],
+    "title_candidate": "AliExpress Charger Not 65W: Fixes, Evidence, Safer Picks",
+    "meta_description_candidate": "Answer aliexpress charger not 65w with seller-claim checks, variant traps, price evidence, and local risk notes. Compare linked data, lab, and guide page...",
+    "internal_link_candidates": [
+      {
+        "path": "/en/usb-c-charging-hub-1/",
+        "href": "/en/usb-c-charging-hub-1/",
+        "type": "hub",
+        "anchor": "usb-c charging buying hub",
+        "reason": "category hub reinforcement; strongest signal: same_category_score",
+        "score": 32,
+        "score_breakdown": {
+          "same_locale_score": 8,
+          "same_category_score": 16,
+          "same_claim_score": 0,
+          "same_problem_score": 0,
+          "alternative_price_band_score": 0,
+          "risk_overlap_score": 0,
+          "page_type_score": 8
+        }
+      },
+      {
+        "path": "/en/data/usb-c-charging-data-1/",
+        "href": "/en/data/usb-c-charging-data-1/",
+        "type": "data",
+        "anchor": "verified data table",
+        "reason": "original data support; strongest signal: same_category_score",
+        "score": 31,
+        "score_breakdown": {
+          "same_locale_score": 8,
+          "same_category_score": 16,
+          "same_claim_score": 0,
+          "same_problem_score": 0,
+          "alternative_price_band_score": 0,
+          "risk_overlap_score": 0,
+          "page_type_score": 7
+        }
+      },
+      {
+        "path": "/en/lab/usb-c-charging-lab-1/",
+        "href": "/en/lab/usb-c-charging-lab-1/",
+        "type": "lab",
+        "anchor": "lab test evidence",
+        "reason": "test method support; strongest signal: same_category_score",
+        "score": 31,
+        "score_breakdown": {
+          "same_locale_score": 8,
+          "same_category_score": 16,
+          "same_claim_score": 0,
+          "same_problem_score": 0,
+          "alternative_price_band_score": 0,
+          "risk_overlap_score": 0,
+          "page_type_score": 7
+        }
+      },
+      {
+        "path": "/en/compare/usb-c-charging-compare-1/",
+        "href": "/en/compare/usb-c-charging-compare-1/",
+        "type": "compare",
+        "anchor": "comparison alternatives",
+        "reason": "comparison intent support; strongest signal: same_category_score",
+        "score": 30,
+        "score_breakdown": {
+          "same_locale_score": 8,
+          "same_category_score": 16,
+          "same_claim_score": 0,
+          "same_problem_score": 0,
+          "alternative_price_band_score": 0,
+          "risk_overlap_score": 0,
+          "page_type_score": 6
+        }
+      },
+      {
+        "path": "/en/guides/usb-c-charging-guide-1/",
+        "href": "/en/guides/usb-c-charging-guide-1/",
+        "type": "guide",
+        "anchor": "aliexpress charger not 65w evidence",
+        "reason": "problem intent support; strongest signal: same_category_score",
+        "score": 29,
+        "score_breakdown": {
+          "same_locale_score": 8,
+          "same_category_score": 16,
+          "same_claim_score": 0,
+          "same_problem_score": 0,
+          "alternative_price_band_score": 0,
+          "risk_overlap_score": 0,
+          "page_type_score": 5
+        }
+      }
+    ],
+    "action": [
+      "Add a section titled \"Why this charger may not deliver the advertised wattage\" that answers \"aliexpress charger not 65w\" directly.",
+      "Rewrite the title candidate to: \"AliExpress Charger Not 65W: Fixes, Evidence, Safer Picks\".",
+      "Rewrite the meta description candidate to: \"Answer aliexpress charger not 65w with seller-claim checks, variant traps, price evidence, and local risk notes. Compare linked data, lab, and guide page...\".",
+      "Add internal links from: /en/usb-c-charging-hub-1/ as \"usb-c charging buying hub\", /en/data/usb-c-charging-data-1/ as \"verified data table\", /en/lab/usb-c-charging-lab-1/ as \"lab test evidence\".",
+      "Add a comparison table with flagged products because the query implies a buyer decision."
+    ]
+  }
+]

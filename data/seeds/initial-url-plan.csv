@@ -1,0 +1,15 @@
+locale,type,count,index_target,cluster
+en,hub,5,3,usb-c charging
+en,data,5,3,usb-c charging
+en,lab,5,4,usb-c charging
+en,guide,15,4,usb-c charging
+en,compare,10,3,usb-c charging
+en,review,20,1,usb-c charging
+es,hub,3,3,usb-c charging
+es,guide,8,3,usb-c charging
+es,compare,4,1,usb-c charging
+es,review,10,1,usb-c charging
+pt-br,hub,3,3,usb-c charging
+pt-br,guide,8,3,usb-c charging
+pt-br,compare,4,1,usb-c charging
+pt-br,review,10,1,usb-c charging

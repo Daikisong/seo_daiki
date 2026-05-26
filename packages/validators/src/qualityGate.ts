@@ -1,0 +1,1 @@
+export { runQualityGate } from "./index";

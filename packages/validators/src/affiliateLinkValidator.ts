@@ -1,0 +1,1 @@
+export { validateAffiliateLinks } from "./index";

@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: global-import-lab-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: global_import_lab
+      POSTGRES_PASSWORD: global_import_lab
+      POSTGRES_DB: global_import_lab
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U global_import_lab -d global_import_lab"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:

@@ -1,0 +1,1 @@
+export { validateInternalLinks } from "./index";

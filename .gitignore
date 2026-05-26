@@ -1,0 +1,14 @@
+node_modules
+.next
+out
+dist
+coverage
+.env
+.env.local
+.turbo
+*.log
+*.tsbuildinfo
+__pycache__
+.pytest_cache
+data/uploads
+packages/db/src/generated

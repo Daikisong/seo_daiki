@@ -1,0 +1,31 @@
+{
+  "name": "@global-import-lab/validators",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./affiliateLinkValidator": "./src/affiliateLinkValidator.ts",
+    "./claimEvidence": "./src/claimEvidence.ts",
+    "./hreflangValidator": "./src/hreflangValidator.ts",
+    "./internalLinks": "./src/internalLinks.ts",
+    "./qualityGate": "./src/qualityGate.ts",
+    "./schemaValidator": "./src/schemaValidator.ts",
+    "./seoIntegrity": "./src/seoIntegrity.ts",
+    "./thinAffiliate": "./src/thinAffiliate.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "validate": "tsx src/validateSamples.ts"
+  },
+  "dependencies": {
+    "@global-import-lab/content": "workspace:*",
+    "@global-import-lab/seo": "workspace:*",
+    "@global-import-lab/types": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.1",
+    "tsx": "4.21.0",
+    "typescript": "6.0.3"
+  }
+}

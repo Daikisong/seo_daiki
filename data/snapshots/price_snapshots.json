@@ -1,0 +1,102 @@
+[
+  {
+    "product_id": "baseus-65w",
+    "currency": "USD",
+    "price": 19.8,
+    "shipping": 1.6,
+    "coupon": 0,
+    "final_price": 21.4,
+    "captured_at": "2026-05-25",
+    "source_url": "https://example.com/source/baseus-65w"
+  },
+  {
+    "product_id": "ugreen-100w",
+    "currency": "USD",
+    "price": 34.9,
+    "shipping": 2.2,
+    "coupon": 0,
+    "final_price": 37.1,
+    "captured_at": "2026-05-25",
+    "source_url": "https://example.com/source/ugreen-100w"
+  },
+  {
+    "product_id": "essager-cable-100w",
+    "currency": "USD",
+    "price": 5.9,
+    "shipping": 0.0,
+    "coupon": 0,
+    "final_price": 5.9,
+    "captured_at": "2026-05-25",
+    "source_url": "https://example.com/source/essager-cable"
+  },
+  {
+    "product_id": "toocki-67w",
+    "currency": "USD",
+    "price": 18.4,
+    "shipping": 2.1,
+    "coupon": 0,
+    "final_price": 20.5,
+    "captured_at": "2026-05-25",
+    "source_url": "https://example.com/source/toocki-67w"
+  },
+  {
+    "product_id": "rocoren-140w",
+    "currency": "USD",
+    "price": 42.6,
+    "shipping": 3.8,
+    "coupon": 0,
+    "final_price": 46.4,
+    "captured_at": "2026-05-25",
+    "source_url": "https://example.com/source/rocoren-140w"
+  },
+  {
+    "product_id": "kuulaa-30w",
+    "currency": "USD",
+    "price": 8.7,
+    "shipping": 1.4,
+    "coupon": 0,
+    "final_price": 10.1,
+    "captured_at": "2026-05-25",
+    "source_url": "https://example.com/source/kuulaa-30w"
+  },
+  {
+    "product_id": "essager-240w-cable",
+    "currency": "USD",
+    "price": 7.8,
+    "shipping": 0.0,
+    "coupon": 0,
+    "final_price": 7.8,
+    "captured_at": "2026-05-25",
+    "source_url": "https://example.com/source/essager-240w-cable"
+  },
+  {
+    "product_id": "zmi-20000-power-bank",
+    "currency": "USD",
+    "price": 46.5,
+    "shipping": 5.2,
+    "coupon": 0,
+    "final_price": 51.7,
+    "captured_at": "2026-05-25",
+    "source_url": "https://example.com/source/zmi-20000-power-bank"
+  },
+  {
+    "product_id": "hoto-screwdriver-kit",
+    "currency": "USD",
+    "price": 22.3,
+    "shipping": 4.5,
+    "coupon": 0,
+    "final_price": 26.8,
+    "captured_at": "2026-05-25",
+    "source_url": "https://example.com/source/hoto-screwdriver-kit"
+  },
+  {
+    "product_id": "tuya-zigbee-sensor",
+    "currency": "USD",
+    "price": 6.4,
+    "shipping": 1.2,
+    "coupon": 0,
+    "final_price": 7.6,
+    "captured_at": "2026-05-25",
+    "source_url": "https://example.com/source/tuya-zigbee-sensor"
+  }
+]

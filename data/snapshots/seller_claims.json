@@ -1,0 +1,114 @@
+[
+  {
+    "product_id": "baseus-65w",
+    "claim_type": "max_output",
+    "claim_value": "65W",
+    "raw_text": "Baseus 65W GaN USB C Charger PPS",
+    "source_url": "https://example.com/source/baseus-65w",
+    "confidence": 0.7
+  },
+  {
+    "product_id": "baseus-65w",
+    "claim_type": "charging_profile",
+    "claim_value": "PPS",
+    "raw_text": "Baseus 65W GaN USB C Charger PPS",
+    "source_url": "https://example.com/source/baseus-65w",
+    "confidence": 0.6
+  },
+  {
+    "product_id": "ugreen-100w",
+    "claim_type": "max_output",
+    "claim_value": "100W",
+    "raw_text": "Ugreen 100W GaN Charger 3C1A",
+    "source_url": "https://example.com/source/ugreen-100w",
+    "confidence": 0.7
+  },
+  {
+    "product_id": "essager-cable-100w",
+    "claim_type": "max_output",
+    "claim_value": "100W",
+    "raw_text": "Essager 100W USB C Cable E Marker",
+    "source_url": "https://example.com/source/essager-cable",
+    "confidence": 0.7
+  },
+  {
+    "product_id": "essager-cable-100w",
+    "claim_type": "e_marker",
+    "claim_value": "E-marker claimed",
+    "raw_text": "Essager 100W USB C Cable E Marker",
+    "source_url": "https://example.com/source/essager-cable",
+    "confidence": 0.62
+  },
+  {
+    "product_id": "toocki-67w",
+    "claim_type": "max_output",
+    "claim_value": "67W",
+    "raw_text": "Toocki 67W GaN USB C Charger",
+    "source_url": "https://example.com/source/toocki-67w",
+    "confidence": 0.7
+  },
+  {
+    "product_id": "rocoren-140w",
+    "claim_type": "max_output",
+    "claim_value": "140W",
+    "raw_text": "Rocoren 140W GaN Charger USB C",
+    "source_url": "https://example.com/source/rocoren-140w",
+    "confidence": 0.7
+  },
+  {
+    "product_id": "kuulaa-30w",
+    "claim_type": "max_output",
+    "claim_value": "30W",
+    "raw_text": "Kuulaa 30W Mini USB C Charger",
+    "source_url": "https://example.com/source/kuulaa-30w",
+    "confidence": 0.7
+  },
+  {
+    "product_id": "essager-240w-cable",
+    "claim_type": "max_output",
+    "claim_value": "240W",
+    "raw_text": "Essager 240W USB C Cable E Marker",
+    "source_url": "https://example.com/source/essager-240w-cable",
+    "confidence": 0.7
+  },
+  {
+    "product_id": "essager-240w-cable",
+    "claim_type": "e_marker",
+    "claim_value": "E-marker claimed",
+    "raw_text": "Essager 240W USB C Cable E Marker",
+    "source_url": "https://example.com/source/essager-240w-cable",
+    "confidence": 0.62
+  },
+  {
+    "product_id": "zmi-20000-power-bank",
+    "claim_type": "max_output",
+    "claim_value": "65W",
+    "raw_text": "ZMI 20000mAh 65W USB C Power Bank",
+    "source_url": "https://example.com/source/zmi-20000-power-bank",
+    "confidence": 0.7
+  },
+  {
+    "product_id": "zmi-20000-power-bank",
+    "claim_type": "capacity",
+    "claim_value": "20000MAH",
+    "raw_text": "ZMI 20000mAh 65W USB C Power Bank",
+    "source_url": "https://example.com/source/zmi-20000-power-bank",
+    "confidence": 0.68
+  },
+  {
+    "product_id": "hoto-screwdriver-kit",
+    "claim_type": "torque",
+    "claim_value": "4NM",
+    "raw_text": "HOTO Electric Screwdriver Kit 4Nm",
+    "source_url": "https://example.com/source/hoto-screwdriver-kit",
+    "confidence": 0.64
+  },
+  {
+    "product_id": "tuya-zigbee-sensor",
+    "claim_type": "protocol",
+    "claim_value": "Zigbee",
+    "raw_text": "Tuya Zigbee Door Sensor Smart Home",
+    "source_url": "https://example.com/source/tuya-zigbee-sensor",
+    "confidence": 0.66
+  }
+]

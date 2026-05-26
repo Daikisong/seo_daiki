@@ -1,0 +1,33 @@
+{
+  "name": "@global-import-lab/db",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/client.ts",
+    "./affiliate-clicks": "./src/affiliateClicks.ts",
+    "./admin-mutations": "./src/adminMutations.ts",
+    "./content": "./src/contentRepository.ts",
+    "./lab-evidence": "./src/labEvidence.ts",
+    "./search-console": "./src/searchConsole.ts",
+    "./worker-import": "./src/importWorkerOutputs.ts"
+  },
+  "scripts": {
+    "admin": "tsx src/admin.ts",
+    "typecheck": "prisma generate --config ../../prisma.config.ts && tsc --noEmit",
+    "seed": "tsx src/seed.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "7.8.0",
+    "@prisma/adapter-pg": "7.8.0",
+    "@global-import-lab/content": "workspace:*",
+    "@global-import-lab/types": "workspace:*",
+    "pg": "8.21.0"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.1",
+    "@types/pg": "8.20.0",
+    "tsx": "4.21.0",
+    "typescript": "6.0.3"
+  }
+}

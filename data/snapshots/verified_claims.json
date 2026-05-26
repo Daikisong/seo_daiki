@@ -1,0 +1,112 @@
+[
+  {
+    "product_id": "baseus-65w",
+    "test_type": "sustained_output",
+    "result_value": "58",
+    "unit": "W observed in sample bench check",
+    "method": "Manual sample evidence check; replace with lab upload before production indexing.",
+    "evidence_url": "https://example.com/source/baseus-65w",
+    "confidence": 0.72,
+    "tested_at": "2026-05-25"
+  },
+  {
+    "product_id": "ugreen-100w",
+    "test_type": "sustained_output",
+    "result_value": "90",
+    "unit": "W observed in sample bench check",
+    "method": "Manual sample evidence check; replace with lab upload before production indexing.",
+    "evidence_url": "https://example.com/source/ugreen-100w",
+    "confidence": 0.72,
+    "tested_at": "2026-05-25"
+  },
+  {
+    "product_id": "essager-cable-100w",
+    "test_type": "e_marker",
+    "result_value": "Detected",
+    "unit": "e-marker profile",
+    "method": "Manual sample evidence check; replace with lab upload before production indexing.",
+    "evidence_url": "https://example.com/source/essager-cable",
+    "confidence": 0.72,
+    "tested_at": "2026-05-25"
+  },
+  {
+    "product_id": "toocki-67w",
+    "test_type": "sustained_output",
+    "result_value": "60",
+    "unit": "W observed in sample bench check",
+    "method": "Manual sample evidence check; replace with lab upload before production indexing.",
+    "evidence_url": "https://example.com/source/toocki-67w",
+    "confidence": 0.72,
+    "tested_at": "2026-05-25"
+  },
+  {
+    "product_id": "rocoren-140w",
+    "test_type": "sustained_output",
+    "result_value": "126",
+    "unit": "W observed in sample bench check",
+    "method": "Manual sample evidence check; replace with lab upload before production indexing.",
+    "evidence_url": "https://example.com/source/rocoren-140w",
+    "confidence": 0.72,
+    "tested_at": "2026-05-25"
+  },
+  {
+    "product_id": "kuulaa-30w",
+    "test_type": "sustained_output",
+    "result_value": "27",
+    "unit": "W observed in sample bench check",
+    "method": "Manual sample evidence check; replace with lab upload before production indexing.",
+    "evidence_url": "https://example.com/source/kuulaa-30w",
+    "confidence": 0.72,
+    "tested_at": "2026-05-25"
+  },
+  {
+    "product_id": "essager-240w-cable",
+    "test_type": "e_marker",
+    "result_value": "Detected",
+    "unit": "e-marker profile",
+    "method": "Manual sample evidence check; replace with lab upload before production indexing.",
+    "evidence_url": "https://example.com/source/essager-240w-cable",
+    "confidence": 0.72,
+    "tested_at": "2026-05-25"
+  },
+  {
+    "product_id": "zmi-20000-power-bank",
+    "test_type": "sustained_output",
+    "result_value": "58",
+    "unit": "W observed in sample bench check",
+    "method": "Manual sample evidence check; replace with lab upload before production indexing.",
+    "evidence_url": "https://example.com/source/zmi-20000-power-bank",
+    "confidence": 0.72,
+    "tested_at": "2026-05-25"
+  },
+  {
+    "product_id": "zmi-20000-power-bank",
+    "test_type": "usable_energy",
+    "result_value": "60.7",
+    "unit": "Wh estimated from sample discharge note",
+    "method": "Manual sample capacity conversion check; replace with discharge log before production indexing.",
+    "evidence_url": "https://example.com/source/zmi-20000-power-bank",
+    "confidence": 0.68,
+    "tested_at": "2026-05-25"
+  },
+  {
+    "product_id": "hoto-screwdriver-kit",
+    "test_type": "torque_check",
+    "result_value": "3.4",
+    "unit": "Nm observed in sample fixture check",
+    "method": "Manual torque fixture note; replace with uploaded measurement before production indexing.",
+    "evidence_url": "https://example.com/source/hoto-screwdriver-kit",
+    "confidence": 0.66,
+    "tested_at": "2026-05-25"
+  },
+  {
+    "product_id": "tuya-zigbee-sensor",
+    "test_type": "pairing_check",
+    "result_value": "Zigbee pairing observed",
+    "unit": "protocol check",
+    "method": "Manual hub pairing note; replace with screenshot or log before production indexing.",
+    "evidence_url": "https://example.com/source/tuya-zigbee-sensor",
+    "confidence": 0.67,
+    "tested_at": "2026-05-25"
+  }
+]

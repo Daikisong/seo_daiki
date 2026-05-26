@@ -1,0 +1,1 @@
+export { validateHreflang } from "./index";

@@ -1,0 +1,1 @@
+export { validateClaimEvidence } from "./index";

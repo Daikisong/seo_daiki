@@ -1,0 +1,220 @@
+{
+  "status": "pass",
+  "started_at": "2026-05-26T15:34:02.659837+00:00",
+  "finished_at": "2026-05-26T15:34:02.702848+00:00",
+  "inputs": {
+    "seed_file": "/home/eorb915/projects/seo_daiki/data/seeds/usb-c-chargers.csv",
+    "keyword": null,
+    "page_size": 20,
+    "locales": [
+      "en",
+      "es",
+      "pt-br"
+    ],
+    "draft_types": [
+      "review",
+      "risk"
+    ],
+    "url_plan_file": "/home/eorb915/projects/seo_daiki/data/seeds/initial-url-plan.csv",
+    "continue_on_error": false,
+    "include_search_console": true
+  },
+  "steps": [
+    {
+      "name": "seed-products",
+      "status": "pass",
+      "output": "/home/eorb915/projects/seo_daiki/data/raw/raw_product_candidates.json",
+      "started_at": "2026-05-26T15:34:02.659843+00:00",
+      "finished_at": "2026-05-26T15:34:02.660248+00:00"
+    },
+    {
+      "name": "build-identity-graph",
+      "status": "pass",
+      "output": "/home/eorb915/projects/seo_daiki/data/snapshots/product_identity_graph.json",
+      "started_at": "2026-05-26T15:34:02.660251+00:00",
+      "finished_at": "2026-05-26T15:34:02.665554+00:00"
+    },
+    {
+      "name": "detect-variant-traps",
+      "status": "pass",
+      "output": "/home/eorb915/projects/seo_daiki/data/snapshots/variant_traps.json",
+      "started_at": "2026-05-26T15:34:02.665559+00:00",
+      "finished_at": "2026-05-26T15:34:02.665953+00:00"
+    },
+    {
+      "name": "extract-seller-claims",
+      "status": "pass",
+      "output": "/home/eorb915/projects/seo_daiki/data/snapshots/seller_claims.json",
+      "started_at": "2026-05-26T15:34:02.665958+00:00",
+      "finished_at": "2026-05-26T15:34:02.666450+00:00"
+    },
+    {
+      "name": "snapshot-prices",
+      "status": "pass",
+      "output": "/home/eorb915/projects/seo_daiki/data/snapshots/price_snapshots.json",
+      "started_at": "2026-05-26T15:34:02.666453+00:00",
+      "finished_at": "2026-05-26T15:34:02.666656+00:00"
+    },
+    {
+      "name": "build-price-truth",
+      "status": "pass",
+      "output": "/home/eorb915/projects/seo_daiki/data/snapshots/price_truth.json",
+      "started_at": "2026-05-26T15:34:02.666658+00:00",
+      "finished_at": "2026-05-26T15:34:02.666955+00:00"
+    },
+    {
+      "name": "build-locale-risk",
+      "status": "pass",
+      "output": "/home/eorb915/projects/seo_daiki/data/snapshots/locale_risk_matrix.json",
+      "started_at": "2026-05-26T15:34:02.666956+00:00",
+      "finished_at": "2026-05-26T15:34:02.667159+00:00"
+    },
+    {
+      "name": "extract-review-signals",
+      "status": "pass",
+      "output": "/home/eorb915/projects/seo_daiki/data/snapshots/review_signals.json",
+      "started_at": "2026-05-26T15:34:02.667160+00:00",
+      "finished_at": "2026-05-26T15:34:02.667333+00:00"
+    },
+    {
+      "name": "build-verified-claims",
+      "status": "pass",
+      "output": "/home/eorb915/projects/seo_daiki/data/snapshots/verified_claims.json",
+      "started_at": "2026-05-26T15:34:02.667335+00:00",
+      "finished_at": "2026-05-26T15:34:02.667695+00:00"
+    },
+    {
+      "name": "build-evidence-pack:en",
+      "status": "pass",
+      "output": "/home/eorb915/projects/seo_daiki/data/evidence_packs/en.json",
+      "started_at": "2026-05-26T15:34:02.667697+00:00",
+      "finished_at": "2026-05-26T15:34:02.668744+00:00"
+    },
+    {
+      "name": "build-evidence-pack:es",
+      "status": "pass",
+      "output": "/home/eorb915/projects/seo_daiki/data/evidence_packs/es.json",
+      "started_at": "2026-05-26T15:34:02.668747+00:00",
+      "finished_at": "2026-05-26T15:34:02.669852+00:00"
+    },
+    {
+      "name": "build-evidence-pack:pt-br",
+      "status": "pass",
+      "output": "/home/eorb915/projects/seo_daiki/data/evidence_packs/pt-br.json",
+      "started_at": "2026-05-26T15:34:02.669855+00:00",
+      "finished_at": "2026-05-26T15:34:02.670941+00:00"
+    },
+    {
+      "name": "generate-outline:en:review",
+      "status": "pass",
+      "output": "/home/eorb915/projects/seo_daiki/data/outlines/en-review.json",
+      "started_at": "2026-05-26T15:34:02.670943+00:00",
+      "finished_at": "2026-05-26T15:34:02.671933+00:00"
+    },
+    {
+      "name": "generate-draft:en:review",
+      "status": "pass",
+      "output": "/home/eorb915/projects/seo_daiki/data/drafts/en-review.md",
+      "started_at": "2026-05-26T15:34:02.671936+00:00",
+      "finished_at": "2026-05-26T15:34:02.672473+00:00"
+    },
+    {
+      "name": "generate-outline:en:risk",
+      "status": "pass",
+      "output": "/home/eorb915/projects/seo_daiki/data/outlines/en-risk.json",
+      "started_at": "2026-05-26T15:34:02.672476+00:00",
+      "finished_at": "2026-05-26T15:34:02.673274+00:00"
+    },
+    {
+      "name": "generate-draft:en:risk",
+      "status": "pass",
+      "output": "/home/eorb915/projects/seo_daiki/data/drafts/en-risk.md",
+      "started_at": "2026-05-26T15:34:02.673278+00:00",
+      "finished_at": "2026-05-26T15:34:02.673923+00:00"
+    },
+    {
+      "name": "generate-outline:es:review",
+      "status": "pass",
+      "output": "/home/eorb915/projects/seo_daiki/data/outlines/es-review.json",
+      "started_at": "2026-05-26T15:34:02.673926+00:00",
+      "finished_at": "2026-05-26T15:34:02.674813+00:00"
+    },
+    {
+      "name": "generate-draft:es:review",
+      "status": "pass",
+      "output": "/home/eorb915/projects/seo_daiki/data/drafts/es-review.md",
+      "started_at": "2026-05-26T15:34:02.674815+00:00",
+      "finished_at": "2026-05-26T15:34:02.675311+00:00"
+    },
+    {
+      "name": "generate-outline:es:risk",
+      "status": "pass",
+      "output": "/home/eorb915/projects/seo_daiki/data/outlines/es-risk.json",
+      "started_at": "2026-05-26T15:34:02.675312+00:00",
+      "finished_at": "2026-05-26T15:34:02.676111+00:00"
+    },
+    {
+      "name": "generate-draft:es:risk",
+      "status": "pass",
+      "output": "/home/eorb915/projects/seo_daiki/data/drafts/es-risk.md",
+      "started_at": "2026-05-26T15:34:02.676113+00:00",
+      "finished_at": "2026-05-26T15:34:02.676646+00:00"
+    },
+    {
+      "name": "generate-outline:pt-br:review",
+      "status": "pass",
+      "output": "/home/eorb915/projects/seo_daiki/data/outlines/pt-br-review.json",
+      "started_at": "2026-05-26T15:34:02.676649+00:00",
+      "finished_at": "2026-05-26T15:34:02.677594+00:00"
+    },
+    {
+      "name": "generate-draft:pt-br:review",
+      "status": "pass",
+      "output": "/home/eorb915/projects/seo_daiki/data/drafts/pt-br-review.md",
+      "started_at": "2026-05-26T15:34:02.677596+00:00",
+      "finished_at": "2026-05-26T15:34:02.678150+00:00"
+    },
+    {
+      "name": "generate-outline:pt-br:risk",
+      "status": "pass",
+      "output": "/home/eorb915/projects/seo_daiki/data/outlines/pt-br-risk.json",
+      "started_at": "2026-05-26T15:34:02.678153+00:00",
+      "finished_at": "2026-05-26T15:34:02.678981+00:00"
+    },
+    {
+      "name": "generate-draft:pt-br:risk",
+      "status": "pass",
+      "output": "/home/eorb915/projects/seo_daiki/data/drafts/pt-br-risk.md",
+      "started_at": "2026-05-26T15:34:02.678984+00:00",
+      "finished_at": "2026-05-26T15:34:02.679525+00:00"
+    },
+    {
+      "name": "import-search-console",
+      "status": "pass",
+      "output": "/home/eorb915/projects/seo_daiki/data/snapshots/search_console_sample.json",
+      "started_at": "2026-05-26T15:34:02.679528+00:00",
+      "finished_at": "2026-05-26T15:34:02.679619+00:00"
+    },
+    {
+      "name": "suggest-refreshes",
+      "status": "pass",
+      "output": "/home/eorb915/projects/seo_daiki/data/exports/search_console_suggestions.json",
+      "started_at": "2026-05-26T15:34:02.679620+00:00",
+      "finished_at": "2026-05-26T15:34:02.680589+00:00"
+    },
+    {
+      "name": "generate-url-inventory",
+      "status": "pass",
+      "output": "/home/eorb915/projects/seo_daiki/data/exports/initial_url_inventory.json",
+      "started_at": "2026-05-26T15:34:02.680591+00:00",
+      "finished_at": "2026-05-26T15:34:02.681119+00:00"
+    },
+    {
+      "name": "run-quality-gate",
+      "status": "pass",
+      "output": "/home/eorb915/projects/seo_daiki/data/exports/quality_gate.json",
+      "started_at": "2026-05-26T15:34:02.681121+00:00",
+      "finished_at": "2026-05-26T15:34:02.702844+00:00"
+    }
+  ]
+}
