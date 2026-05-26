@@ -19,8 +19,11 @@ from workers.python.intelligence.seller_claim_extractor import extract_seller_cl
 from workers.python.intelligence.trend_topic_engine import (
     cluster_topics,
     generate_content_briefs,
+    generate_topic_draft,
     import_trend_signals,
+    localize_topic_draft,
     match_affiliate_offers,
+    run_publishing_gate,
     score_topics,
 )
 from workers.python.intelligence.variant_trap_detector import detect_variant_traps
@@ -86,6 +89,9 @@ def run_worker_pipeline(
             ("score-topics", score_topics),
             ("generate-content-briefs", generate_content_briefs),
             ("match-affiliate-offers", match_affiliate_offers),
+            ("generate-topic-draft", generate_topic_draft),
+            ("localize-topic-draft", localize_topic_draft),
+            ("run-publishing-gate", run_publishing_gate),
         ]
     )
 

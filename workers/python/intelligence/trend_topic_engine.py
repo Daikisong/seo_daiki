@@ -14,6 +14,9 @@ TOPIC_CLUSTERS_PATH = DATA / "snapshots" / "topic_clusters.json"
 TOPIC_SCORES_PATH = DATA / "snapshots" / "topic_scores.json"
 CONTENT_BRIEFS_PATH = DATA / "briefs" / "content_briefs.json"
 OFFER_MATCHES_PATH = DATA / "snapshots" / "affiliate_offer_matches.json"
+TOPIC_DRAFTS_REPORT_PATH = DATA / "exports" / "topic_drafts.json"
+TOPIC_LOCALIZATION_REPORT_PATH = DATA / "exports" / "topic_localizations.json"
+PUBLISHING_GATE_PATH = DATA / "exports" / "topic_publishing_gate.json"
 
 
 def collect_trend_signals(file: Path | None = None) -> str:
@@ -195,6 +198,94 @@ def match_affiliate_offers() -> str:
     return str(write_json(OFFER_MATCHES_PATH, {"matches": matches}))
 
 
+def generate_topic_draft(locale: str | None = None) -> str:
+    payload = read_json(CONTENT_BRIEFS_PATH, {"briefs": []})
+    briefs = [brief for brief in payload.get("briefs", []) if not locale or brief.get("locale") == locale]
+    generated = []
+    for brief in briefs:
+        path = DATA / "drafts" / f"topic-{brief['locale']}-{brief['articleType']}-{brief['topicId'].replace('topic-', '')}.md"
+        lines = [
+            f"# {brief['titleCandidate']}",
+            "",
+            f"Locale: {brief['locale']}",
+            f"Article type: {brief['articleType']}",
+            f"Search intent: {brief['searchIntent']}",
+            f"Health sensitivity: {brief['healthSensitivity']}",
+            "",
+            "## Required evidence",
+            *(f"- {item}" for item in brief.get("requiredEvidence", [])),
+            "",
+            "## Outline",
+            *(f"- {section['heading']}: {section['purpose']}" for section in brief.get("outlineJson", [])),
+            "",
+            "## Drafting guardrails",
+            "- Use only collected trend signals, evidence packs, offer data, and Search Console context.",
+            "- Keep the page noindex until the publishing gate passes.",
+            "- Use rel=\"sponsored nofollow\" for affiliate placements.",
+        ]
+        if brief.get("healthSensitivity") != "none":
+            lines.extend(
+                [
+                    "- Include a visible health disclaimer.",
+                    "- Do not make cure, treatment, prevention, guaranteed, or unsupported medical claims.",
+                    "- Require manual compliance approval before indexing.",
+                ]
+            )
+        path.write_text("\n".join(lines), encoding="utf-8")
+        generated.append({"briefId": brief["id"], "path": str(path)})
+
+    return str(write_json(TOPIC_DRAFTS_REPORT_PATH, {"drafts": generated}))
+
+
+def localize_topic_draft(target_locales: list[str] | None = None) -> str:
+    payload = read_json(CONTENT_BRIEFS_PATH, {"briefs": []})
+    locales = target_locales or ["en", "es", "pt-br"]
+    localized = []
+    for brief in payload.get("briefs", []):
+        for locale in locales:
+            if locale == brief.get("locale"):
+                continue
+            localized.append(
+                {
+                    "sourceBriefId": brief["id"],
+                    "targetLocale": locale,
+                    "status": "draft",
+                    "titleCandidate": localized_title(str(brief["titleCandidate"]), locale),
+                    "localizationNotes": {
+                        **brief.get("localizationNotes", {}),
+                        "targetLocale": locale,
+                        "requiresHumanReview": True,
+                    },
+                }
+            )
+
+    return str(write_json(TOPIC_LOCALIZATION_REPORT_PATH, {"localizations": localized}))
+
+
+def run_publishing_gate() -> str:
+    briefs_payload = read_json(CONTENT_BRIEFS_PATH, {"briefs": []})
+    matches_payload = read_json(OFFER_MATCHES_PATH, {"matches": []})
+    matches_by_topic: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for match in matches_payload.get("matches", []):
+        matches_by_topic[str(match.get("topicId"))].append(match)
+
+    results = []
+    for brief in briefs_payload.get("briefs", []):
+        blockers = publishing_blockers(brief, matches_by_topic.get(str(brief.get("topicId")), []))
+        results.append(
+            {
+                "briefId": brief["id"],
+                "topicId": brief["topicId"],
+                "locale": brief["locale"],
+                "articleType": brief["articleType"],
+                "status": "blocked" if blockers else "ready_for_human_review",
+                "blockers": blockers,
+            }
+        )
+
+    return str(write_json(PUBLISHING_GATE_PATH, {"results": results}))
+
+
 def clean(value: Any) -> str:
     return str(value or "").strip()
 
@@ -337,3 +428,26 @@ def match_reason(topic: dict[str, Any], merchant: str) -> str:
     if merchant == "iherb":
         return "Health-sensitive topic; route through iHerb offers only after HealthClaimGuard and manual approval."
     return "Commerce-oriented topic with marketplace offer fit; avoid thin affiliate content by requiring evidence."
+
+
+def localized_title(title: str, locale: str) -> str:
+    prefix = {"en": "Localized draft", "es": "Borrador localizado", "pt-br": "Rascunho localizado"}.get(locale, "Localized draft")
+    return f"{prefix}: {title}"
+
+
+def publishing_blockers(brief: dict[str, Any], matches: list[dict[str, Any]]) -> list[str]:
+    blockers = []
+    if not brief.get("requiredEvidence"):
+        blockers.append("required_evidence_missing")
+    if not brief.get("outlineJson"):
+        blockers.append("outline_missing")
+    if brief.get("articleType") in {"buyer_guide", "deal_watch", "ingredient_guide"} and not matches:
+        blockers.append("affiliate_offer_match_missing")
+    if brief.get("healthSensitivity") != "none":
+        required = " ".join(str(item).lower() for item in brief.get("requiredEvidence", []))
+        merchant_fit = brief.get("merchantFitJson", {})
+        if "health disclaimer" not in required:
+            blockers.append("health_disclaimer_requirement_missing")
+        if not isinstance(merchant_fit, dict) or not merchant_fit.get("requiresHealthClaimGuard"):
+            blockers.append("health_claim_guard_requirement_missing")
+    return blockers

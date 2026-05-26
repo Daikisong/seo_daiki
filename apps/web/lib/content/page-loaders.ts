@@ -1,7 +1,7 @@
 import { notFound, permanentRedirect } from "next/navigation";
 import type { Metadata } from "next";
-import { articlePath, regionalRiskRouteForArticle, regionalRiskRouteForPath } from "@global-import-lab/seo";
-import type { ArticleType } from "@global-import-lab/types";
+import { articlePath, regionalRiskRouteForArticle, regionalRiskRouteForPath, sectionPathForArticle } from "@global-import-lab/seo";
+import type { ArticleType, Locale } from "@global-import-lab/types";
 import { metadataForArticle } from "@/lib/seo/metadata";
 import { isLocale } from "@/lib/i18n/locales";
 import { getAllArticles, getAllProducts, getArticle, getProduct, getStaticArticleParams } from "./repository";
@@ -81,6 +81,22 @@ export async function loadGuidePageForFixedLocale(
 ) {
   const params = await paramsPromise;
   return loadGuidePageForSection(Promise.resolve({ locale, slug: params.slug }), section, searchParamsPromise);
+}
+
+export async function loadArticlePageForLocalizedSection(
+  paramsPromise: Promise<ArticleRouteParams>,
+  type: ArticleType,
+  section: string,
+  searchParamsPromise?: PreviewSearchParamsPromise
+) {
+  const page = await loadArticlePage(paramsPromise, type, searchParamsPromise);
+  const expectedSection = sectionPathForArticle(page.article);
+
+  if (section !== expectedSection) {
+    permanentRedirect(articlePath(page.article));
+  }
+
+  return page;
 }
 
 export async function loadLegacyRiskPage(
@@ -212,6 +228,11 @@ export async function staticCountryRiskGuideParamsFor(routeLocale: string, secti
 
     return [];
   });
+}
+
+export async function staticParamsForLocalizedSection(type: ArticleType, section: string) {
+  const params = await getStaticArticleParams(type);
+  return params.filter((param) => sectionPathForArticle({ locale: param.locale as Locale, type }) === section);
 }
 
 async function assertPublicArticleVisible(article: NonNullable<Awaited<ReturnType<typeof getArticle>>>, searchParamsPromise?: PreviewSearchParamsPromise) {

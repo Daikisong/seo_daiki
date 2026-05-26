@@ -9,7 +9,11 @@ export type ArticleType =
   | "data"
   | "lab"
   | "risk"
-  | "methodology";
+  | "methodology"
+  | "trend"
+  | "buyer_guide"
+  | "deal_watch"
+  | "ingredient_guide";
 
 export type IndexStatus =
   | "index"
@@ -140,7 +144,10 @@ export interface InternalLink {
     | "alternative"
     | "guide"
     | "language"
-    | "risk";
+    | "risk"
+    | "trend"
+    | "deal"
+    | "ingredient";
 }
 
 export interface AffiliateLink {

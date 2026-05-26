@@ -249,6 +249,73 @@ function ArticleTypeContent({
     );
   }
 
+  if (article.type === "trend") {
+    return (
+      <>
+        <section className="grid gap-4 md:grid-cols-3">
+          <TrendSignalCard label="Why it is rising" value="Growth, freshness, and repeated search-demand signals." />
+          <TrendSignalCard label="Buyer problem" value="Separate useful demand from seller-led hype before drafting." />
+          <TrendSignalCard label="Publishing rule" value="Keep noindex until evidence, links, and compliance gates pass." />
+        </section>
+        <SectionGrid article={article} />
+        <ProductComparisonTable products={categoryProducts} />
+        <EvidenceList evidenceIds={article.evidenceIds} />
+        <UpdateLog lastUpdated={article.lastUpdated} />
+      </>
+    );
+  }
+
+  if (article.type === "buyer_guide") {
+    return (
+      <>
+        <VerdictCard
+          verdict={article.summary}
+          bestFor={["Buyers comparing several imported options", "Readers who need local risk notes", "Shoppers who check evidence before clicking"]}
+          avoidIf={["The offer has no verified claim trail", "The final shipped price is unclear", "The SKU differs from the evidence pack"]}
+        />
+        <SectionGrid article={article} />
+        <ProductComparisonTable products={categoryProducts} />
+        {product ? <VariantTrapMap variants={product.variants} /> : null}
+        {product ? <MarketRiskMatrix locale={article.locale} risks={product.marketRisks} /> : null}
+        <EvidenceList evidenceIds={article.evidenceIds} />
+        <UpdateLog lastUpdated={article.lastUpdated} />
+      </>
+    );
+  }
+
+  if (article.type === "deal_watch") {
+    return (
+      <>
+        <BuyAvoidCard
+          buy="Buy only when the current offer stays inside the evidence-backed buy zone and the SKU matches the checked variant."
+          avoid="Wait or avoid when the discount is unsupported, the shipped price is unclear, or the seller swaps variants."
+        />
+        {product ? <PriceTruthCard snapshots={product.priceSnapshots} /> : null}
+        <SectionGrid article={article} />
+        <ProductComparisonTable products={categoryProducts} />
+        <EvidenceList evidenceIds={article.evidenceIds} />
+        <UpdateLog lastUpdated={article.lastUpdated} />
+      </>
+    );
+  }
+
+  if (article.type === "ingredient_guide") {
+    return (
+      <>
+        <section className="rounded-md border border-sky-200 bg-sky-50 p-4 text-sm text-sky-950">
+          <h2 className="text-base font-semibold">Health content notice</h2>
+          <p className="mt-2">
+            This page is informational only, not medical advice. Readers should consult a qualified healthcare professional
+            before using supplements, especially during pregnancy, medication use, or chronic conditions.
+          </p>
+        </section>
+        <SectionGrid article={article} />
+        <EvidenceList evidenceIds={article.evidenceIds} />
+        <UpdateLog lastUpdated={article.lastUpdated} />
+      </>
+    );
+  }
+
   if (article.type === "methodology") {
     return (
       <>
@@ -267,6 +334,15 @@ function ArticleTypeContent({
       <EvidenceList evidenceIds={article.evidenceIds} />
       <UpdateLog lastUpdated={article.lastUpdated} />
     </>
+  );
+}
+
+function TrendSignalCard({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-md border border-neutral-200 bg-white p-4">
+      <p className="text-xs font-semibold uppercase text-teal-700">{label}</p>
+      <p className="mt-2 text-sm text-neutral-700">{value}</p>
+    </div>
   );
 }
 

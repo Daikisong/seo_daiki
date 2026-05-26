@@ -13,7 +13,11 @@ const sectionTypeMap: Record<string, string[]> = {
   lab: ["lab"],
   data: ["data"],
   compare: ["compare"],
-  methodology: ["methodology"]
+  methodology: ["methodology"],
+  trends: ["trend"],
+  "buyer-guides": ["buyer_guide"],
+  deals: ["deal_watch"],
+  ingredients: ["ingredient_guide"]
 };
 
 export async function GET(_request: Request, context: RouteContext) {

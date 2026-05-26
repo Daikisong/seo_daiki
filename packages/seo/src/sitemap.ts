@@ -6,11 +6,20 @@ export function shouldIncludeInSitemap(article: Article) {
 }
 
 export function sitemapChangeFrequency(article: Article): "weekly" | "monthly" {
-  return article.type === "data" || article.type === "lab" ? "weekly" : "monthly";
+  return ["data", "lab", "trend", "deal_watch"].includes(article.type) ? "weekly" : "monthly";
 }
 
 export function sitemapPriority(article: Article) {
-  return article.type === "hub" ? 0.9 : article.type === "review" ? 0.8 : 0.7;
+  if (article.type === "hub") {
+    return 0.9;
+  }
+  if (["review", "buyer_guide", "trend"].includes(article.type)) {
+    return 0.8;
+  }
+  if (["deal_watch", "ingredient_guide"].includes(article.type)) {
+    return 0.75;
+  }
+  return 0.7;
 }
 
 export function buildSitemapEntries(articles: Article[]) {

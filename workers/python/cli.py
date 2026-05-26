@@ -24,8 +24,11 @@ from workers.python.intelligence.trend_topic_engine import (
     cluster_topics,
     collect_trend_signals,
     generate_content_briefs,
+    generate_topic_draft,
     import_trend_signals,
+    localize_topic_draft,
     match_affiliate_offers,
+    run_publishing_gate,
     score_topics,
 )
 from workers.python.intelligence.variant_trap_detector import detect_variant_traps
@@ -67,6 +70,11 @@ def main() -> None:
     subcommands.add_parser("score-topics")
     subcommands.add_parser("generate-content-briefs")
     subcommands.add_parser("match-affiliate-offers")
+    topic_draft = subcommands.add_parser("generate-topic-draft")
+    topic_draft.add_argument("--locale")
+    localize_topic = subcommands.add_parser("localize-topic-draft")
+    localize_topic.add_argument("--locale", action="append", dest="locales", default=None)
+    subcommands.add_parser("run-publishing-gate")
     inventory = subcommands.add_parser("generate-url-inventory")
     inventory.add_argument("--file", default=str(DATA / "seeds" / "initial-url-plan.csv"))
 
@@ -134,6 +142,12 @@ def main() -> None:
         print(generate_content_briefs())
     elif args.command == "match-affiliate-offers":
         print(match_affiliate_offers())
+    elif args.command == "generate-topic-draft":
+        print(generate_topic_draft(args.locale))
+    elif args.command == "localize-topic-draft":
+        print(localize_topic_draft(args.locales))
+    elif args.command == "run-publishing-gate":
+        print(run_publishing_gate())
     elif args.command == "generate-url-inventory":
         print(generate_url_inventory(Path(args.file)))
     elif args.command == "build-evidence-pack":

@@ -9,8 +9,8 @@ if (plannedUrlTotal !== 110) {
   failures.push(`Initial URL plan should generate 110 URLs, but generated ${plannedUrlTotal}.`);
 }
 
-if (indexableCount < 40 || indexableCount > 60) {
-  failures.push(`Initial index selection should stay between 40 and 60 pages, but found ${indexableCount}.`);
+if (indexableCount < 40 || indexableCount > 80) {
+  failures.push(`Initial index selection should stay between 40 and 80 pages after trend-route expansion, but found ${indexableCount}.`);
 }
 
 for (const article of articles.filter((item) => item.type === "review")) {
@@ -33,6 +33,29 @@ for (const article of articles.filter((item) => item.type === "guide")) {
   }
   if (article.locale === "pt-br" && !path.includes("/pt-br/guias/")) {
     failures.push(`Brazilian guide should use /pt-br/guias/: ${path}`);
+  }
+}
+
+const localizedSectionExpectations = [
+  { type: "trend", locale: "en", section: "/en/trends/" },
+  { type: "trend", locale: "es", section: "/es/tendencias/" },
+  { type: "trend", locale: "pt-br", section: "/pt-br/tendencias/" },
+  { type: "buyer_guide", locale: "en", section: "/en/buyer-guides/" },
+  { type: "buyer_guide", locale: "es", section: "/es/guias-de-compra/" },
+  { type: "buyer_guide", locale: "pt-br", section: "/pt-br/guias-de-compra/" },
+  { type: "deal_watch", locale: "en", section: "/en/deals/" },
+  { type: "deal_watch", locale: "es", section: "/es/ofertas/" },
+  { type: "deal_watch", locale: "pt-br", section: "/pt-br/ofertas/" },
+  { type: "ingredient_guide", locale: "en", section: "/en/ingredients/" },
+  { type: "ingredient_guide", locale: "es", section: "/es/ingredientes/" },
+  { type: "ingredient_guide", locale: "pt-br", section: "/pt-br/ingredientes/" }
+] as const;
+
+for (const expectation of localizedSectionExpectations) {
+  const article = articles.find((item) => item.type === expectation.type && item.locale === expectation.locale);
+  const path = article ? articlePath(article) : undefined;
+  if (!path?.startsWith(expectation.section)) {
+    failures.push(`${expectation.locale}/${expectation.type} should use ${expectation.section}, but found ${path ?? "missing"}.`);
   }
 }
 

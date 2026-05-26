@@ -1,0 +1,202 @@
+{
+  "localizations": [
+    {
+      "sourceBriefId": "brief-travel-gan-charger-buyer-guide-en",
+      "targetLocale": "es",
+      "status": "draft",
+      "titleCandidate": "Borrador localizado: Evidence-first buyer guide: travel gan charger buyer guide",
+      "localizationNotes": {
+        "primaryLocale": "en",
+        "countrySpecificRisks": [
+          "shipping",
+          "returns",
+          "customs",
+          "local availability"
+        ],
+        "translationGroupNeeded": true,
+        "targetLocale": "es",
+        "requiresHumanReview": true
+      }
+    },
+    {
+      "sourceBriefId": "brief-travel-gan-charger-buyer-guide-en",
+      "targetLocale": "pt-br",
+      "status": "draft",
+      "titleCandidate": "Rascunho localizado: Evidence-first buyer guide: travel gan charger buyer guide",
+      "localizationNotes": {
+        "primaryLocale": "en",
+        "countrySpecificRisks": [
+          "shipping",
+          "returns",
+          "customs",
+          "local availability"
+        ],
+        "translationGroupNeeded": true,
+        "targetLocale": "pt-br",
+        "requiresHumanReview": true
+      }
+    },
+    {
+      "sourceBriefId": "brief-gan-charger-comparison-en",
+      "targetLocale": "es",
+      "status": "draft",
+      "titleCandidate": "Borrador localizado: Comparison guide: gan charger comparison",
+      "localizationNotes": {
+        "primaryLocale": "en",
+        "countrySpecificRisks": [
+          "shipping",
+          "returns",
+          "customs",
+          "local availability"
+        ],
+        "translationGroupNeeded": true,
+        "targetLocale": "es",
+        "requiresHumanReview": true
+      }
+    },
+    {
+      "sourceBriefId": "brief-gan-charger-comparison-en",
+      "targetLocale": "pt-br",
+      "status": "draft",
+      "titleCandidate": "Rascunho localizado: Comparison guide: gan charger comparison",
+      "localizationNotes": {
+        "primaryLocale": "en",
+        "countrySpecificRisks": [
+          "shipping",
+          "returns",
+          "customs",
+          "local availability"
+        ],
+        "translationGroupNeeded": true,
+        "targetLocale": "pt-br",
+        "requiresHumanReview": true
+      }
+    },
+    {
+      "sourceBriefId": "brief-aliexpress-charger-wattage-risk-en",
+      "targetLocale": "es",
+      "status": "draft",
+      "titleCandidate": "Borrador localizado: Risk-aware guide: aliexpress charger wattage risk",
+      "localizationNotes": {
+        "primaryLocale": "en",
+        "countrySpecificRisks": [
+          "shipping",
+          "returns",
+          "customs",
+          "local availability"
+        ],
+        "translationGroupNeeded": true,
+        "targetLocale": "es",
+        "requiresHumanReview": true
+      }
+    },
+    {
+      "sourceBriefId": "brief-aliexpress-charger-wattage-risk-en",
+      "targetLocale": "pt-br",
+      "status": "draft",
+      "titleCandidate": "Rascunho localizado: Risk-aware guide: aliexpress charger wattage risk",
+      "localizationNotes": {
+        "primaryLocale": "en",
+        "countrySpecificRisks": [
+          "shipping",
+          "returns",
+          "customs",
+          "local availability"
+        ],
+        "translationGroupNeeded": true,
+        "targetLocale": "pt-br",
+        "requiresHumanReview": true
+      }
+    },
+    {
+      "sourceBriefId": "brief-aliexpress-charger-import-risk-pt-br",
+      "targetLocale": "es",
+      "status": "draft",
+      "titleCandidate": "Borrador localizado: Trend brief: aliexpress charger import risk",
+      "localizationNotes": {
+        "primaryLocale": "pt-br",
+        "countrySpecificRisks": [
+          "shipping",
+          "returns",
+          "customs",
+          "local availability"
+        ],
+        "translationGroupNeeded": true,
+        "targetLocale": "es",
+        "requiresHumanReview": true
+      }
+    },
+    {
+      "sourceBriefId": "brief-magnesium-glycinate-supplement-guide-en",
+      "targetLocale": "es",
+      "status": "draft",
+      "titleCandidate": "Borrador localizado: Safety-first ingredient guide: magnesium glycinate supplement guide",
+      "localizationNotes": {
+        "primaryLocale": "en",
+        "countrySpecificRisks": [
+          "shipping",
+          "returns",
+          "customs",
+          "local availability"
+        ],
+        "translationGroupNeeded": true,
+        "targetLocale": "es",
+        "requiresHumanReview": true
+      }
+    },
+    {
+      "sourceBriefId": "brief-magnesium-glycinate-supplement-guide-en",
+      "targetLocale": "pt-br",
+      "status": "draft",
+      "titleCandidate": "Rascunho localizado: Safety-first ingredient guide: magnesium glycinate supplement guide",
+      "localizationNotes": {
+        "primaryLocale": "en",
+        "countrySpecificRisks": [
+          "shipping",
+          "returns",
+          "customs",
+          "local availability"
+        ],
+        "translationGroupNeeded": true,
+        "targetLocale": "pt-br",
+        "requiresHumanReview": true
+      }
+    },
+    {
+      "sourceBriefId": "brief-probiotic-supplement-guide-en",
+      "targetLocale": "es",
+      "status": "draft",
+      "titleCandidate": "Borrador localizado: Safety-first ingredient guide: probiotic supplement guide",
+      "localizationNotes": {
+        "primaryLocale": "en",
+        "countrySpecificRisks": [
+          "shipping",
+          "returns",
+          "customs",
+          "local availability"
+        ],
+        "translationGroupNeeded": true,
+        "targetLocale": "es",
+        "requiresHumanReview": true
+      }
+    },
+    {
+      "sourceBriefId": "brief-probiotic-supplement-guide-en",
+      "targetLocale": "pt-br",
+      "status": "draft",
+      "titleCandidate": "Rascunho localizado: Safety-first ingredient guide: probiotic supplement guide",
+      "localizationNotes": {
+        "primaryLocale": "en",
+        "countrySpecificRisks": [
+          "shipping",
+          "returns",
+          "customs",
+          "local availability"
+        ],
+        "translationGroupNeeded": true,
+        "targetLocale": "pt-br",
+        "requiresHumanReview": true
+      }
+    }
+  ]
+}
