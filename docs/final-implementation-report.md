@@ -107,6 +107,11 @@ DATABASE_URL='postgresql://postgres@127.0.0.1:55432/postgres?schema=public' pnpm
 pnpm typecheck
 pnpm seo:validate
 pnpm build
+PREVIEW_TOKEN='preview-secret' pnpm --filter @global-import-lab/web exec next start -H 127.0.0.1 -p 3010
+curl -s -o /tmp/seo_draft_public.html -w '%{http_code}\n' 'http://127.0.0.1:3010/en/reviews/ugreen-100w-gan-charger-output/'
+curl -s -o /tmp/seo_draft_preview.html -w '%{http_code}\n' 'http://127.0.0.1:3010/en/reviews/ugreen-100w-gan-charger-output/?previewToken=preview-secret'
+curl -s -o /tmp/seo_published_noindex.html -w '%{http_code}\n' 'http://127.0.0.1:3010/en/electric-screwdrivers/'
+curl -s -o /tmp/seo_published_index.html -w '%{http_code}\n' 'http://127.0.0.1:3010/en/usb-c-chargers/'
 ```
 
 ## Final Results
@@ -118,3 +123,4 @@ pnpm build
 - Prisma migration deploy against temporary Postgres wire server: passed, applying all 4 migrations
 - `pnpm db:seed` against temporary Postgres wire server: passed twice
 - DB seed counts after verification: 10 products, 151 articles, 2 merchants, 53 offers, 53 affiliate placements, 7 translation groups, 21 translation variants
+- Public route smoke: draft public URL returned 404; valid preview token returned 200 with `noindex, follow`; published/noindex returned 200 with `noindex, follow`; published/index returned 200 with `index, follow`
