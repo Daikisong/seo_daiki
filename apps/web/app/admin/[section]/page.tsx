@@ -57,14 +57,16 @@ export const dynamic = "force-dynamic";
 
 interface PageProps {
   params: Promise<{ section: string }>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
 }
 
 export function generateStaticParams() {
   return sections.map((section) => ({ section }));
 }
 
-export default async function AdminSectionPage({ params }: PageProps) {
+export default async function AdminSectionPage({ params, searchParams }: PageProps) {
   const { section } = await params;
+  const filters = await searchParams;
   if (!sections.includes(section as (typeof sections)[number])) {
     notFound();
   }
@@ -75,7 +77,7 @@ export default async function AdminSectionPage({ params }: PageProps) {
       <main className="mx-auto max-w-6xl px-4 py-10">
         <h1 className="text-4xl font-semibold">Admin: {section}</h1>
         <div className="mt-6 rounded-md border border-neutral-200 bg-white p-4">
-          <AdminTable section={section} />
+          <AdminTable filters={filters ?? {}} section={section} />
         </div>
       </main>
       <SiteFooter />
@@ -83,7 +85,7 @@ export default async function AdminSectionPage({ params }: PageProps) {
   );
 }
 
-async function AdminTable({ section }: { section: string }) {
+async function AdminTable({ filters, section }: { filters: Record<string, string | string[] | undefined>; section: string }) {
   const [articles, evidencePacks, products] = await Promise.all([
     getAllArticles(),
     getAllEvidencePacks(),
@@ -729,39 +731,62 @@ async function AdminTable({ section }: { section: string }) {
   }
 
   if (section === "trends") {
-    const trends = await readTrendRows();
+    const trendFilters = {
+      locale: stringFromSearchParam(filters.locale),
+      country: stringFromSearchParam(filters.country),
+      source: stringFromSearchParam(filters.source)
+    };
+    const trends = await readTrendRows(trendFilters);
     return (
-      <AdminPanel title="Trend signals">
-        {trends.length === 0 ? (
-          <p className="text-sm text-neutral-700">No trend signals are available. Run <code>python3 workers/python/cli.py import-trend-signals</code> or connect Postgres.</p>
-        ) : (
-          <table>
-            <thead>
-              <tr>
-                <th>Signal</th>
-                <th>Locale</th>
-                <th>Scores</th>
-                <th>Source</th>
-              </tr>
-            </thead>
-            <tbody>
-              {trends.map((trend) => (
-                <tr key={trend.id}>
-                  <td>
-                    <p className="font-semibold">{trend.query}</p>
-                    <p className="text-xs text-neutral-500">{trend.topicRaw}</p>
-                  </td>
-                  <td>{trend.locale}{trend.country ? `/${trend.country}` : ""}</td>
-                  <td className="text-sm">
-                    growth {trend.growthScore}, commercial {trend.commercialScore}, evidence {trend.evidenceFitScore}, affiliate {trend.affiliateFitScore}
-                  </td>
-                  <td>{trend.sourceName}</td>
+      <div className="space-y-8">
+        <AdminPanel title="Import trend CSV">
+          <QueuePublishingJobForm
+            file="data/seeds/trend-signals.csv"
+            jobType="import_trend_signals"
+            locale={trendFilters.locale || "en"}
+            returnTo="/admin/trends/"
+          />
+        </AdminPanel>
+        <AdminPanel title="Trend filters">
+          <form className="grid gap-2 md:grid-cols-4" method="get">
+            <TextInput defaultValue={trendFilters.locale} label="Locale" name="locale" />
+            <TextInput defaultValue={trendFilters.country} label="Country" name="country" />
+            <TextInput defaultValue={trendFilters.source} label="Source" name="source" />
+            <button className="rounded-md bg-neutral-800 px-3 py-2 text-sm font-semibold text-white" type="submit">Apply filters</button>
+          </form>
+        </AdminPanel>
+        <AdminPanel title="Trend signals">
+          {trends.length === 0 ? (
+            <p className="text-sm text-neutral-700">No trend signals are available. Run <code>python3 workers/python/cli.py import-trend-signals</code> or connect Postgres.</p>
+          ) : (
+            <table>
+              <thead>
+                <tr>
+                  <th>Signal</th>
+                  <th>Locale</th>
+                  <th>Scores</th>
+                  <th>Source</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
-      </AdminPanel>
+              </thead>
+              <tbody>
+                {trends.map((trend) => (
+                  <tr key={trend.id}>
+                    <td>
+                      <p className="font-semibold">{trend.query}</p>
+                      <p className="text-xs text-neutral-500">{trend.topicRaw}</p>
+                    </td>
+                    <td>{trend.locale}{trend.country ? `/${trend.country}` : ""}</td>
+                    <td className="text-sm">
+                      growth {trend.growthScore}, commercial {trend.commercialScore}, evidence {trend.evidenceFitScore}, affiliate {trend.affiliateFitScore}
+                    </td>
+                    <td>{trend.sourceName}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </AdminPanel>
+      </div>
     );
   }
 
@@ -778,6 +803,7 @@ async function AdminTable({ section }: { section: string }) {
                 <th>Topic</th>
                 <th>Intent</th>
                 <th>Score</th>
+                <th>Breakdown</th>
                 <th>Status</th>
                 <th>Rows</th>
                 <th>Action</th>
@@ -792,9 +818,20 @@ async function AdminTable({ section }: { section: string }) {
                   </td>
                   <td>{topic.intent}{topic.healthSensitive ? " / health" : ""}</td>
                   <td>{topic.score.toFixed(1)}</td>
+                  <td className="text-xs text-neutral-600">{scoreBreakdownSummary(topic.scoreBreakdown)}</td>
                   <td>{topic.status}</td>
                   <td className="text-sm">{topic.signalCount} signals, {topic.briefCount} briefs, {topic.offerCount} offers</td>
-                  <td>{topic.dbBacked ? <TopicStatusForm topic={topic} /> : <span className="text-xs text-neutral-500">CSV export only</span>}</td>
+                  <td>
+                    <div className="space-y-3">
+                      {topic.dbBacked ? <TopicStatusForm topic={topic} /> : <span className="text-xs text-neutral-500">CSV export only</span>}
+                      <QueuePublishingJobForm
+                        jobType="generate_content_brief"
+                        locale={topic.primaryLocale || "en"}
+                        returnTo="/admin/topics/"
+                        topicId={topic.id}
+                      />
+                    </div>
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -817,6 +854,7 @@ async function AdminTable({ section }: { section: string }) {
                 <th>Brief</th>
                 <th>Topic</th>
                 <th>Intent</th>
+                <th>Outline</th>
                 <th>Evidence</th>
                 <th>Status</th>
                 <th>Action</th>
@@ -831,9 +869,21 @@ async function AdminTable({ section }: { section: string }) {
                   </td>
                   <td>{brief.topicLabel}</td>
                   <td>{brief.searchIntent}</td>
+                  <td className="text-xs text-neutral-600">{brief.outline.slice(0, 4).join(", ")}</td>
                   <td>{brief.requiredEvidence.slice(0, 3).join(", ")}</td>
                   <td>{brief.status}</td>
-                  <td>{brief.dbBacked ? <ContentBriefStatusForm brief={brief} /> : <span className="text-xs text-neutral-500">JSON export only</span>}</td>
+                  <td>
+                    <div className="space-y-3">
+                      {brief.dbBacked ? <ContentBriefStatusForm brief={brief} /> : <span className="text-xs text-neutral-500">JSON export only</span>}
+                      <QueuePublishingJobForm
+                        briefId={brief.id}
+                        jobType="generate_topic_draft"
+                        locale={brief.locale || "en"}
+                        returnTo="/admin/briefs/"
+                        topicId={brief.topicId}
+                      />
+                    </div>
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -881,7 +931,7 @@ async function AdminTable({ section }: { section: string }) {
   }
 
   if (section === "compliance") {
-    const rows = await readComplianceRows(articles);
+    const rows = await readComplianceRows(articles, products, evidencePacks);
     return (
       <AdminPanel title="Compliance queue">
         {rows.length === 0 ? (
@@ -929,6 +979,7 @@ async function AdminTable({ section }: { section: string }) {
                 <th>Source</th>
                 <th>Variants</th>
                 <th>Depth</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -941,6 +992,14 @@ async function AdminTable({ section }: { section: string }) {
                   <td>{row.sourceLabel}</td>
                   <td>{row.variants.map((variant) => `${variant.locale}:${variant.status}`).join(", ")}</td>
                   <td>{row.variants.map((variant) => `${variant.locale} ${variant.localizationDepthScore}`).join(", ")}</td>
+                  <td>
+                    <QueuePublishingJobForm
+                      groupId={row.id}
+                      jobType="sync_hreflang_group"
+                      locale={row.variants[0]?.locale || "en"}
+                      returnTo="/admin/localization/"
+                    />
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -1405,6 +1464,43 @@ function PublishingJobRetryForm({ jobId }: { jobId: string }) {
   );
 }
 
+function QueuePublishingJobForm({
+  articleId,
+  briefId,
+  file,
+  groupId,
+  jobType,
+  locale,
+  returnTo,
+  topicId
+}: {
+  articleId?: string;
+  briefId?: string;
+  file?: string;
+  groupId?: string;
+  jobType: string;
+  locale: string;
+  returnTo: string;
+  topicId?: string;
+}) {
+  return (
+    <form action="/api/admin/publishing-job" className="grid min-w-52 gap-2" method="post">
+      <input name="articleId" type="hidden" value={articleId ?? ""} />
+      <input name="briefId" type="hidden" value={briefId ?? ""} />
+      <input name="file" type="hidden" value={file ?? ""} />
+      <input name="groupId" type="hidden" value={groupId ?? ""} />
+      <input name="jobType" type="hidden" value={jobType} />
+      <input name="locale" type="hidden" value={locale} />
+      <input name="returnTo" type="hidden" value={returnTo} />
+      <input name="topicId" type="hidden" value={topicId ?? ""} />
+      <input className="rounded-md border border-neutral-300 px-2 py-1 text-sm" name="adminToken" placeholder="Admin token" type="password" />
+      <button className="rounded-md bg-neutral-800 px-3 py-2 text-sm font-semibold text-white" type="submit">
+        Queue {jobType.replaceAll("_", " ")}
+      </button>
+    </form>
+  );
+}
+
 function MerchantForm({ merchant }: { merchant?: Awaited<ReturnType<typeof readAffiliateMerchants>>[number] }) {
   return (
     <form action="/api/admin/merchant" className="grid min-w-96 gap-2 md:grid-cols-2" method="post">
@@ -1603,23 +1699,30 @@ async function readAuditLogs() {
   }
 }
 
-async function readTrendRows() {
+async function readTrendRows(filters: { country?: string; locale?: string; source?: string }) {
+  const matchesFilters = (row: { country?: string | null; locale?: string; sourceName?: string }) =>
+    (!filters.locale || row.locale === filters.locale) &&
+    (!filters.country || row.country === filters.country) &&
+    (!filters.source || row.sourceName?.toLowerCase().includes(filters.source.toLowerCase()));
+
   if (process.env.DATABASE_URL) {
     try {
       const operations = await import("@global-import-lab/db/operations-admin");
       const rows = await operations.listTrendSignals();
-      return rows.map((row) => ({
-        id: row.id,
-        locale: row.locale,
-        country: row.country,
-        query: row.query,
-        topicRaw: row.topicRaw,
-        growthScore: row.growthScore,
-        commercialScore: row.commercialScore,
-        evidenceFitScore: row.evidenceFitScore,
-        affiliateFitScore: row.affiliateFitScore,
-        sourceName: row.source.name
-      }));
+      return rows
+        .map((row) => ({
+          id: row.id,
+          locale: row.locale,
+          country: row.country,
+          query: row.query,
+          topicRaw: row.topicRaw,
+          growthScore: row.growthScore,
+          commercialScore: row.commercialScore,
+          evidenceFitScore: row.evidenceFitScore,
+          affiliateFitScore: row.affiliateFitScore,
+          sourceName: row.source.name
+        }))
+        .filter(matchesFilters);
     } catch (error) {
       console.warn("Trend signals unavailable.", error);
     }
@@ -1631,20 +1734,19 @@ async function readTrendRows() {
     if (!isRecord(row)) {
       return [];
     }
-    return [
-      {
-        id: stringFromUnknown(row.id),
-        locale: stringFromUnknown(row.locale),
-        country: stringFromUnknown(row.country),
-        query: stringFromUnknown(row.query),
-        topicRaw: stringFromUnknown(row.topicRaw),
-        growthScore: numberFromUnknown(row.growthScore),
-        commercialScore: numberFromUnknown(row.commercialScore),
-        evidenceFitScore: numberFromUnknown(row.evidenceFitScore),
-        affiliateFitScore: numberFromUnknown(row.affiliateFitScore),
-        sourceName: stringFromUnknown(row.sourceId) || "manual_csv"
-      }
-    ];
+    const item = {
+      id: stringFromUnknown(row.id),
+      locale: stringFromUnknown(row.locale),
+      country: stringFromUnknown(row.country),
+      query: stringFromUnknown(row.query),
+      topicRaw: stringFromUnknown(row.topicRaw),
+      growthScore: numberFromUnknown(row.growthScore),
+      commercialScore: numberFromUnknown(row.commercialScore),
+      evidenceFitScore: numberFromUnknown(row.evidenceFitScore),
+      affiliateFitScore: numberFromUnknown(row.affiliateFitScore),
+      sourceName: stringFromUnknown(row.sourceId) || "manual_csv"
+    };
+    return matchesFilters(item) ? [item] : [];
   });
 }
 
@@ -1659,8 +1761,10 @@ async function readTopicRows() {
         slug: row.slug,
         intent: row.intent,
         healthSensitive: row.healthSensitive,
+        primaryLocale: row.primaryLocale,
         status: row.status,
         score: row.score,
+        scoreBreakdown: isRecord(row.scoreBreakdown) ? numericRecord(row.scoreBreakdown) : {},
         signalCount: row._count.topicSignals,
         briefCount: row._count.contentBriefs,
         offerCount: row._count.offers,
@@ -1684,8 +1788,10 @@ async function readTopicRows() {
         slug: stringFromUnknown(row.slug),
         intent: stringFromUnknown(row.intent),
         healthSensitive: row.healthSensitive === true,
+        primaryLocale: stringFromUnknown(row.primaryLocale) || "en",
         status: stringFromUnknown(row.status) || "candidate",
         score: numberFromUnknown(row.score),
+        scoreBreakdown: isRecord(row.scoreBreakdown) ? numericRecord(row.scoreBreakdown) : {},
         signalCount: numberFromUnknown(row.signalCount),
         briefCount: 0,
         offerCount: 0,
@@ -1708,6 +1814,7 @@ async function readContentBriefRows() {
         articleType: row.articleType,
         titleCandidate: row.titleCandidate,
         searchIntent: row.searchIntent,
+        outline: outlineHeadings(row.outlineJson),
         requiredEvidence: stringArrayFromUnknown(row.requiredEvidence),
         status: row.status,
         dbBacked: true
@@ -1732,6 +1839,7 @@ async function readContentBriefRows() {
         articleType: stringFromUnknown(row.articleType),
         titleCandidate: stringFromUnknown(row.titleCandidate),
         searchIntent: stringFromUnknown(row.searchIntent),
+        outline: outlineHeadings(row.outlineJson),
         requiredEvidence: stringArrayFromUnknown(row.requiredEvidence),
         status: stringFromUnknown(row.status) || "draft",
         dbBacked: false
@@ -1782,7 +1890,11 @@ async function readPublishingJobRows() {
   });
 }
 
-async function readComplianceRows(sampleArticles: Awaited<ReturnType<typeof getAllArticles>>) {
+async function readComplianceRows(
+  sampleArticles: Awaited<ReturnType<typeof getAllArticles>>,
+  products: Awaited<ReturnType<typeof getAllProducts>>,
+  evidencePacks: Awaited<ReturnType<typeof getAllEvidencePacks>>
+) {
   if (process.env.DATABASE_URL) {
     try {
       const operations = await import("@global-import-lab/db/operations-admin");
@@ -1830,10 +1942,30 @@ async function readComplianceRows(sampleArticles: Awaited<ReturnType<typeof getA
     ];
   });
 
-  const sampleRows = sampleArticles
-    .filter((article) => article.healthSensitivity !== "none" || article.complianceStatus !== "passed")
-    .slice(0, 40)
-    .map((article) => ({
+  const issuePrefixes = [
+    "health_",
+    "unsafe_",
+    "localization_",
+    "translation_",
+    "affiliate_placements_over_limit",
+    "affiliate_links_exceed_internal_links",
+    "affiliate_placement",
+    "merchant_allowlist"
+  ];
+
+  const sampleRows = sampleArticles.flatMap((article) => {
+    const product = article.productId ? products.find((item) => item.id === article.productId) : undefined;
+    const evidencePack = evidencePacks.find((pack) => pack.productId === article.productId && pack.locale === article.locale);
+    const gate = runQualityGate({ article, product, evidencePack });
+    const relevantIssues = gate.issues.filter((issue) => issuePrefixes.some((prefix) => issue.code.startsWith(prefix)));
+    if (
+      article.healthSensitivity === "none" &&
+      article.complianceStatus === "passed" &&
+      relevantIssues.length === 0
+    ) {
+      return [];
+    }
+    return [{
       id: article.id,
       title: article.title,
       locale: article.locale,
@@ -1843,8 +1975,9 @@ async function readComplianceRows(sampleArticles: Awaited<ReturnType<typeof getA
       indexStatus: article.indexStatus,
       healthSensitivity: article.healthSensitivity ?? "none",
       complianceStatus: article.complianceStatus ?? "unchecked",
-      issues: complianceIssuesFromJson(article.complianceJson)
-    }));
+      issues: [...complianceIssuesFromJson(article.complianceJson), ...relevantIssues.map((issue) => issue.code)]
+    }];
+  }).slice(0, 80);
 
   return [...generatedRows, ...sampleRows];
 }
@@ -2506,6 +2639,41 @@ function complianceIssuesFromJson(value: unknown) {
   }
   const issues = value.issues ?? value.blockers ?? value.healthBlockers ?? value.localizationBlockers;
   return stringArrayFromUnknown(issues);
+}
+
+function numericRecord(value: Record<string, unknown>) {
+  return Object.fromEntries(Object.entries(value).map(([key, item]) => [key, numberFromUnknown(item)]));
+}
+
+function outlineHeadings(value: unknown) {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+  return value.flatMap((item) => {
+    if (typeof item === "string") {
+      return item.trim() ? [item.trim()] : [];
+    }
+    if (!isRecord(item)) {
+      return [];
+    }
+    const heading = stringFromUnknown(item.heading);
+    return heading ? [heading] : [];
+  });
+}
+
+function scoreBreakdownSummary(value: Record<string, number>) {
+  const entries = Object.entries(value);
+  if (entries.length === 0) {
+    return "-";
+  }
+  return entries
+    .slice(0, 4)
+    .map(([key, item]) => `${key.replace(/Score$/, "")} ${item}`)
+    .join(", ");
+}
+
+function stringFromSearchParam(value: string | string[] | undefined) {
+  return Array.isArray(value) ? value[0] ?? "" : value ?? "";
 }
 
 function findProjectRoot(start = process.cwd()) {

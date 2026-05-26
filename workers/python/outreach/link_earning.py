@@ -14,6 +14,7 @@ LINK_PROSPECTS_PATH = DATA / "snapshots" / "link_prospects.json"
 LINK_PROSPECT_SCORES_PATH = DATA / "exports" / "link_prospect_scores.json"
 OUTREACH_MESSAGES_PATH = DATA / "exports" / "outreach_messages.json"
 OUTREACH_SEND_REPORT_PATH = DATA / "exports" / "outreach_send_report.json"
+SUPPRESSION_LIST_PATH = DATA / "seeds" / "suppression-list.csv"
 
 LINKABLE_TYPES = {"data", "lab", "methodology", "guide", "compare", "hub", "buyer_guide"}
 SPAM_RISK_DOMAINS = {"example-spam.test", "paid-links.test", "directory-submit.test"}
@@ -50,10 +51,13 @@ def score_linkable_assets() -> str:
 
 def import_link_prospects(path: Path) -> str:
     rows = read_csv(path)
+    suppression = suppression_entries()
     prospects = []
     for row in rows:
         page_url = clean(row.get("page_url"))
         domain = clean(row.get("domain")) or urlparse(page_url).hostname or ""
+        contact_email = clean(row.get("contact_email")) or None
+        suppressed = is_suppressed(domain, contact_email, suppression)
         prospects.append(
             {
                 "id": clean(row.get("id")) or f"prospect-{slugify(domain + ' ' + page_url)}",
@@ -69,9 +73,10 @@ def import_link_prospects(path: Path) -> str:
                 "pageQuality": numeric(row.get("page_quality"), 0),
                 "spamRisk": numeric(row.get("spam_risk"), 0),
                 "prospectScore": 0,
-                "contactEmail": clean(row.get("contact_email")) or None,
+                "contactEmail": contact_email,
                 "contactFormUrl": clean(row.get("contact_form_url")) or None,
-                "status": "new",
+                "status": "suppressed" if suppressed else "new",
+                "suppressionReason": suppression_reason(domain, contact_email, suppression) if suppressed else None,
                 "notes": clean(row.get("notes")),
             }
         )
@@ -81,10 +86,12 @@ def import_link_prospects(path: Path) -> str:
 def score_link_prospects() -> str:
     assets = read_json(LINKABLE_ASSETS_PATH, {"assets": []}).get("assets", [])
     prospects = read_json(LINK_PROSPECTS_PATH, {"prospects": []}).get("prospects", [])
+    suppression = suppression_entries()
     scored = []
     for prospect in prospects:
         if not isinstance(prospect, dict):
             continue
+        suppressed = is_suppressed(prospect.get("domain"), prospect.get("contactEmail"), suppression)
         asset = best_asset_for_prospect(prospect, assets)
         spam_risk = max(float(prospect.get("spamRisk") or 0), 95 if prospect.get("domain") in SPAM_RISK_DOMAINS else 0)
         topical = float(prospect.get("topicalRelevance") or topic_overlap(str(prospect.get("topic")), str(asset.get("topic") if asset else "")))
@@ -98,8 +105,9 @@ def score_link_prospects() -> str:
                 "topicalRelevance": topical,
                 "pageQuality": page_quality,
                 "spamRisk": spam_risk,
-                "prospectScore": score,
-                "status": "qualified" if score >= 60 and spam_risk < 70 else "rejected",
+                "prospectScore": 0 if suppressed else score,
+                "suppressionReason": suppression_reason(prospect.get("domain"), prospect.get("contactEmail"), suppression) if suppressed else prospect.get("suppressionReason"),
+                "status": "suppressed" if suppressed else "qualified" if score >= 60 and spam_risk < 70 else "rejected",
             }
         )
     scored.sort(key=lambda item: item["prospectScore"], reverse=True)
@@ -110,10 +118,13 @@ def draft_outreach() -> str:
     prospects = read_json(LINK_PROSPECT_SCORES_PATH, {"prospects": []}).get("prospects", [])
     assets = {asset.get("id"): asset for asset in read_json(LINKABLE_ASSETS_PATH, {"assets": []}).get("assets", []) if isinstance(asset, dict)}
     existing = read_json(OUTREACH_MESSAGES_PATH, {"messages": []}).get("messages", [])
+    suppression = suppression_entries()
     by_id = {str(message.get("id")): message for message in existing if isinstance(message, dict)}
 
     for prospect in prospects:
         if not isinstance(prospect, dict) or prospect.get("status") != "qualified":
+            continue
+        if is_suppressed(prospect.get("domain"), prospect.get("contactEmail"), suppression):
             continue
         if not prospect.get("contactEmail") and not prospect.get("contactFormUrl"):
             continue
@@ -128,6 +139,8 @@ def draft_outreach() -> str:
             "assetId": asset.get("id"),
             "subject": f"Possible source for {prospect.get('topic') or asset.get('topic')}",
             "body": outreach_body(prospect, asset),
+            "recipientEmail": prospect.get("contactEmail"),
+            "contactFormUrl": prospect.get("contactFormUrl"),
             "status": "draft",
             "approvedByHuman": False,
             "createdAt": now(),
@@ -139,8 +152,22 @@ def draft_outreach() -> str:
 def approve_outreach_message(message_id: str) -> str:
     payload = read_json(OUTREACH_MESSAGES_PATH, {"messages": []})
     messages = payload.get("messages", [])
+    prospects = {
+        str(prospect.get("id")): prospect
+        for prospect in read_json(LINK_PROSPECT_SCORES_PATH, {"prospects": []}).get("prospects", [])
+        if isinstance(prospect, dict)
+    }
+    suppression = suppression_entries()
     for message in messages:
         if isinstance(message, dict) and message.get("id") == message_id:
+            prospect = prospects.get(str(message.get("prospectId")), {})
+            email = message.get("recipientEmail") or prospect.get("contactEmail")
+            if is_suppressed(prospect.get("domain"), email, suppression):
+                message["status"] = "suppressed"
+                message["approvedByHuman"] = False
+                message["suppressionReason"] = suppression_reason(prospect.get("domain"), email, suppression)
+                write_json(OUTREACH_MESSAGES_PATH, {"messages": messages})
+                raise ValueError(f"Outreach message {message_id} is suppressed and cannot be approved.")
             message["status"] = "approved"
             message["approvedByHuman"] = True
             message["approvedAt"] = now()
@@ -150,11 +177,22 @@ def approve_outreach_message(message_id: str) -> str:
 
 def send_approved_outreach() -> str:
     messages = read_json(OUTREACH_MESSAGES_PATH, {"messages": []}).get("messages", [])
+    prospects = {
+        str(prospect.get("id")): prospect
+        for prospect in read_json(LINK_PROSPECT_SCORES_PATH, {"prospects": []}).get("prospects", [])
+        if isinstance(prospect, dict)
+    }
+    suppression = suppression_entries()
     send_enabled = os.getenv("ENABLE_OUTREACH_SEND", "false").lower() == "true"
     smtp_ready = bool(os.getenv("SMTP_HOST") and os.getenv("OUTREACH_SENDER_EMAIL"))
     results = []
     for message in messages:
         if not isinstance(message, dict) or message.get("status") != "approved" or not message.get("approvedByHuman"):
+            continue
+        prospect = prospects.get(str(message.get("prospectId")), {})
+        email = message.get("recipientEmail") or prospect.get("contactEmail")
+        if is_suppressed(prospect.get("domain"), email, suppression):
+            results.append(send_result(message, "blocked_suppressed", suppression_reason(prospect.get("domain"), email, suppression)))
             continue
         if not send_enabled:
             results.append(send_result(message, "skipped_disabled", "ENABLE_OUTREACH_SEND is false."))
@@ -203,13 +241,56 @@ def suggested_angle(prospect: dict[str, Any], asset: dict[str, Any] | None) -> s
 
 
 def outreach_body(prospect: dict[str, Any], asset: dict[str, Any]) -> str:
+    address = os.getenv("OUTREACH_PHYSICAL_ADDRESS", "Physical address must be configured before real sends.")
     return (
         f"Hi,\n\n"
         f"I found your page about {prospect.get('topic')}. We maintain an evidence-focused resource that may help as a source:\n"
         f"{asset.get('url')}\n\n"
-        "No paid placement or anchor text request is intended. If it is not useful, please ignore this note.\n\n"
+        "No paid placement or anchor text request is intended. If it is not useful, please ignore this note.\n"
+        "To opt out, reply with 'opt out' and this domain/email will be added to the suppression list.\n"
+        f"{address}\n\n"
         "Thanks."
     )
+
+
+def suppression_entries(path: Path = SUPPRESSION_LIST_PATH) -> list[dict[str, str]]:
+    if not path.exists():
+        return []
+    entries = []
+    for row in read_csv(path):
+        email = clean(row.get("email")).lower()
+        domain = normalize_domain(row.get("domain"))
+        if not email and not domain:
+            continue
+        entries.append({"email": email, "domain": domain, "reason": clean(row.get("reason")) or "suppressed"})
+    return entries
+
+
+def is_suppressed(domain: Any, email: Any, entries: list[dict[str, str]]) -> bool:
+    return bool(suppression_reason(domain, email, entries))
+
+
+def suppression_reason(domain: Any, email: Any, entries: list[dict[str, str]]) -> str:
+    normalized_domain = normalize_domain(domain)
+    normalized_email = clean(email).lower()
+    for entry in entries:
+        if entry["email"] and normalized_email == entry["email"]:
+            return entry["reason"]
+        if entry["domain"] and domain_matches(normalized_domain, entry["domain"]):
+            return entry["reason"]
+    return ""
+
+
+def normalize_domain(value: Any) -> str:
+    raw = clean(value).lower()
+    if not raw:
+        return ""
+    parsed = urlparse(raw if "://" in raw else f"https://{raw}")
+    return (parsed.hostname or raw).removeprefix("www.")
+
+
+def domain_matches(domain: str, suppressed_domain: str) -> bool:
+    return domain == suppressed_domain or domain.endswith(f".{suppressed_domain}")
 
 
 def send_result(message: dict[str, Any], status: str, detail: str) -> dict[str, Any]:

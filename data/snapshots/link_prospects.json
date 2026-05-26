@@ -17,6 +17,7 @@
       "contactEmail": "editor@example-tech.org",
       "contactFormUrl": null,
       "status": "new",
+      "suppressionReason": null,
       "notes": "Manual sample; not a real send target."
     },
     {
@@ -36,6 +37,7 @@
       "contactEmail": null,
       "contactFormUrl": "https://travelgear.example/contact",
       "status": "new",
+      "suppressionReason": null,
       "notes": "Use contact form only after human review."
     },
     {
@@ -55,6 +57,7 @@
       "contactEmail": "editor@wellness-example.org",
       "contactFormUrl": null,
       "status": "new",
+      "suppressionReason": null,
       "notes": "Health topic; keep claims conservative."
     },
     {
@@ -73,7 +76,8 @@
       "prospectScore": 0,
       "contactEmail": "submit@directory-submit.test",
       "contactFormUrl": null,
-      "status": "new",
+      "status": "suppressed",
+      "suppressionReason": "spam-risk sample domain",
       "notes": "Should be rejected by spam risk."
     }
   ]

@@ -20,7 +20,10 @@ Outputs:
 - `data/exports/link_prospect_scores.json`
 - `data/exports/outreach_messages.json`
 - `data/exports/outreach_send_report.json`
+- `data/seeds/suppression-list.csv`
 
 The scorer prefers data, lab, methodology, guide, comparison, and hub pages. Thin affiliate review pages are not treated as primary linkable assets.
 
 Outreach messages start as `draft` with `approvedByHuman = false`. Sending is disabled unless `ENABLE_OUTREACH_SEND=true` and SMTP settings are configured. The local implementation still does not send email; it writes a clear blocked/skipped report.
+
+Suppression is checked at every risky step. For example, a domain in `data/seeds/suppression-list.csv` is imported as `suppressed`, stays suppressed during scoring, cannot get a new draft, cannot be approved, and is blocked again before the disabled SMTP adapter would run.

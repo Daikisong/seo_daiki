@@ -6,10 +6,12 @@
       "prospectId": "prospect-usb-c-lab",
       "assetId": "linkable-en-data-usb-c-charging-data-1",
       "subject": "Possible source for usb-c charging",
-      "body": "Hi,\n\nI found your page about usb-c charging. We maintain an evidence-focused resource that may help as a source:\n/en/data/usb-c-charging-data-1/\n\nNo paid placement or anchor text request is intended. If it is not useful, please ignore this note.\n\nThanks.",
+      "body": "Hi,\n\nI found your page about usb-c charging. We maintain an evidence-focused resource that may help as a source:\n/en/data/usb-c-charging-data-1/\n\nNo paid placement or anchor text request is intended. If it is not useful, please ignore this note.\nTo opt out, reply with 'opt out' and this domain/email will be added to the suppression list.\nPhysical address must be configured before real sends.\n\nThanks.",
+      "recipientEmail": "editor@example-tech.org",
+      "contactFormUrl": null,
       "status": "draft",
       "approvedByHuman": false,
-      "createdAt": "2026-05-26T19:02:20.433023+00:00"
+      "createdAt": "2026-05-26T19:25:19.358733+00:00"
     },
     {
       "id": "outreach-prospect-power-bank-guide-linkable-en-data-usb-c-charging-data-1",
@@ -17,10 +19,12 @@
       "prospectId": "prospect-power-bank-guide",
       "assetId": "linkable-en-data-usb-c-charging-data-1",
       "subject": "Possible source for power bank",
-      "body": "Hi,\n\nI found your page about power bank. We maintain an evidence-focused resource that may help as a source:\n/en/data/usb-c-charging-data-1/\n\nNo paid placement or anchor text request is intended. If it is not useful, please ignore this note.\n\nThanks.",
+      "body": "Hi,\n\nI found your page about power bank. We maintain an evidence-focused resource that may help as a source:\n/en/data/usb-c-charging-data-1/\n\nNo paid placement or anchor text request is intended. If it is not useful, please ignore this note.\nTo opt out, reply with 'opt out' and this domain/email will be added to the suppression list.\nPhysical address must be configured before real sends.\n\nThanks.",
+      "recipientEmail": null,
+      "contactFormUrl": "https://travelgear.example/contact",
       "status": "draft",
       "approvedByHuman": false,
-      "createdAt": "2026-05-26T19:02:20.433049+00:00"
+      "createdAt": "2026-05-26T19:25:19.358768+00:00"
     },
     {
       "id": "outreach-prospect-iherb-health-linkable-en-data-usb-c-charging-data-1",
@@ -28,10 +32,12 @@
       "prospectId": "prospect-iherb-health",
       "assetId": "linkable-en-data-usb-c-charging-data-1",
       "subject": "Possible source for magnesium supplement",
-      "body": "Hi,\n\nI found your page about magnesium supplement. We maintain an evidence-focused resource that may help as a source:\n/en/data/usb-c-charging-data-1/\n\nNo paid placement or anchor text request is intended. If it is not useful, please ignore this note.\n\nThanks.",
+      "body": "Hi,\n\nI found your page about magnesium supplement. We maintain an evidence-focused resource that may help as a source:\n/en/data/usb-c-charging-data-1/\n\nNo paid placement or anchor text request is intended. If it is not useful, please ignore this note.\nTo opt out, reply with 'opt out' and this domain/email will be added to the suppression list.\nPhysical address must be configured before real sends.\n\nThanks.",
+      "recipientEmail": "editor@wellness-example.org",
+      "contactFormUrl": null,
       "status": "draft",
       "approvedByHuman": false,
-      "createdAt": "2026-05-26T19:02:20.433057+00:00"
+      "createdAt": "2026-05-26T19:25:19.358782+00:00"
     }
   ]
 }

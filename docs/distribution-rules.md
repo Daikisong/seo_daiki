@@ -22,4 +22,6 @@ The worker intentionally does not:
 - use direct affiliate links
 - send without an explicitly configured adapter
 
+When generating generic owned-channel drafts, the worker now ranks data, lab, methodology, guide, comparison, and hub URLs ahead of buyer guides, deal watches, and review-style pages. A specific `--article-id` can still be drafted intentionally, but the default batch prefers linkable editorial assets over affiliate-heavy URLs.
+
 This is like preparing social post drafts in a notebook. Nothing is published until a person approves and a real owned-channel adapter is configured.

@@ -13,6 +13,9 @@ TOPIC_ARTICLES_PATH = DATA / "exports" / "topic_articles.json"
 LOCALIZED_TOPIC_ARTICLES_PATH = DATA / "exports" / "localized_topic_articles.json"
 URL_INVENTORY_PATH = DATA / "exports" / "initial_url_inventory.json"
 
+PREFERRED_DISTRIBUTION_TYPES = {"data", "lab", "methodology", "guide", "compare", "hub"}
+AFFILIATE_HEAVY_TYPES = {"review", "deal_watch", "buyer_guide"}
+
 DEFAULT_RULES = [
     {"platform": "x", "locale": "en", "maxPostsPerDay": 2, "requiresHumanApproval": True, "allowDirectLink": True, "requireDisclosure": True, "enabled": True},
     {"platform": "linkedin", "locale": "en", "maxPostsPerDay": 1, "requiresHumanApproval": True, "allowDirectLink": True, "requireDisclosure": True, "enabled": True},
@@ -23,6 +26,8 @@ DEFAULT_RULES = [
 
 def generate_distribution_assets(article_id: str | None = None) -> str:
     articles = source_articles()
+    if not article_id:
+        articles = articles[:40]
     rules = distribution_rules(DATA / "seeds" / "distribution-rules.csv")
     existing = read_json(DISTRIBUTION_ASSETS_PATH, {"assets": []}).get("assets", [])
     by_id = {str(asset.get("id")): asset for asset in existing if isinstance(asset, dict)}
@@ -37,7 +42,8 @@ def generate_distribution_assets(article_id: str | None = None) -> str:
                 asset = distribution_asset(article, rule, asset_type)
                 by_id[asset["id"]] = asset
 
-    return str(write_json(DISTRIBUTION_ASSETS_PATH, {"assets": list(by_id.values())}))
+    assets = sorted(by_id.values(), key=distribution_asset_priority)
+    return str(write_json(DISTRIBUTION_ASSETS_PATH, {"assets": assets}))
 
 
 def approve_distribution_asset(asset_id: str) -> str:
@@ -76,9 +82,15 @@ def send_approved_distribution_assets() -> str:
 def source_articles() -> list[dict[str, Any]]:
     topic_articles = read_json(TOPIC_ARTICLES_PATH, {"articles": []}).get("articles", [])
     localized = read_json(LOCALIZED_TOPIC_ARTICLES_PATH, {"articles": []}).get("articles", [])
+    inventory = inventory_articles()
+    preferred_inventory = [article for article in inventory if article.get("type") in PREFERRED_DISTRIBUTION_TYPES]
+    generated_articles = [normalize_article(article) for article in [*topic_articles, *localized] if isinstance(article, dict)]
     if topic_articles or localized:
-        return [normalize_article(article) for article in [*topic_articles, *localized] if isinstance(article, dict)]
+        return dedupe_articles([*preferred_inventory, *generated_articles, *inventory])
+    return inventory
 
+
+def inventory_articles() -> list[dict[str, Any]]:
     inventory = read_json(URL_INVENTORY_PATH, [])
     return [
         {
@@ -89,24 +101,62 @@ def source_articles() -> list[dict[str, Any]]:
             "title": f"{row.get('type', 'guide')} {row.get('slug', '')}".strip(),
             "summary": row.get("cluster", ""),
             "path": row.get("path"),
-            "hasAffiliate": row.get("type") in {"review", "buyer_guide", "deal_watch"},
+            "hasAffiliate": row.get("type") in AFFILIATE_HEAVY_TYPES,
         }
         for row in inventory
         if isinstance(row, dict) and row.get("status") == "index_candidate"
-    ][:20]
+    ]
 
 
 def normalize_article(article: dict[str, Any]) -> dict[str, Any]:
+    article_type = article.get("type", "guide")
     return {
         "id": article.get("id"),
         "locale": article.get("locale", "en"),
-        "type": article.get("type", "guide"),
+        "type": article_type,
         "slug": article.get("slug", article.get("id", "")),
         "title": article.get("title", article.get("id", "")),
         "summary": article.get("summary", ""),
         "path": f"/{article.get('locale', 'en')}/{article.get('slug', article.get('id', 'draft'))}/",
-        "hasAffiliate": bool(article.get("affiliatePlacementCandidates")),
+        "hasAffiliate": bool(article.get("affiliatePlacementCandidates")) or article_type in AFFILIATE_HEAVY_TYPES,
     }
+
+
+def dedupe_articles(articles: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    by_id = {}
+    for article in sorted(articles, key=distribution_priority):
+        key = str(article.get("path") or article.get("id"))
+        if key and key not in by_id:
+            by_id[key] = article
+    return list(by_id.values())
+
+
+def distribution_priority(article: dict[str, Any]) -> tuple[int, str]:
+    article_type = str(article.get("type", ""))
+    if article_type in {"data", "lab", "methodology"}:
+        group = 0
+    elif article_type in {"guide", "compare", "hub"}:
+        group = 1
+    elif article.get("hasAffiliate"):
+        group = 3
+    else:
+        group = 2
+    return (group, str(article.get("id") or article.get("path")))
+
+
+def distribution_asset_priority(asset: dict[str, Any]) -> tuple[int, str, str]:
+    target_url = str(asset.get("targetUrl") or "")
+    article_id = str(asset.get("articleId") or "")
+    disclosure = str(asset.get("disclosure") or "")
+    if "/data/" in target_url or "/lab/" in target_url or "/methodology/" in target_url:
+        group = 0
+    elif "guide" in target_url or "compare" in target_url or "hub" in target_url:
+        group = 1
+    elif "affiliate" in disclosure.lower():
+        group = 3
+    else:
+        group = 2
+    return (group, article_id, str(asset.get("platform") or ""))
 
 
 def distribution_rules(path: Path) -> list[dict[str, Any]]:

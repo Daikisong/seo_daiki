@@ -15,6 +15,7 @@ Major areas changed:
 - `workers/python/**/*`
 - `data/seeds/*`
 - `data/exports/*`
+- `data/seeds/suppression-list.csv`
 - `docs/*`
 - `README.md`
 - `.env.example`
@@ -34,6 +35,7 @@ Major areas changed:
 - Localized trend, buyer guide, deal, and ingredient routes for `en`, `es`, and `pt-br`
 - Regional risk canonical routes
 - `/api/affiliate-click?placementId=...`
+- `/api/admin/publishing-job`
 - Admin mutation routes for article status, evidence records, merchant/offer edits, placement approval, topic/brief status, publishing job retry, refresh suggestion status, and lab evidence
 - Admin pages for trends, topics, briefs, merchants, offers, placements, offer matching, publishing jobs, compliance, localization, Search Console, quality, audit, products, articles, and evidence
 
@@ -66,6 +68,10 @@ Major areas changed:
 - Arbitrary affiliate `target=` redirects are blocked outside the explicit local development escape hatch.
 - iHerb/supplement pages require conservative claims, disclaimers, HealthClaimGuard, and manual approval for high-risk content.
 - Distribution and outreach produce drafts only; sending is disabled by default.
+- Admin workflow buttons queue audited `PublishingJob` rows for trend CSV imports, brief generation, article draft generation, and hreflang sync.
+- Distribution drafts prefer data, lab, methodology, guide, comparison, and hub URLs before affiliate-heavy review/deal/buyer-guide URLs.
+- Outreach checks `data/seeds/suppression-list.csv` during prospect import, scoring, draft generation, approval, and send-report preparation.
+- Outreach drafts include opt-out wording and require `OUTREACH_PHYSICAL_ADDRESS` before real sending is configured.
 - No community auto-posting, backlink automation, SERP scraping, PBN, directory spam, CAPTCHA bypass, or Google Indexing API automation was added.
 
 ## Remaining Limitations
@@ -88,7 +94,10 @@ pnpm affiliate:audit
 pnpm compliance:audit
 pnpm distribution:generate
 pnpm links:assets:score
+python3 workers/python/cli.py import-link-prospects --file data/seeds/link-prospects.csv
 pnpm links:prospects:score
+python3 workers/python/cli.py draft-outreach
+python3 workers/python/cli.py send-approved-outreach
 python3 workers/python/cli.py suggest-refreshes
 python3 -m py_compile workers/python/distribution/owned_channel.py workers/python/outreach/link_earning.py workers/python/intelligence/search_console_feedback.py workers/python/cli.py workers/python/pipeline.py
 pnpm exec prisma validate --config prisma.config.ts
@@ -101,5 +110,5 @@ pnpm build
 
 - `pnpm typecheck`: passed
 - `pnpm seo:validate`: passed, validating 151 sample articles and 72 indexable articles
-- `pnpm build`: passed, generating 124 static/dynamic app routes
+- `pnpm build`: passed, generating 125 static/dynamic app routes
 - `pnpm exec prisma validate --config prisma.config.ts`: passed

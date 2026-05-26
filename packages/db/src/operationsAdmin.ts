@@ -17,6 +17,41 @@ export async function listTrendSignals(limit = 100) {
   });
 }
 
+export async function createPublishingJob(input: {
+  topicId?: string;
+  articleId?: string;
+  locale: string;
+  jobType: string;
+  inputJson?: unknown;
+  actor?: string;
+}) {
+  return prisma.$transaction(async (tx) => {
+    const row = await tx.publishingJob.create({
+      data: {
+        topicId: input.topicId || null,
+        articleId: input.articleId || null,
+        locale: input.locale,
+        jobType: input.jobType,
+        status: "queued",
+        inputJson: input.inputJson === undefined ? undefined : toJson(input.inputJson)
+      }
+    });
+
+    await tx.auditLog.create({
+      data: {
+        entityType: "publishing-job",
+        entityId: row.id,
+        action: "create",
+        actor: input.actor ?? "admin",
+        summary: `Queued publishing job ${input.jobType}.`,
+        afterJson: toJson(row)
+      }
+    });
+
+    return row;
+  });
+}
+
 export async function listTopics() {
   return prisma.topic.findMany({
     orderBy: [{ status: "asc" }, { score: "desc" }],

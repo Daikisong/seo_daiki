@@ -26,6 +26,9 @@ DB-backed mutation endpoints:
 - `/api/admin/merchant`
 - `/api/admin/offer`
 - `/api/admin/affiliate-placement-status`
+- `/api/admin/publishing-job`
 - `/api/admin/publishing-job-retry`
 
-Sample mode remains read-only for the new workflow pages. This keeps local review useful without pretending file exports are production database state.
+Workflow actions such as importing a trend CSV, generating a brief, generating a topic draft, or regenerating hreflang create queued `PublishingJob` rows. This is intentionally like putting work on a job board: the admin page records the request and audit trail, while the worker remains responsible for doing the actual generation.
+
+Sample mode remains read-only for persistent mutations because there is no production database state to update. The pages still show CSV/JSON exports and clear fallback messages so local review remains useful.
