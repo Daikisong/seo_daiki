@@ -32,6 +32,14 @@ export interface QualityGateInput {
   evidencePack?: EvidencePack;
 }
 
+const placementLimits: Partial<Record<Article["type"], number>> = {
+  trend: 2,
+  buyer_guide: 4,
+  deal_watch: 6,
+  ingredient_guide: 3,
+  review: 4
+};
+
 export function validateAffiliateLinks(article: Article): ValidationIssue[] {
   const issues: ValidationIssue[] = [];
 
@@ -55,6 +63,250 @@ export function validateAffiliateLinks(article: Article): ValidationIssue[] {
   }
 
   return issues;
+}
+
+export function validatePublishStateGuard(article: Article): ValidationIssue[] {
+  const issues: ValidationIssue[] = [];
+
+  if (article.indexStatus === "index" && article.publishStatus !== "published") {
+    issues.push({
+      code: "publish_state_not_published",
+      message: "Indexable articles must be published.",
+      severity: "blocker"
+    });
+  }
+
+  if (article.indexStatus === "index" && article.qualityScore < 80) {
+    issues.push({
+      code: "quality_score_below_index_threshold",
+      message: `Indexable articles need qualityScore >= 80; found ${article.qualityScore}.`,
+      severity: "blocker"
+    });
+  }
+
+  return issues;
+}
+
+export function validateUnsafeRedirectGuard(article: Article): ValidationIssue[] {
+  return article.affiliateLinks.flatMap((link) => {
+    if (/\/api\/affiliate-click\/?\?[^#]*\btarget=/i.test(link.href)) {
+      return [
+        {
+          code: "unsafe_affiliate_target_redirect",
+          message: `Affiliate link "${link.label}" uses arbitrary target redirect mode.`,
+          severity: "blocker" as const
+        }
+      ];
+    }
+    return [];
+  });
+}
+
+export function validateAffiliatePlacementGuard(article: Article): ValidationIssue[] {
+  const issues: ValidationIssue[] = [];
+
+  for (const link of article.affiliateLinks) {
+    if (link.placementId && link.placementStatus && link.placementStatus !== "approved") {
+      issues.push({
+        code: "affiliate_placement_not_approved",
+        message: `Affiliate placement ${link.placementId} must be approved before an indexable page renders it.`,
+        severity: "blocker"
+      });
+    }
+
+    if (link.placementId && link.disclosureShown === false) {
+      issues.push({
+        code: "affiliate_placement_disclosure_missing",
+        message: `Affiliate placement ${link.placementId} must confirm disclosure visibility.`,
+        severity: "blocker"
+      });
+    }
+
+    if (link.placementId && link.offerStatus && link.offerStatus !== "active") {
+      issues.push({
+        code: "affiliate_offer_not_active",
+        message: `Affiliate placement ${link.placementId} points to an offer that is not active.`,
+        severity: "blocker"
+      });
+    }
+  }
+
+  return issues;
+}
+
+export function validateMerchantAllowlistGuard(article: Article): ValidationIssue[] {
+  const issues: ValidationIssue[] = [];
+
+  for (const link of article.affiliateLinks) {
+    if (!link.merchantAllowedDomains?.length) {
+      continue;
+    }
+
+    const host = hostForUrl(link.href);
+    if (!host) {
+      issues.push({
+        code: "affiliate_url_invalid",
+        message: `Affiliate link "${link.label}" must be a valid URL.`,
+        severity: "blocker"
+      });
+      continue;
+    }
+
+    if (!link.merchantAllowedDomains.some((domain) => hostMatchesDomain(host, domain))) {
+      issues.push({
+        code: "merchant_allowlist_mismatch",
+        message: `Affiliate link "${link.label}" host ${host} is not allowed for merchant ${link.merchantSlug ?? "unknown"}.`,
+        severity: "blocker"
+      });
+    }
+  }
+
+  return issues;
+}
+
+export function validateLocalizationDepthGuard(article: Article): ValidationIssue[] {
+  const score = article.localizationDepthScore ?? numericJsonField(article.complianceJson, "localizationDepthScore");
+  const translationStatus = article.translationStatus ?? stringJsonField(article.complianceJson, "translationStatus");
+  const translationOnly = booleanJsonField(article.complianceJson, "translationOnly");
+
+  if (article.indexStatus !== "index") {
+    return [];
+  }
+
+  if (translationOnly) {
+    return [
+      {
+        code: "translation_only_page_noindex_required",
+        message: "Translation-only localized pages must remain noindex until local depth is added.",
+        severity: "blocker"
+      }
+    ];
+  }
+
+  if ((translationStatus === "localized" || score !== undefined) && (score ?? 0) < 80) {
+    return [
+      {
+        code: "localization_depth_below_index_threshold",
+        message: `Localized pages need localizationDepthScore >= 80 before indexing; found ${score ?? 0}.`,
+        severity: "blocker"
+      }
+    ];
+  }
+
+  return [];
+}
+
+export function validateTrendEvidenceGuard(article: Article): ValidationIssue[] {
+  const issues: ValidationIssue[] = [];
+  const text = articleText(article);
+
+  if (article.type === "trend") {
+    if (article.evidenceIds.length < 3 || !/\b(trend|signal|source|rising|why|freshness)\b/i.test(text)) {
+      issues.push({
+        code: "trend_evidence_missing",
+        message: "Trend articles need trend/source signals, why-now explanation, and at least 3 evidence references.",
+        severity: "blocker"
+      });
+    }
+    if (article.internalLinks.length < 3) {
+      issues.push({
+        code: "trend_internal_links_low",
+        message: "Trend articles need at least 3 relevant internal links.",
+        severity: "blocker"
+      });
+    }
+  }
+
+  if (article.type === "deal_watch") {
+    if (!/\b(price history|last checked|buy|wait|avoid|zone)\b/i.test(text)) {
+      issues.push({
+        code: "deal_watch_logic_missing",
+        message: "Deal watch pages need price history, last checked context, and buy/wait/avoid logic.",
+        severity: "blocker"
+      });
+    }
+    if (/\b(hurry|limited time|act now|only today|before it is gone)\b/i.test(text)) {
+      issues.push({
+        code: "deal_watch_fake_urgency",
+        message: "Deal watch pages cannot use fake urgency language.",
+        severity: "blocker"
+      });
+    }
+  }
+
+  if (article.type === "ingredient_guide") {
+    const supportedClaimsPattern = /\b(supported|apoyad[ao]s?|respaldad[ao]s?|apoiad[ao]s?|suportad[ao]s?)\b/i;
+    const unsupportedClaimsPattern =
+      /\b(unsupported|no apoyad[ao]s?|no respaldad[ao]s?|não apoiad[ao]s?|nao apoiad[ao]s?|não suportad[ao]s?|nao suportad[ao]s?)\b/i;
+    if (!supportedClaimsPattern.test(text) || !unsupportedClaimsPattern.test(text)) {
+      issues.push({
+        code: "ingredient_claim_separation_missing",
+        message: "Ingredient guides must separate supported and unsupported claims.",
+        severity: "blocker"
+      });
+    }
+  }
+
+  return issues;
+}
+
+export function validateOfferRelevanceGuard(article: Article): ValidationIssue[] {
+  const issues: ValidationIssue[] = [];
+  const text = articleText(article);
+
+  for (const link of article.affiliateLinks) {
+    const linkText = `${link.label} ${link.href} ${link.merchantSlug ?? ""}`.toLowerCase();
+    if (/\bcommission|highest payout|epc\b/i.test(linkText)) {
+      issues.push({
+        code: "offer_commission_first_language",
+        message: "Offer placement cannot be justified by commission language.",
+        severity: "blocker"
+      });
+    }
+
+    if (article.type === "ingredient_guide" && !/\b(iherb|supplement|vitamin|magnesium|probiotic|ingredient)\b/i.test(linkText)) {
+      issues.push({
+        code: "ingredient_offer_not_relevant",
+        message: "Ingredient guide offers must be health/supplement relevant and guarded.",
+        severity: "blocker"
+      });
+    }
+
+    if (["trend", "buyer_guide", "deal_watch"].includes(article.type) && !sharedCommerceTerm(text, linkText)) {
+      issues.push({
+        code: "offer_relevance_weak",
+        message: `Affiliate link "${link.label}" does not share enough topical terms with the article.`,
+        severity: "warning"
+      });
+    }
+  }
+
+  return issues;
+}
+
+export function validateOverMonetizationGuard(article: Article): ValidationIssue[] {
+  const limit = placementLimits[article.type];
+  if (limit !== undefined && article.affiliateLinks.length > limit) {
+    return [
+      {
+        code: "affiliate_placements_over_limit",
+        message: `${article.type} pages allow at most ${limit} affiliate placements; found ${article.affiliateLinks.length}.`,
+        severity: "blocker"
+      }
+    ];
+  }
+
+  if (article.affiliateLinks.length > article.internalLinks.length) {
+    return [
+      {
+        code: "affiliate_links_exceed_internal_links",
+        message: "Affiliate links should not outnumber internal evidence/navigation links.",
+        severity: "warning"
+      }
+    ];
+  }
+
+  return [];
 }
 
 export function validateInternalLinks(article: Article): ValidationIssue[] {
@@ -417,6 +669,7 @@ export function validateHealthClaimGuard(article: Article): ValidationIssue[] {
 
 export function runQualityGate(input: QualityGateInput): QualityGateResult {
   const { article, product, evidencePack } = input;
+  const publishStateIssues = validatePublishStateGuard(article);
   const claimEvidenceIssues = validateClaimEvidence(input);
   const thinAffiliateIssues = validateThinAffiliate(input);
   const internalLinkIssues = validateInternalLinks(article);
@@ -424,8 +677,16 @@ export function runQualityGate(input: QualityGateInput): QualityGateResult {
   const seoIntegrityIssues = validateSeoIntegrity(article);
   const structuredDataIssues = validateStructuredData(input);
   const affiliateIssues = validateAffiliateLinks(article);
+  const unsafeRedirectIssues = validateUnsafeRedirectGuard(article);
+  const affiliatePlacementIssues = validateAffiliatePlacementGuard(article);
+  const merchantAllowlistIssues = validateMerchantAllowlistGuard(article);
+  const localizationDepthIssues = validateLocalizationDepthGuard(article);
+  const trendEvidenceIssues = validateTrendEvidenceGuard(article);
+  const offerRelevanceIssues = validateOfferRelevanceGuard(article);
+  const overMonetizationIssues = validateOverMonetizationGuard(article);
   const healthIssues = validateHealthClaimGuard(article);
   const issues = [
+    ...publishStateIssues,
     ...claimEvidenceIssues,
     ...thinAffiliateIssues,
     ...internalLinkIssues,
@@ -433,6 +694,13 @@ export function runQualityGate(input: QualityGateInput): QualityGateResult {
     ...seoIntegrityIssues,
     ...structuredDataIssues,
     ...affiliateIssues,
+    ...unsafeRedirectIssues,
+    ...affiliatePlacementIssues,
+    ...merchantAllowlistIssues,
+    ...localizationDepthIssues,
+    ...trendEvidenceIssues,
+    ...offerRelevanceIssues,
+    ...overMonetizationIssues,
     ...healthIssues
   ];
 
@@ -454,7 +722,22 @@ export function runQualityGate(input: QualityGateInput): QualityGateResult {
     internalLinks: article.internalLinks.length >= 5 ? 5 : 0,
     seoIntegrity:
       hreflangIssues.length === 0 && seoIntegrityIssues.length === 0 && structuredDataIssues.length === 0 ? 5 : 2,
-    affiliateIntegrity: affiliateIssues.length === 0 && healthIssues.length === 0 ? 5 : 0
+    affiliateIntegrity:
+      affiliateIssues.length === 0 &&
+      unsafeRedirectIssues.length === 0 &&
+      affiliatePlacementIssues.length === 0 &&
+      merchantAllowlistIssues.length === 0 &&
+      offerRelevanceIssues.filter((issue) => issue.severity === "blocker").length === 0 &&
+      overMonetizationIssues.filter((issue) => issue.severity === "blocker").length === 0 &&
+      healthIssues.length === 0
+        ? 3
+        : 0,
+    publishingSafety:
+      publishStateIssues.length === 0 &&
+      localizationDepthIssues.length === 0 &&
+      trendEvidenceIssues.length === 0
+        ? 2
+        : 0
   };
 
   const score = Object.values(breakdown).reduce((sum, value) => sum + value, 0);
@@ -474,6 +757,67 @@ function normalizeUrl(value: string) {
   } catch {
     return value.endsWith("/") ? value : `${value}/`;
   }
+}
+
+function articleText(article: Article) {
+  return [
+    article.title,
+    article.h1,
+    article.metaDescription,
+    article.summary,
+    article.contentMdx,
+    article.evidenceIds.join(" "),
+    ...article.sections.flatMap((section) => [section.heading, section.body]),
+    ...article.internalLinks.flatMap((link) => [link.label, link.href]),
+    ...article.affiliateLinks.flatMap((link) => [link.label, link.href, link.merchantSlug ?? ""])
+  ].join(" ");
+}
+
+function hostForUrl(value: string) {
+  try {
+    return new URL(value, "https://example.com").hostname.toLowerCase();
+  } catch {
+    return undefined;
+  }
+}
+
+function hostMatchesDomain(host: string, domain: string) {
+  const normalized = domain
+    .replace(/^https?:\/\//i, "")
+    .replace(/\/.*$/, "")
+    .replace(/^\*\./, "")
+    .toLowerCase();
+
+  return host === normalized || host.endsWith(`.${normalized}`);
+}
+
+function numericJsonField(value: unknown, field: string) {
+  if (!isRecord(value)) {
+    return undefined;
+  }
+  const raw = value[field];
+  return typeof raw === "number" && Number.isFinite(raw) ? raw : undefined;
+}
+
+function stringJsonField(value: unknown, field: string) {
+  if (!isRecord(value)) {
+    return undefined;
+  }
+  const raw = value[field];
+  return typeof raw === "string" ? raw : undefined;
+}
+
+function booleanJsonField(value: unknown, field: string) {
+  if (!isRecord(value)) {
+    return false;
+  }
+  return value[field] === true;
+}
+
+function sharedCommerceTerm(articleTextValue: string, linkText: string) {
+  const articleTerms = new Set((articleTextValue.toLowerCase().match(/[a-z0-9]+/g) ?? []).filter((term) => term.length > 3));
+  const linkTerms = (linkText.toLowerCase().match(/[a-z0-9]+/g) ?? []).filter((term) => term.length > 3);
+  return linkTerms.some((term) => articleTerms.has(term));
 }
 
 function validateBreadcrumbSchema(issues: ValidationIssue[], article: Article, canonical: string) {

@@ -14,7 +14,8 @@ const adminSections = [
   "audit",
   "merchants",
   "offers",
-  "placements"
+  "placements",
+  "offer-matching"
 ];
 
 export default async function AdminPage() {

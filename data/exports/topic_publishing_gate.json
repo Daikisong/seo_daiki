@@ -1,52 +1,26 @@
 {
   "results": [
     {
-      "briefId": "brief-travel-gan-charger-buyer-guide-en",
-      "topicId": "topic-travel-gan-charger-buyer-guide",
+      "articleId": "draft-article-brief-travel-gan-charger-buyer-guide-en",
       "locale": "en",
-      "articleType": "buyer_guide",
-      "status": "ready_for_human_review",
-      "blockers": []
+      "type": "buyer_guide",
+      "status": "ready_for_manual_review",
+      "blockers": [],
+      "publishStatus": "pending",
+      "indexStatus": "pending",
+      "qualityScore": 79
     },
     {
-      "briefId": "brief-gan-charger-comparison-en",
-      "topicId": "topic-gan-charger-comparison",
-      "locale": "en",
-      "articleType": "compare",
-      "status": "ready_for_human_review",
-      "blockers": []
-    },
-    {
-      "briefId": "brief-aliexpress-charger-wattage-risk-en",
-      "topicId": "topic-aliexpress-charger-wattage-risk",
-      "locale": "en",
-      "articleType": "guide",
-      "status": "ready_for_human_review",
-      "blockers": []
-    },
-    {
-      "briefId": "brief-aliexpress-charger-import-risk-pt-br",
-      "topicId": "topic-aliexpress-charger-import-risk",
-      "locale": "pt-br",
-      "articleType": "trend",
-      "status": "ready_for_human_review",
-      "blockers": []
-    },
-    {
-      "briefId": "brief-magnesium-glycinate-supplement-guide-en",
-      "topicId": "topic-magnesium-glycinate-supplement-guide",
-      "locale": "en",
-      "articleType": "ingredient_guide",
-      "status": "ready_for_human_review",
-      "blockers": []
-    },
-    {
-      "briefId": "brief-probiotic-supplement-guide-en",
-      "topicId": "topic-probiotic-supplement-guide",
-      "locale": "en",
-      "articleType": "ingredient_guide",
-      "status": "ready_for_human_review",
-      "blockers": []
+      "articleId": "draft-article-brief-travel-gan-charger-buyer-guide-en-es",
+      "locale": "es",
+      "type": "buyer_guide",
+      "status": "blocked",
+      "blockers": [
+        "localized_article_depth_below_index_threshold"
+      ],
+      "publishStatus": "pending",
+      "indexStatus": "noindex",
+      "qualityScore": 79
     }
   ]
 }

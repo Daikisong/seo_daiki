@@ -1,0 +1,156 @@
+{
+  "articles": [
+    {
+      "id": "draft-article-brief-travel-gan-charger-buyer-guide-en-es",
+      "topicId": "topic-travel-gan-charger-buyer-guide",
+      "briefId": "brief-travel-gan-charger-buyer-guide-en",
+      "locale": "es",
+      "slug": "evidence-first-buyer-guide-travel-gan-charger-buyer-guide-es",
+      "type": "buyer_guide",
+      "title": "Borrador localizado: Evidence-first buyer guide: travel gan charger buyer guide",
+      "h1": "Borrador localizado: Evidence-first buyer guide: travel gan charger buyer guide",
+      "metaDescription": "Draft generated from brief brief-travel-gan-charger-buyer-guide-en; requires evidence, compliance, and publishing gate review.",
+      "summary": "commercial",
+      "sections": [
+        {
+          "heading": "Search intent",
+          "purpose": "Explain the user problem and what must be answered."
+        },
+        {
+          "heading": "Evidence needed",
+          "purpose": "List claims, product data, and source checks required before drafting."
+        },
+        {
+          "heading": "Affiliate fit",
+          "purpose": "Identify merchant categories that can be matched without thin affiliate content."
+        },
+        {
+          "heading": "Localization notes",
+          "purpose": "Capture country, language, shipping, compliance, and risk differences."
+        }
+      ],
+      "requiredEvidence": [
+        "search intent source",
+        "merchant offer data",
+        "internal link targets",
+        "price snapshot",
+        "seller claim check",
+        "review signal summary"
+      ],
+      "affiliatePlacementCandidates": [
+        {
+          "id": "placement-candidate-brief-travel-gan-charger-buyer-guide-en-offer-baseus-65w-us-1",
+          "topicId": "topic-travel-gan-charger-buyer-guide",
+          "briefId": "brief-travel-gan-charger-buyer-guide-en",
+          "articleId": "draft-article-brief-travel-gan-charger-buyer-guide-en",
+          "offerId": "offer-baseus-65w-us",
+          "merchantSlug": "aliexpress",
+          "placementType": "cta",
+          "anchorText": "Baseus 65W GaN charger",
+          "rel": "sponsored nofollow",
+          "disclosureShown": false,
+          "status": "draft",
+          "humanApprovalRequired": true,
+          "offerScore": 87.55,
+          "scoreBreakdown": {
+            "topicalFit": 89,
+            "localeFit": 100,
+            "merchantTrust": 72,
+            "evidenceLevel": 90,
+            "priceFreshness": 90,
+            "conversionFit": 85,
+            "complianceFit": 85
+          },
+          "reason": "Commerce topic matched to AliExpress with evidence fit; placement remains draft until human approval."
+        },
+        {
+          "id": "placement-candidate-brief-travel-gan-charger-buyer-guide-en-offer-ugreen-100w-us-2",
+          "topicId": "topic-travel-gan-charger-buyer-guide",
+          "briefId": "brief-travel-gan-charger-buyer-guide-en",
+          "articleId": "draft-article-brief-travel-gan-charger-buyer-guide-en",
+          "offerId": "offer-ugreen-100w-us",
+          "merchantSlug": "aliexpress",
+          "placementType": "card",
+          "anchorText": "Ugreen 100W GaN charger",
+          "rel": "sponsored nofollow",
+          "disclosureShown": false,
+          "status": "draft",
+          "humanApprovalRequired": true,
+          "offerScore": 80.3,
+          "scoreBreakdown": {
+            "topicalFit": 81,
+            "localeFit": 100,
+            "merchantTrust": 72,
+            "evidenceLevel": 55,
+            "priceFreshness": 90,
+            "conversionFit": 85,
+            "complianceFit": 85
+          },
+          "reason": "Commerce topic matched to AliExpress with evidence fit; placement remains draft until human approval."
+        },
+        {
+          "id": "placement-candidate-brief-travel-gan-charger-buyer-guide-en-offer-baseus-65w-es-3",
+          "topicId": "topic-travel-gan-charger-buyer-guide",
+          "briefId": "brief-travel-gan-charger-buyer-guide-en",
+          "articleId": "draft-article-brief-travel-gan-charger-buyer-guide-en",
+          "offerId": "offer-baseus-65w-es",
+          "merchantSlug": "aliexpress",
+          "placementType": "card",
+          "anchorText": "Baseus 65W GaN charger Spain",
+          "rel": "sponsored nofollow",
+          "disclosureShown": false,
+          "status": "draft",
+          "humanApprovalRequired": true,
+          "offerScore": 75.3,
+          "scoreBreakdown": {
+            "topicalFit": 73,
+            "localeFit": 45,
+            "merchantTrust": 72,
+            "evidenceLevel": 90,
+            "priceFreshness": 90,
+            "conversionFit": 85,
+            "complianceFit": 85
+          },
+          "reason": "Commerce topic matched to AliExpress with evidence fit; placement remains draft until human approval."
+        },
+        {
+          "id": "placement-candidate-brief-travel-gan-charger-buyer-guide-en-offer-baseus-65w-br-4",
+          "topicId": "topic-travel-gan-charger-buyer-guide",
+          "briefId": "brief-travel-gan-charger-buyer-guide-en",
+          "articleId": "draft-article-brief-travel-gan-charger-buyer-guide-en",
+          "offerId": "offer-baseus-65w-br",
+          "merchantSlug": "aliexpress",
+          "placementType": "card",
+          "anchorText": "Baseus 65W GaN charger Brazil",
+          "rel": "sponsored nofollow",
+          "disclosureShown": false,
+          "status": "draft",
+          "humanApprovalRequired": true,
+          "offerScore": 75.3,
+          "scoreBreakdown": {
+            "topicalFit": 73,
+            "localeFit": 45,
+            "merchantTrust": 72,
+            "evidenceLevel": 90,
+            "priceFreshness": 90,
+            "conversionFit": 85,
+            "complianceFit": 85
+          },
+          "reason": "Commerce topic matched to AliExpress with evidence fit; placement remains draft until human approval."
+        }
+      ],
+      "qualityScore": 79,
+      "publishStatus": "pending",
+      "indexStatus": "noindex",
+      "healthSensitivity": "none",
+      "complianceStatus": "unchecked",
+      "generatedNote": "DRY RUN DRAFT\n\nThe LLM provider is not configured. This draft must be regenerated from an evidence pack before indexing.\n\nPrompt preview:\nGenerate a guarded article draft only from this ContentBrief and placement candidates. Do not invent prices, discounts, tests, certifications, product specs, reviews, health claims, or personal experience. Include update log, affiliate disclosure when offers exist, local market notes, and health disclaimer if needed.\n\nBRIEF={'id': 'brief-travel-gan-charger-buyer-guide-en', 'topicId': 'topic-travel-gan-charger-buyer-guide', 'locale': 'en', 'articleType': 'buyer_guide', 'titleCandidate': 'Evidence-first buyer guide: travel gan charger buyer guide', 'h1Candidate': 'Evidence-first buyer guide: travel gan charger buyer guide', 'searchIntent': 'commercial', 'outlineJson': [{'heading': 'Search intent', 'purpose': 'Explain the user problem and what must be answered.'}, {'heading': 'Evidence needed",
+      "createdAt": "2026-05-26T18:46:53.941684+00:00",
+      "sourceArticleId": "draft-article-brief-travel-gan-charger-buyer-guide-en",
+      "sourceLocale": "en",
+      "translationStatus": "localized",
+      "localizationDepthScore": 45,
+      "localizedAt": "2026-05-26T18:46:53.998792+00:00"
+    }
+  ]
+}

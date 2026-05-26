@@ -19,12 +19,31 @@ const sections = [
   "audit",
   "merchants",
   "offers",
-  "placements"
+  "placements",
+  "offer-matching"
 ] as const;
 const indexStatuses = ["index", "noindex", "pending", "refresh_needed", "merge_candidate"];
 const publishStatuses = ["draft", "pending", "published"];
 const refreshSuggestionStatuses = ["open", "planned", "applied", "dismissed"];
 const locales = ["en", "es", "pt-br"];
+
+interface AffiliatePlacementCandidateRow {
+  id: string;
+  topicId: string;
+  briefId: string;
+  articleId: string;
+  offerId: string;
+  merchantSlug: string;
+  placementType: string;
+  anchorText: string;
+  rel: string;
+  disclosureShown: boolean;
+  status: string;
+  humanApprovalRequired: boolean;
+  offerScore: number;
+  reason: string;
+  scoreBreakdown: Record<string, number>;
+}
 
 export const dynamic = "force-dynamic";
 
@@ -785,6 +804,91 @@ async function AdminTable({ section }: { section: string }) {
     );
   }
 
+  if (section === "offer-matching") {
+    const [candidates, placements] = await Promise.all([readAffiliatePlacementCandidates(), readAffiliatePlacements()]);
+    return (
+      <div className="space-y-8">
+        <AdminPanel title="Offer matching candidates">
+          {candidates.length === 0 ? (
+            <p className="text-sm text-neutral-700">
+              No placement candidate export is available. Run <code>python3 workers/python/cli.py match-affiliate-offers</code> to generate draft candidates.
+            </p>
+          ) : (
+            <table>
+              <thead>
+                <tr>
+                  <th>Candidate</th>
+                  <th>Article</th>
+                  <th>Merchant</th>
+                  <th>Score</th>
+                  <th>Status</th>
+                  <th>Reason</th>
+                </tr>
+              </thead>
+              <tbody>
+                {candidates.map((candidate) => (
+                  <tr key={candidate.id}>
+                    <td>
+                      <p className="font-semibold">{candidate.anchorText}</p>
+                      <p className="text-xs text-neutral-500">{candidate.placementType}</p>
+                    </td>
+                    <td>
+                      <p>{candidate.articleId || candidate.briefId}</p>
+                      <p className="text-xs text-neutral-500">{candidate.topicId}</p>
+                    </td>
+                    <td>{candidate.merchantSlug}</td>
+                    <td>{candidate.offerScore.toFixed(1)}</td>
+                    <td>
+                      <p>{candidate.status}</p>
+                      <p className="text-xs text-neutral-500">{candidate.humanApprovalRequired ? "human approval required" : "not required"}</p>
+                    </td>
+                    <td className="max-w-md text-sm text-neutral-700">{candidate.reason}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </AdminPanel>
+        <AdminPanel title="Approve or reject persisted placements">
+          {placements.length === 0 ? (
+            <p className="text-sm text-neutral-700">No DB-backed placements are available yet. Candidate exports stay draft-only until they are persisted to the database.</p>
+          ) : (
+            <table>
+              <thead>
+                <tr>
+                  <th>Placement</th>
+                  <th>Offer</th>
+                  <th>Status</th>
+                  <th>Disclosure</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {placements.map((placement) => (
+                  <tr key={placement.id}>
+                    <td>
+                      <p className="font-semibold">{placement.anchorText}</p>
+                      <p className="text-xs text-neutral-500">{placement.articleLocale}/{placement.articleType}/{placement.articleSlug}</p>
+                    </td>
+                    <td>
+                      <p>{placement.offerTitle}</p>
+                      <p className="text-xs text-neutral-500">{placement.merchantSlug}</p>
+                    </td>
+                    <td>{placement.status}</td>
+                    <td>{placement.disclosureShown ? "confirmed" : "missing"}</td>
+                    <td>
+                      <PlacementStatusForm placementId={placement.id} returnTo="/admin/offer-matching/" />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </AdminPanel>
+      </div>
+    );
+  }
+
   if (section === "placements") {
     const placements = await readAffiliatePlacements();
     return (
@@ -799,8 +903,10 @@ async function AdminTable({ section }: { section: string }) {
                 <th>Article</th>
                 <th>Offer</th>
                 <th>Status</th>
+                <th>Disclosure</th>
                 <th>Rel</th>
                 <th>Clicks</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -821,8 +927,12 @@ async function AdminTable({ section }: { section: string }) {
                     <p className="text-xs text-neutral-500">{placement.merchantSlug}</p>
                   </td>
                   <td>{placement.status}</td>
+                  <td>{placement.disclosureShown ? "confirmed" : "missing"}</td>
                   <td>{placement.rel}</td>
                   <td>{placement.clickCount}</td>
+                  <td>
+                    <PlacementStatusForm placementId={placement.id} returnTo="/admin/placements/" />
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -980,6 +1090,30 @@ function RefreshSuggestionStatusForm({
       <button className="rounded-md bg-teal-800 px-3 py-2 text-sm font-semibold text-white" type="submit">
         Save status
       </button>
+    </form>
+  );
+}
+
+function PlacementStatusForm({ placementId, returnTo }: { placementId: string; returnTo: string }) {
+  return (
+    <form action="/api/admin/affiliate-placement-status" className="grid min-w-56 gap-2" method="post">
+      <input name="id" type="hidden" value={placementId} />
+      <input name="returnTo" type="hidden" value={returnTo} />
+      <input name="disclosureShown" type="hidden" value="true" />
+      <input
+        className="rounded-md border border-neutral-300 px-2 py-1 text-sm"
+        name="adminToken"
+        placeholder="Admin token"
+        type="password"
+      />
+      <div className="grid grid-cols-2 gap-2">
+        <button className="rounded-md bg-teal-800 px-3 py-2 text-sm font-semibold text-white" name="status" type="submit" value="approved">
+          Approve
+        </button>
+        <button className="rounded-md bg-red-700 px-3 py-2 text-sm font-semibold text-white" name="status" type="submit" value="rejected">
+          Reject
+        </button>
+      </div>
     </form>
   );
 }
@@ -1160,6 +1294,7 @@ async function readAffiliatePlacements() {
       anchorText: placement.anchorText,
       status: placement.status,
       rel: placement.rel,
+      disclosureShown: placement.disclosureShown,
       articleTitle: placement.article.title,
       articleLocale: placement.article.locale,
       articleType: placement.article.type,
@@ -1170,6 +1305,51 @@ async function readAffiliatePlacements() {
     }));
   } catch (error) {
     console.warn("Affiliate placements unavailable.", error);
+    return [];
+  }
+}
+
+async function readAffiliatePlacementCandidates(): Promise<AffiliatePlacementCandidateRow[]> {
+  try {
+    const root = findProjectRoot();
+    const path = join(root, "data", "exports", "affiliate_placement_candidates.json");
+    if (!existsSync(path)) {
+      return [];
+    }
+    const payload: unknown = JSON.parse(await readFile(path, "utf8"));
+    const rows: unknown[] = isRecord(payload) && Array.isArray(payload.placementCandidates) ? payload.placementCandidates : [];
+    return rows.flatMap((row) => {
+      if (!isRecord(row)) {
+        return [];
+      }
+      const id = stringFromUnknown(row.id);
+      if (!id) {
+        return [];
+      }
+      return [
+        {
+          id,
+          topicId: stringFromUnknown(row.topicId),
+          briefId: stringFromUnknown(row.briefId),
+          articleId: stringFromUnknown(row.articleId),
+          offerId: stringFromUnknown(row.offerId),
+          merchantSlug: stringFromUnknown(row.merchantSlug),
+          placementType: stringFromUnknown(row.placementType),
+          anchorText: stringFromUnknown(row.anchorText),
+          rel: stringFromUnknown(row.rel),
+          disclosureShown: row.disclosureShown === true,
+          status: stringFromUnknown(row.status),
+          humanApprovalRequired: row.humanApprovalRequired !== false,
+          offerScore: numberFromUnknown(row.offerScore),
+          reason: stringFromUnknown(row.reason),
+          scoreBreakdown: isRecord(row.scoreBreakdown)
+            ? Object.fromEntries(Object.entries(row.scoreBreakdown).map(([key, value]) => [key, numberFromUnknown(value)]))
+            : {}
+        }
+      ];
+    });
+  } catch (error) {
+    console.warn("Affiliate placement candidates unavailable.", error);
     return [];
   }
 }

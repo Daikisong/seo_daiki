@@ -1,4 +1,5 @@
 import { prisma } from "./client";
+import type { Prisma } from "./generated/prisma/client";
 
 export interface AffiliateClickInput {
   articleId?: string;
@@ -126,6 +127,76 @@ export async function listAffiliatePlacements() {
   });
 }
 
+export const affiliatePlacementStatuses = ["draft", "approved", "rejected", "disabled"] as const;
+export type AffiliatePlacementStatus = (typeof affiliatePlacementStatuses)[number];
+
+export async function updateAffiliatePlacementStatus(input: {
+  id: string;
+  status: AffiliatePlacementStatus;
+  disclosureShown?: boolean;
+  actor?: string;
+}) {
+  const before = await prisma.affiliatePlacement.findUnique({
+    where: { id: input.id },
+    include: { offer: { include: { merchant: true } } }
+  });
+  if (!before) {
+    throw new AffiliateRedirectError("Affiliate placement was not found.", 404);
+  }
+
+  const nextDisclosureShown = input.disclosureShown ?? before.disclosureShown;
+  if (input.status === "approved") {
+    if (!hasSponsoredNofollow(before.rel)) {
+      throw new AffiliateRedirectError("Affiliate placement rel must include sponsored and nofollow before approval.", 400);
+    }
+    if (!nextDisclosureShown) {
+      throw new AffiliateRedirectError("Affiliate placement disclosure must be confirmed before approval.", 400);
+    }
+    if (before.offer.status !== "active") {
+      throw new AffiliateRedirectError("Affiliate offer must be active before placement approval.", 400);
+    }
+    if (!before.offer.merchant.enabled) {
+      throw new AffiliateRedirectError("Affiliate merchant must be enabled before placement approval.", 400);
+    }
+    if (!isAllowedMerchantUrl(before.offer.affiliateUrl, before.offer.merchant.allowedDomains)) {
+      throw new AffiliateRedirectError("Affiliate URL host is not allowed for this merchant.", 400);
+    }
+  }
+
+  return prisma.$transaction(async (tx) => {
+    const after = await tx.affiliatePlacement.update({
+      where: { id: input.id },
+      data: {
+        status: input.status,
+        disclosureShown: nextDisclosureShown
+      },
+      include: {
+        article: { select: { id: true, locale: true, slug: true, type: true, title: true } },
+        offer: { include: { merchant: true } },
+        _count: { select: { affiliateClicks: true } }
+      }
+    });
+
+    await tx.auditLog.create({
+      data: {
+        entityType: "affiliate-placement",
+        entityId: after.id,
+        action: "update_status",
+        actor: input.actor ?? "admin",
+        summary: `Updated affiliate placement status to ${input.status}.`,
+        beforeJson: toJson(before),
+        afterJson: toJson({
+          id: after.id,
+          status: after.status,
+          disclosureShown: after.disclosureShown
+        })
+      }
+    });
+
+    return after;
+  });
+}
+
 function hasSponsoredNofollow(rel: string) {
   const tokens = new Set(rel.split(/\s+/).filter(Boolean));
   return tokens.has("sponsored") && tokens.has("nofollow");
@@ -157,4 +228,8 @@ function hostMatchesDomain(host: string, domain: string) {
     .toLowerCase();
 
   return host === normalized || host.endsWith(`.${normalized}`);
+}
+
+function toJson(value: unknown): Prisma.InputJsonValue {
+  return JSON.parse(JSON.stringify(value)) as Prisma.InputJsonValue;
 }

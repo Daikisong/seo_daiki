@@ -280,7 +280,20 @@ async function seedAffiliateOffersAndPlacements(seed: Awaited<ReturnType<typeof 
 function affiliateLinksWithPlacementIds(article: Article): AffiliateLink[] {
   return article.affiliateLinks.map((link, index) => ({
     ...link,
-    placementId: link.placementId ?? affiliatePlacementId(article.id, index)
+    placementId: link.placementId ?? affiliatePlacementId(article.id, index),
+    placementStatus: article.publishStatus === "published" && article.indexStatus === "index" ? "approved" : "draft",
+    disclosureShown: true,
+    offerStatus: "active",
+    merchantSlug: /iherb|supplement|vitamin|magnesium|probiotic/i.test(`${link.label} ${link.href}`) ? "iherb" : "aliexpress",
+    merchantAllowedDomains: /iherb|supplement|vitamin|magnesium|probiotic/i.test(`${link.label} ${link.href}`)
+      ? domainListFromEnv("IHERB_ALLOWED_AFFILIATE_DOMAINS", ["iherb.com", "www.iherb.com"])
+      : domainListFromEnv("ALIEXPRESS_ALLOWED_AFFILIATE_DOMAINS", [
+          "aliexpress.com",
+          "www.aliexpress.com",
+          "s.click.aliexpress.com",
+          "best.aliexpress.com"
+        ]),
+    offerHealthSensitive: /iherb|supplement|vitamin|magnesium|probiotic/i.test(`${link.label} ${link.href}`)
   }));
 }
 

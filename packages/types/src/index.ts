@@ -157,6 +157,12 @@ export interface AffiliateLink {
   href: string;
   rel: string;
   placementId?: string;
+  placementStatus?: "draft" | "approved" | "disabled" | "rejected";
+  disclosureShown?: boolean;
+  offerStatus?: "active" | "inactive" | "expired" | "draft";
+  merchantSlug?: string;
+  merchantAllowedDomains?: string[];
+  offerHealthSensitive?: boolean;
 }
 
 export type HreflangMap = Partial<Record<string, string>>;
@@ -186,6 +192,8 @@ export interface Article {
   healthSensitivity?: HealthSensitivity;
   complianceStatus?: ComplianceStatus;
   complianceJson?: Record<string, unknown>;
+  localizationDepthScore?: number;
+  translationStatus?: "draft" | "localized" | "approved" | "published";
   canonicalUrl?: string;
   hreflangMap: HreflangMap;
   internalLinks: InternalLink[];

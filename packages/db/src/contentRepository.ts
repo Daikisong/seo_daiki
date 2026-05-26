@@ -23,6 +23,17 @@ type JsonValue = unknown;
 export async function getDbArticles(): Promise<Article[]> {
   const rows = await prisma.article.findMany({
     where: { archivedAt: null },
+    include: {
+      affiliatePlacements: {
+        include: {
+          offer: {
+            include: {
+              merchant: true
+            }
+          }
+        }
+      }
+    },
     orderBy: [{ locale: "asc" }, { type: "asc" }, { slug: "asc" }]
   });
 
@@ -45,10 +56,12 @@ export async function getDbArticles(): Promise<Article[]> {
     healthSensitivity: row.healthSensitivity as Article["healthSensitivity"],
     complianceStatus: row.complianceStatus as Article["complianceStatus"],
     complianceJson: jsonObject(row.complianceJson),
+    localizationDepthScore: localizationDepthScoreFromJson(row.complianceJson),
+    translationStatus: translationStatusFromJson(row.complianceJson),
     canonicalUrl: row.canonicalUrl ?? undefined,
     hreflangMap: jsonObject(row.hreflangMap),
     internalLinks: jsonArray<InternalLink>(row.internalLinks),
-    affiliateLinks: jsonArray<AffiliateLink>(row.affiliateLinks),
+    affiliateLinks: affiliateLinksFromJson(row.affiliateLinks, row.affiliatePlacements),
     evidenceIds: jsonArray<string>(row.evidenceIds),
     lastUpdated: (row.lastUpdated ?? row.updatedAt).toISOString().slice(0, 10)
   }));
@@ -169,4 +182,71 @@ function jsonArray<T>(value: JsonValue): T[] {
 
 function jsonObject<T extends Record<string, unknown> = Record<string, unknown>>(value: JsonValue): T {
   return value && typeof value === "object" && !Array.isArray(value) ? (value as T) : ({} as T);
+}
+
+type ArticleAffiliatePlacementRow = {
+  id: string;
+  anchorText: string;
+  rel: string;
+  disclosureShown: boolean;
+  status: string;
+  offer: {
+    affiliateUrl: string;
+    status: string;
+    healthSensitive: boolean;
+    merchant: {
+      slug: string;
+      allowedDomains: unknown;
+    };
+  };
+};
+
+function affiliateLinksFromJson(value: JsonValue, placements: ArticleAffiliatePlacementRow[]): AffiliateLink[] {
+  const links = jsonArray<AffiliateLink>(value);
+  if (placements.length === 0) {
+    return links;
+  }
+
+  return links.map((link) => {
+    const placement =
+      (link.placementId ? placements.find((item) => item.id === link.placementId) : undefined) ??
+      placements.find((item) => item.anchorText === link.label);
+
+    if (!placement) {
+      return link;
+    }
+
+    return {
+      ...link,
+      placementId: placement.id,
+      placementStatus: placementStatus(placement.status),
+      disclosureShown: placement.disclosureShown,
+      offerStatus: offerStatus(placement.offer.status),
+      merchantSlug: placement.offer.merchant.slug,
+      merchantAllowedDomains: jsonArray<string>(placement.offer.merchant.allowedDomains),
+      offerHealthSensitive: placement.offer.healthSensitive,
+      rel: placement.rel,
+      href: placement.offer.affiliateUrl
+    };
+  });
+}
+
+function localizationDepthScoreFromJson(value: JsonValue) {
+  const json = jsonObject(value);
+  const raw = json.localizationDepthScore;
+  return typeof raw === "number" && Number.isFinite(raw) ? raw : undefined;
+}
+
+function translationStatusFromJson(value: JsonValue): Article["translationStatus"] {
+  const json = jsonObject(value);
+  const raw = json.translationStatus;
+  return raw === "draft" || raw === "localized" || raw === "approved" || raw === "published" ? raw : undefined;
+}
+
+function placementStatus(value: string): AffiliateLink["placementStatus"] {
+  return value === "approved" || value === "disabled" || value === "rejected" || value === "draft" ? value : "draft";
+}
+
+function offerStatus(value: string): AffiliateLink["offerStatus"] {
+  return value === "active" || value === "inactive" || value === "expired" || value === "draft" ? value : "draft";
 }

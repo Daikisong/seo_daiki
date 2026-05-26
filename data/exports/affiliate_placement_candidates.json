@@ -1,12 +1,19 @@
 {
-  "matches": [
+  "placementCandidates": [
     {
+      "id": "placement-candidate-brief-travel-gan-charger-buyer-guide-en-offer-baseus-65w-us-1",
       "topicId": "topic-travel-gan-charger-buyer-guide",
-      "topicSlug": "travel-gan-charger-buyer-guide",
       "briefId": "brief-travel-gan-charger-buyer-guide-en",
-      "merchantSlug": "aliexpress",
+      "articleId": "draft-article-brief-travel-gan-charger-buyer-guide-en",
       "offerId": "offer-baseus-65w-us",
-      "matchScore": 87.55,
+      "merchantSlug": "aliexpress",
+      "placementType": "cta",
+      "anchorText": "Baseus 65W GaN charger",
+      "rel": "sponsored nofollow",
+      "disclosureShown": false,
+      "status": "draft",
+      "humanApprovalRequired": true,
+      "offerScore": 87.55,
       "scoreBreakdown": {
         "topicalFit": 89,
         "localeFit": 100,
@@ -16,16 +23,22 @@
         "conversionFit": 85,
         "complianceFit": 85
       },
-      "status": "candidate",
       "reason": "Commerce topic matched to AliExpress with evidence fit; placement remains draft until human approval."
     },
     {
+      "id": "placement-candidate-brief-magnesium-glycinate-supplement-guide-en-offer-magnesium-glycinate-iherb-1",
       "topicId": "topic-magnesium-glycinate-supplement-guide",
-      "topicSlug": "magnesium-glycinate-supplement-guide",
       "briefId": "brief-magnesium-glycinate-supplement-guide-en",
-      "merchantSlug": "iherb",
+      "articleId": "draft-article-brief-magnesium-glycinate-supplement-guide-en",
       "offerId": "offer-magnesium-glycinate-iherb",
-      "matchScore": 86.75,
+      "merchantSlug": "iherb",
+      "placementType": "ingredient_card",
+      "anchorText": "Magnesium glycinate supplement",
+      "rel": "sponsored nofollow",
+      "disclosureShown": false,
+      "status": "draft",
+      "humanApprovalRequired": true,
+      "offerScore": 86.75,
       "scoreBreakdown": {
         "topicalFit": 89,
         "localeFit": 100,
@@ -35,16 +48,22 @@
         "conversionFit": 75,
         "complianceFit": 90
       },
-      "status": "candidate",
       "reason": "Health-sensitive topic matched to iHerb only because the brief requires HealthClaimGuard and disclaimer evidence."
     },
     {
+      "id": "placement-candidate-brief-aliexpress-charger-import-risk-pt-br-offer-baseus-65w-br-1",
       "topicId": "topic-aliexpress-charger-import-risk",
-      "topicSlug": "aliexpress-charger-import-risk",
       "briefId": "brief-aliexpress-charger-import-risk-pt-br",
-      "merchantSlug": "aliexpress",
+      "articleId": "draft-article-brief-aliexpress-charger-import-risk-pt-br",
       "offerId": "offer-baseus-65w-br",
-      "matchScore": 86.55,
+      "merchantSlug": "aliexpress",
+      "placementType": "card",
+      "anchorText": "Baseus 65W GaN charger Brazil",
+      "rel": "sponsored nofollow",
+      "disclosureShown": false,
+      "status": "draft",
+      "humanApprovalRequired": true,
+      "offerScore": 86.55,
       "scoreBreakdown": {
         "topicalFit": 97,
         "localeFit": 100,
@@ -54,16 +73,22 @@
         "conversionFit": 55,
         "complianceFit": 85
       },
-      "status": "candidate",
       "reason": "Commerce topic matched to AliExpress with evidence fit; placement remains draft until human approval."
     },
     {
+      "id": "placement-candidate-brief-probiotic-supplement-guide-en-offer-probiotic-iherb-1",
       "topicId": "topic-probiotic-supplement-guide",
-      "topicSlug": "probiotic-supplement-guide",
       "briefId": "brief-probiotic-supplement-guide-en",
-      "merchantSlug": "iherb",
+      "articleId": "draft-article-brief-probiotic-supplement-guide-en",
       "offerId": "offer-probiotic-iherb",
-      "matchScore": 84.75,
+      "merchantSlug": "iherb",
+      "placementType": "ingredient_card",
+      "anchorText": "Probiotic supplement",
+      "rel": "sponsored nofollow",
+      "disclosureShown": false,
+      "status": "draft",
+      "humanApprovalRequired": true,
+      "offerScore": 84.75,
       "scoreBreakdown": {
         "topicalFit": 81,
         "localeFit": 100,
@@ -73,16 +98,22 @@
         "conversionFit": 75,
         "complianceFit": 90
       },
-      "status": "candidate",
       "reason": "Health-sensitive topic matched to iHerb only because the brief requires HealthClaimGuard and disclaimer evidence."
     },
     {
+      "id": "placement-candidate-brief-gan-charger-comparison-en-offer-baseus-65w-us-1",
       "topicId": "topic-gan-charger-comparison",
-      "topicSlug": "gan-charger-comparison",
       "briefId": "brief-gan-charger-comparison-en",
-      "merchantSlug": "aliexpress",
+      "articleId": "draft-article-brief-gan-charger-comparison-en",
       "offerId": "offer-baseus-65w-us",
-      "matchScore": 83.55,
+      "merchantSlug": "aliexpress",
+      "placementType": "cta",
+      "anchorText": "Baseus 65W GaN charger",
+      "rel": "sponsored nofollow",
+      "disclosureShown": false,
+      "status": "draft",
+      "humanApprovalRequired": true,
+      "offerScore": 83.55,
       "scoreBreakdown": {
         "topicalFit": 73,
         "localeFit": 100,
@@ -92,35 +123,22 @@
         "conversionFit": 85,
         "complianceFit": 85
       },
-      "status": "candidate",
       "reason": "Commerce topic matched to AliExpress with evidence fit; placement remains draft until human approval."
     },
     {
+      "id": "placement-candidate-brief-magnesium-glycinate-supplement-guide-en-offer-probiotic-iherb-2",
       "topicId": "topic-magnesium-glycinate-supplement-guide",
-      "topicSlug": "magnesium-glycinate-supplement-guide",
       "briefId": "brief-magnesium-glycinate-supplement-guide-en",
-      "merchantSlug": "iherb",
+      "articleId": "draft-article-brief-magnesium-glycinate-supplement-guide-en",
       "offerId": "offer-probiotic-iherb",
-      "matchScore": 82.75,
-      "scoreBreakdown": {
-        "topicalFit": 73,
-        "localeFit": 100,
-        "merchantTrust": 82,
-        "evidenceLevel": 78,
-        "priceFreshness": 90,
-        "conversionFit": 75,
-        "complianceFit": 90
-      },
-      "status": "candidate",
-      "reason": "Health-sensitive topic matched to iHerb only because the brief requires HealthClaimGuard and disclaimer evidence."
-    },
-    {
-      "topicId": "topic-probiotic-supplement-guide",
-      "topicSlug": "probiotic-supplement-guide",
-      "briefId": "brief-probiotic-supplement-guide-en",
       "merchantSlug": "iherb",
-      "offerId": "offer-magnesium-glycinate-iherb",
-      "matchScore": 82.75,
+      "placementType": "ingredient_card",
+      "anchorText": "Probiotic supplement",
+      "rel": "sponsored nofollow",
+      "disclosureShown": false,
+      "status": "draft",
+      "humanApprovalRequired": true,
+      "offerScore": 82.75,
       "scoreBreakdown": {
         "topicalFit": 73,
         "localeFit": 100,
@@ -130,16 +148,47 @@
         "conversionFit": 75,
         "complianceFit": 90
       },
-      "status": "candidate",
       "reason": "Health-sensitive topic matched to iHerb only because the brief requires HealthClaimGuard and disclaimer evidence."
     },
     {
+      "id": "placement-candidate-brief-probiotic-supplement-guide-en-offer-magnesium-glycinate-iherb-2",
+      "topicId": "topic-probiotic-supplement-guide",
+      "briefId": "brief-probiotic-supplement-guide-en",
+      "articleId": "draft-article-brief-probiotic-supplement-guide-en",
+      "offerId": "offer-magnesium-glycinate-iherb",
+      "merchantSlug": "iherb",
+      "placementType": "ingredient_card",
+      "anchorText": "Magnesium glycinate supplement",
+      "rel": "sponsored nofollow",
+      "disclosureShown": false,
+      "status": "draft",
+      "humanApprovalRequired": true,
+      "offerScore": 82.75,
+      "scoreBreakdown": {
+        "topicalFit": 73,
+        "localeFit": 100,
+        "merchantTrust": 82,
+        "evidenceLevel": 78,
+        "priceFreshness": 90,
+        "conversionFit": 75,
+        "complianceFit": 90
+      },
+      "reason": "Health-sensitive topic matched to iHerb only because the brief requires HealthClaimGuard and disclaimer evidence."
+    },
+    {
+      "id": "placement-candidate-brief-aliexpress-charger-wattage-risk-en-offer-baseus-65w-us-1",
       "topicId": "topic-aliexpress-charger-wattage-risk",
-      "topicSlug": "aliexpress-charger-wattage-risk",
       "briefId": "brief-aliexpress-charger-wattage-risk-en",
-      "merchantSlug": "aliexpress",
+      "articleId": "draft-article-brief-aliexpress-charger-wattage-risk-en",
       "offerId": "offer-baseus-65w-us",
-      "matchScore": 82.55,
+      "merchantSlug": "aliexpress",
+      "placementType": "cta",
+      "anchorText": "Baseus 65W GaN charger",
+      "rel": "sponsored nofollow",
+      "disclosureShown": false,
+      "status": "draft",
+      "humanApprovalRequired": true,
+      "offerScore": 82.55,
       "scoreBreakdown": {
         "topicalFit": 81,
         "localeFit": 100,
@@ -149,16 +198,22 @@
         "conversionFit": 55,
         "complianceFit": 85
       },
-      "status": "candidate",
       "reason": "Commerce topic matched to AliExpress with evidence fit; placement remains draft until human approval."
     },
     {
+      "id": "placement-candidate-brief-travel-gan-charger-buyer-guide-en-offer-ugreen-100w-us-2",
       "topicId": "topic-travel-gan-charger-buyer-guide",
-      "topicSlug": "travel-gan-charger-buyer-guide",
       "briefId": "brief-travel-gan-charger-buyer-guide-en",
-      "merchantSlug": "aliexpress",
+      "articleId": "draft-article-brief-travel-gan-charger-buyer-guide-en",
       "offerId": "offer-ugreen-100w-us",
-      "matchScore": 80.3,
+      "merchantSlug": "aliexpress",
+      "placementType": "card",
+      "anchorText": "Ugreen 100W GaN charger",
+      "rel": "sponsored nofollow",
+      "disclosureShown": false,
+      "status": "draft",
+      "humanApprovalRequired": true,
+      "offerScore": 80.3,
       "scoreBreakdown": {
         "topicalFit": 81,
         "localeFit": 100,
@@ -168,16 +223,22 @@
         "conversionFit": 85,
         "complianceFit": 85
       },
-      "status": "candidate",
       "reason": "Commerce topic matched to AliExpress with evidence fit; placement remains draft until human approval."
     },
     {
+      "id": "placement-candidate-brief-gan-charger-comparison-en-offer-ugreen-100w-us-2",
       "topicId": "topic-gan-charger-comparison",
-      "topicSlug": "gan-charger-comparison",
       "briefId": "brief-gan-charger-comparison-en",
-      "merchantSlug": "aliexpress",
+      "articleId": "draft-article-brief-gan-charger-comparison-en",
       "offerId": "offer-ugreen-100w-us",
-      "matchScore": 78.3,
+      "merchantSlug": "aliexpress",
+      "placementType": "card",
+      "anchorText": "Ugreen 100W GaN charger",
+      "rel": "sponsored nofollow",
+      "disclosureShown": false,
+      "status": "draft",
+      "humanApprovalRequired": true,
+      "offerScore": 78.3,
       "scoreBreakdown": {
         "topicalFit": 73,
         "localeFit": 100,
@@ -187,16 +248,22 @@
         "conversionFit": 85,
         "complianceFit": 85
       },
-      "status": "candidate",
       "reason": "Commerce topic matched to AliExpress with evidence fit; placement remains draft until human approval."
     },
     {
+      "id": "placement-candidate-brief-aliexpress-charger-wattage-risk-en-offer-ugreen-100w-us-2",
       "topicId": "topic-aliexpress-charger-wattage-risk",
-      "topicSlug": "aliexpress-charger-wattage-risk",
       "briefId": "brief-aliexpress-charger-wattage-risk-en",
-      "merchantSlug": "aliexpress",
+      "articleId": "draft-article-brief-aliexpress-charger-wattage-risk-en",
       "offerId": "offer-ugreen-100w-us",
-      "matchScore": 77.3,
+      "merchantSlug": "aliexpress",
+      "placementType": "card",
+      "anchorText": "Ugreen 100W GaN charger",
+      "rel": "sponsored nofollow",
+      "disclosureShown": false,
+      "status": "draft",
+      "humanApprovalRequired": true,
+      "offerScore": 77.3,
       "scoreBreakdown": {
         "topicalFit": 81,
         "localeFit": 100,
@@ -206,16 +273,22 @@
         "conversionFit": 55,
         "complianceFit": 85
       },
-      "status": "candidate",
       "reason": "Commerce topic matched to AliExpress with evidence fit; placement remains draft until human approval."
     },
     {
+      "id": "placement-candidate-brief-travel-gan-charger-buyer-guide-en-offer-baseus-65w-es-3",
       "topicId": "topic-travel-gan-charger-buyer-guide",
-      "topicSlug": "travel-gan-charger-buyer-guide",
       "briefId": "brief-travel-gan-charger-buyer-guide-en",
-      "merchantSlug": "aliexpress",
+      "articleId": "draft-article-brief-travel-gan-charger-buyer-guide-en",
       "offerId": "offer-baseus-65w-es",
-      "matchScore": 75.3,
+      "merchantSlug": "aliexpress",
+      "placementType": "card",
+      "anchorText": "Baseus 65W GaN charger Spain",
+      "rel": "sponsored nofollow",
+      "disclosureShown": false,
+      "status": "draft",
+      "humanApprovalRequired": true,
+      "offerScore": 75.3,
       "scoreBreakdown": {
         "topicalFit": 73,
         "localeFit": 45,
@@ -225,16 +298,22 @@
         "conversionFit": 85,
         "complianceFit": 85
       },
-      "status": "candidate",
       "reason": "Commerce topic matched to AliExpress with evidence fit; placement remains draft until human approval."
     },
     {
+      "id": "placement-candidate-brief-travel-gan-charger-buyer-guide-en-offer-baseus-65w-br-4",
       "topicId": "topic-travel-gan-charger-buyer-guide",
-      "topicSlug": "travel-gan-charger-buyer-guide",
       "briefId": "brief-travel-gan-charger-buyer-guide-en",
-      "merchantSlug": "aliexpress",
+      "articleId": "draft-article-brief-travel-gan-charger-buyer-guide-en",
       "offerId": "offer-baseus-65w-br",
-      "matchScore": 75.3,
+      "merchantSlug": "aliexpress",
+      "placementType": "card",
+      "anchorText": "Baseus 65W GaN charger Brazil",
+      "rel": "sponsored nofollow",
+      "disclosureShown": false,
+      "status": "draft",
+      "humanApprovalRequired": true,
+      "offerScore": 75.3,
       "scoreBreakdown": {
         "topicalFit": 73,
         "localeFit": 45,
@@ -244,16 +323,22 @@
         "conversionFit": 85,
         "complianceFit": 85
       },
-      "status": "candidate",
       "reason": "Commerce topic matched to AliExpress with evidence fit; placement remains draft until human approval."
     },
     {
+      "id": "placement-candidate-brief-aliexpress-charger-import-risk-pt-br-offer-baseus-65w-us-2",
       "topicId": "topic-aliexpress-charger-import-risk",
-      "topicSlug": "aliexpress-charger-import-risk",
       "briefId": "brief-aliexpress-charger-import-risk-pt-br",
-      "merchantSlug": "aliexpress",
+      "articleId": "draft-article-brief-aliexpress-charger-import-risk-pt-br",
       "offerId": "offer-baseus-65w-us",
-      "matchScore": 74.3,
+      "merchantSlug": "aliexpress",
+      "placementType": "inline",
+      "anchorText": "Baseus 65W GaN charger",
+      "rel": "sponsored nofollow",
+      "disclosureShown": false,
+      "status": "draft",
+      "humanApprovalRequired": true,
+      "offerScore": 74.3,
       "scoreBreakdown": {
         "topicalFit": 81,
         "localeFit": 45,
@@ -263,7 +348,6 @@
         "conversionFit": 55,
         "complianceFit": 85
       },
-      "status": "candidate",
       "reason": "Commerce topic matched to AliExpress with evidence fit; placement remains draft until human approval."
     }
   ]

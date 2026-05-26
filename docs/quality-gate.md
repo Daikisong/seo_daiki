@@ -13,7 +13,8 @@ variant traps                      10
 locale risk                        10
 internal links                      5
 schema/hreflang/canonical           5
-affiliate disclosure/link integrity 5
+affiliate disclosure/link integrity 3
+publishing/localization/trend safety 2
 ```
 
 Index rule:
@@ -39,6 +40,14 @@ Blocker examples:
 - Missing or mismatched JSON-LD for the page type. Example: an indexed review must be able to emit `Article`,
   `Product`, nested `Review`, and `BreadcrumbList` JSON-LD with URLs matching the canonical page.
 - Missing Dataset schema on data pages, or missing `CollectionPage` / `ItemList` schema on hub and comparison pages.
+- Draft or pending articles trying to become indexable
+- Unsafe `/api/affiliate-click?target=` links
+- DB-backed affiliate placements that are not approved, disclosed, active, and merchant-allowlisted
+- Localized pages with `localizationDepthScore < 80`
+- Trend pages without trend/source evidence, why-now explanation, and enough internal links
+- Deal-watch pages without price checked context and buy/wait/avoid logic
+- Ingredient guides without supported vs unsupported claim separation
+- Over-monetized pages that exceed article-type placement limits
 
 SEO integrity warnings:
 
@@ -60,7 +69,7 @@ The validator also checks the initial launch invariant:
 
 ```text
 planned URL inventory = 110
-indexable pages = 40-60
+indexable pages = 40-80
 ```
 
 The Python worker gate lives in `workers/python/validators/quality_gate.py` and writes a machine-readable report:

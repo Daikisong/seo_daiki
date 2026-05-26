@@ -30,7 +30,10 @@ python3 workers/python/cli.py import-trend-signals --file data/seeds/trend-signa
 python3 workers/python/cli.py cluster-topics
 python3 workers/python/cli.py score-topics
 python3 workers/python/cli.py generate-content-briefs
-python3 workers/python/cli.py match-affiliate-offers
+python3 workers/python/cli.py match-affiliate-offers --offers-file data/seeds/offers.csv
+python3 workers/python/cli.py generate-topic-draft --topic-id topic-travel-gan-charger-buyer-guide --locale en
+python3 workers/python/cli.py localize-topic-draft --article-id draft-article-brief-travel-gan-charger-buyer-guide-en --locale es
+python3 workers/python/cli.py run-publishing-gate
 ```
 
 Outputs:
@@ -40,6 +43,10 @@ Outputs:
 - `data/snapshots/topic_scores.json`
 - `data/briefs/content_briefs.json`
 - `data/snapshots/affiliate_offer_matches.json`
+- `data/exports/affiliate_placement_candidates.json`
+- `data/exports/topic_articles.json`
+- `data/exports/localized_topic_articles.json`
+- `data/exports/topic_publishing_gate.json`
 
 ## Scoring
 

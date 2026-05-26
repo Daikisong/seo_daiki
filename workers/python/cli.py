@@ -20,21 +20,18 @@ from workers.python.intelligence.product_identity_graph import build_identity_gr
 from workers.python.intelligence.review_signal_extractor import extract_review_signals
 from workers.python.intelligence.search_console_feedback import build_search_console_suggestions
 from workers.python.intelligence.seller_claim_extractor import extract_seller_claims
+from workers.python.intelligence.offer_matching import match_affiliate_offers
 from workers.python.intelligence.trend_topic_engine import (
     cluster_topics,
     collect_trend_signals,
-    generate_content_briefs,
-    generate_topic_draft,
     import_trend_signals,
-    localize_topic_draft,
-    match_affiliate_offers,
-    run_publishing_gate,
     score_topics,
 )
 from workers.python.intelligence.variant_trap_detector import detect_variant_traps
 from workers.python.intelligence.verified_claim_builder import build_verified_claims
 from workers.python.pipeline import run_worker_pipeline
 from workers.python.validators.quality_gate import run_quality_gate
+from workers.python.validators.publishing_gate import run_topic_publishing_gate
 from workers.python.writers.article_draft_generator import generate_draft
 from workers.python.writers.article_outline_generator import generate_outline
 from workers.python.writers.multilingual_publishing import (
@@ -43,6 +40,9 @@ from workers.python.writers.multilingual_publishing import (
     score_localization,
     sync_hreflang_groups,
 )
+from workers.python.writers.topic_article_generator import generate_topic_article
+from workers.python.writers.topic_brief_generator import generate_topic_briefs
+from workers.python.writers.topic_localizer import localize_topic_article
 from workers.python.writers.url_inventory import generate_url_inventory
 
 
@@ -75,12 +75,19 @@ def main() -> None:
     subcommands.add_parser("cluster-topics")
     subcommands.add_parser("score-topics")
     subcommands.add_parser("generate-content-briefs")
-    subcommands.add_parser("match-affiliate-offers")
+    offer_match = subcommands.add_parser("match-affiliate-offers")
+    offer_match.add_argument("--topic-id")
+    offer_match.add_argument("--article-id")
+    offer_match.add_argument("--offers-file", default=str(DATA / "seeds" / "offers.csv"))
     topic_draft = subcommands.add_parser("generate-topic-draft")
+    topic_draft.add_argument("--topic-id")
+    topic_draft.add_argument("--brief-id")
     topic_draft.add_argument("--locale")
     localize_topic = subcommands.add_parser("localize-topic-draft")
-    localize_topic.add_argument("--locale", action="append", dest="locales", default=None)
-    subcommands.add_parser("run-publishing-gate")
+    localize_topic.add_argument("--article-id")
+    localize_topic.add_argument("--locale")
+    publishing_gate = subcommands.add_parser("run-publishing-gate")
+    publishing_gate.add_argument("--article-id")
     translation_group = subcommands.add_parser("create-translation-group")
     translation_group.add_argument("--article-id", required=True)
     translation_group.add_argument("--topic-id")
@@ -155,15 +162,15 @@ def main() -> None:
     elif args.command == "score-topics":
         print(score_topics())
     elif args.command == "generate-content-briefs":
-        print(generate_content_briefs())
+        print(generate_topic_briefs())
     elif args.command == "match-affiliate-offers":
-        print(match_affiliate_offers())
+        print(match_affiliate_offers(args.topic_id, args.article_id, Path(args.offers_file)))
     elif args.command == "generate-topic-draft":
-        print(generate_topic_draft(args.locale))
+        print(generate_topic_article(args.topic_id, args.brief_id, args.locale))
     elif args.command == "localize-topic-draft":
-        print(localize_topic_draft(args.locales))
+        print(localize_topic_article(args.article_id, args.locale))
     elif args.command == "run-publishing-gate":
-        print(run_publishing_gate())
+        print(run_topic_publishing_gate(args.article_id))
     elif args.command == "create-translation-group":
         print(create_translation_group(args.article_id, args.topic_id, args.source_locale))
     elif args.command == "localize-article":

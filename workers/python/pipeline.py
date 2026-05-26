@@ -11,6 +11,7 @@ from workers.python.collectors.manual_seed_import import seed_products
 from workers.python.collectors.search_console import import_search_console
 from workers.python.evidence.evidence_pack_builder import build_evidence_pack
 from workers.python.intelligence.locale_risk_matrix import build_locale_risk
+from workers.python.intelligence.offer_matching import match_affiliate_offers
 from workers.python.intelligence.price_truth_engine import build_price_truth
 from workers.python.intelligence.product_identity_graph import build_identity_graph
 from workers.python.intelligence.review_signal_extractor import extract_review_signals
@@ -18,21 +19,20 @@ from workers.python.intelligence.search_console_feedback import build_search_con
 from workers.python.intelligence.seller_claim_extractor import extract_seller_claims
 from workers.python.intelligence.trend_topic_engine import (
     cluster_topics,
-    generate_content_briefs,
-    generate_topic_draft,
     import_trend_signals,
-    localize_topic_draft,
-    match_affiliate_offers,
-    run_publishing_gate,
     score_topics,
 )
 from workers.python.intelligence.variant_trap_detector import detect_variant_traps
 from workers.python.intelligence.verified_claim_builder import build_verified_claims
 from workers.python.collectors.price_snapshot import snapshot_prices
 from workers.python.validators.quality_gate import run_quality_gate
+from workers.python.validators.publishing_gate import run_topic_publishing_gate
 from workers.python.writers.article_draft_generator import generate_draft
 from workers.python.writers.article_outline_generator import generate_outline
 from workers.python.writers.multilingual_publishing import score_localization, sync_hreflang_groups
+from workers.python.writers.topic_article_generator import generate_topic_article
+from workers.python.writers.topic_brief_generator import generate_topic_briefs
+from workers.python.writers.topic_localizer import localize_topic_article
 from workers.python.writers.url_inventory import generate_url_inventory
 
 
@@ -88,11 +88,11 @@ def run_worker_pipeline(
             ),
             ("cluster-topics", cluster_topics),
             ("score-topics", score_topics),
-            ("generate-content-briefs", generate_content_briefs),
+            ("generate-content-briefs", generate_topic_briefs),
             ("match-affiliate-offers", match_affiliate_offers),
-            ("generate-topic-draft", generate_topic_draft),
-            ("localize-topic-draft", localize_topic_draft),
-            ("run-publishing-gate", run_publishing_gate),
+            ("generate-topic-draft", generate_topic_article),
+            ("localize-topic-draft", localize_topic_article),
+            ("run-publishing-gate", run_topic_publishing_gate),
             ("score-localization", score_localization),
             ("sync-hreflang-groups", sync_hreflang_groups),
         ]
