@@ -2,1443 +2,1395 @@ You are working in the GitHub repository:
 
 Songdaiki/seo_daiki
 
-Mission:
-Transform the current Global Import Lab product-evidence SEO MVP into a full multilingual trend-driven affiliate content operating system.
+Important context:
+The current repo has already evolved into a multilingual trend-driven affiliate content system. However, the current architecture is too product/offer/distribution-heavy too early. We need to refactor the project around the correct operating flow:
 
-The existing repo already has a useful SEO core:
-- Next.js App Router web app
-- Prisma/Postgres schema
-- Product / Variant / SellerClaim / VerifiedClaim / ReviewSignal / PriceSnapshot / MarketRisk / EvidencePack / Article
-- multilingual locales en / es / pt-br
-- canonical / hreflang / sitemap / JSON-LD helpers
-- quality gate validators
-- AliExpress worker boundary
-- Search Console feedback suggestion worker
-- admin mutation endpoints
+1. Detect trends by country/language/market.
+2. Analyze what top-ranking blogs/pages are writing for the trending keywords.
+3. Let the LLM decide the content strategy and create a test post on the website.
+4. Only after the article strategy exists, automatically identify possible related products/offers from AliExpress, Temu, Amazon, iHerb, etc.
+5. Produce a comparison/analysis block for those product candidates.
+6. Let a human approve whether to add monetized links to the article.
 
-Do NOT rewrite the whole project.
-Do NOT delete the existing product-evidence architecture.
-Extend it cleanly.
+Do NOT prioritize affiliate APIs now.
+Do NOT implement full product-link API integrations now.
+Document product-link APIs and merchant adapter contracts only.
+The first real implementation priority is the Trend Engine.
+The second priority is Website Posting / Test Publishing.
+The third priority is Product Candidate Discovery and Analysis.
+The last priority is actual affiliate link insertion.
 
-The final system must support:
-1. trend/topic discovery,
-2. topic clustering and scoring,
-3. content brief generation,
-4. AliExpress and iHerb affiliate offer matching,
-5. multilingual article generation and localization,
-6. strict publish/index gates,
-7. iHerb/health/supplement compliance checks,
-8. safe affiliate redirect through DB-backed placements,
-9. Search Console refresh loop,
-10. optional safe owned-channel posting drafts,
-11. optional link-earning/outreach CRM drafts,
-12. no blackhat SEO automation.
-
-Very important:
-- Do not ask me questions.
-- Make the best implementation choices from the current repo.
-- Apply patches directly.
-- Keep the repo buildable.
-- If a real external API cannot be implemented fully, create a disabled-by-default adapter with clear docs and sample data.
-- No TODO-only stubs for core domain models, validators, or route safety.
-- At the end, run or document:
-  pnpm typecheck
-  pnpm seo:validate
-  pnpm build
+This is a long refactor. Make the architecture bold and practical. Do not be overly conservative. But do not implement spam, cloaking, Google scraping without permission, community auto-posting, or arbitrary redirect abuse.
 
 ────────────────────────────────────
-HARD SAFETY / SEO CONSTRAINTS
+CURRENT REPO AUDIT REQUIREMENT
 ────────────────────────────────────
 
-Do NOT implement:
-- comment spam bots
-- forum profile backlink bots
-- Reddit/Quora/community auto-posting
-- automatic account creation
-- CAPTCHA bypass
-- proxy rotation
-- automated upvotes/likes/follows
-- PBN creation
-- directory/bookmark spam submission
-- Google SERP scraping
-- Google Indexing API submission for normal article/review pages
-- arbitrary redirect endpoints
+First inspect the current repo and write:
 
-Use only:
-- official APIs where configured,
-- manual CSV seed import,
-- Search Console data,
-- owned-channel publishing,
-- human-approved outreach drafts,
-- sitemap-based crawling for Google.
+docs/refactor-audit/current-state.md
 
-All affiliate links must use rel="sponsored nofollow".
-All affiliate redirects must be DB-backed.
-No arbitrary target URL redirect in production.
-
-Health / supplement / iHerb content must be conservative:
-- no disease cure/treat/prevent claims,
-- no dosage/medical advice without qualified evidence,
-- no “guaranteed”, “cures”, “doctor recommended” without support,
-- high-risk health pages require manual approval before indexing,
-- supplement articles must include a health disclaimer,
-- supplement offer placement must pass HealthClaimGuard.
-
-────────────────────────────────────
-PHASE 0 — AUDIT CURRENT REPO FIRST
-────────────────────────────────────
-
-Before patching, inspect these files and summarize current behavior in docs/implementation-audit.md:
-
+Must inspect:
 - README.md
 - packages/db/prisma/schema.prisma
 - packages/types/src/index.ts
-- packages/seo/src/canonical.ts
-- packages/seo/src/sitemap.ts
+- workers/python/cli.py
+- workers/python/intelligence/trend_topic_engine.py
+- workers/python/intelligence/offer_matching.py
+- workers/python/writers/topic_article_generator.py
+- workers/python/writers/topic_brief_generator.py
+- workers/python/writers/topic_localizer.py
+- workers/python/validators/publishing_gate.py
 - packages/validators/src/index.ts
 - apps/web/lib/content/page-loaders.ts
 - apps/web/lib/seo/metadata.ts
 - apps/web/app/api/affiliate-click/route.ts
-- workers/python/cli.py
-- workers/python/writers/article_draft_generator.py
-- workers/python/writers/llm_provider.py
-- workers/python/intelligence/search_console_feedback.py
+- docs/*.md
 
-The audit must explicitly answer:
-1. Which parts already support product-evidence SEO?
-2. Which parts are missing for trend-based multilingual affiliate blogging?
-3. Which route/publication safety problems exist?
-4. Which affiliate redirect safety problems exist?
-5. Which health/iHerb compliance gaps exist?
-6. Which models and workers will be added?
+Audit questions:
+1. Which current files support the new trend-first flow?
+2. Which current files are product/offer-first and should be downgraded or moved behind later phases?
+3. Which current models are reusable?
+4. Which current models are premature?
+5. Which current workers are too shallow for real trend discovery?
+6. Which workers should become documentation-only for now?
+7. Which public routes and admin flows are safe enough to keep?
+8. What should be removed, disabled, or moved behind feature flags?
 
-────────────────────────────────────
-PHASE 1 — PUBLIC ROUTE / PUBLISHING SAFETY
-────────────────────────────────────
-
-Patch public article loading.
-
-Current issue:
-- loadArticlePage currently loads an Article if it exists.
-- It should not expose draft or pending articles publicly.
-
-Implement this state model:
-
-publishStatus:
-- draft
-- pending
-- published
-
-indexStatus:
-- index
-- noindex
-- pending
-- refresh_needed
-- merge_candidate
-
-Public route behavior:
-1. publishStatus = draft:
-   - public route returns notFound()
-   - only preview route can show it with valid PREVIEW_TOKEN
-
-2. publishStatus = pending:
-   - public route returns notFound()
-   - only preview route can show it with valid PREVIEW_TOKEN
-
-3. publishStatus = published and indexStatus != index:
-   - public route renders the page
-   - metadata robots must be noindex, follow
-
-4. publishStatus = published and indexStatus = index:
-   - public route renders normally
-   - metadata robots index, follow
-
-Tasks:
-- Patch apps/web/lib/content/page-loaders.ts
-- Add preview-token handling.
-- Use process.env.PREVIEW_TOKEN.
-- A preview request may pass ?previewToken=<token>.
-- Do not require preview for normal published pages.
-- generateStaticParams must only include published articles.
-- Sitemap must still include only published + index.
-- Admin pages may still load draft/pending internally.
-- Add docs/publishing-state.md.
-
-Acceptance:
-- Draft article public URL returns notFound.
-- Pending article public URL returns notFound.
-- Draft/pending with valid preview token renders.
-- Published/noindex renders with robots noindex.
-- Published/index renders with robots index.
-- Sitemaps include only published/index.
+Do not skip this audit.
 
 ────────────────────────────────────
-PHASE 2 — HARDEN ADMIN INDEX MUTATIONS
+NEW PRODUCT VISION
 ────────────────────────────────────
 
-Current issue:
-- /api/admin/article-status can set indexStatus manually.
-- This can bypass the quality gate.
+Rename the mental model:
 
-Patch:
-- apps/web/app/api/admin/article-status/route.ts
-- packages/db admin mutation layer if needed.
+Current wrong direction:
+Product evidence site + affiliate offer engine + trend add-on
 
-Rules:
-1. Admin cannot set indexStatus=index unless server-side quality gate passes.
-2. Admin cannot set publishStatus=published + indexStatus=index unless:
-   - qualityScore >= 80
-   - quality gate returns index
-   - no blocker issues
-   - affiliate links valid
-   - canonical/hreflang valid
-   - article has sufficient evidence
-   - health/compliance gate passes if relevant
-3. If blocked, return 400 with structured reasons.
-4. Write AuditLog for both successful and blocked attempts.
-5. Allow admin to set noindex/pending/draft freely for safety.
+New direction:
+Global Market Trend Desk + SERP Intelligence + Multilingual Publishing Lab + Optional Monetization Layer
 
-Add:
-- docs/admin-publish-gate.md
+The product is NOT primarily an affiliate blog.
+The product is a global trend-to-content operating system.
 
-────────────────────────────────────
-PHASE 3 — AFFILIATE ENGINE: MERCHANT / OFFER / PLACEMENT
-────────────────────────────────────
+Canonical pipeline:
 
-Current issue:
-- Article.affiliateLinks JSON is too weak for multi-merchant operations.
-- /api/affiliate-click accepts arbitrary target URL.
-- Need AliExpress + iHerb + future merchants.
+MarketTrendSignal
+  -> TrendCluster
+  -> TrendKeyword
+  -> SerpSnapshot
+  -> CompetitorContentAnalysis
+  -> ContentAngleDecision
+  -> ContentBrief
+  -> TestArticleDraft
+  -> LocalizedMarketVariant
+  -> Website Test Publish
+  -> Performance Monitoring
+  -> ProductCandidateDiscovery
+  -> ProductCandidateAnalysisBlock
+  -> Human Approval
+  -> Monetized Link Placement
 
-Add Prisma models:
-
-model Merchant {
-  id              String   @id @default(cuid())
-  name            String
-  slug            String   @unique
-  domain          String
-  merchantType    String   // marketplace, supplement_store, retailer, network
-  allowedDomains  Json
-  defaultRel      String   @default("sponsored nofollow")
-  healthSensitive Boolean  @default(false)
-  enabled         Boolean  @default(true)
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-}
-
-model AffiliateProgram {
-  id              String   @id @default(cuid())
-  merchantId      String
-  merchant        Merchant @relation(fields: [merchantId], references: [id], onDelete: Cascade)
-  network         String   // inhouse, impact, admitad, partnerize, etc.
-  trackingId      String?
-  termsNote       String?
-  status          String   @default("active")
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-}
-
-model Offer {
-  id              String   @id @default(cuid())
-  merchantId      String
-  merchant        Merchant @relation(fields: [merchantId], references: [id], onDelete: Cascade)
-  programId       String?
-  productId       String?
-  topicId         String?
-  title           String
-  description     String?
-  url             String
-  affiliateUrl    String
-  price           Decimal? @db.Decimal(10, 2)
-  currency        String?
-  locale          String?
-  country         String?
-  category        String
-  evidenceLevel   String   @default("merchant_claim")
-  healthSensitive Boolean  @default(false)
-  lastCheckedAt   DateTime?
-  status          String   @default("active")
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-
-  @@index([merchantId, locale, category])
-  @@index([productId])
-  @@index([topicId])
-}
-
-model AffiliatePlacement {
-  id              String   @id @default(cuid())
-  articleId       String
-  offerId         String
-  placementType   String   // cta, inline, card, comparison_table, ingredient_card
-  anchorText      String
-  rel             String   @default("sponsored nofollow")
-  disclosureShown Boolean  @default(false)
-  status          String   @default("draft") // draft, approved, disabled
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-
-  @@index([articleId, status])
-  @@index([offerId])
-}
-
-Update AffiliateClick:
-- add placementId
-- add offerId
-- add merchantId
-
-New redirect rules:
-- Replace arbitrary target mode with placementId mode.
-- /api/affiliate-click?placementId=<id>
-- Look up AffiliatePlacement -> Offer -> Merchant.
-- Reject if placement is not approved.
-- Reject if offer is inactive.
-- Reject if merchant is disabled.
-- Reject if affiliateUrl host is not in merchant.allowedDomains.
-- Record AffiliateClick with placementId, offerId, merchantId, articleId, productId, locale, referrer, UTM.
-- Redirect to Offer.affiliateUrl.
-- Keep old target mode only in development behind ALLOW_UNSAFE_AFFILIATE_TARGET_REDIRECT=true.
-- Never allow arbitrary target redirect in production.
-
-Seed merchants:
-- aliexpress
-  - slug: aliexpress
-  - merchantType: marketplace
-  - healthSensitive: false
-  - allowedDomains include aliexpress.com and known AliExpress affiliate/tracking domains configurable via env/seed
-- iherb
-  - slug: iherb
-  - merchantType: supplement_store
-  - healthSensitive: true
-  - allowedDomains include iherb.com and known iHerb tracking domains configurable via env/seed
-
-Add admin pages:
-- /admin/merchants
-- /admin/offers
-- /admin/placements
-
-Add docs:
-- docs/merchant-offer-engine.md
-- docs/affiliate-redirect-safety.md
-
-Acceptance:
-- No production path accepts arbitrary target redirect.
-- AffiliateOutboundLink renders placementId URLs.
-- Affiliate placements require rel sponsored nofollow.
-- Click tracking records merchant/offer/placement.
+Implement this pipeline in phases.
 
 ────────────────────────────────────
-PHASE 4 — TREND TOPIC ENGINE
+DOMAIN STRATEGY: ONE DOMAIN, MARKET SILOS
 ────────────────────────────────────
 
-Add topic/trend models:
+Decision:
+Use one domain, not many domains.
 
-model TrendSource {
-  id          String   @id @default(cuid())
-  name        String
-  slug        String   @unique
-  sourceType  String   // manual_csv, search_console, google_trends, reddit, youtube, pinterest, rss
-  locale      String?
-  country     String?
-  enabled     Boolean  @default(true)
-  configJson  Json?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-}
+Reason:
+- We need brand/link/Search Console authority in one place.
+- Splitting 18 countries into separate domains too early will fragment authority and operations.
+- But we must avoid a mixed “global random blog” feel.
 
-model TrendSignal {
-  id               String   @id @default(cuid())
-  sourceId          String
-  locale            String
-  country           String?
-  query             String
-  topicRaw          String
-  url               String?
-  volumeScore       Float    @default(0)
-  growthScore       Float    @default(0)
-  competitionScore  Float    @default(0)
-  commercialScore   Float    @default(0)
-  freshnessScore    Float    @default(0)
-  evidenceFitScore  Float    @default(0)
-  affiliateFitScore Float    @default(0)
-  capturedAt        DateTime @default(now())
+Implement one domain with market/language silo routing:
 
-  @@index([locale, country, capturedAt])
-  @@index([query])
-}
+/[market]/[language]/
 
-model Topic {
-  id              String   @id @default(cuid())
-  canonicalTopic  String
-  slug            String   @unique
-  cluster         String
-  primaryLocale   String
-  intent          String   // informational, commercial, problem, comparison, seasonal, deal, health
-  healthSensitive Boolean  @default(false)
-  status          String   @default("candidate") // candidate, briefed, drafted, published, rejected
-  score           Float    @default(0)
-  scoreBreakdown  Json?
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-}
+Examples:
+- /us/en/
+- /gb/en/
+- /ca/en/
+- /au/en/
+- /es/es/
+- /mx/es/
+- /br/pt-br/
+- /pt/pt/
+- /fr/fr/
+- /de/de/
+- /it/it/
+- /nl/nl/
+- /pl/pl/
+- /tr/tr/
+- /id/id/
+- /jp/ja/
+- /kr/ko/
+- /in/en/
 
-model TopicSignal {
-  id             String @id @default(cuid())
-  topicId        String
-  trendSignalId  String
-  weight         Float @default(1)
+Use 18 initial market configs, but allow adding/removing later.
 
-  @@index([topicId])
-  @@index([trendSignalId])
-}
+Each market must have:
+- market code
+- primary language
+- country
+- currency
+- timezone
+- Google Trends geo code
+- Search Console country filter
+- SERP locale config
+- default content categories
+- blocked categories
+- monetization readiness
+- localization rules
+- market trend feed path
+- market editorial calendar
 
-model ContentBrief {
-  id               String   @id @default(cuid())
-  topicId           String
-  locale            String
-  articleType       String
-  titleCandidate    String
-  h1Candidate       String?
-  searchIntent      String
-  outlineJson       Json
-  requiredEvidence  Json?
-  merchantFitJson   Json?
-  localizationNotes Json?
-  healthSensitivity String   @default("none") // none, low, medium, high
-  status            String   @default("draft") // draft, approved, rejected, converted
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
+Do not mix all market trends into one global feed.
+Each market has its own trend desk.
 
-  @@index([topicId, locale])
-}
+URL examples:
+- /us/en/trends/magnesium-sleep/
+- /es/es/trends/cargadores-usb-c/
+- /br/pt-br/tendencias/power-bank-capacidade-real/
+- /kr/ko/trends/gan-charger/
+- /jp/ja/trends/magnesium-sleep/
 
-Trend scoring formula:
-topic_score =
-  growthScore * 0.25
-+ commercialScore * 0.20
-+ evidenceFitScore * 0.20
-+ affiliateFitScore * 0.15
-+ lowCompetitionScore * 0.10
-+ freshnessScore * 0.10
+Global pages:
+- /global/
+- /global/trend-map/
+- /global/topics/
+- /global/methodology/
+- /global/markets/
 
-Add worker commands:
-- collect-trend-signals
-- import-trend-signals --file data/seeds/trend-signals.csv
-- cluster-topics
-- score-topics
-- generate-content-briefs
-- match-affiliate-offers
-- generate-topic-draft
-- localize-topic-draft
-- run-publishing-gate
-
-Trend source v1:
-- manual CSV importer
-- Search Console query expansion from existing SearchConsoleMetric
-- Google Trends adapter disabled by default unless configured
-- Reddit/YouTube/Pinterest/RSS adapters disabled by default
-- No Google SERP scraping
-
-Add sample seed:
-data/seeds/trend-signals.csv
-
-Sample topic clusters:
-- USB-C travel charger fake wattage
-- portable power bank real capacity
-- magnesium sleep supplement
-- probiotic gut health supplement
-- travel adapter import checklist
-- desk setup gadget trend
-
-Add docs:
-- docs/trend-engine.md
-
-Acceptance:
-- Trend signals can be imported from CSV.
-- Topics can be clustered.
-- Topics receive score and intent.
-- ContentBrief records can be generated.
-- No external scraping required for local run.
-
-────────────────────────────────────
-PHASE 5 — ARTICLE TYPES AND ROUTES FOR TREND BLOGGING
-────────────────────────────────────
-
-Extend ArticleType in packages/types/src/index.ts:
-
-Existing:
-- hub
-- review
-- guide
-- compare
-- data
-- lab
-- risk
-- methodology
-
-Add:
-- trend
-- buyer_guide
-- deal_watch
-- ingredient_guide
-
-Route structure:
-
-English:
-- /en/trends/[slug]
-- /en/buyer-guides/[slug]
-- /en/deals/[slug]
-- /en/ingredients/[slug]
-
-Spanish:
-- /es/tendencias/[slug]
-- /es/guias-de-compra/[slug]
-- /es/ofertas/[slug]
-- /es/ingredientes/[slug]
-
-Portuguese Brazil:
-- /pt-br/tendencias/[slug]
-- /pt-br/guias-de-compra/[slug]
-- /pt-br/ofertas/[slug]
-- /pt-br/ingredientes/[slug]
+The global pages summarize cross-market patterns but should not replace market-specific pages.
 
 Update:
-- packages/seo/src/canonical.ts
-- route loaders
-- static params
-- metadata
-- sitemap buckets
-- JSON-LD helpers if needed
-- content type docs
-- ArticlePage rendering for new types
+- locale config
+- routing helpers
+- canonical builder
+- hreflang builder
+- sitemap generation
+- admin filters
+- article model if needed
 
-Rendering:
-trend:
-- trend summary
-- why it is rising
-- evidence/source signals
-- related buyer problems
-- relevant offers, if approved
-- internal links
-- localization notes
-- update log
+Add:
+data/config/markets.json
 
-buyer_guide:
-- decision framework
-- who should buy/avoid
-- comparison table
-- affiliate offers
-- evidence and risk blocks
+Include 18 markets:
+US, GB, CA, AU, ES, MX, BR, PT, FR, DE, IT, NL, PL, TR, ID, JP, KR, IN
 
-deal_watch:
-- price history
-- buy/wait/avoid zone
-- offer table
-- last checked
-- no fake urgency language
+Each market config must include:
+{
+  "market": "us",
+  "language": "en",
+  "country": "US",
+  "currency": "USD",
+  "timezone": "America/New_York",
+  "trendsGeo": "US",
+  "serpGl": "us",
+  "serpHl": "en",
+  "pathPrefix": "/us/en",
+  "enabled": true,
+  "monetizationReadiness": "research_only",
+  "defaultCategories": [],
+  "blockedCategories": []
+}
 
-ingredient_guide:
-- what the ingredient is
-- what claims are supported/unsupported
-- safety warnings
-- iHerb offers only after HealthClaimGuard passes
-- health disclaimer
-
-Acceptance:
-- New routes compile.
-- New ArticleTypes are included in validators.
-- New routes use localized paths.
-- Sitemaps can include these only if indexable.
-- Hreflang/canonical work.
+Important:
+Do not auto-redirect users by IP.
+Add market/language switcher links.
+Keep explicit URLs.
 
 ────────────────────────────────────
-PHASE 6 — MULTILINGUAL PUBLISHING ENGINE
+PHASE PLAN
 ────────────────────────────────────
 
-Add models:
+Create docs/phase-plan.md with this exact priority:
 
-model TranslationGroup {
-  id                 String   @id @default(cuid())
-  canonicalTopicId   String?
-  sourceArticleId    String?
-  createdAt          DateTime @default(now())
-  updatedAt          DateTime @updatedAt
-}
+Phase 0:
+Audit and architecture reset.
 
-model TranslationVariant {
-  id                     String   @id @default(cuid())
-  groupId                 String
-  articleId               String
-  locale                  String
-  sourceLocale            String?
-  localizationDepthScore  Float    @default(0)
-  status                  String   @default("draft") // draft, localized, approved, published
-  createdAt               DateTime @default(now())
-  updatedAt               DateTime @updatedAt
+Phase 1:
+Market and routing architecture for 18 markets.
 
-  @@index([groupId, locale])
-  @@index([articleId])
-}
+Phase 2:
+Trend Engine v1.
 
-model PublishingJob {
-  id              String   @id @default(cuid())
-  topicId          String?
-  articleId        String?
-  locale           String
-  jobType          String   // draft, localize, validate, publish, refresh
-  status           String   @default("queued") // queued, running, done, failed, blocked
-  inputJson        Json?
-  outputJson       Json?
-  error            String?
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
+Phase 3:
+SERP / top-ranking content intelligence.
 
-  @@index([status, jobType])
-  @@index([articleId])
-}
+Phase 4:
+Content strategy and test posting engine.
 
-Localization depth scoring:
-localizationDepthScore =
-  localizedQueryFit * 0.25
-+ localRiskCoverage * 0.20
-+ localOfferFit * 0.20
-+ languageQuality * 0.15
-+ nonBoilerplateScore * 0.10
-+ localExamples * 0.10
+Phase 5:
+Market-localized publishing calendar.
 
-Rules:
-- Translation-only pages must remain noindex.
-- A localized article must include at least:
-  - localized title/h1/meta,
-  - local search intent,
-  - local risk or market notes,
-  - local offer availability or explicit “no suitable local offer” note,
-  - hreflang group,
-  - non-boilerplate localized content.
-- If localizationDepthScore < 70, indexStatus must be pending or noindex.
-- If localizationDepthScore >= 80 and other gates pass, index may be allowed.
+Phase 6:
+Performance feedback loop.
 
-Add worker commands:
-- create-translation-group
-- localize-article --article-id <id> --locale es
-- localize-article --article-id <id> --locale pt-br
-- score-localization
-- sync-hreflang-groups
+Phase 7:
+Product candidate discovery and analysis block.
+
+Phase 8:
+Affiliate API documentation and merchant adapter contracts only.
+
+Phase 9:
+Human approval workflow for monetized link insertion.
+
+Phase 10:
+Later implementation of real API integrations.
+
+Do not implement Phase 10 now.
+
+────────────────────────────────────
+PHASE 1 — MARKET ROUTING ARCHITECTURE
+────────────────────────────────────
+
+Goal:
+Support 18 country/language markets without turning the site into a random mixed blog.
+
+Implement:
+- data/config/markets.json
+- packages/types market types
+- packages/seo market-aware canonical helpers
+- packages/seo market-aware hreflang helpers
+- apps/web market routes:
+  /[market]/[language]/
+  /[market]/[language]/trends/[slug]
+  /[market]/[language]/keywords/[slug]
+  /[market]/[language]/serp/[slug]
+  /[market]/[language]/briefs/[slug]
+  /[market]/[language]/posts/[slug]
+  /[market]/[language]/calendar/
+  /global/trend-map/
+  /global/topics/
+  /global/markets/
+
+Keep legacy /en, /es, /pt-br routes working temporarily by redirecting to default market routes:
+- /en -> /us/en
+- /es -> /es/es
+- /pt-br -> /br/pt-br
 
 Add docs:
-- docs/multilingual-publishing.md
+- docs/market-routing.md
+- docs/one-domain-vs-multiple-domains.md
 
 Acceptance:
-- One English Topic/Article can create ES and PT-BR variants.
-- Variants are linked by TranslationGroup.
-- Hreflang maps are generated from the group.
-- Translation-only pages are blocked from index.
+- 18 markets can render landing pages from config.
+- Canonical URLs use market/language path.
+- Hreflang groups can connect market variants.
+- No automatic IP/language redirect.
 
 ────────────────────────────────────
-PHASE 7 — IHERB / HEALTH COMPLIANCE GATE
+PHASE 2 — TREND ENGINE V1
 ────────────────────────────────────
 
-Add health fields:
-- Article.healthSensitivity if Article model supports direct field; otherwise store in Article.sections/json or add schema field.
-- Topic.healthSensitive already added.
-- Offer.healthSensitive already added.
-- Merchant.healthSensitive already added.
+Goal:
+Build the true first engine:
+country-by-country trend detection.
 
-Preferred Prisma Article additions:
-- healthSensitivity String @default("none")
-- complianceStatus String @default("unchecked") // unchecked, passed, blocked, manual_required
-- complianceJson Json?
+Do not center this on products.
+Do not center this on affiliate offers.
+Do not center this on existing Product models.
 
-Implement HealthClaimGuard in packages/validators:
+Add or refactor models:
 
-Blockers:
-1. disease cure/treat/prevent claims without qualified evidence.
-2. supplement dosage advice without source.
-3. “guaranteed”, “cures”, “prevents”, “doctor recommended”, “clinically proven” without evidence.
-4. medical advice language.
-5. supplement offer placement without disclaimer.
-6. missing warning for pregnancy, medication, children, chronic illness when relevant.
-7. unsupported before/after or transformation claims.
-8. article recommends replacing medical treatment.
-9. high health sensitivity article trying to auto-index without manual approval.
-
-Warnings:
-- weak source quality,
-- overly broad wellness claims,
-- anecdotal language,
-- “best supplement” generic title.
-
-Required supplement disclaimer:
-- visible near first iHerb offer and near article footer.
-- must say content is informational and not medical advice.
-- must advise consulting a qualified professional for pregnancy, medication, chronic illness, or children.
-
-Add:
-- packages/validators/src/healthClaimGuard.ts
-- tests or validation fixtures
-- docs/iherb-compliance.md
-
-Update quality gate:
-- For any Article with healthSensitivity medium/high or any iHerb Offer placement:
-  - run HealthClaimGuard
-  - block index on health blockers
-  - high sensitivity requires manual approval
-  - supplement offer placement requires disclosure and disclaimer
-
-Acceptance:
-- iHerb offer cannot be indexed inside unsupported medical claims.
-- High sensitivity health article cannot auto-publish/index.
-- Health disclaimers render for ingredient_guide and supplement-related buyer_guide.
-- Health guard contributes to quality gate.
-
-────────────────────────────────────
-PHASE 8 — OFFER MATCHING ENGINE
-────────────────────────────────────
-
-Implement offer matching:
-
-Input:
-- Topic
-- ContentBrief
-- Article draft
-- locale
+TrendSource:
+- id
+- sourceType
+- name
+- market
+- language
 - country
-- merchant constraints
-- health sensitivity
-- existing Product evidence
-- Offer inventory
-
-Output:
-- AffiliatePlacement candidates
-
-Scoring:
-offer_score =
-  topicalFit * 0.25
-+ localeFit * 0.15
-+ merchantTrust * 0.15
-+ evidenceLevel * 0.15
-+ priceFreshness * 0.10
-+ conversionFit * 0.10
-+ complianceFit * 0.10
-
-Rules:
-- AliExpress preferred for:
-  - gadgets
-  - import gear
-  - chargers/cables
-  - power banks
-  - tools
-  - sensors
-  - desk setup
-- iHerb allowed for:
-  - supplement
-  - ingredient
-  - wellness
-  - nutrition
-  - beauty from supplement angle
-- iHerb blocked if:
-  - HealthClaimGuard has blockers
-  - no disclaimer
-  - article healthSensitivity high and not manually approved
-- Never insert offer solely because it has high commission.
-- Offers must be relevant to the user intent.
-- Prefer data/lab/guide internal links above raw affiliate CTAs.
-- Do not over-place affiliate links.
-
-Placement limits:
-- trend article: max 2 offer placements
-- buyer_guide: max 4 offer placements
-- deal_watch: max 6 offer placements
-- ingredient_guide: max 3 offer placements, all health-guarded
-- review: existing product CTA plus alternatives
-
-Add worker command:
-- match-affiliate-offers --topic-id <id>
-- match-affiliate-offers --article-id <id>
-
-Add admin:
-- /admin/offer-matching
-- approve/reject placements
-
-Acceptance:
-- Offer candidates generated.
-- Placements default to draft.
-- Human approval needed before rendering live CTA.
-- Approved placement renders via placementId affiliate redirect only.
-
-────────────────────────────────────
-PHASE 9 — TREND ARTICLE GENERATION
-────────────────────────────────────
-
-Current draft generator writes markdown files from evidence packs.
-Extend it into topic/article generation while preserving current product flow.
-
-Add:
-- workers/python/writers/topic_brief_generator.py
-- workers/python/writers/topic_article_generator.py
-- workers/python/writers/topic_localizer.py
-- workers/python/validators/publishing_gate.py
-
-Generation flow:
-TrendSignal -> Topic -> ContentBrief -> Draft Article -> Localized variants -> QualityGate -> PublishingJob
-
-LLM rules:
-- Write only from ContentBrief + EvidencePack + Offer inventory.
-- Do not invent prices, discounts, health claims, product specs, certifications, or reviews.
-- Do not say “we tested” unless VerifiedClaim exists.
-- Do not say “clinically proven” unless source exists.
-- No fake urgency.
-- No fake personal experience.
-- No medical advice.
-- No unsupported supplement efficacy claims.
-- Include update log.
-- Include affiliate disclosure if offers exist.
-- Include health disclaimer if iHerb/supplement content exists.
-- Include local market notes for localized pages.
-- Include internal links to relevant hub/data/lab/guide pages.
-
-Article DB creation:
-- New generated Article should start as:
-  publishStatus = pending
-  indexStatus = pending
-  qualityScore = computed
-- Never auto-set index without passing gate.
-- If no DB is available, write JSON/MD draft to data/drafts and data/exports.
-
-Add commands:
-- generate-topic-draft --topic-id <id> --locale en
-- generate-topic-draft --brief-id <id>
-- localize-topic-draft --article-id <id> --locale es
-- localize-topic-draft --article-id <id> --locale pt-br
-- run-publishing-gate --article-id <id>
-
-Acceptance:
-- Topic draft generation works with dry-run provider.
-- Real providers still work through existing LLM_PROVIDER interface.
-- Generated article never becomes public/indexable without gate.
-
-────────────────────────────────────
-PHASE 10 — QUALITY GATE EXPANSION
-────────────────────────────────────
-
-Expand current packages/validators quality gate.
-
-Existing validators should remain:
-- affiliate link rel
-- internal links
-- hreflang
-- SEO integrity
-- structured data
-- claim evidence
-- thin affiliate
-
-Add:
-- publishStateGuard
-- affiliatePlacementGuard
-- merchantAllowlistGuard
-- healthClaimGuard
-- localizationDepthGuard
-- trendEvidenceGuard
-- offerRelevanceGuard
-- unsafeRedirectGuard
-- overMonetizationGuard
-
-Indexable article must pass:
-1. publishStatus = published
-2. qualityScore >= 80
-3. no blocker issues
-4. no unsafe redirect issues
-5. affiliate placements approved and valid
-6. no thin affiliate risk
-7. localizationDepthScore >= 80 for translated/localized pages
-8. health guard passed when applicable
-9. enough internal links
-10. canonical/hreflang/schema valid
-11. no generic “Best ... 20xx” without evidence
-12. no direct-test language without verified claims
-13. no unsupported medical/supplement claims
-14. no arbitrary affiliate target redirect
-
-For trend articles:
-- require trend signals or topic evidence.
-- require why-now explanation.
-- require search intent match.
-- require non-boilerplate sections.
-- require at least 3 internal links.
-
-For deal_watch:
-- require price lastCheckedAt.
-- require buy/wait/avoid logic.
-- block fake urgency.
-
-For ingredient_guide:
-- require HealthClaimGuard.
-- require disclaimer.
-- require supported/unsupported claim separation.
-
-Acceptance:
-- pnpm seo:validate exercises expanded gates.
-- Gate returns structured breakdown.
-- Admin shows blocker reasons.
-
-────────────────────────────────────
-PHASE 11 — ADMIN UI EXTENSION
-────────────────────────────────────
-
-Add admin pages:
-
-Existing admin should remain.
-
-Add:
-- /admin/trends
-- /admin/topics
-- /admin/briefs
-- /admin/merchants
-- /admin/offers
-- /admin/placements
-- /admin/publishing-jobs
-- /admin/compliance
-- /admin/localization
-
-Admin features:
-1. Trends
-   - list trend signals
-   - import CSV
-   - filter by locale/country/source
-   - show growth/commercial/evidence/affiliate scores
-
-2. Topics
-   - list topics
-   - show score breakdown
-   - approve/reject topic
-   - generate brief
-
-3. Briefs
-   - view outline
-   - approve brief
-   - generate article draft
-
-4. Merchants
-   - create/edit merchant
-   - allowed domains
-   - healthSensitive flag
-
-5. Offers
-   - create/edit offers
-   - merchant
-   - category
-   - locale/country
-   - healthSensitive
-   - lastCheckedAt
-
-6. Placements
-   - approve/reject affiliate placements
-   - show article/offer/merchant
-   - show rel/disclosure status
-
-7. Publishing jobs
-   - list queued/running/done/failed/blocked
-   - retry failed
-   - inspect outputJson/error
-
-8. Compliance
-   - list health blockers
-   - list unsafe affiliate redirects
-   - list localization depth failures
-   - list over-monetized pages
-
-9. Localization
-   - show TranslationGroups
-   - show locale variants
-   - show localizationDepthScore
-   - regenerate hreflang group
-
-Security:
-- All mutation endpoints require ADMIN_TOKEN.
-- Writes AuditLog.
-- Never expose ADMIN_TOKEN.
-- No public mutation access.
-
-Acceptance:
-- Admin pages render in DB mode.
-- If DB unavailable, show helpful fallback/error.
-- Mutations write AuditLog.
-
-────────────────────────────────────
-PHASE 12 — OPTIONAL SAFE POSTING / DISTRIBUTION LAYER
-────────────────────────────────────
-
-Add only safe owned-channel distribution.
-Do NOT auto-post to third-party communities.
-
-Add models:
-
-model DistributionAsset {
-  id              String   @id @default(cuid())
-  articleId        String
-  locale          String
-  assetType       String // x_post, linkedin_post, pinterest_pin, youtube_short_script, discord_announcement, reddit_draft
-  platform        String
-  title           String?
-  body            String
-  mediaUrls       Json?
-  targetUrl       String?
-  disclosure      String?
-  status          String   @default("draft") // draft, approved, scheduled, posted, failed
-  scheduledAt     DateTime?
-  postedAt        DateTime?
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-}
-
-model DistributionRule {
-  id                    String   @id @default(cuid())
-  platform              String
-  locale                String
-  maxPostsPerDay         Int      @default(2)
-  requiresHumanApproval Boolean  @default(true)
-  allowDirectLink        Boolean  @default(true)
-  requireDisclosure      Boolean  @default(true)
-  enabled               Boolean  @default(true)
-}
-
-model DistributionResult {
-  id              String   @id @default(cuid())
-  assetId         String
-  platform        String
-  externalPostId  String?
-  externalUrl     String?
-  impressions     Int?
-  clicks          Int?
-  likes           Int?
-  comments        Int?
-  shares          Int?
-  error           String?
-  capturedAt      DateTime @default(now())
-}
-
-Rules:
-- Generate owned-channel post drafts only.
-- Do not auto-submit Reddit/community posts.
-- Reddit drafts are draft-only.
-- Direct affiliate links are disabled by default.
-- Prefer data/lab/guide URLs over review/affiliate URLs.
-- Human approval required by default.
-- Optional Postiz adapter may be added, disabled by default.
-
-Commands:
-- generate-distribution-assets --article-id <id>
-- approve-distribution-asset --asset-id <id>
-- schedule-distribution-asset --asset-id <id>
-- send-approved-distribution-assets
-
-Docs:
-- docs/posting-bot.md
-- docs/distribution-rules.md
-
-Acceptance:
-- Distribution assets can be generated as drafts.
-- No auto-community posting exists.
-- Owned-channel send adapters disabled unless configured.
-
-────────────────────────────────────
-PHASE 13 — OPTIONAL SAFE LINK-EARNING CRM
-────────────────────────────────────
-
-Add link earning, not backlink spam.
-
-Do NOT implement:
-- automatic backlink creation
-- comment posting
-- forum posting
-- profile links
-- directory spam
-- PBN
-- automated guest post buying
-
-Add models:
-
-model LinkableAsset {
-  id                String   @id @default(cuid())
-  articleId          String?
-  url               String   @unique
-  locale            String
-  topic             String
-  assetType         String // dataset, lab, guide, comparison, tool
-  title             String
-  summary           String
-  originalDataScore Float    @default(0)
-  linkableScore     Float    @default(0)
-  status            String   @default("active")
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
-}
-
-model LinkProspect {
-  id                String   @id @default(cuid())
-  domain            String
-  pageUrl           String
-  pageTitle         String?
-  locale            String?
-  topic             String?
-  opportunityType   String // data_citation, outdated_resource, broken_link_replacement, unlinked_mention, comparison_gap
-  suggestedAssetId  String?
-  suggestedAngle    String?
-  topicalRelevance  Float    @default(0)
-  pageQuality       Float    @default(0)
-  spamRisk          Float    @default(0)
-  prospectScore     Float    @default(0)
-  contactEmail      String?
-  contactFormUrl    String?
-  status            String   @default("new") // new, qualified, drafted, approved, sent, replied, linked, rejected, suppressed
-  discoveredAt      DateTime @default(now())
-  lastContactedAt   DateTime?
-  notes             String?
-}
-
-model OutreachCampaign {
-  id              String   @id @default(cuid())
-  name            String
-  assetId         String
-  locale          String
-  status          String   @default("draft")
-  dailySendLimit  Int      @default(10)
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-}
-
-model OutreachMessage {
-  id              String   @id @default(cuid())
-  campaignId      String
-  prospectId      String
-  subject         String
-  body            String
-  status          String   @default("draft") // draft, approved, sent, replied, bounced, opted_out
-  approvedByHuman Boolean  @default(false)
-  sentAt          DateTime?
-  repliedAt       DateTime?
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-}
-
-model SuppressionEntry {
-  id              String   @id @default(cuid())
-  email           String?
-  domain          String?
-  reason          String
-  createdAt       DateTime @default(now())
-}
-
-Rules:
-- Linkable assets are data/lab/methodology/guide pages, not thin affiliate review pages.
-- Outreach drafts require human approval.
-- Email sending disabled by default unless SMTP configured.
-- Include suppression list.
-- Include opt-out fields.
-- No optimized anchor text demands.
-- No paid dofollow language.
-- No spam-risk domains.
-
-Commands:
-- score-linkable-assets
-- import-link-prospects --file data/seeds/link-prospects.csv
-- score-link-prospects
-- draft-outreach
-- approve-outreach-message
-- send-approved-outreach
-
-Docs:
-- docs/link-earning-bot.md
-- docs/outreach-compliance.md
-- docs/anti-spam-rules.md
-
-Acceptance:
-- Can create linkable assets.
-- Can import prospects from CSV.
-- Can score prospects.
-- Can draft outreach.
-- Cannot send without human approval.
-- Does not create backlinks automatically.
-
-────────────────────────────────────
-PHASE 14 — SEARCH CONSOLE / REFRESH LOOP EXPANSION
-────────────────────────────────────
-
-Keep existing Search Console feedback worker.
-Extend it to support:
-- new ArticleTypes,
-- trend pages,
-- ingredient pages,
-- buyer guides,
-- offer placement refresh suggestions,
-- localization gaps,
-- health/compliance warnings.
-
-Add to PageRefreshSuggestion actions:
-- missing section suggestions,
-- title/meta candidate,
-- internal link candidates,
-- offer replacement candidates,
-- localization improvement candidates,
-- health claim risk if relevant.
-
-Do not auto-apply refresh.
-Create drafts or suggestions only.
-Admin can mark:
-- open
-- planned
-- applied
-- dismissed
-
-Acceptance:
-- Existing suggest-refreshes still works.
-- New article types have meaningful refresh suggestions.
-- Suggestions do not auto-publish.
-
-────────────────────────────────────
-PHASE 15 — SEEDS AND SAMPLE DATA
-────────────────────────────────────
-
-Add seed/sample data so the repo works locally without external credentials.
-
-Add:
-data/seeds/trend-signals.csv
-data/seeds/offers.csv
-data/seeds/merchants.csv
-data/seeds/link-prospects.csv
-data/seeds/distribution-rules.csv
-
-Sample merchants:
-- AliExpress
-- iHerb
-
-Sample topics:
-- aliexpress charger fake watts
-- real capacity power bank
-- magnesium sleep supplement
-- probiotic gut health supplement
-- travel adapter import checklist
-- desk setup gadgets
-
-Sample articles:
-- en trend article
-- es localized trend article
-- pt-br localized trend article
-- en ingredient guide with iHerb health disclaimer
-- en buyer guide with AliExpress offers
-- en deal_watch page with buy/wait/avoid logic
-
-Sample constraints:
-- At least one iHerb page should be blocked until HealthClaimGuard passes.
-- At least one translated page should be noindex due to low localization depth.
-- At least one trend page should pass to pending but not index.
-- At least one product evidence page should remain indexable.
-
-Acceptance:
-- Local build works with sample content.
-- DB seed works.
-- Sample admin pages show meaningful rows.
-
-────────────────────────────────────
-PHASE 16 — ENVIRONMENT VARIABLES
-────────────────────────────────────
-
-Update .env.example with:
-
-# Site
-NEXT_PUBLIC_SITE_URL=
-CONTENT_SOURCE=sample
-ADMIN_TOKEN=
-PREVIEW_TOKEN=
-
-# Database
-DATABASE_URL=
-
-# AliExpress
-ALIEXPRESS_APP_KEY=
-ALIEXPRESS_APP_SECRET=
-ALIEXPRESS_TRACKING_ID=
-ALIEXPRESS_API_BASE_URL=
-ALIEXPRESS_SIGN_METHOD=
-
-# iHerb / merchant feeds
-IHERB_AFFILIATE_ID=
-IHERB_FEED_URL=
-IHERB_API_KEY=
-
-# LLM
-LLM_PROVIDER=dry-run
-OPENAI_API_KEY=
-OPENAI_MODEL=
-GEMINI_API_KEY=
-GEMINI_MODEL=
-ANTHROPIC_API_KEY=
-ANTHROPIC_MODEL=
-OLLAMA_BASE_URL=
-OLLAMA_MODEL=
-
-# Search Console
-GOOGLE_APPLICATION_CREDENTIALS=
-GOOGLE_SEARCH_CONSOLE_SITE_URL=
-
-# Storage
-LAB_EVIDENCE_STORAGE_DRIVER=local
-CLOUDFLARE_R2_ACCESS_KEY_ID=
-CLOUDFLARE_R2_SECRET_ACCESS_KEY=
-CLOUDFLARE_R2_BUCKET=
-CLOUDFLARE_R2_PUBLIC_URL=
-S3_ACCESS_KEY_ID=
-S3_SECRET_ACCESS_KEY=
-S3_BUCKET=
-S3_PUBLIC_URL=
-
-# Distribution optional
-POSTIZ_API_URL=
-POSTIZ_API_KEY=
-ENABLE_DISTRIBUTION_SEND=false
-
-# Outreach optional
-SMTP_HOST=
-SMTP_PORT=
-SMTP_USER=
-SMTP_PASS=
-OUTREACH_SENDER_EMAIL=
-OUTREACH_PHYSICAL_ADDRESS=
-ENABLE_OUTREACH_SEND=false
-
-# Safety
-ALLOW_UNSAFE_AFFILIATE_TARGET_REDIRECT=false
-
-────────────────────────────────────
-PHASE 17 — PACKAGE SCRIPTS
-────────────────────────────────────
-
-Update root package.json scripts:
-
-Keep existing:
-- dev
-- build
-- typecheck
-- seo:validate
-- db:generate
-- db:migrate
-- db:seed
-- db:admin
-- worker
-- worker:pipeline
-
-Add:
-- trend:import
+- enabled
+- reliabilityTier
+- collectionMode
+- configJson
+- lastCollectedAt
+
+TrendSignal:
+- id
+- sourceId
+- market
+- language
+- country
+- rawKeyword
+- normalizedKeyword
+- topicRaw
+- categoryGuess
+- url
+- observedAt
+- sourceRank
+- sourceVolumeBucket
+- relativeGrowth
+- velocityScore
+- freshnessScore
+- commercialHintScore
+- evidenceHintScore
+- localeSpecificityScore
+- rawJson
+
+TrendCluster:
+- id
+- market
+- language
+- canonicalTopic
+- slug
+- category
+- detectedAt
+- status
+- signalCount
+- countriesSeenJson
+- relatedKeywordsJson
+- score
+- scoreBreakdownJson
+
+TrendKeyword:
+- id
+- clusterId
+- market
+- language
+- keyword
+- searchIntentGuess
+- priorityScore
+- serpStatus
+- status
+
+TrendSource types:
+- manual_csv
+- google_trends_export
+- google_trending_now_export
+- search_console
+- google_news_rss
+- youtube_data_api_optional
+- pinterest_optional
+- reddit_optional_disabled
+- merchant_signal_manual
+- internal_affiliate_clicks
+
+Important:
+Google Trends is relative and sampled. Do not treat it as absolute search volume.
+Store normalized relative values, not fake absolute volume.
+The engine must support manual exports and CSV imports before any external API.
+
+Add worker commands:
+- trend:init-markets
+- trend:import-signals --file data/seeds/trend-signals.csv
+- trend:collect --market us --source manual_csv
+- trend:normalize
 - trend:cluster
 - trend:score
-- brief:generate
-- offers:match
-- publishing:gate
-- localization:score
-- affiliate:audit
-- compliance:audit
-- distribution:generate
-- links:assets:score
-- links:prospects:score
+- trend:report --market us
+- trend:generate-keywords --cluster-id <id>
 
-Scripts should call worker CLI or TS validators.
+Trend scoring formula:
+trend_score =
+  velocityScore * 0.22
++ sourceCorroborationScore * 0.18
++ marketSpecificityScore * 0.16
++ contentOpportunityScore * 0.16
++ commercialHintScore * 0.10
++ evidenceHintScore * 0.10
++ freshnessScore * 0.08
+- noisePenalty
+- compliancePenalty
+
+Trend status:
+- raw
+- normalized
+- clustered
+- scored
+- keyword_ready
+- serp_pending
+- brief_pending
+- drafted
+- testing
+- rejected
+
+Important behavior:
+- A topic can trend in one country and not another.
+- Do not force all markets to write the same article.
+- Cross-market trend map should identify:
+  - local-only trend
+  - regional trend
+  - global trend
+  - lagging market opportunity
+  - cross-language synonym cluster
+
+Add sample data:
+data/seeds/trend-signals.csv
+
+Must include:
+- US magnesium sleep trend
+- Spain USB charger trend
+- Brazil power bank real capacity trend
+- Japan compact desk gadget trend
+- Korea gut health trend
+- Germany travel adapter trend
+- Mexico budget smartwatch trend
+- France beauty ingredient trend
+
+Add docs:
+- docs/trend-engine-v1.md
+- docs/trend-signal-schema.md
+- docs/trend-scoring.md
+- docs/cross-market-trend-map.md
 
 Acceptance:
-- Scripts do not fail if external credentials are missing; they should use sample/disabled mode or print a clear message.
-- Core build/typecheck/seo validate must pass.
+- Import trend signals by market.
+- Cluster by market.
+- Score by market.
+- Produce a cross-market report.
+- No offer matching runs in this phase.
 
 ────────────────────────────────────
-PHASE 18 — DOCUMENTATION
+PHASE 3 — SERP / TOP-RANKING CONTENT INTELLIGENCE
 ────────────────────────────────────
 
-Add or update:
+Goal:
+For each trending keyword, inspect what top-ranking blogs/pages are doing.
 
-- docs/implementation-audit.md
-- docs/publishing-state.md
-- docs/admin-publish-gate.md
-- docs/merchant-offer-engine.md
-- docs/affiliate-redirect-safety.md
-- docs/trend-engine.md
-- docs/multilingual-publishing.md
-- docs/iherb-compliance.md
-- docs/offer-matching.md
-- docs/posting-bot.md
-- docs/link-earning-bot.md
-- docs/outreach-compliance.md
-- docs/anti-spam-rules.md
-- docs/operations-runbook.md
-- docs/next-tasks.md
+Important:
+Do not implement unauthorized Google scraping.
+Build a provider-based SERP adapter.
 
-Update README with:
-1. What the system is now.
-2. How to run local sample mode.
-3. How to run database mode.
-4. How to import trend signals.
-5. How to generate briefs.
-6. How to match offers.
-7. How to generate multilingual drafts.
-8. How to run quality/compliance gates.
-9. How to approve publish/index.
-10. How to safely handle affiliate redirects.
-11. What the system intentionally does not automate.
+SERP provider modes:
+1. manual_csv:
+   - human exports top results into CSV
+   - always available
+2. google_programmable_search_existing_customer:
+   - disabled by default
+   - use only if credentials exist
+3. third_party_serp_api:
+   - disabled by default
+   - adapter contract only
+4. browser_research_manual:
+   - human saves page URLs and snippets
+5. search_console_existing_pages:
+   - for our own pages only
+
+Do not use raw Google HTML scraping.
+Do not use proxy scraping.
+Do not use CAPTCHA bypass.
+Do not build rank-checking spam.
+
+Add models:
+
+SerpSnapshot:
+- id
+- market
+- language
+- country
+- keywordId
+- keyword
+- provider
+- collectedAt
+- status
+- rawJson
+- topResultCount
+
+SerpResult:
+- id
+- snapshotId
+- rank
+- url
+- domain
+- title
+- snippet
+- resultType
+- dateHint
+- isForum
+- isVideo
+- isEcommerce
+- isAffiliateLikely
+- isPublisher
+- languageGuess
+- contentFetchedStatus
+- contentAnalysisStatus
+
+CompetitorContentAnalysis:
+- id
+- serpResultId
+- market
+- language
+- keyword
+- pageTitle
+- h1
+- headingsJson
+- wordCountEstimate
+- contentTypeGuess
+- intentServed
+- monetizationPattern
+- affiliatePattern
+- comparisonTablePresent
+- productLinksPresent
+- originalDataPresent
+- freshnessSignalsJson
+- contentAnglesJson
+- missingAnglesJson
+- strengthsJson
+- weaknessesJson
+- extractionStatus
+- analyzedAt
+
+SerpKeywordOpportunity:
+- id
+- keywordId
+- market
+- language
+- opportunityScore
+- dominantIntent
+- dominantContentTypesJson
+- topPatternsJson
+- contentGapJson
+- recommendedAngle
+- recommendedArticleType
+- shouldWrite
+- reason
+
+Add worker commands:
+- serp:import-results --file data/seeds/serp-results.csv
+- serp:collect --keyword-id <id> --provider manual_csv
+- serp:fetch-pages --snapshot-id <id>
+- serp:analyze-pages --snapshot-id <id>
+- serp:summarize-opportunity --keyword-id <id>
+- serp:report --market us
+
+Content fetch rules:
+- Respect robots where applicable.
+- Store only extracted summary, headings, snippets, analysis.
+- Do not store full copyrighted article bodies.
+- Do not use fetched content for direct rewriting.
+- Use top pages to understand structure, intent, coverage, and gaps.
+- Limit stored excerpts.
+- Keep source URL and analysis metadata.
+
+Analysis should identify:
+- title pattern
+- intro promise
+- sections used
+- comparison table or not
+- product cards or not
+- whether original testing/data exists
+- freshness/date usage
+- affiliate disclosure presence
+- CTA pattern
+- content depth
+- missing angle
+- what we can do better
+
+SERP opportunity scoring:
+opportunity_score =
+  trend_score * 0.20
++ serp_gap_score * 0.25
++ weak_competitor_score * 0.15
++ content_depth_opportunity * 0.15
++ market_fit_score * 0.10
++ monetization_later_fit * 0.05
++ freshness_gap_score * 0.10
+
+Important:
+This phase does NOT generate affiliate links.
+It only determines what kind of article to write.
+
+Add sample:
+data/seeds/serp-results.csv
+
+Include examples for:
+- US magnesium sleep
+- ES cargador usb c
+- BR power bank capacidade real
+- JP desk gadget
+- KR gut health
+
+Add docs:
+- docs/serp-intelligence.md
+- docs/competitor-content-analysis.md
+- docs/serp-provider-contract.md
+- docs/content-extraction-policy.md
+
+Acceptance:
+- Manual CSV SERP import works.
+- SERP pages can be summarized/analyzed.
+- Competitor analysis outputs structured strengths/weaknesses.
+- Keyword opportunity report recommends article strategy.
+- No affiliate product matching is done here.
 
 ────────────────────────────────────
-PHASE 19 — ACCEPTANCE TEST / FINAL REPORT
+PHASE 4 — CONTENT STRATEGY AND TEST POSTING
 ────────────────────────────────────
 
-At the end, produce a final report in:
+Goal:
+Use Trend + SERP intelligence to decide what to write, then create a test post on the website.
 
-docs/final-implementation-report.md
+Add models:
+
+ContentStrategy:
+- id
+- keywordId
+- clusterId
+- market
+- language
+- selectedArticleType
+- recommendedAngle
+- titleStrategy
+- introStrategy
+- sectionPlanJson
+- differentiationPlanJson
+- evidenceNeededJson
+- competitorPatternsJson
+- contentGapJson
+- monetizationDeferred Boolean
+- status
+
+TestArticle:
+- id
+- strategyId
+- articleId
+- market
+- language
+- status
+- noindexReason
+- createdAt
+- updatedAt
+
+Content strategy rules:
+- The LLM must not simply copy competitor structures.
+- It should use competitor analysis to identify:
+  - what users expect
+  - what sections are table stakes
+  - what gaps exist
+  - how we can produce a better article
+- Monetization is deferred.
+- Product links are not inserted in the initial test article.
+- Initial test post should be informational/commercial-intent aware, but not monetized yet.
+- Initial test post may include placeholders:
+  - “Product candidate analysis pending”
+  - “Deal/offer links will be added after verification”
+  - hidden from public if needed.
+
+Article states:
+- draft
+- test_pending
+- test_published_noindex
+- test_published_index_candidate
+- performance_monitoring
+- needs_product_analysis
+- approved_for_monetization
+- rejected
+
+Add routes:
+- /[market]/[language]/posts/[slug]
+- /[market]/[language]/briefs/[slug]
+
+Add worker commands:
+- strategy:create --keyword-id <id>
+- strategy:generate-brief --strategy-id <id>
+- post:generate-test --strategy-id <id>
+- post:publish-test --article-id <id> --mode noindex
+- post:promote-index-candidate --article-id <id>
+
+Test posting:
+- default publishStatus=pending
+- default indexStatus=noindex or pending
+- can render preview/test page
+- can be moved to published/noindex for visual QA
+- human can approve index candidate later
+
+Do not insert affiliate links in this phase.
+
+Add docs:
+- docs/content-strategy-engine.md
+- docs/test-posting-flow.md
+- docs/llm-writing-rules.md
+
+Acceptance:
+- A trend keyword can produce a ContentStrategy.
+- ContentStrategy can produce ContentBrief.
+- ContentBrief can produce TestArticle.
+- TestArticle can render on the site.
+- No affiliate links are inserted.
+
+────────────────────────────────────
+PHASE 5 — 18-MARKET EDITORIAL CALENDAR
+────────────────────────────────────
+
+Goal:
+Because trends differ by country, each market needs its own content queue.
+
+Add models:
+
+MarketEditorialCalendar:
+- id
+- market
+- language
+- weekStart
+- status
+- summaryJson
+
+EditorialSlot:
+- id
+- calendarId
+- date
+- priority
+- clusterId
+- keywordId
+- strategyId
+- articleId
+- status
+- reason
+
+Calendar logic:
+- Each market has independent queue.
+- Do not force same content globally.
+- Identify cross-market opportunities when a topic appears in multiple countries.
+- Identify lagging-market opportunities when a topic trends in one country and has early signal in another.
+- Avoid publishing too many unrelated topics in one market in a short time.
+- Maintain market-level topical balance.
+
+Market topical balance:
+- core categories per market
+- max unrelated trend posts per week
+- max health-sensitive posts per week
+- max deal posts per week
+- minimum evergreen/supporting posts per trend cluster
+
+Add worker commands:
+- calendar:build --market us
+- calendar:build-all
+- calendar:explain --market us
+- calendar:export
+
+Add admin:
+- /admin/market-calendars
+- /admin/market-calendars/[market]
+
+Add docs:
+- docs/market-editorial-calendar.md
+- docs/topical-balance-policy.md
+
+Acceptance:
+- Each of 18 markets has its own queue.
+- A US magnesium trend does not pollute Spain’s USB trend queue.
+- Global trend map can show both without mixing feeds.
+- Calendar produces publish candidates by market.
+
+────────────────────────────────────
+PHASE 6 — PERFORMANCE FEEDBACK LOOP
+────────────────────────────────────
+
+Goal:
+After test posting, monitor whether the article deserves more investment.
+
+Use:
+- Search Console
+- GA4 if configured
+- internal clicks
+- article impressions/clicks
+- query expansions
+
+Add models if needed:
+
+ArticlePerformanceSnapshot:
+- id
+- articleId
+- market
+- language
+- dateStart
+- dateEnd
+- impressions
+- clicks
+- ctr
+- avgPosition
+- queriesJson
+- countriesJson
+- devicesJson
+- capturedAt
+
+ArticleNextAction:
+- id
+- articleId
+- actionType
+- reason
+- priority
+- payloadJson
+- status
+
+Next actions:
+- expand section
+- rewrite title/meta
+- add comparison table
+- add FAQ-like direct answer section, but do not rely on FAQ rich result
+- create supporting article
+- create localized variant
+- request product candidate analysis
+- hold
+- reject
+
+Add worker commands:
+- performance:import-search-console
+- performance:snapshot
+- performance:recommend-actions
+- performance:report --market us
+
+Acceptance:
+- Test article can receive performance data.
+- System can recommend whether to invest more.
+- Product candidate analysis should only trigger when article passes minimum performance or editorial approval.
+
+────────────────────────────────────
+PHASE 7 — PRODUCT CANDIDATE DISCOVERY AND ANALYSIS BLOCK
+────────────────────────────────────
+
+Goal:
+After a trend article exists, identify possible related products, but do not insert monetized links yet.
+
+This is NOT full affiliate API integration.
+Use manual CSV/sample feeds first.
+
+Add models:
+
+ProductCandidate:
+- id
+- articleId
+- market
+- language
+- sourceMerchant
+- sourceMode
+- title
+- productUrl
+- candidateUrl
+- category
+- priceText
+- currency
+- imageUrl
+- reason
+- relevanceScore
+- riskScore
+- evidenceNeededJson
+- status
+
+ProductCandidateAnalysis:
+- id
+- articleId
+- market
+- language
+- candidatesJson
+- comparisonJson
+- prosConsJson
+- riskNotesJson
+- recommendedUseJson
+- monetizationReadiness
+- status
+
+Flow:
+Article -> ProductCandidateDiscovery -> ProductCandidateAnalysisBlock -> Human review -> optional placement later.
+
+Sources:
+- manual CSV feeds
+- existing Product table
+- sample merchant feeds
+- future merchant adapters documented but disabled
+
+Merchant source modes:
+- aliexpress_api_later
+- temu_manual_later
+- amazon_api_later
+- iherb_feed_later
+- manual_csv_now
+- existing_product_db_now
+
+Product candidate scoring:
+candidate_score =
+  topic_relevance * 0.30
++ user_problem_fit * 0.20
++ market_availability * 0.15
++ comparison_value * 0.15
++ evidence_availability * 0.10
++ price_or_value_hint * 0.05
+- risk_penalty * 0.05
+
+Risk scoring:
+- health claim risk
+- counterfeit/IP risk
+- safety risk
+- price freshness risk
+- unsupported review claim risk
+- merchant policy risk
+
+Add worker commands:
+- products:import-candidates --file data/seeds/product-candidates.csv
+- products:discover-candidates --article-id <id>
+- products:analyze-candidates --article-id <id>
+- products:build-analysis-block --article-id <id>
+
+Analysis block should generate:
+- “Relevant product candidates”
+- “Why these products match the article”
+- “What to verify before linking”
+- “Comparison table draft”
+- “Risk notes”
+- “Do not link yet” status
+
+Add docs:
+- docs/product-candidate-discovery.md
+- docs/product-analysis-block.md
+
+Acceptance:
+- Product candidates can be discovered from manual CSV.
+- Article can get candidate analysis block.
+- No monetized link is added automatically.
+- Human approval is required for link insertion.
+
+────────────────────────────────────
+PHASE 8 — AFFILIATE API DOCUMENTATION ONLY
+────────────────────────────────────
+
+Goal:
+Document how AliExpress, Temu, Amazon, and iHerb links will be attached later.
+Do NOT implement full live API integrations now.
+
+Create docs/affiliate-api-playbook/ with:
+
+1. aliexpress.md
+Must document:
+- required credentials
+- official API/portal boundary
+- product search
+- product details
+- affiliate link generation
+- price snapshot rules
+- variant trap requirements
+- prohibited scraping behavior
+- data fields needed for ProductCandidate
+- future adapter interface
+
+2. temu.md
+Must document:
+- manual-offer-only until official API/feed docs are verified
+- required admin approval
+- no automatic crawling
+- no automatic price/availability unless official source exists
+- future adapter interface
+
+3. amazon.md
+Must document:
+- Amazon Associates requirements
+- Creators API / PA-API transition considerations
+- price/availability timestamp/disclaimer requirements
+- review/rating display restrictions
+- image/content usage restrictions
+- future adapter interface
+- do not implement now
+
+4. iherb.md
+Must document:
+- affiliate networks such as Partnerize/Impact/CJ/Awin depending on approval
+- deeplink workflow
+- feed requirements
+- supplement/health disclaimer requirements
+- HealthClaimGuard requirements
+- future adapter interface
+- do not implement now
+
+5. merchant-adapter-contract.md
+Define interface:
+
+MerchantAdapter:
+- validateCredentials()
+- searchCandidates(query, market, language)
+- normalizeCandidate(raw)
+- buildAffiliateUrl(candidate, tracking)
+- refreshOffer(candidateId)
+- validatePolicy(candidate)
+- getRequiredDisclosures()
+
+But implement only:
+- ManualCsvMerchantAdapter
+- ExistingProductDbAdapter
+
+All live adapters:
+- AliExpressLiveAdapter
+- TemuLiveAdapter
+- AmazonLiveAdapter
+- IHerbLiveAdapter
+
+must be documentation-only or disabled placeholders with clear “not implemented” errors.
+
+Acceptance:
+- No live API integration is required.
+- No affiliate link is inserted automatically.
+- The future integration path is very detailed and clear.
+
+────────────────────────────────────
+PHASE 9 — HUMAN APPROVAL FOR MONETIZED LINK INSERTION
+────────────────────────────────────
+
+Goal:
+Only after product candidate analysis exists, a human can approve monetized link insertion.
+
+Add models or adapt existing:
+
+MonetizationReview:
+- id
+- articleId
+- market
+- language
+- productAnalysisId
+- status
+- reviewerNotes
+- approvedCandidateIdsJson
+- rejectedCandidateIdsJson
+- createdAt
+- updatedAt
+
+MonetizedPlacementDraft:
+- id
+- articleId
+- candidateId
+- merchant
+- placementType
+- anchorText
+- disclosureText
+- rel
+- status
+- createdAt
+
+Flow:
+ProductCandidateAnalysisBlock
+  -> MonetizationReview pending
+  -> human approves candidates
+  -> MonetizedPlacementDraft created
+  -> article revision generated
+  -> human final approval
+  -> links inserted
+
+Do not bypass this.
+
+Add admin:
+- /admin/monetization-reviews
+- /admin/monetization-reviews/[id]
+
+Add worker commands:
+- monetization:create-review --article-id <id>
+- monetization:draft-placements --review-id <id>
+- monetization:apply-approved --review-id <id>
+
+Acceptance:
+- Human approval is required.
+- Links are not inserted directly from product discovery.
+- Article revision can include approved links.
+- rel="sponsored nofollow" enforced.
+
+────────────────────────────────────
+PHASE 10 — DISABLE OR DOWNGRADE PREMATURE OLD FEATURES
+────────────────────────────────────
+
+The current repo already includes offer matching, distribution drafts, outreach drafts, and link earning. These are too far ahead for the current priority.
+
+Do not delete them if they are build-safe.
+But move them behind feature flags and mark as later phases.
+
+Feature flags:
+- ENABLE_OFFER_MATCHING=false
+- ENABLE_DISTRIBUTION_DRAFTS=false
+- ENABLE_LINK_EARNING=false
+- ENABLE_LIVE_AFFILIATE_APIS=false
+- ENABLE_PRODUCT_CANDIDATE_DISCOVERY=true
+- ENABLE_SERP_INTELLIGENCE=true
+- ENABLE_TREND_ENGINE=true
+
+Rules:
+- Default pipeline should run:
+  trend import
+  trend cluster
+  trend score
+  keyword generation
+  SERP import/analyze
+  strategy create
+  test article generate
+
+Default pipeline should NOT run:
+  affiliate offer matching
+  distribution drafts
+  outreach drafts
+  live merchant APIs
+
+Update worker:pipeline accordingly.
+
+Add docs:
+- docs/feature-flags.md
+- docs/pipeline-priority.md
+
+Acceptance:
+- Running default pipeline does not jump to monetization.
+- Monetization phases are opt-in and later.
+
+────────────────────────────────────
+PHASE 11 — LLM CONTENT STRATEGY RULES
+────────────────────────────────────
+
+Add a strong prompt/rules layer for LLM article generation.
+
+LLM must receive:
+- Market config
+- Trend cluster
+- Trend keyword
+- SERP result analysis
+- Competitor patterns
+- Missing angles
+- Intended article type
+- Required sections
+- Forbidden claims
+- Monetization state = deferred
+
+LLM must output:
+- title
+- h1
+- meta description
+- article outline
+- intro
+- sections
+- direct answer
+- competitor differentiation note
+- evidence needed
+- product candidate needs, but no links
+- internal link suggestions
+- localization notes
+- status reason
+
+LLM must not:
+- copy competitor wording
+- invent facts
+- invent product prices
+- insert affiliate links
+- make medical claims
+- claim “we tested” without evidence
+- claim “best” without comparison
+- pretend personal experience
+
+Add:
+- prompts/trend-content-strategy/system.md
+- prompts/trend-content-strategy/user-template.md
+- prompts/serp-analysis/system.md
+- prompts/product-candidate-analysis/system.md
+
+Add docs:
+- docs/llm-strategy-prompts.md
+
+Acceptance:
+- Prompt templates are file-based, not hard-coded only.
+- LLM output is structured JSON + markdown draft.
+- No links are inserted at this stage.
+
+────────────────────────────────────
+PHASE 12 — TEST DATA AND END-TO-END DEMO
+────────────────────────────────────
+
+Create an end-to-end sample for 5 markets:
+
+1. US / English
+Topic: magnesium sleep
+Flow:
+trend -> SERP analysis -> content strategy -> test post -> product candidate analysis pending
+
+2. Spain / Spanish
+Topic: USB-C charger
+Flow:
+trend -> SERP analysis -> content strategy -> test post
+
+3. Brazil / Portuguese
+Topic: real capacity power bank
+Flow:
+trend -> SERP analysis -> content strategy -> test post
+
+4. Japan / Japanese
+Topic: compact desk gadget
+Flow:
+trend -> SERP analysis -> content strategy -> test post
+
+5. Korea / Korean
+Topic: gut health
+Flow:
+trend -> SERP analysis -> content strategy -> test post
+
+Add sample seed files:
+- data/seeds/trend-signals.csv
+- data/seeds/serp-results.csv
+- data/seeds/competitor-page-summaries.csv
+- data/seeds/product-candidates.csv
+
+Add output examples:
+- data/exports/trend_report.json
+- data/exports/serp_opportunity_report.json
+- data/exports/content_strategies.json
+- data/exports/test_articles.json
+- data/exports/product_candidate_analysis.json
+
+Acceptance:
+- One command can run sample trend-to-test-post pipeline.
+- The output clearly shows different markets have different trends.
+- No affiliate API is required.
+- No monetized link insertion is required.
+
+────────────────────────────────────
+PHASE 13 — COMMANDS
+────────────────────────────────────
+
+Add or update package scripts:
+
+Trend:
+- pnpm trend:import
+- pnpm trend:cluster
+- pnpm trend:score
+- pnpm trend:report
+
+SERP:
+- pnpm serp:import
+- pnpm serp:analyze
+- pnpm serp:report
+
+Strategy/Post:
+- pnpm strategy:create
+- pnpm post:generate-test
+- pnpm post:publish-test
+
+Calendar:
+- pnpm calendar:build
+- pnpm calendar:report
+
+Performance:
+- pnpm performance:import
+- pnpm performance:recommend
+
+Product candidates:
+- pnpm products:import-candidates
+- pnpm products:analyze-candidates
+
+Monetization later:
+- pnpm monetization:create-review
+- pnpm monetization:draft-placements
+- pnpm monetization:apply-approved
+
+Main pipeline:
+- pnpm pipeline:trend-to-post
+  Must run only:
+  trend import/cluster/score
+  keyword generation
+  SERP import/analyze
+  strategy generation
+  test article generation
+
+- pnpm pipeline:post-to-product-analysis
+  Must run:
+  product candidate discovery
+  product candidate analysis block
+
+- pnpm pipeline:monetization-review
+  Must require manual review files/admin approval
+
+Acceptance:
+- pnpm worker:pipeline no longer jumps into offers/outreach by default.
+- New pipeline names reflect actual priority.
+
+────────────────────────────────────
+PHASE 14 — DOCUMENTATION REQUIREMENTS
+────────────────────────────────────
+
+Create or update:
+
+docs/refactor-audit/current-state.md
+docs/phase-plan.md
+docs/market-routing.md
+docs/one-domain-vs-multiple-domains.md
+docs/trend-engine-v1.md
+docs/trend-signal-schema.md
+docs/trend-scoring.md
+docs/cross-market-trend-map.md
+docs/serp-intelligence.md
+docs/serp-provider-contract.md
+docs/competitor-content-analysis.md
+docs/content-extraction-policy.md
+docs/content-strategy-engine.md
+docs/test-posting-flow.md
+docs/market-editorial-calendar.md
+docs/product-candidate-discovery.md
+docs/product-analysis-block.md
+docs/affiliate-api-playbook/aliexpress.md
+docs/affiliate-api-playbook/temu.md
+docs/affiliate-api-playbook/amazon.md
+docs/affiliate-api-playbook/iherb.md
+docs/affiliate-api-playbook/merchant-adapter-contract.md
+docs/monetization-human-approval.md
+docs/feature-flags.md
+docs/pipeline-priority.md
+docs/operations-runbook.md
+docs/final-refactor-report.md
+
+README must be updated to explain the new priority:
+1. Trend Engine
+2. SERP Intelligence
+3. Test Posting
+4. Product Candidate Analysis
+5. Human-approved monetization
+6. Live affiliate APIs later
+
+Do not describe this as an affiliate auto-blog first.
+Describe it as a global trend-to-content research and publishing system.
+
+────────────────────────────────────
+FINAL ACCEPTANCE
+────────────────────────────────────
+
+At the end, write:
+
+docs/final-refactor-report.md
 
 It must include:
-1. Files changed.
-2. Models added.
-3. Routes added.
-4. Worker commands added.
-5. Validators added.
-6. Admin pages added.
-7. Safety rules enforced.
-8. Remaining limitations.
-9. Exact commands run.
-10. Results of:
-   - pnpm typecheck
-   - pnpm seo:validate
-   - pnpm build
+1. What was kept from the previous architecture.
+2. What was downgraded behind feature flags.
+3. What was refactored around trend-first flow.
+4. New market routing structure.
+5. New trend engine flow.
+6. New SERP intelligence flow.
+7. New content strategy/test posting flow.
+8. New product candidate analysis flow.
+9. What affiliate API documentation was added.
+10. What remains intentionally unimplemented.
+11. Commands added.
+12. Sample end-to-end run.
+13. Tests/checks run.
 
-Also include:
-- data/exports/system_capabilities.json
+Also write:
 
-This JSON should contain:
+data/exports/refactor_capabilities.json
+
+With:
 {
-  "product_evidence_core": true,
-  "trend_engine": true,
-  "merchant_offer_engine": true,
-  "iherb_compliance_gate": true,
-  "multilingual_publishing": true,
-  "safe_affiliate_redirects": true,
-  "search_console_refresh_loop": true,
-  "owned_channel_distribution_drafts": true,
-  "link_earning_crm_drafts": true,
-  "blackhat_backlink_automation": false,
+  "one_domain_market_silos": true,
+  "markets_supported_initial": 18,
+  "trend_engine_first": true,
+  "serp_intelligence_second": true,
+  "test_posting_third": true,
+  "product_candidate_analysis_fourth": true,
+  "affiliate_api_live_integration": false,
+  "affiliate_api_documentation": true,
+  "human_approved_monetization": true,
   "community_auto_posting": false,
-  "google_indexing_api_for_articles": false
+  "google_raw_serp_scraping": false,
+  "default_pipeline_runs_monetization": false
 }
 
-────────────────────────────────────
-IMPORTANT IMPLEMENTATION STYLE
-────────────────────────────────────
+Run or document:
+- pnpm typecheck
+- pnpm seo:validate
+- pnpm build
 
-- Preserve existing names and folder style when possible.
-- Use TypeScript types strictly.
-- Do not silently weaken validators.
-- Prefer small, explicit functions over giant files.
-- Keep sample mode working without Postgres.
-- Keep DB mode working with Prisma.
-- All new external adapters must be disabled by default.
-- All risky actions require approval state.
-- Add clear errors when credentials are missing.
-- Do not add dependencies unless necessary.
-- Do not invent fake API behavior as if production-ready.
-- For disabled adapters, write sample/manual CSV path.
+If build fails due to pre-existing repo issues, document exact failures and fix them if reasonable.
 
-Now implement all phases in one comprehensive patch.
+Do not stop after docs only.
+Implement the architecture changes needed for Phase 1, Phase 2, Phase 3, and Phase 4 at minimum.
+For later phases, implement models/docs/contracts and keep live APIs disabled.
