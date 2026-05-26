@@ -13,6 +13,12 @@ from workers.python.collectors.aliexpress_api import search_aliexpress_products
 from workers.python.collectors.manual_seed_import import seed_products
 from workers.python.collectors.price_snapshot import snapshot_prices
 from workers.python.collectors.search_console import import_search_console
+from workers.python.distribution.owned_channel import (
+    approve_distribution_asset,
+    generate_distribution_assets,
+    schedule_distribution_asset,
+    send_approved_distribution_assets,
+)
 from workers.python.evidence.evidence_pack_builder import build_evidence_pack
 from workers.python.intelligence.locale_risk_matrix import build_locale_risk
 from workers.python.intelligence.price_truth_engine import build_price_truth
@@ -29,6 +35,14 @@ from workers.python.intelligence.trend_topic_engine import (
 )
 from workers.python.intelligence.variant_trap_detector import detect_variant_traps
 from workers.python.intelligence.verified_claim_builder import build_verified_claims
+from workers.python.outreach.link_earning import (
+    approve_outreach_message,
+    draft_outreach,
+    import_link_prospects,
+    score_link_prospects,
+    score_linkable_assets,
+    send_approved_outreach,
+)
 from workers.python.pipeline import run_worker_pipeline
 from workers.python.validators.quality_gate import run_quality_gate
 from workers.python.validators.publishing_gate import run_topic_publishing_gate
@@ -98,6 +112,22 @@ def main() -> None:
     localize_existing.add_argument("--source-locale", default="en")
     subcommands.add_parser("score-localization")
     subcommands.add_parser("sync-hreflang-groups")
+    distribution_assets = subcommands.add_parser("generate-distribution-assets")
+    distribution_assets.add_argument("--article-id")
+    approve_distribution = subcommands.add_parser("approve-distribution-asset")
+    approve_distribution.add_argument("--asset-id", required=True)
+    schedule_distribution = subcommands.add_parser("schedule-distribution-asset")
+    schedule_distribution.add_argument("--asset-id", required=True)
+    schedule_distribution.add_argument("--scheduled-at")
+    subcommands.add_parser("send-approved-distribution-assets")
+    subcommands.add_parser("score-linkable-assets")
+    link_prospects = subcommands.add_parser("import-link-prospects")
+    link_prospects.add_argument("--file", default=str(DATA / "seeds" / "link-prospects.csv"))
+    subcommands.add_parser("score-link-prospects")
+    subcommands.add_parser("draft-outreach")
+    approve_outreach = subcommands.add_parser("approve-outreach-message")
+    approve_outreach.add_argument("--message-id", required=True)
+    subcommands.add_parser("send-approved-outreach")
     inventory = subcommands.add_parser("generate-url-inventory")
     inventory.add_argument("--file", default=str(DATA / "seeds" / "initial-url-plan.csv"))
 
@@ -179,6 +209,26 @@ def main() -> None:
         print(score_localization())
     elif args.command == "sync-hreflang-groups":
         print(sync_hreflang_groups())
+    elif args.command == "generate-distribution-assets":
+        print(generate_distribution_assets(args.article_id))
+    elif args.command == "approve-distribution-asset":
+        print(approve_distribution_asset(args.asset_id))
+    elif args.command == "schedule-distribution-asset":
+        print(schedule_distribution_asset(args.asset_id, args.scheduled_at))
+    elif args.command == "send-approved-distribution-assets":
+        print(send_approved_distribution_assets())
+    elif args.command == "score-linkable-assets":
+        print(score_linkable_assets())
+    elif args.command == "import-link-prospects":
+        print(import_link_prospects(Path(args.file)))
+    elif args.command == "score-link-prospects":
+        print(score_link_prospects())
+    elif args.command == "draft-outreach":
+        print(draft_outreach())
+    elif args.command == "approve-outreach-message":
+        print(approve_outreach_message(args.message_id))
+    elif args.command == "send-approved-outreach":
+        print(send_approved_outreach())
     elif args.command == "generate-url-inventory":
         print(generate_url_inventory(Path(args.file)))
     elif args.command == "build-evidence-pack":

@@ -9,6 +9,7 @@ from workers.python.common import DATA, ensure_dirs, write_json
 from workers.python.collectors.aliexpress_api import search_aliexpress_products
 from workers.python.collectors.manual_seed_import import seed_products
 from workers.python.collectors.search_console import import_search_console
+from workers.python.distribution.owned_channel import generate_distribution_assets
 from workers.python.evidence.evidence_pack_builder import build_evidence_pack
 from workers.python.intelligence.locale_risk_matrix import build_locale_risk
 from workers.python.intelligence.offer_matching import match_affiliate_offers
@@ -24,6 +25,7 @@ from workers.python.intelligence.trend_topic_engine import (
 )
 from workers.python.intelligence.variant_trap_detector import detect_variant_traps
 from workers.python.intelligence.verified_claim_builder import build_verified_claims
+from workers.python.outreach.link_earning import draft_outreach, import_link_prospects, score_link_prospects, score_linkable_assets
 from workers.python.collectors.price_snapshot import snapshot_prices
 from workers.python.validators.quality_gate import run_quality_gate
 from workers.python.validators.publishing_gate import run_topic_publishing_gate
@@ -95,6 +97,11 @@ def run_worker_pipeline(
             ("run-publishing-gate", run_topic_publishing_gate),
             ("score-localization", score_localization),
             ("sync-hreflang-groups", sync_hreflang_groups),
+            ("generate-distribution-assets", generate_distribution_assets),
+            ("score-linkable-assets", score_linkable_assets),
+            ("import-link-prospects", lambda: import_link_prospects(DATA / "seeds" / "link-prospects.csv")),
+            ("score-link-prospects", score_link_prospects),
+            ("draft-outreach", draft_outreach),
         ]
     )
 

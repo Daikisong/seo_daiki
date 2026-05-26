@@ -1,9 +1,8 @@
 # Next Tasks
 
-1. Phase 12-13: add safe owned-channel distribution drafts and link-earning CRM drafts with human approval.
-2. Phase 14: expand Search Console refresh suggestions for new article types, localization gaps, offer refreshes, and health warnings.
-3. Phase 15-19: add remaining seed files, scripts, docs, final report, and `data/exports/system_capabilities.json`.
-4. Environment task: connect a real Postgres database and run Prisma migration/seed once Docker or Postgres is available.
+1. Phase 14: expand Search Console refresh suggestions for new article types, localization gaps, offer refreshes, and health warnings.
+2. Phase 15-19: add remaining seed files, scripts, docs, final report, and `data/exports/system_capabilities.json`.
+3. Environment task: connect a real Postgres database and run Prisma migration/seed once Docker or Postgres is available.
 
 Completed:
 
@@ -17,3 +16,5 @@ Completed:
 - Phase 9: Topic article generation is split into brief, draft, localization, and publishing-gate modules; generated drafts start pending/noindex-safe.
 - Phase 10: The TypeScript quality gate now checks publish state, unsafe redirects, placement approval, merchant allowlists, localization depth, trend evidence, offer relevance, over-monetization, and health compliance.
 - Phase 11: Admin pages now cover trends, topics, briefs, publishing jobs, compliance, localization, merchant/offer editing, and audited status mutations.
+- Phase 12: Owned-channel distribution drafts now generate from article outputs, require human approval, and keep sending disabled by default.
+- Phase 13: Linkable asset scoring, prospect import/scoring, and outreach draft generation now exist without automatic backlink creation or email sending.

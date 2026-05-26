@@ -202,6 +202,8 @@ model Article {
   sourceTranslationGroups TranslationGroup[] @relation("TranslationGroupSourceArticle")
   translationVariants TranslationVariant[]
   publishingJobs PublishingJob[]
+  distributionAssets DistributionAsset[]
+  linkableAssets LinkableAsset[]
 
   @@unique([locale, slug, type])
   @@index([locale, type, indexStatus])
@@ -495,6 +497,164 @@ model PageRefreshSuggestion {
   updatedAt DateTime @updatedAt
 
   @@index([page, status])
+}
+
+model DistributionAsset {
+  id          String   @id @default(cuid())
+  articleId   String
+  article     Article  @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  locale      String
+  assetType   String
+  platform    String
+  title       String?
+  body        String
+  mediaUrls   Json?
+  targetUrl   String?
+  disclosure  String?
+  status      String   @default("draft")
+  scheduledAt DateTime?
+  postedAt    DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  results     DistributionResult[]
+
+  @@index([articleId, status])
+  @@index([platform, locale, status])
+}
+
+model DistributionRule {
+  id                    String   @id @default(cuid())
+  platform              String
+  locale                String
+  maxPostsPerDay         Int      @default(2)
+  requiresHumanApproval Boolean  @default(true)
+  allowDirectLink        Boolean  @default(true)
+  requireDisclosure      Boolean  @default(true)
+  enabled               Boolean  @default(true)
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  @@unique([platform, locale])
+  @@index([enabled, platform, locale])
+}
+
+model DistributionResult {
+  id             String   @id @default(cuid())
+  assetId        String
+  asset          DistributionAsset @relation(fields: [assetId], references: [id], onDelete: Cascade)
+  platform       String
+  externalPostId String?
+  externalUrl    String?
+  impressions    Int?
+  clicks         Int?
+  likes          Int?
+  comments       Int?
+  shares         Int?
+  error          String?
+  capturedAt     DateTime @default(now())
+
+  @@index([assetId])
+  @@index([platform, capturedAt])
+}
+
+model LinkableAsset {
+  id                String   @id @default(cuid())
+  articleId          String?
+  article            Article? @relation(fields: [articleId], references: [id], onDelete: SetNull)
+  url                String   @unique
+  locale             String
+  topic              String
+  assetType          String
+  title              String
+  summary            String
+  originalDataScore  Float    @default(0)
+  linkableScore      Float    @default(0)
+  status             String   @default("active")
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  prospects          LinkProspect[] @relation("SuggestedLinkableAsset")
+  campaigns          OutreachCampaign[]
+
+  @@index([locale, assetType, status])
+  @@index([linkableScore])
+}
+
+model LinkProspect {
+  id               String   @id @default(cuid())
+  domain           String
+  pageUrl          String
+  pageTitle        String?
+  locale           String?
+  topic            String?
+  opportunityType  String
+  suggestedAssetId String?
+  suggestedAsset   LinkableAsset? @relation("SuggestedLinkableAsset", fields: [suggestedAssetId], references: [id], onDelete: SetNull)
+  suggestedAngle   String?
+  topicalRelevance Float    @default(0)
+  pageQuality      Float    @default(0)
+  spamRisk         Float    @default(0)
+  prospectScore    Float    @default(0)
+  contactEmail     String?
+  contactFormUrl   String?
+  status           String   @default("new")
+  discoveredAt     DateTime @default(now())
+  lastContactedAt  DateTime?
+  notes            String?
+
+  outreachMessages OutreachMessage[]
+
+  @@index([domain])
+  @@index([status, prospectScore])
+  @@index([suggestedAssetId])
+}
+
+model OutreachCampaign {
+  id             String   @id @default(cuid())
+  name           String
+  assetId        String
+  asset          LinkableAsset @relation(fields: [assetId], references: [id], onDelete: Cascade)
+  locale         String
+  status         String   @default("draft")
+  dailySendLimit Int      @default(10)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  messages       OutreachMessage[]
+
+  @@index([assetId, status])
+  @@index([locale, status])
+}
+
+model OutreachMessage {
+  id              String   @id @default(cuid())
+  campaignId      String
+  campaign        OutreachCampaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  prospectId      String
+  prospect        LinkProspect @relation(fields: [prospectId], references: [id], onDelete: Cascade)
+  subject         String
+  body            String
+  status          String   @default("draft")
+  approvedByHuman Boolean  @default(false)
+  sentAt          DateTime?
+  repliedAt       DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([campaignId, status])
+  @@index([prospectId])
+}
+
+model SuppressionEntry {
+  id        String   @id @default(cuid())
+  email     String?
+  domain    String?
+  reason    String
+  createdAt DateTime @default(now())
+
+  @@index([email])
+  @@index([domain])
 }
 
 model AuditLog {
