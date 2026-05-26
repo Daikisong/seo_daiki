@@ -137,12 +137,504 @@
         }
       }
     ],
+    "offer_replacement_candidates": [
+      {
+        "placementCandidateId": "placement-candidate-brief-travel-gan-charger-buyer-guide-en-offer-baseus-65w-us-1",
+        "offerId": "offer-baseus-65w-us",
+        "merchantSlug": "aliexpress",
+        "anchorText": "Baseus 65W GaN charger",
+        "offerScore": 87.55,
+        "status": "draft",
+        "reason": "Commerce topic matched to AliExpress with evidence fit; placement remains draft until human approval.",
+        "refreshScore": 102.55
+      },
+      {
+        "placementCandidateId": "placement-candidate-brief-aliexpress-charger-import-risk-pt-br-offer-baseus-65w-br-1",
+        "offerId": "offer-baseus-65w-br",
+        "merchantSlug": "aliexpress",
+        "anchorText": "Baseus 65W GaN charger Brazil",
+        "offerScore": 86.55,
+        "status": "draft",
+        "reason": "Commerce topic matched to AliExpress with evidence fit; placement remains draft until human approval.",
+        "refreshScore": 101.55
+      },
+      {
+        "placementCandidateId": "placement-candidate-brief-gan-charger-comparison-en-offer-baseus-65w-us-1",
+        "offerId": "offer-baseus-65w-us",
+        "merchantSlug": "aliexpress",
+        "anchorText": "Baseus 65W GaN charger",
+        "offerScore": 83.55,
+        "status": "draft",
+        "reason": "Commerce topic matched to AliExpress with evidence fit; placement remains draft until human approval.",
+        "refreshScore": 98.55
+      },
+      {
+        "placementCandidateId": "placement-candidate-brief-aliexpress-charger-wattage-risk-en-offer-baseus-65w-us-1",
+        "offerId": "offer-baseus-65w-us",
+        "merchantSlug": "aliexpress",
+        "anchorText": "Baseus 65W GaN charger",
+        "offerScore": 82.55,
+        "status": "draft",
+        "reason": "Commerce topic matched to AliExpress with evidence fit; placement remains draft until human approval.",
+        "refreshScore": 97.55
+      },
+      {
+        "placementCandidateId": "placement-candidate-brief-travel-gan-charger-buyer-guide-en-offer-ugreen-100w-us-2",
+        "offerId": "offer-ugreen-100w-us",
+        "merchantSlug": "aliexpress",
+        "anchorText": "Ugreen 100W GaN charger",
+        "offerScore": 80.3,
+        "status": "draft",
+        "reason": "Commerce topic matched to AliExpress with evidence fit; placement remains draft until human approval.",
+        "refreshScore": 90.3
+      }
+    ],
+    "localization_improvement_candidates": [
+      {
+        "locale": "es",
+        "articleId": "draft-article-brief-travel-gan-charger-buyer-guide-en-es",
+        "localizationDepthScore": 45.0,
+        "reason": "localized draft for /en/guides/aliexpress-charger-fake-watts/ needs local market notes and offer fit"
+      }
+    ],
+    "health_claim_risk": {
+      "riskLevel": "none",
+      "terms": [],
+      "requiredAction": ""
+    },
     "action": [
       "Add a section titled \"Why this charger may not deliver the advertised wattage\" that answers \"aliexpress charger not 65w\" directly.",
       "Rewrite the title candidate to: \"AliExpress Charger Not 65W: Fixes, Evidence, Safer Picks\".",
       "Rewrite the meta description candidate to: \"Answer aliexpress charger not 65w with seller-claim checks, variant traps, price evidence, and local risk notes. Compare linked data, lab, and guide page...\".",
       "Add internal links from: /en/usb-c-charging-hub-1/ as \"usb-c charging buying hub\", /en/data/usb-c-charging-data-1/ as \"verified data table\", /en/lab/usb-c-charging-lab-1/ as \"lab test evidence\".",
-      "Add a comparison table with flagged products because the query implies a buyer decision."
+      "Add a comparison table with flagged products because the query implies a buyer decision.",
+      "Review offer replacements: Baseus 65W GaN charger, Baseus 65W GaN charger Brazil, Baseus 65W GaN charger.",
+      "Improve localized variants: es."
+    ]
+  },
+  {
+    "page": "/en/buyer-guides/evidence-first-buyer-guide-travel-gan-charger-buyer-guide/",
+    "query": "best gan charger for travel adapter",
+    "country": "usa",
+    "device": "mobile",
+    "reason": "high_impressions_low_ctr_mid_position",
+    "priority": 43,
+    "diagnostics": {
+      "impressions": 180,
+      "ctr": 0.0111,
+      "position": 12.4,
+      "query_terms": [
+        "gan",
+        "charger",
+        "travel",
+        "adapter"
+      ],
+      "matched_query_terms": [
+        "gan",
+        "charger",
+        "travel"
+      ],
+      "missing_query_terms_in_existing_sections": [
+        "adapter"
+      ],
+      "section_match_score": 0.75,
+      "estimated_existing_sections": [
+        "alternative",
+        "avoid",
+        "buy",
+        "compare",
+        "decision",
+        "evidence",
+        "offer",
+        "risk"
+      ]
+    },
+    "missing_sections": [
+      {
+        "heading": "How to check adapter",
+        "why": "The query contains terms that are not covered by the estimated page sections: adapter.",
+        "intent": "direct_answer",
+        "recommended_details": [
+          "answer the query in one sentence",
+          "link to supporting evidence",
+          "add the next action for the buyer"
+        ]
+      }
+    ],
+    "title_candidate": "Best Gan Charger for Travel Adapter: Evidence, Variant Checks, Safe...",
+    "meta_description_candidate": "Answer best gan charger for travel adapter with seller-claim checks, variant traps, price evidence, and local risk notes. Compare linked data, lab, and g...",
+    "internal_link_candidates": [
+      {
+        "path": "/en/usb-c-charging-hub-1/",
+        "href": "/en/usb-c-charging-hub-1/",
+        "type": "hub",
+        "anchor": "usb-c charging buying hub",
+        "reason": "category hub reinforcement; strongest signal: same_category_score",
+        "score": 32,
+        "score_breakdown": {
+          "same_locale_score": 8,
+          "same_category_score": 16,
+          "same_claim_score": 0,
+          "same_problem_score": 0,
+          "alternative_price_band_score": 0,
+          "risk_overlap_score": 0,
+          "page_type_score": 8
+        }
+      },
+      {
+        "path": "/en/data/usb-c-charging-data-1/",
+        "href": "/en/data/usb-c-charging-data-1/",
+        "type": "data",
+        "anchor": "verified data table",
+        "reason": "original data support; strongest signal: same_category_score",
+        "score": 31,
+        "score_breakdown": {
+          "same_locale_score": 8,
+          "same_category_score": 16,
+          "same_claim_score": 0,
+          "same_problem_score": 0,
+          "alternative_price_band_score": 0,
+          "risk_overlap_score": 0,
+          "page_type_score": 7
+        }
+      },
+      {
+        "path": "/en/lab/usb-c-charging-lab-1/",
+        "href": "/en/lab/usb-c-charging-lab-1/",
+        "type": "lab",
+        "anchor": "lab test evidence",
+        "reason": "test method support; strongest signal: same_category_score",
+        "score": 31,
+        "score_breakdown": {
+          "same_locale_score": 8,
+          "same_category_score": 16,
+          "same_claim_score": 0,
+          "same_problem_score": 0,
+          "alternative_price_band_score": 0,
+          "risk_overlap_score": 0,
+          "page_type_score": 7
+        }
+      },
+      {
+        "path": "/en/compare/usb-c-charging-compare-1/",
+        "href": "/en/compare/usb-c-charging-compare-1/",
+        "type": "compare",
+        "anchor": "comparison alternatives",
+        "reason": "comparison intent support; strongest signal: same_category_score",
+        "score": 30,
+        "score_breakdown": {
+          "same_locale_score": 8,
+          "same_category_score": 16,
+          "same_claim_score": 0,
+          "same_problem_score": 0,
+          "alternative_price_band_score": 0,
+          "risk_overlap_score": 0,
+          "page_type_score": 6
+        }
+      },
+      {
+        "path": "/en/guides/usb-c-charging-guide-1/",
+        "href": "/en/guides/usb-c-charging-guide-1/",
+        "type": "guide",
+        "anchor": "gan charger travel adapter evidence",
+        "reason": "problem intent support; strongest signal: same_category_score",
+        "score": 29,
+        "score_breakdown": {
+          "same_locale_score": 8,
+          "same_category_score": 16,
+          "same_claim_score": 0,
+          "same_problem_score": 0,
+          "alternative_price_band_score": 0,
+          "risk_overlap_score": 0,
+          "page_type_score": 5
+        }
+      }
+    ],
+    "offer_replacement_candidates": [
+      {
+        "placementCandidateId": "placement-candidate-brief-travel-gan-charger-buyer-guide-en-offer-baseus-65w-us-1",
+        "offerId": "offer-baseus-65w-us",
+        "merchantSlug": "aliexpress",
+        "anchorText": "Baseus 65W GaN charger",
+        "offerScore": 87.55,
+        "status": "draft",
+        "reason": "Commerce topic matched to AliExpress with evidence fit; placement remains draft until human approval.",
+        "refreshScore": 97.55
+      },
+      {
+        "placementCandidateId": "placement-candidate-brief-aliexpress-charger-import-risk-pt-br-offer-baseus-65w-br-1",
+        "offerId": "offer-baseus-65w-br",
+        "merchantSlug": "aliexpress",
+        "anchorText": "Baseus 65W GaN charger Brazil",
+        "offerScore": 86.55,
+        "status": "draft",
+        "reason": "Commerce topic matched to AliExpress with evidence fit; placement remains draft until human approval.",
+        "refreshScore": 96.55
+      },
+      {
+        "placementCandidateId": "placement-candidate-brief-gan-charger-comparison-en-offer-baseus-65w-us-1",
+        "offerId": "offer-baseus-65w-us",
+        "merchantSlug": "aliexpress",
+        "anchorText": "Baseus 65W GaN charger",
+        "offerScore": 83.55,
+        "status": "draft",
+        "reason": "Commerce topic matched to AliExpress with evidence fit; placement remains draft until human approval.",
+        "refreshScore": 93.55
+      },
+      {
+        "placementCandidateId": "placement-candidate-brief-aliexpress-charger-wattage-risk-en-offer-baseus-65w-us-1",
+        "offerId": "offer-baseus-65w-us",
+        "merchantSlug": "aliexpress",
+        "anchorText": "Baseus 65W GaN charger",
+        "offerScore": 82.55,
+        "status": "draft",
+        "reason": "Commerce topic matched to AliExpress with evidence fit; placement remains draft until human approval.",
+        "refreshScore": 92.55
+      },
+      {
+        "placementCandidateId": "placement-candidate-brief-travel-gan-charger-buyer-guide-en-offer-ugreen-100w-us-2",
+        "offerId": "offer-ugreen-100w-us",
+        "merchantSlug": "aliexpress",
+        "anchorText": "Ugreen 100W GaN charger",
+        "offerScore": 80.3,
+        "status": "draft",
+        "reason": "Commerce topic matched to AliExpress with evidence fit; placement remains draft until human approval.",
+        "refreshScore": 90.3
+      }
+    ],
+    "localization_improvement_candidates": [
+      {
+        "locale": "es",
+        "articleId": "art-en-buyer-guide-travel-gan-es",
+        "localizationDepthScore": 45.0,
+        "reason": "localized page below index depth threshold"
+      },
+      {
+        "locale": "pt-br",
+        "articleId": "art-en-buyer-guide-travel-gan-pt-br",
+        "localizationDepthScore": 45.0,
+        "reason": "localized page below index depth threshold"
+      },
+      {
+        "locale": "es",
+        "articleId": "draft-article-brief-travel-gan-charger-buyer-guide-en-es",
+        "localizationDepthScore": 45.0,
+        "reason": "localized draft for /en/buyer-guides/evidence-first-buyer-guide-travel-gan-charger-buyer-guide/ needs local market notes and offer fit"
+      }
+    ],
+    "health_claim_risk": {
+      "riskLevel": "none",
+      "terms": [],
+      "requiredAction": ""
+    },
+    "action": [
+      "Add a section titled \"How to check adapter\" that answers \"best gan charger for travel adapter\" directly.",
+      "Rewrite the title candidate to: \"Best Gan Charger for Travel Adapter: Evidence, Variant Checks, Safe...\".",
+      "Rewrite the meta description candidate to: \"Answer best gan charger for travel adapter with seller-claim checks, variant traps, price evidence, and local risk notes. Compare linked data, lab, and g...\".",
+      "Add internal links from: /en/usb-c-charging-hub-1/ as \"usb-c charging buying hub\", /en/data/usb-c-charging-data-1/ as \"verified data table\", /en/lab/usb-c-charging-lab-1/ as \"lab test evidence\".",
+      "Review offer replacements: Baseus 65W GaN charger, Baseus 65W GaN charger Brazil, Baseus 65W GaN charger.",
+      "Improve localized variants: es, pt-br, es."
+    ]
+  },
+  {
+    "page": "/en/ingredients/magnesium-glycinate-supplement-evidence-safety/",
+    "query": "magnesium glycinate dosage sleep iherb",
+    "country": "usa",
+    "device": "desktop",
+    "reason": "high_impressions_low_ctr_mid_position",
+    "priority": 42,
+    "diagnostics": {
+      "impressions": 210,
+      "ctr": 0.0047,
+      "position": 18.3,
+      "query_terms": [
+        "magnesium",
+        "glycinate",
+        "dosage",
+        "sleep",
+        "iherb"
+      ],
+      "matched_query_terms": [
+        "magnesium",
+        "glycinate",
+        "iherb"
+      ],
+      "missing_query_terms_in_existing_sections": [
+        "dosage",
+        "sleep"
+      ],
+      "section_match_score": 0.6,
+      "estimated_existing_sections": [
+        "disclaimer",
+        "iherb",
+        "ingredient",
+        "safety",
+        "supported",
+        "unsupported",
+        "warning"
+      ]
+    },
+    "missing_sections": [
+      {
+        "heading": "How to check dosage sleep",
+        "why": "The query contains terms that are not covered by the estimated page sections: dosage, sleep.",
+        "intent": "direct_answer",
+        "recommended_details": [
+          "answer the query in one sentence",
+          "link to supporting evidence",
+          "add the next action for the buyer"
+        ]
+      }
+    ],
+    "title_candidate": "Magnesium Glycinate Dosage Sleep Iherb: Evidence, Variant Checks, S...",
+    "meta_description_candidate": "Answer magnesium glycinate dosage sleep iherb with seller-claim checks, variant traps, price evidence, and local risk notes. Compare linked data, lab, an...",
+    "internal_link_candidates": [
+      {
+        "path": "/en/usb-c-charging-hub-1/",
+        "href": "/en/usb-c-charging-hub-1/",
+        "type": "hub",
+        "anchor": "usb-c charging buying hub",
+        "reason": "category hub reinforcement; strongest signal: same_locale_score",
+        "score": 16,
+        "score_breakdown": {
+          "same_locale_score": 8,
+          "same_category_score": 0,
+          "same_claim_score": 0,
+          "same_problem_score": 0,
+          "alternative_price_band_score": 0,
+          "risk_overlap_score": 0,
+          "page_type_score": 8
+        }
+      },
+      {
+        "path": "/en/data/usb-c-charging-data-1/",
+        "href": "/en/data/usb-c-charging-data-1/",
+        "type": "data",
+        "anchor": "verified data table",
+        "reason": "original data support; strongest signal: same_locale_score",
+        "score": 15,
+        "score_breakdown": {
+          "same_locale_score": 8,
+          "same_category_score": 0,
+          "same_claim_score": 0,
+          "same_problem_score": 0,
+          "alternative_price_band_score": 0,
+          "risk_overlap_score": 0,
+          "page_type_score": 7
+        }
+      },
+      {
+        "path": "/en/lab/usb-c-charging-lab-1/",
+        "href": "/en/lab/usb-c-charging-lab-1/",
+        "type": "lab",
+        "anchor": "lab test evidence",
+        "reason": "test method support; strongest signal: same_locale_score",
+        "score": 15,
+        "score_breakdown": {
+          "same_locale_score": 8,
+          "same_category_score": 0,
+          "same_claim_score": 0,
+          "same_problem_score": 0,
+          "alternative_price_band_score": 0,
+          "risk_overlap_score": 0,
+          "page_type_score": 7
+        }
+      },
+      {
+        "path": "/en/compare/usb-c-charging-compare-1/",
+        "href": "/en/compare/usb-c-charging-compare-1/",
+        "type": "compare",
+        "anchor": "comparison alternatives",
+        "reason": "comparison intent support; strongest signal: same_locale_score",
+        "score": 14,
+        "score_breakdown": {
+          "same_locale_score": 8,
+          "same_category_score": 0,
+          "same_claim_score": 0,
+          "same_problem_score": 0,
+          "alternative_price_band_score": 0,
+          "risk_overlap_score": 0,
+          "page_type_score": 6
+        }
+      },
+      {
+        "path": "/en/guides/usb-c-charging-guide-1/",
+        "href": "/en/guides/usb-c-charging-guide-1/",
+        "type": "guide",
+        "anchor": "magnesium glycinate dosage sleep evidence",
+        "reason": "problem intent support; strongest signal: same_locale_score",
+        "score": 13,
+        "score_breakdown": {
+          "same_locale_score": 8,
+          "same_category_score": 0,
+          "same_claim_score": 0,
+          "same_problem_score": 0,
+          "alternative_price_band_score": 0,
+          "risk_overlap_score": 0,
+          "page_type_score": 5
+        }
+      }
+    ],
+    "offer_replacement_candidates": [
+      {
+        "placementCandidateId": "placement-candidate-brief-magnesium-glycinate-supplement-guide-en-offer-magnesium-glycinate-iherb-1",
+        "offerId": "offer-magnesium-glycinate-iherb",
+        "merchantSlug": "iherb",
+        "anchorText": "Magnesium glycinate supplement",
+        "offerScore": 86.75,
+        "status": "draft",
+        "reason": "Health-sensitive topic matched to iHerb only because the brief requires HealthClaimGuard and disclaimer evidence.",
+        "refreshScore": 101.75
+      },
+      {
+        "placementCandidateId": "placement-candidate-brief-probiotic-supplement-guide-en-offer-magnesium-glycinate-iherb-2",
+        "offerId": "offer-magnesium-glycinate-iherb",
+        "merchantSlug": "iherb",
+        "anchorText": "Magnesium glycinate supplement",
+        "offerScore": 82.75,
+        "status": "draft",
+        "reason": "Health-sensitive topic matched to iHerb only because the brief requires HealthClaimGuard and disclaimer evidence.",
+        "refreshScore": 97.75
+      },
+      {
+        "placementCandidateId": "placement-candidate-brief-probiotic-supplement-guide-en-offer-probiotic-iherb-1",
+        "offerId": "offer-probiotic-iherb",
+        "merchantSlug": "iherb",
+        "anchorText": "Probiotic supplement",
+        "offerScore": 84.75,
+        "status": "draft",
+        "reason": "Health-sensitive topic matched to iHerb only because the brief requires HealthClaimGuard and disclaimer evidence.",
+        "refreshScore": 89.75
+      },
+      {
+        "placementCandidateId": "placement-candidate-brief-magnesium-glycinate-supplement-guide-en-offer-probiotic-iherb-2",
+        "offerId": "offer-probiotic-iherb",
+        "merchantSlug": "iherb",
+        "anchorText": "Probiotic supplement",
+        "offerScore": 82.75,
+        "status": "draft",
+        "reason": "Health-sensitive topic matched to iHerb only because the brief requires HealthClaimGuard and disclaimer evidence.",
+        "refreshScore": 87.75
+      }
+    ],
+    "localization_improvement_candidates": [],
+    "health_claim_risk": {
+      "riskLevel": "high",
+      "terms": [
+        "dosage",
+        "iherb",
+        "magnesium",
+        "sleep"
+      ],
+      "requiredAction": "HealthClaimGuard, disclaimer check, supported/unsupported claim separation, and manual compliance review."
+    },
+    "action": [
+      "Add a section titled \"How to check dosage sleep\" that answers \"magnesium glycinate dosage sleep iherb\" directly.",
+      "Rewrite the title candidate to: \"Magnesium Glycinate Dosage Sleep Iherb: Evidence, Variant Checks, S...\".",
+      "Rewrite the meta description candidate to: \"Answer magnesium glycinate dosage sleep iherb with seller-claim checks, variant traps, price evidence, and local risk notes. Compare linked data, lab, an...\".",
+      "Add internal links from: /en/usb-c-charging-hub-1/ as \"usb-c charging buying hub\", /en/data/usb-c-charging-data-1/ as \"verified data table\", /en/lab/usb-c-charging-lab-1/ as \"lab test evidence\".",
+      "Review offer replacements: Magnesium glycinate supplement, Magnesium glycinate supplement, Probiotic supplement.",
+      "Run HealthClaimGuard review before applying health or supplement edits."
     ]
   }
 ]

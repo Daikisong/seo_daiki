@@ -47,7 +47,12 @@ TYPE_BASE_TERMS = {
     "guide": {"problem", "symptom", "seller", "claim", "variant", "evidence", "fix", "alternative"},
     "compare": {"compare", "alternative", "price", "risk", "evidence", "variant"},
     "review": {"review", "seller", "claim", "verified", "variant", "price", "risk", "alternative"},
+    "trend": {"trend", "rising", "why", "source", "signal", "freshness", "buyer", "problem"},
+    "buyer_guide": {"decision", "buy", "avoid", "compare", "evidence", "risk", "offer", "alternative"},
+    "deal_watch": {"deal", "price", "history", "checked", "buy", "wait", "avoid", "offer"},
+    "ingredient_guide": {"ingredient", "supported", "unsupported", "safety", "warning", "disclaimer", "iherb"},
 }
+HEALTH_TERMS = {"iherb", "supplement", "magnesium", "probiotic", "vitamin", "sleep", "gut", "dosage", "dose", "ingredient"}
 
 
 def build_search_console_suggestions() -> str:
@@ -90,6 +95,9 @@ def _suggest_for_row(row: dict[str, object], inventory: list[dict[str, object]])
     missing_section = _missing_section(query, missing_terms, section_match)
     title_candidate = _title_candidate(page, query)
     meta_candidate = _meta_candidate(query, link_candidates)
+    offer_candidates = _offer_replacement_candidates(query_terms)
+    localization_candidates = _localization_improvement_candidates(page, locale)
+    health_risk = _health_claim_risk(page, query_terms, section_match)
     priority = _priority(row, missing_terms, link_candidates, section_match)
 
     actions = [
@@ -105,6 +113,12 @@ def _suggest_for_row(row: dict[str, object], inventory: list[dict[str, object]])
         )
     if _needs_comparison_table(query_terms):
         actions.append("Add a comparison table with flagged products because the query implies a buyer decision.")
+    if offer_candidates:
+        actions.append("Review offer replacements: " + ", ".join(candidate["anchorText"] for candidate in offer_candidates[:3]) + ".")
+    if localization_candidates:
+        actions.append("Improve localized variants: " + ", ".join(candidate["locale"] for candidate in localization_candidates[:3]) + ".")
+    if health_risk["riskLevel"] != "none":
+        actions.append("Run HealthClaimGuard review before applying health or supplement edits.")
 
     return {
         "page": page,
@@ -127,6 +141,9 @@ def _suggest_for_row(row: dict[str, object], inventory: list[dict[str, object]])
         "title_candidate": title_candidate,
         "meta_description_candidate": meta_candidate,
         "internal_link_candidates": link_candidates[:5],
+        "offer_replacement_candidates": offer_candidates,
+        "localization_improvement_candidates": localization_candidates,
+        "health_claim_risk": health_risk,
         "action": actions,
     }
 
@@ -175,13 +192,39 @@ def _inventory_row_for_page(page: str, inventory: list[dict[str, object]]) -> di
 
 def _article_type_from_path(page: str) -> str:
     parts = [part for part in page.split("/") if part]
-    for article_type in ["data", "lab", "guides", "compare", "reviews", "resenas", "analises"]:
+    for article_type in [
+        "data",
+        "lab",
+        "guides",
+        "guias",
+        "compare",
+        "reviews",
+        "resenas",
+        "analises",
+        "trends",
+        "tendencias",
+        "buyer-guides",
+        "guias-de-compra",
+        "deals",
+        "ofertas",
+        "ingredients",
+        "ingredientes",
+    ]:
         if article_type in parts:
             return {
                 "guides": "guide",
+                "guias": "guide",
                 "reviews": "review",
                 "resenas": "review",
                 "analises": "review",
+                "trends": "trend",
+                "tendencias": "trend",
+                "buyer-guides": "buyer_guide",
+                "guias-de-compra": "buyer_guide",
+                "deals": "deal_watch",
+                "ofertas": "deal_watch",
+                "ingredients": "ingredient_guide",
+                "ingredientes": "ingredient_guide",
             }.get(article_type, article_type)
     return "hub"
 
@@ -236,6 +279,93 @@ def _meta_candidate(query: str, link_candidates: list[dict[str, object]]) -> str
         f"Answer {query} with seller-claim checks, variant traps, price evidence, and local risk notes.{link_hint}",
         154,
     )
+
+
+def _offer_replacement_candidates(query_terms: list[str]) -> list[dict[str, object]]:
+    payload = read_json(DATA / "exports" / "affiliate_placement_candidates.json", {"placementCandidates": []})
+    candidates = payload.get("placementCandidates", [])
+    scored = []
+    query_term_set = set(query_terms)
+    for candidate in candidates:
+        if not isinstance(candidate, dict):
+            continue
+        terms = set(_terms(" ".join([str(candidate.get("anchorText", "")), str(candidate.get("merchantSlug", "")), str(candidate.get("offerId", ""))])))
+        overlap = len(query_term_set.intersection(terms))
+        merchant = str(candidate.get("merchantSlug") or "")
+        base_score = float(candidate.get("offerScore") or 0)
+        if overlap == 0 and not (merchant == "iherb" and query_term_set.intersection(HEALTH_TERMS)):
+            continue
+        scored.append(
+            {
+                "placementCandidateId": candidate.get("id"),
+                "offerId": candidate.get("offerId"),
+                "merchantSlug": merchant,
+                "anchorText": candidate.get("anchorText"),
+                "offerScore": base_score,
+                "status": candidate.get("status"),
+                "reason": candidate.get("reason"),
+                "refreshScore": round(base_score + overlap * 5, 2),
+            }
+        )
+    return sorted(scored, key=lambda row: row["refreshScore"], reverse=True)[:5]
+
+
+def _localization_improvement_candidates(page: str, locale: str) -> list[dict[str, object]]:
+    scores = read_json(DATA / "exports" / "localization_scores.json", {"results": []}).get("results", [])
+    localized_articles = read_json(DATA / "exports" / "localized_topic_articles.json", {"articles": []}).get("articles", [])
+    candidates = []
+    seen: set[tuple[object, object]] = set()
+    generic_terms = {"article", "brief", "buyer", "draft", "evidence", "first", "guide"}
+    page_terms = set(_terms(page)) - generic_terms
+    for score in scores:
+        if not isinstance(score, dict) or score.get("locale") == locale:
+            continue
+        if not page_terms.intersection(set(_terms(str(score.get("articleId") or ""))) - generic_terms):
+            continue
+        depth = float(score.get("localizationDepthScore") or 0)
+        key = (score.get("locale"), score.get("articleId"))
+        if depth < 80 and key not in seen:
+            seen.add(key)
+            candidates.append(
+                {
+                    "locale": score.get("locale"),
+                    "articleId": score.get("articleId"),
+                    "localizationDepthScore": depth,
+                    "reason": "localized page below index depth threshold",
+                }
+            )
+    for article in localized_articles:
+        if not isinstance(article, dict) or article.get("locale") == locale:
+            continue
+        article_terms = set(_terms(" ".join([str(article.get("id", "")), str(article.get("slug", "")), str(article.get("topicId", ""))]))) - generic_terms
+        if not page_terms.intersection(article_terms):
+            continue
+        depth = float(article.get("localizationDepthScore") or 0)
+        key = (article.get("locale"), article.get("id"))
+        if depth < 80 and key not in seen:
+            seen.add(key)
+            candidates.append(
+                {
+                    "locale": article.get("locale"),
+                    "articleId": article.get("id"),
+                    "localizationDepthScore": depth,
+                    "reason": f"localized draft for {page} needs local market notes and offer fit",
+                }
+            )
+    return candidates[:5]
+
+
+def _health_claim_risk(page: str, query_terms: list[str], section_match: dict[str, object]) -> dict[str, object]:
+    article_type = str(section_match.get("article_type") or _article_type_from_path(page))
+    query_term_set = set(query_terms)
+    health_terms = sorted(query_term_set.intersection(HEALTH_TERMS))
+    if article_type == "ingredient_guide" or health_terms:
+        return {
+            "riskLevel": "high" if {"dosage", "dose"}.intersection(query_term_set) else "medium",
+            "terms": health_terms,
+            "requiredAction": "HealthClaimGuard, disclaimer check, supported/unsupported claim separation, and manual compliance review.",
+        }
+    return {"riskLevel": "none", "terms": [], "requiredAction": ""}
 
 
 def _internal_link_candidates(
