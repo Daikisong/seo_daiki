@@ -115,6 +115,7 @@ curl -s -o /tmp/seo_published_index.html -w '%{http_code}\n' 'http://127.0.0.1:3
 DATABASE_URL='postgresql://postgres@127.0.0.1:55432/postgres?schema=public' CONTENT_SOURCE=database PREVIEW_TOKEN='preview-secret' pnpm --filter @global-import-lab/web exec next start -H 127.0.0.1 -p 3010
 curl -s -o /tmp/seo_affiliate_target.json -w '%{http_code}\n' 'http://127.0.0.1:3010/api/affiliate-click/?target=https%3A%2F%2Fexample.com'
 curl -s -o /tmp/seo_affiliate_placement.html -D /tmp/seo_affiliate_placement.headers -w '%{http_code}\n' 'http://127.0.0.1:3010/api/affiliate-click/?placementId=placement-art-en-review-baseus-1'
+DATABASE_URL='postgresql://postgres@127.0.0.1:55432/postgres?schema=public' pnpm db:admin -- set-index-status art-en-review-ugreen-pending index
 ```
 
 ## Final Results
@@ -128,3 +129,4 @@ curl -s -o /tmp/seo_affiliate_placement.html -D /tmp/seo_affiliate_placement.hea
 - DB seed counts after verification: 10 products, 151 articles, 2 merchants, 53 offers, 53 affiliate placements, 7 translation groups, 21 translation variants
 - Public route smoke: draft public URL returned 404; valid preview token returned 200 with `noindex, follow`; published/noindex returned 200 with `noindex, follow`; published/index returned 200 with `index, follow`
 - Affiliate redirect smoke: arbitrary `target=` returned 400; approved DB-backed `placementId=placement-art-en-review-baseus-1` returned 302 to `https://www.aliexpress.com/item/prod-baseus-65w.html`
+- Admin publish gate smoke: forcing `art-en-review-ugreen-pending` to `index` exited 1, reported blocker issues, and wrote an `AuditLog` row with action `publish_gate_blocked`
