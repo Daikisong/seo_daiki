@@ -1,4 +1,4 @@
-import type { Article, ArticleType, Locale } from "@global-import-lab/types";
+import type { Article, ArticleType, Locale, MarketConfig } from "@global-import-lab/types";
 
 export const localeConfig: Record<
   Locale,
@@ -189,4 +189,41 @@ export function absoluteUrl(path: string, siteUrl = getSiteUrl()) {
 
 export function canonicalForArticle(article: Pick<Article, "locale" | "type" | "slug">, siteUrl = getSiteUrl()) {
   return absoluteUrl(articlePath(article), siteUrl);
+}
+
+export function marketPath(market: Pick<MarketConfig, "market" | "language">) {
+  return `/${market.market}/${market.language}/`;
+}
+
+export function marketSectionPath(
+  market: Pick<MarketConfig, "market" | "language">,
+  section?: "trends" | "keywords" | "serp" | "briefs" | "posts" | "calendar"
+) {
+  const base = marketPath(market);
+  return section ? `${base}${section}/` : base;
+}
+
+export function marketContentPath(
+  market: Pick<MarketConfig, "market" | "language">,
+  section: "trends" | "keywords" | "serp" | "briefs" | "posts",
+  slug: string
+) {
+  return `${marketSectionPath(market, section)}${slug}/`;
+}
+
+export function canonicalForMarketPath(path: string, siteUrl = getSiteUrl()) {
+  return absoluteUrl(path, siteUrl);
+}
+
+export function legacyLocaleDefaultMarketPath(locale: string) {
+  if (locale === "en") {
+    return "/us/en/";
+  }
+  if (locale === "es") {
+    return "/es/es/";
+  }
+  if (locale === "pt-br") {
+    return "/br/pt-br/";
+  }
+  return undefined;
 }

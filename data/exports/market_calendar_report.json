@@ -1,0 +1,76 @@
+{
+  "calendars": [
+    {
+      "id": "market-calendar-us-en-2026-05-26",
+      "market": "us",
+      "language": "en",
+      "weekStart": "2026-05-26",
+      "status": "draft",
+      "summaryJson": {
+        "clusterCount": 1,
+        "keywordCount": 3,
+        "slotCount": 3,
+        "topicalBalance": {
+          "categories": {
+            "wellness": 1
+          },
+          "maxUnrelatedTrendPostsPerWeek": 2,
+          "maxHealthSensitivePostsPerWeek": 1,
+          "maxDealPostsPerWeek": 0,
+          "minimumEvergreenSupportingPostsPerTrendCluster": 1
+        }
+      },
+      "slots": [
+        {
+          "id": "editorial-slot-us-en-1",
+          "date": "2026-05-26",
+          "priority": 1,
+          "clusterId": "trend-cluster-us-en-magnesium-sleep",
+          "keywordId": "trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-sleep",
+          "strategyId": "content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-sleep",
+          "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-sleep",
+          "status": "candidate",
+          "reason": "Selected from this market's trend and SERP opportunity queue."
+        },
+        {
+          "id": "editorial-slot-us-en-2",
+          "date": "2026-05-27",
+          "priority": 2,
+          "clusterId": "trend-cluster-us-en-magnesium-sleep",
+          "keywordId": "trend-keyword-trend-cluster-us-en-magnesium-sleep-best-magnesium-for-sleep",
+          "strategyId": "content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-best-magnesium-for-sleep",
+          "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-best-magnesium-for-sleep",
+          "status": "candidate",
+          "reason": "Selected from this market's trend and SERP opportunity queue."
+        },
+        {
+          "id": "editorial-slot-us-en-3",
+          "date": "2026-05-28",
+          "priority": 3,
+          "clusterId": "trend-cluster-us-en-magnesium-sleep",
+          "keywordId": "trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-glycinate-sleep",
+          "strategyId": "content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-glycinate-sleep",
+          "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-glycinate-sleep",
+          "status": "candidate",
+          "reason": "Selected from this market's trend and SERP opportunity queue."
+        }
+      ]
+    }
+  ],
+  "explanations": [
+    {
+      "market": "us",
+      "language": "en",
+      "reason": "Queue is market-local. It ranks this market's own trend keywords and does not import unrelated trends from other countries.",
+      "topicalBalance": {
+        "categories": {
+          "wellness": 1
+        },
+        "maxUnrelatedTrendPostsPerWeek": 2,
+        "maxHealthSensitivePostsPerWeek": 1,
+        "maxDealPostsPerWeek": 0,
+        "minimumEvergreenSupportingPostsPerTrendCluster": 1
+      }
+    }
+  ]
+}

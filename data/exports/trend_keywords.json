@@ -1,0 +1,224 @@
+{
+  "keywords": [
+    {
+      "id": "trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-real-capacity",
+      "clusterId": "trend-cluster-br-pt-br-power-bank-real-capacity",
+      "market": "br",
+      "language": "pt-br",
+      "keyword": "power bank real capacity",
+      "searchIntentGuess": "informational",
+      "priorityScore": 78.99,
+      "serpStatus": "pending",
+      "status": "serp_pending"
+    },
+    {
+      "id": "trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-capacidade-real",
+      "clusterId": "trend-cluster-br-pt-br-power-bank-real-capacity",
+      "market": "br",
+      "language": "pt-br",
+      "keyword": "power bank capacidade real",
+      "searchIntentGuess": "informational",
+      "priorityScore": 77.49,
+      "serpStatus": "pending",
+      "status": "serp_pending"
+    },
+    {
+      "id": "trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-mah-real",
+      "clusterId": "trend-cluster-br-pt-br-power-bank-real-capacity",
+      "market": "br",
+      "language": "pt-br",
+      "keyword": "power bank mah real",
+      "searchIntentGuess": "informational",
+      "priorityScore": 75.99,
+      "serpStatus": "pending",
+      "status": "serp_pending"
+    },
+    {
+      "id": "trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-sleep",
+      "clusterId": "trend-cluster-us-en-magnesium-sleep",
+      "market": "us",
+      "language": "en",
+      "keyword": "magnesium sleep",
+      "searchIntentGuess": "informational_health",
+      "priorityScore": 77.54,
+      "serpStatus": "pending",
+      "status": "serp_pending"
+    },
+    {
+      "id": "trend-keyword-trend-cluster-us-en-magnesium-sleep-best-magnesium-for-sleep",
+      "clusterId": "trend-cluster-us-en-magnesium-sleep",
+      "market": "us",
+      "language": "en",
+      "keyword": "best magnesium for sleep",
+      "searchIntentGuess": "comparison",
+      "priorityScore": 76.04,
+      "serpStatus": "pending",
+      "status": "serp_pending"
+    },
+    {
+      "id": "trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-glycinate-sleep",
+      "clusterId": "trend-cluster-us-en-magnesium-sleep",
+      "market": "us",
+      "language": "en",
+      "keyword": "magnesium glycinate sleep",
+      "searchIntentGuess": "informational_health",
+      "priorityScore": 74.54,
+      "serpStatus": "pending",
+      "status": "serp_pending"
+    },
+    {
+      "id": "trend-keyword-trend-cluster-es-es-usb-c-charger-usb-c-charger",
+      "clusterId": "trend-cluster-es-es-usb-c-charger",
+      "market": "es",
+      "language": "es",
+      "keyword": "usb c charger",
+      "searchIntentGuess": "informational",
+      "priorityScore": 76.83,
+      "serpStatus": "pending",
+      "status": "serp_pending"
+    },
+    {
+      "id": "trend-keyword-trend-cluster-es-es-usb-c-charger-cargador-usb-c-gan",
+      "clusterId": "trend-cluster-es-es-usb-c-charger",
+      "market": "es",
+      "language": "es",
+      "keyword": "cargador usb c gan",
+      "searchIntentGuess": "informational",
+      "priorityScore": 75.33,
+      "serpStatus": "pending",
+      "status": "serp_pending"
+    },
+    {
+      "id": "trend-keyword-trend-cluster-es-es-usb-c-charger-cargador-usb-c-rapido-seguro",
+      "clusterId": "trend-cluster-es-es-usb-c-charger",
+      "market": "es",
+      "language": "es",
+      "keyword": "cargador usb c rapido seguro",
+      "searchIntentGuess": "informational",
+      "priorityScore": 73.83,
+      "serpStatus": "pending",
+      "status": "serp_pending"
+    },
+    {
+      "id": "trend-keyword-trend-cluster-jp-ja-compact-desk-gadget-compact-desk-gadget",
+      "clusterId": "trend-cluster-jp-ja-compact-desk-gadget",
+      "market": "jp",
+      "language": "ja",
+      "keyword": "compact desk gadget",
+      "searchIntentGuess": "informational",
+      "priorityScore": 73.32,
+      "serpStatus": "pending",
+      "status": "serp_pending"
+    },
+    {
+      "id": "trend-keyword-trend-cluster-jp-ja-compact-desk-gadget-デスク-便利-グッズ",
+      "clusterId": "trend-cluster-jp-ja-compact-desk-gadget",
+      "market": "jp",
+      "language": "ja",
+      "keyword": "デスク 便利 グッズ",
+      "searchIntentGuess": "informational",
+      "priorityScore": 71.82,
+      "serpStatus": "pending",
+      "status": "serp_pending"
+    },
+    {
+      "id": "trend-keyword-trend-cluster-de-de-travel-adapter-travel-adapter",
+      "clusterId": "trend-cluster-de-de-travel-adapter",
+      "market": "de",
+      "language": "de",
+      "keyword": "travel adapter",
+      "searchIntentGuess": "informational",
+      "priorityScore": 70.56,
+      "serpStatus": "pending",
+      "status": "serp_pending"
+    },
+    {
+      "id": "trend-keyword-trend-cluster-de-de-travel-adapter-reiseadapter-usb-c",
+      "clusterId": "trend-cluster-de-de-travel-adapter",
+      "market": "de",
+      "language": "de",
+      "keyword": "reiseadapter usb c",
+      "searchIntentGuess": "informational",
+      "priorityScore": 69.06,
+      "serpStatus": "pending",
+      "status": "serp_pending"
+    },
+    {
+      "id": "trend-keyword-trend-cluster-fr-fr-beauty-ingredient-beauty-ingredient",
+      "clusterId": "trend-cluster-fr-fr-beauty-ingredient",
+      "market": "fr",
+      "language": "fr",
+      "keyword": "beauty ingredient",
+      "searchIntentGuess": "informational",
+      "priorityScore": 70.34,
+      "serpStatus": "pending",
+      "status": "serp_pending"
+    },
+    {
+      "id": "trend-keyword-trend-cluster-fr-fr-beauty-ingredient-ingredient-beaute-tendance",
+      "clusterId": "trend-cluster-fr-fr-beauty-ingredient",
+      "market": "fr",
+      "language": "fr",
+      "keyword": "ingredient beaute tendance",
+      "searchIntentGuess": "informational",
+      "priorityScore": 68.84,
+      "serpStatus": "pending",
+      "status": "serp_pending"
+    },
+    {
+      "id": "trend-keyword-trend-cluster-mx-es-budget-smartwatch-budget-smartwatch",
+      "clusterId": "trend-cluster-mx-es-budget-smartwatch",
+      "market": "mx",
+      "language": "es",
+      "keyword": "budget smartwatch",
+      "searchIntentGuess": "commercial",
+      "priorityScore": 70.28,
+      "serpStatus": "pending",
+      "status": "serp_pending"
+    },
+    {
+      "id": "trend-keyword-trend-cluster-mx-es-budget-smartwatch-smartwatch-economico-2026",
+      "clusterId": "trend-cluster-mx-es-budget-smartwatch",
+      "market": "mx",
+      "language": "es",
+      "keyword": "smartwatch economico 2026",
+      "searchIntentGuess": "informational",
+      "priorityScore": 68.78,
+      "serpStatus": "pending",
+      "status": "serp_pending"
+    },
+    {
+      "id": "trend-keyword-trend-cluster-kr-ko-gut-health-gut-health",
+      "clusterId": "trend-cluster-kr-ko-gut-health",
+      "market": "kr",
+      "language": "ko",
+      "keyword": "gut health",
+      "searchIntentGuess": "informational_health",
+      "priorityScore": 63.04,
+      "serpStatus": "pending",
+      "status": "serp_pending"
+    },
+    {
+      "id": "trend-keyword-trend-cluster-kr-ko-gut-health-gut-health-probiotic",
+      "clusterId": "trend-cluster-kr-ko-gut-health",
+      "market": "kr",
+      "language": "ko",
+      "keyword": "gut health probiotic",
+      "searchIntentGuess": "informational_health",
+      "priorityScore": 61.54,
+      "serpStatus": "pending",
+      "status": "serp_pending"
+    },
+    {
+      "id": "trend-keyword-trend-cluster-kr-ko-gut-health-장-건강-유산균",
+      "clusterId": "trend-cluster-kr-ko-gut-health",
+      "market": "kr",
+      "language": "ko",
+      "keyword": "장 건강 유산균",
+      "searchIntentGuess": "informational",
+      "priorityScore": 60.04,
+      "serpStatus": "pending",
+      "status": "serp_pending"
+    }
+  ]
+}

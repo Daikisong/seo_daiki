@@ -6,36 +6,43 @@ from pathlib import Path
 import traceback
 
 from workers.python.common import DATA, ensure_dirs, write_json
-from workers.python.collectors.aliexpress_api import search_aliexpress_products
-from workers.python.collectors.manual_seed_import import seed_products
-from workers.python.collectors.search_console import import_search_console
-from workers.python.distribution.owned_channel import generate_distribution_assets
-from workers.python.evidence.evidence_pack_builder import build_evidence_pack
-from workers.python.intelligence.locale_risk_matrix import build_locale_risk
-from workers.python.intelligence.offer_matching import match_affiliate_offers
-from workers.python.intelligence.price_truth_engine import build_price_truth
-from workers.python.intelligence.product_identity_graph import build_identity_graph
-from workers.python.intelligence.review_signal_extractor import extract_review_signals
-from workers.python.intelligence.search_console_feedback import build_search_console_suggestions
-from workers.python.intelligence.seller_claim_extractor import extract_seller_claims
-from workers.python.intelligence.trend_topic_engine import (
-    cluster_topics,
-    import_trend_signals,
-    score_topics,
+from workers.python.feature_flags import (
+    ENABLE_DISTRIBUTION_DRAFTS,
+    ENABLE_LINK_EARNING,
+    ENABLE_OFFER_MATCHING,
+    ENABLE_PRODUCT_CANDIDATE_DISCOVERY,
+    ENABLE_SERP_INTELLIGENCE,
+    ENABLE_TREND_ENGINE,
 )
-from workers.python.intelligence.variant_trap_detector import detect_variant_traps
-from workers.python.intelligence.verified_claim_builder import build_verified_claims
-from workers.python.outreach.link_earning import draft_outreach, import_link_prospects, score_link_prospects, score_linkable_assets
-from workers.python.collectors.price_snapshot import snapshot_prices
-from workers.python.validators.quality_gate import run_quality_gate
-from workers.python.validators.publishing_gate import run_topic_publishing_gate
-from workers.python.writers.article_draft_generator import generate_draft
-from workers.python.writers.article_outline_generator import generate_outline
-from workers.python.writers.multilingual_publishing import score_localization, sync_hreflang_groups
-from workers.python.writers.topic_article_generator import generate_topic_article
-from workers.python.writers.topic_brief_generator import generate_topic_briefs
-from workers.python.writers.topic_localizer import localize_topic_article
-from workers.python.writers.url_inventory import generate_url_inventory
+from workers.python.intelligence.calendar_engine import build_all_market_calendars
+from workers.python.intelligence.market_trend_engine import (
+    generate_trend_keywords,
+    import_market_trend_signals,
+    init_markets,
+    normalize_market_trends,
+    cluster_market_trends,
+    score_market_trends,
+    trend_report,
+)
+from workers.python.intelligence.monetization_review import create_monetization_review, draft_monetized_placements
+from workers.python.intelligence.product_candidate_engine import (
+    analyze_product_candidates,
+    build_product_analysis_block,
+    discover_product_candidates,
+    import_product_candidates,
+)
+from workers.python.serp.serp_intelligence import (
+    analyze_serp_pages,
+    fetch_serp_pages,
+    import_serp_results,
+    serp_report,
+    summarize_serp_opportunity,
+)
+from workers.python.writers.market_content_strategy import (
+    create_content_strategy,
+    generate_content_brief,
+    generate_test_post,
+)
 
 
 def run_worker_pipeline(
@@ -49,80 +56,109 @@ def run_worker_pipeline(
     continue_on_error: bool = False,
     include_search_console: bool = True,
 ) -> str:
-    ensure_dirs()
+    return run_trend_to_post_pipeline(
+        trend_signal_file=trend_signal_file or DATA / "seeds" / "trend-signals.csv",
+        serp_results_file=DATA / "seeds" / "serp-results.csv",
+        continue_on_error=continue_on_error,
+    )
+
+
+def run_trend_to_post_pipeline(
+    trend_signal_file: Path | None = None,
+    serp_results_file: Path | None = None,
+    continue_on_error: bool = False,
+) -> str:
+    steps: list[tuple[str, Callable[[], object]]] = []
+    if ENABLE_TREND_ENGINE:
+        steps.extend(
+            [
+                ("trend:init-markets", init_markets),
+                (
+                    "trend:import-signals",
+                    lambda: import_market_trend_signals(trend_signal_file or DATA / "seeds" / "trend-signals.csv"),
+                ),
+                ("trend:normalize", normalize_market_trends),
+                ("trend:cluster", cluster_market_trends),
+                ("trend:score", score_market_trends),
+                ("trend:generate-keywords", generate_trend_keywords),
+                ("trend:report", trend_report),
+            ]
+        )
+    if ENABLE_SERP_INTELLIGENCE:
+        steps.extend(
+            [
+                ("serp:import-results", lambda: import_serp_results(serp_results_file or DATA / "seeds" / "serp-results.csv")),
+                ("serp:fetch-pages", fetch_serp_pages),
+                ("serp:analyze-pages", analyze_serp_pages),
+                ("serp:summarize-opportunity", summarize_serp_opportunity),
+                ("serp:report", serp_report),
+            ]
+        )
+    steps.extend(
+        [
+            ("strategy:create", create_content_strategy),
+            ("strategy:generate-brief", generate_content_brief),
+            ("post:generate-test", generate_test_post),
+            ("calendar:build-all", build_all_market_calendars),
+        ]
+    )
+    return run_steps(
+        "trend_to_post",
+        steps,
+        continue_on_error,
+        extra={
+            "defaultPipelineRunsMonetization": False,
+            "disabledLaterPhases": {
+                "offerMatching": not ENABLE_OFFER_MATCHING,
+                "distributionDrafts": not ENABLE_DISTRIBUTION_DRAFTS,
+                "linkEarning": not ENABLE_LINK_EARNING,
+            },
+        },
+    )
+
+
+def run_post_to_product_analysis_pipeline(
+    candidates_file: Path | None = None,
+    article_id: str | None = None,
+    continue_on_error: bool = False,
+) -> str:
+    if not ENABLE_PRODUCT_CANDIDATE_DISCOVERY:
+        raise RuntimeError("ENABLE_PRODUCT_CANDIDATE_DISCOVERY=false; product candidate analysis is disabled.")
     steps: list[tuple[str, Callable[[], object]]] = [
-        ("seed-products", lambda: seed_products(seed_file)),
+        ("products:import-candidates", lambda: import_product_candidates(candidates_file or DATA / "seeds" / "product-candidates.csv")),
+        ("products:discover-candidates", lambda: discover_product_candidates(article_id)),
+        ("products:analyze-candidates", lambda: analyze_product_candidates(article_id)),
+        ("products:build-analysis-block", lambda: build_product_analysis_block(article_id)),
     ]
+    return run_steps("post_to_product_analysis", steps, continue_on_error, extra={"monetizedLinksInserted": False})
 
-    if keyword:
-        steps.append(("search-aliexpress-products", lambda: search_aliexpress_products(keyword, page_size)))
 
-    steps.extend(
-        [
-            ("build-identity-graph", build_identity_graph),
-            ("detect-variant-traps", detect_variant_traps),
-            ("extract-seller-claims", extract_seller_claims),
-            ("snapshot-prices", snapshot_prices),
-            ("build-price-truth", build_price_truth),
-            ("build-locale-risk", build_locale_risk),
-            ("extract-review-signals", extract_review_signals),
-            ("build-verified-claims", build_verified_claims),
-        ]
+def run_monetization_review_pipeline(article_id: str | None = None, continue_on_error: bool = False) -> str:
+    steps: list[tuple[str, Callable[[], object]]] = [
+        ("monetization:create-review", lambda: create_monetization_review(article_id)),
+        ("monetization:draft-placements", draft_monetized_placements),
+    ]
+    return run_steps(
+        "monetization_review",
+        steps,
+        continue_on_error,
+        extra={"requiresManualApproval": True, "linksAppliedByDefault": False},
     )
 
-    for locale in locales:
-        steps.append((f"build-evidence-pack:{locale}", lambda locale=locale: build_evidence_pack(locale)))
 
-    for locale in locales:
-        for draft_type in draft_types:
-            steps.append((f"generate-outline:{locale}:{draft_type}", lambda locale=locale, draft_type=draft_type: generate_outline(locale, draft_type)))
-            steps.append((f"generate-draft:{locale}:{draft_type}", lambda locale=locale, draft_type=draft_type: generate_draft(locale, draft_type)))
-
-    if include_search_console:
-        steps.append(("import-search-console", lambda: import_search_console(None, None)))
-        steps.append(("suggest-refreshes", build_search_console_suggestions))
-
-    steps.extend(
-        [
-            (
-                "import-trend-signals",
-                lambda: import_trend_signals(trend_signal_file or DATA / "seeds" / "trend-signals.csv"),
-            ),
-            ("cluster-topics", cluster_topics),
-            ("score-topics", score_topics),
-            ("generate-content-briefs", generate_topic_briefs),
-            ("match-affiliate-offers", match_affiliate_offers),
-            ("generate-topic-draft", generate_topic_article),
-            ("localize-topic-draft", localize_topic_article),
-            ("run-publishing-gate", run_topic_publishing_gate),
-            ("score-localization", score_localization),
-            ("sync-hreflang-groups", sync_hreflang_groups),
-            ("generate-distribution-assets", generate_distribution_assets),
-            ("score-linkable-assets", score_linkable_assets),
-            ("import-link-prospects", lambda: import_link_prospects(DATA / "seeds" / "link-prospects.csv")),
-            ("score-link-prospects", score_link_prospects),
-            ("draft-outreach", draft_outreach),
-        ]
-    )
-
-    steps.extend(
-        [
-            ("generate-url-inventory", lambda: generate_url_inventory(url_plan_file)),
-            ("run-quality-gate", run_quality_gate),
-        ]
-    )
-
+def run_steps(name: str, steps: list[tuple[str, Callable[[], object]]], continue_on_error: bool, extra: dict[str, object] | None = None) -> str:
+    ensure_dirs()
     started_at = datetime.now(timezone.utc)
     results: list[dict[str, object]] = []
     status = "pass"
 
-    for name, action in steps:
+    for step_name, action in steps:
         step_started_at = datetime.now(timezone.utc)
         try:
             output = action()
             results.append(
                 {
-                    "name": name,
+                    "name": step_name,
                     "status": "pass",
                     "output": str(output),
                     "started_at": step_started_at.isoformat(),
@@ -133,7 +169,7 @@ def run_worker_pipeline(
             status = "failed"
             results.append(
                 {
-                    "name": name,
+                    "name": step_name,
                     "status": "failed",
                     "error": str(error),
                     "traceback": traceback.format_exc(),
@@ -145,23 +181,16 @@ def run_worker_pipeline(
                 break
 
     report = {
+        "pipeline": name,
         "status": status,
         "started_at": started_at.isoformat(),
         "finished_at": datetime.now(timezone.utc).isoformat(),
-        "inputs": {
-            "seed_file": str(seed_file),
-            "keyword": keyword,
-            "page_size": page_size,
-            "locales": locales,
-            "draft_types": draft_types,
-            "url_plan_file": str(url_plan_file),
-            "trend_signal_file": str(trend_signal_file or DATA / "seeds" / "trend-signals.csv"),
-            "continue_on_error": continue_on_error,
-            "include_search_console": include_search_console,
-        },
         "steps": results,
+        **(extra or {}),
     }
     path = DATA / "exports" / "pipeline_run.json"
+    named_path = DATA / "exports" / f"pipeline_{name}_run.json"
+    write_json(named_path, report)
     write_json(path, report)
     if status == "failed":
         raise RuntimeError(f"Worker pipeline failed. See {path}.")

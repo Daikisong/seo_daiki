@@ -9,250 +9,284 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from workers.python.common import DATA, ensure_dirs
-from workers.python.collectors.aliexpress_api import search_aliexpress_products
-from workers.python.collectors.manual_seed_import import seed_products
-from workers.python.collectors.price_snapshot import snapshot_prices
-from workers.python.collectors.search_console import import_search_console
-from workers.python.distribution.owned_channel import (
-    approve_distribution_asset,
-    generate_distribution_assets,
-    schedule_distribution_asset,
-    send_approved_distribution_assets,
+from workers.python.feature_flags import ENABLE_DISTRIBUTION_DRAFTS, ENABLE_LINK_EARNING, ENABLE_OFFER_MATCHING
+from workers.python.intelligence.calendar_engine import (
+    build_all_market_calendars,
+    build_market_calendar,
+    explain_market_calendar,
+    export_market_calendars,
 )
-from workers.python.evidence.evidence_pack_builder import build_evidence_pack
-from workers.python.intelligence.locale_risk_matrix import build_locale_risk
-from workers.python.intelligence.price_truth_engine import build_price_truth
-from workers.python.intelligence.product_identity_graph import build_identity_graph
-from workers.python.intelligence.review_signal_extractor import extract_review_signals
-from workers.python.intelligence.search_console_feedback import build_search_console_suggestions
-from workers.python.intelligence.seller_claim_extractor import extract_seller_claims
-from workers.python.intelligence.offer_matching import match_affiliate_offers
-from workers.python.intelligence.trend_topic_engine import (
-    cluster_topics,
-    collect_trend_signals,
-    import_trend_signals,
-    score_topics,
+from workers.python.intelligence.market_trend_engine import (
+    cluster_market_trends,
+    collect_market_trends,
+    generate_trend_keywords,
+    import_market_trend_signals,
+    init_markets,
+    normalize_market_trends,
+    score_market_trends,
+    trend_report,
 )
-from workers.python.intelligence.variant_trap_detector import detect_variant_traps
-from workers.python.intelligence.verified_claim_builder import build_verified_claims
-from workers.python.outreach.link_earning import (
-    approve_outreach_message,
-    draft_outreach,
-    import_link_prospects,
-    score_link_prospects,
-    score_linkable_assets,
-    send_approved_outreach,
+from workers.python.intelligence.monetization_review import (
+    apply_approved_monetization,
+    create_monetization_review,
+    draft_monetized_placements,
 )
-from workers.python.pipeline import run_worker_pipeline
-from workers.python.validators.quality_gate import run_quality_gate
-from workers.python.validators.publishing_gate import run_topic_publishing_gate
-from workers.python.writers.article_draft_generator import generate_draft
-from workers.python.writers.article_outline_generator import generate_outline
-from workers.python.writers.multilingual_publishing import (
-    create_translation_group,
-    localize_article,
-    score_localization,
-    sync_hreflang_groups,
+from workers.python.intelligence.performance_feedback import (
+    import_search_console_performance,
+    performance_report,
+    recommend_performance_actions,
+    snapshot_performance,
 )
-from workers.python.writers.topic_article_generator import generate_topic_article
-from workers.python.writers.topic_brief_generator import generate_topic_briefs
-from workers.python.writers.topic_localizer import localize_topic_article
-from workers.python.writers.url_inventory import generate_url_inventory
+from workers.python.intelligence.product_candidate_engine import (
+    analyze_product_candidates,
+    build_product_analysis_block,
+    discover_product_candidates,
+    import_product_candidates,
+)
+from workers.python.pipeline import (
+    run_monetization_review_pipeline,
+    run_post_to_product_analysis_pipeline,
+    run_trend_to_post_pipeline,
+    run_worker_pipeline,
+)
+from workers.python.serp.serp_intelligence import (
+    analyze_serp_pages,
+    collect_serp,
+    fetch_serp_pages,
+    import_serp_results,
+    serp_report,
+    summarize_serp_opportunity,
+)
+from workers.python.writers.market_content_strategy import (
+    create_content_strategy,
+    generate_content_brief,
+    generate_test_post,
+    promote_index_candidate,
+    publish_test_article,
+)
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Global Import Lab worker CLI")
+    parser = argparse.ArgumentParser(description="Global trend-to-content worker CLI")
     subcommands = parser.add_subparsers(dest="command", required=True)
 
-    seed = subcommands.add_parser("seed-products")
-    seed.add_argument("--file", default=str(DATA / "seeds" / "usb-c-chargers.csv"))
-    search_aliexpress = subcommands.add_parser("search-aliexpress-products")
-    search_aliexpress.add_argument("--keyword", required=True)
-    search_aliexpress.add_argument("--page-size", default=20, type=int)
+    add_noarg(subcommands, "trend:init-markets")
+    trend_import = subcommands.add_parser("trend:import-signals")
+    trend_import.add_argument("--file", default=str(DATA / "seeds" / "trend-signals.csv"))
+    trend_collect = subcommands.add_parser("trend:collect")
+    trend_collect.add_argument("--market")
+    trend_collect.add_argument("--source", default="manual_csv")
+    add_noarg(subcommands, "trend:normalize")
+    add_noarg(subcommands, "trend:cluster")
+    add_noarg(subcommands, "trend:score")
+    trend_report_parser = subcommands.add_parser("trend:report")
+    trend_report_parser.add_argument("--market")
+    trend_keywords = subcommands.add_parser("trend:generate-keywords")
+    trend_keywords.add_argument("--cluster-id")
 
-    subcommands.add_parser("build-identity-graph")
-    subcommands.add_parser("detect-variant-traps")
-    subcommands.add_parser("extract-seller-claims")
-    subcommands.add_parser("snapshot-prices")
-    subcommands.add_parser("build-price-truth")
-    subcommands.add_parser("build-locale-risk")
-    subcommands.add_parser("extract-review-signals")
-    subcommands.add_parser("build-verified-claims")
-    search_console = subcommands.add_parser("import-search-console")
-    search_console.add_argument("--start-date")
-    search_console.add_argument("--end-date")
-    subcommands.add_parser("suggest-refreshes")
-    collect_trends = subcommands.add_parser("collect-trend-signals")
-    collect_trends.add_argument("--file", default=str(DATA / "seeds" / "trend-signals.csv"))
-    import_trends = subcommands.add_parser("import-trend-signals")
-    import_trends.add_argument("--file", default=str(DATA / "seeds" / "trend-signals.csv"))
-    subcommands.add_parser("cluster-topics")
-    subcommands.add_parser("score-topics")
-    subcommands.add_parser("generate-content-briefs")
+    serp_import = subcommands.add_parser("serp:import-results")
+    serp_import.add_argument("--file", default=str(DATA / "seeds" / "serp-results.csv"))
+    serp_collect = subcommands.add_parser("serp:collect")
+    serp_collect.add_argument("--keyword-id")
+    serp_collect.add_argument("--provider", default="manual_csv")
+    serp_fetch = subcommands.add_parser("serp:fetch-pages")
+    serp_fetch.add_argument("--snapshot-id")
+    serp_analyze = subcommands.add_parser("serp:analyze-pages")
+    serp_analyze.add_argument("--snapshot-id")
+    serp_summary = subcommands.add_parser("serp:summarize-opportunity")
+    serp_summary.add_argument("--keyword-id")
+    serp_report_parser = subcommands.add_parser("serp:report")
+    serp_report_parser.add_argument("--market")
+
+    strategy_create = subcommands.add_parser("strategy:create")
+    strategy_create.add_argument("--keyword-id")
+    strategy_brief = subcommands.add_parser("strategy:generate-brief")
+    strategy_brief.add_argument("--strategy-id")
+    post_generate = subcommands.add_parser("post:generate-test")
+    post_generate.add_argument("--strategy-id")
+    post_publish = subcommands.add_parser("post:publish-test")
+    post_publish.add_argument("--article-id")
+    post_publish.add_argument("--mode", default="noindex")
+    post_promote = subcommands.add_parser("post:promote-index-candidate")
+    post_promote.add_argument("--article-id")
+
+    calendar_build = subcommands.add_parser("calendar:build")
+    calendar_build.add_argument("--market")
+    add_noarg(subcommands, "calendar:build-all")
+    calendar_explain = subcommands.add_parser("calendar:explain")
+    calendar_explain.add_argument("--market")
+    add_noarg(subcommands, "calendar:export")
+
+    add_noarg(subcommands, "performance:import-search-console")
+    add_noarg(subcommands, "performance:snapshot")
+    add_noarg(subcommands, "performance:recommend-actions")
+    performance_report_parser = subcommands.add_parser("performance:report")
+    performance_report_parser.add_argument("--market")
+
+    product_import = subcommands.add_parser("products:import-candidates")
+    product_import.add_argument("--file", default=str(DATA / "seeds" / "product-candidates.csv"))
+    product_discover = subcommands.add_parser("products:discover-candidates")
+    product_discover.add_argument("--article-id")
+    product_analyze = subcommands.add_parser("products:analyze-candidates")
+    product_analyze.add_argument("--article-id")
+    product_block = subcommands.add_parser("products:build-analysis-block")
+    product_block.add_argument("--article-id")
+
+    monetization_review = subcommands.add_parser("monetization:create-review")
+    monetization_review.add_argument("--article-id")
+    monetization_draft = subcommands.add_parser("monetization:draft-placements")
+    monetization_draft.add_argument("--review-id")
+    monetization_apply = subcommands.add_parser("monetization:apply-approved")
+    monetization_apply.add_argument("--review-id")
+
+    trend_pipeline = subcommands.add_parser("pipeline:trend-to-post")
+    trend_pipeline.add_argument("--trend-signal-file", default=str(DATA / "seeds" / "trend-signals.csv"))
+    trend_pipeline.add_argument("--serp-results-file", default=str(DATA / "seeds" / "serp-results.csv"))
+    trend_pipeline.add_argument("--continue-on-error", action="store_true")
+    product_pipeline = subcommands.add_parser("pipeline:post-to-product-analysis")
+    product_pipeline.add_argument("--candidates-file", default=str(DATA / "seeds" / "product-candidates.csv"))
+    product_pipeline.add_argument("--article-id")
+    product_pipeline.add_argument("--continue-on-error", action="store_true")
+    monetization_pipeline = subcommands.add_parser("pipeline:monetization-review")
+    monetization_pipeline.add_argument("--article-id")
+    monetization_pipeline.add_argument("--continue-on-error", action="store_true")
+
+    legacy_trend_import = subcommands.add_parser("import-trend-signals")
+    legacy_trend_import.add_argument("--file", default=str(DATA / "seeds" / "trend-signals.csv"))
+    add_noarg(subcommands, "cluster-topics")
+    add_noarg(subcommands, "score-topics")
+    add_noarg(subcommands, "generate-content-briefs")
+    legacy_pipeline = subcommands.add_parser("run-pipeline")
+    legacy_pipeline.add_argument("--trend-signal-file", default=str(DATA / "seeds" / "trend-signals.csv"))
+    legacy_pipeline.add_argument("--continue-on-error", action="store_true")
+
     offer_match = subcommands.add_parser("match-affiliate-offers")
     offer_match.add_argument("--topic-id")
     offer_match.add_argument("--article-id")
     offer_match.add_argument("--offers-file", default=str(DATA / "seeds" / "offers.csv"))
-    topic_draft = subcommands.add_parser("generate-topic-draft")
-    topic_draft.add_argument("--topic-id")
-    topic_draft.add_argument("--brief-id")
-    topic_draft.add_argument("--locale")
-    localize_topic = subcommands.add_parser("localize-topic-draft")
-    localize_topic.add_argument("--article-id")
-    localize_topic.add_argument("--locale")
-    publishing_gate = subcommands.add_parser("run-publishing-gate")
-    publishing_gate.add_argument("--article-id")
-    translation_group = subcommands.add_parser("create-translation-group")
-    translation_group.add_argument("--article-id", required=True)
-    translation_group.add_argument("--topic-id")
-    translation_group.add_argument("--source-locale", default="en")
-    localize_existing = subcommands.add_parser("localize-article")
-    localize_existing.add_argument("--article-id", required=True)
-    localize_existing.add_argument("--locale", required=True)
-    localize_existing.add_argument("--source-locale", default="en")
-    subcommands.add_parser("score-localization")
-    subcommands.add_parser("sync-hreflang-groups")
-    distribution_assets = subcommands.add_parser("generate-distribution-assets")
-    distribution_assets.add_argument("--article-id")
-    approve_distribution = subcommands.add_parser("approve-distribution-asset")
-    approve_distribution.add_argument("--asset-id", required=True)
-    schedule_distribution = subcommands.add_parser("schedule-distribution-asset")
-    schedule_distribution.add_argument("--asset-id", required=True)
-    schedule_distribution.add_argument("--scheduled-at")
-    subcommands.add_parser("send-approved-distribution-assets")
-    subcommands.add_parser("score-linkable-assets")
-    link_prospects = subcommands.add_parser("import-link-prospects")
-    link_prospects.add_argument("--file", default=str(DATA / "seeds" / "link-prospects.csv"))
-    subcommands.add_parser("score-link-prospects")
-    subcommands.add_parser("draft-outreach")
-    approve_outreach = subcommands.add_parser("approve-outreach-message")
-    approve_outreach.add_argument("--message-id", required=True)
-    subcommands.add_parser("send-approved-outreach")
-    inventory = subcommands.add_parser("generate-url-inventory")
-    inventory.add_argument("--file", default=str(DATA / "seeds" / "initial-url-plan.csv"))
-
-    pack = subcommands.add_parser("build-evidence-pack")
-    pack.add_argument("--locale", default="en")
-
-    outline = subcommands.add_parser("generate-outline")
-    outline.add_argument("--locale", default="en")
-    outline.add_argument("--type", default="review")
-    outline.add_argument("--product-id")
-
-    draft = subcommands.add_parser("generate-draft")
-    draft.add_argument("--locale", default="en")
-    draft.add_argument("--type", default="review")
-
-    subcommands.add_parser("run-quality-gate")
-
-    pipeline = subcommands.add_parser("run-pipeline")
-    pipeline.add_argument("--seed-file", default=str(DATA / "seeds" / "usb-c-chargers.csv"))
-    pipeline.add_argument("--keyword")
-    pipeline.add_argument("--page-size", default=20, type=int)
-    pipeline.add_argument("--locale", action="append", dest="locales", default=None)
-    pipeline.add_argument("--draft-type", action="append", dest="draft_types", default=None)
-    pipeline.add_argument("--url-plan-file", default=str(DATA / "seeds" / "initial-url-plan.csv"))
-    pipeline.add_argument("--trend-signal-file", default=str(DATA / "seeds" / "trend-signals.csv"))
-    pipeline.add_argument("--continue-on-error", action="store_true")
-    pipeline.add_argument("--skip-search-console", action="store_true")
+    distribution = subcommands.add_parser("generate-distribution-assets")
+    distribution.add_argument("--article-id")
+    add_noarg(subcommands, "draft-outreach")
 
     args = parser.parse_args()
     ensure_dirs()
 
-    if args.command == "seed-products":
-        print(seed_products(Path(args.file)))
-    elif args.command == "search-aliexpress-products":
-        print(search_aliexpress_products(args.keyword, args.page_size))
-    elif args.command == "build-identity-graph":
-        print(build_identity_graph())
-    elif args.command == "detect-variant-traps":
-        print(detect_variant_traps())
-    elif args.command == "extract-seller-claims":
-        print(extract_seller_claims())
-    elif args.command == "snapshot-prices":
-        print(snapshot_prices())
-    elif args.command == "build-price-truth":
-        print(build_price_truth())
-    elif args.command == "build-locale-risk":
-        print(build_locale_risk())
-    elif args.command == "extract-review-signals":
-        print(extract_review_signals())
-    elif args.command == "build-verified-claims":
-        print(build_verified_claims())
-    elif args.command == "import-search-console":
-        print(import_search_console(args.start_date, args.end_date))
-    elif args.command == "suggest-refreshes":
-        print(build_search_console_suggestions())
-    elif args.command == "collect-trend-signals":
-        print(collect_trend_signals(Path(args.file)))
-    elif args.command == "import-trend-signals":
-        print(import_trend_signals(Path(args.file)))
-    elif args.command == "cluster-topics":
-        print(cluster_topics())
-    elif args.command == "score-topics":
-        print(score_topics())
-    elif args.command == "generate-content-briefs":
-        print(generate_topic_briefs())
-    elif args.command == "match-affiliate-offers":
-        print(match_affiliate_offers(args.topic_id, args.article_id, Path(args.offers_file)))
-    elif args.command == "generate-topic-draft":
-        print(generate_topic_article(args.topic_id, args.brief_id, args.locale))
-    elif args.command == "localize-topic-draft":
-        print(localize_topic_article(args.article_id, args.locale))
-    elif args.command == "run-publishing-gate":
-        print(run_topic_publishing_gate(args.article_id))
-    elif args.command == "create-translation-group":
-        print(create_translation_group(args.article_id, args.topic_id, args.source_locale))
-    elif args.command == "localize-article":
-        print(localize_article(args.article_id, args.locale, args.source_locale))
-    elif args.command == "score-localization":
-        print(score_localization())
-    elif args.command == "sync-hreflang-groups":
-        print(sync_hreflang_groups())
-    elif args.command == "generate-distribution-assets":
-        print(generate_distribution_assets(args.article_id))
-    elif args.command == "approve-distribution-asset":
-        print(approve_distribution_asset(args.asset_id))
-    elif args.command == "schedule-distribution-asset":
-        print(schedule_distribution_asset(args.asset_id, args.scheduled_at))
-    elif args.command == "send-approved-distribution-assets":
-        print(send_approved_distribution_assets())
-    elif args.command == "score-linkable-assets":
-        print(score_linkable_assets())
-    elif args.command == "import-link-prospects":
-        print(import_link_prospects(Path(args.file)))
-    elif args.command == "score-link-prospects":
-        print(score_link_prospects())
-    elif args.command == "draft-outreach":
-        print(draft_outreach())
-    elif args.command == "approve-outreach-message":
-        print(approve_outreach_message(args.message_id))
-    elif args.command == "send-approved-outreach":
-        print(send_approved_outreach())
-    elif args.command == "generate-url-inventory":
-        print(generate_url_inventory(Path(args.file)))
-    elif args.command == "build-evidence-pack":
-        print(build_evidence_pack(args.locale))
-    elif args.command == "generate-outline":
-        print(generate_outline(args.locale, args.type, args.product_id))
-    elif args.command == "generate-draft":
-        print(generate_draft(args.locale, args.type))
-    elif args.command == "run-quality-gate":
-        print(run_quality_gate())
+    if args.command == "trend:init-markets":
+        print(init_markets())
+    elif args.command in {"trend:import-signals", "import-trend-signals"}:
+        print(import_market_trend_signals(Path(args.file)))
+    elif args.command == "trend:collect":
+        print(collect_market_trends(args.market, args.source))
+    elif args.command == "trend:normalize":
+        print(normalize_market_trends())
+    elif args.command in {"trend:cluster", "cluster-topics"}:
+        print(cluster_market_trends())
+    elif args.command in {"trend:score", "score-topics"}:
+        print(score_market_trends())
+    elif args.command == "trend:report":
+        print(trend_report(args.market))
+    elif args.command == "trend:generate-keywords":
+        print(generate_trend_keywords(args.cluster_id))
+    elif args.command == "serp:import-results":
+        print(import_serp_results(Path(args.file)))
+    elif args.command == "serp:collect":
+        print(collect_serp(args.keyword_id, args.provider))
+    elif args.command == "serp:fetch-pages":
+        print(fetch_serp_pages(args.snapshot_id))
+    elif args.command == "serp:analyze-pages":
+        print(analyze_serp_pages(args.snapshot_id))
+    elif args.command == "serp:summarize-opportunity":
+        print(summarize_serp_opportunity(args.keyword_id))
+    elif args.command == "serp:report":
+        print(serp_report(args.market))
+    elif args.command == "strategy:create":
+        print(create_content_strategy(args.keyword_id))
+    elif args.command in {"strategy:generate-brief", "generate-content-briefs"}:
+        print(generate_content_brief(args.strategy_id if hasattr(args, "strategy_id") else None))
+    elif args.command == "post:generate-test":
+        print(generate_test_post(args.strategy_id))
+    elif args.command == "post:publish-test":
+        print(publish_test_article(args.article_id, args.mode))
+    elif args.command == "post:promote-index-candidate":
+        print(promote_index_candidate(args.article_id))
+    elif args.command == "calendar:build":
+        print(build_market_calendar(args.market))
+    elif args.command == "calendar:build-all":
+        print(build_all_market_calendars())
+    elif args.command == "calendar:explain":
+        print(explain_market_calendar(args.market))
+    elif args.command == "calendar:export":
+        print(export_market_calendars())
+    elif args.command == "performance:import-search-console":
+        print(import_search_console_performance())
+    elif args.command == "performance:snapshot":
+        print(snapshot_performance())
+    elif args.command == "performance:recommend-actions":
+        print(recommend_performance_actions())
+    elif args.command == "performance:report":
+        print(performance_report(args.market))
+    elif args.command == "products:import-candidates":
+        print(import_product_candidates(Path(args.file)))
+    elif args.command == "products:discover-candidates":
+        print(discover_product_candidates(args.article_id))
+    elif args.command == "products:analyze-candidates":
+        print(analyze_product_candidates(args.article_id))
+    elif args.command == "products:build-analysis-block":
+        print(build_product_analysis_block(args.article_id))
+    elif args.command == "monetization:create-review":
+        print(create_monetization_review(args.article_id))
+    elif args.command == "monetization:draft-placements":
+        print(draft_monetized_placements(args.review_id))
+    elif args.command == "monetization:apply-approved":
+        print(apply_approved_monetization(args.review_id))
+    elif args.command == "pipeline:trend-to-post":
+        print(
+            run_trend_to_post_pipeline(
+                Path(args.trend_signal_file),
+                Path(args.serp_results_file),
+                continue_on_error=args.continue_on_error,
+            )
+        )
+    elif args.command == "pipeline:post-to-product-analysis":
+        print(run_post_to_product_analysis_pipeline(Path(args.candidates_file), args.article_id, args.continue_on_error))
+    elif args.command == "pipeline:monetization-review":
+        print(run_monetization_review_pipeline(args.article_id, args.continue_on_error))
     elif args.command == "run-pipeline":
         print(
             run_worker_pipeline(
-                seed_file=Path(args.seed_file),
-                locales=args.locales or ["en", "es", "pt-br"],
-                draft_types=args.draft_types or ["review", "risk"],
-                url_plan_file=Path(args.url_plan_file),
+                seed_file=DATA / "seeds" / "usb-c-chargers.csv",
+                locales=["en", "es", "pt-br"],
+                draft_types=["review"],
+                url_plan_file=DATA / "seeds" / "initial-url-plan.csv",
                 trend_signal_file=Path(args.trend_signal_file),
-                keyword=args.keyword,
-                page_size=args.page_size,
                 continue_on_error=args.continue_on_error,
-                include_search_console=not args.skip_search_console,
             )
         )
+    elif args.command == "match-affiliate-offers":
+        if not ENABLE_OFFER_MATCHING:
+            print("match-affiliate-offers is disabled by ENABLE_OFFER_MATCHING=false; use product candidate analysis first.")
+        else:
+            from workers.python.intelligence.offer_matching import match_affiliate_offers
+
+            print(match_affiliate_offers(args.topic_id, args.article_id, Path(args.offers_file)))
+    elif args.command == "generate-distribution-assets":
+        if not ENABLE_DISTRIBUTION_DRAFTS:
+            print("generate-distribution-assets is disabled by ENABLE_DISTRIBUTION_DRAFTS=false.")
+        else:
+            from workers.python.distribution.owned_channel import generate_distribution_assets
+
+            print(generate_distribution_assets(args.article_id))
+    elif args.command == "draft-outreach":
+        if not ENABLE_LINK_EARNING:
+            print("draft-outreach is disabled by ENABLE_LINK_EARNING=false.")
+        else:
+            from workers.python.outreach.link_earning import draft_outreach
+
+            print(draft_outreach())
+
+
+def add_noarg(subcommands: argparse._SubParsersAction[argparse.ArgumentParser], name: str) -> None:
+    subcommands.add_parser(name)
 
 
 if __name__ == "__main__":

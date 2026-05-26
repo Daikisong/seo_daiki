@@ -171,6 +171,8 @@ model Article {
   id              String   @id @default(cuid())
   productId       String?
   product         Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
+  market          String?
+  language        String?
   locale          String
   slug            String
   type            String
@@ -206,6 +208,7 @@ model Article {
   linkableAssets LinkableAsset[]
 
   @@unique([locale, slug, type])
+  @@index([market, language, publishStatus])
   @@index([locale, type, indexStatus])
   @@index([healthSensitivity, complianceStatus])
 }
@@ -281,38 +284,377 @@ model TrendSource {
   name       String
   slug       String   @unique
   sourceType String
+  market     String?
+  language   String?
   locale     String?
   country    String?
   enabled    Boolean  @default(true)
+  reliabilityTier String @default("manual_reviewed")
+  collectionMode  String @default("manual_csv")
   configJson Json?
+  lastCollectedAt DateTime?
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 
   signals    TrendSignal[]
+
+  @@index([market, language, enabled])
 }
 
 model TrendSignal {
   id                String   @id @default(cuid())
   sourceId          String
   source            TrendSource @relation(fields: [sourceId], references: [id], onDelete: Cascade)
+  market            String?
+  language          String?
   locale            String
   country           String?
   query             String
+  rawKeyword        String?
+  normalizedKeyword String?
   topicRaw          String
+  categoryGuess     String?
   url               String?
+  observedAt        DateTime?
+  sourceRank        Int?
+  sourceVolumeBucket String?
+  relativeGrowth    Float?
+  velocityScore     Float    @default(0)
   volumeScore       Float    @default(0)
   growthScore       Float    @default(0)
   competitionScore  Float    @default(0)
+  commercialHintScore Float @default(0)
   commercialScore   Float    @default(0)
   freshnessScore    Float    @default(0)
+  evidenceHintScore Float @default(0)
   evidenceFitScore  Float    @default(0)
+  localeSpecificityScore Float @default(0)
   affiliateFitScore Float    @default(0)
+  rawJson           Json?
   capturedAt        DateTime @default(now())
 
   topicSignals      TopicSignal[]
 
+  @@index([market, language, capturedAt])
   @@index([locale, country, capturedAt])
   @@index([query])
+}
+
+model TrendCluster {
+  id                  String   @id @default(cuid())
+  market              String
+  language            String
+  canonicalTopic      String
+  slug                String
+  category            String?
+  detectedAt          DateTime @default(now())
+  status              String   @default("clustered")
+  signalCount         Int      @default(0)
+  countriesSeenJson   Json?
+  relatedKeywordsJson Json?
+  score               Float    @default(0)
+  scoreBreakdownJson  Json?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  @@unique([market, language, slug])
+  @@index([market, language, status, score])
+}
+
+model TrendKeyword {
+  id                String   @id @default(cuid())
+  clusterId         String
+  market            String
+  language          String
+  keyword           String
+  searchIntentGuess String
+  priorityScore     Float    @default(0)
+  serpStatus        String   @default("pending")
+  status            String   @default("serp_pending")
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@index([clusterId])
+  @@index([market, language, status, priorityScore])
+}
+
+model SerpSnapshot {
+  id             String   @id @default(cuid())
+  market         String
+  language       String
+  country        String
+  keywordId      String
+  keyword        String
+  provider       String
+  collectedAt    DateTime @default(now())
+  status         String   @default("imported")
+  rawJson        Json?
+  topResultCount Int      @default(0)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@index([keywordId, provider])
+  @@index([market, language, collectedAt])
+}
+
+model SerpResult {
+  id                    String   @id @default(cuid())
+  snapshotId            String
+  rank                  Int
+  url                   String
+  domain                String
+  title                 String
+  snippet               String?
+  resultType            String
+  dateHint              String?
+  isForum               Boolean  @default(false)
+  isVideo               Boolean  @default(false)
+  isEcommerce           Boolean  @default(false)
+  isAffiliateLikely     Boolean  @default(false)
+  isPublisher           Boolean  @default(false)
+  languageGuess         String?
+  contentFetchedStatus  String   @default("pending")
+  contentAnalysisStatus String   @default("pending")
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  @@index([snapshotId, rank])
+  @@index([domain])
+}
+
+model CompetitorContentAnalysis {
+  id                     String   @id @default(cuid())
+  serpResultId            String
+  market                  String
+  language                String
+  keyword                 String
+  pageTitle               String?
+  h1                      String?
+  headingsJson            Json?
+  wordCountEstimate       Int?
+  contentTypeGuess        String?
+  intentServed            String?
+  monetizationPattern     String?
+  affiliatePattern        String?
+  comparisonTablePresent  Boolean  @default(false)
+  productLinksPresent     Boolean  @default(false)
+  originalDataPresent     Boolean  @default(false)
+  freshnessSignalsJson    Json?
+  contentAnglesJson       Json?
+  missingAnglesJson       Json?
+  strengthsJson           Json?
+  weaknessesJson          Json?
+  extractionStatus        String   @default("summary_only")
+  analyzedAt              DateTime @default(now())
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+
+  @@index([serpResultId])
+  @@index([market, language, keyword])
+}
+
+model SerpKeywordOpportunity {
+  id                       String   @id @default(cuid())
+  keywordId                String
+  market                   String
+  language                 String
+  opportunityScore         Float    @default(0)
+  dominantIntent           String
+  dominantContentTypesJson Json?
+  topPatternsJson          Json?
+  contentGapJson           Json?
+  recommendedAngle         String
+  recommendedArticleType   String
+  shouldWrite              Boolean  @default(false)
+  reason                   String?
+  createdAt                DateTime @default(now())
+  updatedAt                DateTime @updatedAt
+
+  @@index([keywordId])
+  @@index([market, language, shouldWrite, opportunityScore])
+}
+
+model ContentStrategy {
+  id                      String   @id @default(cuid())
+  keywordId               String
+  clusterId               String
+  market                  String
+  language                String
+  selectedArticleType     String
+  recommendedAngle        String
+  titleStrategy           String
+  introStrategy           String?
+  sectionPlanJson         Json?
+  differentiationPlanJson Json?
+  evidenceNeededJson      Json?
+  competitorPatternsJson  Json?
+  contentGapJson          Json?
+  monetizationDeferred    Boolean  @default(true)
+  status                  String   @default("brief_pending")
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+
+  @@index([keywordId])
+  @@index([market, language, status])
+}
+
+model TestArticle {
+  id             String   @id @default(cuid())
+  strategyId     String
+  articleId      String?
+  market         String
+  language       String
+  status         String   @default("test_pending")
+  noindexReason  String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@index([strategyId])
+  @@index([market, language, status])
+}
+
+model MarketEditorialCalendar {
+  id          String   @id @default(cuid())
+  market      String
+  language    String
+  weekStart   DateTime
+  status      String   @default("draft")
+  summaryJson Json?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([market, language, weekStart])
+}
+
+model EditorialSlot {
+  id         String   @id @default(cuid())
+  calendarId String
+  date       DateTime
+  priority   Int
+  clusterId  String?
+  keywordId  String?
+  strategyId String?
+  articleId  String?
+  status     String   @default("candidate")
+  reason     String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([calendarId, priority])
+  @@index([keywordId])
+}
+
+model ArticlePerformanceSnapshot {
+  id          String   @id @default(cuid())
+  articleId   String
+  market      String
+  language    String
+  dateStart   DateTime
+  dateEnd     DateTime
+  impressions Int      @default(0)
+  clicks      Int      @default(0)
+  ctr         Float    @default(0)
+  avgPosition Float    @default(0)
+  queriesJson Json?
+  countriesJson Json?
+  devicesJson Json?
+  capturedAt  DateTime @default(now())
+
+  @@index([articleId, capturedAt])
+  @@index([market, language])
+}
+
+model ArticleNextAction {
+  id          String   @id @default(cuid())
+  articleId   String
+  actionType  String
+  reason      String
+  priority    String
+  payloadJson Json?
+  status      String   @default("open")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([articleId, status])
+  @@index([actionType, priority])
+}
+
+model ProductCandidate {
+  id                 String   @id @default(cuid())
+  articleId          String?
+  market             String
+  language           String
+  sourceMerchant     String
+  sourceMode         String
+  title              String
+  productUrl         String?
+  candidateUrl       String?
+  category           String?
+  priceText          String?
+  currency           String?
+  imageUrl           String?
+  reason             String?
+  relevanceScore     Float    @default(0)
+  riskScore          Float    @default(0)
+  evidenceNeededJson Json?
+  status             String   @default("analysis_pending")
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  @@index([articleId])
+  @@index([market, language, status])
+}
+
+model ProductCandidateAnalysis {
+  id                    String   @id @default(cuid())
+  articleId             String
+  market                String
+  language              String
+  candidatesJson        Json?
+  comparisonJson        Json?
+  prosConsJson          Json?
+  riskNotesJson         Json?
+  recommendedUseJson    Json?
+  monetizationReadiness String   @default("human_review_required")
+  status                String   @default("do_not_link_yet")
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  @@index([articleId])
+  @@index([market, language, status])
+}
+
+model MonetizationReview {
+  id                       String   @id @default(cuid())
+  articleId                String
+  market                   String
+  language                 String
+  productAnalysisId        String
+  status                   String   @default("pending_human_review")
+  reviewerNotes            String?
+  approvedCandidateIdsJson Json?
+  rejectedCandidateIdsJson Json?
+  createdAt                DateTime @default(now())
+  updatedAt                DateTime @updatedAt
+
+  @@index([articleId])
+  @@index([status])
+}
+
+model MonetizedPlacementDraft {
+  id             String   @id @default(cuid())
+  articleId      String
+  candidateId    String
+  merchant       String
+  placementType  String
+  anchorText     String
+  disclosureText String
+  rel            String   @default("sponsored nofollow")
+  status         String   @default("draft")
+  createdAt      DateTime @default(now())
+
+  @@index([articleId, status])
+  @@index([candidateId])
 }
 
 model Topic {

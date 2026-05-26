@@ -1,0 +1,270 @@
+{
+  "clusters": [
+    {
+      "id": "trend-cluster-br-pt-br-power-bank-real-capacity",
+      "market": "br",
+      "language": "pt-br",
+      "canonicalTopic": "power bank real capacity",
+      "slug": "power-bank-real-capacity",
+      "category": "consumer-tech",
+      "detectedAt": "2026-05-26T20:29:38.871395+00:00",
+      "status": "scored",
+      "signalCount": 2,
+      "countriesSeenJson": [
+        "BR"
+      ],
+      "relatedKeywordsJson": [
+        "power bank capacidade real",
+        "power bank mah real"
+      ],
+      "score": 80.49,
+      "scoreBreakdownJson": {
+        "velocityScore": 80.5,
+        "sourceCorroborationScore": 73,
+        "marketSpecificityScore": 94.5,
+        "contentOpportunityScore": 79.0,
+        "commercialHintScore": 77.5,
+        "evidenceHintScore": 76.5,
+        "freshnessScore": 81.0,
+        "noisePenalty": 0,
+        "compliancePenalty": 0
+      },
+      "signalIds": [
+        "market-trend-signal-br-pt-br-manual-csv-power-bank-capacidade-real-5",
+        "market-trend-signal-br-pt-br-manual-csv-power-bank-mah-real-6"
+      ]
+    },
+    {
+      "id": "trend-cluster-us-en-magnesium-sleep",
+      "market": "us",
+      "language": "en",
+      "canonicalTopic": "magnesium sleep",
+      "slug": "magnesium-sleep",
+      "category": "wellness",
+      "detectedAt": "2026-05-26T20:29:38.871440+00:00",
+      "status": "scored",
+      "signalCount": 2,
+      "countriesSeenJson": [
+        "US"
+      ],
+      "relatedKeywordsJson": [
+        "best magnesium for sleep",
+        "magnesium glycinate sleep"
+      ],
+      "score": 79.04,
+      "scoreBreakdownJson": {
+        "velocityScore": 84.0,
+        "sourceCorroborationScore": 73,
+        "marketSpecificityScore": 91.0,
+        "contentOpportunityScore": 79.0,
+        "commercialHintScore": 66.0,
+        "evidenceHintScore": 73.0,
+        "freshnessScore": 79.0,
+        "noisePenalty": 0,
+        "compliancePenalty": 0
+      },
+      "signalIds": [
+        "market-trend-signal-us-en-manual-csv-magnesium-glycinate-sleep-1",
+        "market-trend-signal-us-en-manual-csv-best-magnesium-for-sleep-2"
+      ]
+    },
+    {
+      "id": "trend-cluster-es-es-usb-c-charger",
+      "market": "es",
+      "language": "es",
+      "canonicalTopic": "usb c charger",
+      "slug": "usb-c-charger",
+      "category": "consumer-tech",
+      "detectedAt": "2026-05-26T20:29:38.871413+00:00",
+      "status": "scored",
+      "signalCount": 2,
+      "countriesSeenJson": [
+        "ES"
+      ],
+      "relatedKeywordsJson": [
+        "cargador usb c gan",
+        "cargador usb c rapido seguro"
+      ],
+      "score": 78.33,
+      "scoreBreakdownJson": {
+        "velocityScore": 76.0,
+        "sourceCorroborationScore": 73,
+        "marketSpecificityScore": 93.5,
+        "contentOpportunityScore": 79.0,
+        "commercialHintScore": 80.0,
+        "evidenceHintScore": 67.5,
+        "freshnessScore": 76.5,
+        "noisePenalty": 0,
+        "compliancePenalty": 0
+      },
+      "signalIds": [
+        "market-trend-signal-es-es-manual-csv-cargador-usb-c-gan-3",
+        "market-trend-signal-es-es-manual-csv-cargador-usb-c-rapido-seguro-4"
+      ]
+    },
+    {
+      "id": "trend-cluster-jp-ja-compact-desk-gadget",
+      "market": "jp",
+      "language": "ja",
+      "canonicalTopic": "compact desk gadget",
+      "slug": "compact-desk-gadget",
+      "category": "consumer-tech",
+      "detectedAt": "2026-05-26T20:29:38.871425+00:00",
+      "status": "scored",
+      "signalCount": 2,
+      "countriesSeenJson": [
+        "JP"
+      ],
+      "relatedKeywordsJson": [
+        "compact desk gadget",
+        "デスク 便利 グッズ"
+      ],
+      "score": 74.82,
+      "scoreBreakdownJson": {
+        "velocityScore": 74.0,
+        "sourceCorroborationScore": 73,
+        "marketSpecificityScore": 93.5,
+        "contentOpportunityScore": 79.0,
+        "commercialHintScore": 59.5,
+        "evidenceHintScore": 56.5,
+        "freshnessScore": 77.5,
+        "noisePenalty": 0,
+        "compliancePenalty": 0
+      },
+      "signalIds": [
+        "market-trend-signal-jp-ja-manual-csv-compact-desk-gadget-7",
+        "market-trend-signal-jp-ja-manual-csv-デスク-便利-グッズ-8"
+      ]
+    },
+    {
+      "id": "trend-cluster-de-de-travel-adapter",
+      "market": "de",
+      "language": "de",
+      "canonicalTopic": "travel adapter",
+      "slug": "travel-adapter",
+      "category": "consumer-tech",
+      "detectedAt": "2026-05-26T20:29:38.871406+00:00",
+      "status": "scored",
+      "signalCount": 1,
+      "countriesSeenJson": [
+        "DE"
+      ],
+      "relatedKeywordsJson": [
+        "reiseadapter usb c"
+      ],
+      "score": 72.06,
+      "scoreBreakdownJson": {
+        "velocityScore": 68.0,
+        "sourceCorroborationScore": 69,
+        "marketSpecificityScore": 92.0,
+        "contentOpportunityScore": 67.0,
+        "commercialHintScore": 72.0,
+        "evidenceHintScore": 62.0,
+        "freshnessScore": 73.0,
+        "noisePenalty": 0,
+        "compliancePenalty": 0
+      },
+      "signalIds": [
+        "market-trend-signal-de-de-manual-csv-reiseadapter-usb-c-11"
+      ]
+    },
+    {
+      "id": "trend-cluster-fr-fr-beauty-ingredient",
+      "market": "fr",
+      "language": "fr",
+      "canonicalTopic": "beauty ingredient",
+      "slug": "beauty-ingredient",
+      "category": "beauty",
+      "detectedAt": "2026-05-26T20:29:38.871419+00:00",
+      "status": "scored",
+      "signalCount": 1,
+      "countriesSeenJson": [
+        "FR"
+      ],
+      "relatedKeywordsJson": [
+        "ingredient beaute tendance"
+      ],
+      "score": 71.84,
+      "scoreBreakdownJson": {
+        "velocityScore": 71.0,
+        "sourceCorroborationScore": 69,
+        "marketSpecificityScore": 91.0,
+        "contentOpportunityScore": 67.0,
+        "commercialHintScore": 66.0,
+        "evidenceHintScore": 60.0,
+        "freshnessScore": 74.0,
+        "noisePenalty": 0,
+        "compliancePenalty": 0
+      },
+      "signalIds": [
+        "market-trend-signal-fr-fr-manual-csv-ingredient-beaute-tendance-13"
+      ]
+    },
+    {
+      "id": "trend-cluster-mx-es-budget-smartwatch",
+      "market": "mx",
+      "language": "es",
+      "canonicalTopic": "budget smartwatch",
+      "slug": "budget-smartwatch",
+      "category": "consumer-tech",
+      "detectedAt": "2026-05-26T20:29:38.871435+00:00",
+      "status": "scored",
+      "signalCount": 1,
+      "countriesSeenJson": [
+        "MX"
+      ],
+      "relatedKeywordsJson": [
+        "smartwatch economico 2026"
+      ],
+      "score": 71.78,
+      "scoreBreakdownJson": {
+        "velocityScore": 70.0,
+        "sourceCorroborationScore": 69,
+        "marketSpecificityScore": 93.0,
+        "contentOpportunityScore": 67.0,
+        "commercialHintScore": 74.0,
+        "evidenceHintScore": 52.0,
+        "freshnessScore": 72.0,
+        "noisePenalty": 0,
+        "compliancePenalty": 0
+      },
+      "signalIds": [
+        "market-trend-signal-mx-es-manual-csv-smartwatch-economico-2026-12"
+      ]
+    },
+    {
+      "id": "trend-cluster-kr-ko-gut-health",
+      "market": "kr",
+      "language": "ko",
+      "canonicalTopic": "gut health",
+      "slug": "gut-health",
+      "category": "wellness",
+      "detectedAt": "2026-05-26T20:29:38.871430+00:00",
+      "status": "scored",
+      "signalCount": 2,
+      "countriesSeenJson": [
+        "KR"
+      ],
+      "relatedKeywordsJson": [
+        "gut health probiotic",
+        "장 건강 유산균"
+      ],
+      "score": 64.54,
+      "scoreBreakdownJson": {
+        "velocityScore": 75.0,
+        "sourceCorroborationScore": 73,
+        "marketSpecificityScore": 93.0,
+        "contentOpportunityScore": 79.0,
+        "commercialHintScore": 64.0,
+        "evidenceHintScore": 69.0,
+        "freshnessScore": 76.0,
+        "noisePenalty": 0,
+        "compliancePenalty": 12
+      },
+      "signalIds": [
+        "market-trend-signal-kr-ko-manual-csv-장-건강-유산균-9",
+        "market-trend-signal-kr-ko-manual-csv-gut-health-probiotic-10"
+      ]
+    }
+  ]
+}

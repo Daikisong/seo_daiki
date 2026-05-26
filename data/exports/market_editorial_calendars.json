@@ -1,0 +1,608 @@
+{
+  "calendars": [
+    {
+      "id": "market-calendar-us-en-2026-05-26",
+      "market": "us",
+      "language": "en",
+      "weekStart": "2026-05-26",
+      "status": "draft",
+      "summaryJson": {
+        "clusterCount": 1,
+        "keywordCount": 3,
+        "slotCount": 3,
+        "topicalBalance": {
+          "categories": {
+            "wellness": 1
+          },
+          "maxUnrelatedTrendPostsPerWeek": 2,
+          "maxHealthSensitivePostsPerWeek": 1,
+          "maxDealPostsPerWeek": 0,
+          "minimumEvergreenSupportingPostsPerTrendCluster": 1
+        }
+      },
+      "slots": [
+        {
+          "id": "editorial-slot-us-en-1",
+          "date": "2026-05-26",
+          "priority": 1,
+          "clusterId": "trend-cluster-us-en-magnesium-sleep",
+          "keywordId": "trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-sleep",
+          "strategyId": "content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-sleep",
+          "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-sleep",
+          "status": "candidate",
+          "reason": "Selected from this market's trend and SERP opportunity queue."
+        },
+        {
+          "id": "editorial-slot-us-en-2",
+          "date": "2026-05-27",
+          "priority": 2,
+          "clusterId": "trend-cluster-us-en-magnesium-sleep",
+          "keywordId": "trend-keyword-trend-cluster-us-en-magnesium-sleep-best-magnesium-for-sleep",
+          "strategyId": "content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-best-magnesium-for-sleep",
+          "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-best-magnesium-for-sleep",
+          "status": "candidate",
+          "reason": "Selected from this market's trend and SERP opportunity queue."
+        },
+        {
+          "id": "editorial-slot-us-en-3",
+          "date": "2026-05-28",
+          "priority": 3,
+          "clusterId": "trend-cluster-us-en-magnesium-sleep",
+          "keywordId": "trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-glycinate-sleep",
+          "strategyId": "content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-glycinate-sleep",
+          "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-glycinate-sleep",
+          "status": "candidate",
+          "reason": "Selected from this market's trend and SERP opportunity queue."
+        }
+      ]
+    },
+    {
+      "id": "market-calendar-gb-en-2026-05-26",
+      "market": "gb",
+      "language": "en",
+      "weekStart": "2026-05-26",
+      "status": "draft",
+      "summaryJson": {
+        "clusterCount": 0,
+        "keywordCount": 0,
+        "slotCount": 0,
+        "topicalBalance": {
+          "categories": {},
+          "maxUnrelatedTrendPostsPerWeek": 2,
+          "maxHealthSensitivePostsPerWeek": 1,
+          "maxDealPostsPerWeek": 0,
+          "minimumEvergreenSupportingPostsPerTrendCluster": 1
+        }
+      },
+      "slots": []
+    },
+    {
+      "id": "market-calendar-ca-en-2026-05-26",
+      "market": "ca",
+      "language": "en",
+      "weekStart": "2026-05-26",
+      "status": "draft",
+      "summaryJson": {
+        "clusterCount": 0,
+        "keywordCount": 0,
+        "slotCount": 0,
+        "topicalBalance": {
+          "categories": {},
+          "maxUnrelatedTrendPostsPerWeek": 2,
+          "maxHealthSensitivePostsPerWeek": 1,
+          "maxDealPostsPerWeek": 0,
+          "minimumEvergreenSupportingPostsPerTrendCluster": 1
+        }
+      },
+      "slots": []
+    },
+    {
+      "id": "market-calendar-au-en-2026-05-26",
+      "market": "au",
+      "language": "en",
+      "weekStart": "2026-05-26",
+      "status": "draft",
+      "summaryJson": {
+        "clusterCount": 0,
+        "keywordCount": 0,
+        "slotCount": 0,
+        "topicalBalance": {
+          "categories": {},
+          "maxUnrelatedTrendPostsPerWeek": 2,
+          "maxHealthSensitivePostsPerWeek": 1,
+          "maxDealPostsPerWeek": 0,
+          "minimumEvergreenSupportingPostsPerTrendCluster": 1
+        }
+      },
+      "slots": []
+    },
+    {
+      "id": "market-calendar-es-es-2026-05-26",
+      "market": "es",
+      "language": "es",
+      "weekStart": "2026-05-26",
+      "status": "draft",
+      "summaryJson": {
+        "clusterCount": 1,
+        "keywordCount": 3,
+        "slotCount": 3,
+        "topicalBalance": {
+          "categories": {
+            "consumer-tech": 1
+          },
+          "maxUnrelatedTrendPostsPerWeek": 2,
+          "maxHealthSensitivePostsPerWeek": 1,
+          "maxDealPostsPerWeek": 0,
+          "minimumEvergreenSupportingPostsPerTrendCluster": 1
+        }
+      },
+      "slots": [
+        {
+          "id": "editorial-slot-es-es-1",
+          "date": "2026-05-26",
+          "priority": 1,
+          "clusterId": "trend-cluster-es-es-usb-c-charger",
+          "keywordId": "trend-keyword-trend-cluster-es-es-usb-c-charger-usb-c-charger",
+          "strategyId": "content-strategy-trend-keyword-trend-cluster-es-es-usb-c-charger-usb-c-charger",
+          "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-es-es-usb-c-charger-usb-c-charger",
+          "status": "candidate",
+          "reason": "Selected from this market's trend and SERP opportunity queue."
+        },
+        {
+          "id": "editorial-slot-es-es-2",
+          "date": "2026-05-27",
+          "priority": 2,
+          "clusterId": "trend-cluster-es-es-usb-c-charger",
+          "keywordId": "trend-keyword-trend-cluster-es-es-usb-c-charger-cargador-usb-c-gan",
+          "strategyId": "content-strategy-trend-keyword-trend-cluster-es-es-usb-c-charger-cargador-usb-c-gan",
+          "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-es-es-usb-c-charger-cargador-usb-c-gan",
+          "status": "candidate",
+          "reason": "Selected from this market's trend and SERP opportunity queue."
+        },
+        {
+          "id": "editorial-slot-es-es-3",
+          "date": "2026-05-28",
+          "priority": 3,
+          "clusterId": "trend-cluster-es-es-usb-c-charger",
+          "keywordId": "trend-keyword-trend-cluster-es-es-usb-c-charger-cargador-usb-c-rapido-seguro",
+          "strategyId": "content-strategy-trend-keyword-trend-cluster-es-es-usb-c-charger-cargador-usb-c-rapido-seguro",
+          "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-es-es-usb-c-charger-cargador-usb-c-rapido-seguro",
+          "status": "candidate",
+          "reason": "Selected from this market's trend and SERP opportunity queue."
+        }
+      ]
+    },
+    {
+      "id": "market-calendar-mx-es-2026-05-26",
+      "market": "mx",
+      "language": "es",
+      "weekStart": "2026-05-26",
+      "status": "draft",
+      "summaryJson": {
+        "clusterCount": 1,
+        "keywordCount": 2,
+        "slotCount": 2,
+        "topicalBalance": {
+          "categories": {
+            "consumer-tech": 1
+          },
+          "maxUnrelatedTrendPostsPerWeek": 2,
+          "maxHealthSensitivePostsPerWeek": 1,
+          "maxDealPostsPerWeek": 0,
+          "minimumEvergreenSupportingPostsPerTrendCluster": 1
+        }
+      },
+      "slots": [
+        {
+          "id": "editorial-slot-mx-es-1",
+          "date": "2026-05-26",
+          "priority": 1,
+          "clusterId": "trend-cluster-mx-es-budget-smartwatch",
+          "keywordId": "trend-keyword-trend-cluster-mx-es-budget-smartwatch-budget-smartwatch",
+          "strategyId": "content-strategy-trend-keyword-trend-cluster-mx-es-budget-smartwatch-budget-smartwatch",
+          "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-mx-es-budget-smartwatch-budget-smartwatch",
+          "status": "candidate",
+          "reason": "Selected from this market's trend and SERP opportunity queue."
+        },
+        {
+          "id": "editorial-slot-mx-es-2",
+          "date": "2026-05-27",
+          "priority": 2,
+          "clusterId": "trend-cluster-mx-es-budget-smartwatch",
+          "keywordId": "trend-keyword-trend-cluster-mx-es-budget-smartwatch-smartwatch-economico-2026",
+          "strategyId": "content-strategy-trend-keyword-trend-cluster-mx-es-budget-smartwatch-smartwatch-economico-2026",
+          "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-mx-es-budget-smartwatch-smartwatch-economico-2026",
+          "status": "candidate",
+          "reason": "Selected from this market's trend and SERP opportunity queue."
+        }
+      ]
+    },
+    {
+      "id": "market-calendar-br-pt-br-2026-05-26",
+      "market": "br",
+      "language": "pt-br",
+      "weekStart": "2026-05-26",
+      "status": "draft",
+      "summaryJson": {
+        "clusterCount": 1,
+        "keywordCount": 3,
+        "slotCount": 3,
+        "topicalBalance": {
+          "categories": {
+            "consumer-tech": 1
+          },
+          "maxUnrelatedTrendPostsPerWeek": 2,
+          "maxHealthSensitivePostsPerWeek": 1,
+          "maxDealPostsPerWeek": 0,
+          "minimumEvergreenSupportingPostsPerTrendCluster": 1
+        }
+      },
+      "slots": [
+        {
+          "id": "editorial-slot-br-pt-br-1",
+          "date": "2026-05-26",
+          "priority": 1,
+          "clusterId": "trend-cluster-br-pt-br-power-bank-real-capacity",
+          "keywordId": "trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-real-capacity",
+          "strategyId": "content-strategy-trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-real-capacity",
+          "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-real-capacity",
+          "status": "candidate",
+          "reason": "Selected from this market's trend and SERP opportunity queue."
+        },
+        {
+          "id": "editorial-slot-br-pt-br-2",
+          "date": "2026-05-27",
+          "priority": 2,
+          "clusterId": "trend-cluster-br-pt-br-power-bank-real-capacity",
+          "keywordId": "trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-capacidade-real",
+          "strategyId": "content-strategy-trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-capacidade-real",
+          "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-capacidade-real",
+          "status": "candidate",
+          "reason": "Selected from this market's trend and SERP opportunity queue."
+        },
+        {
+          "id": "editorial-slot-br-pt-br-3",
+          "date": "2026-05-28",
+          "priority": 3,
+          "clusterId": "trend-cluster-br-pt-br-power-bank-real-capacity",
+          "keywordId": "trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-mah-real",
+          "strategyId": "content-strategy-trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-mah-real",
+          "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-mah-real",
+          "status": "candidate",
+          "reason": "Selected from this market's trend and SERP opportunity queue."
+        }
+      ]
+    },
+    {
+      "id": "market-calendar-pt-pt-2026-05-26",
+      "market": "pt",
+      "language": "pt",
+      "weekStart": "2026-05-26",
+      "status": "draft",
+      "summaryJson": {
+        "clusterCount": 0,
+        "keywordCount": 0,
+        "slotCount": 0,
+        "topicalBalance": {
+          "categories": {},
+          "maxUnrelatedTrendPostsPerWeek": 2,
+          "maxHealthSensitivePostsPerWeek": 1,
+          "maxDealPostsPerWeek": 0,
+          "minimumEvergreenSupportingPostsPerTrendCluster": 1
+        }
+      },
+      "slots": []
+    },
+    {
+      "id": "market-calendar-fr-fr-2026-05-26",
+      "market": "fr",
+      "language": "fr",
+      "weekStart": "2026-05-26",
+      "status": "draft",
+      "summaryJson": {
+        "clusterCount": 1,
+        "keywordCount": 2,
+        "slotCount": 2,
+        "topicalBalance": {
+          "categories": {
+            "beauty": 1
+          },
+          "maxUnrelatedTrendPostsPerWeek": 2,
+          "maxHealthSensitivePostsPerWeek": 1,
+          "maxDealPostsPerWeek": 0,
+          "minimumEvergreenSupportingPostsPerTrendCluster": 1
+        }
+      },
+      "slots": [
+        {
+          "id": "editorial-slot-fr-fr-1",
+          "date": "2026-05-26",
+          "priority": 1,
+          "clusterId": "trend-cluster-fr-fr-beauty-ingredient",
+          "keywordId": "trend-keyword-trend-cluster-fr-fr-beauty-ingredient-beauty-ingredient",
+          "strategyId": "content-strategy-trend-keyword-trend-cluster-fr-fr-beauty-ingredient-beauty-ingredient",
+          "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-fr-fr-beauty-ingredient-beauty-ingredient",
+          "status": "candidate",
+          "reason": "Selected from this market's trend and SERP opportunity queue."
+        },
+        {
+          "id": "editorial-slot-fr-fr-2",
+          "date": "2026-05-27",
+          "priority": 2,
+          "clusterId": "trend-cluster-fr-fr-beauty-ingredient",
+          "keywordId": "trend-keyword-trend-cluster-fr-fr-beauty-ingredient-ingredient-beaute-tendance",
+          "strategyId": "content-strategy-trend-keyword-trend-cluster-fr-fr-beauty-ingredient-ingredient-beaute-tendance",
+          "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-fr-fr-beauty-ingredient-ingredient-beaute-tendance",
+          "status": "candidate",
+          "reason": "Selected from this market's trend and SERP opportunity queue."
+        }
+      ]
+    },
+    {
+      "id": "market-calendar-de-de-2026-05-26",
+      "market": "de",
+      "language": "de",
+      "weekStart": "2026-05-26",
+      "status": "draft",
+      "summaryJson": {
+        "clusterCount": 1,
+        "keywordCount": 2,
+        "slotCount": 2,
+        "topicalBalance": {
+          "categories": {
+            "consumer-tech": 1
+          },
+          "maxUnrelatedTrendPostsPerWeek": 2,
+          "maxHealthSensitivePostsPerWeek": 1,
+          "maxDealPostsPerWeek": 0,
+          "minimumEvergreenSupportingPostsPerTrendCluster": 1
+        }
+      },
+      "slots": [
+        {
+          "id": "editorial-slot-de-de-1",
+          "date": "2026-05-26",
+          "priority": 1,
+          "clusterId": "trend-cluster-de-de-travel-adapter",
+          "keywordId": "trend-keyword-trend-cluster-de-de-travel-adapter-travel-adapter",
+          "strategyId": "content-strategy-trend-keyword-trend-cluster-de-de-travel-adapter-travel-adapter",
+          "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-de-de-travel-adapter-travel-adapter",
+          "status": "candidate",
+          "reason": "Selected from this market's trend and SERP opportunity queue."
+        },
+        {
+          "id": "editorial-slot-de-de-2",
+          "date": "2026-05-27",
+          "priority": 2,
+          "clusterId": "trend-cluster-de-de-travel-adapter",
+          "keywordId": "trend-keyword-trend-cluster-de-de-travel-adapter-reiseadapter-usb-c",
+          "strategyId": "content-strategy-trend-keyword-trend-cluster-de-de-travel-adapter-reiseadapter-usb-c",
+          "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-de-de-travel-adapter-reiseadapter-usb-c",
+          "status": "candidate",
+          "reason": "Selected from this market's trend and SERP opportunity queue."
+        }
+      ]
+    },
+    {
+      "id": "market-calendar-it-it-2026-05-26",
+      "market": "it",
+      "language": "it",
+      "weekStart": "2026-05-26",
+      "status": "draft",
+      "summaryJson": {
+        "clusterCount": 0,
+        "keywordCount": 0,
+        "slotCount": 0,
+        "topicalBalance": {
+          "categories": {},
+          "maxUnrelatedTrendPostsPerWeek": 2,
+          "maxHealthSensitivePostsPerWeek": 1,
+          "maxDealPostsPerWeek": 0,
+          "minimumEvergreenSupportingPostsPerTrendCluster": 1
+        }
+      },
+      "slots": []
+    },
+    {
+      "id": "market-calendar-nl-nl-2026-05-26",
+      "market": "nl",
+      "language": "nl",
+      "weekStart": "2026-05-26",
+      "status": "draft",
+      "summaryJson": {
+        "clusterCount": 0,
+        "keywordCount": 0,
+        "slotCount": 0,
+        "topicalBalance": {
+          "categories": {},
+          "maxUnrelatedTrendPostsPerWeek": 2,
+          "maxHealthSensitivePostsPerWeek": 1,
+          "maxDealPostsPerWeek": 0,
+          "minimumEvergreenSupportingPostsPerTrendCluster": 1
+        }
+      },
+      "slots": []
+    },
+    {
+      "id": "market-calendar-pl-pl-2026-05-26",
+      "market": "pl",
+      "language": "pl",
+      "weekStart": "2026-05-26",
+      "status": "draft",
+      "summaryJson": {
+        "clusterCount": 0,
+        "keywordCount": 0,
+        "slotCount": 0,
+        "topicalBalance": {
+          "categories": {},
+          "maxUnrelatedTrendPostsPerWeek": 2,
+          "maxHealthSensitivePostsPerWeek": 1,
+          "maxDealPostsPerWeek": 0,
+          "minimumEvergreenSupportingPostsPerTrendCluster": 1
+        }
+      },
+      "slots": []
+    },
+    {
+      "id": "market-calendar-tr-tr-2026-05-26",
+      "market": "tr",
+      "language": "tr",
+      "weekStart": "2026-05-26",
+      "status": "draft",
+      "summaryJson": {
+        "clusterCount": 0,
+        "keywordCount": 0,
+        "slotCount": 0,
+        "topicalBalance": {
+          "categories": {},
+          "maxUnrelatedTrendPostsPerWeek": 2,
+          "maxHealthSensitivePostsPerWeek": 1,
+          "maxDealPostsPerWeek": 0,
+          "minimumEvergreenSupportingPostsPerTrendCluster": 1
+        }
+      },
+      "slots": []
+    },
+    {
+      "id": "market-calendar-id-id-2026-05-26",
+      "market": "id",
+      "language": "id",
+      "weekStart": "2026-05-26",
+      "status": "draft",
+      "summaryJson": {
+        "clusterCount": 0,
+        "keywordCount": 0,
+        "slotCount": 0,
+        "topicalBalance": {
+          "categories": {},
+          "maxUnrelatedTrendPostsPerWeek": 2,
+          "maxHealthSensitivePostsPerWeek": 1,
+          "maxDealPostsPerWeek": 0,
+          "minimumEvergreenSupportingPostsPerTrendCluster": 1
+        }
+      },
+      "slots": []
+    },
+    {
+      "id": "market-calendar-jp-ja-2026-05-26",
+      "market": "jp",
+      "language": "ja",
+      "weekStart": "2026-05-26",
+      "status": "draft",
+      "summaryJson": {
+        "clusterCount": 1,
+        "keywordCount": 2,
+        "slotCount": 2,
+        "topicalBalance": {
+          "categories": {
+            "consumer-tech": 1
+          },
+          "maxUnrelatedTrendPostsPerWeek": 2,
+          "maxHealthSensitivePostsPerWeek": 1,
+          "maxDealPostsPerWeek": 0,
+          "minimumEvergreenSupportingPostsPerTrendCluster": 1
+        }
+      },
+      "slots": [
+        {
+          "id": "editorial-slot-jp-ja-1",
+          "date": "2026-05-26",
+          "priority": 1,
+          "clusterId": "trend-cluster-jp-ja-compact-desk-gadget",
+          "keywordId": "trend-keyword-trend-cluster-jp-ja-compact-desk-gadget-compact-desk-gadget",
+          "strategyId": "content-strategy-trend-keyword-trend-cluster-jp-ja-compact-desk-gadget-compact-desk-gadget",
+          "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-jp-ja-compact-desk-gadget-compact-desk-gadget",
+          "status": "candidate",
+          "reason": "Selected from this market's trend and SERP opportunity queue."
+        },
+        {
+          "id": "editorial-slot-jp-ja-2",
+          "date": "2026-05-27",
+          "priority": 2,
+          "clusterId": "trend-cluster-jp-ja-compact-desk-gadget",
+          "keywordId": "trend-keyword-trend-cluster-jp-ja-compact-desk-gadget-デスク-便利-グッズ",
+          "strategyId": "content-strategy-trend-keyword-trend-cluster-jp-ja-compact-desk-gadget-デスク-便利-グッズ",
+          "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-jp-ja-compact-desk-gadget-デスク-便利-グッズ",
+          "status": "candidate",
+          "reason": "Selected from this market's trend and SERP opportunity queue."
+        }
+      ]
+    },
+    {
+      "id": "market-calendar-kr-ko-2026-05-26",
+      "market": "kr",
+      "language": "ko",
+      "weekStart": "2026-05-26",
+      "status": "draft",
+      "summaryJson": {
+        "clusterCount": 1,
+        "keywordCount": 3,
+        "slotCount": 3,
+        "topicalBalance": {
+          "categories": {
+            "wellness": 1
+          },
+          "maxUnrelatedTrendPostsPerWeek": 2,
+          "maxHealthSensitivePostsPerWeek": 1,
+          "maxDealPostsPerWeek": 0,
+          "minimumEvergreenSupportingPostsPerTrendCluster": 1
+        }
+      },
+      "slots": [
+        {
+          "id": "editorial-slot-kr-ko-1",
+          "date": "2026-05-26",
+          "priority": 1,
+          "clusterId": "trend-cluster-kr-ko-gut-health",
+          "keywordId": "trend-keyword-trend-cluster-kr-ko-gut-health-gut-health",
+          "strategyId": "content-strategy-trend-keyword-trend-cluster-kr-ko-gut-health-gut-health",
+          "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-kr-ko-gut-health-gut-health",
+          "status": "candidate",
+          "reason": "Selected from this market's trend and SERP opportunity queue."
+        },
+        {
+          "id": "editorial-slot-kr-ko-2",
+          "date": "2026-05-27",
+          "priority": 2,
+          "clusterId": "trend-cluster-kr-ko-gut-health",
+          "keywordId": "trend-keyword-trend-cluster-kr-ko-gut-health-gut-health-probiotic",
+          "strategyId": "content-strategy-trend-keyword-trend-cluster-kr-ko-gut-health-gut-health-probiotic",
+          "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-kr-ko-gut-health-gut-health-probiotic",
+          "status": "candidate",
+          "reason": "Selected from this market's trend and SERP opportunity queue."
+        },
+        {
+          "id": "editorial-slot-kr-ko-3",
+          "date": "2026-05-28",
+          "priority": 3,
+          "clusterId": "trend-cluster-kr-ko-gut-health",
+          "keywordId": "trend-keyword-trend-cluster-kr-ko-gut-health-장-건강-유산균",
+          "strategyId": "content-strategy-trend-keyword-trend-cluster-kr-ko-gut-health-장-건강-유산균",
+          "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-kr-ko-gut-health-장-건강-유산균",
+          "status": "candidate",
+          "reason": "Selected from this market's trend and SERP opportunity queue."
+        }
+      ]
+    },
+    {
+      "id": "market-calendar-in-en-2026-05-26",
+      "market": "in",
+      "language": "en",
+      "weekStart": "2026-05-26",
+      "status": "draft",
+      "summaryJson": {
+        "clusterCount": 0,
+        "keywordCount": 0,
+        "slotCount": 0,
+        "topicalBalance": {
+          "categories": {},
+          "maxUnrelatedTrendPostsPerWeek": 2,
+          "maxHealthSensitivePostsPerWeek": 1,
+          "maxDealPostsPerWeek": 0,
+          "minimumEvergreenSupportingPostsPerTrendCluster": 1
+        }
+      },
+      "slots": []
+    }
+  ]
+}

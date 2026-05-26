@@ -1,0 +1,39 @@
+{
+  "opportunities": [
+    {
+      "id": "serp-opportunity-trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-sleep",
+      "keywordId": "trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-sleep",
+      "market": "us",
+      "language": "en",
+      "keyword": "magnesium sleep",
+      "opportunityScore": 71.86,
+      "dominantIntent": "informational",
+      "dominantContentTypesJson": [
+        "article",
+        "buyer_guide"
+      ],
+      "topPatternsJson": [
+        "Comparison table appears in top results",
+        "Product-card monetization appears, but this pipeline defers links",
+        "Original data/testing is weak across competitors"
+      ],
+      "contentGapJson": {
+        "missingAngles": [
+          "evidence or verification checklist",
+          "freshness signal",
+          "market-specific guidance",
+          "product verification checklist"
+        ],
+        "canDifferentiateWith": [
+          "market notes",
+          "verification checklist",
+          "clear no-link test post"
+        ]
+      },
+      "recommendedAngle": "Answer magnesium sleep with market-specific evidence and fill gaps: evidence or verification checklist, freshness signal, market-specific guidance.",
+      "recommendedArticleType": "article",
+      "shouldWrite": true,
+      "reason": "Trend signal plus manual SERP gaps show a test post opportunity."
+    }
+  ]
+}

@@ -1,0 +1,304 @@
+{
+  "market": "us",
+  "snapshots": [
+    {
+      "id": "perf-test-article-content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-sleep",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-sleep",
+      "market": "us",
+      "language": "en",
+      "dateStart": "2026-05-26",
+      "dateEnd": "2026-05-26",
+      "impressions": 0,
+      "clicks": 0,
+      "ctr": 0,
+      "avgPosition": 0,
+      "queriesJson": [],
+      "countriesJson": [
+        "US"
+      ],
+      "devicesJson": [],
+      "capturedAt": "2026-05-26T20:26:57.265285+00:00",
+      "source": "sample_or_search_console_import"
+    },
+    {
+      "id": "perf-test-article-content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-best-magnesium-for-sleep",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-best-magnesium-for-sleep",
+      "market": "us",
+      "language": "en",
+      "dateStart": "2026-05-26",
+      "dateEnd": "2026-05-26",
+      "impressions": 0,
+      "clicks": 0,
+      "ctr": 0,
+      "avgPosition": 0,
+      "queriesJson": [],
+      "countriesJson": [
+        "US"
+      ],
+      "devicesJson": [],
+      "capturedAt": "2026-05-26T20:26:57.265287+00:00",
+      "source": "sample_or_search_console_import"
+    },
+    {
+      "id": "perf-test-article-content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-glycinate-sleep",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-glycinate-sleep",
+      "market": "us",
+      "language": "en",
+      "dateStart": "2026-05-26",
+      "dateEnd": "2026-05-26",
+      "impressions": 0,
+      "clicks": 0,
+      "ctr": 0,
+      "avgPosition": 0,
+      "queriesJson": [],
+      "countriesJson": [
+        "US"
+      ],
+      "devicesJson": [],
+      "capturedAt": "2026-05-26T20:26:57.265292+00:00",
+      "source": "sample_or_search_console_import"
+    }
+  ],
+  "actions": [
+    {
+      "id": "next-action-test-article-content-strategy-trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-real-capacity",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-real-capacity",
+      "actionType": "hold",
+      "reason": "Not enough search data yet; keep in noindex/test monitoring or wait for editorial review.",
+      "priority": "medium",
+      "payloadJson": {
+        "minimumPerformanceGate": "editorial_or_search_signal_required"
+      },
+      "status": "open",
+      "createdAt": "2026-05-26T20:26:57.474752+00:00"
+    },
+    {
+      "id": "next-action-test-article-content-strategy-trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-capacidade-real",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-capacidade-real",
+      "actionType": "hold",
+      "reason": "Not enough search data yet; keep in noindex/test monitoring or wait for editorial review.",
+      "priority": "medium",
+      "payloadJson": {
+        "minimumPerformanceGate": "editorial_or_search_signal_required"
+      },
+      "status": "open",
+      "createdAt": "2026-05-26T20:26:57.474774+00:00"
+    },
+    {
+      "id": "next-action-test-article-content-strategy-trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-mah-real",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-mah-real",
+      "actionType": "hold",
+      "reason": "Not enough search data yet; keep in noindex/test monitoring or wait for editorial review.",
+      "priority": "medium",
+      "payloadJson": {
+        "minimumPerformanceGate": "editorial_or_search_signal_required"
+      },
+      "status": "open",
+      "createdAt": "2026-05-26T20:26:57.474776+00:00"
+    },
+    {
+      "id": "next-action-test-article-content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-sleep",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-sleep",
+      "actionType": "hold",
+      "reason": "Not enough search data yet; keep in noindex/test monitoring or wait for editorial review.",
+      "priority": "medium",
+      "payloadJson": {
+        "minimumPerformanceGate": "editorial_or_search_signal_required"
+      },
+      "status": "open",
+      "createdAt": "2026-05-26T20:26:57.474778+00:00"
+    },
+    {
+      "id": "next-action-test-article-content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-best-magnesium-for-sleep",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-best-magnesium-for-sleep",
+      "actionType": "hold",
+      "reason": "Not enough search data yet; keep in noindex/test monitoring or wait for editorial review.",
+      "priority": "medium",
+      "payloadJson": {
+        "minimumPerformanceGate": "editorial_or_search_signal_required"
+      },
+      "status": "open",
+      "createdAt": "2026-05-26T20:26:57.474779+00:00"
+    },
+    {
+      "id": "next-action-test-article-content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-glycinate-sleep",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-glycinate-sleep",
+      "actionType": "hold",
+      "reason": "Not enough search data yet; keep in noindex/test monitoring or wait for editorial review.",
+      "priority": "medium",
+      "payloadJson": {
+        "minimumPerformanceGate": "editorial_or_search_signal_required"
+      },
+      "status": "open",
+      "createdAt": "2026-05-26T20:26:57.474780+00:00"
+    },
+    {
+      "id": "next-action-test-article-content-strategy-trend-keyword-trend-cluster-es-es-usb-c-charger-usb-c-charger",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-es-es-usb-c-charger-usb-c-charger",
+      "actionType": "hold",
+      "reason": "Not enough search data yet; keep in noindex/test monitoring or wait for editorial review.",
+      "priority": "medium",
+      "payloadJson": {
+        "minimumPerformanceGate": "editorial_or_search_signal_required"
+      },
+      "status": "open",
+      "createdAt": "2026-05-26T20:26:57.474781+00:00"
+    },
+    {
+      "id": "next-action-test-article-content-strategy-trend-keyword-trend-cluster-es-es-usb-c-charger-cargador-usb-c-gan",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-es-es-usb-c-charger-cargador-usb-c-gan",
+      "actionType": "hold",
+      "reason": "Not enough search data yet; keep in noindex/test monitoring or wait for editorial review.",
+      "priority": "medium",
+      "payloadJson": {
+        "minimumPerformanceGate": "editorial_or_search_signal_required"
+      },
+      "status": "open",
+      "createdAt": "2026-05-26T20:26:57.474782+00:00"
+    },
+    {
+      "id": "next-action-test-article-content-strategy-trend-keyword-trend-cluster-es-es-usb-c-charger-cargador-usb-c-rapido-seguro",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-es-es-usb-c-charger-cargador-usb-c-rapido-seguro",
+      "actionType": "hold",
+      "reason": "Not enough search data yet; keep in noindex/test monitoring or wait for editorial review.",
+      "priority": "medium",
+      "payloadJson": {
+        "minimumPerformanceGate": "editorial_or_search_signal_required"
+      },
+      "status": "open",
+      "createdAt": "2026-05-26T20:26:57.474783+00:00"
+    },
+    {
+      "id": "next-action-test-article-content-strategy-trend-keyword-trend-cluster-jp-ja-compact-desk-gadget-compact-desk-gadget",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-jp-ja-compact-desk-gadget-compact-desk-gadget",
+      "actionType": "hold",
+      "reason": "Not enough search data yet; keep in noindex/test monitoring or wait for editorial review.",
+      "priority": "medium",
+      "payloadJson": {
+        "minimumPerformanceGate": "editorial_or_search_signal_required"
+      },
+      "status": "open",
+      "createdAt": "2026-05-26T20:26:57.474784+00:00"
+    },
+    {
+      "id": "next-action-test-article-content-strategy-trend-keyword-trend-cluster-jp-ja-compact-desk-gadget-デスク-便利-グッズ",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-jp-ja-compact-desk-gadget-デスク-便利-グッズ",
+      "actionType": "hold",
+      "reason": "Not enough search data yet; keep in noindex/test monitoring or wait for editorial review.",
+      "priority": "medium",
+      "payloadJson": {
+        "minimumPerformanceGate": "editorial_or_search_signal_required"
+      },
+      "status": "open",
+      "createdAt": "2026-05-26T20:26:57.474786+00:00"
+    },
+    {
+      "id": "next-action-test-article-content-strategy-trend-keyword-trend-cluster-de-de-travel-adapter-travel-adapter",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-de-de-travel-adapter-travel-adapter",
+      "actionType": "hold",
+      "reason": "Not enough search data yet; keep in noindex/test monitoring or wait for editorial review.",
+      "priority": "medium",
+      "payloadJson": {
+        "minimumPerformanceGate": "editorial_or_search_signal_required"
+      },
+      "status": "open",
+      "createdAt": "2026-05-26T20:26:57.474787+00:00"
+    },
+    {
+      "id": "next-action-test-article-content-strategy-trend-keyword-trend-cluster-de-de-travel-adapter-reiseadapter-usb-c",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-de-de-travel-adapter-reiseadapter-usb-c",
+      "actionType": "hold",
+      "reason": "Not enough search data yet; keep in noindex/test monitoring or wait for editorial review.",
+      "priority": "medium",
+      "payloadJson": {
+        "minimumPerformanceGate": "editorial_or_search_signal_required"
+      },
+      "status": "open",
+      "createdAt": "2026-05-26T20:26:57.474788+00:00"
+    },
+    {
+      "id": "next-action-test-article-content-strategy-trend-keyword-trend-cluster-fr-fr-beauty-ingredient-beauty-ingredient",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-fr-fr-beauty-ingredient-beauty-ingredient",
+      "actionType": "hold",
+      "reason": "Not enough search data yet; keep in noindex/test monitoring or wait for editorial review.",
+      "priority": "medium",
+      "payloadJson": {
+        "minimumPerformanceGate": "editorial_or_search_signal_required"
+      },
+      "status": "open",
+      "createdAt": "2026-05-26T20:26:57.474789+00:00"
+    },
+    {
+      "id": "next-action-test-article-content-strategy-trend-keyword-trend-cluster-fr-fr-beauty-ingredient-ingredient-beaute-tendance",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-fr-fr-beauty-ingredient-ingredient-beaute-tendance",
+      "actionType": "hold",
+      "reason": "Not enough search data yet; keep in noindex/test monitoring or wait for editorial review.",
+      "priority": "medium",
+      "payloadJson": {
+        "minimumPerformanceGate": "editorial_or_search_signal_required"
+      },
+      "status": "open",
+      "createdAt": "2026-05-26T20:26:57.474790+00:00"
+    },
+    {
+      "id": "next-action-test-article-content-strategy-trend-keyword-trend-cluster-mx-es-budget-smartwatch-budget-smartwatch",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-mx-es-budget-smartwatch-budget-smartwatch",
+      "actionType": "hold",
+      "reason": "Not enough search data yet; keep in noindex/test monitoring or wait for editorial review.",
+      "priority": "medium",
+      "payloadJson": {
+        "minimumPerformanceGate": "editorial_or_search_signal_required"
+      },
+      "status": "open",
+      "createdAt": "2026-05-26T20:26:57.474791+00:00"
+    },
+    {
+      "id": "next-action-test-article-content-strategy-trend-keyword-trend-cluster-mx-es-budget-smartwatch-smartwatch-economico-2026",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-mx-es-budget-smartwatch-smartwatch-economico-2026",
+      "actionType": "hold",
+      "reason": "Not enough search data yet; keep in noindex/test monitoring or wait for editorial review.",
+      "priority": "medium",
+      "payloadJson": {
+        "minimumPerformanceGate": "editorial_or_search_signal_required"
+      },
+      "status": "open",
+      "createdAt": "2026-05-26T20:26:57.474792+00:00"
+    },
+    {
+      "id": "next-action-test-article-content-strategy-trend-keyword-trend-cluster-kr-ko-gut-health-gut-health",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-kr-ko-gut-health-gut-health",
+      "actionType": "hold",
+      "reason": "Not enough search data yet; keep in noindex/test monitoring or wait for editorial review.",
+      "priority": "medium",
+      "payloadJson": {
+        "minimumPerformanceGate": "editorial_or_search_signal_required"
+      },
+      "status": "open",
+      "createdAt": "2026-05-26T20:26:57.474793+00:00"
+    },
+    {
+      "id": "next-action-test-article-content-strategy-trend-keyword-trend-cluster-kr-ko-gut-health-gut-health-probiotic",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-kr-ko-gut-health-gut-health-probiotic",
+      "actionType": "hold",
+      "reason": "Not enough search data yet; keep in noindex/test monitoring or wait for editorial review.",
+      "priority": "medium",
+      "payloadJson": {
+        "minimumPerformanceGate": "editorial_or_search_signal_required"
+      },
+      "status": "open",
+      "createdAt": "2026-05-26T20:26:57.474794+00:00"
+    },
+    {
+      "id": "next-action-test-article-content-strategy-trend-keyword-trend-cluster-kr-ko-gut-health-장-건강-유산균",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-kr-ko-gut-health-장-건강-유산균",
+      "actionType": "hold",
+      "reason": "Not enough search data yet; keep in noindex/test monitoring or wait for editorial review.",
+      "priority": "medium",
+      "payloadJson": {
+        "minimumPerformanceGate": "editorial_or_search_signal_required"
+      },
+      "status": "open",
+      "createdAt": "2026-05-26T20:26:57.474796+00:00"
+    }
+  ]
+}

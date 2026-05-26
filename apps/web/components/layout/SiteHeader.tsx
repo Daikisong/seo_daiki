@@ -3,6 +3,7 @@ import { Database, FlaskConical, Search } from "lucide-react";
 import type { HreflangMap, Locale } from "@global-import-lab/types";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { LanguagePreferenceBanner } from "./LanguagePreferenceBanner";
+import { MarketSwitcher } from "./MarketSwitcher";
 
 export function SiteHeader({
   locale,
@@ -38,6 +39,7 @@ export function SiteHeader({
                 Lab
               </Link>
             </div>
+            <MarketSwitcher />
             <LanguageSwitcher currentLocale={locale} currentHref={currentHref} alternates={alternates} />
           </div>
         </div>

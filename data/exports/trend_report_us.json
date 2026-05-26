@@ -1,0 +1,39 @@
+{
+  "market": "us",
+  "clusters": [
+    {
+      "id": "trend-cluster-us-en-magnesium-sleep",
+      "market": "us",
+      "language": "en",
+      "canonicalTopic": "magnesium sleep",
+      "slug": "magnesium-sleep",
+      "category": "wellness",
+      "detectedAt": "2026-05-26T20:25:22.369810+00:00",
+      "status": "scored",
+      "signalCount": 2,
+      "countriesSeenJson": [
+        "US"
+      ],
+      "relatedKeywordsJson": [
+        "best magnesium for sleep",
+        "magnesium glycinate sleep"
+      ],
+      "score": 79.04,
+      "scoreBreakdownJson": {
+        "velocityScore": 84.0,
+        "sourceCorroborationScore": 73,
+        "marketSpecificityScore": 91.0,
+        "contentOpportunityScore": 79.0,
+        "commercialHintScore": 66.0,
+        "evidenceHintScore": 73.0,
+        "freshnessScore": 79.0,
+        "noisePenalty": 0,
+        "compliancePenalty": 0
+      },
+      "signalIds": [
+        "market-trend-signal-us-en-manual-csv-magnesium-glycinate-sleep-1",
+        "market-trend-signal-us-en-manual-csv-best-magnesium-for-sleep-2"
+      ]
+    }
+  ]
+}

@@ -1,8 +1,9 @@
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { getLocaleArticles } from "@/lib/content/repository";
 import { isLocale } from "@/lib/i18n/locales";
+import { defaultMarketForLegacyLocale } from "@/lib/market/config";
 import Link from "next/link";
 
 interface LocalePageProps {
@@ -17,6 +18,10 @@ export default async function LocaleHomePage({ params }: LocalePageProps) {
   const { locale: localeParam } = await params;
   if (!isLocale(localeParam)) {
     notFound();
+  }
+  const defaultMarket = defaultMarketForLegacyLocale(localeParam);
+  if (defaultMarket) {
+    permanentRedirect(`${defaultMarket.pathPrefix}/`);
   }
 
   const articles = (await getLocaleArticles(localeParam)).filter((article) => article.publishStatus === "published");

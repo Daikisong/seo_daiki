@@ -1,0 +1,124 @@
+{
+  "sources": [
+    {
+      "id": "trend-source-us-en-manual_csv",
+      "sourceType": "manual_csv",
+      "name": "Manual US trend CSV",
+      "market": "us",
+      "language": "en",
+      "country": "US",
+      "enabled": true,
+      "reliabilityTier": "manual_reviewed",
+      "collectionMode": "manual_csv",
+      "configJson": {
+        "importFile": "/home/eorb915/projects/seo_daiki/data/seeds/trend-signals.csv"
+      },
+      "lastCollectedAt": "2026-05-26T20:29:38.869864+00:00"
+    },
+    {
+      "id": "trend-source-es-es-manual_csv",
+      "sourceType": "manual_csv",
+      "name": "Manual Spain trend CSV",
+      "market": "es",
+      "language": "es",
+      "country": "ES",
+      "enabled": true,
+      "reliabilityTier": "manual_reviewed",
+      "collectionMode": "manual_csv",
+      "configJson": {
+        "importFile": "/home/eorb915/projects/seo_daiki/data/seeds/trend-signals.csv"
+      },
+      "lastCollectedAt": "2026-05-26T20:29:38.869897+00:00"
+    },
+    {
+      "id": "trend-source-br-pt-br-manual_csv",
+      "sourceType": "manual_csv",
+      "name": "Manual Brazil trend CSV",
+      "market": "br",
+      "language": "pt-br",
+      "country": "BR",
+      "enabled": true,
+      "reliabilityTier": "manual_reviewed",
+      "collectionMode": "manual_csv",
+      "configJson": {
+        "importFile": "/home/eorb915/projects/seo_daiki/data/seeds/trend-signals.csv"
+      },
+      "lastCollectedAt": "2026-05-26T20:29:38.869912+00:00"
+    },
+    {
+      "id": "trend-source-jp-ja-manual_csv",
+      "sourceType": "manual_csv",
+      "name": "Manual Japan trend CSV",
+      "market": "jp",
+      "language": "ja",
+      "country": "JP",
+      "enabled": true,
+      "reliabilityTier": "manual_reviewed",
+      "collectionMode": "manual_csv",
+      "configJson": {
+        "importFile": "/home/eorb915/projects/seo_daiki/data/seeds/trend-signals.csv"
+      },
+      "lastCollectedAt": "2026-05-26T20:29:38.869925+00:00"
+    },
+    {
+      "id": "trend-source-kr-ko-manual_csv",
+      "sourceType": "manual_csv",
+      "name": "Manual Korea trend CSV",
+      "market": "kr",
+      "language": "ko",
+      "country": "KR",
+      "enabled": true,
+      "reliabilityTier": "manual_reviewed",
+      "collectionMode": "manual_csv",
+      "configJson": {
+        "importFile": "/home/eorb915/projects/seo_daiki/data/seeds/trend-signals.csv"
+      },
+      "lastCollectedAt": "2026-05-26T20:29:38.869974+00:00"
+    },
+    {
+      "id": "trend-source-de-de-manual_csv",
+      "sourceType": "manual_csv",
+      "name": "Manual Germany trend CSV",
+      "market": "de",
+      "language": "de",
+      "country": "DE",
+      "enabled": true,
+      "reliabilityTier": "manual_reviewed",
+      "collectionMode": "manual_csv",
+      "configJson": {
+        "importFile": "/home/eorb915/projects/seo_daiki/data/seeds/trend-signals.csv"
+      },
+      "lastCollectedAt": "2026-05-26T20:29:38.869999+00:00"
+    },
+    {
+      "id": "trend-source-mx-es-manual_csv",
+      "sourceType": "manual_csv",
+      "name": "Manual Mexico trend CSV",
+      "market": "mx",
+      "language": "es",
+      "country": "MX",
+      "enabled": true,
+      "reliabilityTier": "manual_reviewed",
+      "collectionMode": "manual_csv",
+      "configJson": {
+        "importFile": "/home/eorb915/projects/seo_daiki/data/seeds/trend-signals.csv"
+      },
+      "lastCollectedAt": "2026-05-26T20:29:38.870006+00:00"
+    },
+    {
+      "id": "trend-source-fr-fr-manual_csv",
+      "sourceType": "manual_csv",
+      "name": "Manual France trend CSV",
+      "market": "fr",
+      "language": "fr",
+      "country": "FR",
+      "enabled": true,
+      "reliabilityTier": "manual_reviewed",
+      "collectionMode": "manual_csv",
+      "configJson": {
+        "importFile": "/home/eorb915/projects/seo_daiki/data/seeds/trend-signals.csv"
+      },
+      "lastCollectedAt": "2026-05-26T20:29:38.870013+00:00"
+    }
+  ]
+}

@@ -1,0 +1,426 @@
+{
+  "analyses": [
+    {
+      "id": "competitor-analysis-serp-result-serp-br-powerbank-1",
+      "serpResultId": "serp-result-serp-br-powerbank-1",
+      "market": "br",
+      "language": "pt-br",
+      "keyword": "power bank real capacity",
+      "pageTitle": "Power bank capacidade real",
+      "h1": "Power bank capacidade real",
+      "headingsJson": [
+        "mAh vs Wh",
+        "Perdas",
+        "Como testar"
+      ],
+      "wordCountEstimate": 1900,
+      "contentTypeGuess": "article",
+      "intentServed": "informational",
+      "monetizationPattern": "affiliate_editorial",
+      "affiliatePattern": "likely",
+      "comparisonTablePresent": false,
+      "productLinksPresent": true,
+      "originalDataPresent": true,
+      "freshnessSignalsJson": [
+        "Updated 2026"
+      ],
+      "contentAnglesJson": [
+        "capacity math",
+        "test method",
+        "import notes"
+      ],
+      "missingAnglesJson": [
+        "comparison table",
+        "current model checks"
+      ],
+      "strengthsJson": [
+        "strong education"
+      ],
+      "weaknessesJson": [
+        "limited product comparison"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-05-26T20:29:38.874096+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-br-powerbank-2",
+      "serpResultId": "serp-result-serp-br-powerbank-2",
+      "market": "br",
+      "language": "pt-br",
+      "keyword": "power bank real capacity",
+      "pageTitle": "Qual power bank entrega a capacidade real",
+      "h1": "Qual power bank entrega a capacidade real",
+      "headingsJson": [
+        "Experiencias",
+        "Modelos citados",
+        "Problemas"
+      ],
+      "wordCountEstimate": 1200,
+      "contentTypeGuess": "forum",
+      "intentServed": "informational",
+      "monetizationPattern": "community",
+      "affiliatePattern": "none_obvious",
+      "comparisonTablePresent": false,
+      "productLinksPresent": false,
+      "originalDataPresent": false,
+      "freshnessSignalsJson": [
+        "Recent replies"
+      ],
+      "contentAnglesJson": [
+        "user experience",
+        "brand complaints"
+      ],
+      "missingAnglesJson": [
+        "structured summary",
+        "verification checklist"
+      ],
+      "strengthsJson": [
+        "real user concerns"
+      ],
+      "weaknessesJson": [
+        "unstructured and hard to scan"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-05-26T20:29:38.874109+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-es-usbc-1",
+      "serpResultId": "serp-result-serp-es-usbc-1",
+      "market": "es",
+      "language": "es",
+      "keyword": "usb c charger",
+      "pageTitle": "Guia de cargadores USB C GaN",
+      "h1": "Guia de cargadores USB C GaN",
+      "headingsJson": [
+        "Potencia",
+        "Seguridad",
+        "Compatibilidad"
+      ],
+      "wordCountEstimate": 1600,
+      "contentTypeGuess": "article",
+      "intentServed": "commercial",
+      "monetizationPattern": "affiliate_editorial",
+      "affiliatePattern": "likely",
+      "comparisonTablePresent": true,
+      "productLinksPresent": true,
+      "originalDataPresent": false,
+      "freshnessSignalsJson": [
+        "Updated 2026"
+      ],
+      "contentAnglesJson": [
+        "power",
+        "safety",
+        "compatibility"
+      ],
+      "missingAnglesJson": [
+        "testing method",
+        "Spain retailer notes"
+      ],
+      "strengthsJson": [
+        "good spec coverage"
+      ],
+      "weaknessesJson": [
+        "no original measurements"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-05-26T20:29:38.874117+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-es-usbc-2",
+      "serpResultId": "serp-result-serp-es-usbc-2",
+      "market": "es",
+      "language": "es",
+      "keyword": "usb c charger",
+      "pageTitle": "Cargadores USB C populares",
+      "h1": "Cargadores USB C populares",
+      "headingsJson": [
+        "Filtros",
+        "Precios",
+        "Marcas"
+      ],
+      "wordCountEstimate": 900,
+      "contentTypeGuess": "ecommerce",
+      "intentServed": "transactional",
+      "monetizationPattern": "ecommerce_result",
+      "affiliatePattern": "none_obvious",
+      "comparisonTablePresent": true,
+      "productLinksPresent": true,
+      "originalDataPresent": false,
+      "freshnessSignalsJson": [
+        "Updated 2026"
+      ],
+      "contentAnglesJson": [
+        "price",
+        "brand",
+        "stock"
+      ],
+      "missingAnglesJson": [
+        "editorial explanation",
+        "safety verification"
+      ],
+      "strengthsJson": [
+        "clear product availability"
+      ],
+      "weaknessesJson": [
+        "thin educational content"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-05-26T20:29:38.874123+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-jp-desk-1",
+      "serpResultId": "serp-result-serp-jp-desk-1",
+      "market": "jp",
+      "language": "ja",
+      "keyword": "compact desk gadget",
+      "pageTitle": "デスク便利グッズ 小型",
+      "h1": "デスク便利グッズ 小型",
+      "headingsJson": [
+        "省スペース",
+        "選び方",
+        "注意点"
+      ],
+      "wordCountEstimate": 1500,
+      "contentTypeGuess": "article",
+      "intentServed": "informational",
+      "monetizationPattern": "affiliate_editorial",
+      "affiliatePattern": "likely",
+      "comparisonTablePresent": true,
+      "productLinksPresent": true,
+      "originalDataPresent": false,
+      "freshnessSignalsJson": [
+        "Updated 2026"
+      ],
+      "contentAnglesJson": [
+        "space saving",
+        "organization",
+        "desk setup"
+      ],
+      "missingAnglesJson": [
+        "measurement criteria",
+        "work style segmentation"
+      ],
+      "strengthsJson": [
+        "good visual idea"
+      ],
+      "weaknessesJson": [
+        "no systematic comparison"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-05-26T20:29:38.874132+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-jp-desk-2",
+      "serpResultId": "serp-result-serp-jp-desk-2",
+      "market": "jp",
+      "language": "ja",
+      "keyword": "compact desk gadget",
+      "pageTitle": "デスク周り便利グッズ動画",
+      "h1": "デスク周り便利グッズ動画",
+      "headingsJson": [
+        "Items shown",
+        "Setup tips",
+        "Where to buy"
+      ],
+      "wordCountEstimate": 700,
+      "contentTypeGuess": "video",
+      "intentServed": "informational",
+      "monetizationPattern": "creator_affiliate",
+      "affiliatePattern": "likely",
+      "comparisonTablePresent": false,
+      "productLinksPresent": true,
+      "originalDataPresent": false,
+      "freshnessSignalsJson": [
+        "Posted 2026"
+      ],
+      "contentAnglesJson": [
+        "visual demo",
+        "creator picks"
+      ],
+      "missingAnglesJson": [
+        "written checklist",
+        "spec table"
+      ],
+      "strengthsJson": [
+        "strong visuals"
+      ],
+      "weaknessesJson": [
+        "not searchable enough"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-05-26T20:29:38.874138+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-kr-gut-1",
+      "serpResultId": "serp-result-serp-kr-gut-1",
+      "market": "kr",
+      "language": "ko",
+      "keyword": "gut health",
+      "pageTitle": "장 건강 관리 기본",
+      "h1": "장 건강 관리 기본",
+      "headingsJson": [
+        "생활 습관",
+        "유산균",
+        "주의사항"
+      ],
+      "wordCountEstimate": 1700,
+      "contentTypeGuess": "article",
+      "intentServed": "informational",
+      "monetizationPattern": "editorial_or_publisher",
+      "affiliatePattern": "none_obvious",
+      "comparisonTablePresent": false,
+      "productLinksPresent": false,
+      "originalDataPresent": false,
+      "freshnessSignalsJson": [
+        "Updated 2026"
+      ],
+      "contentAnglesJson": [
+        "diet",
+        "lifestyle",
+        "probiotics"
+      ],
+      "missingAnglesJson": [
+        "product candidate criteria",
+        "evidence checklist"
+      ],
+      "strengthsJson": [
+        "conservative claims"
+      ],
+      "weaknessesJson": [
+        "no market product path"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-05-26T20:29:38.874172+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-kr-gut-2",
+      "serpResultId": "serp-result-serp-kr-gut-2",
+      "market": "kr",
+      "language": "ko",
+      "keyword": "gut health",
+      "pageTitle": "유산균 선택 가이드",
+      "h1": "유산균 선택 가이드",
+      "headingsJson": [
+        "균주",
+        "보관",
+        "가격"
+      ],
+      "wordCountEstimate": 2100,
+      "contentTypeGuess": "buyer_guide",
+      "intentServed": "commercial",
+      "monetizationPattern": "affiliate_editorial",
+      "affiliatePattern": "likely",
+      "comparisonTablePresent": true,
+      "productLinksPresent": true,
+      "originalDataPresent": false,
+      "freshnessSignalsJson": [
+        "Updated 2025"
+      ],
+      "contentAnglesJson": [
+        "ingredient",
+        "storage",
+        "price"
+      ],
+      "missingAnglesJson": [
+        "health claim guard",
+        "freshness signal"
+      ],
+      "strengthsJson": [
+        "strong buying criteria"
+      ],
+      "weaknessesJson": [
+        "needs stricter claim review"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-05-26T20:29:38.874189+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-us-magnesium-1",
+      "serpResultId": "serp-result-serp-us-magnesium-1",
+      "market": "us",
+      "language": "en",
+      "keyword": "magnesium sleep",
+      "pageTitle": "Magnesium for Sleep Benefits and Types",
+      "h1": "Magnesium for Sleep Benefits and Types",
+      "headingsJson": [
+        "Types of magnesium",
+        "When to take it",
+        "Safety notes"
+      ],
+      "wordCountEstimate": 1800,
+      "contentTypeGuess": "article",
+      "intentServed": "informational",
+      "monetizationPattern": "editorial_or_publisher",
+      "affiliatePattern": "none_obvious",
+      "comparisonTablePresent": false,
+      "productLinksPresent": false,
+      "originalDataPresent": false,
+      "freshnessSignalsJson": [
+        "Updated 2026"
+      ],
+      "contentAnglesJson": [
+        "benefits",
+        "safety",
+        "timing"
+      ],
+      "missingAnglesJson": [
+        "market-specific guidance",
+        "product verification checklist"
+      ],
+      "strengthsJson": [
+        "clear safety section",
+        "good definitions"
+      ],
+      "weaknessesJson": [
+        "no market context",
+        "no testing data"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-05-26T20:29:38.874198+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-us-magnesium-2",
+      "serpResultId": "serp-result-serp-us-magnesium-2",
+      "market": "us",
+      "language": "en",
+      "keyword": "magnesium sleep",
+      "pageTitle": "Best Magnesium for Sleep",
+      "h1": "Best Magnesium for Sleep",
+      "headingsJson": [
+        "Top picks",
+        "Comparison table",
+        "How to choose"
+      ],
+      "wordCountEstimate": 2300,
+      "contentTypeGuess": "buyer_guide",
+      "intentServed": "commercial",
+      "monetizationPattern": "affiliate_editorial",
+      "affiliatePattern": "likely",
+      "comparisonTablePresent": true,
+      "productLinksPresent": true,
+      "originalDataPresent": false,
+      "freshnessSignalsJson": [
+        "Updated 2025"
+      ],
+      "contentAnglesJson": [
+        "comparison",
+        "product cards",
+        "dosage notes"
+      ],
+      "missingAnglesJson": [
+        "evidence or verification checklist",
+        "freshness signal"
+      ],
+      "strengthsJson": [
+        "strong table",
+        "clear CTA"
+      ],
+      "weaknessesJson": [
+        "affiliate heavy",
+        "limited evidence"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-05-26T20:29:38.874206+00:00"
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "opportunities": [
+    {
+      "id": "serp-opportunity-trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-sleep",
+      "keywordId": "trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-sleep",
+      "market": "us",
+      "language": "en",
+      "keyword": "magnesium sleep",
+      "opportunityScore": 71.86,
+      "dominantIntent": "informational",
+      "dominantContentTypesJson": [
+        "article",
+        "buyer_guide"
+      ],
+      "topPatternsJson": [
+        "Comparison table appears in top results",
+        "Product-card monetization appears, but this pipeline defers links",
+        "Original data/testing is weak across competitors"
+      ],
+      "contentGapJson": {
+        "missingAngles": [
+          "evidence or verification checklist",
+          "freshness signal",
+          "market-specific guidance",
+          "product verification checklist"
+        ],
+        "canDifferentiateWith": [
+          "market notes",
+          "verification checklist",
+          "clear no-link test post"
+        ]
+      },
+      "recommendedAngle": "Answer magnesium sleep with market-specific evidence and fill gaps: evidence or verification checklist, freshness signal, market-specific guidance.",
+      "recommendedArticleType": "article",
+      "shouldWrite": true,
+      "reason": "Trend signal plus manual SERP gaps show a test post opportunity."
+    },
+    {
+      "id": "serp-opportunity-trend-keyword-trend-cluster-es-es-usb-c-charger-usb-c-charger",
+      "keywordId": "trend-keyword-trend-cluster-es-es-usb-c-charger-usb-c-charger",
+      "market": "es",
+      "language": "es",
+      "keyword": "usb c charger",
+      "opportunityScore": 69.22,
+      "dominantIntent": "commercial",
+      "dominantContentTypesJson": [
+        "article",
+        "ecommerce"
+      ],
+      "topPatternsJson": [
+        "Comparison table appears in top results",
+        "Product-card monetization appears, but this pipeline defers links",
+        "Original data/testing is weak across competitors"
+      ],
+      "contentGapJson": {
+        "missingAngles": [
+          "Spain retailer notes",
+          "editorial explanation",
+          "safety verification",
+          "testing method"
+        ],
+        "canDifferentiateWith": [
+          "market notes",
+          "verification checklist",
+          "clear no-link test post"
+        ]
+      },
+      "recommendedAngle": "Answer usb c charger with market-specific evidence and fill gaps: Spain retailer notes, editorial explanation, safety verification.",
+      "recommendedArticleType": "buyer_intent_test_post",
+      "shouldWrite": true,
+      "reason": "Trend signal plus manual SERP gaps show a test post opportunity."
+    },
+    {
+      "id": "serp-opportunity-trend-keyword-trend-cluster-jp-ja-compact-desk-gadget-compact-desk-gadget",
+      "keywordId": "trend-keyword-trend-cluster-jp-ja-compact-desk-gadget-compact-desk-gadget",
+      "market": "jp",
+      "language": "ja",
+      "keyword": "compact desk gadget",
+      "opportunityScore": 68.51,
+      "dominantIntent": "informational",
+      "dominantContentTypesJson": [
+        "article",
+        "video"
+      ],
+      "topPatternsJson": [
+        "Comparison table appears in top results",
+        "Product-card monetization appears, but this pipeline defers links",
+        "Original data/testing is weak across competitors"
+      ],
+      "contentGapJson": {
+        "missingAngles": [
+          "measurement criteria",
+          "spec table",
+          "work style segmentation",
+          "written checklist"
+        ],
+        "canDifferentiateWith": [
+          "market notes",
+          "verification checklist",
+          "clear no-link test post"
+        ]
+      },
+      "recommendedAngle": "Answer compact desk gadget with market-specific evidence and fill gaps: measurement criteria, spec table, work style segmentation.",
+      "recommendedArticleType": "article",
+      "shouldWrite": true,
+      "reason": "Trend signal plus manual SERP gaps show a test post opportunity."
+    },
+    {
+      "id": "serp-opportunity-trend-keyword-trend-cluster-kr-ko-gut-health-gut-health",
+      "keywordId": "trend-keyword-trend-cluster-kr-ko-gut-health-gut-health",
+      "market": "kr",
+      "language": "ko",
+      "keyword": "gut health",
+      "opportunityScore": 66.46,
+      "dominantIntent": "informational",
+      "dominantContentTypesJson": [
+        "article",
+        "buyer_guide"
+      ],
+      "topPatternsJson": [
+        "Comparison table appears in top results",
+        "Product-card monetization appears, but this pipeline defers links",
+        "Original data/testing is weak across competitors"
+      ],
+      "contentGapJson": {
+        "missingAngles": [
+          "evidence checklist",
+          "freshness signal",
+          "health claim guard",
+          "product candidate criteria"
+        ],
+        "canDifferentiateWith": [
+          "market notes",
+          "verification checklist",
+          "clear no-link test post"
+        ]
+      },
+      "recommendedAngle": "Answer gut health with market-specific evidence and fill gaps: evidence checklist, freshness signal, health claim guard.",
+      "recommendedArticleType": "article",
+      "shouldWrite": true,
+      "reason": "Trend signal plus manual SERP gaps show a test post opportunity."
+    },
+    {
+      "id": "serp-opportunity-trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-real-capacity",
+      "keywordId": "trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-real-capacity",
+      "market": "br",
+      "language": "pt-br",
+      "keyword": "power bank real capacity",
+      "opportunityScore": 63.15,
+      "dominantIntent": "informational",
+      "dominantContentTypesJson": [
+        "article",
+        "forum"
+      ],
+      "topPatternsJson": [
+        "Product-card monetization appears, but this pipeline defers links"
+      ],
+      "contentGapJson": {
+        "missingAngles": [
+          "comparison table",
+          "current model checks",
+          "structured summary",
+          "verification checklist"
+        ],
+        "canDifferentiateWith": [
+          "market notes",
+          "verification checklist",
+          "clear no-link test post"
+        ]
+      },
+      "recommendedAngle": "Answer power bank real capacity with market-specific evidence and fill gaps: comparison table, current model checks, structured summary.",
+      "recommendedArticleType": "article",
+      "shouldWrite": true,
+      "reason": "Trend signal plus manual SERP gaps show a test post opportunity."
+    }
+  ]
+}

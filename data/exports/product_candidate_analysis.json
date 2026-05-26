@@ -1,0 +1,373 @@
+{
+  "analyses": [
+    {
+      "id": "product-analysis-test-article-content-strategy-trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-real-capacity",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-real-capacity",
+      "market": "br",
+      "language": "pt-br",
+      "candidatesJson": [
+        {
+          "id": "product-candidate-br-pt-br-power-bank-10000mah-sample-3",
+          "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-real-capacity",
+          "market": "br",
+          "language": "pt-br",
+          "sourceMerchant": "AliExpress",
+          "sourceMode": "manual_csv_now",
+          "title": "Power bank 10000mAh sample",
+          "productUrl": "https://merchant.example.test/br/power-bank",
+          "candidateUrl": "https://merchant.example.test/br/power-bank",
+          "category": "consumer-tech",
+          "priceText": null,
+          "currency": "BRL",
+          "imageUrl": null,
+          "reason": "Matches real capacity power bank article but needs capacity evidence",
+          "relevanceScore": 73.95,
+          "riskScore": 20,
+          "scoreBreakdownJson": {
+            "topic_relevance": 90.0,
+            "user_problem_fit": 84.0,
+            "market_availability": 68.0,
+            "comparison_value": 85.0,
+            "evidence_availability": 58.0,
+            "price_or_value_hint": 48.0,
+            "risk_penalty": 20
+          },
+          "evidenceNeededJson": [
+            "Official product page",
+            "Current price/availability timestamp",
+            "Merchant policy check",
+            "Safety/certification and spec verification"
+          ],
+          "status": "discovered",
+          "importedAt": "2026-05-26T20:26:52.688358+00:00"
+        }
+      ],
+      "comparisonJson": [
+        {
+          "candidateId": "product-candidate-br-pt-br-power-bank-10000mah-sample-3",
+          "title": "Power bank 10000mAh sample",
+          "merchant": "AliExpress",
+          "matchReason": "Matches real capacity power bank article but needs capacity evidence",
+          "verifyBeforeLinking": "Official product page; Current price/availability timestamp; Merchant policy check; Safety/certification and spec verification",
+          "riskLevel": "medium"
+        }
+      ],
+      "prosConsJson": {
+        "pros": [
+          "Power bank 10000mAh sample: relevant to article problem"
+        ],
+        "cons": [
+          "All candidates require human verification before links or claims."
+        ]
+      },
+      "riskNotesJson": [
+        "Power bank 10000mAh sample: risk score 20; verify policy and claims."
+      ],
+      "recommendedUseJson": {
+        "blockTitle": "Relevant product candidates",
+        "placement": "analysis_block_only",
+        "linking": "do_not_link_yet",
+        "nextStep": "Human review must verify policy, claims, price, and availability."
+      },
+      "monetizationReadiness": "human_review_required",
+      "status": "do_not_link_yet",
+      "createdAt": "2026-05-26T20:26:52.690051+00:00",
+      "analysisBlockMarkdown": "## Relevant product candidates\n\nDo not link yet. These are candidates for human review, not approved monetized placements.\n\n| Candidate | Why it matches | Verify before linking | Risk |\n| --- | --- | --- | --- |\n| Power bank 10000mAh sample | Matches real capacity power bank article but needs capacity evidence | Official product page; Current price/availability timestamp; Merchant policy check; Safety/certification and spec verification | medium |"
+    },
+    {
+      "id": "product-analysis-test-article-content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-sleep",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-sleep",
+      "market": "us",
+      "language": "en",
+      "candidatesJson": [
+        {
+          "id": "product-candidate-us-en-magnesium-glycinate-supplement-sample-1",
+          "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-sleep",
+          "market": "us",
+          "language": "en",
+          "sourceMerchant": "iHerb",
+          "sourceMode": "manual_csv_now",
+          "title": "Magnesium glycinate supplement sample",
+          "productUrl": "https://merchant.example.test/magnesium-glycinate",
+          "candidateUrl": "https://merchant.example.test/magnesium-glycinate",
+          "category": "wellness",
+          "priceText": null,
+          "currency": "USD",
+          "imageUrl": null,
+          "reason": "Matches magnesium sleep topic but health claims need review",
+          "relevanceScore": 61.55,
+          "riskScore": 56,
+          "scoreBreakdownJson": {
+            "topic_relevance": 82.0,
+            "user_problem_fit": 76.0,
+            "market_availability": 60.0,
+            "comparison_value": 64.0,
+            "evidence_availability": 42.0,
+            "price_or_value_hint": 35.0,
+            "risk_penalty": 56
+          },
+          "evidenceNeededJson": [
+            "Official product page",
+            "Current price/availability timestamp",
+            "Merchant policy check",
+            "Health claim review and supplement disclaimer"
+          ],
+          "status": "discovered",
+          "importedAt": "2026-05-26T20:26:52.688314+00:00"
+        }
+      ],
+      "comparisonJson": [
+        {
+          "candidateId": "product-candidate-us-en-magnesium-glycinate-supplement-sample-1",
+          "title": "Magnesium glycinate supplement sample",
+          "merchant": "iHerb",
+          "matchReason": "Matches magnesium sleep topic but health claims need review",
+          "verifyBeforeLinking": "Official product page; Current price/availability timestamp; Merchant policy check; Health claim review and supplement disclaimer",
+          "riskLevel": "medium"
+        }
+      ],
+      "prosConsJson": {
+        "pros": [
+          "Magnesium glycinate supplement sample: relevant to article problem"
+        ],
+        "cons": [
+          "All candidates require human verification before links or claims."
+        ]
+      },
+      "riskNotesJson": [
+        "Magnesium glycinate supplement sample: risk score 56; verify policy and claims."
+      ],
+      "recommendedUseJson": {
+        "blockTitle": "Relevant product candidates",
+        "placement": "analysis_block_only",
+        "linking": "do_not_link_yet",
+        "nextStep": "Human review must verify policy, claims, price, and availability."
+      },
+      "monetizationReadiness": "human_review_required",
+      "status": "do_not_link_yet",
+      "createdAt": "2026-05-26T20:26:52.690067+00:00",
+      "analysisBlockMarkdown": "## Relevant product candidates\n\nDo not link yet. These are candidates for human review, not approved monetized placements.\n\n| Candidate | Why it matches | Verify before linking | Risk |\n| --- | --- | --- | --- |\n| Magnesium glycinate supplement sample | Matches magnesium sleep topic but health claims need review | Official product page; Current price/availability timestamp; Merchant policy check; Health claim review and supplement disclaimer | medium |"
+    },
+    {
+      "id": "product-analysis-test-article-content-strategy-trend-keyword-trend-cluster-es-es-usb-c-charger-usb-c-charger",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-es-es-usb-c-charger-usb-c-charger",
+      "market": "es",
+      "language": "es",
+      "candidatesJson": [
+        {
+          "id": "product-candidate-es-es-65w-usb-c-gan-charger-sample-2",
+          "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-es-es-usb-c-charger-usb-c-charger",
+          "market": "es",
+          "language": "es",
+          "sourceMerchant": "Amazon",
+          "sourceMode": "manual_csv_now",
+          "title": "65W USB C GaN charger sample",
+          "productUrl": "https://merchant.example.test/es/usb-c-gan",
+          "candidateUrl": "https://merchant.example.test/es/usb-c-gan",
+          "category": "consumer-tech",
+          "priceText": null,
+          "currency": "EUR",
+          "imageUrl": null,
+          "reason": "Matches Spain USB C charger article and needs safety verification",
+          "relevanceScore": 71.7,
+          "riskScore": 32,
+          "scoreBreakdownJson": {
+            "topic_relevance": 88.0,
+            "user_problem_fit": 82.0,
+            "market_availability": 72.0,
+            "comparison_value": 78.0,
+            "evidence_availability": 55.0,
+            "price_or_value_hint": 50.0,
+            "risk_penalty": 32
+          },
+          "evidenceNeededJson": [
+            "Official product page",
+            "Current price/availability timestamp",
+            "Merchant policy check",
+            "Safety/certification and spec verification"
+          ],
+          "status": "discovered",
+          "importedAt": "2026-05-26T20:26:52.688343+00:00"
+        }
+      ],
+      "comparisonJson": [
+        {
+          "candidateId": "product-candidate-es-es-65w-usb-c-gan-charger-sample-2",
+          "title": "65W USB C GaN charger sample",
+          "merchant": "Amazon",
+          "matchReason": "Matches Spain USB C charger article and needs safety verification",
+          "verifyBeforeLinking": "Official product page; Current price/availability timestamp; Merchant policy check; Safety/certification and spec verification",
+          "riskLevel": "medium"
+        }
+      ],
+      "prosConsJson": {
+        "pros": [
+          "65W USB C GaN charger sample: relevant to article problem"
+        ],
+        "cons": [
+          "All candidates require human verification before links or claims."
+        ]
+      },
+      "riskNotesJson": [
+        "65W USB C GaN charger sample: risk score 32; verify policy and claims."
+      ],
+      "recommendedUseJson": {
+        "blockTitle": "Relevant product candidates",
+        "placement": "analysis_block_only",
+        "linking": "do_not_link_yet",
+        "nextStep": "Human review must verify policy, claims, price, and availability."
+      },
+      "monetizationReadiness": "human_review_required",
+      "status": "do_not_link_yet",
+      "createdAt": "2026-05-26T20:26:52.690078+00:00",
+      "analysisBlockMarkdown": "## Relevant product candidates\n\nDo not link yet. These are candidates for human review, not approved monetized placements.\n\n| Candidate | Why it matches | Verify before linking | Risk |\n| --- | --- | --- | --- |\n| 65W USB C GaN charger sample | Matches Spain USB C charger article and needs safety verification | Official product page; Current price/availability timestamp; Merchant policy check; Safety/certification and spec verification | medium |"
+    },
+    {
+      "id": "product-analysis-test-article-content-strategy-trend-keyword-trend-cluster-jp-ja-compact-desk-gadget-compact-desk-gadget",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-jp-ja-compact-desk-gadget-compact-desk-gadget",
+      "market": "jp",
+      "language": "ja",
+      "candidatesJson": [
+        {
+          "id": "product-candidate-jp-ja-compact-desk-organizer-sample-4",
+          "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-jp-ja-compact-desk-gadget-compact-desk-gadget",
+          "market": "jp",
+          "language": "ja",
+          "sourceMerchant": "Amazon",
+          "sourceMode": "manual_csv_now",
+          "title": "Compact desk organizer sample",
+          "productUrl": "https://merchant.example.test/jp/desk-organizer",
+          "candidateUrl": "https://merchant.example.test/jp/desk-organizer",
+          "category": "desk-setup",
+          "priceText": null,
+          "currency": "JPY",
+          "imageUrl": null,
+          "reason": "Matches compact desk gadget article with low claim risk",
+          "relevanceScore": 63.55,
+          "riskScore": 20,
+          "scoreBreakdownJson": {
+            "topic_relevance": 76.0,
+            "user_problem_fit": 72.0,
+            "market_availability": 65.0,
+            "comparison_value": 70.0,
+            "evidence_availability": 50.0,
+            "price_or_value_hint": 42.0,
+            "risk_penalty": 20
+          },
+          "evidenceNeededJson": [
+            "Official product page",
+            "Current price/availability timestamp",
+            "Merchant policy check"
+          ],
+          "status": "discovered",
+          "importedAt": "2026-05-26T20:26:52.688373+00:00"
+        }
+      ],
+      "comparisonJson": [
+        {
+          "candidateId": "product-candidate-jp-ja-compact-desk-organizer-sample-4",
+          "title": "Compact desk organizer sample",
+          "merchant": "Amazon",
+          "matchReason": "Matches compact desk gadget article with low claim risk",
+          "verifyBeforeLinking": "Official product page; Current price/availability timestamp; Merchant policy check",
+          "riskLevel": "medium"
+        }
+      ],
+      "prosConsJson": {
+        "pros": [
+          "Compact desk organizer sample: relevant to article problem"
+        ],
+        "cons": [
+          "All candidates require human verification before links or claims."
+        ]
+      },
+      "riskNotesJson": [
+        "Compact desk organizer sample: risk score 20; verify policy and claims."
+      ],
+      "recommendedUseJson": {
+        "blockTitle": "Relevant product candidates",
+        "placement": "analysis_block_only",
+        "linking": "do_not_link_yet",
+        "nextStep": "Human review must verify policy, claims, price, and availability."
+      },
+      "monetizationReadiness": "human_review_required",
+      "status": "do_not_link_yet",
+      "createdAt": "2026-05-26T20:26:52.690087+00:00",
+      "analysisBlockMarkdown": "## Relevant product candidates\n\nDo not link yet. These are candidates for human review, not approved monetized placements.\n\n| Candidate | Why it matches | Verify before linking | Risk |\n| --- | --- | --- | --- |\n| Compact desk organizer sample | Matches compact desk gadget article with low claim risk | Official product page; Current price/availability timestamp; Merchant policy check | medium |"
+    },
+    {
+      "id": "product-analysis-test-article-content-strategy-trend-keyword-trend-cluster-kr-ko-gut-health-gut-health",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-kr-ko-gut-health-gut-health",
+      "market": "kr",
+      "language": "ko",
+      "candidatesJson": [
+        {
+          "id": "product-candidate-kr-ko-probiotic-supplement-sample-5",
+          "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-kr-ko-gut-health-gut-health",
+          "market": "kr",
+          "language": "ko",
+          "sourceMerchant": "iHerb",
+          "sourceMode": "manual_csv_now",
+          "title": "Probiotic supplement sample",
+          "productUrl": "https://merchant.example.test/kr/probiotic",
+          "candidateUrl": "https://merchant.example.test/kr/probiotic",
+          "category": "wellness",
+          "priceText": null,
+          "currency": "KRW",
+          "imageUrl": null,
+          "reason": "Matches gut health article but requires strict health claim guard",
+          "relevanceScore": 60.3,
+          "riskScore": 44,
+          "scoreBreakdownJson": {
+            "topic_relevance": 80.0,
+            "user_problem_fit": 74.0,
+            "market_availability": 58.0,
+            "comparison_value": 62.0,
+            "evidence_availability": 40.0,
+            "price_or_value_hint": 34.0,
+            "risk_penalty": 44
+          },
+          "evidenceNeededJson": [
+            "Official product page",
+            "Current price/availability timestamp",
+            "Merchant policy check",
+            "Health claim review and supplement disclaimer"
+          ],
+          "status": "discovered",
+          "importedAt": "2026-05-26T20:26:52.688386+00:00"
+        }
+      ],
+      "comparisonJson": [
+        {
+          "candidateId": "product-candidate-kr-ko-probiotic-supplement-sample-5",
+          "title": "Probiotic supplement sample",
+          "merchant": "iHerb",
+          "matchReason": "Matches gut health article but requires strict health claim guard",
+          "verifyBeforeLinking": "Official product page; Current price/availability timestamp; Merchant policy check; Health claim review and supplement disclaimer",
+          "riskLevel": "medium"
+        }
+      ],
+      "prosConsJson": {
+        "pros": [
+          "Probiotic supplement sample: relevant to article problem"
+        ],
+        "cons": [
+          "All candidates require human verification before links or claims."
+        ]
+      },
+      "riskNotesJson": [
+        "Probiotic supplement sample: risk score 44; verify policy and claims."
+      ],
+      "recommendedUseJson": {
+        "blockTitle": "Relevant product candidates",
+        "placement": "analysis_block_only",
+        "linking": "do_not_link_yet",
+        "nextStep": "Human review must verify policy, claims, price, and availability."
+      },
+      "monetizationReadiness": "human_review_required",
+      "status": "do_not_link_yet",
+      "createdAt": "2026-05-26T20:26:52.690097+00:00",
+      "analysisBlockMarkdown": "## Relevant product candidates\n\nDo not link yet. These are candidates for human review, not approved monetized placements.\n\n| Candidate | Why it matches | Verify before linking | Risk |\n| --- | --- | --- | --- |\n| Probiotic supplement sample | Matches gut health article but requires strict health claim guard | Official product page; Current price/availability timestamp; Merchant policy check; Health claim review and supplement disclaimer | medium |"
+    }
+  ]
+}

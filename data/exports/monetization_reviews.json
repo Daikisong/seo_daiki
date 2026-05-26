@@ -1,0 +1,69 @@
+{
+  "reviews": [
+    {
+      "id": "monetization-review-test-article-content-strategy-trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-real-capacity",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-real-capacity",
+      "market": "br",
+      "language": "pt-br",
+      "productAnalysisId": "product-analysis-test-article-content-strategy-trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-real-capacity",
+      "status": "pending_human_review",
+      "reviewerNotes": "Human must verify candidates, policies, prices, disclosures, and article fit before links.",
+      "approvedCandidateIdsJson": [],
+      "rejectedCandidateIdsJson": [],
+      "createdAt": "2026-05-26T20:26:52.904039+00:00",
+      "updatedAt": "2026-05-26T20:26:52.904053+00:00"
+    },
+    {
+      "id": "monetization-review-test-article-content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-sleep",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-sleep",
+      "market": "us",
+      "language": "en",
+      "productAnalysisId": "product-analysis-test-article-content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-sleep",
+      "status": "pending_human_review",
+      "reviewerNotes": "Human must verify candidates, policies, prices, disclosures, and article fit before links.",
+      "approvedCandidateIdsJson": [],
+      "rejectedCandidateIdsJson": [],
+      "createdAt": "2026-05-26T20:26:52.904061+00:00",
+      "updatedAt": "2026-05-26T20:26:52.904062+00:00"
+    },
+    {
+      "id": "monetization-review-test-article-content-strategy-trend-keyword-trend-cluster-es-es-usb-c-charger-usb-c-charger",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-es-es-usb-c-charger-usb-c-charger",
+      "market": "es",
+      "language": "es",
+      "productAnalysisId": "product-analysis-test-article-content-strategy-trend-keyword-trend-cluster-es-es-usb-c-charger-usb-c-charger",
+      "status": "pending_human_review",
+      "reviewerNotes": "Human must verify candidates, policies, prices, disclosures, and article fit before links.",
+      "approvedCandidateIdsJson": [],
+      "rejectedCandidateIdsJson": [],
+      "createdAt": "2026-05-26T20:26:52.904068+00:00",
+      "updatedAt": "2026-05-26T20:26:52.904069+00:00"
+    },
+    {
+      "id": "monetization-review-test-article-content-strategy-trend-keyword-trend-cluster-jp-ja-compact-desk-gadget-compact-desk-gadget",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-jp-ja-compact-desk-gadget-compact-desk-gadget",
+      "market": "jp",
+      "language": "ja",
+      "productAnalysisId": "product-analysis-test-article-content-strategy-trend-keyword-trend-cluster-jp-ja-compact-desk-gadget-compact-desk-gadget",
+      "status": "pending_human_review",
+      "reviewerNotes": "Human must verify candidates, policies, prices, disclosures, and article fit before links.",
+      "approvedCandidateIdsJson": [],
+      "rejectedCandidateIdsJson": [],
+      "createdAt": "2026-05-26T20:26:52.904076+00:00",
+      "updatedAt": "2026-05-26T20:26:52.904077+00:00"
+    },
+    {
+      "id": "monetization-review-test-article-content-strategy-trend-keyword-trend-cluster-kr-ko-gut-health-gut-health",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-kr-ko-gut-health-gut-health",
+      "market": "kr",
+      "language": "ko",
+      "productAnalysisId": "product-analysis-test-article-content-strategy-trend-keyword-trend-cluster-kr-ko-gut-health-gut-health",
+      "status": "pending_human_review",
+      "reviewerNotes": "Human must verify candidates, policies, prices, disclosures, and article fit before links.",
+      "approvedCandidateIdsJson": [],
+      "rejectedCandidateIdsJson": [],
+      "createdAt": "2026-05-26T20:26:52.904082+00:00",
+      "updatedAt": "2026-05-26T20:26:52.904083+00:00"
+    }
+  ]
+}

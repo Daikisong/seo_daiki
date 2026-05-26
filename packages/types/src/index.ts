@@ -1,6 +1,181 @@
 export const locales = ["en", "es", "pt-br"] as const;
 export type Locale = (typeof locales)[number];
 
+export type MarketCode =
+  | "us"
+  | "gb"
+  | "ca"
+  | "au"
+  | "es"
+  | "mx"
+  | "br"
+  | "pt"
+  | "fr"
+  | "de"
+  | "it"
+  | "nl"
+  | "pl"
+  | "tr"
+  | "id"
+  | "jp"
+  | "kr"
+  | "in";
+
+export interface MarketConfig {
+  market: MarketCode;
+  language: string;
+  country: string;
+  currency: string;
+  timezone: string;
+  trendsGeo: string;
+  serpGl: string;
+  serpHl: string;
+  pathPrefix: string;
+  enabled: boolean;
+  monetizationReadiness: "research_only" | "candidate_analysis" | "review_ready" | "approved";
+  defaultCategories: string[];
+  blockedCategories: string[];
+  searchConsoleCountryFilter: string;
+  serpLocaleConfig: { gl: string; hl: string };
+  localizationRules: string[];
+  trendFeedPath: string;
+  editorialCalendarPath: string;
+}
+
+export interface MarketTrendSignal {
+  id: string;
+  sourceId: string;
+  sourceType: string;
+  market: string;
+  language: string;
+  country: string;
+  rawKeyword: string;
+  normalizedKeyword: string;
+  topicRaw: string;
+  categoryGuess: string;
+  url?: string;
+  observedAt: string;
+  sourceRank: number;
+  sourceVolumeBucket: string;
+  relativeGrowth: number;
+  velocityScore: number;
+  freshnessScore: number;
+  commercialHintScore: number;
+  evidenceHintScore: number;
+  localeSpecificityScore: number;
+  status: "raw" | "normalized" | "clustered" | "scored" | "keyword_ready" | "serp_pending" | "brief_pending" | "drafted" | "testing" | "rejected";
+  rawJson?: Record<string, unknown>;
+}
+
+export interface TrendClusterRecord {
+  id: string;
+  market: string;
+  language: string;
+  canonicalTopic: string;
+  slug: string;
+  category: string;
+  detectedAt: string;
+  status: string;
+  signalCount: number;
+  countriesSeenJson: string[];
+  relatedKeywordsJson: string[];
+  score: number;
+  scoreBreakdownJson: Record<string, number>;
+}
+
+export interface TrendKeywordRecord {
+  id: string;
+  clusterId: string;
+  market: string;
+  language: string;
+  keyword: string;
+  searchIntentGuess: string;
+  priorityScore: number;
+  serpStatus: string;
+  status: string;
+}
+
+export interface TestArticleRecord {
+  id: string;
+  strategyId: string;
+  market: string;
+  language: string;
+  slug: string;
+  title: string;
+  h1: string;
+  metaDescription: string;
+  status: "draft" | "test_pending" | "test_published_noindex" | "test_published_index_candidate" | "performance_monitoring" | "needs_product_analysis" | "approved_for_monetization" | "rejected";
+  indexStatus: IndexStatus;
+  publishStatus: PublishStatus;
+  sections: ArticleSection[];
+  productCandidateState: "pending" | "ready" | "approved";
+}
+
+export interface SerpKeywordOpportunityRecord {
+  id: string;
+  keywordId: string;
+  market: string;
+  language: string;
+  keyword: string;
+  opportunityScore: number;
+  dominantIntent: string;
+  dominantContentTypesJson: string[];
+  topPatternsJson: string[];
+  contentGapJson: Record<string, unknown>;
+  recommendedAngle: string;
+  recommendedArticleType: string;
+  shouldWrite: boolean;
+  reason: string;
+}
+
+export interface ContentStrategyRecord {
+  id: string;
+  keywordId: string;
+  clusterId: string;
+  market: string;
+  language: string;
+  slug: string;
+  selectedArticleType: string;
+  recommendedAngle: string;
+  titleStrategy: string;
+  sectionPlanJson: Array<Record<string, unknown>>;
+  evidenceNeededJson: string[];
+  monetizationDeferred: boolean;
+  status: string;
+}
+
+export interface ProductCandidateRecord {
+  id: string;
+  articleId?: string;
+  market: string;
+  language: string;
+  sourceMerchant: string;
+  sourceMode: string;
+  title: string;
+  productUrl?: string;
+  candidateUrl?: string;
+  category?: string;
+  priceText?: string;
+  currency?: string;
+  reason: string;
+  relevanceScore: number;
+  riskScore: number;
+  evidenceNeededJson: string[];
+  status: string;
+}
+
+export interface MonetizationReviewRecord {
+  id: string;
+  articleId: string;
+  market: string;
+  language: string;
+  productAnalysisId: string;
+  status: "pending_human_review" | "approved_candidates" | "final_approved" | "rejected";
+  reviewerNotes?: string;
+  approvedCandidateIdsJson: string[];
+  rejectedCandidateIdsJson: string[];
+}
+
 export type ArticleType =
   | "hub"
   | "review"
