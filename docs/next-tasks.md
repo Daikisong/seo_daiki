@@ -1,7 +1,6 @@
 # Next Tasks
 
-1. Phase 15-19: add remaining seed files, scripts, docs, final report, and `data/exports/system_capabilities.json`.
-2. Environment task: connect a real Postgres database and run Prisma migration/seed once Docker or Postgres is available.
+1. Environment task: connect a real Postgres database and run Prisma migration/seed once Docker or Postgres is available.
 
 Completed:
 
@@ -18,3 +17,8 @@ Completed:
 - Phase 12: Owned-channel distribution drafts now generate from article outputs, require human approval, and keep sending disabled by default.
 - Phase 13: Linkable asset scoring, prospect import/scoring, and outreach draft generation now exist without automatic backlink creation or email sending.
 - Phase 14: Search Console refresh suggestions now cover new article types, offer replacement candidates, localization gaps, and health claim risk warnings.
+- Phase 15: Local seed/sample data now covers trends, offers, merchants, distribution rules, link prospects, generated drafts, and safety-blocked examples.
+- Phase 16: `.env.example` now lists site, DB, AliExpress, iHerb, LLM, Search Console, storage, distribution, outreach, and safety variables.
+- Phase 17: Root package scripts now cover trend import/cluster/score, brief generation, offer matching, publishing gate, localization scoring, affiliate/compliance audits, distribution generation, and link scoring.
+- Phase 18: README and docs now cover operations, safety rules, posting drafts, outreach compliance, offer matching, admin operations, and the Search Console refresh loop.
+- Phase 19: `docs/final-implementation-report.md` and `data/exports/system_capabilities.json` now summarize the final system and verification results.

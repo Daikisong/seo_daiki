@@ -1,6 +1,6 @@
 # Global Import Lab
 
-Multilingual SEO product intelligence site for imported ecommerce products.
+Multilingual trend-driven affiliate content operating system for imported ecommerce products.
 
 This is not a generic affiliate blog. The core is a product evidence database:
 
@@ -14,10 +14,12 @@ This is not a generic affiliate blog. The core is a product evidence database:
 - Language preference banner without automatic redirects
 - Affiliate click tracking route, GA4 `affiliate_click` events, and optional GA4 script injection
 - Quality gates before a page can be indexed, including evidence, thin-affiliate, hreflang/canonical, JSON-LD schema, and affiliate-link checks
-- Python worker CLI for seed import, identity grouping, variant traps, evidence packs, drafts, and Search Console suggestions
+- Python worker CLI for seed import, identity grouping, variant traps, evidence packs, trend briefs, offer matching, multilingual drafts, Search Console suggestions, distribution drafts, and outreach drafts
 - LLM provider interface for dry-run, OpenAI, Gemini, Anthropic, and Ollama draft generation
 - Sample product evidence seed: 10 imported products across chargers, cables, power banks, tools, and sensors
 - Initial URL inventory: 110 planned URLs with exactly 60 currently indexable sample pages after quality gates
+
+The system intentionally does not automate comment spam, forum/profile backlinks, community auto-posting, account creation, CAPTCHA bypass, proxy rotation, PBNs, directory spam, or Google Indexing API submission for normal articles.
 
 ## Setup
 
@@ -92,6 +94,19 @@ python3 workers/python/cli.py import-search-console
 python3 workers/python/cli.py import-search-console --start-date 2026-04-25 --end-date 2026-05-25
 python3 workers/python/cli.py suggest-refreshes
 python3 workers/python/cli.py generate-url-inventory --file data/seeds/initial-url-plan.csv
+python3 workers/python/cli.py import-trend-signals --file data/seeds/trend-signals.csv
+python3 workers/python/cli.py cluster-topics
+python3 workers/python/cli.py score-topics
+python3 workers/python/cli.py generate-content-briefs
+python3 workers/python/cli.py match-affiliate-offers --offers-file data/seeds/offers.csv
+python3 workers/python/cli.py generate-topic-draft --topic-id topic-travel-gan-charger-buyer-guide --locale en
+python3 workers/python/cli.py localize-topic-draft --article-id draft-article-brief-travel-gan-charger-buyer-guide-en --locale es
+python3 workers/python/cli.py run-publishing-gate
+python3 workers/python/cli.py generate-distribution-assets
+python3 workers/python/cli.py score-linkable-assets
+python3 workers/python/cli.py import-link-prospects --file data/seeds/link-prospects.csv
+python3 workers/python/cli.py score-link-prospects
+python3 workers/python/cli.py draft-outreach
 ```
 
 Use `python3 workers/python/cli.py run-pipeline --keyword "65w gan charger"` when AliExpress credentials are configured and you want the official API search step included. Without `--keyword`, the pipeline uses the checked-in seed CSV and avoids network/API credentials.
@@ -110,6 +125,8 @@ LLM_PROVIDER=ollama OLLAMA_BASE_URL=http://localhost:11434 python3 workers/pytho
 ```
 
 The Python quality gate writes `data/exports/quality_gate.json`. It checks evidence schema, claim support, thin-affiliate risk, locale depth, localized URL rules, internal-link inventory, affiliate URL readiness, duplicate similarity, and hallucination guardrails.
+
+Trend publishing starts safe. Generated topic drafts write to `data/exports/topic_articles.json` and `data/drafts/`, but they start with `publishStatus=pending`, `indexStatus=pending`, and a score below the index threshold. Offer candidates write to `data/exports/affiliate_placement_candidates.json` as `draft` placements that require human approval. Distribution and outreach workers also write drafts only; sending is disabled unless explicit environment flags and adapters are configured.
 
 The sample web app renders from local TypeScript data so it can build without a running database. Prisma is ready for local Postgres and production Postgres.
 
@@ -143,6 +160,12 @@ Available mutation endpoints:
 POST /api/admin/article-status
 POST /api/admin/evidence-record
 POST /api/admin/lab-evidence
+POST /api/admin/merchant
+POST /api/admin/offer
+POST /api/admin/topic-status
+POST /api/admin/content-brief-status
+POST /api/admin/affiliate-placement-status
+POST /api/admin/publishing-job-retry
 POST /api/admin/record-action
 GET  /api/lab-evidence-file/<storageKey>
 ```

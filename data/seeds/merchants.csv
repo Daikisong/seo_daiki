@@ -1,0 +1,3 @@
+slug,name,domain,merchant_type,allowed_domains,default_rel,health_sensitive,enabled
+aliexpress,AliExpress,aliexpress.com,marketplace,"aliexpress.com,www.aliexpress.com,s.click.aliexpress.com,best.aliexpress.com",sponsored nofollow,false,true
+iherb,iHerb,iherb.com,supplement_store,"iherb.com,www.iherb.com",sponsored nofollow,true,true

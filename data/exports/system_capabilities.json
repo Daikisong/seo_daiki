@@ -1,0 +1,14 @@
+{
+  "product_evidence_core": true,
+  "trend_engine": true,
+  "merchant_offer_engine": true,
+  "iherb_compliance_gate": true,
+  "multilingual_publishing": true,
+  "safe_affiliate_redirects": true,
+  "search_console_refresh_loop": true,
+  "owned_channel_distribution_drafts": true,
+  "link_earning_crm_drafts": true,
+  "blackhat_backlink_automation": false,
+  "community_auto_posting": false,
+  "google_indexing_api_for_articles": false
+}

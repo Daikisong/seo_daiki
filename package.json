@@ -13,7 +13,19 @@
     "db:seed": "pnpm --filter @global-import-lab/db seed",
     "db:admin": "pnpm --filter @global-import-lab/db admin",
     "worker": "python3 workers/python/cli.py",
-    "worker:pipeline": "python3 workers/python/cli.py run-pipeline"
+    "worker:pipeline": "python3 workers/python/cli.py run-pipeline",
+    "trend:import": "python3 workers/python/cli.py import-trend-signals --file data/seeds/trend-signals.csv",
+    "trend:cluster": "python3 workers/python/cli.py cluster-topics",
+    "trend:score": "python3 workers/python/cli.py score-topics",
+    "brief:generate": "python3 workers/python/cli.py generate-content-briefs",
+    "offers:match": "python3 workers/python/cli.py match-affiliate-offers --offers-file data/seeds/offers.csv",
+    "publishing:gate": "python3 workers/python/cli.py run-publishing-gate",
+    "localization:score": "python3 workers/python/cli.py score-localization",
+    "affiliate:audit": "python3 workers/python/cli.py match-affiliate-offers --offers-file data/seeds/offers.csv",
+    "compliance:audit": "python3 workers/python/cli.py run-publishing-gate",
+    "distribution:generate": "python3 workers/python/cli.py generate-distribution-assets",
+    "links:assets:score": "python3 workers/python/cli.py score-linkable-assets",
+    "links:prospects:score": "python3 workers/python/cli.py score-link-prospects"
   },
   "devDependencies": {
     "@prisma/client": "7.8.0",
