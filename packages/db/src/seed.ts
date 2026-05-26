@@ -1,5 +1,5 @@
 import { prisma } from "./client";
-import { articles, evidencePacks, products } from "@global-import-lab/content";
+import { articleTranslationGroups, articles, evidencePacks, products } from "@global-import-lab/content";
 import type { AffiliateLink, Article } from "@global-import-lab/types";
 import type { Prisma } from "./generated/prisma/client";
 
@@ -9,6 +9,9 @@ function toJson(value: unknown): Prisma.InputJsonValue {
 
 async function main() {
   await prisma.affiliatePlacement.deleteMany({});
+  await prisma.translationVariant.deleteMany({});
+  await prisma.publishingJob.deleteMany({});
+  await prisma.translationGroup.deleteMany({});
   await prisma.offer.deleteMany({});
   await prisma.affiliateProgram.deleteMany({});
   await prisma.merchant.deleteMany({});
@@ -126,6 +129,9 @@ async function main() {
         qualityScore: article.qualityScore,
         indexStatus: article.indexStatus,
         publishStatus: article.publishStatus,
+        healthSensitivity: article.healthSensitivity ?? "none",
+        complianceStatus: article.complianceStatus ?? "unchecked",
+        complianceJson: article.complianceJson === undefined ? undefined : toJson(article.complianceJson),
         canonicalUrl: article.canonicalUrl,
         hreflangMap: toJson(article.hreflangMap),
         lastUpdated: new Date(article.lastUpdated)
@@ -133,7 +139,29 @@ async function main() {
     });
   }
 
+  await seedTranslationGroups();
   await seedAffiliateOffersAndPlacements(affiliateSeed);
+}
+
+async function seedTranslationGroups() {
+  for (const group of articleTranslationGroups) {
+    await prisma.translationGroup.create({
+      data: {
+        id: group.id,
+        sourceArticleId: group.sourceArticleId,
+        variants: {
+          create: group.variants.map((variant) => ({
+            id: variant.id,
+            articleId: variant.articleId,
+            locale: variant.locale,
+            sourceLocale: variant.sourceLocale,
+            localizationDepthScore: variant.localizationDepthScore,
+            status: variant.status
+          }))
+        }
+      }
+    });
+  }
 }
 
 async function seedAffiliateMerchants() {

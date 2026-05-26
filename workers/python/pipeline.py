@@ -32,6 +32,7 @@ from workers.python.collectors.price_snapshot import snapshot_prices
 from workers.python.validators.quality_gate import run_quality_gate
 from workers.python.writers.article_draft_generator import generate_draft
 from workers.python.writers.article_outline_generator import generate_outline
+from workers.python.writers.multilingual_publishing import score_localization, sync_hreflang_groups
 from workers.python.writers.url_inventory import generate_url_inventory
 
 
@@ -92,6 +93,8 @@ def run_worker_pipeline(
             ("generate-topic-draft", generate_topic_draft),
             ("localize-topic-draft", localize_topic_draft),
             ("run-publishing-gate", run_publishing_gate),
+            ("score-localization", score_localization),
+            ("sync-hreflang-groups", sync_hreflang_groups),
         ]
     )
 

@@ -1989,6 +1989,29 @@ const generatedDraftArticles: ArticleDraft[] = initialUrlPlan.flatMap((row) =>
 
 const draftArticles: ArticleDraft[] = [...baseDraftArticles, ...trendBlogDraftArticles, ...generatedDraftArticles];
 
+export const articleTranslationGroups = Object.values(
+  draftArticles.reduce<Record<string, ArticleDraft[]>>((groups, article) => {
+    groups[article.group] = [...(groups[article.group] ?? []), article];
+    return groups;
+  }, {})
+)
+  .filter((groupArticles) => new Set(groupArticles.map((article) => article.locale)).size > 1)
+  .map((groupArticles) => {
+    const source = groupArticles.find((article) => article.locale === "en") ?? groupArticles[0];
+    return {
+      id: `tg-${sampleSlugify(source.group)}`,
+      sourceArticleId: source.id,
+      variants: groupArticles.map((article) => ({
+        id: `tv-${article.id}`,
+        articleId: article.id,
+        locale: article.locale,
+        sourceLocale: article.id === source.id ? undefined : source.locale,
+        localizationDepthScore: article.id === source.id ? 100 : article.indexStatus === "index" ? 84 : 55,
+        status: article.publishStatus === "published" && article.indexStatus === "index" ? "published" : "draft"
+      }))
+    };
+  });
+
 const linkableArticleTypes: ArticleType[] = [
   "hub",
   "methodology",
@@ -2239,6 +2262,16 @@ function trendBlogArticle(input: {
     qualityScore: 84,
     indexStatus: "index",
     publishStatus: "published",
+    healthSensitivity: input.type === "ingredient_guide" ? "high" : "none",
+    complianceStatus: input.type === "ingredient_guide" ? "passed" : "unchecked",
+    complianceJson:
+      input.type === "ingredient_guide"
+        ? {
+            manualApproval: true,
+            disclaimerRequired: true,
+            healthClaimGuard: "passed"
+          }
+        : undefined,
     internalLinks: internalLinks(input.locale),
     affiliateLinks:
       input.affiliateLabel && input.affiliateHref
@@ -2444,6 +2477,13 @@ function intersectionCount<T>(left: Set<T>, right: Set<T>) {
     }
   }
   return count;
+}
+
+function sampleSlugify(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
 }
 
 function buildPlannedArticle(row: UrlPlanRow, ordinal: number): ArticleDraft {

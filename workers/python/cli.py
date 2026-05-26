@@ -37,6 +37,12 @@ from workers.python.pipeline import run_worker_pipeline
 from workers.python.validators.quality_gate import run_quality_gate
 from workers.python.writers.article_draft_generator import generate_draft
 from workers.python.writers.article_outline_generator import generate_outline
+from workers.python.writers.multilingual_publishing import (
+    create_translation_group,
+    localize_article,
+    score_localization,
+    sync_hreflang_groups,
+)
 from workers.python.writers.url_inventory import generate_url_inventory
 
 
@@ -75,6 +81,16 @@ def main() -> None:
     localize_topic = subcommands.add_parser("localize-topic-draft")
     localize_topic.add_argument("--locale", action="append", dest="locales", default=None)
     subcommands.add_parser("run-publishing-gate")
+    translation_group = subcommands.add_parser("create-translation-group")
+    translation_group.add_argument("--article-id", required=True)
+    translation_group.add_argument("--topic-id")
+    translation_group.add_argument("--source-locale", default="en")
+    localize_existing = subcommands.add_parser("localize-article")
+    localize_existing.add_argument("--article-id", required=True)
+    localize_existing.add_argument("--locale", required=True)
+    localize_existing.add_argument("--source-locale", default="en")
+    subcommands.add_parser("score-localization")
+    subcommands.add_parser("sync-hreflang-groups")
     inventory = subcommands.add_parser("generate-url-inventory")
     inventory.add_argument("--file", default=str(DATA / "seeds" / "initial-url-plan.csv"))
 
@@ -148,6 +164,14 @@ def main() -> None:
         print(localize_topic_draft(args.locales))
     elif args.command == "run-publishing-gate":
         print(run_publishing_gate())
+    elif args.command == "create-translation-group":
+        print(create_translation_group(args.article_id, args.topic_id, args.source_locale))
+    elif args.command == "localize-article":
+        print(localize_article(args.article_id, args.locale, args.source_locale))
+    elif args.command == "score-localization":
+        print(score_localization())
+    elif args.command == "sync-hreflang-groups":
+        print(sync_hreflang_groups())
     elif args.command == "generate-url-inventory":
         print(generate_url_inventory(Path(args.file)))
     elif args.command == "build-evidence-pack":

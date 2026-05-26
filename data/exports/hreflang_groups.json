@@ -1,0 +1,15 @@
+{
+  "groups": [
+    {
+      "groupId": "tg-art-en-buyer-guide-travel-gan",
+      "sourceArticleId": "art-en-buyer-guide-travel-gan",
+      "hreflangMap": {
+        "en": "https://example.com/en/localized/art-en-buyer-guide-travel-gan/",
+        "es": "https://example.com/es/localized/art-en-buyer-guide-travel-gan-es/",
+        "pt-BR": "https://example.com/pt-br/localized/art-en-buyer-guide-travel-gan-pt-br/",
+        "x-default": "https://example.com/en/localized/art-en-buyer-guide-travel-gan/"
+      },
+      "variantCount": 3
+    }
+  ]
+}

@@ -187,6 +187,9 @@ model Article {
   qualityScore    Int      @default(0)
   indexStatus     String   @default("pending")
   publishStatus   String   @default("draft")
+  healthSensitivity String @default("none")
+  complianceStatus String @default("unchecked")
+  complianceJson   Json?
   canonicalUrl    String?
   hreflangMap     Json?
   archivedAt      DateTime?
@@ -196,9 +199,13 @@ model Article {
 
   affiliateClicks AffiliateClick[]
   affiliatePlacements AffiliatePlacement[]
+  sourceTranslationGroups TranslationGroup[] @relation("TranslationGroupSourceArticle")
+  translationVariants TranslationVariant[]
+  publishingJobs PublishingJob[]
 
   @@unique([locale, slug, type])
   @@index([locale, type, indexStatus])
+  @@index([healthSensitivity, complianceStatus])
 }
 
 model Merchant {
@@ -323,6 +330,8 @@ model Topic {
   topicSignals    TopicSignal[]
   contentBriefs   ContentBrief[]
   offers          Offer[]
+  translationGroups TranslationGroup[]
+  publishingJobs PublishingJob[]
 }
 
 model TopicSignal {
@@ -357,6 +366,60 @@ model ContentBrief {
   updatedAt         DateTime @updatedAt
 
   @@index([topicId, locale])
+}
+
+model TranslationGroup {
+  id               String   @id @default(cuid())
+  canonicalTopicId String?
+  canonicalTopic   Topic?   @relation(fields: [canonicalTopicId], references: [id], onDelete: SetNull)
+  sourceArticleId  String?
+  sourceArticle    Article? @relation("TranslationGroupSourceArticle", fields: [sourceArticleId], references: [id], onDelete: SetNull)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  variants         TranslationVariant[]
+
+  @@index([canonicalTopicId])
+  @@index([sourceArticleId])
+}
+
+model TranslationVariant {
+  id                     String   @id @default(cuid())
+  groupId                String
+  group                  TranslationGroup @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  articleId              String
+  article                Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  locale                 String
+  sourceLocale           String?
+  localizationDepthScore Float    @default(0)
+  status                 String   @default("draft")
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+
+  @@index([groupId, locale])
+  @@index([articleId])
+  @@unique([groupId, locale])
+  @@unique([articleId])
+}
+
+model PublishingJob {
+  id         String   @id @default(cuid())
+  topicId    String?
+  topic      Topic?   @relation(fields: [topicId], references: [id], onDelete: SetNull)
+  articleId  String?
+  article    Article? @relation(fields: [articleId], references: [id], onDelete: SetNull)
+  locale     String
+  jobType    String
+  status     String   @default("queued")
+  inputJson  Json?
+  outputJson Json?
+  error      String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([status, jobType])
+  @@index([articleId])
+  @@index([topicId])
 }
 
 model AffiliatePlacement {

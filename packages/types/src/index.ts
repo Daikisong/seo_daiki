@@ -23,6 +23,8 @@ export type IndexStatus =
   | "merge_candidate";
 
 export type PublishStatus = "draft" | "pending" | "published";
+export type HealthSensitivity = "none" | "low" | "medium" | "high";
+export type ComplianceStatus = "unchecked" | "passed" | "blocked" | "manual_required";
 
 export interface Variant {
   id: string;
@@ -181,6 +183,9 @@ export interface Article {
   qualityScore: number;
   indexStatus: IndexStatus;
   publishStatus: PublishStatus;
+  healthSensitivity?: HealthSensitivity;
+  complianceStatus?: ComplianceStatus;
+  complianceJson?: Record<string, unknown>;
   canonicalUrl?: string;
   hreflangMap: HreflangMap;
   internalLinks: InternalLink[];
