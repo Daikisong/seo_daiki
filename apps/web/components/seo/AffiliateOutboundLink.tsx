@@ -33,7 +33,7 @@ export function AffiliateOutboundLink({
         window.gtag?.("event", "affiliate_click", {
           affiliate_label: label,
           article_id: articleId,
-          link_url: targetUrlFromTrackingHref(href),
+          link_url: outboundTargetFromHref(href),
           locale,
           product_id: productId,
           transport_type: "beacon"
@@ -47,10 +47,10 @@ export function AffiliateOutboundLink({
   );
 }
 
-function targetUrlFromTrackingHref(href: string) {
+function outboundTargetFromHref(href: string) {
   try {
     const url = new URL(href, window.location.origin);
-    return url.searchParams.get("target") ?? href;
+    return url.searchParams.get("placementId") ?? url.searchParams.get("target") ?? href;
   } catch {
     return href;
   }

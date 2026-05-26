@@ -82,7 +82,7 @@ export function ArticlePage({ article, product, allProducts, allArticles }: Arti
               {article.affiliateLinks.map((link) => (
                 <AffiliateOutboundLink
                   articleId={article.id}
-                  href={affiliateTrackingHref(link.href, article)}
+                  href={affiliateTrackingHref(link, article)}
                   key={link.href}
                   label={link.label}
                   locale={article.locale}
@@ -113,9 +113,18 @@ export function ArticlePage({ article, product, allProducts, allArticles }: Arti
   );
 }
 
-function affiliateTrackingHref(targetUrl: string, article: Article) {
+function affiliateTrackingHref(link: Article["affiliateLinks"][number], article: Article) {
+  if (link.placementId && process.env.CONTENT_SOURCE === "database") {
+    const params = new URLSearchParams({ placementId: link.placementId });
+    return `/api/affiliate-click?${params.toString()}`;
+  }
+
+  if (!isUnsafeAffiliateTargetRedirectAllowed()) {
+    return link.href;
+  }
+
   const params = new URLSearchParams({
-    target: targetUrl,
+    target: link.href,
     articleId: article.id,
     locale: article.locale
   });
@@ -125,6 +134,10 @@ function affiliateTrackingHref(targetUrl: string, article: Article) {
   }
 
   return `/api/affiliate-click?${params.toString()}`;
+}
+
+function isUnsafeAffiliateTargetRedirectAllowed() {
+  return process.env.NODE_ENV !== "production" && process.env.ALLOW_UNSAFE_AFFILIATE_TARGET_REDIRECT === "true";
 }
 
 function ArticleTypeContent({

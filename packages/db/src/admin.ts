@@ -6,10 +6,13 @@ import {
 } from "./importWorkerOutputs";
 import { listLabEvidenceAssets } from "./labEvidence";
 import {
+  AdminPublishGateError,
   archiveAdminRecord,
   deleteAdminRecord,
   getAuditLogs,
-  isAdminEntityType
+  isAdminEntityType,
+  isIndexStatus,
+  updateArticleState
 } from "./adminMutations";
 import {
   isRefreshSuggestionStatus,
@@ -33,14 +36,11 @@ async function main() {
 
   if (command === "set-index-status") {
     const [id, indexStatus] = args;
-    if (!id || !indexStatus) {
+    if (!id || !indexStatus || !isIndexStatus(indexStatus)) {
       throw new Error("Usage: pnpm db:admin -- set-index-status <articleId> <index|noindex|pending|refresh_needed|merge_candidate>");
     }
 
-    await prisma.article.update({
-      where: { id },
-      data: { indexStatus }
-    });
+    await updateArticleState({ id, indexStatus });
     console.log(`Updated ${id} to ${indexStatus}`);
     return;
   }
@@ -175,6 +175,17 @@ async function main() {
 
 main()
   .catch((error) => {
+    if (error instanceof AdminPublishGateError) {
+      console.error(`Publishing gate blocked index update for article ${error.articleId}.`);
+      console.table(
+        error.issues.map((issue) => ({
+          code: issue.code,
+          severity: issue.severity,
+          message: issue.message
+        }))
+      );
+      process.exit(1);
+    }
     console.error(error);
     process.exit(1);
   })

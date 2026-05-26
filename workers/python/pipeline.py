@@ -16,6 +16,13 @@ from workers.python.intelligence.product_identity_graph import build_identity_gr
 from workers.python.intelligence.review_signal_extractor import extract_review_signals
 from workers.python.intelligence.search_console_feedback import build_search_console_suggestions
 from workers.python.intelligence.seller_claim_extractor import extract_seller_claims
+from workers.python.intelligence.trend_topic_engine import (
+    cluster_topics,
+    generate_content_briefs,
+    import_trend_signals,
+    match_affiliate_offers,
+    score_topics,
+)
 from workers.python.intelligence.variant_trap_detector import detect_variant_traps
 from workers.python.intelligence.verified_claim_builder import build_verified_claims
 from workers.python.collectors.price_snapshot import snapshot_prices
@@ -30,6 +37,7 @@ def run_worker_pipeline(
     locales: list[str],
     draft_types: list[str],
     url_plan_file: Path,
+    trend_signal_file: Path | None = None,
     keyword: str | None = None,
     page_size: int = 20,
     continue_on_error: bool = False,
@@ -67,6 +75,19 @@ def run_worker_pipeline(
     if include_search_console:
         steps.append(("import-search-console", lambda: import_search_console(None, None)))
         steps.append(("suggest-refreshes", build_search_console_suggestions))
+
+    steps.extend(
+        [
+            (
+                "import-trend-signals",
+                lambda: import_trend_signals(trend_signal_file or DATA / "seeds" / "trend-signals.csv"),
+            ),
+            ("cluster-topics", cluster_topics),
+            ("score-topics", score_topics),
+            ("generate-content-briefs", generate_content_briefs),
+            ("match-affiliate-offers", match_affiliate_offers),
+        ]
+    )
 
     steps.extend(
         [
@@ -118,6 +139,7 @@ def run_worker_pipeline(
             "locales": locales,
             "draft_types": draft_types,
             "url_plan_file": str(url_plan_file),
+            "trend_signal_file": str(trend_signal_file or DATA / "seeds" / "trend-signals.csv"),
             "continue_on_error": continue_on_error,
             "include_search_console": include_search_console,
         },

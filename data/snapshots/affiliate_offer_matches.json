@@ -1,0 +1,52 @@
+{
+  "matches": [
+    {
+      "topicId": "topic-travel-gan-charger-buyer-guide",
+      "topicSlug": "travel-gan-charger-buyer-guide",
+      "merchantSlug": "aliexpress",
+      "matchScore": 87.8,
+      "status": "candidate",
+      "reason": "Commerce-oriented topic with marketplace offer fit; avoid thin affiliate content by requiring evidence."
+    },
+    {
+      "topicId": "topic-gan-charger-comparison",
+      "topicSlug": "gan-charger-comparison",
+      "merchantSlug": "aliexpress",
+      "matchScore": 83.85,
+      "status": "candidate",
+      "reason": "Commerce-oriented topic with marketplace offer fit; avoid thin affiliate content by requiring evidence."
+    },
+    {
+      "topicId": "topic-aliexpress-charger-wattage-risk",
+      "topicSlug": "aliexpress-charger-wattage-risk",
+      "merchantSlug": "aliexpress",
+      "matchScore": 82.15,
+      "status": "candidate",
+      "reason": "Commerce-oriented topic with marketplace offer fit; avoid thin affiliate content by requiring evidence."
+    },
+    {
+      "topicId": "topic-magnesium-glycinate-supplement-guide",
+      "topicSlug": "magnesium-glycinate-supplement-guide",
+      "merchantSlug": "iherb",
+      "matchScore": 78.4,
+      "status": "candidate",
+      "reason": "Health-sensitive topic; route through iHerb offers only after HealthClaimGuard and manual approval."
+    },
+    {
+      "topicId": "topic-probiotic-supplement-guide",
+      "topicSlug": "probiotic-supplement-guide",
+      "merchantSlug": "iherb",
+      "matchScore": 77.85,
+      "status": "candidate",
+      "reason": "Health-sensitive topic; route through iHerb offers only after HealthClaimGuard and manual approval."
+    },
+    {
+      "topicId": "topic-aliexpress-charger-import-risk",
+      "topicSlug": "aliexpress-charger-import-risk",
+      "merchantSlug": "aliexpress",
+      "matchScore": 55.6,
+      "status": "candidate",
+      "reason": "Commerce-oriented topic with marketplace offer fit; avoid thin affiliate content by requiring evidence."
+    }
+  ]
+}

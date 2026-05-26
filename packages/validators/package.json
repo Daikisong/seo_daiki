@@ -7,6 +7,7 @@
     ".": "./src/index.ts",
     "./affiliateLinkValidator": "./src/affiliateLinkValidator.ts",
     "./claimEvidence": "./src/claimEvidence.ts",
+    "./healthClaimGuard": "./src/healthClaimGuard.ts",
     "./hreflangValidator": "./src/hreflangValidator.ts",
     "./internalLinks": "./src/internalLinks.ts",
     "./qualityGate": "./src/qualityGate.ts",

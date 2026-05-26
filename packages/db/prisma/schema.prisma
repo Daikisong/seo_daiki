@@ -28,6 +28,7 @@ model Product {
   labEvidenceAssets LabEvidenceAsset[]
   evidencePacks  EvidencePack[]
   articles       Article[]
+  offers         Offer[]
 
   @@index([category])
 }
@@ -194,24 +195,212 @@ model Article {
   updatedAt       DateTime @updatedAt
 
   affiliateClicks AffiliateClick[]
+  affiliatePlacements AffiliatePlacement[]
 
   @@unique([locale, slug, type])
   @@index([locale, type, indexStatus])
 }
 
+model Merchant {
+  id              String   @id @default(cuid())
+  name            String
+  slug            String   @unique
+  domain          String
+  merchantType    String
+  allowedDomains  Json
+  defaultRel      String   @default("sponsored nofollow")
+  healthSensitive Boolean  @default(false)
+  enabled         Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  programs        AffiliateProgram[]
+  offers          Offer[]
+  affiliateClicks AffiliateClick[]
+}
+
+model AffiliateProgram {
+  id         String   @id @default(cuid())
+  merchantId String
+  merchant   Merchant @relation(fields: [merchantId], references: [id], onDelete: Cascade)
+  network    String
+  trackingId String?
+  termsNote  String?
+  status     String   @default("active")
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  offers     Offer[]
+}
+
+model Offer {
+  id              String   @id @default(cuid())
+  merchantId      String
+  merchant        Merchant @relation(fields: [merchantId], references: [id], onDelete: Cascade)
+  programId       String?
+  program         AffiliateProgram? @relation(fields: [programId], references: [id], onDelete: SetNull)
+  productId       String?
+  product         Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
+  topicId         String?
+  topic           Topic? @relation(fields: [topicId], references: [id], onDelete: SetNull)
+  title           String
+  description     String?
+  url             String
+  affiliateUrl    String
+  price           Decimal? @db.Decimal(10, 2)
+  currency        String?
+  locale          String?
+  country         String?
+  category        String
+  evidenceLevel   String   @default("merchant_claim")
+  healthSensitive Boolean  @default(false)
+  lastCheckedAt   DateTime?
+  status          String   @default("active")
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  affiliatePlacements AffiliatePlacement[]
+  affiliateClicks     AffiliateClick[]
+
+  @@index([merchantId, locale, category])
+  @@index([productId])
+  @@index([topicId])
+}
+
+model TrendSource {
+  id         String   @id @default(cuid())
+  name       String
+  slug       String   @unique
+  sourceType String
+  locale     String?
+  country    String?
+  enabled    Boolean  @default(true)
+  configJson Json?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  signals    TrendSignal[]
+}
+
+model TrendSignal {
+  id                String   @id @default(cuid())
+  sourceId          String
+  source            TrendSource @relation(fields: [sourceId], references: [id], onDelete: Cascade)
+  locale            String
+  country           String?
+  query             String
+  topicRaw          String
+  url               String?
+  volumeScore       Float    @default(0)
+  growthScore       Float    @default(0)
+  competitionScore  Float    @default(0)
+  commercialScore   Float    @default(0)
+  freshnessScore    Float    @default(0)
+  evidenceFitScore  Float    @default(0)
+  affiliateFitScore Float    @default(0)
+  capturedAt        DateTime @default(now())
+
+  topicSignals      TopicSignal[]
+
+  @@index([locale, country, capturedAt])
+  @@index([query])
+}
+
+model Topic {
+  id              String   @id @default(cuid())
+  canonicalTopic  String
+  slug            String   @unique
+  cluster         String
+  primaryLocale   String
+  intent          String
+  healthSensitive Boolean  @default(false)
+  status          String   @default("candidate")
+  score           Float    @default(0)
+  scoreBreakdown  Json?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  topicSignals    TopicSignal[]
+  contentBriefs   ContentBrief[]
+  offers          Offer[]
+}
+
+model TopicSignal {
+  id            String @id @default(cuid())
+  topicId       String
+  topic         Topic @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  trendSignalId String
+  trendSignal   TrendSignal @relation(fields: [trendSignalId], references: [id], onDelete: Cascade)
+  weight        Float @default(1)
+
+  @@index([topicId])
+  @@index([trendSignalId])
+  @@unique([topicId, trendSignalId])
+}
+
+model ContentBrief {
+  id                String   @id @default(cuid())
+  topicId           String
+  topic             Topic @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  locale            String
+  articleType       String
+  titleCandidate    String
+  h1Candidate       String?
+  searchIntent      String
+  outlineJson       Json
+  requiredEvidence  Json?
+  merchantFitJson   Json?
+  localizationNotes Json?
+  healthSensitivity String   @default("none")
+  status            String   @default("draft")
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@index([topicId, locale])
+}
+
+model AffiliatePlacement {
+  id              String   @id @default(cuid())
+  articleId       String
+  article         Article  @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  offerId         String
+  offer           Offer    @relation(fields: [offerId], references: [id], onDelete: Cascade)
+  placementType   String
+  anchorText      String
+  rel             String   @default("sponsored nofollow")
+  disclosureShown Boolean  @default(false)
+  status          String   @default("draft")
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  affiliateClicks AffiliateClick[]
+
+  @@index([articleId, status])
+  @@index([offerId])
+}
+
 model AffiliateClick {
-  id        String   @id @default(cuid())
-  articleId String?
-  article   Article? @relation(fields: [articleId], references: [id], onDelete: SetNull)
-  productId String?
-  variantId String?
-  locale    String?
-  targetUrl String
-  clickedAt DateTime @default(now())
-  referrer  String?
-  utm       Json?
+  id          String   @id @default(cuid())
+  articleId   String?
+  article     Article? @relation(fields: [articleId], references: [id], onDelete: SetNull)
+  placementId String?
+  placement   AffiliatePlacement? @relation(fields: [placementId], references: [id], onDelete: SetNull)
+  offerId     String?
+  offer       Offer? @relation(fields: [offerId], references: [id], onDelete: SetNull)
+  merchantId  String?
+  merchant    Merchant? @relation(fields: [merchantId], references: [id], onDelete: SetNull)
+  productId   String?
+  variantId   String?
+  locale      String?
+  targetUrl   String
+  clickedAt   DateTime @default(now())
+  referrer    String?
+  utm         Json?
 
   @@index([productId, locale])
+  @@index([placementId])
+  @@index([offerId])
+  @@index([merchantId])
 }
 
 model SearchConsoleMetric {

@@ -20,6 +20,14 @@ from workers.python.intelligence.product_identity_graph import build_identity_gr
 from workers.python.intelligence.review_signal_extractor import extract_review_signals
 from workers.python.intelligence.search_console_feedback import build_search_console_suggestions
 from workers.python.intelligence.seller_claim_extractor import extract_seller_claims
+from workers.python.intelligence.trend_topic_engine import (
+    cluster_topics,
+    collect_trend_signals,
+    generate_content_briefs,
+    import_trend_signals,
+    match_affiliate_offers,
+    score_topics,
+)
 from workers.python.intelligence.variant_trap_detector import detect_variant_traps
 from workers.python.intelligence.verified_claim_builder import build_verified_claims
 from workers.python.pipeline import run_worker_pipeline
@@ -51,6 +59,14 @@ def main() -> None:
     search_console.add_argument("--start-date")
     search_console.add_argument("--end-date")
     subcommands.add_parser("suggest-refreshes")
+    collect_trends = subcommands.add_parser("collect-trend-signals")
+    collect_trends.add_argument("--file", default=str(DATA / "seeds" / "trend-signals.csv"))
+    import_trends = subcommands.add_parser("import-trend-signals")
+    import_trends.add_argument("--file", default=str(DATA / "seeds" / "trend-signals.csv"))
+    subcommands.add_parser("cluster-topics")
+    subcommands.add_parser("score-topics")
+    subcommands.add_parser("generate-content-briefs")
+    subcommands.add_parser("match-affiliate-offers")
     inventory = subcommands.add_parser("generate-url-inventory")
     inventory.add_argument("--file", default=str(DATA / "seeds" / "initial-url-plan.csv"))
 
@@ -75,6 +91,7 @@ def main() -> None:
     pipeline.add_argument("--locale", action="append", dest="locales", default=None)
     pipeline.add_argument("--draft-type", action="append", dest="draft_types", default=None)
     pipeline.add_argument("--url-plan-file", default=str(DATA / "seeds" / "initial-url-plan.csv"))
+    pipeline.add_argument("--trend-signal-file", default=str(DATA / "seeds" / "trend-signals.csv"))
     pipeline.add_argument("--continue-on-error", action="store_true")
     pipeline.add_argument("--skip-search-console", action="store_true")
 
@@ -105,6 +122,18 @@ def main() -> None:
         print(import_search_console(args.start_date, args.end_date))
     elif args.command == "suggest-refreshes":
         print(build_search_console_suggestions())
+    elif args.command == "collect-trend-signals":
+        print(collect_trend_signals(Path(args.file)))
+    elif args.command == "import-trend-signals":
+        print(import_trend_signals(Path(args.file)))
+    elif args.command == "cluster-topics":
+        print(cluster_topics())
+    elif args.command == "score-topics":
+        print(score_topics())
+    elif args.command == "generate-content-briefs":
+        print(generate_content_briefs())
+    elif args.command == "match-affiliate-offers":
+        print(match_affiliate_offers())
     elif args.command == "generate-url-inventory":
         print(generate_url_inventory(Path(args.file)))
     elif args.command == "build-evidence-pack":
@@ -122,6 +151,7 @@ def main() -> None:
                 locales=args.locales or ["en", "es", "pt-br"],
                 draft_types=args.draft_types or ["review", "risk"],
                 url_plan_file=Path(args.url_plan_file),
+                trend_signal_file=Path(args.trend_signal_file),
                 keyword=args.keyword,
                 page_size=args.page_size,
                 continue_on_error=args.continue_on_error,

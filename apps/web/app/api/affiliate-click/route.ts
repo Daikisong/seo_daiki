@@ -1,7 +1,32 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
+  const placementId = request.nextUrl.searchParams.get("placementId");
+  if (placementId) {
+    try {
+      const { resolveAffiliatePlacementRedirect } = await import("@global-import-lab/db/affiliate-clicks");
+      const redirect = await resolveAffiliatePlacementRedirect({
+        placementId,
+        referrer: request.headers.get("referer") ?? undefined,
+        utm: collectUtm(request)
+      });
+
+      return NextResponse.redirect(redirect.targetUrl, 302);
+    } catch (error) {
+      if (isAffiliateRedirectError(error)) {
+        return NextResponse.json({ error: error.message }, { status: error.status });
+      }
+
+      console.error("Affiliate placement redirect failed.", error);
+      return NextResponse.json({ error: "Affiliate redirect failed. Check database connectivity." }, { status: 503 });
+    }
+  }
+
   const targetUrl = request.nextUrl.searchParams.get("target");
+  if (!isUnsafeTargetRedirectAllowed()) {
+    return NextResponse.json({ error: "Affiliate placementId is required." }, { status: 400 });
+  }
+
   if (!targetUrl || !isSafeHttpUrl(targetUrl)) {
     return NextResponse.json({ error: "Invalid target URL" }, { status: 400 });
   }
@@ -26,6 +51,10 @@ export async function GET(request: NextRequest) {
   return NextResponse.redirect(targetUrl, 302);
 }
 
+function isUnsafeTargetRedirectAllowed() {
+  return process.env.NODE_ENV !== "production" && process.env.ALLOW_UNSAFE_AFFILIATE_TARGET_REDIRECT === "true";
+}
+
 function isSafeHttpUrl(value: string) {
   try {
     const url = new URL(value);
@@ -44,4 +73,19 @@ function collectUtm(request: NextRequest) {
     }
   }
   return utm;
+}
+
+function isAffiliateRedirectError(error: unknown): error is { name: string; message: string; status: number } {
+  if (!error || typeof error !== "object") {
+    return false;
+  }
+
+  return (
+    "name" in error &&
+    error.name === "AffiliateRedirectError" &&
+    "message" in error &&
+    typeof error.message === "string" &&
+    "status" in error &&
+    typeof error.status === "number"
+  );
 }

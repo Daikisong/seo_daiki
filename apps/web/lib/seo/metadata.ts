@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { canonicalForArticle, localeConfig } from "@global-import-lab/seo";
 import type { Article } from "@global-import-lab/types";
 
-export function metadataForArticle(article: Article): Metadata {
+export function metadataForArticle(article: Article, options: { forceNoindex?: boolean } = {}): Metadata {
   const canonical = canonicalForArticle(article);
   return {
     title: article.title,
@@ -12,7 +12,7 @@ export function metadataForArticle(article: Article): Metadata {
       languages: article.hreflangMap
     },
     robots: {
-      index: article.indexStatus === "index",
+      index: !options.forceNoindex && article.indexStatus === "index",
       follow: true
     },
     openGraph: {

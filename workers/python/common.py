@@ -10,7 +10,7 @@ DATA = ROOT / "data"
 
 
 def ensure_dirs() -> None:
-    for name in ["raw", "snapshots", "evidence_packs", "outlines", "drafts", "exports"]:
+    for name in ["raw", "snapshots", "evidence_packs", "outlines", "drafts", "briefs", "exports"]:
         (DATA / name).mkdir(parents=True, exist_ok=True)
 
 

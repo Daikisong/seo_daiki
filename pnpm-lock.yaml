@@ -103,6 +103,9 @@ importers:
       '@global-import-lab/types':
         specifier: workspace:*
         version: link:../types
+      '@global-import-lab/validators':
+        specifier: workspace:*
+        version: link:../validators
       '@prisma/adapter-pg':
         specifier: 7.8.0
         version: 7.8.0

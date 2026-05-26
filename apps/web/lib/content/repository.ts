@@ -86,11 +86,11 @@ export async function getStaticArticleParams(type: ArticleType) {
   return withDbContent(
     async (db) =>
       (await db.getDbArticles())
-        .filter((article) => article.type === type)
+        .filter((article) => article.type === type && article.publishStatus === "published")
         .map((article) => ({ locale: article.locale, slug: article.slug })),
     () =>
       articles
-        .filter((article) => article.type === type)
+        .filter((article) => article.type === type && article.publishStatus === "published")
         .map((article) => ({
           locale: article.locale,
           slug: article.slug

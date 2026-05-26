@@ -5,7 +5,17 @@ import { getAllArticles, getAllEvidencePacks, getAllProducts } from "@/lib/conte
 
 export const dynamic = "force-dynamic";
 
-const adminSections = ["products", "articles", "evidence", "quality", "search-console", "audit"];
+const adminSections = [
+  "products",
+  "articles",
+  "evidence",
+  "quality",
+  "search-console",
+  "audit",
+  "merchants",
+  "offers",
+  "placements"
+];
 
 export default async function AdminPage() {
   const [articles, evidencePacks, products] = await Promise.all([

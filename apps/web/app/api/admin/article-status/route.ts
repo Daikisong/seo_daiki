@@ -41,17 +41,26 @@ export async function POST(request: NextRequest) {
       publishStatus: nextPublishStatus,
       qualityScore
     });
-    await mutations.recordAuditLog({
-      entityType: "article",
-      entityId: row.id,
-      action: "update",
-      actor: "admin",
-      summary: "Updated article index/publish state."
-    });
 
     const returnTo = stringValue(formData.get("returnTo")) || "/admin/articles/";
     return NextResponse.redirect(new URL(`${returnTo}?updated=${encodeURIComponent(row.id)}`, request.url), 303);
   } catch (error) {
+    if (isAdminPublishGateError(error)) {
+      return NextResponse.json(
+        {
+          error: "Article publish gate failed.",
+          articleId: error.articleId,
+          gateStatus: error.gateStatus,
+          gateScore: error.gateScore,
+          issues: error.issues.map((issue) => ({
+            code: issue.code,
+            message: issue.message,
+            severity: issue.severity
+          }))
+        },
+        { status: 400 }
+      );
+    }
     console.error("Article admin mutation failed.", error);
     return NextResponse.json({ error: "Article update failed. Check database connectivity." }, { status: 503 });
   }
@@ -59,4 +68,26 @@ export async function POST(request: NextRequest) {
 
 function stringValue(value: FormDataEntryValue | null) {
   return typeof value === "string" ? value.trim() : "";
+}
+
+function isAdminPublishGateError(error: unknown): error is {
+  name: "AdminPublishGateError";
+  articleId: string;
+  gateStatus: string;
+  gateScore: number;
+  issues: { code: string; message: string; severity: "blocker" | "warning" }[];
+} {
+  if (!error || typeof error !== "object") {
+    return false;
+  }
+
+  return (
+    "name" in error &&
+    error.name === "AdminPublishGateError" &&
+    "articleId" in error &&
+    "gateStatus" in error &&
+    "gateScore" in error &&
+    "issues" in error &&
+    Array.isArray(error.issues)
+  );
 }

@@ -147,6 +147,7 @@ export interface AffiliateLink {
   label: string;
   href: string;
   rel: string;
+  placementId?: string;
 }
 
 export type HreflangMap = Partial<Record<string, string>>;

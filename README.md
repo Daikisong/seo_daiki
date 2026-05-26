@@ -129,6 +129,14 @@ Set `ADMIN_TOKEN` before using admin forms or mutation APIs:
 ADMIN_TOKEN=change-me CONTENT_SOURCE=database pnpm dev
 ```
 
+Set `PREVIEW_TOKEN` to inspect draft or pending pages without exposing them publicly:
+
+```bash
+PREVIEW_TOKEN=change-me pnpm dev
+```
+
+Then open the draft URL with `?previewToken=change-me`. Preview pages always render with `noindex, follow`.
+
 Available mutation endpoints:
 
 ```text

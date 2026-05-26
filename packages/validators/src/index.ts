@@ -292,6 +292,70 @@ export function validateThinAffiliate(input: QualityGateInput): ValidationIssue[
   return [];
 }
 
+export function validateHealthClaimGuard(article: Article): ValidationIssue[] {
+  const fullText = [article.title, article.h1, article.metaDescription, article.summary, article.contentMdx, ...article.sections.flatMap((section) => [section.heading, section.body])]
+    .join(" ")
+    .toLowerCase();
+  const looksHealthRelated = /\b(iherb|supplement|magnesium|probiotic|vitamin|dosage|dose|gut health|sleep|pregnancy|medication|chronic|ingredient)\b/i.test(
+    fullText
+  );
+
+  if (!looksHealthRelated) {
+    return [];
+  }
+
+  const issues: ValidationIssue[] = [];
+  const disclaimerPresent = /\bnot medical advice\b|\bconsult (a|your) (qualified )?(doctor|physician|healthcare professional|professional)\b/i.test(
+    fullText
+  );
+  const forbiddenClaims = [
+    /\b(cure|cures|cured|curing)\b/i,
+    /\b(treat|treats|treated|treating)\b/i,
+    /\b(prevent|prevents|prevented|preventing)\b/i,
+    /\bguaranteed\b/i,
+    /\bdoctor recommended\b/i,
+    /\bclinically proven\b/i,
+    /\breplace (your )?(medicine|medication|treatment|doctor)\b/i
+  ];
+
+  for (const pattern of forbiddenClaims) {
+    if (pattern.test(fullText)) {
+      issues.push({
+        code: "health_claim_unsupported_medical_language",
+        message: "Health or supplement content cannot use cure, treatment, prevention, guarantee, or medical-replacement language without qualified evidence and manual approval.",
+        severity: "blocker"
+      });
+      break;
+    }
+  }
+
+  if (/\b(dosage|dose|take \d+|mg per day|capsules per day)\b/i.test(fullText) && !/\bsource|evidence|label direction|manufacturer label\b/i.test(fullText)) {
+    issues.push({
+      code: "health_dosage_without_source",
+      message: "Supplement dosage advice needs qualified source evidence or label-direction context.",
+      severity: "blocker"
+    });
+  }
+
+  if (!disclaimerPresent) {
+    issues.push({
+      code: "health_disclaimer_missing",
+      message: "Health or iHerb supplement pages need a visible informational-only disclaimer and professional-consultation warning.",
+      severity: "blocker"
+    });
+  }
+
+  if (/\b(pregnancy|pregnant|medication|children|chronic illness|chronic condition)\b/i.test(fullText) && !/\bconsult\b/i.test(fullText)) {
+    issues.push({
+      code: "health_sensitive_warning_missing",
+      message: "Health content mentioning pregnancy, medication, children, or chronic illness needs a consult-professional warning.",
+      severity: "blocker"
+    });
+  }
+
+  return issues;
+}
+
 export function runQualityGate(input: QualityGateInput): QualityGateResult {
   const { article, product, evidencePack } = input;
   const claimEvidenceIssues = validateClaimEvidence(input);
@@ -301,6 +365,7 @@ export function runQualityGate(input: QualityGateInput): QualityGateResult {
   const seoIntegrityIssues = validateSeoIntegrity(article);
   const structuredDataIssues = validateStructuredData(input);
   const affiliateIssues = validateAffiliateLinks(article);
+  const healthIssues = validateHealthClaimGuard(article);
   const issues = [
     ...claimEvidenceIssues,
     ...thinAffiliateIssues,
@@ -308,7 +373,8 @@ export function runQualityGate(input: QualityGateInput): QualityGateResult {
     ...hreflangIssues,
     ...seoIntegrityIssues,
     ...structuredDataIssues,
-    ...affiliateIssues
+    ...affiliateIssues,
+    ...healthIssues
   ];
 
   const hasEvidencePack = Boolean(evidencePack) || article.evidenceIds.length >= 3;
@@ -329,7 +395,7 @@ export function runQualityGate(input: QualityGateInput): QualityGateResult {
     internalLinks: article.internalLinks.length >= 5 ? 5 : 0,
     seoIntegrity:
       hreflangIssues.length === 0 && seoIntegrityIssues.length === 0 && structuredDataIssues.length === 0 ? 5 : 2,
-    affiliateIntegrity: affiliateIssues.length === 0 ? 5 : 0
+    affiliateIntegrity: affiliateIssues.length === 0 && healthIssues.length === 0 ? 5 : 0
   };
 
   const score = Object.values(breakdown).reduce((sum, value) => sum + value, 0);

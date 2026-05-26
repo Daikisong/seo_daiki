@@ -10,7 +10,17 @@ import type { SearchConsoleInternalLinkCandidate, SearchConsoleMissingSection } 
 import { getAllArticles, getAllEvidencePacks, getAllProducts } from "@/lib/content/repository";
 import { runQualityGate } from "@global-import-lab/validators";
 
-const sections = ["products", "articles", "evidence", "quality", "search-console", "audit"] as const;
+const sections = [
+  "products",
+  "articles",
+  "evidence",
+  "quality",
+  "search-console",
+  "audit",
+  "merchants",
+  "offers",
+  "placements"
+] as const;
 const indexStatuses = ["index", "noindex", "pending", "refresh_needed", "merge_candidate"];
 const publishStatuses = ["draft", "pending", "published"];
 const refreshSuggestionStatuses = ["open", "planned", "applied", "dismissed"];
@@ -691,6 +701,137 @@ async function AdminTable({ section }: { section: string }) {
     );
   }
 
+  if (section === "merchants") {
+    const merchants = await readAffiliateMerchants();
+    return (
+      <AdminPanel title="Affiliate merchants">
+        {merchants.length === 0 ? (
+          <p className="text-sm text-neutral-700">No DB-backed merchants are available. Connect Postgres and run the seed to populate AliExpress and iHerb.</p>
+        ) : (
+          <table>
+            <thead>
+              <tr>
+                <th>Merchant</th>
+                <th>Type</th>
+                <th>Allowed domains</th>
+                <th>Health</th>
+                <th>Status</th>
+                <th>Rows</th>
+              </tr>
+            </thead>
+            <tbody>
+              {merchants.map((merchant) => (
+                <tr key={merchant.id}>
+                  <td>
+                    <p className="font-semibold">{merchant.name}</p>
+                    <p className="text-xs text-neutral-500">{merchant.slug}</p>
+                  </td>
+                  <td>{merchant.merchantType}</td>
+                  <td>{merchant.allowedDomains.join(", ")}</td>
+                  <td>{merchant.healthSensitive ? "health-sensitive" : "standard"}</td>
+                  <td>{merchant.enabled ? "enabled" : "disabled"}</td>
+                  <td>
+                    <p>{merchant.offerCount} offers</p>
+                    <p>{merchant.clickCount} clicks</p>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </AdminPanel>
+    );
+  }
+
+  if (section === "offers") {
+    const offers = await readAffiliateOffers();
+    return (
+      <AdminPanel title="Affiliate offers">
+        {offers.length === 0 ? (
+          <p className="text-sm text-neutral-700">No DB-backed offers are available. Connect Postgres and run the seed to create sample offer rows.</p>
+        ) : (
+          <table>
+            <thead>
+              <tr>
+                <th>Offer</th>
+                <th>Merchant</th>
+                <th>Locale</th>
+                <th>Category</th>
+                <th>Status</th>
+                <th>Placements</th>
+              </tr>
+            </thead>
+            <tbody>
+              {offers.map((offer) => (
+                <tr key={offer.id}>
+                  <td>
+                    <p className="font-semibold">{offer.title}</p>
+                    <p className="max-w-md truncate text-xs text-neutral-500">{offer.affiliateUrl}</p>
+                  </td>
+                  <td>{offer.merchantSlug}</td>
+                  <td>{offer.locale ?? "-"}</td>
+                  <td>{offer.category}</td>
+                  <td>{offer.status}</td>
+                  <td>
+                    <p>{offer.placementCount} placements</p>
+                    <p>{offer.clickCount} clicks</p>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </AdminPanel>
+    );
+  }
+
+  if (section === "placements") {
+    const placements = await readAffiliatePlacements();
+    return (
+      <AdminPanel title="Affiliate placements">
+        {placements.length === 0 ? (
+          <p className="text-sm text-neutral-700">No DB-backed placements are available. Connect Postgres and run the seed to approve sample article CTAs.</p>
+        ) : (
+          <table>
+            <thead>
+              <tr>
+                <th>Placement</th>
+                <th>Article</th>
+                <th>Offer</th>
+                <th>Status</th>
+                <th>Rel</th>
+                <th>Clicks</th>
+              </tr>
+            </thead>
+            <tbody>
+              {placements.map((placement) => (
+                <tr key={placement.id}>
+                  <td>
+                    <p className="font-semibold">{placement.anchorText}</p>
+                    <p className="text-xs text-neutral-500">{placement.placementType}</p>
+                  </td>
+                  <td>
+                    <p>{placement.articleTitle}</p>
+                    <p className="text-xs text-neutral-500">
+                      {placement.articleLocale}/{placement.articleType}/{placement.articleSlug}
+                    </p>
+                  </td>
+                  <td>
+                    <p>{placement.offerTitle}</p>
+                    <p className="text-xs text-neutral-500">{placement.merchantSlug}</p>
+                  </td>
+                  <td>{placement.status}</td>
+                  <td>{placement.rel}</td>
+                  <td>{placement.clickCount}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </AdminPanel>
+    );
+  }
+
   return (
     <table>
       <thead>
@@ -954,6 +1095,81 @@ async function readAuditLogs() {
     }));
   } catch (error) {
     console.warn("Audit logs unavailable.", error);
+    return [];
+  }
+}
+
+async function readAffiliateMerchants() {
+  if (!process.env.DATABASE_URL) {
+    return [];
+  }
+  try {
+    const { listAffiliateMerchants } = await import("@global-import-lab/db/affiliate-clicks");
+    const rows = await listAffiliateMerchants();
+    return rows.map((merchant) => ({
+      id: merchant.id,
+      name: merchant.name,
+      slug: merchant.slug,
+      merchantType: merchant.merchantType,
+      allowedDomains: stringArrayFromUnknown(merchant.allowedDomains),
+      healthSensitive: merchant.healthSensitive,
+      enabled: merchant.enabled,
+      offerCount: merchant._count.offers,
+      clickCount: merchant._count.affiliateClicks
+    }));
+  } catch (error) {
+    console.warn("Affiliate merchants unavailable.", error);
+    return [];
+  }
+}
+
+async function readAffiliateOffers() {
+  if (!process.env.DATABASE_URL) {
+    return [];
+  }
+  try {
+    const { listAffiliateOffers } = await import("@global-import-lab/db/affiliate-clicks");
+    const rows = await listAffiliateOffers();
+    return rows.map((offer) => ({
+      id: offer.id,
+      title: offer.title,
+      affiliateUrl: offer.affiliateUrl,
+      merchantSlug: offer.merchant.slug,
+      locale: offer.locale,
+      category: offer.category,
+      status: offer.status,
+      placementCount: offer._count.affiliatePlacements,
+      clickCount: offer._count.affiliateClicks
+    }));
+  } catch (error) {
+    console.warn("Affiliate offers unavailable.", error);
+    return [];
+  }
+}
+
+async function readAffiliatePlacements() {
+  if (!process.env.DATABASE_URL) {
+    return [];
+  }
+  try {
+    const { listAffiliatePlacements } = await import("@global-import-lab/db/affiliate-clicks");
+    const rows = await listAffiliatePlacements();
+    return rows.map((placement) => ({
+      id: placement.id,
+      placementType: placement.placementType,
+      anchorText: placement.anchorText,
+      status: placement.status,
+      rel: placement.rel,
+      articleTitle: placement.article.title,
+      articleLocale: placement.article.locale,
+      articleType: placement.article.type,
+      articleSlug: placement.article.slug,
+      offerTitle: placement.offer.title,
+      merchantSlug: placement.offer.merchant.slug,
+      clickCount: placement._count.affiliateClicks
+    }));
+  } catch (error) {
+    console.warn("Affiliate placements unavailable.", error);
     return [];
   }
 }
@@ -1418,6 +1634,10 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 
 function stringFromUnknown(value: unknown) {
   return typeof value === "string" ? value.trim() : value === undefined || value === null ? "" : String(value);
+}
+
+function stringArrayFromUnknown(value: unknown) {
+  return Array.isArray(value) ? value.flatMap((item) => (typeof item === "string" ? [item] : [])) : [];
 }
 
 function numberFromUnknown(value: unknown) {

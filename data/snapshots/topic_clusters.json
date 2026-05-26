@@ -1,0 +1,132 @@
+{
+  "topics": [
+    {
+      "id": "topic-aliexpress-charger-import-risk",
+      "canonicalTopic": "aliexpress charger import risk",
+      "slug": "aliexpress-charger-import-risk",
+      "cluster": "aliexpress-charger-import-risk",
+      "primaryLocale": "pt-br",
+      "intent": "informational",
+      "healthSensitive": false,
+      "status": "candidate",
+      "score": 0,
+      "scoreBreakdown": {},
+      "signalCount": 1
+    },
+    {
+      "id": "topic-aliexpress-charger-wattage-risk",
+      "canonicalTopic": "aliexpress charger wattage risk",
+      "slug": "aliexpress-charger-wattage-risk",
+      "cluster": "aliexpress-charger-wattage-risk",
+      "primaryLocale": "en",
+      "intent": "problem",
+      "healthSensitive": false,
+      "status": "candidate",
+      "score": 0,
+      "scoreBreakdown": {},
+      "signalCount": 2
+    },
+    {
+      "id": "topic-gan-charger-comparison",
+      "canonicalTopic": "gan charger comparison",
+      "slug": "gan-charger-comparison",
+      "cluster": "gan-charger-comparison",
+      "primaryLocale": "en",
+      "intent": "comparison",
+      "healthSensitive": false,
+      "status": "candidate",
+      "score": 0,
+      "scoreBreakdown": {},
+      "signalCount": 1
+    },
+    {
+      "id": "topic-magnesium-glycinate-supplement-guide",
+      "canonicalTopic": "magnesium glycinate supplement guide",
+      "slug": "magnesium-glycinate-supplement-guide",
+      "cluster": "magnesium-glycinate-supplement-guide",
+      "primaryLocale": "en",
+      "intent": "health",
+      "healthSensitive": true,
+      "status": "candidate",
+      "score": 0,
+      "scoreBreakdown": {},
+      "signalCount": 2
+    },
+    {
+      "id": "topic-probiotic-supplement-guide",
+      "canonicalTopic": "probiotic supplement guide",
+      "slug": "probiotic-supplement-guide",
+      "cluster": "probiotic-supplement-guide",
+      "primaryLocale": "en",
+      "intent": "health",
+      "healthSensitive": true,
+      "status": "candidate",
+      "score": 0,
+      "scoreBreakdown": {},
+      "signalCount": 1
+    },
+    {
+      "id": "topic-travel-gan-charger-buyer-guide",
+      "canonicalTopic": "travel gan charger buyer guide",
+      "slug": "travel-gan-charger-buyer-guide",
+      "cluster": "travel-gan-charger-buyer-guide",
+      "primaryLocale": "en",
+      "intent": "commercial",
+      "healthSensitive": false,
+      "status": "candidate",
+      "score": 0,
+      "scoreBreakdown": {},
+      "signalCount": 1
+    }
+  ],
+  "topicSignals": [
+    {
+      "id": "topic-signal-topic-aliexpress-charger-import-risk-trend-signal-manual-import-pt-br-carregador-gan-aliexpress-imposto-5",
+      "topicId": "topic-aliexpress-charger-import-risk",
+      "trendSignalId": "trend-signal-manual-import-pt-br-carregador-gan-aliexpress-imposto-5",
+      "weight": 0.667
+    },
+    {
+      "id": "topic-signal-topic-aliexpress-charger-wattage-risk-trend-signal-manual-import-en-aliexpress-charger-fake-watts-3",
+      "topicId": "topic-aliexpress-charger-wattage-risk",
+      "trendSignalId": "trend-signal-manual-import-en-aliexpress-charger-fake-watts-3",
+      "weight": 0.743
+    },
+    {
+      "id": "topic-signal-topic-aliexpress-charger-wattage-risk-trend-signal-manual-import-es-cargador-gan-aliexpress-seguro-4",
+      "topicId": "topic-aliexpress-charger-wattage-risk",
+      "trendSignalId": "trend-signal-manual-import-es-cargador-gan-aliexpress-seguro-4",
+      "weight": 0.703
+    },
+    {
+      "id": "topic-signal-topic-gan-charger-comparison-trend-signal-manual-import-en-baseus-vs-ugreen-gan-charger-2",
+      "topicId": "topic-gan-charger-comparison",
+      "trendSignalId": "trend-signal-manual-import-en-baseus-vs-ugreen-gan-charger-2",
+      "weight": 0.79
+    },
+    {
+      "id": "topic-signal-topic-magnesium-glycinate-supplement-guide-trend-signal-manual-import-en-magnesium-glycinate-iherb-sleep-6",
+      "topicId": "topic-magnesium-glycinate-supplement-guide",
+      "trendSignalId": "trend-signal-manual-import-en-magnesium-glycinate-iherb-sleep-6",
+      "weight": 0.813
+    },
+    {
+      "id": "topic-signal-topic-magnesium-glycinate-supplement-guide-trend-signal-manual-import-es-magnesio-glicinato-iherb-dormir-8",
+      "topicId": "topic-magnesium-glycinate-supplement-guide",
+      "trendSignalId": "trend-signal-manual-import-es-magnesio-glicinato-iherb-dormir-8",
+      "weight": 0.733
+    },
+    {
+      "id": "topic-signal-topic-probiotic-supplement-guide-trend-signal-manual-import-en-probiotic-iherb-gut-health-7",
+      "topicId": "topic-probiotic-supplement-guide",
+      "trendSignalId": "trend-signal-manual-import-en-probiotic-iherb-gut-health-7",
+      "weight": 0.767
+    },
+    {
+      "id": "topic-signal-topic-travel-gan-charger-buyer-guide-trend-signal-manual-import-en-best-gan-charger-for-travel-2026-1",
+      "topicId": "topic-travel-gan-charger-buyer-guide",
+      "trendSignalId": "trend-signal-manual-import-en-best-gan-charger-for-travel-2026-1",
+      "weight": 0.853
+    }
+  ]
+}
