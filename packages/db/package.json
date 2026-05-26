@@ -9,6 +9,7 @@
     "./admin-mutations": "./src/adminMutations.ts",
     "./content": "./src/contentRepository.ts",
     "./lab-evidence": "./src/labEvidence.ts",
+    "./operations-admin": "./src/operationsAdmin.ts",
     "./search-console": "./src/searchConsole.ts",
     "./worker-import": "./src/importWorkerOutputs.ts"
   },

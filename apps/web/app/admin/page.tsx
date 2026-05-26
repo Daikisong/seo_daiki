@@ -12,10 +12,16 @@ const adminSections = [
   "quality",
   "search-console",
   "audit",
+  "trends",
+  "topics",
+  "briefs",
   "merchants",
   "offers",
   "placements",
-  "offer-matching"
+  "offer-matching",
+  "publishing-jobs",
+  "compliance",
+  "localization"
 ];
 
 export default async function AdminPage() {

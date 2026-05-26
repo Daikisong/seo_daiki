@@ -17,14 +17,22 @@ const sections = [
   "quality",
   "search-console",
   "audit",
+  "trends",
+  "topics",
+  "briefs",
   "merchants",
   "offers",
   "placements",
-  "offer-matching"
+  "offer-matching",
+  "publishing-jobs",
+  "compliance",
+  "localization"
 ] as const;
 const indexStatuses = ["index", "noindex", "pending", "refresh_needed", "merge_candidate"];
 const publishStatuses = ["draft", "pending", "published"];
 const refreshSuggestionStatuses = ["open", "planned", "applied", "dismissed"];
+const topicStatuses = ["candidate", "briefed", "drafted", "published", "rejected"];
+const contentBriefStatuses = ["draft", "approved", "rejected", "converted"];
 const locales = ["en", "es", "pt-br"];
 
 interface AffiliatePlacementCandidateRow {
@@ -720,39 +728,34 @@ async function AdminTable({ section }: { section: string }) {
     );
   }
 
-  if (section === "merchants") {
-    const merchants = await readAffiliateMerchants();
+  if (section === "trends") {
+    const trends = await readTrendRows();
     return (
-      <AdminPanel title="Affiliate merchants">
-        {merchants.length === 0 ? (
-          <p className="text-sm text-neutral-700">No DB-backed merchants are available. Connect Postgres and run the seed to populate AliExpress and iHerb.</p>
+      <AdminPanel title="Trend signals">
+        {trends.length === 0 ? (
+          <p className="text-sm text-neutral-700">No trend signals are available. Run <code>python3 workers/python/cli.py import-trend-signals</code> or connect Postgres.</p>
         ) : (
           <table>
             <thead>
               <tr>
-                <th>Merchant</th>
-                <th>Type</th>
-                <th>Allowed domains</th>
-                <th>Health</th>
-                <th>Status</th>
-                <th>Rows</th>
+                <th>Signal</th>
+                <th>Locale</th>
+                <th>Scores</th>
+                <th>Source</th>
               </tr>
             </thead>
             <tbody>
-              {merchants.map((merchant) => (
-                <tr key={merchant.id}>
+              {trends.map((trend) => (
+                <tr key={trend.id}>
                   <td>
-                    <p className="font-semibold">{merchant.name}</p>
-                    <p className="text-xs text-neutral-500">{merchant.slug}</p>
+                    <p className="font-semibold">{trend.query}</p>
+                    <p className="text-xs text-neutral-500">{trend.topicRaw}</p>
                   </td>
-                  <td>{merchant.merchantType}</td>
-                  <td>{merchant.allowedDomains.join(", ")}</td>
-                  <td>{merchant.healthSensitive ? "health-sensitive" : "standard"}</td>
-                  <td>{merchant.enabled ? "enabled" : "disabled"}</td>
-                  <td>
-                    <p>{merchant.offerCount} offers</p>
-                    <p>{merchant.clickCount} clicks</p>
+                  <td>{trend.locale}{trend.country ? `/${trend.country}` : ""}</td>
+                  <td className="text-sm">
+                    growth {trend.growthScore}, commercial {trend.commercialScore}, evidence {trend.evidenceFitScore}, affiliate {trend.affiliateFitScore}
                   </td>
+                  <td>{trend.sourceName}</td>
                 </tr>
               ))}
             </tbody>
@@ -762,45 +765,286 @@ async function AdminTable({ section }: { section: string }) {
     );
   }
 
-  if (section === "offers") {
-    const offers = await readAffiliateOffers();
+  if (section === "topics") {
+    const topics = await readTopicRows();
     return (
-      <AdminPanel title="Affiliate offers">
-        {offers.length === 0 ? (
-          <p className="text-sm text-neutral-700">No DB-backed offers are available. Connect Postgres and run the seed to create sample offer rows.</p>
+      <AdminPanel title="Topics">
+        {topics.length === 0 ? (
+          <p className="text-sm text-neutral-700">No topics are available. Run the trend cluster and score commands first.</p>
         ) : (
           <table>
             <thead>
               <tr>
-                <th>Offer</th>
-                <th>Merchant</th>
-                <th>Locale</th>
-                <th>Category</th>
+                <th>Topic</th>
+                <th>Intent</th>
+                <th>Score</th>
                 <th>Status</th>
-                <th>Placements</th>
+                <th>Rows</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              {offers.map((offer) => (
-                <tr key={offer.id}>
+              {topics.map((topic) => (
+                <tr key={topic.id}>
                   <td>
-                    <p className="font-semibold">{offer.title}</p>
-                    <p className="max-w-md truncate text-xs text-neutral-500">{offer.affiliateUrl}</p>
+                    <p className="font-semibold">{topic.canonicalTopic}</p>
+                    <p className="text-xs text-neutral-500">{topic.slug}</p>
                   </td>
-                  <td>{offer.merchantSlug}</td>
-                  <td>{offer.locale ?? "-"}</td>
-                  <td>{offer.category}</td>
-                  <td>{offer.status}</td>
-                  <td>
-                    <p>{offer.placementCount} placements</p>
-                    <p>{offer.clickCount} clicks</p>
-                  </td>
+                  <td>{topic.intent}{topic.healthSensitive ? " / health" : ""}</td>
+                  <td>{topic.score.toFixed(1)}</td>
+                  <td>{topic.status}</td>
+                  <td className="text-sm">{topic.signalCount} signals, {topic.briefCount} briefs, {topic.offerCount} offers</td>
+                  <td>{topic.dbBacked ? <TopicStatusForm topic={topic} /> : <span className="text-xs text-neutral-500">CSV export only</span>}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         )}
       </AdminPanel>
+    );
+  }
+
+  if (section === "briefs") {
+    const briefs = await readContentBriefRows();
+    return (
+      <AdminPanel title="Content briefs">
+        {briefs.length === 0 ? (
+          <p className="text-sm text-neutral-700">No content briefs are available. Run <code>python3 workers/python/cli.py generate-content-briefs</code>.</p>
+        ) : (
+          <table>
+            <thead>
+              <tr>
+                <th>Brief</th>
+                <th>Topic</th>
+                <th>Intent</th>
+                <th>Evidence</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {briefs.map((brief) => (
+                <tr key={brief.id}>
+                  <td>
+                    <p className="font-semibold">{brief.titleCandidate}</p>
+                    <p className="text-xs text-neutral-500">{brief.locale}/{brief.articleType}</p>
+                  </td>
+                  <td>{brief.topicLabel}</td>
+                  <td>{brief.searchIntent}</td>
+                  <td>{brief.requiredEvidence.slice(0, 3).join(", ")}</td>
+                  <td>{brief.status}</td>
+                  <td>{brief.dbBacked ? <ContentBriefStatusForm brief={brief} /> : <span className="text-xs text-neutral-500">JSON export only</span>}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </AdminPanel>
+    );
+  }
+
+  if (section === "publishing-jobs") {
+    const jobs = await readPublishingJobRows();
+    return (
+      <AdminPanel title="Publishing jobs">
+        {jobs.length === 0 ? (
+          <p className="text-sm text-neutral-700">No publishing jobs are available. Generated JSON gate results are shown after <code>run-publishing-gate</code>.</p>
+        ) : (
+          <table>
+            <thead>
+              <tr>
+                <th>Job</th>
+                <th>Target</th>
+                <th>Status</th>
+                <th>Output</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {jobs.map((job) => (
+                <tr key={job.id}>
+                  <td>
+                    <p className="font-semibold">{job.jobType}</p>
+                    <p className="text-xs text-neutral-500">{job.locale}</p>
+                  </td>
+                  <td>{job.targetLabel}</td>
+                  <td>{job.status}</td>
+                  <td className="max-w-md text-sm text-neutral-700">{job.error || job.outputSummary || "-"}</td>
+                  <td>{job.dbBacked && job.status !== "running" ? <PublishingJobRetryForm jobId={job.id} /> : <span className="text-xs text-neutral-500">read only</span>}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </AdminPanel>
+    );
+  }
+
+  if (section === "compliance") {
+    const rows = await readComplianceRows(articles);
+    return (
+      <AdminPanel title="Compliance queue">
+        {rows.length === 0 ? (
+          <p className="text-sm text-neutral-700">No compliance rows are available. Health, localization, unsafe redirect, and gate blockers appear here after validation.</p>
+        ) : (
+          <table>
+            <thead>
+              <tr>
+                <th>Article</th>
+                <th>Status</th>
+                <th>Health</th>
+                <th>Issues</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row) => (
+                <tr key={row.id}>
+                  <td>
+                    <p className="font-semibold">{row.title}</p>
+                    <p className="text-xs text-neutral-500">{row.locale}/{row.type}/{row.slug}</p>
+                  </td>
+                  <td>{row.publishStatus}/{row.indexStatus}</td>
+                  <td>{row.healthSensitivity}/{row.complianceStatus}</td>
+                  <td>{row.issues.join(", ") || "-"}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </AdminPanel>
+    );
+  }
+
+  if (section === "localization") {
+    const rows = await readLocalizationRows();
+    return (
+      <AdminPanel title="Localization">
+        {rows.length === 0 ? (
+          <p className="text-sm text-neutral-700">No localization groups or localized draft exports are available.</p>
+        ) : (
+          <table>
+            <thead>
+              <tr>
+                <th>Group</th>
+                <th>Source</th>
+                <th>Variants</th>
+                <th>Depth</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row) => (
+                <tr key={row.id}>
+                  <td>
+                    <p className="font-semibold">{row.topicLabel}</p>
+                    <p className="text-xs text-neutral-500">{row.id}</p>
+                  </td>
+                  <td>{row.sourceLabel}</td>
+                  <td>{row.variants.map((variant) => `${variant.locale}:${variant.status}`).join(", ")}</td>
+                  <td>{row.variants.map((variant) => `${variant.locale} ${variant.localizationDepthScore}`).join(", ")}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </AdminPanel>
+    );
+  }
+
+  if (section === "merchants") {
+    const merchants = await readAffiliateMerchants();
+    return (
+      <div className="space-y-8">
+        <AdminPanel title="Create or edit merchant">
+          <MerchantForm />
+        </AdminPanel>
+        <AdminPanel title="Affiliate merchants">
+          {merchants.length === 0 ? (
+            <p className="text-sm text-neutral-700">No DB-backed merchants are available. Connect Postgres and run the seed to populate AliExpress and iHerb.</p>
+          ) : (
+            <table>
+              <thead>
+                <tr>
+                  <th>Merchant</th>
+                  <th>Type</th>
+                  <th>Allowed domains</th>
+                  <th>Health</th>
+                  <th>Status</th>
+                  <th>Rows</th>
+                  <th>Edit</th>
+                </tr>
+              </thead>
+              <tbody>
+                {merchants.map((merchant) => (
+                  <tr key={merchant.id}>
+                    <td>
+                      <p className="font-semibold">{merchant.name}</p>
+                      <p className="text-xs text-neutral-500">{merchant.slug}</p>
+                    </td>
+                    <td>{merchant.merchantType}</td>
+                    <td>{merchant.allowedDomains.join(", ")}</td>
+                    <td>{merchant.healthSensitive ? "health-sensitive" : "standard"}</td>
+                    <td>{merchant.enabled ? "enabled" : "disabled"}</td>
+                    <td>
+                      <p>{merchant.offerCount} offers</p>
+                      <p>{merchant.clickCount} clicks</p>
+                    </td>
+                    <td><MerchantForm merchant={merchant} /></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </AdminPanel>
+      </div>
+    );
+  }
+
+  if (section === "offers") {
+    const [offers, merchants] = await Promise.all([readAffiliateOffers(), readAffiliateMerchants()]);
+    return (
+      <div className="space-y-8">
+        <AdminPanel title="Create or edit offer">
+          <OfferForm merchants={merchants} />
+        </AdminPanel>
+        <AdminPanel title="Affiliate offers">
+          {offers.length === 0 ? (
+            <p className="text-sm text-neutral-700">No DB-backed offers are available. Connect Postgres and run the seed to create sample offer rows.</p>
+          ) : (
+            <table>
+              <thead>
+                <tr>
+                  <th>Offer</th>
+                  <th>Merchant</th>
+                  <th>Locale</th>
+                  <th>Category</th>
+                  <th>Status</th>
+                  <th>Placements</th>
+                  <th>Edit</th>
+                </tr>
+              </thead>
+              <tbody>
+                {offers.map((offer) => (
+                  <tr key={offer.id}>
+                    <td>
+                      <p className="font-semibold">{offer.title}</p>
+                      <p className="max-w-md truncate text-xs text-neutral-500">{offer.affiliateUrl}</p>
+                    </td>
+                    <td>{offer.merchantSlug}</td>
+                    <td>{offer.locale ?? "-"}</td>
+                    <td>{offer.category}</td>
+                    <td>{offer.status}</td>
+                    <td>
+                      <p>{offer.placementCount} placements</p>
+                      <p>{offer.clickCount} clicks</p>
+                    </td>
+                    <td><OfferForm merchants={merchants} offer={offer} /></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </AdminPanel>
+      </div>
     );
   }
 
@@ -1118,6 +1362,132 @@ function PlacementStatusForm({ placementId, returnTo }: { placementId: string; r
   );
 }
 
+function TopicStatusForm({ topic }: { topic: Awaited<ReturnType<typeof readTopicRows>>[number] }) {
+  return (
+    <form action="/api/admin/topic-status" className="grid min-w-52 gap-2" method="post">
+      <input name="id" type="hidden" value={topic.id} />
+      <input name="returnTo" type="hidden" value="/admin/topics/" />
+      <input className="rounded-md border border-neutral-300 px-2 py-1 text-sm" name="adminToken" placeholder="Admin token" type="password" />
+      <select className="rounded-md border border-neutral-300 px-2 py-1 text-sm" defaultValue={topic.status} name="status">
+        {topicStatuses.map((status) => (
+          <option key={status} value={status}>{status}</option>
+        ))}
+      </select>
+      <button className="rounded-md bg-teal-800 px-3 py-2 text-sm font-semibold text-white" type="submit">Save</button>
+    </form>
+  );
+}
+
+function ContentBriefStatusForm({ brief }: { brief: Awaited<ReturnType<typeof readContentBriefRows>>[number] }) {
+  return (
+    <form action="/api/admin/content-brief-status" className="grid min-w-52 gap-2" method="post">
+      <input name="id" type="hidden" value={brief.id} />
+      <input name="returnTo" type="hidden" value="/admin/briefs/" />
+      <input className="rounded-md border border-neutral-300 px-2 py-1 text-sm" name="adminToken" placeholder="Admin token" type="password" />
+      <select className="rounded-md border border-neutral-300 px-2 py-1 text-sm" defaultValue={brief.status} name="status">
+        {contentBriefStatuses.map((status) => (
+          <option key={status} value={status}>{status}</option>
+        ))}
+      </select>
+      <button className="rounded-md bg-teal-800 px-3 py-2 text-sm font-semibold text-white" type="submit">Save</button>
+    </form>
+  );
+}
+
+function PublishingJobRetryForm({ jobId }: { jobId: string }) {
+  return (
+    <form action="/api/admin/publishing-job-retry" className="grid min-w-48 gap-2" method="post">
+      <input name="id" type="hidden" value={jobId} />
+      <input name="returnTo" type="hidden" value="/admin/publishing-jobs/" />
+      <input className="rounded-md border border-neutral-300 px-2 py-1 text-sm" name="adminToken" placeholder="Admin token" type="password" />
+      <button className="rounded-md bg-teal-800 px-3 py-2 text-sm font-semibold text-white" type="submit">Retry</button>
+    </form>
+  );
+}
+
+function MerchantForm({ merchant }: { merchant?: Awaited<ReturnType<typeof readAffiliateMerchants>>[number] }) {
+  return (
+    <form action="/api/admin/merchant" className="grid min-w-96 gap-2 md:grid-cols-2" method="post">
+      <input name="id" type="hidden" value={merchant?.id ?? ""} />
+      <input name="returnTo" type="hidden" value="/admin/merchants/" />
+      <AdminTokenInput />
+      <TextInput defaultValue={merchant?.name} label="Name" name="name" required />
+      <TextInput defaultValue={merchant?.slug} label="Slug" name="slug" required />
+      <TextInput defaultValue={merchant?.domain} label="Domain" name="domain" required />
+      <TextInput defaultValue={merchant?.merchantType ?? "retailer"} label="Type" name="merchantType" required />
+      <TextInput defaultValue={merchant?.allowedDomains.join(", ")} label="Allowed domains" name="allowedDomains" required />
+      <TextInput defaultValue={merchant?.defaultRel ?? "sponsored nofollow"} label="Default rel" name="defaultRel" required />
+      <label className="text-sm">
+        <span className="block text-neutral-600">Health sensitive</span>
+        <select className="mt-1 w-full rounded-md border border-neutral-300 px-2 py-1" defaultValue={merchant?.healthSensitive ? "true" : "false"} name="healthSensitive">
+          <option value="false">false</option>
+          <option value="true">true</option>
+        </select>
+      </label>
+      <label className="text-sm">
+        <span className="block text-neutral-600">Enabled</span>
+        <select className="mt-1 w-full rounded-md border border-neutral-300 px-2 py-1" defaultValue={merchant?.enabled === false ? "false" : "true"} name="enabled">
+          <option value="true">true</option>
+          <option value="false">false</option>
+        </select>
+      </label>
+      <button className="rounded-md bg-teal-800 px-3 py-2 text-sm font-semibold text-white md:col-span-2" type="submit">
+        Save merchant
+      </button>
+    </form>
+  );
+}
+
+function OfferForm({
+  merchants,
+  offer
+}: {
+  merchants: Awaited<ReturnType<typeof readAffiliateMerchants>>;
+  offer?: Awaited<ReturnType<typeof readAffiliateOffers>>[number];
+}) {
+  return (
+    <form action="/api/admin/offer" className="grid min-w-96 gap-2 md:grid-cols-2" method="post">
+      <input name="id" type="hidden" value={offer?.id ?? ""} />
+      <input name="returnTo" type="hidden" value="/admin/offers/" />
+      <AdminTokenInput />
+      <label className="text-sm">
+        <span className="block text-neutral-600">Merchant</span>
+        <select className="mt-1 w-full rounded-md border border-neutral-300 px-2 py-1" defaultValue={offer?.merchantId ?? ""} name="merchantId" required>
+          <option value="">Select merchant</option>
+          {merchants.map((merchant) => (
+            <option key={merchant.id} value={merchant.id}>{merchant.slug}</option>
+          ))}
+        </select>
+      </label>
+      <TextInput defaultValue={offer?.title} label="Title" name="title" required />
+      <TextInput defaultValue={offer?.category ?? "general"} label="Category" name="category" required />
+      <TextInput defaultValue={offer?.url} label="URL" name="url" required />
+      <TextInput defaultValue={offer?.affiliateUrl} label="Affiliate URL" name="affiliateUrl" required />
+      <TextInput defaultValue={offer?.locale ?? ""} label="Locale" name="locale" />
+      <TextInput defaultValue={offer?.country ?? ""} label="Country" name="country" />
+      <TextInput defaultValue={offer?.price ?? ""} label="Price" name="price" type="number" />
+      <TextInput defaultValue={offer?.currency ?? ""} label="Currency" name="currency" />
+      <TextInput defaultValue={offer?.evidenceLevel ?? "merchant_claim"} label="Evidence level" name="evidenceLevel" />
+      <TextInput defaultValue={offer?.status ?? "active"} label="Status" name="status" />
+      <TextInput defaultValue={offer?.lastCheckedAt ?? ""} label="Last checked" name="lastCheckedAt" type="date" />
+      <label className="text-sm">
+        <span className="block text-neutral-600">Health sensitive</span>
+        <select className="mt-1 w-full rounded-md border border-neutral-300 px-2 py-1" defaultValue={offer?.healthSensitive ? "true" : "false"} name="healthSensitive">
+          <option value="false">false</option>
+          <option value="true">true</option>
+        </select>
+      </label>
+      <label className="text-sm md:col-span-2">
+        <span className="block text-neutral-600">Description</span>
+        <textarea className="mt-1 min-h-20 w-full rounded-md border border-neutral-300 px-2 py-1" defaultValue={offer?.description ?? ""} name="description" />
+      </label>
+      <button className="rounded-md bg-teal-800 px-3 py-2 text-sm font-semibold text-white md:col-span-2" type="submit">
+        Save offer
+      </button>
+    </form>
+  );
+}
+
 async function readPersistedRefreshSuggestions() {
   if (!process.env.DATABASE_URL) {
     return [];
@@ -1233,6 +1603,296 @@ async function readAuditLogs() {
   }
 }
 
+async function readTrendRows() {
+  if (process.env.DATABASE_URL) {
+    try {
+      const operations = await import("@global-import-lab/db/operations-admin");
+      const rows = await operations.listTrendSignals();
+      return rows.map((row) => ({
+        id: row.id,
+        locale: row.locale,
+        country: row.country,
+        query: row.query,
+        topicRaw: row.topicRaw,
+        growthScore: row.growthScore,
+        commercialScore: row.commercialScore,
+        evidenceFitScore: row.evidenceFitScore,
+        affiliateFitScore: row.affiliateFitScore,
+        sourceName: row.source.name
+      }));
+    } catch (error) {
+      console.warn("Trend signals unavailable.", error);
+    }
+  }
+
+  const payload = await readAdminJson("data/snapshots/trend_signals.json");
+  const signals = isRecord(payload) && Array.isArray(payload.signals) ? payload.signals : [];
+  return signals.flatMap((row) => {
+    if (!isRecord(row)) {
+      return [];
+    }
+    return [
+      {
+        id: stringFromUnknown(row.id),
+        locale: stringFromUnknown(row.locale),
+        country: stringFromUnknown(row.country),
+        query: stringFromUnknown(row.query),
+        topicRaw: stringFromUnknown(row.topicRaw),
+        growthScore: numberFromUnknown(row.growthScore),
+        commercialScore: numberFromUnknown(row.commercialScore),
+        evidenceFitScore: numberFromUnknown(row.evidenceFitScore),
+        affiliateFitScore: numberFromUnknown(row.affiliateFitScore),
+        sourceName: stringFromUnknown(row.sourceId) || "manual_csv"
+      }
+    ];
+  });
+}
+
+async function readTopicRows() {
+  if (process.env.DATABASE_URL) {
+    try {
+      const operations = await import("@global-import-lab/db/operations-admin");
+      const rows = await operations.listTopics();
+      return rows.map((row) => ({
+        id: row.id,
+        canonicalTopic: row.canonicalTopic,
+        slug: row.slug,
+        intent: row.intent,
+        healthSensitive: row.healthSensitive,
+        status: row.status,
+        score: row.score,
+        signalCount: row._count.topicSignals,
+        briefCount: row._count.contentBriefs,
+        offerCount: row._count.offers,
+        dbBacked: true
+      }));
+    } catch (error) {
+      console.warn("Topics unavailable.", error);
+    }
+  }
+
+  const payload = await readAdminJson("data/snapshots/topic_scores.json");
+  const topics = isRecord(payload) && Array.isArray(payload.topics) ? payload.topics : [];
+  return topics.flatMap((row) => {
+    if (!isRecord(row)) {
+      return [];
+    }
+    return [
+      {
+        id: stringFromUnknown(row.id),
+        canonicalTopic: stringFromUnknown(row.canonicalTopic),
+        slug: stringFromUnknown(row.slug),
+        intent: stringFromUnknown(row.intent),
+        healthSensitive: row.healthSensitive === true,
+        status: stringFromUnknown(row.status) || "candidate",
+        score: numberFromUnknown(row.score),
+        signalCount: numberFromUnknown(row.signalCount),
+        briefCount: 0,
+        offerCount: 0,
+        dbBacked: false
+      }
+    ];
+  });
+}
+
+async function readContentBriefRows() {
+  if (process.env.DATABASE_URL) {
+    try {
+      const operations = await import("@global-import-lab/db/operations-admin");
+      const rows = await operations.listContentBriefs();
+      return rows.map((row) => ({
+        id: row.id,
+        topicId: row.topicId,
+        topicLabel: row.topic.canonicalTopic,
+        locale: row.locale,
+        articleType: row.articleType,
+        titleCandidate: row.titleCandidate,
+        searchIntent: row.searchIntent,
+        requiredEvidence: stringArrayFromUnknown(row.requiredEvidence),
+        status: row.status,
+        dbBacked: true
+      }));
+    } catch (error) {
+      console.warn("Content briefs unavailable.", error);
+    }
+  }
+
+  const payload = await readAdminJson("data/briefs/content_briefs.json");
+  const briefs = isRecord(payload) && Array.isArray(payload.briefs) ? payload.briefs : [];
+  return briefs.flatMap((row) => {
+    if (!isRecord(row)) {
+      return [];
+    }
+    return [
+      {
+        id: stringFromUnknown(row.id),
+        topicId: stringFromUnknown(row.topicId),
+        topicLabel: stringFromUnknown(row.topicId),
+        locale: stringFromUnknown(row.locale),
+        articleType: stringFromUnknown(row.articleType),
+        titleCandidate: stringFromUnknown(row.titleCandidate),
+        searchIntent: stringFromUnknown(row.searchIntent),
+        requiredEvidence: stringArrayFromUnknown(row.requiredEvidence),
+        status: stringFromUnknown(row.status) || "draft",
+        dbBacked: false
+      }
+    ];
+  });
+}
+
+async function readPublishingJobRows() {
+  if (process.env.DATABASE_URL) {
+    try {
+      const operations = await import("@global-import-lab/db/operations-admin");
+      const rows = await operations.listPublishingJobs();
+      return rows.map((row) => ({
+        id: row.id,
+        locale: row.locale,
+        jobType: row.jobType,
+        status: row.status,
+        targetLabel: row.article?.title ?? row.topic?.canonicalTopic ?? row.articleId ?? row.topicId ?? "-",
+        outputSummary: summarizeJson(row.outputJson),
+        error: row.error,
+        dbBacked: true
+      }));
+    } catch (error) {
+      console.warn("Publishing jobs unavailable.", error);
+    }
+  }
+
+  const payload = await readAdminJson("data/exports/topic_publishing_gate.json");
+  const results = isRecord(payload) && Array.isArray(payload.results) ? payload.results : [];
+  return results.flatMap((row) => {
+    if (!isRecord(row)) {
+      return [];
+    }
+    const blockers = stringArrayFromUnknown(row.blockers);
+    return [
+      {
+        id: stringFromUnknown(row.articleId),
+        locale: stringFromUnknown(row.locale),
+        jobType: "publishing-gate",
+        status: stringFromUnknown(row.status),
+        targetLabel: stringFromUnknown(row.articleId),
+        outputSummary: blockers.length ? blockers.join(", ") : "ready for manual review",
+        error: "",
+        dbBacked: false
+      }
+    ];
+  });
+}
+
+async function readComplianceRows(sampleArticles: Awaited<ReturnType<typeof getAllArticles>>) {
+  if (process.env.DATABASE_URL) {
+    try {
+      const operations = await import("@global-import-lab/db/operations-admin");
+      const rows = await operations.listComplianceArticles();
+      return rows.map((row) => ({
+        id: row.id,
+        title: row.title,
+        locale: row.locale,
+        type: row.type,
+        slug: row.slug,
+        publishStatus: row.publishStatus,
+        indexStatus: row.indexStatus,
+        healthSensitivity: row.healthSensitivity,
+        complianceStatus: row.complianceStatus,
+        issues: complianceIssuesFromJson(row.complianceJson)
+      }));
+    } catch (error) {
+      console.warn("Compliance rows unavailable.", error);
+    }
+  }
+
+  const gatePayload = await readAdminJson("data/exports/topic_publishing_gate.json");
+  const gateRows = isRecord(gatePayload) && Array.isArray(gatePayload.results) ? gatePayload.results : [];
+  const generatedRows = gateRows.flatMap((row) => {
+    if (!isRecord(row)) {
+      return [];
+    }
+    const blockers = stringArrayFromUnknown(row.blockers);
+    if (blockers.length === 0) {
+      return [];
+    }
+    return [
+      {
+        id: stringFromUnknown(row.articleId),
+        title: stringFromUnknown(row.articleId),
+        locale: stringFromUnknown(row.locale),
+        type: stringFromUnknown(row.type),
+        slug: stringFromUnknown(row.articleId),
+        publishStatus: stringFromUnknown(row.publishStatus),
+        indexStatus: stringFromUnknown(row.indexStatus),
+        healthSensitivity: "",
+        complianceStatus: stringFromUnknown(row.status),
+        issues: blockers
+      }
+    ];
+  });
+
+  const sampleRows = sampleArticles
+    .filter((article) => article.healthSensitivity !== "none" || article.complianceStatus !== "passed")
+    .slice(0, 40)
+    .map((article) => ({
+      id: article.id,
+      title: article.title,
+      locale: article.locale,
+      type: article.type,
+      slug: article.slug,
+      publishStatus: article.publishStatus,
+      indexStatus: article.indexStatus,
+      healthSensitivity: article.healthSensitivity ?? "none",
+      complianceStatus: article.complianceStatus ?? "unchecked",
+      issues: complianceIssuesFromJson(article.complianceJson)
+    }));
+
+  return [...generatedRows, ...sampleRows];
+}
+
+async function readLocalizationRows() {
+  if (process.env.DATABASE_URL) {
+    try {
+      const operations = await import("@global-import-lab/db/operations-admin");
+      const rows = await operations.listLocalizationGroups();
+      return rows.map((row) => ({
+        id: row.id,
+        topicLabel: row.canonicalTopic?.canonicalTopic ?? "translation group",
+        sourceLabel: row.sourceArticle ? `${row.sourceArticle.locale}/${row.sourceArticle.type}/${row.sourceArticle.slug}` : "-",
+        variants: row.variants.map((variant) => ({
+          locale: variant.locale,
+          status: variant.status,
+          localizationDepthScore: variant.localizationDepthScore
+        }))
+      }));
+    } catch (error) {
+      console.warn("Localization groups unavailable.", error);
+    }
+  }
+
+  const payload = await readAdminJson("data/exports/localized_topic_articles.json");
+  const articles = isRecord(payload) && Array.isArray(payload.articles) ? payload.articles : [];
+  return articles.flatMap((row) => {
+    if (!isRecord(row)) {
+      return [];
+    }
+    const sourceArticleId = stringFromUnknown(row.sourceArticleId);
+    return [
+      {
+        id: sourceArticleId || stringFromUnknown(row.id),
+        topicLabel: stringFromUnknown(row.topicId) || "localized draft",
+        sourceLabel: sourceArticleId,
+        variants: [
+          {
+            locale: stringFromUnknown(row.locale),
+            status: stringFromUnknown(row.translationStatus) || stringFromUnknown(row.publishStatus),
+            localizationDepthScore: numberFromUnknown(row.localizationDepthScore)
+          }
+        ]
+      }
+    ];
+  });
+}
+
 async function readAffiliateMerchants() {
   if (!process.env.DATABASE_URL) {
     return [];
@@ -1244,8 +1904,10 @@ async function readAffiliateMerchants() {
       id: merchant.id,
       name: merchant.name,
       slug: merchant.slug,
+      domain: merchant.domain,
       merchantType: merchant.merchantType,
       allowedDomains: stringArrayFromUnknown(merchant.allowedDomains),
+      defaultRel: merchant.defaultRel,
       healthSensitive: merchant.healthSensitive,
       enabled: merchant.enabled,
       offerCount: merchant._count.offers,
@@ -1266,11 +1928,23 @@ async function readAffiliateOffers() {
     const rows = await listAffiliateOffers();
     return rows.map((offer) => ({
       id: offer.id,
+      merchantId: offer.merchantId,
+      programId: offer.programId,
+      productId: offer.productId,
+      topicId: offer.topicId,
       title: offer.title,
+      description: offer.description,
+      url: offer.url,
       affiliateUrl: offer.affiliateUrl,
       merchantSlug: offer.merchant.slug,
       locale: offer.locale,
+      country: offer.country,
       category: offer.category,
+      evidenceLevel: offer.evidenceLevel,
+      healthSensitive: offer.healthSensitive,
+      price: offer.price === null ? undefined : String(offer.price),
+      currency: offer.currency,
+      lastCheckedAt: offer.lastCheckedAt?.toISOString().slice(0, 10),
       status: offer.status,
       placementCount: offer._count.affiliatePlacements,
       clickCount: offer._count.affiliateClicks
@@ -1795,6 +2469,43 @@ function normalizePersistedInternalLinks(value: unknown): SearchConsoleInternalL
 
 function average(values: number[]) {
   return values.length ? values.reduce((sum, value) => sum + value, 0) / values.length : 0;
+}
+
+async function readAdminJson(relativePath: string) {
+  try {
+    const path = join(findProjectRoot(), relativePath);
+    if (!existsSync(path)) {
+      return {};
+    }
+    return JSON.parse(await readFile(path, "utf8")) as unknown;
+  } catch (error) {
+    console.warn(`Admin JSON unavailable: ${relativePath}`, error);
+    return {};
+  }
+}
+
+function summarizeJson(value: unknown) {
+  if (!value) {
+    return "";
+  }
+  if (typeof value === "string") {
+    return value;
+  }
+  if (Array.isArray(value)) {
+    return `${value.length} items`;
+  }
+  if (isRecord(value)) {
+    return Object.keys(value).slice(0, 5).join(", ");
+  }
+  return String(value);
+}
+
+function complianceIssuesFromJson(value: unknown) {
+  if (!isRecord(value)) {
+    return [];
+  }
+  const issues = value.issues ?? value.blockers ?? value.healthBlockers ?? value.localizationBlockers;
+  return stringArrayFromUnknown(issues);
 }
 
 function findProjectRoot(start = process.cwd()) {

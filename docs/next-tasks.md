@@ -1,10 +1,9 @@
 # Next Tasks
 
-1. Phase 11: extend admin pages for trends, topics, briefs, publishing jobs, compliance, and localization.
-2. Phase 12-13: add safe owned-channel distribution drafts and link-earning CRM drafts with human approval.
-3. Phase 14: expand Search Console refresh suggestions for new article types, localization gaps, offer refreshes, and health warnings.
-4. Phase 15-19: add remaining seed files, scripts, docs, final report, and `data/exports/system_capabilities.json`.
-5. Environment task: connect a real Postgres database and run Prisma migration/seed once Docker or Postgres is available.
+1. Phase 12-13: add safe owned-channel distribution drafts and link-earning CRM drafts with human approval.
+2. Phase 14: expand Search Console refresh suggestions for new article types, localization gaps, offer refreshes, and health warnings.
+3. Phase 15-19: add remaining seed files, scripts, docs, final report, and `data/exports/system_capabilities.json`.
+4. Environment task: connect a real Postgres database and run Prisma migration/seed once Docker or Postgres is available.
 
 Completed:
 
@@ -17,3 +16,4 @@ Completed:
 - Phase 8: Offer matching now scores AliExpress/iHerb inventory, exports draft placement candidates, and adds admin approval/rejection for DB-backed placements.
 - Phase 9: Topic article generation is split into brief, draft, localization, and publishing-gate modules; generated drafts start pending/noindex-safe.
 - Phase 10: The TypeScript quality gate now checks publish state, unsafe redirects, placement approval, merchant allowlists, localization depth, trend evidence, offer relevance, over-monetization, and health compliance.
+- Phase 11: Admin pages now cover trends, topics, briefs, publishing jobs, compliance, localization, merchant/offer editing, and audited status mutations.
