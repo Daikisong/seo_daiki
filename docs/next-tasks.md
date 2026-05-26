@@ -1,6 +1,6 @@
 # Next Tasks
 
-1. Environment task: connect a real Postgres database and run Prisma migration/seed once Docker or Postgres is available.
+1. Production environment task: run the verified Prisma migration/seed flow against the managed Postgres instance that will back the deployed site.
 
 Completed:
 

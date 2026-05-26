@@ -41,6 +41,18 @@ pnpm db:seed
 
 Use `/admin` to review topics, briefs, merchants, offers, placements, publishing jobs, compliance, localization, Search Console suggestions, and audit logs.
 
+DB seed verification:
+
+The checked-in Docker Compose file is the normal local path:
+
+```bash
+docker compose up -d postgres
+DATABASE_URL="postgresql://global_import_lab:global_import_lab@localhost:5432/global_import_lab?schema=public" pnpm exec prisma migrate deploy --config prisma.config.ts
+DATABASE_URL="postgresql://global_import_lab:global_import_lab@localhost:5432/global_import_lab?schema=public" pnpm db:seed
+```
+
+In an environment without Docker/Postgres, the same Prisma migration and seed were verified against a temporary Postgres wire-compatible PGlite server. The verification produced 10 products, 151 articles, 2 merchants, 53 offers, 53 affiliate placements, 7 translation groups, and 21 translation variants.
+
 Safe distribution and outreach:
 
 ```bash

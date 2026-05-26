@@ -76,7 +76,7 @@ Major areas changed:
 
 ## Remaining Limitations
 
-- Local verification used sample/file mode. Runtime DB migration/seed still requires a real Postgres service.
+- Local verification covered sample/file mode plus Prisma migration and DB seed against a temporary Postgres wire-compatible PGlite server. Production should still use real Postgres or the checked-in Docker Compose service.
 - External adapters for AliExpress, iHerb feeds, Postiz, SMTP, and Search Console remain disabled or credential-gated by default.
 - Generated topic drafts are intentionally not production-ready content; they require editor, compliance, and admin review before publishing/indexing.
 
@@ -101,6 +101,9 @@ python3 workers/python/cli.py send-approved-outreach
 python3 workers/python/cli.py suggest-refreshes
 python3 -m py_compile workers/python/distribution/owned_channel.py workers/python/outreach/link_earning.py workers/python/intelligence/search_console_feedback.py workers/python/cli.py workers/python/pipeline.py
 pnpm exec prisma validate --config prisma.config.ts
+DATABASE_URL='postgresql://postgres@127.0.0.1:55432/postgres?schema=public' pnpm exec prisma migrate deploy --config prisma.config.ts
+DATABASE_URL='postgresql://postgres@127.0.0.1:55432/postgres?schema=public' pnpm db:seed
+DATABASE_URL='postgresql://postgres@127.0.0.1:55432/postgres?schema=public' pnpm --filter @global-import-lab/db exec tsx -e 'import { prisma } from "./src/client"; async function main() { const counts = { products: await prisma.product.count(), articles: await prisma.article.count(), merchants: await prisma.merchant.count(), offers: await prisma.offer.count(), placements: await prisma.affiliatePlacement.count(), translationGroups: await prisma.translationGroup.count(), translationVariants: await prisma.translationVariant.count() }; console.log(JSON.stringify(counts, null, 2)); } main().finally(() => prisma.$disconnect());'
 pnpm typecheck
 pnpm seo:validate
 pnpm build
@@ -112,3 +115,6 @@ pnpm build
 - `pnpm seo:validate`: passed, validating 151 sample articles and 72 indexable articles
 - `pnpm build`: passed, generating 125 static/dynamic app routes
 - `pnpm exec prisma validate --config prisma.config.ts`: passed
+- Prisma migration deploy against temporary Postgres wire server: passed, applying all 4 migrations
+- `pnpm db:seed` against temporary Postgres wire server: passed twice
+- DB seed counts after verification: 10 products, 151 articles, 2 merchants, 53 offers, 53 affiliate placements, 7 translation groups, 21 translation variants

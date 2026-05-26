@@ -1135,7 +1135,7 @@ const baseDraftArticles: ArticleDraft[] = [
     lastUpdated: updatedAt
   },
   {
-    group: "risk-usb-c-import",
+    group: "risk-usb-c-import-uk",
     id: "art-en-risk-usb-c-import-uk",
     productId: "prod-baseus-65w",
     locale: "en",
