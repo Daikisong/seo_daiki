@@ -11,6 +11,37 @@ import {
   trendLocaleLabel,
   trendScoreLabel
 } from "../apps/web/lib/admin/admin-content-workflow-model";
+import {
+  briefLocaleTypeLabel as directBriefLocaleTypeLabel,
+  previewList as directPreviewList
+} from "../apps/web/lib/admin/admin-content-workflow-brief-labels";
+import {
+  contentWorkflowTrendFilters as directContentWorkflowTrendFilters
+} from "../apps/web/lib/admin/admin-content-workflow-filters";
+import {
+  canRetryPublishingJob as directCanRetryPublishingJob,
+  publishingJobOutputLabel as directPublishingJobOutputLabel
+} from "../apps/web/lib/admin/admin-content-workflow-job-labels";
+import {
+  topicIntentLabel as directTopicIntentLabel,
+  topicRowCountLabel as directTopicRowCountLabel,
+  topicScoreBreakdownLabel as directTopicScoreBreakdownLabel
+} from "../apps/web/lib/admin/admin-content-workflow-topic-labels";
+import {
+  trendLocaleLabel as directTrendLocaleLabel,
+  trendScoreLabel as directTrendScoreLabel
+} from "../apps/web/lib/admin/admin-content-workflow-trend-labels";
+
+assert.equal(contentWorkflowTrendFilters, directContentWorkflowTrendFilters);
+assert.equal(trendLocaleLabel, directTrendLocaleLabel);
+assert.equal(trendScoreLabel, directTrendScoreLabel);
+assert.equal(topicIntentLabel, directTopicIntentLabel);
+assert.equal(topicRowCountLabel, directTopicRowCountLabel);
+assert.equal(topicScoreBreakdownLabel, directTopicScoreBreakdownLabel);
+assert.equal(briefLocaleTypeLabel, directBriefLocaleTypeLabel);
+assert.equal(previewList, directPreviewList);
+assert.equal(publishingJobOutputLabel, directPublishingJobOutputLabel);
+assert.equal(canRetryPublishingJob, directCanRetryPublishingJob);
 
 assert.deepEqual(
   contentWorkflowTrendFilters({ locale: ["en", "es"], country: "US", source: undefined }),
