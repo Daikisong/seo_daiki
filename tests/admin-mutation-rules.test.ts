@@ -1,5 +1,7 @@
 import assert from "node:assert/strict";
 import type { ValidationIssue } from "@global-import-lab/validators";
+import { normalizeArticleStateInput as directNormalizeArticleStateInput } from "../packages/db/src/adminArticleStateRules";
+import { toJson as directToJson } from "../packages/db/src/adminMutationJson";
 import {
   adminEntityTypes,
   adminRecordActions,
@@ -18,11 +20,17 @@ import {
   shouldArchiveRelatedArticles,
   toJson
 } from "../packages/db/src/adminMutationRules";
+import { isIndexStatus as directIsIndexStatus } from "../packages/db/src/adminMutationValues";
+import { archiveSummary as directArchiveSummary } from "../packages/db/src/adminRecordLifecycleRules";
 
 assert.deepEqual(indexStatuses, ["index", "noindex", "pending", "refresh_needed", "merge_candidate"]);
 assert.deepEqual(publishStatuses, ["draft", "pending", "published"]);
 assert.deepEqual(adminEntityTypes, ["product", "variant", "seller-claim", "verified-claim", "market-risk", "evidence-pack", "article"]);
 assert.deepEqual(adminRecordActions, ["archive", "delete"]);
+assert.equal(isIndexStatus, directIsIndexStatus);
+assert.equal(normalizeArticleStateInput, directNormalizeArticleStateInput);
+assert.equal(archiveSummary, directArchiveSummary);
+assert.equal(toJson, directToJson);
 
 assert.equal(isIndexStatus("index"), true);
 assert.equal(isIndexStatus("refresh_needed"), true);
