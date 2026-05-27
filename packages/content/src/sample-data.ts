@@ -1,16 +1,14 @@
-import { absoluteUrl, articlePath, hreflangKeyForArticle } from "@global-import-lab/seo";
 import type {
   Article,
   ArticleSection,
   ArticleType,
   EvidencePack,
-  HreflangMap,
   InternalLink,
   Locale,
   Product
 } from "@global-import-lab/types";
+import { buildArticlesFromDrafts, buildArticleTranslationGroups } from "./article-assembly";
 import type { ArticleDraft } from "./article-draft-types";
-import { buildProgrammaticInternalLinks } from "./internal-linking";
 import { buildGeneratedDraftArticles } from "./planned-article-fixtures";
 import { buildTrendBlogDraftArticles } from "./trend-blog-article-fixtures";
 import { generatedProductFixtures } from "./product-fixtures";
@@ -1433,55 +1431,11 @@ const generatedDraftArticles: ArticleDraft[] = buildGeneratedDraftArticles({
 
 const draftArticles: ArticleDraft[] = [...baseDraftArticles, ...trendBlogDraftArticles, ...generatedDraftArticles];
 
-export const articleTranslationGroups = Object.values(
-  draftArticles.reduce<Record<string, ArticleDraft[]>>((groups, article) => {
-    groups[article.group] = [...(groups[article.group] ?? []), article];
-    return groups;
-  }, {})
-)
-  .filter((groupArticles) => new Set(groupArticles.map((article) => article.locale)).size > 1)
-  .map((groupArticles) => {
-    const source = groupArticles.find((article) => article.locale === "en") ?? groupArticles[0];
-    return {
-      id: `tg-${sampleSlugify(source.group)}`,
-      sourceArticleId: source.id,
-      variants: groupArticles.map((article) => ({
-        id: `tv-${article.id}`,
-        articleId: article.id,
-        locale: article.locale,
-        sourceLocale: article.id === source.id ? undefined : source.locale,
-        localizationDepthScore: article.id === source.id ? 100 : article.indexStatus === "index" ? 84 : 55,
-        status: article.publishStatus === "published" && article.indexStatus === "index" ? "published" : "draft"
-      }))
-    };
-  });
+export const articleTranslationGroups = buildArticleTranslationGroups(draftArticles);
 
-function sampleSlugify(value: string) {
-  return value
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
-}
-
-export const articles: Article[] = draftArticles.map((draft) => {
-  const { group, ...article } = draft;
-  const alternates = draftArticles
-    .filter((candidate) => candidate.group === group)
-    .reduce<HreflangMap>((map, candidate) => {
-      const href = absoluteUrl(articlePath(candidate), siteUrl);
-      map[hreflangKeyForArticle(candidate)] = href;
-      return map;
-    }, {});
-
-  return {
-    ...article,
-    internalLinks: buildProgrammaticInternalLinks(draft, draftArticles, products),
-    canonicalUrl: absoluteUrl(articlePath(article), siteUrl),
-    hreflangMap: {
-      ...alternates,
-      "x-default": absoluteUrl("/", siteUrl)
-    }
-  };
+export const articles: Article[] = buildArticlesFromDrafts(draftArticles, {
+  products,
+  siteUrl
 });
 
 export function findArticle(locale: Locale, type: ArticleType, slug: string) {

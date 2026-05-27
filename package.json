@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "pnpm --filter @global-import-lab/web dev",
     "build": "pnpm db:generate && pnpm --filter @global-import-lab/web build",
-    "test": "pnpm test:python && pnpm test:seo && pnpm test:validators && pnpm test:structured-data && pnpm test:admin-utils && pnpm test:content-fixtures && pnpm test:internal-linking && pnpm test:planned-articles && pnpm test:trend-blog-articles",
+    "test": "pnpm test:python && pnpm test:seo && pnpm test:validators && pnpm test:structured-data && pnpm test:admin-utils && pnpm test:content-fixtures && pnpm test:internal-linking && pnpm test:article-assembly && pnpm test:planned-articles && pnpm test:trend-blog-articles",
     "test:python": "python3 -m unittest discover -s workers/python/tests -p 'test_*.py'",
     "test:seo": "tsx tests/seo.test.ts",
     "test:validators": "tsx tests/validators.test.ts",
@@ -14,6 +14,7 @@
     "test:admin-utils": "tsx tests/admin-section-utils.test.ts",
     "test:content-fixtures": "tsx tests/content-fixtures.test.ts",
     "test:internal-linking": "tsx tests/internal-linking.test.ts",
+    "test:article-assembly": "tsx tests/article-assembly.test.ts",
     "test:planned-articles": "tsx tests/planned-article-fixtures.test.ts",
     "test:trend-blog-articles": "tsx tests/trend-blog-article-fixtures.test.ts",
     "typecheck": "pnpm db:generate && pnpm -r typecheck",
