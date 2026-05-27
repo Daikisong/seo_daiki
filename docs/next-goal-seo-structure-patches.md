@@ -2,6 +2,10 @@
 
 This is the next goal after the current modularization/refactor pass is finished.
 
+Captured from the latest SEO feedback on 2026-05-28. Treat this as the next
+implementation target after the current modularization goal is fully verified
+and pushed.
+
 The current market-silo SEO direction is acceptable:
 
 - one domain with 18 market/language silos
