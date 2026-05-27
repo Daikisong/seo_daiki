@@ -2,9 +2,19 @@ from __future__ import annotations
 
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
 
 from workers.python.common import DATA, read_csv, read_json, slugify, write_json
+from workers.python.intelligence.product_candidate_rules import (
+    candidate_score_breakdown,
+    candidate_score_from_breakdown,
+    clean,
+    comparison_rows,
+    evidence_needed,
+    pros_cons,
+    risk_notes,
+    risk_score,
+    tokens,
+)
 
 TEST_ARTICLES_PATH = DATA / "exports" / "test_articles.json"
 PRODUCT_CANDIDATES_PATH = DATA / "exports" / "product_candidates.json"
@@ -20,16 +30,7 @@ def import_product_candidates(file: Path | None = None) -> str:
         market = clean(row.get("market"))
         language = clean(row.get("language"))
         score_parts = candidate_score_breakdown(row)
-        score_value = round(
-            score_parts["topic_relevance"] * 0.30
-            + score_parts["user_problem_fit"] * 0.20
-            + score_parts["market_availability"] * 0.15
-            + score_parts["comparison_value"] * 0.15
-            + score_parts["evidence_availability"] * 0.10
-            + score_parts["price_or_value_hint"] * 0.05
-            - score_parts["risk_penalty"] * 0.05,
-            2,
-        )
+        score_value = candidate_score_from_breakdown(score_parts)
         candidates.append(
             {
                 "id": clean(row.get("id")) or f"product-candidate-{slugify(f'{market} {language} {title} {index}')}",
@@ -145,82 +146,6 @@ def build_product_analysis_block(article_id: str | None = None) -> str:
                 )
         blocks.append({**analysis, "analysisBlockMarkdown": "\n".join(lines)})
     return str(write_json(PRODUCT_ANALYSIS_PATH, {"analyses": blocks}))
-
-
-def candidate_score_breakdown(row: dict[str, str]) -> dict[str, float]:
-    return {
-        "topic_relevance": score(row.get("topic_relevance"), 70),
-        "user_problem_fit": score(row.get("user_problem_fit"), 65),
-        "market_availability": score(row.get("market_availability"), 60),
-        "comparison_value": score(row.get("comparison_value"), 60),
-        "evidence_availability": score(row.get("evidence_availability"), 45),
-        "price_or_value_hint": score(row.get("price_or_value_hint"), 40),
-        "risk_penalty": risk_score(row),
-    }
-
-
-def risk_score(row: dict[str, str]) -> float:
-    risk = 20
-    text = " ".join(str(value).lower() for value in row.values())
-    for term in ["health", "supplement", "medical", "counterfeit", "safety", "claims"]:
-        if term in text:
-            risk += 12
-    return min(100, risk)
-
-
-def evidence_needed(row: dict[str, str]) -> list[str]:
-    needs = ["Official product page", "Current price/availability timestamp", "Merchant policy check"]
-    text = " ".join(str(value).lower() for value in row.values())
-    if any(term in text for term in ["health", "supplement", "magnesium", "gut"]):
-        needs.append("Health claim review and supplement disclaimer")
-    if any(term in text for term in ["charger", "power bank", "adapter"]):
-        needs.append("Safety/certification and spec verification")
-    return needs
-
-
-def comparison_rows(candidates: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    rows = []
-    for candidate in candidates:
-        rows.append(
-            {
-                "candidateId": candidate.get("id"),
-                "title": candidate.get("title"),
-                "merchant": candidate.get("sourceMerchant"),
-                "matchReason": candidate.get("reason"),
-                "verifyBeforeLinking": "; ".join(candidate.get("evidenceNeededJson", [])),
-                "riskLevel": "high" if float(candidate.get("riskScore") or 0) >= 60 else "medium",
-            }
-        )
-    return rows
-
-
-def pros_cons(candidates: list[dict[str, Any]]) -> dict[str, list[str]]:
-    return {
-        "pros": [f"{candidate.get('title')}: relevant to article problem" for candidate in candidates],
-        "cons": ["All candidates require human verification before links or claims."],
-    }
-
-
-def risk_notes(candidates: list[dict[str, Any]]) -> list[str]:
-    notes = []
-    for candidate in candidates:
-        notes.append(f"{candidate.get('title')}: risk score {candidate.get('riskScore')}; verify policy and claims.")
-    return notes
-
-
-def tokens(value: str) -> list[str]:
-    return [token for token in slugify(value).split("-") if len(token) > 3]
-
-
-def score(value: Any, fallback: float) -> float:
-    try:
-        return max(0, min(100, float(value)))
-    except (TypeError, ValueError):
-        return fallback
-
-
-def clean(value: Any) -> str:
-    return str(value or "").strip()
 
 
 def now() -> str:

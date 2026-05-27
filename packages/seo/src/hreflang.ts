@@ -13,8 +13,10 @@ export function buildHreflangMap(groupedArticles: Article[], current: Article, s
 }
 
 export function hreflangKeyForMarket(market: Pick<MarketConfig, "country" | "language">) {
-  const language = market.language === "pt-br" ? "pt-BR" : market.language;
-  return `${language}-${market.country}`;
+  if (market.language.toLowerCase() === "pt-br") {
+    return "pt-BR";
+  }
+  return `${market.language}-${market.country.toUpperCase()}`;
 }
 
 export function buildMarketHreflangMap(markets: MarketConfig[], current: MarketConfig, siteUrl = getSiteUrl()) {
