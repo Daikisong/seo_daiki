@@ -10,11 +10,14 @@
     "./healthClaimGuard": "./src/healthClaimGuard.ts",
     "./hreflangValidator": "./src/hreflangValidator.ts",
     "./internalLinks": "./src/internalLinks.ts",
+    "./localizationDepthGuard": "./src/localizationDepthGuard.ts",
+    "./publishStateGuard": "./src/publishStateGuard.ts",
     "./qualityGate": "./src/qualityGate.ts",
     "./schemaValidator": "./src/schemaValidator.ts",
     "./seoIntegrity": "./src/seoIntegrity.ts",
     "./structuredDataValidation": "./src/structuredDataValidation.ts",
-    "./thinAffiliate": "./src/thinAffiliate.ts"
+    "./thinAffiliate": "./src/thinAffiliate.ts",
+    "./trendEvidenceGuard": "./src/trendEvidenceGuard.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
