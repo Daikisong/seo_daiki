@@ -3,6 +3,8 @@ import {
   average,
   complianceIssuesFromJson,
   normalizeActionList,
+  normalizePersistedInternalLinks,
+  normalizePersistedMissingSections,
   normalizeRefreshSuggestionPayload,
   numberFromUnknown,
   outlineHeadings,
@@ -12,7 +14,15 @@ import {
   stringFromUnknown,
   summarizeJson
 } from "../apps/web/lib/admin/admin-section-utils";
+import { normalizeActionList as directNormalizeActionList } from "../apps/web/lib/admin/admin-refresh-action-list";
+import { normalizePersistedInternalLinks as directNormalizePersistedInternalLinks } from "../apps/web/lib/admin/admin-refresh-internal-links";
+import { normalizePersistedMissingSections as directNormalizePersistedMissingSections } from "../apps/web/lib/admin/admin-refresh-missing-sections";
+import { normalizeRefreshSuggestionPayload as directNormalizeRefreshSuggestionPayload } from "../apps/web/lib/admin/admin-refresh-suggestion-payload-normalizer";
 
+assert.equal(normalizeActionList, directNormalizeActionList);
+assert.equal(normalizeRefreshSuggestionPayload, directNormalizeRefreshSuggestionPayload);
+assert.equal(normalizePersistedMissingSections, directNormalizePersistedMissingSections);
+assert.equal(normalizePersistedInternalLinks, directNormalizePersistedInternalLinks);
 assert.deepEqual(normalizeActionList(["expand", 42]), ["expand", "42"]);
 assert.deepEqual(normalizeActionList({ action: "expand" }), ['{"action":"expand"}']);
 assert.deepEqual(normalizeActionList("hold"), ["hold"]);
