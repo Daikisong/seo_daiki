@@ -2,10 +2,32 @@ import assert from "node:assert/strict";
 import {
   candidateIdsText,
   isMonetizationReviewStatus,
+  monetizationReviewStatuses,
   reviewStatusSummary,
   splitCandidateIds,
   updateMonetizationReviewPayload
 } from "../apps/web/lib/admin/admin-monetization-review-model";
+import {
+  monetizationReviewStatuses as directMonetizationReviewStatuses
+} from "../apps/web/lib/admin/admin-monetization-review-types";
+import {
+  isMonetizationReviewStatus as directIsMonetizationReviewStatus
+} from "../apps/web/lib/admin/admin-monetization-review-status";
+import {
+  candidateIdsText as directCandidateIdsText,
+  reviewStatusSummary as directReviewStatusSummary,
+  splitCandidateIds as directSplitCandidateIds
+} from "../apps/web/lib/admin/admin-monetization-review-text";
+import {
+  updateMonetizationReviewPayload as directUpdateMonetizationReviewPayload
+} from "../apps/web/lib/admin/admin-monetization-review-payload";
+
+assert.equal(monetizationReviewStatuses, directMonetizationReviewStatuses);
+assert.equal(isMonetizationReviewStatus, directIsMonetizationReviewStatus);
+assert.equal(splitCandidateIds, directSplitCandidateIds);
+assert.equal(candidateIdsText, directCandidateIdsText);
+assert.equal(reviewStatusSummary, directReviewStatusSummary);
+assert.equal(updateMonetizationReviewPayload, directUpdateMonetizationReviewPayload);
 
 assert.equal(isMonetizationReviewStatus("approved_candidates"), true);
 assert.equal(isMonetizationReviewStatus("auto_approved"), false);
