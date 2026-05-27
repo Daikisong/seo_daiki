@@ -1,4 +1,5 @@
 export * from "./article-routes";
+export * from "./article-localized-section-routes";
 export * from "./article-section-routes";
 export * from "./legacy-locale-routes";
 export * from "./locale-config";

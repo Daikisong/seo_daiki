@@ -5,14 +5,32 @@ import {
   getSiteUrl,
   hreflangKeyForArticle,
   legacyLocaleDefaultMarketPath,
+  localizedSectionPathForArticleType,
   regionalRiskRouteForArticle,
   sectionHrefForArticle,
   sectionPathForArticle
 } from "@global-import-lab/seo";
+import {
+  localizedBuyerGuideSection,
+  localizedDealWatchSection,
+  localizedGuideSection,
+  localizedIngredientGuideSection,
+  localizedReviewSection,
+  localizedSectionByType,
+  localizedTrendSection
+} from "../packages/seo/src/article-localized-section-routes";
 
 assert.equal(sectionPathForArticle({ locale: "es", type: "review" }), "resenas");
 assert.equal(sectionPathForArticle({ locale: "pt-br", type: "guide" }), "guias");
 assert.equal(sectionPathForArticle({ locale: "en", type: "hub" }), "");
+assert.equal(localizedSectionPathForArticleType("trend", "pt-br"), "tendencias");
+assert.equal(localizedSectionPathForArticleType("data", "en"), undefined);
+assert.equal(localizedSectionByType.review, localizedReviewSection);
+assert.equal(localizedSectionByType.guide, localizedGuideSection);
+assert.equal(localizedSectionByType.trend, localizedTrendSection);
+assert.equal(localizedSectionByType.buyer_guide, localizedBuyerGuideSection);
+assert.equal(localizedSectionByType.deal_watch, localizedDealWatchSection);
+assert.equal(localizedSectionByType.ingredient_guide, localizedIngredientGuideSection);
 
 assert.equal(articlePath({ locale: "es", type: "review", slug: "cargador" }), "/es/resenas/cargador/");
 assert.equal(articlePath({ locale: "en", type: "hub", slug: "chargers" }), "/en/chargers/");
