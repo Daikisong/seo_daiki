@@ -1,18 +1,26 @@
 import { notFound, permanentRedirect } from "next/navigation";
 import type { Metadata } from "next";
-import { articlePath, regionalRiskRouteForArticle, regionalRiskRouteForPath, sectionPathForArticle } from "@global-import-lab/seo";
+import { articlePath, regionalRiskRouteForArticle, regionalRiskRouteForPath } from "@global-import-lab/seo";
 import type { ArticleType, Locale } from "@global-import-lab/types";
 import { metadataForArticle } from "@/lib/seo/metadata";
 import { isLocale } from "@/lib/i18n/locales";
+import {
+  articleMatchesLocalizedSection,
+  canRenderArticleWithPreview,
+  expectedGuideSectionForLocale,
+  expectedReviewSectionForLocale,
+  isPreviewTokenAllowed,
+  localizedParamMatchesSection,
+  reviewParamMatchesSection,
+  shouldRedirectCountryRiskArticle,
+  shouldRedirectLegacyRiskArticle,
+  type PreviewSearchParams
+} from "./page-loader-rules";
 import { getAllArticles, getAllProducts, getArticle, getProduct, getStaticArticleParams } from "./repository";
 
 export interface ArticleRouteParams {
   locale: string;
   slug: string;
-}
-
-export interface PreviewSearchParams {
-  previewToken?: string | string[];
 }
 
 type PreviewSearchParamsPromise = Promise<PreviewSearchParams> | undefined;
@@ -48,8 +56,7 @@ export async function loadReviewPageForSection(
   searchParamsPromise?: PreviewSearchParamsPromise
 ) {
   const page = await loadArticlePage(paramsPromise, "review", searchParamsPromise);
-  const expectedSection =
-    page.article.locale === "es" ? "resenas" : page.article.locale === "pt-br" ? "analises" : "reviews";
+  const expectedSection = expectedReviewSectionForLocale(page.article.locale);
 
   if (section !== expectedSection) {
     permanentRedirect(articlePath(page.article));
@@ -64,7 +71,7 @@ export async function loadGuidePageForSection(
   searchParamsPromise?: PreviewSearchParamsPromise
 ) {
   const page = await loadArticlePage(paramsPromise, "guide", searchParamsPromise);
-  const expectedSection = page.article.locale === "en" ? "guides" : "guias";
+  const expectedSection = expectedGuideSectionForLocale(page.article.locale);
 
   if (section !== expectedSection) {
     permanentRedirect(articlePath(page.article));
@@ -90,9 +97,8 @@ export async function loadArticlePageForLocalizedSection(
   searchParamsPromise?: PreviewSearchParamsPromise
 ) {
   const page = await loadArticlePage(paramsPromise, type, searchParamsPromise);
-  const expectedSection = sectionPathForArticle(page.article);
 
-  if (section !== expectedSection) {
+  if (!articleMatchesLocalizedSection(page.article, section)) {
     permanentRedirect(articlePath(page.article));
   }
 
@@ -104,9 +110,8 @@ export async function loadLegacyRiskPage(
   searchParamsPromise?: PreviewSearchParamsPromise
 ) {
   const page = await loadArticlePage(paramsPromise, "risk", searchParamsPromise);
-  const legacyPath = `/${page.article.locale}/risk/${page.article.slug}/`;
 
-  if (articlePath(page.article) !== legacyPath) {
+  if (shouldRedirectLegacyRiskArticle(page.article)) {
     permanentRedirect(articlePath(page.article));
   }
 
@@ -132,7 +137,7 @@ export async function loadCountryRiskGuidePage(
 
   await assertPublicArticleVisible(article, searchParamsPromise);
 
-  if (articlePath(article) !== `/${route.routeLocale}/${route.section}/${route.slug}/`) {
+  if (shouldRedirectCountryRiskArticle(article, route)) {
     permanentRedirect(articlePath(article));
   }
 
@@ -202,15 +207,7 @@ export function staticParamsFor(type: ArticleType) {
 
 export async function staticReviewParamsForSection(section: "reviews" | "resenas" | "analises") {
   const params = await getStaticArticleParams("review");
-  return params.filter((param) => {
-    if (section === "reviews") {
-      return param.locale === "en";
-    }
-    if (section === "resenas") {
-      return param.locale === "es";
-    }
-    return param.locale === "pt-br";
-  });
+  return params.filter((param) => reviewParamMatchesSection({ locale: param.locale as Locale }, section));
 }
 
 export async function staticGuideParamsForSection(locale: "es" | "pt-br") {
@@ -232,7 +229,7 @@ export async function staticCountryRiskGuideParamsFor(routeLocale: string, secti
 
 export async function staticParamsForLocalizedSection(type: ArticleType, section: string) {
   const params = await getStaticArticleParams(type);
-  return params.filter((param) => sectionPathForArticle({ locale: param.locale as Locale, type }) === section);
+  return params.filter((param) => localizedParamMatchesSection({ locale: param.locale as Locale }, type, section));
 }
 
 async function assertPublicArticleVisible(article: NonNullable<Awaited<ReturnType<typeof getArticle>>>, searchParamsPromise?: PreviewSearchParamsPromise) {
@@ -244,16 +241,11 @@ async function assertPublicArticleVisible(article: NonNullable<Awaited<ReturnTyp
 }
 
 async function canRenderArticle(article: NonNullable<Awaited<ReturnType<typeof getArticle>>>, searchParamsPromise?: PreviewSearchParamsPromise) {
-  return article.publishStatus === "published" || (await isPreviewRequest(searchParamsPromise));
+  return canRenderArticleWithPreview(article, await isPreviewRequest(searchParamsPromise));
 }
 
 async function isPreviewRequest(searchParamsPromise?: PreviewSearchParamsPromise) {
   const expectedToken = process.env.PREVIEW_TOKEN;
-  if (!expectedToken) {
-    return false;
-  }
-
   const searchParams = searchParamsPromise ? await searchParamsPromise : undefined;
-  const token = Array.isArray(searchParams?.previewToken) ? searchParams?.previewToken[0] : searchParams?.previewToken;
-  return token === expectedToken;
+  return isPreviewTokenAllowed(searchParams, expectedToken);
 }
