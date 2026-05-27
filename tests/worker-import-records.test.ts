@@ -20,6 +20,15 @@ import {
   verifiedClaimCreateData,
   type WorkerPack
 } from "../packages/db/src/workerImportRecords";
+import { groupWorkerPacksByProduct as splitGroupWorkerPacksByProduct } from "../packages/db/src/workerImportCollections";
+import { sellerClaimCreateData as splitSellerClaimCreateData } from "../packages/db/src/workerImportEvidenceRecords";
+import { variantCreateData as splitVariantCreateData } from "../packages/db/src/workerImportProductRecords";
+import { searchConsoleMetricInput as splitSearchConsoleMetricInput } from "../packages/db/src/workerImportSearchConsoleRecords";
+
+assert.equal(groupWorkerPacksByProduct, splitGroupWorkerPacksByProduct);
+assert.equal(variantCreateData, splitVariantCreateData);
+assert.equal(sellerClaimCreateData, splitSellerClaimCreateData);
+assert.equal(searchConsoleMetricInput, splitSearchConsoleMetricInput);
 
 const packs: WorkerPack[] = [
   {
