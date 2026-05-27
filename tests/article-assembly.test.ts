@@ -7,7 +7,20 @@ import {
   buildArticleTranslationGroups,
   fixtureSlug
 } from "../packages/content/src/article-assembly";
+import {
+  buildArticleFromDraft as directBuildArticleFromDraft,
+  buildArticlesFromDrafts as directBuildArticlesFromDrafts
+} from "../packages/content/src/article-builders";
+import { fixtureSlug as directFixtureSlug } from "../packages/content/src/article-assembly-slug";
+import { buildArticleHreflangMap as directBuildArticleHreflangMap } from "../packages/content/src/article-hreflang-map";
+import { buildArticleTranslationGroups as directBuildArticleTranslationGroups } from "../packages/content/src/article-translation-groups";
 import type { ArticleDraft } from "../packages/content/src/article-draft-types";
+
+assert.equal(buildArticleFromDraft, directBuildArticleFromDraft);
+assert.equal(buildArticlesFromDrafts, directBuildArticlesFromDrafts);
+assert.equal(buildArticleHreflangMap, directBuildArticleHreflangMap);
+assert.equal(buildArticleTranslationGroups, directBuildArticleTranslationGroups);
+assert.equal(fixtureSlug, directFixtureSlug);
 
 function draft(overrides: Partial<ArticleDraft>): ArticleDraft {
   const locale = overrides.locale ?? "en";
