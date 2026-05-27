@@ -1,50 +1,28 @@
 # Offer Matching
 
-Phase 8 adds a safe affiliate offer matching layer for AliExpress and iHerb.
+Offer matching is now a later-phase compatibility workflow. It is not part of the default trend-to-post pipeline.
 
-The matcher reads:
-
-- scored topics from `data/snapshots/topic_scores.json`
-- content briefs from `data/briefs/content_briefs.json`
-- offer inventory from `data/seeds/offers.csv`
-
-Run:
-
-```bash
-python3 workers/python/cli.py match-affiliate-offers --offers-file data/seeds/offers.csv
-```
-
-Outputs:
-
-- `data/snapshots/affiliate_offer_matches.json`
-- `data/exports/affiliate_placement_candidates.json`
-
-The score is:
+Current priority:
 
 ```text
-topicalFit * 0.25
-+ localeFit * 0.15
-+ merchantTrust * 0.15
-+ evidenceLevel * 0.15
-+ priceFreshness * 0.10
-+ conversionFit * 0.10
-+ complianceFit * 0.10
+trend -> SERP -> content strategy -> test post -> product candidate analysis -> human monetization review
 ```
 
-Safety rules:
+Use this instead of offer matching for the current phase:
 
-- candidates start as `draft`
-- `humanApprovalRequired` is true
-- `rel` is always `sponsored nofollow`
-- iHerb candidates are only allowed for health/supplement briefs that require HealthClaimGuard and disclaimer evidence
-- AliExpress candidates are limited to relevant commerce categories such as chargers, import gear, power banks, tools, sensors, and desk setup
-- placement counts are capped by article type, for example 2 for `trend`, 4 for `buyer_guide`, and 3 for `ingredient_guide`
+```bash
+pnpm pipeline:post-to-product-analysis
+pnpm pipeline:monetization-review
+```
 
-Admin review:
+Feature flag status:
 
-- `/admin/offer-matching/` shows exported candidates and persisted DB placements.
-- `/admin/placements/` can approve or reject DB-backed placements.
-- approval calls `/api/admin/affiliate-placement-status` and requires `ADMIN_TOKEN`.
-- approved placements must have `sponsored nofollow`, visible disclosure, active offer, enabled merchant, and a merchant-allowed affiliate URL host.
+```text
+ENABLE_OFFER_MATCHING=false
+ENABLE_LIVE_AFFILIATE_APIS=false
+```
 
-Example: a Baseus charger can be suggested for a travel GaN charger buyer guide, but it stays draft until a human approves the placement. Only then can the public page use `/api/affiliate-click?placementId=...`.
+If `match-affiliate-offers` is called with default flags, the CLI prints that it is disabled and points back to product candidate analysis.
+
+Example: a USB-C charger article may receive product candidates from a manual CSV. The analysis block can say what to verify
+before linking, but it must not insert monetized links. A human review must approve candidates before any placement draft exists.

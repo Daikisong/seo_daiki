@@ -270,76 +270,116 @@
   "crossMarketPatterns": [
     {
       "topic": "beauty ingredient",
+      "type": "local_only_trend",
       "markets": [
+        "fr"
+      ],
+      "languages": [
         "fr"
       ],
       "classification": "local-only trend",
       "reason": "1 market(s) currently show signal.",
-      "laggingMarketOpportunity": false
+      "laggingMarketOpportunity": false,
+      "crossLanguageSynonymCluster": false
     },
     {
       "topic": "budget smartwatch",
+      "type": "local_only_trend",
       "markets": [
         "mx"
       ],
-      "classification": "local-only trend",
-      "reason": "1 market(s) currently show signal.",
-      "laggingMarketOpportunity": false
-    },
-    {
-      "topic": "compact desk gadget",
-      "markets": [
-        "jp"
-      ],
-      "classification": "local-only trend",
-      "reason": "1 market(s) currently show signal.",
-      "laggingMarketOpportunity": false
-    },
-    {
-      "topic": "gut health",
-      "markets": [
-        "kr"
-      ],
-      "classification": "local-only trend",
-      "reason": "1 market(s) currently show signal.",
-      "laggingMarketOpportunity": false
-    },
-    {
-      "topic": "magnesium sleep",
-      "markets": [
-        "us"
-      ],
-      "classification": "local-only trend",
-      "reason": "1 market(s) currently show signal.",
-      "laggingMarketOpportunity": false
-    },
-    {
-      "topic": "power bank real capacity",
-      "markets": [
-        "br"
-      ],
-      "classification": "local-only trend",
-      "reason": "1 market(s) currently show signal.",
-      "laggingMarketOpportunity": false
-    },
-    {
-      "topic": "travel adapter",
-      "markets": [
-        "de"
-      ],
-      "classification": "local-only trend",
-      "reason": "1 market(s) currently show signal.",
-      "laggingMarketOpportunity": false
-    },
-    {
-      "topic": "usb charger",
-      "markets": [
+      "languages": [
         "es"
       ],
       "classification": "local-only trend",
       "reason": "1 market(s) currently show signal.",
-      "laggingMarketOpportunity": false
+      "laggingMarketOpportunity": false,
+      "crossLanguageSynonymCluster": false
+    },
+    {
+      "topic": "compact desk gadget",
+      "type": "local_only_trend",
+      "markets": [
+        "jp"
+      ],
+      "languages": [
+        "ja"
+      ],
+      "classification": "local-only trend",
+      "reason": "1 market(s) currently show signal.",
+      "laggingMarketOpportunity": false,
+      "crossLanguageSynonymCluster": false
+    },
+    {
+      "topic": "gut health",
+      "type": "local_only_trend",
+      "markets": [
+        "kr"
+      ],
+      "languages": [
+        "ko"
+      ],
+      "classification": "local-only trend",
+      "reason": "1 market(s) currently show signal.",
+      "laggingMarketOpportunity": false,
+      "crossLanguageSynonymCluster": false
+    },
+    {
+      "topic": "magnesium sleep",
+      "type": "local_only_trend",
+      "markets": [
+        "us"
+      ],
+      "languages": [
+        "en"
+      ],
+      "classification": "local-only trend",
+      "reason": "1 market(s) currently show signal.",
+      "laggingMarketOpportunity": false,
+      "crossLanguageSynonymCluster": false
+    },
+    {
+      "topic": "power bank real capacity",
+      "type": "local_only_trend",
+      "markets": [
+        "br"
+      ],
+      "languages": [
+        "pt-br"
+      ],
+      "classification": "local-only trend",
+      "reason": "1 market(s) currently show signal.",
+      "laggingMarketOpportunity": false,
+      "crossLanguageSynonymCluster": false
+    },
+    {
+      "topic": "travel adapter",
+      "type": "local_only_trend",
+      "markets": [
+        "de"
+      ],
+      "languages": [
+        "de"
+      ],
+      "classification": "local-only trend",
+      "reason": "1 market(s) currently show signal.",
+      "laggingMarketOpportunity": false,
+      "crossLanguageSynonymCluster": false
+    },
+    {
+      "topic": "usb charger",
+      "type": "local_only_trend",
+      "markets": [
+        "es"
+      ],
+      "languages": [
+        "es"
+      ],
+      "classification": "local-only trend",
+      "reason": "1 market(s) currently show signal.",
+      "laggingMarketOpportunity": false,
+      "crossLanguageSynonymCluster": false
     }
   ],
-  "generatedAt": "2026-05-26T20:29:38.872001+00:00"
+  "generatedAt": "2026-05-27T11:50:17.220996+00:00"
 }

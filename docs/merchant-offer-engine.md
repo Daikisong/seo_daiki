@@ -1,6 +1,21 @@
 # Merchant Offer Engine
 
-The affiliate engine replaces loose article JSON links with database-backed commerce records.
+This is a kept-but-later subsystem. The database-backed merchant and placement models remain useful, but they are no
+longer the center of the default pipeline.
+
+The active default pipeline stops at test posts:
+
+```text
+trend -> SERP -> strategy -> test article
+```
+
+Product candidates and monetized placements happen later:
+
+```text
+test article -> product candidate analysis -> human review -> optional placement draft
+```
+
+Live merchant APIs and automatic link insertion remain disabled.
 
 ## Core Tables
 
@@ -48,4 +63,6 @@ The admin dashboard includes:
 - `/admin/offers`
 - `/admin/placements`
 
-These pages read from Postgres when `DATABASE_URL` is configured. They are intentionally read-only at this phase, so approval and import workflows can be added after trend/offer matching is in place.
+These pages read from Postgres when `DATABASE_URL` is configured. Treat them as later-phase commerce administration,
+not as the first step of content production. Product candidate analysis and monetization review should happen before
+any placement is created.

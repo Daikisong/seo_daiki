@@ -46,11 +46,18 @@ class TrendRulesTest(unittest.TestCase):
         self.assertGreater(trend_score_from_breakdown(breakdown), 0)
 
     def test_cross_market_patterns_classify_global_and_local(self) -> None:
-        global_rows = [{"market": market, "canonicalTopic": "usb c charger"} for market in ["us", "gb", "es", "mx"]]
-        local_rows = [{"market": "br", "canonicalTopic": "power bank real capacity"}]
+        global_rows = [
+            {"market": market, "language": language, "canonicalTopic": "usb c charger"}
+            for market, language in [("us", "en"), ("gb", "en"), ("es", "es"), ("mx", "es")]
+        ]
+        local_rows = [{"market": "br", "language": "pt-br", "canonicalTopic": "power bank real capacity"}]
         patterns = cross_market_patterns(global_rows + local_rows)
         by_topic = {pattern["topic"]: pattern for pattern in patterns}
+        self.assertEqual(by_topic["usb charger"]["type"], "global_trend")
         self.assertEqual(by_topic["usb charger"]["classification"], "global trend")
+        self.assertTrue(by_topic["usb charger"]["crossLanguageSynonymCluster"])
+        self.assertTrue(by_topic["usb charger"]["laggingMarketOpportunity"])
+        self.assertEqual(by_topic["power bank real capacity"]["type"], "local_only_trend")
         self.assertEqual(by_topic["power bank real capacity"]["classification"], "local-only trend")
 
     def test_score_and_bucket_are_bounded(self) -> None:

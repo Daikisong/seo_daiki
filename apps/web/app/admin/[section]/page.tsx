@@ -1089,10 +1089,11 @@ async function AdminTable({ filters, section }: { filters: Record<string, string
     const [candidates, placements] = await Promise.all([readAffiliatePlacementCandidates(), readAffiliatePlacements()]);
     return (
       <div className="space-y-8">
-        <AdminPanel title="Offer matching candidates">
+        <AdminPanel title="Later-phase monetization candidates">
           {candidates.length === 0 ? (
             <p className="text-sm text-neutral-700">
-              No placement candidate export is available. Run <code>python3 workers/python/cli.py match-affiliate-offers</code> to generate draft candidates.
+              Offer matching is a later-phase feature flag. Run <code>pnpm pipeline:post-to-product-analysis</code> first,
+              then create a monetization review only after human approval.
             </p>
           ) : (
             <table>

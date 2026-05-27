@@ -1,25 +1,28 @@
 # Trend Engine
 
-This is the Phase 4 operating guide for trend discovery and topic brief generation.
+This older page is kept as a compatibility pointer. The active trend-first design is documented in:
 
-The local v1 engine is CSV-first and safe by default:
+- `docs/trend-engine-v1.md`
+- `docs/trend-signal-schema.md`
+- `docs/trend-scoring.md`
+- `docs/cross-market-trend-map.md`
+- `docs/pipeline-priority.md`
 
-- no Google SERP scraping
-- no automated community posting
-- no external API calls unless a future adapter is explicitly configured
-- no publishing without the article quality and compliance gates
+The current default flow is:
 
-## Commands
-
-```bash
-python3 workers/python/cli.py import-trend-signals --file data/seeds/trend-signals.csv
-python3 workers/python/cli.py cluster-topics
-python3 workers/python/cli.py score-topics
-python3 workers/python/cli.py generate-content-briefs
-python3 workers/python/cli.py match-affiliate-offers --offers-file data/seeds/offers.csv
-python3 workers/python/cli.py generate-topic-draft --topic-id topic-travel-gan-charger-buyer-guide --locale en
-python3 workers/python/cli.py localize-topic-draft --article-id draft-article-brief-travel-gan-charger-buyer-guide-en --locale es
-python3 workers/python/cli.py run-publishing-gate
+```text
+trend import -> trend cluster -> trend score -> keyword generation -> SERP analysis -> strategy -> test post
 ```
 
-The same details are expanded in `docs/trend-topic-engine.md`.
+Use the new commands:
+
+```bash
+pnpm trend:import
+pnpm trend:cluster
+pnpm trend:score
+pnpm trend:report
+pnpm pipeline:trend-to-post
+```
+
+Offer matching, distribution drafts, outreach drafts, and live affiliate APIs are not part of the default trend engine.
+They remain disabled by feature flags and are later-phase workflows.
