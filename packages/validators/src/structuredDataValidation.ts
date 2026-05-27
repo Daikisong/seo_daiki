@@ -10,7 +10,14 @@ import {
   canonicalForArticle,
   sectionHrefForArticle
 } from "@global-import-lab/seo";
-import { arrayField, isRecord, normalizeUrl, recordField, stringField } from "./validationUtils";
+import {
+  internalLinkSchemaItems,
+  requireSchemaType,
+  requireTextField,
+  requireUrlField,
+  validateItemListSchema
+} from "./structuredDataRules";
+import { arrayField, isRecord, recordField, stringField } from "./validationUtils";
 import type { QualityGateInput, ValidationIssue } from "./types";
 
 export function validateStructuredData(input: QualityGateInput): ValidationIssue[] {
@@ -268,89 +275,4 @@ function validateCollectionSchema(issues: ValidationIssue[], article: Article, c
   }
 
   validateItemListSchema(issues, mainEntity, "schema_collection_item_list_invalid", article.internalLinks.length);
-}
-
-function validateItemListSchema(
-  issues: ValidationIssue[],
-  itemList: Record<string, unknown>,
-  code: string,
-  expectedItems: number
-) {
-  requireSchemaType(issues, itemList, "ItemList", code, "ItemList JSON-LD must use @type ItemList.");
-
-  const elements = arrayField(itemList, "itemListElement");
-  if (elements.length !== expectedItems) {
-    issues.push({
-      code,
-      message: `ItemList JSON-LD should expose ${expectedItems} items; found ${elements.length}.`,
-      severity: "blocker"
-    });
-  }
-
-  for (const element of elements) {
-    if (!isRecord(element)) {
-      issues.push({
-        code,
-        message: "ItemList JSON-LD list items must be objects.",
-        severity: "blocker"
-      });
-      continue;
-    }
-
-    requireSchemaType(issues, element, "ListItem", code, "ItemList JSON-LD entries must use @type ListItem.");
-    requireTextField(issues, element, "name", code, "ItemList JSON-LD entries need a name.");
-    const url = stringField(element, "url");
-    if (!url || !/^https?:\/\//i.test(url)) {
-      issues.push({
-        code,
-        message: "ItemList JSON-LD entries need absolute URLs.",
-        severity: "blocker"
-      });
-    }
-  }
-}
-
-function internalLinkSchemaItems(article: Article) {
-  return article.internalLinks.map((link) => ({
-    name: link.label,
-    url: /^https?:\/\//i.test(link.href) ? link.href : absoluteUrl(link.href)
-  }));
-}
-
-function requireSchemaType(
-  issues: ValidationIssue[],
-  schema: Record<string, unknown>,
-  expectedType: string,
-  code: string,
-  message: string
-) {
-  if (stringField(schema, "@type") !== expectedType) {
-    issues.push({ code, message, severity: "blocker" });
-  }
-}
-
-function requireTextField(
-  issues: ValidationIssue[],
-  schema: Record<string, unknown>,
-  field: string,
-  code: string,
-  message: string
-) {
-  if (!stringField(schema, field)?.trim()) {
-    issues.push({ code, message, severity: "blocker" });
-  }
-}
-
-function requireUrlField(
-  issues: ValidationIssue[],
-  schema: Record<string, unknown>,
-  field: string,
-  expectedUrl: string,
-  code: string,
-  message: string
-) {
-  const value = stringField(schema, field);
-  if (!value || normalizeUrl(value) !== normalizeUrl(expectedUrl)) {
-    issues.push({ code, message, severity: "blocker" });
-  }
 }
