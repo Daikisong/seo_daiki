@@ -1,5 +1,7 @@
 import type { Article, HreflangMap, MarketConfig } from "@global-import-lab/types";
-import { absoluteUrl, canonicalForArticle, getSiteUrl, hreflangKeyForArticle, marketContentPath, marketPath, marketSectionPath } from "./canonical";
+import { canonicalForArticle, hreflangKeyForArticle } from "./article-routes";
+import { marketContentPath, marketPath, marketSectionPath } from "./market-routes";
+import { absoluteUrl, getSiteUrl } from "./site-url";
 
 export function buildHreflangMap(groupedArticles: Article[], current: Article, siteUrl = getSiteUrl()) {
   const sameTypeAndSlugFamily = groupedArticles.filter((article) => article.id === current.id || article.slug === current.slug);

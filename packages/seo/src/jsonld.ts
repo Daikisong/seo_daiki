@@ -1,5 +1,7 @@
 import type { Article, Product } from "@global-import-lab/types";
-import { canonicalForArticle, getSiteUrl, localeConfig } from "./canonical";
+import { canonicalForArticle } from "./article-routes";
+import { localeConfig } from "./locale-config";
+import { getSiteUrl } from "./site-url";
 
 export function buildBreadcrumbJsonLd(items: Array<{ name: string; url: string }>) {
   return {

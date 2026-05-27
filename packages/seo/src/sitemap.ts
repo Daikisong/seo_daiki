@@ -1,5 +1,5 @@
 import type { Article } from "@global-import-lab/types";
-import { canonicalForArticle } from "./canonical";
+import { canonicalForArticle } from "./article-routes";
 
 export function shouldIncludeInSitemap(article: Article) {
   return article.publishStatus === "published" && article.indexStatus === "index";
