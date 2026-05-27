@@ -6,6 +6,16 @@ import { runQualityGate } from "@global-import-lab/validators";
 import { affiliateMerchantRow, affiliateOfferRow, affiliatePlacementRow } from "./admin-affiliate-row-model";
 import { buildSampleComplianceRows } from "./admin-compliance-model";
 import {
+  mapAuditLogRow,
+  mapDbComplianceArticleRow,
+  mapDbContentBriefRow,
+  mapDbLocalizationGroupRow,
+  mapDbPublishingJobRow,
+  mapDbTopicRow,
+  mapDbTrendSignalRow,
+  mapLabEvidenceAssetRow
+} from "./admin-section-db-mappers";
+import {
   duplicateCandidateCountsFromRows,
   matchesTrendFilters,
   normalizeAffiliatePlacementCandidateRows,
@@ -18,13 +28,8 @@ import {
   normalizeTrendSignalRows
 } from "./admin-section-normalizers";
 import {
-  complianceIssuesFromJson,
   findProjectRoot,
-  isRecord,
-  numericRecord,
-  outlineHeadings,
-  stringArrayFromUnknown,
-  summarizeJson
+  isRecord
 } from "./admin-section-utils";
 
 export interface AffiliatePlacementCandidateRow {
@@ -83,15 +88,7 @@ export async function readAuditLogs() {
   try {
     const { getAuditLogs } = await import("@global-import-lab/db/admin-mutations");
     const logs = await getAuditLogs(50);
-    return logs.map((log) => ({
-      id: log.id,
-      entityType: log.entityType,
-      entityId: log.entityId,
-      action: log.action,
-      actor: log.actor,
-      summary: log.summary,
-      createdAt: log.createdAt.toISOString()
-    }));
+    return logs.map(mapAuditLogRow);
   } catch (error) {
     console.warn("Audit logs unavailable.", error);
     return [];
@@ -104,18 +101,7 @@ export async function readTrendRows(filters: { country?: string; locale?: string
       const operations = await import("@global-import-lab/db/operations-admin");
       const rows = await operations.listTrendSignals();
       return rows
-        .map((row) => ({
-          id: row.id,
-          locale: row.locale,
-          country: row.country,
-          query: row.query,
-          topicRaw: row.topicRaw,
-          growthScore: row.growthScore,
-          commercialScore: row.commercialScore,
-          evidenceFitScore: row.evidenceFitScore,
-          affiliateFitScore: row.affiliateFitScore,
-          sourceName: row.source.name
-        }))
+        .map(mapDbTrendSignalRow)
         .filter((row) => matchesTrendFilters(row, filters));
     } catch (error) {
       console.warn("Trend signals unavailable.", error);
@@ -132,21 +118,7 @@ export async function readTopicRows() {
     try {
       const operations = await import("@global-import-lab/db/operations-admin");
       const rows = await operations.listTopics();
-      return rows.map((row) => ({
-        id: row.id,
-        canonicalTopic: row.canonicalTopic,
-        slug: row.slug,
-        intent: row.intent,
-        healthSensitive: row.healthSensitive,
-        primaryLocale: row.primaryLocale,
-        status: row.status,
-        score: row.score,
-        scoreBreakdown: isRecord(row.scoreBreakdown) ? numericRecord(row.scoreBreakdown) : {},
-        signalCount: row._count.topicSignals,
-        briefCount: row._count.contentBriefs,
-        offerCount: row._count.offers,
-        dbBacked: true
-      }));
+      return rows.map(mapDbTopicRow);
     } catch (error) {
       console.warn("Topics unavailable.", error);
     }
@@ -162,19 +134,7 @@ export async function readContentBriefRows() {
     try {
       const operations = await import("@global-import-lab/db/operations-admin");
       const rows = await operations.listContentBriefs();
-      return rows.map((row) => ({
-        id: row.id,
-        topicId: row.topicId,
-        topicLabel: row.topic.canonicalTopic,
-        locale: row.locale,
-        articleType: row.articleType,
-        titleCandidate: row.titleCandidate,
-        searchIntent: row.searchIntent,
-        outline: outlineHeadings(row.outlineJson),
-        requiredEvidence: stringArrayFromUnknown(row.requiredEvidence),
-        status: row.status,
-        dbBacked: true
-      }));
+      return rows.map(mapDbContentBriefRow);
     } catch (error) {
       console.warn("Content briefs unavailable.", error);
     }
@@ -190,16 +150,7 @@ export async function readPublishingJobRows() {
     try {
       const operations = await import("@global-import-lab/db/operations-admin");
       const rows = await operations.listPublishingJobs();
-      return rows.map((row) => ({
-        id: row.id,
-        locale: row.locale,
-        jobType: row.jobType,
-        status: row.status,
-        targetLabel: row.article?.title ?? row.topic?.canonicalTopic ?? row.articleId ?? row.topicId ?? "-",
-        outputSummary: summarizeJson(row.outputJson),
-        error: row.error,
-        dbBacked: true
-      }));
+      return rows.map(mapDbPublishingJobRow);
     } catch (error) {
       console.warn("Publishing jobs unavailable.", error);
     }
@@ -219,18 +170,7 @@ export async function readComplianceRows(
     try {
       const operations = await import("@global-import-lab/db/operations-admin");
       const rows = await operations.listComplianceArticles();
-      return rows.map((row) => ({
-        id: row.id,
-        title: row.title,
-        locale: row.locale,
-        type: row.type,
-        slug: row.slug,
-        publishStatus: row.publishStatus,
-        indexStatus: row.indexStatus,
-        healthSensitivity: row.healthSensitivity,
-        complianceStatus: row.complianceStatus,
-        issues: complianceIssuesFromJson(row.complianceJson)
-      }));
+      return rows.map(mapDbComplianceArticleRow);
     } catch (error) {
       console.warn("Compliance rows unavailable.", error);
     }
@@ -255,16 +195,7 @@ export async function readLocalizationRows() {
     try {
       const operations = await import("@global-import-lab/db/operations-admin");
       const rows = await operations.listLocalizationGroups();
-      return rows.map((row) => ({
-        id: row.id,
-        topicLabel: row.canonicalTopic?.canonicalTopic ?? "translation group",
-        sourceLabel: row.sourceArticle ? `${row.sourceArticle.locale}/${row.sourceArticle.type}/${row.sourceArticle.slug}` : "-",
-        variants: row.variants.map((variant) => ({
-          locale: variant.locale,
-          status: variant.status,
-          localizationDepthScore: variant.localizationDepthScore
-        }))
-      }));
+      return rows.map(mapDbLocalizationGroupRow);
     } catch (error) {
       console.warn("Localization groups unavailable.", error);
     }
@@ -340,16 +271,7 @@ export async function readLabEvidenceAssets() {
   try {
     const { listLabEvidenceAssets } = await import("@global-import-lab/db/lab-evidence");
     const assets = await listLabEvidenceAssets();
-    return assets.map((asset) => ({
-      id: asset.id,
-      productId: asset.productId,
-      verifiedClaimId: asset.verifiedClaimId,
-      measurementType: asset.measurementType,
-      fileName: asset.fileName,
-      publicUrl: asset.publicUrl,
-      sizeBytes: asset.sizeBytes,
-      uploadedAt: asset.uploadedAt.toISOString()
-    }));
+    return assets.map(mapLabEvidenceAssetRow);
   } catch (error) {
     console.warn("Lab evidence assets unavailable.", error);
     return [];
