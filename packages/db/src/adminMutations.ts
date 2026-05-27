@@ -3,6 +3,20 @@ import type { Prisma } from "./generated/prisma/client";
 import { getDbArticles, getDbEvidencePacks, getDbProducts } from "./contentRepository";
 import { runQualityGate, type ValidationIssue } from "@global-import-lab/validators";
 import {
+  evidencePackMutationData,
+  marketRiskMutationData,
+  productMutationData,
+  sellerClaimMutationData,
+  variantMutationData,
+  verifiedClaimMutationData,
+  type EvidencePackMutationInput,
+  type MarketRiskMutationInput,
+  type ProductMutationInput,
+  type SellerClaimMutationInput,
+  type VariantMutationInput,
+  type VerifiedClaimMutationInput
+} from "./adminMutationPayloads";
+import {
   adminEntityTypes,
   adminRecordActions,
   archiveSummary,
@@ -115,23 +129,8 @@ export async function updateArticleState(input: {
   });
 }
 
-export async function upsertProduct(input: {
-  id?: string;
-  canonicalName: string;
-  slug: string;
-  category: string;
-  brandClaim?: string;
-  identityConfidence?: number;
-  imageHash?: string;
-}) {
-  const data = {
-    canonicalName: input.canonicalName,
-    slug: input.slug,
-    category: input.category,
-    brandClaim: input.brandClaim,
-    identityConfidence: input.identityConfidence ?? 0.7,
-    imageHash: input.imageHash
-  };
+export async function upsertProduct(input: ProductMutationInput) {
+  const data = productMutationData(input);
 
   if (input.id) {
     return prisma.product.update({
@@ -147,33 +146,8 @@ export async function upsertProduct(input: {
   });
 }
 
-export async function upsertVariant(input: {
-  id?: string;
-  productId: string;
-  optionName: string;
-  sourceUrl: string;
-  sourceSku?: string;
-  wattageClaim?: number;
-  plugType?: string;
-  cableIncluded?: boolean;
-  affiliateUrl?: string;
-  sellerName?: string;
-  sellerId?: string;
-  riskFlags?: string[];
-}) {
-  const data = {
-    productId: input.productId,
-    optionName: input.optionName,
-    sourceUrl: input.sourceUrl,
-    sourceSku: input.sourceSku,
-    wattageClaim: input.wattageClaim,
-    plugType: input.plugType,
-    cableIncluded: input.cableIncluded,
-    affiliateUrl: input.affiliateUrl,
-    sellerName: input.sellerName,
-    sellerId: input.sellerId,
-    riskFlags: toJson(input.riskFlags ?? [])
-  };
+export async function upsertVariant(input: VariantMutationInput) {
+  const data = variantMutationData(input);
 
   if (input.id) {
     return prisma.variant.update({
@@ -189,23 +163,8 @@ export async function upsertVariant(input: {
   });
 }
 
-export async function upsertSellerClaim(input: {
-  id?: string;
-  productId: string;
-  claimType: string;
-  claimValue: string;
-  rawText?: string;
-  sourceUrl?: string;
-  confidence?: number;
-}) {
-  const data = {
-    productId: input.productId,
-    claimType: input.claimType,
-    claimValue: input.claimValue,
-    rawText: input.rawText,
-    sourceUrl: input.sourceUrl,
-    confidence: input.confidence ?? 0.5
-  };
+export async function upsertSellerClaim(input: SellerClaimMutationInput) {
+  const data = sellerClaimMutationData(input);
 
   if (input.id) {
     return prisma.sellerClaim.update({
@@ -221,27 +180,8 @@ export async function upsertSellerClaim(input: {
   });
 }
 
-export async function upsertVerifiedClaim(input: {
-  id?: string;
-  productId: string;
-  testType: string;
-  resultValue: string;
-  unit?: string;
-  method: string;
-  evidenceUrl?: string;
-  confidence?: number;
-  testedAt?: Date;
-}) {
-  const data = {
-    productId: input.productId,
-    testType: input.testType,
-    resultValue: input.resultValue,
-    unit: input.unit,
-    method: input.method,
-    evidenceUrl: input.evidenceUrl,
-    confidence: input.confidence ?? 0.8,
-    testedAt: input.testedAt
-  };
+export async function upsertVerifiedClaim(input: VerifiedClaimMutationInput) {
+  const data = verifiedClaimMutationData(input);
 
   if (input.id) {
     return prisma.verifiedClaim.update({
@@ -257,29 +197,8 @@ export async function upsertVerifiedClaim(input: {
   });
 }
 
-export async function upsertMarketRisk(input: {
-  id?: string;
-  productId: string;
-  locale: string;
-  country?: string;
-  plugRisk?: string;
-  customsRisk?: string;
-  certificationRisk?: string;
-  returnRisk?: string;
-  localAlternativeNote?: string;
-  score?: number;
-}) {
-  const data = {
-    productId: input.productId,
-    locale: input.locale,
-    country: input.country,
-    plugRisk: input.plugRisk,
-    customsRisk: input.customsRisk,
-    certificationRisk: input.certificationRisk,
-    returnRisk: input.returnRisk,
-    localAlternativeNote: input.localAlternativeNote,
-    score: input.score ?? 0.5
-  };
+export async function upsertMarketRisk(input: MarketRiskMutationInput) {
+  const data = marketRiskMutationData(input);
 
   if (input.id) {
     return prisma.marketRisk.update({
@@ -295,17 +214,8 @@ export async function upsertMarketRisk(input: {
   });
 }
 
-export async function upsertEvidencePack(input: {
-  id?: string;
-  productId?: string;
-  locale: string;
-  packJson: unknown;
-}) {
-  const data = {
-    productId: input.productId,
-    locale: input.locale,
-    packJson: toJson(input.packJson)
-  };
+export async function upsertEvidencePack(input: EvidencePackMutationInput) {
+  const data = evidencePackMutationData(input);
 
   if (input.id) {
     return prisma.evidencePack.update({
