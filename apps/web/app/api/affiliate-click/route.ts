@@ -1,14 +1,25 @@
 import { NextRequest, NextResponse } from "next/server";
+import { isAffiliateRedirectError } from "./affiliate-click-errors";
+import {
+  collectUtmFromSearchParams,
+  optionalSearchParam,
+  referrerFromHeaders
+} from "./affiliate-click-request";
+import { isSafeHttpUrl, isUnsafeTargetRedirectAllowed } from "./affiliate-click-target-rules";
 
 export async function GET(request: NextRequest) {
   const placementId = request.nextUrl.searchParams.get("placementId");
+  const searchParams = request.nextUrl.searchParams;
+  const referrer = referrerFromHeaders(request.headers);
+  const utm = collectUtmFromSearchParams(searchParams);
+
   if (placementId) {
     try {
       const { resolveAffiliatePlacementRedirect } = await import("@global-import-lab/db/affiliate-clicks");
       const redirect = await resolveAffiliatePlacementRedirect({
         placementId,
-        referrer: request.headers.get("referer") ?? undefined,
-        utm: collectUtm(request)
+        referrer,
+        utm
       });
 
       return NextResponse.redirect(redirect.targetUrl, 302);
@@ -35,13 +46,13 @@ export async function GET(request: NextRequest) {
     try {
       const { recordAffiliateClick } = await import("@global-import-lab/db/affiliate-clicks");
       await recordAffiliateClick({
-        articleId: request.nextUrl.searchParams.get("articleId") ?? undefined,
-        productId: request.nextUrl.searchParams.get("productId") ?? undefined,
-        variantId: request.nextUrl.searchParams.get("variantId") ?? undefined,
-        locale: request.nextUrl.searchParams.get("locale") ?? undefined,
+        articleId: optionalSearchParam(searchParams, "articleId"),
+        productId: optionalSearchParam(searchParams, "productId"),
+        variantId: optionalSearchParam(searchParams, "variantId"),
+        locale: optionalSearchParam(searchParams, "locale"),
         targetUrl,
-        referrer: request.headers.get("referer") ?? undefined,
-        utm: collectUtm(request)
+        referrer,
+        utm
       });
     } catch (error) {
       console.warn("Affiliate click tracking failed; redirecting without blocking the visitor.", error);
@@ -49,43 +60,4 @@ export async function GET(request: NextRequest) {
   }
 
   return NextResponse.redirect(targetUrl, 302);
-}
-
-function isUnsafeTargetRedirectAllowed() {
-  return process.env.NODE_ENV !== "production" && process.env.ALLOW_UNSAFE_AFFILIATE_TARGET_REDIRECT === "true";
-}
-
-function isSafeHttpUrl(value: string) {
-  try {
-    const url = new URL(value);
-    return url.protocol === "https:" || url.protocol === "http:";
-  } catch {
-    return false;
-  }
-}
-
-function collectUtm(request: NextRequest) {
-  const utm: Record<string, string> = {};
-  for (const key of ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"]) {
-    const value = request.nextUrl.searchParams.get(key);
-    if (value) {
-      utm[key] = value;
-    }
-  }
-  return utm;
-}
-
-function isAffiliateRedirectError(error: unknown): error is { name: string; message: string; status: number } {
-  if (!error || typeof error !== "object") {
-    return false;
-  }
-
-  return (
-    "name" in error &&
-    error.name === "AffiliateRedirectError" &&
-    "message" in error &&
-    typeof error.message === "string" &&
-    "status" in error &&
-    typeof error.status === "number"
-  );
 }
