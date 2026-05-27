@@ -1,6 +1,7 @@
-import { numberValue, parseCableIncluded, parsePlugType, parseWattage, stringValue } from "./workerImportParsing";
 import { toJson } from "./workerImportJson";
+import { parseCableIncluded, parsePlugType, parseWattage } from "./workerImportProductParsing";
 import type { ProductImportContext } from "./workerImportTypes";
+import { numberValue, stringValue } from "./workerImportValueParsing";
 
 export function productUpsertData(context: ProductImportContext) {
   return {

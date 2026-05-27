@@ -1,4 +1,5 @@
-import { numberValue, refreshSuggestionPayload, stringValue } from "./workerImportParsing";
+import { refreshSuggestionPayload } from "./workerImportSearchConsoleParsing";
+import { numberValue, stringValue } from "./workerImportValueParsing";
 
 export function searchConsoleMetricInput(row: Record<string, unknown>) {
   return {

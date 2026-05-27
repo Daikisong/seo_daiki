@@ -1,15 +1,14 @@
 import {
   claimKey,
-  inferBrand,
   priceKey,
   riskKey,
   signalKey,
-  slugify,
-  stringValue,
   uniqueRows,
   variantKey,
   verifiedClaimKey
-} from "./workerImportParsing";
+} from "./workerImportDeduplication";
+import { inferBrand, slugify } from "./workerImportProductParsing";
+import { stringValue } from "./workerImportValueParsing";
 import type { ProductImportContext, WorkerPack } from "./workerImportTypes";
 
 export function groupWorkerPacksByProduct(packs: WorkerPack[]) {

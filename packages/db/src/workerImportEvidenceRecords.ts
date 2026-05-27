@@ -1,6 +1,6 @@
-import { dateValue, numberValue, stringValue } from "./workerImportParsing";
 import { toJson } from "./workerImportJson";
 import type { WorkerPack } from "./workerImportTypes";
+import { dateValue, numberValue, stringValue } from "./workerImportValueParsing";
 
 export function sellerClaimCreateData(productId: string, product: Record<string, unknown>, claim: Record<string, unknown>) {
   return {
