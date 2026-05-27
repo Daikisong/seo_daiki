@@ -3,8 +3,10 @@ import type { ValidationIssue } from "@global-import-lab/validators";
 import {
   adminEntityTypes,
   adminRecordActions,
+  archiveMutationData,
   archiveSummary,
   collectArticleStateGateBlockers,
+  deleteSummary,
   indexStatuses,
   isAdminEntityType,
   isAdminRecordAction,
@@ -12,6 +14,8 @@ import {
   isPublishStatus,
   normalizeArticleStateInput,
   publishStatuses,
+  relatedArticleArchiveData,
+  shouldArchiveRelatedArticles,
   toJson
 } from "../packages/db/src/adminMutationRules";
 
@@ -95,6 +99,22 @@ assert.equal(stateBlockers.every((issue) => issue.severity === "blocker"), true)
 assert.equal(archiveSummary("product"), "Archived product and marked related articles noindex/draft.");
 assert.equal(archiveSummary("article"), "Archived article and marked it noindex/draft.");
 assert.equal(archiveSummary("variant"), "Archived variant.");
+
+const archivedAt = new Date("2026-05-27T00:00:00.000Z");
+assert.deepEqual(archiveMutationData("variant", archivedAt), { archivedAt });
+assert.deepEqual(archiveMutationData("article", archivedAt), {
+  archivedAt,
+  indexStatus: "noindex",
+  publishStatus: "draft"
+});
+assert.equal(shouldArchiveRelatedArticles("product"), true);
+assert.equal(shouldArchiveRelatedArticles("article"), false);
+assert.deepEqual(relatedArticleArchiveData(archivedAt), {
+  archivedAt,
+  indexStatus: "noindex",
+  publishStatus: "draft"
+});
+assert.equal(deleteSummary("market-risk"), "Deleted market-risk.");
 
 assert.deepEqual(toJson({ keep: "value", drop: undefined, nested: { count: 2 } }), {
   keep: "value",

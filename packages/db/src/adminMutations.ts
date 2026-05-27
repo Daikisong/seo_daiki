@@ -1,7 +1,7 @@
 import { prisma } from "./client";
-import type { Prisma } from "./generated/prisma/client";
 import { getDbArticles, getDbEvidencePacks, getDbProducts } from "./contentRepository";
 import { runQualityGate, type ValidationIssue } from "@global-import-lab/validators";
+import { deleteAdminRecordByType, findAdminRecord, updateArchivedAt } from "./adminRecordMutations";
 import {
   evidencePackMutationData,
   marketRiskMutationData,
@@ -21,6 +21,7 @@ import {
   adminRecordActions,
   archiveSummary,
   collectArticleStateGateBlockers,
+  deleteSummary,
   indexStatuses,
   isAdminEntityType,
   isAdminRecordAction,
@@ -28,6 +29,8 @@ import {
   isPublishStatus,
   normalizeArticleStateInput,
   publishStatuses,
+  relatedArticleArchiveData,
+  shouldArchiveRelatedArticles,
   toJson,
   type AdminEntityType,
   type AdminRecordAction,
@@ -240,10 +243,10 @@ export async function archiveAdminRecord(input: { entityType: AdminEntityType; e
     }
 
     const after = await updateArchivedAt(tx, input.entityType, input.entityId, archivedAt);
-    if (input.entityType === "product") {
+    if (shouldArchiveRelatedArticles(input.entityType)) {
       await tx.article.updateMany({
         where: { productId: input.entityId, archivedAt: null },
-        data: { archivedAt, indexStatus: "noindex", publishStatus: "draft" }
+        data: relatedArticleArchiveData(archivedAt)
       });
     }
 
@@ -270,14 +273,14 @@ export async function deleteAdminRecord(input: { entityType: AdminEntityType; en
       throw new Error(`${input.entityType} ${input.entityId} was not found.`);
     }
 
-    await deleteRecord(tx, input.entityType, input.entityId);
+    await deleteAdminRecordByType(tx, input.entityType, input.entityId);
     await tx.auditLog.create({
       data: {
         entityType: input.entityType,
         entityId: input.entityId,
         action: "delete",
         actor: input.actor,
-        summary: `Deleted ${input.entityType}.`,
+        summary: deleteSummary(input.entityType),
         beforeJson: toJson(before)
       }
     });
@@ -314,8 +317,6 @@ export async function getAuditLogs(limit = 50) {
     take: limit
   });
 }
-
-type AdminMutationTransaction = Prisma.TransactionClient;
 
 async function evaluateArticleStateChange(input: ArticleStateInput): Promise<
   | { ok: true }
@@ -363,74 +364,4 @@ async function evaluateArticleStateChange(input: ArticleStateInput): Promise<
     gateStatus: result.indexStatus,
     gateScore: result.score
   };
-}
-
-async function findAdminRecord(tx: AdminMutationTransaction, entityType: AdminEntityType, entityId: string) {
-  if (entityType === "product") {
-    return tx.product.findUnique({ where: { id: entityId } });
-  }
-  if (entityType === "variant") {
-    return tx.variant.findUnique({ where: { id: entityId } });
-  }
-  if (entityType === "seller-claim") {
-    return tx.sellerClaim.findUnique({ where: { id: entityId } });
-  }
-  if (entityType === "verified-claim") {
-    return tx.verifiedClaim.findUnique({ where: { id: entityId } });
-  }
-  if (entityType === "market-risk") {
-    return tx.marketRisk.findUnique({ where: { id: entityId } });
-  }
-  if (entityType === "evidence-pack") {
-    return tx.evidencePack.findUnique({ where: { id: entityId } });
-  }
-  return tx.article.findUnique({ where: { id: entityId } });
-}
-
-async function updateArchivedAt(
-  tx: AdminMutationTransaction,
-  entityType: AdminEntityType,
-  entityId: string,
-  archivedAt: Date
-) {
-  if (entityType === "product") {
-    return tx.product.update({ where: { id: entityId }, data: { archivedAt } });
-  }
-  if (entityType === "variant") {
-    return tx.variant.update({ where: { id: entityId }, data: { archivedAt } });
-  }
-  if (entityType === "seller-claim") {
-    return tx.sellerClaim.update({ where: { id: entityId }, data: { archivedAt } });
-  }
-  if (entityType === "verified-claim") {
-    return tx.verifiedClaim.update({ where: { id: entityId }, data: { archivedAt } });
-  }
-  if (entityType === "market-risk") {
-    return tx.marketRisk.update({ where: { id: entityId }, data: { archivedAt } });
-  }
-  if (entityType === "evidence-pack") {
-    return tx.evidencePack.update({ where: { id: entityId }, data: { archivedAt } });
-  }
-  return tx.article.update({
-    where: { id: entityId },
-    data: { archivedAt, indexStatus: "noindex", publishStatus: "draft" }
-  });
-}
-
-async function deleteRecord(tx: AdminMutationTransaction, entityType: AdminEntityType, entityId: string) {
-  if (entityType === "product") {
-    await tx.product.delete({ where: { id: entityId } });
-  } else if (entityType === "variant") {
-    await tx.variant.delete({ where: { id: entityId } });
-  } else if (entityType === "seller-claim") {
-    await tx.sellerClaim.delete({ where: { id: entityId } });
-  } else if (entityType === "verified-claim") {
-    await tx.verifiedClaim.delete({ where: { id: entityId } });
-  } else if (entityType === "market-risk") {
-    await tx.marketRisk.delete({ where: { id: entityId } });
-  } else if (entityType === "evidence-pack") {
-    await tx.evidencePack.delete({ where: { id: entityId } });
-  } else {
-    await tx.article.delete({ where: { id: entityId } });
-  }
 }
