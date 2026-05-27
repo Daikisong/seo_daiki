@@ -1,6 +1,8 @@
 # Next Tasks
 
-1. Production environment task: run the verified Prisma migration/seed flow against the managed Postgres instance that will back the deployed site.
+1. Finish the current modularization/refactor pass with focused unit tests and static verification.
+2. Apply the SEO structure safety patches documented in `docs/next-goal-seo-structure-patches.md`.
+3. Production environment task: run the verified Prisma migration/seed flow against the managed Postgres instance that will back the deployed site.
 
 Completed:
 
