@@ -2,9 +2,23 @@ import assert from "node:assert/strict";
 import type { Article, EvidencePack, Product } from "../packages/types/src";
 import {
   buildSampleComplianceRows,
+  complianceIssuePrefixes,
   isComplianceRelevantIssue,
   shouldSkipSampleComplianceRow
 } from "../apps/web/lib/admin/admin-compliance-model";
+import {
+  complianceIssuePrefixes as directComplianceIssuePrefixes,
+  isComplianceRelevantIssue as directIsComplianceRelevantIssue,
+  shouldSkipSampleComplianceRow as directShouldSkipSampleComplianceRow
+} from "../apps/web/lib/admin/admin-compliance-issue-policy";
+import {
+  buildSampleComplianceRows as directBuildSampleComplianceRows
+} from "../apps/web/lib/admin/admin-compliance-sample-rows";
+
+assert.equal(complianceIssuePrefixes, directComplianceIssuePrefixes);
+assert.equal(isComplianceRelevantIssue, directIsComplianceRelevantIssue);
+assert.equal(shouldSkipSampleComplianceRow, directShouldSkipSampleComplianceRow);
+assert.equal(buildSampleComplianceRows, directBuildSampleComplianceRows);
 
 const product = productFixture("product-1");
 const pack = evidencePackFixture(product.id);
