@@ -4,12 +4,13 @@ import {
   articleTermSet,
   evidenceOverlap,
   intersectionCount,
-  priceBand,
   productForArticle,
   riskOverlapScore,
   riskProblemOverlap
 } from "./internal-linking-article-signals";
+import { priceBandScore } from "./internal-linking-price-band-score";
 import { linkableArticleTypes } from "./internal-linking-taxonomy";
+import { typeAffinityScore } from "./internal-linking-type-affinity";
 import type { InternalLinkArticle } from "./internal-linking-types";
 
 export function scoreInternalLink(source: InternalLinkArticle, candidate: InternalLinkArticle, products: Product[]) {
@@ -63,65 +64,5 @@ export function sortScoredInternalLinks(
   return left.candidate.slug.localeCompare(right.candidate.slug);
 }
 
-export function typeAffinityScore(source: InternalLinkArticle, candidate: InternalLinkArticle) {
-  if (candidate.type === "trend" && source.type !== "trend") {
-    return 16;
-  }
-
-  if (candidate.type === "buyer_guide" && ["trend", "review", "compare", "deal_watch"].includes(source.type)) {
-    return 16;
-  }
-
-  if (candidate.type === "deal_watch" && ["buyer_guide", "review", "compare", "trend"].includes(source.type)) {
-    return 14;
-  }
-
-  if (candidate.type === "ingredient_guide" && ["trend", "buyer_guide"].includes(source.type)) {
-    return 14;
-  }
-
-  if (candidate.type === "hub" && source.type !== "hub") {
-    return 18;
-  }
-
-  if (candidate.type === "methodology" && source.type !== "methodology") {
-    return 14;
-  }
-
-  if ((candidate.type === "data" || candidate.type === "lab") && ["review", "guide", "compare", "risk"].includes(source.type)) {
-    return 14;
-  }
-
-  if (candidate.type === "risk" && ["review", "guide", "compare", "hub"].includes(source.type)) {
-    return 14;
-  }
-
-  if (candidate.type === "compare" && ["review", "guide", "hub", "risk"].includes(source.type)) {
-    return 10;
-  }
-
-  if (candidate.type === "guide" && ["review", "risk", "compare", "hub"].includes(source.type)) {
-    return 10;
-  }
-
-  if (candidate.type === "review" && ["guide", "compare", "hub", "risk"].includes(source.type)) {
-    return 8;
-  }
-
-  return 4;
-}
-
-function priceBandScore(sourceProduct?: Product, candidateProduct?: Product) {
-  const sourceBand = priceBand(sourceProduct);
-  const candidateBand = priceBand(candidateProduct);
-
-  if (!sourceBand || !candidateBand || sourceProduct?.id === candidateProduct?.id) {
-    return 0;
-  }
-
-  if (sourceBand === candidateBand) {
-    return 10;
-  }
-
-  return Math.abs(sourceBand - candidateBand) === 1 ? 5 : 0;
-}
+export { priceBandScore } from "./internal-linking-price-band-score";
+export { typeAffinityScore } from "./internal-linking-type-affinity";
