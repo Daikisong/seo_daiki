@@ -9,6 +9,29 @@ import {
   sellerClaimLabel,
   verifiedClaimLabel
 } from "../apps/web/lib/admin/admin-product-evidence-model";
+import {
+  nullableAdminText as directNullableAdminText,
+  sellerClaimLabel as directSellerClaimLabel,
+  verifiedClaimLabel as directVerifiedClaimLabel
+} from "../apps/web/lib/admin/admin-product-evidence-labels";
+import {
+  productMarketRiskRows as directProductMarketRiskRows,
+  productSellerClaimRows as directProductSellerClaimRows,
+  productVariantRows as directProductVariantRows,
+  productVerifiedClaimRows as directProductVerifiedClaimRows
+} from "../apps/web/lib/admin/admin-product-evidence-rows";
+import {
+  productEvidenceSummary as directProductEvidenceSummary
+} from "../apps/web/lib/admin/admin-product-evidence-summary";
+
+assert.equal(nullableAdminText, directNullableAdminText);
+assert.equal(sellerClaimLabel, directSellerClaimLabel);
+assert.equal(verifiedClaimLabel, directVerifiedClaimLabel);
+assert.equal(productEvidenceSummary, directProductEvidenceSummary);
+assert.equal(productVariantRows, directProductVariantRows);
+assert.equal(productSellerClaimRows, directProductSellerClaimRows);
+assert.equal(productVerifiedClaimRows, directProductVerifiedClaimRows);
+assert.equal(productMarketRiskRows, directProductMarketRiskRows);
 
 const products = [
   {
