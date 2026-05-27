@@ -11,6 +11,35 @@ import {
   topInternalLinkCandidates,
   topMissingSections
 } from "../apps/web/lib/admin/admin-search-console-model";
+import {
+  formatSearchConsoleCtr as directFormatSearchConsoleCtr,
+  formatSearchConsolePosition as directFormatSearchConsolePosition
+} from "../apps/web/lib/admin/admin-search-console-formatters";
+import {
+  searchConsoleRowKey as directSearchConsoleRowKey,
+  searchConsoleSuggestionKey as directSearchConsoleSuggestionKey
+} from "../apps/web/lib/admin/admin-search-console-keys";
+import {
+  searchConsoleSuggestionContext as directSearchConsoleSuggestionContext,
+  sectionMatchLabel as directSectionMatchLabel
+} from "../apps/web/lib/admin/admin-search-console-suggestion-labels";
+import {
+  persistedLinkSummary as directPersistedLinkSummary,
+  topActions as directTopActions,
+  topInternalLinkCandidates as directTopInternalLinkCandidates,
+  topMissingSections as directTopMissingSections
+} from "../apps/web/lib/admin/admin-search-console-suggestion-lists";
+
+assert.equal(searchConsoleRowKey, directSearchConsoleRowKey);
+assert.equal(searchConsoleSuggestionKey, directSearchConsoleSuggestionKey);
+assert.equal(formatSearchConsoleCtr, directFormatSearchConsoleCtr);
+assert.equal(formatSearchConsolePosition, directFormatSearchConsolePosition);
+assert.equal(searchConsoleSuggestionContext, directSearchConsoleSuggestionContext);
+assert.equal(sectionMatchLabel, directSectionMatchLabel);
+assert.equal(topInternalLinkCandidates, directTopInternalLinkCandidates);
+assert.equal(topMissingSections, directTopMissingSections);
+assert.equal(topActions, directTopActions);
+assert.equal(persistedLinkSummary, directPersistedLinkSummary);
 
 const row = {
   page: "/us/en/posts/magnesium-sleep/",
