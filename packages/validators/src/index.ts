@@ -18,6 +18,8 @@ import { validateHealthClaimGuard } from "./healthClaimGuard";
 import { validateHreflang } from "./hreflangValidator";
 import { validateInternalLinks } from "./internalLinks";
 import { validateSeoIntegrity } from "./seoIntegrity";
+import { validateClaimEvidence } from "./claimEvidence";
+import { validateThinAffiliate } from "./thinAffiliate";
 import type { QualityGateInput, QualityGateResult, ValidationIssue } from "./types";
 export { validateStructuredData } from "./structuredDataValidation";
 export {
@@ -32,6 +34,8 @@ export { validateHealthClaimGuard } from "./healthClaimGuard";
 export { validateHreflang } from "./hreflangValidator";
 export { validateInternalLinks } from "./internalLinks";
 export { validateSeoIntegrity } from "./seoIntegrity";
+export { validateClaimEvidence } from "./claimEvidence";
+export { validateThinAffiliate } from "./thinAffiliate";
 export type { QualityGateInput, QualityGateResult, ValidationIssue } from "./types";
 
 export function validatePublishStateGuard(article: Article): ValidationIssue[] {
@@ -140,58 +144,6 @@ export function validateTrendEvidenceGuard(article: Article): ValidationIssue[] 
   }
 
   return issues;
-}
-
-export function validateClaimEvidence(input: QualityGateInput): ValidationIssue[] {
-  const { article, evidencePack, product } = input;
-  const evidenceIds = new Set(article.evidenceIds);
-  const backedSections = article.sections.filter((section) => section.evidenceIds?.some((id) => evidenceIds.has(id)));
-  const verifiedClaimCount = product?.verifiedClaims.length ?? evidencePack?.packJson.verifiedClaims.length ?? 0;
-  const sellerClaimCount = product?.sellerClaims.length ?? evidencePack?.packJson.sellerClaims.length ?? 0;
-  const attachedEvidenceCount = verifiedClaimCount + sellerClaimCount || article.evidenceIds.length;
-  const issues: ValidationIssue[] = [];
-
-  if (backedSections.length < 3 || attachedEvidenceCount < 3) {
-    issues.push({
-      code: "evidence_claims_low",
-      message: "Indexable articles need at least 3 evidence-backed claims.",
-      severity: "blocker"
-    });
-  }
-
-  const fullText = [article.title, article.summary, ...article.sections.map((section) => section.body)].join(" ");
-  const unsupportedTestPhrase = /\b(we tested|our test|lab measured|verified by test)\b/i.test(fullText);
-  if (unsupportedTestPhrase && verifiedClaimCount === 0) {
-    issues.push({
-      code: "test_claim_without_verified_evidence",
-      message: "The article uses direct-test language but no verified claims are attached.",
-      severity: "blocker"
-    });
-  }
-
-  return issues;
-}
-
-export function validateThinAffiliate(input: QualityGateInput): ValidationIssue[] {
-  const { article, product } = input;
-  const uniqueSignals =
-    article.sections.filter((section) =>
-      /variant|risk|evidence|price|verified|tested|customs|plug|return|alternative/i.test(
-        `${section.heading} ${section.body}`
-      )
-    ).length + (product?.marketRisks.length ?? 0);
-
-  if (uniqueSignals < 4) {
-    return [
-      {
-        code: "thin_affiliate_risk",
-        message: "The article does not yet show enough information beyond seller descriptions.",
-        severity: "blocker"
-      }
-    ];
-  }
-
-  return [];
 }
 
 export function runQualityGate(input: QualityGateInput): QualityGateResult {
