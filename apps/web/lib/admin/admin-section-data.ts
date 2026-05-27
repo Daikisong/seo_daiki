@@ -3,6 +3,8 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import type { Article, EvidencePack, Product } from "@global-import-lab/types";
 import { runQualityGate } from "@global-import-lab/validators";
+import { affiliateMerchantRow, affiliateOfferRow, affiliatePlacementRow } from "./admin-affiliate-row-model";
+import { buildSampleComplianceRows } from "./admin-compliance-model";
 import {
   duplicateCandidateCountsFromRows,
   matchesTrendFilters,
@@ -238,42 +240,12 @@ export async function readComplianceRows(
   const gateRows = isRecord(gatePayload) && Array.isArray(gatePayload.results) ? gatePayload.results : [];
   const generatedRows = normalizePublishingGateComplianceRows(gateRows);
 
-  const issuePrefixes = [
-    "health_",
-    "unsafe_",
-    "localization_",
-    "translation_",
-    "affiliate_placements_over_limit",
-    "affiliate_links_exceed_internal_links",
-    "affiliate_placement",
-    "merchant_allowlist"
-  ];
-
-  const sampleRows = sampleArticles.flatMap((article) => {
-    const product = article.productId ? products.find((item) => item.id === article.productId) : undefined;
-    const evidencePack = evidencePacks.find((pack) => pack.productId === article.productId && pack.locale === article.locale);
-    const gate = runQualityGate({ article, product, evidencePack });
-    const relevantIssues = gate.issues.filter((issue) => issuePrefixes.some((prefix) => issue.code.startsWith(prefix)));
-    if (
-      article.healthSensitivity === "none" &&
-      article.complianceStatus === "passed" &&
-      relevantIssues.length === 0
-    ) {
-      return [];
-    }
-    return [{
-      id: article.id,
-      title: article.title,
-      locale: article.locale,
-      type: article.type,
-      slug: article.slug,
-      publishStatus: article.publishStatus,
-      indexStatus: article.indexStatus,
-      healthSensitivity: article.healthSensitivity ?? "none",
-      complianceStatus: article.complianceStatus ?? "unchecked",
-      issues: [...complianceIssuesFromJson(article.complianceJson), ...relevantIssues.map((issue) => issue.code)]
-    }];
-  }).slice(0, 80);
+  const sampleRows = buildSampleComplianceRows({
+    evaluateQualityGate: runQualityGate,
+    evidencePacks,
+    products,
+    sampleArticles
+  });
 
   return [...generatedRows, ...sampleRows];
 }
@@ -310,19 +282,7 @@ export async function readAffiliateMerchants() {
   try {
     const { listAffiliateMerchants } = await import("@global-import-lab/db/affiliate-clicks");
     const rows = await listAffiliateMerchants();
-    return rows.map((merchant) => ({
-      id: merchant.id,
-      name: merchant.name,
-      slug: merchant.slug,
-      domain: merchant.domain,
-      merchantType: merchant.merchantType,
-      allowedDomains: stringArrayFromUnknown(merchant.allowedDomains),
-      defaultRel: merchant.defaultRel,
-      healthSensitive: merchant.healthSensitive,
-      enabled: merchant.enabled,
-      offerCount: merchant._count.offers,
-      clickCount: merchant._count.affiliateClicks
-    }));
+    return rows.map(affiliateMerchantRow);
   } catch (error) {
     console.warn("Affiliate merchants unavailable.", error);
     return [];
@@ -336,29 +296,7 @@ export async function readAffiliateOffers() {
   try {
     const { listAffiliateOffers } = await import("@global-import-lab/db/affiliate-clicks");
     const rows = await listAffiliateOffers();
-    return rows.map((offer) => ({
-      id: offer.id,
-      merchantId: offer.merchantId,
-      programId: offer.programId,
-      productId: offer.productId,
-      topicId: offer.topicId,
-      title: offer.title,
-      description: offer.description,
-      url: offer.url,
-      affiliateUrl: offer.affiliateUrl,
-      merchantSlug: offer.merchant.slug,
-      locale: offer.locale,
-      country: offer.country,
-      category: offer.category,
-      evidenceLevel: offer.evidenceLevel,
-      healthSensitive: offer.healthSensitive,
-      price: offer.price === null ? undefined : String(offer.price),
-      currency: offer.currency,
-      lastCheckedAt: offer.lastCheckedAt?.toISOString().slice(0, 10),
-      status: offer.status,
-      placementCount: offer._count.affiliatePlacements,
-      clickCount: offer._count.affiliateClicks
-    }));
+    return rows.map(affiliateOfferRow);
   } catch (error) {
     console.warn("Affiliate offers unavailable.", error);
     return [];
@@ -372,21 +310,7 @@ export async function readAffiliatePlacements() {
   try {
     const { listAffiliatePlacements } = await import("@global-import-lab/db/affiliate-clicks");
     const rows = await listAffiliatePlacements();
-    return rows.map((placement) => ({
-      id: placement.id,
-      placementType: placement.placementType,
-      anchorText: placement.anchorText,
-      status: placement.status,
-      rel: placement.rel,
-      disclosureShown: placement.disclosureShown,
-      articleTitle: placement.article.title,
-      articleLocale: placement.article.locale,
-      articleType: placement.article.type,
-      articleSlug: placement.article.slug,
-      offerTitle: placement.offer.title,
-      merchantSlug: placement.offer.merchant.slug,
-      clickCount: placement._count.affiliateClicks
-    }));
+    return rows.map(affiliatePlacementRow);
   } catch (error) {
     console.warn("Affiliate placements unavailable.", error);
     return [];
