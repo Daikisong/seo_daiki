@@ -3,7 +3,11 @@ import { resolve } from "node:path";
 import { marketSlug } from "./config";
 import type { MarketConfig } from "@global-import-lab/types";
 
-const dataRoot = resolve(process.cwd(), "../../data");
+const dataRoot = existsSync(resolve(process.cwd(), "data"))
+  ? resolve(process.cwd(), "data")
+  : resolve(process.cwd(), "../../data");
+type MarketContentSection = "trends" | "keywords" | "serp" | "briefs" | "posts";
+type SluggedMarketItem = { slug: string };
 
 export interface MarketTrendView {
   id: string;
@@ -162,8 +166,28 @@ export function readProductCandidateAnalysis() {
   return readJson<{ analyses?: unknown[] }>("exports/product_candidate_analysis.json", { analyses: [] });
 }
 
+export function marketsWithContentSlug(markets: MarketConfig[], section: MarketContentSection, slug: string) {
+  return markets.filter((market) => readMarketContentBySection(market, section).some((item) => item.slug === slug));
+}
+
 export function marketKey(market: MarketConfig) {
   return marketSlug(market);
+}
+
+function readMarketContentBySection(market: MarketConfig, section: MarketContentSection): SluggedMarketItem[] {
+  if (section === "trends") {
+    return readMarketTrends(market);
+  }
+  if (section === "keywords") {
+    return readMarketKeywords(market);
+  }
+  if (section === "serp") {
+    return readMarketSerp(market);
+  }
+  if (section === "briefs") {
+    return readMarketBriefs(market);
+  }
+  return readMarketPosts(market);
 }
 
 function readJson<T>(path: string, fallback: T): T {

@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
+import { reviewStatusSummary, type MonetizationReviewPayload } from "@/lib/admin/admin-monetization-review-model";
 import { readJsonFile } from "@/lib/server/json-file";
 
 export default function AdminMonetizationReviewsPage() {
-  const payload = readJsonFile<{ reviews?: Array<Record<string, unknown>> }>("data/exports/monetization_reviews.json", { reviews: [] });
+  const payload = readJsonFile<MonetizationReviewPayload>("data/exports/monetization_reviews.json", { reviews: [] });
   const reviews = payload.reviews ?? [];
 
   return (
@@ -20,7 +21,7 @@ export default function AdminMonetizationReviewsPage() {
             reviews.map((review) => (
               <Link className="rounded-md border border-neutral-200 bg-white p-4 hover:border-teal-700" href={`/admin/monetization-reviews/${String(review.id)}/`} key={String(review.id)}>
                 <span className="block font-semibold">{String(review.id)}</span>
-                <span className="mt-1 block text-sm text-neutral-600">{String(review.status)} / {String(review.market)}</span>
+                <span className="mt-1 block text-sm text-neutral-600">{reviewStatusSummary(review)}</span>
               </Link>
             ))
           )}

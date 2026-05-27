@@ -58,6 +58,8 @@ Legacy locale home routes redirect:
 - `/es` -> `/es/es/`
 - `/pt-br` -> `/br/pt-br/`
 
+Market content hreflang now only links to market variants that actually have the same content slug, so a US-only trend does not point to missing GB/CA/AU pages.
+
 ## 5. Trend Engine Flow
 
 Implemented commands:
@@ -119,6 +121,8 @@ Implemented:
 Latest sample run produced 5 product candidates and 5 product candidate analysis blocks.
 
 The block status remains `do_not_link_yet`.
+
+Admin monetization review pages now include a token-protected decision form for status, approved candidate IDs, rejected candidate IDs, and reviewer notes.
 
 ## 9. Affiliate API Documentation Added
 
@@ -205,7 +209,7 @@ Five market samples are present:
 - `pnpm exec prisma validate --config prisma.config.ts`: pass
 - `pnpm typecheck`: pass
 - `pnpm seo:validate`: pass, 151 sample articles checked and 72 indexable articles passed
-- `pnpm build`: pass, 259 static pages generated
+- `pnpm build`: pass, 260 static pages generated
 
 ## Capability Summary
 

@@ -3,7 +3,7 @@ import { buildMarketContentHreflangMap, canonicalForMarketPath, marketContentPat
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { enabledMarkets, findMarket } from "@/lib/market/config";
-import { readMarketBriefs } from "@/lib/market/market-data";
+import { marketsWithContentSlug, readMarketBriefs } from "@/lib/market/market-data";
 
 interface PageProps {
   params: Promise<{ market: string; language: string; slug: string }>;
@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: PageProps) {
     description: brief?.angle ?? `Content brief for ${market.country}.`,
     alternates: {
       canonical: canonicalForMarketPath(path),
-      languages: buildMarketContentHreflangMap(enabledMarkets(), market, "briefs", slug)
+      languages: buildMarketContentHreflangMap(marketsWithContentSlug(enabledMarkets(), "briefs", slug), market, "briefs", slug)
     }
   };
 }
