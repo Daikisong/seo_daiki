@@ -4,15 +4,24 @@ import { join } from "node:path";
 import type { Article, EvidencePack, Product } from "@global-import-lab/types";
 import { runQualityGate } from "@global-import-lab/validators";
 import {
+  duplicateCandidateCountsFromRows,
+  matchesTrendFilters,
+  normalizeAffiliatePlacementCandidateRows,
+  normalizeContentBriefExportRows,
+  normalizeLocalizationExportRows,
+  normalizePersistedRefreshSuggestion,
+  normalizePublishingGateComplianceRows,
+  normalizePublishingGateRows,
+  normalizeTopicScoreRows,
+  normalizeTrendSignalRows
+} from "./admin-section-normalizers";
+import {
   complianceIssuesFromJson,
   findProjectRoot,
   isRecord,
-  normalizeRefreshSuggestionPayload,
-  numberFromUnknown,
   numericRecord,
   outlineHeadings,
   stringArrayFromUnknown,
-  stringFromUnknown,
   summarizeJson
 } from "./admin-section-utils";
 
@@ -50,34 +59,6 @@ export async function readPersistedRefreshSuggestions() {
   }
 }
 
-function normalizePersistedRefreshSuggestion(row: {
-  id: string;
-  page: string;
-  query: string | null;
-  reason: string;
-  actions: unknown;
-  status: string;
-  createdAt: Date;
-  updatedAt: Date;
-}) {
-  const payload = normalizeRefreshSuggestionPayload(row.actions);
-  return {
-    id: row.id,
-    page: row.page,
-    query: row.query,
-    reason: row.reason,
-    actions: payload.actions,
-    priority: payload.priority,
-    titleCandidate: payload.titleCandidate,
-    metaDescriptionCandidate: payload.metaDescriptionCandidate,
-    missingSections: payload.missingSections,
-    internalLinkCandidates: payload.internalLinkCandidates,
-    status: row.status,
-    createdAt: row.createdAt.toISOString(),
-    updatedAt: row.updatedAt.toISOString()
-  };
-}
-
 export async function readDuplicateCandidateCounts() {
   const path = join(findProjectRoot(), "data/snapshots/product_identity_graph.json");
   if (!existsSync(path)) {
@@ -86,41 +67,7 @@ export async function readDuplicateCandidateCounts() {
 
   try {
     const rows = JSON.parse(await readFile(path, "utf-8")) as unknown[];
-    const counts: Record<string, number> = {};
-    for (const row of rows) {
-      if (!isRecord(row)) {
-        continue;
-      }
-      const canonicalProduct = isRecord(row.canonical_product) ? row.canonical_product : {};
-      const productIds = new Set<string>();
-      const canonicalProductId = stringFromUnknown(canonicalProduct.product_id);
-      if (canonicalProductId) {
-        productIds.add(canonicalProductId);
-      }
-      if (Array.isArray(row.source_product_ids)) {
-        for (const productId of row.source_product_ids) {
-          const value = stringFromUnknown(productId);
-          if (value) {
-            productIds.add(value);
-          }
-        }
-      }
-
-      const candidates = Array.isArray(row.duplicate_candidates) ? row.duplicate_candidates : [];
-      const actionableCount = candidates.filter((candidate) => {
-        if (!isRecord(candidate)) {
-          return false;
-        }
-        const decision = stringFromUnknown(candidate.decision);
-        const confidence = numberFromUnknown(candidate.confidence);
-        return decision !== "keep_separate" || confidence >= 0.5;
-      }).length;
-
-      for (const productId of productIds) {
-        counts[productId] = actionableCount;
-      }
-    }
-    return counts;
+    return duplicateCandidateCountsFromRows(rows);
   } catch (error) {
     console.warn("Product identity graph unavailable.", error);
     return {} as Record<string, number>;
@@ -150,11 +97,6 @@ export async function readAuditLogs() {
 }
 
 export async function readTrendRows(filters: { country?: string; locale?: string; source?: string }) {
-  const matchesFilters = (row: { country?: string | null; locale?: string; sourceName?: string }) =>
-    (!filters.locale || row.locale === filters.locale) &&
-    (!filters.country || row.country === filters.country) &&
-    (!filters.source || row.sourceName?.toLowerCase().includes(filters.source.toLowerCase()));
-
   if (process.env.DATABASE_URL) {
     try {
       const operations = await import("@global-import-lab/db/operations-admin");
@@ -172,7 +114,7 @@ export async function readTrendRows(filters: { country?: string; locale?: string
           affiliateFitScore: row.affiliateFitScore,
           sourceName: row.source.name
         }))
-        .filter(matchesFilters);
+        .filter((row) => matchesTrendFilters(row, filters));
     } catch (error) {
       console.warn("Trend signals unavailable.", error);
     }
@@ -180,24 +122,7 @@ export async function readTrendRows(filters: { country?: string; locale?: string
 
   const payload = await readAdminJson("data/snapshots/trend_signals.json");
   const signals = isRecord(payload) && Array.isArray(payload.signals) ? payload.signals : [];
-  return signals.flatMap((row) => {
-    if (!isRecord(row)) {
-      return [];
-    }
-    const item = {
-      id: stringFromUnknown(row.id),
-      locale: stringFromUnknown(row.locale),
-      country: stringFromUnknown(row.country),
-      query: stringFromUnknown(row.query),
-      topicRaw: stringFromUnknown(row.topicRaw),
-      growthScore: numberFromUnknown(row.growthScore),
-      commercialScore: numberFromUnknown(row.commercialScore),
-      evidenceFitScore: numberFromUnknown(row.evidenceFitScore),
-      affiliateFitScore: numberFromUnknown(row.affiliateFitScore),
-      sourceName: stringFromUnknown(row.sourceId) || "manual_csv"
-    };
-    return matchesFilters(item) ? [item] : [];
-  });
+  return normalizeTrendSignalRows(signals, filters);
 }
 
 export async function readTopicRows() {
@@ -227,28 +152,7 @@ export async function readTopicRows() {
 
   const payload = await readAdminJson("data/snapshots/topic_scores.json");
   const topics = isRecord(payload) && Array.isArray(payload.topics) ? payload.topics : [];
-  return topics.flatMap((row) => {
-    if (!isRecord(row)) {
-      return [];
-    }
-    return [
-      {
-        id: stringFromUnknown(row.id),
-        canonicalTopic: stringFromUnknown(row.canonicalTopic),
-        slug: stringFromUnknown(row.slug),
-        intent: stringFromUnknown(row.intent),
-        healthSensitive: row.healthSensitive === true,
-        primaryLocale: stringFromUnknown(row.primaryLocale) || "en",
-        status: stringFromUnknown(row.status) || "candidate",
-        score: numberFromUnknown(row.score),
-        scoreBreakdown: isRecord(row.scoreBreakdown) ? numericRecord(row.scoreBreakdown) : {},
-        signalCount: numberFromUnknown(row.signalCount),
-        briefCount: 0,
-        offerCount: 0,
-        dbBacked: false
-      }
-    ];
-  });
+  return normalizeTopicScoreRows(topics);
 }
 
 export async function readContentBriefRows() {
@@ -276,26 +180,7 @@ export async function readContentBriefRows() {
 
   const payload = await readAdminJson("data/briefs/content_briefs.json");
   const briefs = isRecord(payload) && Array.isArray(payload.briefs) ? payload.briefs : [];
-  return briefs.flatMap((row) => {
-    if (!isRecord(row)) {
-      return [];
-    }
-    return [
-      {
-        id: stringFromUnknown(row.id),
-        topicId: stringFromUnknown(row.topicId),
-        topicLabel: stringFromUnknown(row.topicId),
-        locale: stringFromUnknown(row.locale),
-        articleType: stringFromUnknown(row.articleType),
-        titleCandidate: stringFromUnknown(row.titleCandidate),
-        searchIntent: stringFromUnknown(row.searchIntent),
-        outline: outlineHeadings(row.outlineJson),
-        requiredEvidence: stringArrayFromUnknown(row.requiredEvidence),
-        status: stringFromUnknown(row.status) || "draft",
-        dbBacked: false
-      }
-    ];
-  });
+  return normalizeContentBriefExportRows(briefs);
 }
 
 export async function readPublishingJobRows() {
@@ -320,24 +205,7 @@ export async function readPublishingJobRows() {
 
   const payload = await readAdminJson("data/exports/topic_publishing_gate.json");
   const results = isRecord(payload) && Array.isArray(payload.results) ? payload.results : [];
-  return results.flatMap((row) => {
-    if (!isRecord(row)) {
-      return [];
-    }
-    const blockers = stringArrayFromUnknown(row.blockers);
-    return [
-      {
-        id: stringFromUnknown(row.articleId),
-        locale: stringFromUnknown(row.locale),
-        jobType: "publishing-gate",
-        status: stringFromUnknown(row.status),
-        targetLabel: stringFromUnknown(row.articleId),
-        outputSummary: blockers.length ? blockers.join(", ") : "ready for manual review",
-        error: "",
-        dbBacked: false
-      }
-    ];
-  });
+  return normalizePublishingGateRows(results);
 }
 
 export async function readComplianceRows(
@@ -368,29 +236,7 @@ export async function readComplianceRows(
 
   const gatePayload = await readAdminJson("data/exports/topic_publishing_gate.json");
   const gateRows = isRecord(gatePayload) && Array.isArray(gatePayload.results) ? gatePayload.results : [];
-  const generatedRows = gateRows.flatMap((row) => {
-    if (!isRecord(row)) {
-      return [];
-    }
-    const blockers = stringArrayFromUnknown(row.blockers);
-    if (blockers.length === 0) {
-      return [];
-    }
-    return [
-      {
-        id: stringFromUnknown(row.articleId),
-        title: stringFromUnknown(row.articleId),
-        locale: stringFromUnknown(row.locale),
-        type: stringFromUnknown(row.type),
-        slug: stringFromUnknown(row.articleId),
-        publishStatus: stringFromUnknown(row.publishStatus),
-        indexStatus: stringFromUnknown(row.indexStatus),
-        healthSensitivity: "",
-        complianceStatus: stringFromUnknown(row.status),
-        issues: blockers
-      }
-    ];
-  });
+  const generatedRows = normalizePublishingGateComplianceRows(gateRows);
 
   const issuePrefixes = [
     "health_",
@@ -454,26 +300,7 @@ export async function readLocalizationRows() {
 
   const payload = await readAdminJson("data/exports/localized_topic_articles.json");
   const articles = isRecord(payload) && Array.isArray(payload.articles) ? payload.articles : [];
-  return articles.flatMap((row) => {
-    if (!isRecord(row)) {
-      return [];
-    }
-    const sourceArticleId = stringFromUnknown(row.sourceArticleId);
-    return [
-      {
-        id: sourceArticleId || stringFromUnknown(row.id),
-        topicLabel: stringFromUnknown(row.topicId) || "localized draft",
-        sourceLabel: sourceArticleId,
-        variants: [
-          {
-            locale: stringFromUnknown(row.locale),
-            status: stringFromUnknown(row.translationStatus) || stringFromUnknown(row.publishStatus),
-            localizationDepthScore: numberFromUnknown(row.localizationDepthScore)
-          }
-        ]
-      }
-    ];
-  });
+  return normalizeLocalizationExportRows(articles);
 }
 
 export async function readAffiliateMerchants() {
@@ -575,36 +402,7 @@ export async function readAffiliatePlacementCandidates(): Promise<AffiliatePlace
     }
     const payload: unknown = JSON.parse(await readFile(path, "utf8"));
     const rows: unknown[] = isRecord(payload) && Array.isArray(payload.placementCandidates) ? payload.placementCandidates : [];
-    return rows.flatMap((row) => {
-      if (!isRecord(row)) {
-        return [];
-      }
-      const id = stringFromUnknown(row.id);
-      if (!id) {
-        return [];
-      }
-      return [
-        {
-          id,
-          topicId: stringFromUnknown(row.topicId),
-          briefId: stringFromUnknown(row.briefId),
-          articleId: stringFromUnknown(row.articleId),
-          offerId: stringFromUnknown(row.offerId),
-          merchantSlug: stringFromUnknown(row.merchantSlug),
-          placementType: stringFromUnknown(row.placementType),
-          anchorText: stringFromUnknown(row.anchorText),
-          rel: stringFromUnknown(row.rel),
-          disclosureShown: row.disclosureShown === true,
-          status: stringFromUnknown(row.status),
-          humanApprovalRequired: row.humanApprovalRequired !== false,
-          offerScore: numberFromUnknown(row.offerScore),
-          reason: stringFromUnknown(row.reason),
-          scoreBreakdown: isRecord(row.scoreBreakdown)
-            ? Object.fromEntries(Object.entries(row.scoreBreakdown).map(([key, value]) => [key, numberFromUnknown(value)]))
-            : {}
-        }
-      ];
-    });
+    return normalizeAffiliatePlacementCandidateRows(rows);
   } catch (error) {
     console.warn("Affiliate placement candidates unavailable.", error);
     return [];
