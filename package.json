@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "pnpm --filter @global-import-lab/web dev",
     "build": "pnpm db:generate && pnpm --filter @global-import-lab/web build",
-    "test": "pnpm test:python && pnpm test:seo && pnpm test:validators && pnpm test:affiliate-guards && pnpm test:health-claim-guard && pnpm test:seo-guards && pnpm test:evidence-quality-guards && pnpm test:quality-gate-composition && pnpm test:structured-data-rules && pnpm test:structured-data && pnpm test:admin-utils && pnpm test:admin-form-utils && pnpm test:admin-evidence-form-model && pnpm test:admin-compliance-model && pnpm test:admin-affiliate-row-model && pnpm test:admin-search-console-model && pnpm test:admin-content-workflow-model && pnpm test:admin-normalizers && pnpm test:admin-quality-model && pnpm test:admin-mutation-rules && pnpm test:admin-mutation-payloads && pnpm test:admin-record-mutations && pnpm test:worker-import-parsing && pnpm test:content-helpers && pnpm test:content-fixtures && pnpm test:internal-linking-rules && pnpm test:internal-linking && pnpm test:article-page-model && pnpm test:article-assembly && pnpm test:planned-articles && pnpm test:trend-blog-articles",
+    "test": "pnpm test:python && pnpm test:seo && pnpm test:validators && pnpm test:affiliate-guards && pnpm test:health-claim-guard && pnpm test:seo-guards && pnpm test:evidence-quality-guards && pnpm test:quality-gate-composition && pnpm test:structured-data-rules && pnpm test:structured-data && pnpm test:admin-utils && pnpm test:admin-form-utils && pnpm test:admin-evidence-form-model && pnpm test:admin-product-evidence-model && pnpm test:admin-compliance-model && pnpm test:admin-affiliate-row-model && pnpm test:admin-search-console-model && pnpm test:admin-content-workflow-model && pnpm test:admin-normalizers && pnpm test:admin-quality-model && pnpm test:admin-mutation-rules && pnpm test:admin-mutation-payloads && pnpm test:admin-record-mutations && pnpm test:worker-import-parsing && pnpm test:content-helpers && pnpm test:content-fixtures && pnpm test:internal-linking-rules && pnpm test:internal-linking && pnpm test:article-page-model && pnpm test:article-assembly && pnpm test:planned-articles && pnpm test:trend-blog-articles",
     "test:python": "python3 -m unittest discover -s workers/python/tests -p 'test_*.py'",
     "test:seo": "tsx tests/seo.test.ts",
     "test:validators": "tsx tests/validators.test.ts",
@@ -20,6 +20,7 @@
     "test:admin-utils": "tsx tests/admin-section-utils.test.ts",
     "test:admin-form-utils": "tsx tests/admin-form-utils.test.ts",
     "test:admin-evidence-form-model": "tsx tests/admin-evidence-form-model.test.ts",
+    "test:admin-product-evidence-model": "tsx tests/admin-product-evidence-model.test.ts",
     "test:admin-compliance-model": "tsx tests/admin-compliance-model.test.ts",
     "test:admin-affiliate-row-model": "tsx tests/admin-affiliate-row-model.test.ts",
     "test:admin-search-console-model": "tsx tests/admin-search-console-model.test.ts",
