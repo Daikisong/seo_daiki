@@ -12,6 +12,37 @@ import {
   localizationPrimaryLocale,
   localizationVariantStatusLabel
 } from "../apps/web/lib/admin/admin-review-model";
+import {
+  articleLocaleTypeLabel as directArticleLocaleTypeLabel,
+  articlePathLabel as directArticlePathLabel,
+  articleStoredStatusLabel as directArticleStoredStatusLabel,
+  healthComplianceLabel as directHealthComplianceLabel
+} from "../apps/web/lib/admin/admin-review-article-labels";
+import {
+  auditActorLabel as directAuditActorLabel,
+  auditSummaryLabel as directAuditSummaryLabel
+} from "../apps/web/lib/admin/admin-review-audit-labels";
+import {
+  duplicateCandidateLabel as directDuplicateCandidateLabel,
+  issueListLabel as directIssueListLabel
+} from "../apps/web/lib/admin/admin-review-issue-labels";
+import {
+  localizationDepthLabel as directLocalizationDepthLabel,
+  localizationPrimaryLocale as directLocalizationPrimaryLocale,
+  localizationVariantStatusLabel as directLocalizationVariantStatusLabel
+} from "../apps/web/lib/admin/admin-review-localization-labels";
+
+assert.equal(issueListLabel, directIssueListLabel);
+assert.equal(duplicateCandidateLabel, directDuplicateCandidateLabel);
+assert.equal(articleLocaleTypeLabel, directArticleLocaleTypeLabel);
+assert.equal(articlePathLabel, directArticlePathLabel);
+assert.equal(articleStoredStatusLabel, directArticleStoredStatusLabel);
+assert.equal(healthComplianceLabel, directHealthComplianceLabel);
+assert.equal(auditActorLabel, directAuditActorLabel);
+assert.equal(auditSummaryLabel, directAuditSummaryLabel);
+assert.equal(localizationVariantStatusLabel, directLocalizationVariantStatusLabel);
+assert.equal(localizationDepthLabel, directLocalizationDepthLabel);
+assert.equal(localizationPrimaryLocale, directLocalizationPrimaryLocale);
 
 assert.equal(issueListLabel(["unsafe_redirect", "health_claim"]), "unsafe_redirect, health_claim");
 assert.equal(issueListLabel([]), "-");
