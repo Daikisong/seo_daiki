@@ -7,7 +7,26 @@ import {
   type AdminQualityEvidencePack,
   type AdminQualityProduct
 } from "../apps/web/lib/admin/admin-quality-model";
+import {
+  hasSeoIssues,
+  issueCodes as directIssueCodes,
+  issuesWithPrefix
+} from "../apps/web/lib/admin/admin-quality-issues";
+import { buildAdminQualityRows as directBuildAdminQualityRows } from "../apps/web/lib/admin/admin-quality-rows";
+import {
+  average,
+  buildAdminQualityStats as directBuildAdminQualityStats
+} from "../apps/web/lib/admin/admin-quality-stats";
 import type { QualityGateResult, ValidationIssue } from "@global-import-lab/validators";
+
+assert.equal(buildAdminQualityRows, directBuildAdminQualityRows);
+assert.equal(buildAdminQualityStats, directBuildAdminQualityStats);
+assert.equal(issueCodes, directIssueCodes);
+assert.equal(average([]), 0);
+assert.equal(average([2, 4, 6]), 4);
+assert.deepEqual(issuesWithPrefix([issue("schema_a"), issue("hreflang_b")], "schema").map((item) => item.code), [
+  "schema_a"
+]);
 
 const articles: AdminQualityArticle[] = [
   {
@@ -95,6 +114,8 @@ assert.deepEqual(buildAdminQualityStats(rows), {
 
 assert.equal(issueCodes(rows[0]?.hreflangIssues ?? []), "hreflang_missing_return");
 assert.equal(issueCodes([]), "-");
+assert.equal(hasSeoIssues(rows[0]!), true);
+assert.equal(hasSeoIssues(rows[1]!), false);
 
 function gateResultForArticle(articleId: string): QualityGateResult {
   if (articleId === "article-a") {
