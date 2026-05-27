@@ -13,6 +13,7 @@
     "./qualityGate": "./src/qualityGate.ts",
     "./schemaValidator": "./src/schemaValidator.ts",
     "./seoIntegrity": "./src/seoIntegrity.ts",
+    "./structuredDataValidation": "./src/structuredDataValidation.ts",
     "./thinAffiliate": "./src/thinAffiliate.ts"
   },
   "scripts": {

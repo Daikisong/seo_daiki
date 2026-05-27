@@ -1,1 +1,1 @@
-export { validateStructuredData } from "./index";
+export { validateStructuredData } from "./structuredDataValidation";
