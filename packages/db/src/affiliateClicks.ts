@@ -1,5 +1,10 @@
 import { prisma } from "./client";
 import type { Prisma } from "./generated/prisma/client";
+import {
+  affiliateClickInputFromPlacement,
+  affiliatePlacementApprovalBlocker,
+  affiliateRedirectBlocker
+} from "./affiliateRedirectRules";
 
 export interface AffiliateClickInput {
   articleId?: string;
@@ -57,46 +62,20 @@ export async function resolveAffiliatePlacementRedirect(input: {
   if (!placement) {
     throw new AffiliateRedirectError("Affiliate placement was not found.", 404);
   }
-  if (placement.status !== "approved") {
-    throw new AffiliateRedirectError("Affiliate placement is not approved.", 403);
-  }
-  if (!hasSponsoredNofollow(placement.rel)) {
-    throw new AffiliateRedirectError("Affiliate placement rel must include sponsored and nofollow.", 403);
-  }
-  if (!placement.disclosureShown) {
-    throw new AffiliateRedirectError("Affiliate placement must confirm disclosure before redirecting.", 403);
+
+  const blocker = affiliateRedirectBlocker(placement);
+  if (blocker) {
+    throw new AffiliateRedirectError(blocker.message, blocker.status);
   }
 
-  const { offer } = placement;
-  const { merchant } = offer;
-
-  if (offer.status !== "active") {
-    throw new AffiliateRedirectError("Affiliate offer is not active.", 403);
-  }
-  if (!merchant.enabled) {
-    throw new AffiliateRedirectError("Affiliate merchant is disabled.", 403);
-  }
-  if (!isAllowedMerchantUrl(offer.affiliateUrl, merchant.allowedDomains)) {
-    throw new AffiliateRedirectError("Affiliate URL host is not allowed for this merchant.", 403);
-  }
-
-  await recordAffiliateClick({
-    articleId: placement.articleId,
-    placementId: placement.id,
-    offerId: offer.id,
-    merchantId: merchant.id,
-    productId: offer.productId ?? placement.article.productId ?? undefined,
-    locale: offer.locale ?? placement.article.locale ?? undefined,
-    targetUrl: offer.affiliateUrl,
-    referrer: input.referrer,
-    utm: input.utm
-  });
+  const clickInput = affiliateClickInputFromPlacement(placement, input);
+  await recordAffiliateClick(clickInput);
 
   return {
-    targetUrl: offer.affiliateUrl,
+    targetUrl: placement.offer.affiliateUrl,
     placementId: placement.id,
-    offerId: offer.id,
-    merchantId: merchant.id
+    offerId: placement.offer.id,
+    merchantId: placement.offer.merchant.id
   };
 }
 
@@ -146,20 +125,9 @@ export async function updateAffiliatePlacementStatus(input: {
 
   const nextDisclosureShown = input.disclosureShown ?? before.disclosureShown;
   if (input.status === "approved") {
-    if (!hasSponsoredNofollow(before.rel)) {
-      throw new AffiliateRedirectError("Affiliate placement rel must include sponsored and nofollow before approval.", 400);
-    }
-    if (!nextDisclosureShown) {
-      throw new AffiliateRedirectError("Affiliate placement disclosure must be confirmed before approval.", 400);
-    }
-    if (before.offer.status !== "active") {
-      throw new AffiliateRedirectError("Affiliate offer must be active before placement approval.", 400);
-    }
-    if (!before.offer.merchant.enabled) {
-      throw new AffiliateRedirectError("Affiliate merchant must be enabled before placement approval.", 400);
-    }
-    if (!isAllowedMerchantUrl(before.offer.affiliateUrl, before.offer.merchant.allowedDomains)) {
-      throw new AffiliateRedirectError("Affiliate URL host is not allowed for this merchant.", 400);
+    const blocker = affiliatePlacementApprovalBlocker(before, nextDisclosureShown);
+    if (blocker) {
+      throw new AffiliateRedirectError(blocker.message, blocker.status);
     }
   }
 
@@ -195,39 +163,6 @@ export async function updateAffiliatePlacementStatus(input: {
 
     return after;
   });
-}
-
-function hasSponsoredNofollow(rel: string) {
-  const tokens = new Set(rel.split(/\s+/).filter(Boolean));
-  return tokens.has("sponsored") && tokens.has("nofollow");
-}
-
-function isAllowedMerchantUrl(value: string, allowedDomains: unknown) {
-  try {
-    const url = new URL(value);
-    const host = url.hostname.toLowerCase();
-    return allowedDomainList(allowedDomains).some((domain) => hostMatchesDomain(host, domain));
-  } catch {
-    return false;
-  }
-}
-
-function allowedDomainList(value: unknown) {
-  if (!Array.isArray(value)) {
-    return [];
-  }
-
-  return value.flatMap((item) => (typeof item === "string" && item.trim() ? [item.trim().toLowerCase()] : []));
-}
-
-function hostMatchesDomain(host: string, domain: string) {
-  const normalized = domain
-    .replace(/^https?:\/\//, "")
-    .replace(/\/.*$/, "")
-    .replace(/^\*\./, "")
-    .toLowerCase();
-
-  return host === normalized || host.endsWith(`.${normalized}`);
 }
 
 function toJson(value: unknown): Prisma.InputJsonValue {
