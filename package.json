@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "pnpm --filter @global-import-lab/web dev",
     "build": "pnpm db:generate && pnpm --filter @global-import-lab/web build",
-    "test": "pnpm test:python && pnpm test:seo && pnpm test:validators && pnpm test:affiliate-guards && pnpm test:health-claim-guard && pnpm test:seo-guards && pnpm test:evidence-quality-guards && pnpm test:quality-gate-composition && pnpm test:structured-data-rules && pnpm test:structured-data && pnpm test:admin-utils && pnpm test:admin-form-utils && pnpm test:admin-evidence-form-model && pnpm test:admin-normalizers && pnpm test:admin-quality-model && pnpm test:admin-mutation-rules && pnpm test:admin-mutation-payloads && pnpm test:worker-import-parsing && pnpm test:content-helpers && pnpm test:content-fixtures && pnpm test:internal-linking-rules && pnpm test:internal-linking && pnpm test:article-assembly && pnpm test:planned-articles && pnpm test:trend-blog-articles",
+    "test": "pnpm test:python && pnpm test:seo && pnpm test:validators && pnpm test:affiliate-guards && pnpm test:health-claim-guard && pnpm test:seo-guards && pnpm test:evidence-quality-guards && pnpm test:quality-gate-composition && pnpm test:structured-data-rules && pnpm test:structured-data && pnpm test:admin-utils && pnpm test:admin-form-utils && pnpm test:admin-evidence-form-model && pnpm test:admin-normalizers && pnpm test:admin-quality-model && pnpm test:admin-mutation-rules && pnpm test:admin-mutation-payloads && pnpm test:worker-import-parsing && pnpm test:content-helpers && pnpm test:content-fixtures && pnpm test:internal-linking-rules && pnpm test:internal-linking && pnpm test:article-page-model && pnpm test:article-assembly && pnpm test:planned-articles && pnpm test:trend-blog-articles",
     "test:python": "python3 -m unittest discover -s workers/python/tests -p 'test_*.py'",
     "test:seo": "tsx tests/seo.test.ts",
     "test:validators": "tsx tests/validators.test.ts",
@@ -29,6 +29,7 @@
     "test:content-fixtures": "tsx tests/content-fixtures.test.ts",
     "test:internal-linking-rules": "tsx tests/internal-linking-rules.test.ts",
     "test:internal-linking": "tsx tests/internal-linking.test.ts",
+    "test:article-page-model": "tsx tests/article-page-model.test.ts",
     "test:article-assembly": "tsx tests/article-assembly.test.ts",
     "test:planned-articles": "tsx tests/planned-article-fixtures.test.ts",
     "test:trend-blog-articles": "tsx tests/trend-blog-article-fixtures.test.ts",
