@@ -6,10 +6,11 @@
   "scripts": {
     "dev": "pnpm --filter @global-import-lab/web dev",
     "build": "pnpm db:generate && pnpm --filter @global-import-lab/web build",
-    "test": "pnpm test:python && pnpm test:seo && pnpm test:validators && pnpm test:structured-data && pnpm test:admin-utils && pnpm test:admin-mutation-rules && pnpm test:content-fixtures && pnpm test:internal-linking && pnpm test:article-assembly && pnpm test:planned-articles && pnpm test:trend-blog-articles",
+    "test": "pnpm test:python && pnpm test:seo && pnpm test:validators && pnpm test:affiliate-guards && pnpm test:structured-data && pnpm test:admin-utils && pnpm test:admin-mutation-rules && pnpm test:content-fixtures && pnpm test:internal-linking && pnpm test:article-assembly && pnpm test:planned-articles && pnpm test:trend-blog-articles",
     "test:python": "python3 -m unittest discover -s workers/python/tests -p 'test_*.py'",
     "test:seo": "tsx tests/seo.test.ts",
     "test:validators": "tsx tests/validators.test.ts",
+    "test:affiliate-guards": "tsx tests/affiliate-guards.test.ts",
     "test:structured-data": "tsx tests/structured-data.test.ts",
     "test:admin-utils": "tsx tests/admin-section-utils.test.ts",
     "test:admin-mutation-rules": "tsx tests/admin-mutation-rules.test.ts",
