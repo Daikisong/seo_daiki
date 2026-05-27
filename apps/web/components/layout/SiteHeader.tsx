@@ -25,7 +25,7 @@ export function SiteHeader({
             </span>
             <span>
               <span className="block text-base font-semibold">Global Import Lab</span>
-              <span className="block text-xs text-neutral-500">Product evidence database</span>
+              <span className="block text-xs text-neutral-500">Market trend research desk</span>
             </span>
           </Link>
           <div className="flex flex-col gap-3 md:items-end">
