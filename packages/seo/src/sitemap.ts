@@ -1,26 +1,10 @@
 import type { Article } from "@global-import-lab/types";
 import { canonicalForArticle } from "./article-routes";
-
-export function shouldIncludeInSitemap(article: Article) {
-  return article.publishStatus === "published" && article.indexStatus === "index";
-}
-
-export function sitemapChangeFrequency(article: Article): "weekly" | "monthly" {
-  return ["data", "lab", "trend", "deal_watch"].includes(article.type) ? "weekly" : "monthly";
-}
-
-export function sitemapPriority(article: Article) {
-  if (article.type === "hub") {
-    return 0.9;
-  }
-  if (["review", "buyer_guide", "trend"].includes(article.type)) {
-    return 0.8;
-  }
-  if (["deal_watch", "ingredient_guide"].includes(article.type)) {
-    return 0.75;
-  }
-  return 0.7;
-}
+import {
+  shouldIncludeInSitemap,
+  sitemapChangeFrequency,
+  sitemapPriority
+} from "./sitemap-policy";
 
 export function buildSitemapEntries(articles: Article[]) {
   return articles.filter(shouldIncludeInSitemap).map((article) => ({
@@ -30,3 +14,9 @@ export function buildSitemapEntries(articles: Article[]) {
     priority: sitemapPriority(article)
   }));
 }
+
+export {
+  shouldIncludeInSitemap,
+  sitemapChangeFrequency,
+  sitemapPriority
+} from "./sitemap-policy";
