@@ -3,6 +3,13 @@ import { getDbArticles, getDbEvidencePacks, getDbProducts } from "./contentRepos
 import { runQualityGate, type ValidationIssue } from "@global-import-lab/validators";
 import { deleteAdminRecordByType, findAdminRecord, updateArchivedAt } from "./adminRecordMutations";
 import {
+  articleStateGateDecision,
+  buildArticleStateCandidate,
+  needsStrictArticleStateGate,
+  selectArticleStateEvidencePack,
+  selectArticleStateProduct
+} from "./adminPublishGateModel";
+import {
   evidencePackMutationData,
   marketRiskMutationData,
   productMutationData,
@@ -20,7 +27,6 @@ import {
   adminEntityTypes,
   adminRecordActions,
   archiveSummary,
-  collectArticleStateGateBlockers,
   deleteSummary,
   indexStatuses,
   isAdminEntityType,
@@ -334,34 +340,14 @@ async function evaluateArticleStateChange(input: ArticleStateInput): Promise<
     throw new Error(`Article ${input.id} was not found.`);
   }
 
-  const candidate = {
-    ...article,
-    indexStatus: input.indexStatus ?? article.indexStatus,
-    publishStatus: input.publishStatus ?? article.publishStatus,
-    qualityScore: input.qualityScore ?? article.qualityScore
-  };
-
-  const needsStrictGate = candidate.indexStatus === "index";
-  if (!needsStrictGate) {
+  const candidate = buildArticleStateCandidate(article, input);
+  if (!needsStrictArticleStateGate(candidate)) {
     return { ok: true };
   }
 
   const [products, evidencePacks] = await Promise.all([getDbProducts(), getDbEvidencePacks()]);
-  const product = candidate.productId ? products.find((item) => item.id === candidate.productId) : undefined;
-  const evidencePack = evidencePacks.find(
-    (pack) => pack.productId === candidate.productId && pack.locale === candidate.locale
-  );
+  const product = selectArticleStateProduct(candidate, products);
+  const evidencePack = selectArticleStateEvidencePack(candidate, evidencePacks);
   const result = runQualityGate({ article: candidate, product, evidencePack });
-  const blockers = collectArticleStateGateBlockers(candidate, result);
-  if (blockers.length === 0) {
-    return { ok: true };
-  }
-
-  return {
-    ok: false,
-    before: article,
-    issues: blockers,
-    gateStatus: result.indexStatus,
-    gateScore: result.score
-  };
+  return articleStateGateDecision(article, candidate, result);
 }
