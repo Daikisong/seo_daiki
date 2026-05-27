@@ -32,6 +32,19 @@ export function claimKey(row: Record<string, unknown>) {
   return [row.claim_type, row.claimType, row.claim_value, row.claimValue, row.raw_text, row.rawText].map(String).join("|");
 }
 
+export function verifiedClaimKey(row: Record<string, unknown>) {
+  return [
+    row.test_type,
+    row.testType,
+    row.result_value,
+    row.resultValue,
+    row.unit,
+    row.method,
+    row.evidence_url,
+    row.evidenceUrl
+  ].map(String).join("|");
+}
+
 export function signalKey(row: Record<string, unknown>) {
   return [row.locale, row.topic, row.sentiment, row.window].map(String).join("|");
 }

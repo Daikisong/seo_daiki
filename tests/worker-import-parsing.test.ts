@@ -15,7 +15,8 @@ import {
   slugify,
   stringValue,
   uniqueRows,
-  variantKey
+  variantKey,
+  verifiedClaimKey
 } from "../packages/db/src/workerImportParsing";
 
 assert.equal(stringValue("  charger  "), "charger");
@@ -45,6 +46,10 @@ assert.equal(parseCableIncluded("charger only"), undefined);
 
 assert.equal(variantKey({ option: "EU", source_sku: "sku-1" }), "EU|undefined|sku-1|undefined");
 assert.equal(claimKey({ claim_type: "wattage", claim_value: "65W" }), "wattage|undefined|65W|undefined|undefined|undefined");
+assert.equal(
+  verifiedClaimKey({ test_type: "wattage", result_value: "61", unit: "W", method: "USB meter" }),
+  "wattage|undefined|61|undefined|W|USB meter|undefined|undefined"
+);
 assert.equal(signalKey({ locale: "en", topic: "heat", sentiment: "negative" }), "en|heat|negative|undefined");
 assert.equal(priceKey({ country: "US", currency: "USD", price: 12, final_price: 10 }), "US|USD|12|undefined|10|undefined");
 assert.equal(riskKey({ locale: "en", country: "US" }), "en|US");
