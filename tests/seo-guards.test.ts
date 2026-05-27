@@ -3,6 +3,10 @@ import type { Article, InternalLink } from "@global-import-lab/types";
 import { validateHreflang } from "@global-import-lab/validators/hreflangValidator";
 import { validateInternalLinks } from "@global-import-lab/validators/internalLinks";
 import { validateSeoIntegrity } from "@global-import-lab/validators/seoIntegrity";
+import { canonicalIntegrityIssues } from "../packages/validators/src/seoIntegrityCanonicalRules";
+import { absoluteHreflangIssues } from "../packages/validators/src/seoIntegrityHreflangRules";
+import { metadataIntegrityIssues } from "../packages/validators/src/seoIntegrityMetadataRules";
+import { slugIntegrityIssues } from "../packages/validators/src/seoIntegritySlugRules";
 
 const canonical = "https://example.com/en/buyer-guides/usb-c-charger/";
 const baseArticle: Article = {
@@ -32,6 +36,10 @@ const baseArticle: Article = {
 assert.deepEqual(validateHreflang(baseArticle), []);
 assert.deepEqual(validateSeoIntegrity(baseArticle), []);
 assert.deepEqual(validateInternalLinks(baseArticle), []);
+assert.deepEqual(canonicalIntegrityIssues(baseArticle), []);
+assert.deepEqual(slugIntegrityIssues(baseArticle), []);
+assert.deepEqual(metadataIntegrityIssues(baseArticle), []);
+assert.deepEqual(absoluteHreflangIssues(baseArticle), []);
 
 assert.deepEqual(
   validateHreflang({ ...baseArticle, hreflangMap: {} }).map((issue) => issue.code),
@@ -64,6 +72,24 @@ assert.equal(
   validateSeoIntegrity({ ...baseArticle, hreflangMap: { en: canonical, es: "/es/relative/", "x-default": "https://example.com/" } }).at(-1)?.code,
   "hreflang_not_absolute"
 );
+
+const invalidSeoArticle = {
+  ...baseArticle,
+  canonicalUrl: "https://example.com/wrong/",
+  hreflangMap: { en: "https://example.com/wrong/", es: "/es/relative/", "x-default": "https://example.com/" },
+  title: "Best USB-C Charger 2026",
+  metaDescription: "Too short",
+  slug: "USB_Charger"
+};
+
+assert.deepEqual(canonicalIntegrityIssues(invalidSeoArticle).map((issue) => issue.code), ["canonical_mismatch", "hreflang_self_mismatch"]);
+assert.deepEqual(slugIntegrityIssues(invalidSeoArticle).map((issue) => issue.code), ["slug_format_invalid"]);
+assert.deepEqual(metadataIntegrityIssues(invalidSeoArticle).map((issue) => issue.code), [
+  "title_length_outside_seo_range",
+  "meta_description_length_outside_seo_range",
+  "generic_best_year_title"
+]);
+assert.deepEqual(absoluteHreflangIssues(invalidSeoArticle).map((issue) => issue.code), ["hreflang_not_absolute"]);
 
 console.log("SEO guard unit tests passed");
 
