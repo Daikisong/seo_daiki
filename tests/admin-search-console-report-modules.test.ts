@@ -13,9 +13,32 @@ import {
   searchConsoleRowPaths,
   searchConsoleSuggestionPaths
 } from "../apps/web/lib/admin/search-console-report";
-import { normalizeRow as splitNormalizeRow } from "../apps/web/lib/admin/search-console-report-normalizers";
+import {
+  isRecord as directIsRecord,
+  normalizeScoreBreakdown as directNormalizeScoreBreakdown,
+  numberValue as directNumberValue
+} from "../apps/web/lib/admin/search-console-report-normalizer-values";
+import { normalizeRow as directNormalizeRow } from "../apps/web/lib/admin/search-console-report-row-normalizers";
+import {
+  normalizeInternalLink as directNormalizeInternalLink,
+  normalizeMissingSection as directNormalizeMissingSection,
+  normalizeSuggestion as directNormalizeSuggestion
+} from "../apps/web/lib/admin/search-console-report-suggestion-normalizers";
+import {
+  isRecord,
+  normalizeRow as splitNormalizeRow
+} from "../apps/web/lib/admin/search-console-report-normalizers";
 
 assert.equal(normalizeRow, splitNormalizeRow);
+assert.equal(normalizeRow, directNormalizeRow);
+assert.equal(normalizeInternalLink, directNormalizeInternalLink);
+assert.equal(normalizeMissingSection, directNormalizeMissingSection);
+assert.equal(normalizeScoreBreakdown, directNormalizeScoreBreakdown);
+assert.equal(normalizeSuggestion, directNormalizeSuggestion);
+assert.equal(numberValue, directNumberValue);
+assert.equal(isRecord, directIsRecord);
+assert.equal(isRecord({ ok: true }), true);
+assert.equal(isRecord(["not", "record"]), false);
 assert.equal(numberValue("12.5"), 12.5);
 assert.equal(numberValue("bad"), 0);
 
