@@ -7,9 +7,29 @@ import {
 } from "../apps/web/lib/admin/evidence-record-route-handlers";
 import {
   evidencePackMutationPayload,
+  marketRiskMutationPayload,
   productMutationPayload,
+  sellerClaimMutationPayload,
+  verifiedClaimMutationPayload,
   variantMutationPayload
 } from "../apps/web/lib/admin/evidence-record-route-payloads";
+import {
+  sellerClaimMutationPayload as directSellerClaimMutationPayload,
+  verifiedClaimMutationPayload as directVerifiedClaimMutationPayload
+} from "../apps/web/lib/admin/evidence-record-claim-payloads";
+import { evidencePackMutationPayload as directEvidencePackMutationPayload } from "../apps/web/lib/admin/evidence-record-pack-payloads";
+import {
+  productMutationPayload as directProductMutationPayload,
+  variantMutationPayload as directVariantMutationPayload
+} from "../apps/web/lib/admin/evidence-record-product-payloads";
+import { marketRiskMutationPayload as directMarketRiskMutationPayload } from "../apps/web/lib/admin/evidence-record-risk-payloads";
+
+assert.equal(productMutationPayload, directProductMutationPayload);
+assert.equal(variantMutationPayload, directVariantMutationPayload);
+assert.equal(sellerClaimMutationPayload, directSellerClaimMutationPayload);
+assert.equal(verifiedClaimMutationPayload, directVerifiedClaimMutationPayload);
+assert.equal(marketRiskMutationPayload, directMarketRiskMutationPayload);
+assert.equal(evidencePackMutationPayload, directEvidencePackMutationPayload);
 
 const productForm = formData({
   canonicalName: " Example Charger ",
@@ -60,6 +80,73 @@ assert.deepEqual(
     productId: undefined,
     locale: "en",
     packJson: { source: "manual" }
+  }
+);
+
+assert.deepEqual(
+  sellerClaimMutationPayload(
+    formData({
+      productId: "product-1",
+      claimType: "wattage",
+      claimValue: "65W",
+      confidence: "0.75"
+    })
+  ),
+  {
+    id: undefined,
+    productId: "product-1",
+    claimType: "wattage",
+    claimValue: "65W",
+    rawText: undefined,
+    sourceUrl: undefined,
+    confidence: 0.75
+  }
+);
+
+assert.deepEqual(
+  verifiedClaimMutationPayload(
+    formData({
+      productId: "product-1",
+      testType: "load",
+      resultValue: "62",
+      method: "bench",
+      testedAt: "2026-05-27"
+    })
+  ),
+  {
+    id: undefined,
+    productId: "product-1",
+    testType: "load",
+    resultValue: "62",
+    unit: undefined,
+    method: "bench",
+    evidenceUrl: undefined,
+    confidence: undefined,
+    testedAt: new Date("2026-05-27")
+  }
+);
+
+assert.deepEqual(
+  marketRiskMutationPayload(
+    formData({
+      productId: "product-1",
+      locale: "pt-br",
+      country: "BR",
+      customsRisk: "import tax",
+      score: "72"
+    })
+  ),
+  {
+    id: undefined,
+    productId: "product-1",
+    locale: "pt-br",
+    country: "BR",
+    plugRisk: undefined,
+    customsRisk: "import tax",
+    certificationRisk: undefined,
+    returnRisk: undefined,
+    localAlternativeNote: undefined,
+    score: 72
   }
 );
 
