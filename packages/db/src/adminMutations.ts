@@ -2,24 +2,40 @@ import { prisma } from "./client";
 import type { Prisma } from "./generated/prisma/client";
 import { getDbArticles, getDbEvidencePacks, getDbProducts } from "./contentRepository";
 import { runQualityGate, type ValidationIssue } from "@global-import-lab/validators";
+import {
+  adminEntityTypes,
+  adminRecordActions,
+  archiveSummary,
+  collectArticleStateGateBlockers,
+  indexStatuses,
+  isAdminEntityType,
+  isAdminRecordAction,
+  isIndexStatus,
+  isPublishStatus,
+  normalizeArticleStateInput,
+  publishStatuses,
+  toJson,
+  type AdminEntityType,
+  type AdminRecordAction,
+  type ArticleStateInput,
+  type IndexStatusInput,
+  type PublishStatusInput
+} from "./adminMutationRules";
 
-export const indexStatuses = ["index", "noindex", "pending", "refresh_needed", "merge_candidate"] as const;
-export const publishStatuses = ["draft", "pending", "published"] as const;
-export const adminEntityTypes = [
-  "product",
-  "variant",
-  "seller-claim",
-  "verified-claim",
-  "market-risk",
-  "evidence-pack",
-  "article"
-] as const;
-export const adminRecordActions = ["archive", "delete"] as const;
-
-export type IndexStatusInput = (typeof indexStatuses)[number];
-export type PublishStatusInput = (typeof publishStatuses)[number];
-export type AdminEntityType = (typeof adminEntityTypes)[number];
-export type AdminRecordAction = (typeof adminRecordActions)[number];
+export {
+  adminEntityTypes,
+  adminRecordActions,
+  indexStatuses,
+  isAdminEntityType,
+  isAdminRecordAction,
+  isIndexStatus,
+  isPublishStatus,
+  publishStatuses,
+  type AdminEntityType,
+  type AdminRecordAction,
+  type IndexStatusInput,
+  type PublishStatusInput
+};
 
 export class AdminPublishGateError extends Error {
   readonly articleId: string;
@@ -389,43 +405,9 @@ export async function getAuditLogs(limit = 50) {
   });
 }
 
-export function isIndexStatus(value: string): value is IndexStatusInput {
-  return indexStatuses.includes(value as IndexStatusInput);
-}
-
-export function isPublishStatus(value: string): value is PublishStatusInput {
-  return publishStatuses.includes(value as PublishStatusInput);
-}
-
-export function isAdminEntityType(value: string): value is AdminEntityType {
-  return adminEntityTypes.includes(value as AdminEntityType);
-}
-
-export function isAdminRecordAction(value: string): value is AdminRecordAction {
-  return adminRecordActions.includes(value as AdminRecordAction);
-}
-
 type AdminMutationTransaction = Prisma.TransactionClient;
 
-function normalizeArticleStateInput(input: {
-  id: string;
-  indexStatus?: IndexStatusInput;
-  publishStatus?: PublishStatusInput;
-  qualityScore?: number;
-}) {
-  if (input.publishStatus && input.publishStatus !== "published" && input.indexStatus === "index") {
-    return { ...input, indexStatus: "noindex" as const };
-  }
-
-  return input;
-}
-
-async function evaluateArticleStateChange(input: {
-  id: string;
-  indexStatus?: IndexStatusInput;
-  publishStatus?: PublishStatusInput;
-  qualityScore?: number;
-}): Promise<
+async function evaluateArticleStateChange(input: ArticleStateInput): Promise<
   | { ok: true }
   | {
       ok: false;
@@ -459,33 +441,7 @@ async function evaluateArticleStateChange(input: {
     (pack) => pack.productId === candidate.productId && pack.locale === candidate.locale
   );
   const result = runQualityGate({ article: candidate, product, evidencePack });
-  const issues: ValidationIssue[] = [...result.issues];
-
-  if (candidate.publishStatus !== "published") {
-    issues.push({
-      code: "publish_state_not_published",
-      message: "Indexable articles must be published before indexStatus can be set to index.",
-      severity: "blocker"
-    });
-  }
-
-  if (candidate.qualityScore < 80) {
-    issues.push({
-      code: "quality_score_below_index_threshold",
-      message: `Indexable articles need stored qualityScore >= 80; found ${candidate.qualityScore}.`,
-      severity: "blocker"
-    });
-  }
-
-  if (result.indexStatus !== "index") {
-    issues.push({
-      code: "quality_gate_not_index",
-      message: `Quality gate returned ${result.indexStatus}; indexStatus=index requires gate status index.`,
-      severity: "blocker"
-    });
-  }
-
-  const blockers = issues.filter((issue) => issue.severity === "blocker");
+  const blockers = collectArticleStateGateBlockers(candidate, result);
   if (blockers.length === 0) {
     return { ok: true };
   }
@@ -567,18 +523,4 @@ async function deleteRecord(tx: AdminMutationTransaction, entityType: AdminEntit
   } else {
     await tx.article.delete({ where: { id: entityId } });
   }
-}
-
-function archiveSummary(entityType: AdminEntityType) {
-  if (entityType === "product") {
-    return "Archived product and marked related articles noindex/draft.";
-  }
-  if (entityType === "article") {
-    return "Archived article and marked it noindex/draft.";
-  }
-  return `Archived ${entityType}.`;
-}
-
-function toJson(value: unknown): Prisma.InputJsonValue {
-  return JSON.parse(JSON.stringify(value)) as Prisma.InputJsonValue;
 }
