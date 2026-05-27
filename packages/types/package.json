@@ -9,6 +9,8 @@
     "./locales": "./src/locales.ts",
     "./markets": "./src/markets.ts",
     "./monetization-records": "./src/monetization-records.ts",
+    "./product-evidence": "./src/product-evidence.ts",
+    "./product-variants": "./src/product-variants.ts",
     "./products": "./src/products.ts",
     "./publishing-records": "./src/publishing-records.ts",
     "./serp-records": "./src/serp-records.ts",

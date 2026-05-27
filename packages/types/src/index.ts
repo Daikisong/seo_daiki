@@ -2,6 +2,8 @@ export * from "./articles";
 export * from "./locales";
 export * from "./markets";
 export * from "./monetization-records";
+export * from "./product-evidence";
+export * from "./product-variants";
 export * from "./products";
 export * from "./publishing-records";
 export * from "./serp-records";
