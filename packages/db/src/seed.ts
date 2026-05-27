@@ -1,7 +1,17 @@
 import { prisma } from "./client";
 import { articleTranslationGroups, articles, evidencePacks, products } from "@global-import-lab/content";
-import type { AffiliateLink, Article } from "@global-import-lab/types";
 import type { Prisma } from "./generated/prisma/client";
+import {
+  affiliateLinksWithPlacementIds,
+  affiliateOfferId,
+  aliexpressAffiliateUrl,
+  countryForLocale,
+  defaultAliExpressAllowedDomains,
+  defaultIherbAllowedDomains,
+  domainListFromEnv,
+  iherbAffiliateUrl,
+  isIherbSeedAffiliateLink
+} from "./seedAffiliateModel";
 
 function toJson(value: unknown): Prisma.InputJsonValue {
   return JSON.parse(JSON.stringify(value)) as Prisma.InputJsonValue;
@@ -173,12 +183,7 @@ async function seedAffiliateMerchants() {
       domain: "aliexpress.com",
       merchantType: "marketplace",
       allowedDomains: toJson(
-        domainListFromEnv("ALIEXPRESS_ALLOWED_AFFILIATE_DOMAINS", [
-          "aliexpress.com",
-          "www.aliexpress.com",
-          "s.click.aliexpress.com",
-          "best.aliexpress.com"
-        ])
+        domainListFromEnv("ALIEXPRESS_ALLOWED_AFFILIATE_DOMAINS", defaultAliExpressAllowedDomains)
       ),
       healthSensitive: false
     }
@@ -201,7 +206,7 @@ async function seedAffiliateMerchants() {
       slug: "iherb",
       domain: "iherb.com",
       merchantType: "supplement_store",
-      allowedDomains: toJson(domainListFromEnv("IHERB_ALLOWED_AFFILIATE_DOMAINS", ["iherb.com", "www.iherb.com"])),
+      allowedDomains: toJson(domainListFromEnv("IHERB_ALLOWED_AFFILIATE_DOMAINS", defaultIherbAllowedDomains)),
       healthSensitive: true
     }
   });
@@ -234,7 +239,7 @@ async function seedAffiliateOffersAndPlacements(seed: Awaited<ReturnType<typeof 
         continue;
       }
 
-      const isIherb = /iherb|supplement|vitamin|probiotic|magnesium/i.test(`${link.label} ${link.href}`);
+      const isIherb = isIherbSeedAffiliateLink(link);
       const merchant = isIherb ? seed.iherb : seed.aliexpress;
       const program = isIherb ? seed.iherbProgram : seed.aliexpressProgram;
       const product = article.productId ? productById.get(article.productId) : undefined;
@@ -275,60 +280,6 @@ async function seedAffiliateOffersAndPlacements(seed: Awaited<ReturnType<typeof 
       });
     }
   }
-}
-
-function affiliateLinksWithPlacementIds(article: Article): AffiliateLink[] {
-  return article.affiliateLinks.map((link, index) => ({
-    ...link,
-    placementId: link.placementId ?? affiliatePlacementId(article.id, index),
-    placementStatus: article.publishStatus === "published" && article.indexStatus === "index" ? "approved" : "draft",
-    disclosureShown: true,
-    offerStatus: "active",
-    merchantSlug: /iherb|supplement|vitamin|magnesium|probiotic/i.test(`${link.label} ${link.href}`) ? "iherb" : "aliexpress",
-    merchantAllowedDomains: /iherb|supplement|vitamin|magnesium|probiotic/i.test(`${link.label} ${link.href}`)
-      ? domainListFromEnv("IHERB_ALLOWED_AFFILIATE_DOMAINS", ["iherb.com", "www.iherb.com"])
-      : domainListFromEnv("ALIEXPRESS_ALLOWED_AFFILIATE_DOMAINS", [
-          "aliexpress.com",
-          "www.aliexpress.com",
-          "s.click.aliexpress.com",
-          "best.aliexpress.com"
-        ]),
-    offerHealthSensitive: /iherb|supplement|vitamin|magnesium|probiotic/i.test(`${link.label} ${link.href}`)
-  }));
-}
-
-function affiliatePlacementId(articleId: string, index: number) {
-  return `placement-${articleId}-${index + 1}`;
-}
-
-function affiliateOfferId(articleId: string, index: number) {
-  return `offer-${articleId}-${index + 1}`;
-}
-
-function aliexpressAffiliateUrl(article: Article, index: number) {
-  const itemKey = encodeURIComponent(article.productId ?? `${article.slug}-${index + 1}`);
-  return `https://www.aliexpress.com/item/${itemKey}.html`;
-}
-
-function iherbAffiliateUrl(article: Article, index: number) {
-  const itemKey = encodeURIComponent(`${article.slug}-${index + 1}`);
-  return `https://www.iherb.com/pr/${itemKey}`;
-}
-
-function countryForLocale(locale: string) {
-  if (locale === "pt-br") {
-    return "BR";
-  }
-  if (locale === "es") {
-    return "ES";
-  }
-  return "US";
-}
-
-function domainListFromEnv(name: string, fallback: string[]) {
-  return (process.env[name]?.split(",").map((item) => item.trim()).filter(Boolean) ?? fallback).map((domain) =>
-    domain.toLowerCase()
-  );
 }
 
 main()
