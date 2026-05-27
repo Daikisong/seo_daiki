@@ -7,6 +7,25 @@ import {
   verifiedClaimOptionLabel,
   verifiedClaimOptionRows
 } from "../apps/web/lib/admin/admin-evidence-form-model";
+import {
+  labEvidenceAssetOptionLabel as directLabEvidenceAssetOptionLabel,
+  productOptionRows as directProductOptionRows,
+  verifiedClaimOptionLabel as directVerifiedClaimOptionLabel,
+  verifiedClaimOptionRows as directVerifiedClaimOptionRows
+} from "../apps/web/lib/admin/admin-evidence-form-options";
+import {
+  evidencePackJsonTextareaValue as directEvidencePackJsonTextareaValue
+} from "../apps/web/lib/admin/admin-evidence-form-pack-json";
+import {
+  evidenceRecordReturnTo as directEvidenceRecordReturnTo
+} from "../apps/web/lib/admin/admin-evidence-form-routes";
+
+assert.equal(evidenceRecordReturnTo, directEvidenceRecordReturnTo);
+assert.equal(productOptionRows, directProductOptionRows);
+assert.equal(verifiedClaimOptionRows, directVerifiedClaimOptionRows);
+assert.equal(verifiedClaimOptionLabel, directVerifiedClaimOptionLabel);
+assert.equal(labEvidenceAssetOptionLabel, directLabEvidenceAssetOptionLabel);
+assert.equal(evidencePackJsonTextareaValue, directEvidencePackJsonTextareaValue);
 
 const products = [
   {
