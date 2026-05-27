@@ -25,6 +25,7 @@ import {
   TopicStatusForm
 } from "./AdminForms";
 import { adminFieldValue, emptyEvidencePackJson } from "@/lib/admin/admin-form-utils";
+import { buildAdminQualityRows, buildAdminQualityStats, issueCodes } from "@/lib/admin/admin-quality-model";
 import {
   readAffiliateMerchants,
   readAffiliateOffers,
@@ -41,7 +42,7 @@ import {
   readTopicRows,
   readTrendRows
 } from "@/lib/admin/admin-section-data";
-import { average, scoreBreakdownSummary, stringFromSearchParam } from "@/lib/admin/admin-section-utils";
+import { scoreBreakdownSummary, stringFromSearchParam } from "@/lib/admin/admin-section-utils";
 import { readSearchConsoleReport } from "@/lib/admin/search-console-report";
 import { getAllArticles, getAllEvidencePacks, getAllProducts } from "@/lib/content/repository";
 import { runQualityGate } from "@global-import-lab/validators";
@@ -397,38 +398,22 @@ async function AdminTable({ filters, section }: { filters: Record<string, string
 
   if (section === "quality") {
     const duplicateCandidateCounts = await readDuplicateCandidateCounts();
-    const rows = articles.map((article) => {
-      const product = products.find((item) => item.id === article.productId);
-      const evidencePack = evidencePacks.find((pack) => pack.productId === article.productId && pack.locale === article.locale);
-      const result = runQualityGate({ article, product, evidencePack });
-      const hreflangIssues = result.issues.filter((issue) => issue.code.startsWith("hreflang"));
-      const schemaIssues = result.issues.filter((issue) => issue.code.startsWith("schema"));
-      const affiliateIssues = result.issues.filter((issue) => issue.code.startsWith("affiliate"));
-      const evidenceCount =
-        article.evidenceIds.length + (product?.sellerClaims.length ?? 0) + (product?.verifiedClaims.length ?? 0);
-      return {
-        article,
-        result,
-        evidenceCount,
-        hreflangIssues,
-        schemaIssues,
-        affiliateIssues,
-        duplicateCandidateCount: article.productId ? duplicateCandidateCounts[article.productId] ?? 0 : 0
-      };
+    const rows = buildAdminQualityRows({
+      articles,
+      duplicateCandidateCounts,
+      evidencePacks,
+      evaluateQualityGate: runQualityGate,
+      products
     });
-    const indexableRows = rows.filter(({ article }) => article.indexStatus === "index");
-    const rowsWithErrors = rows.filter(
-      ({ affiliateIssues, hreflangIssues, schemaIssues }) =>
-        affiliateIssues.length > 0 || hreflangIssues.length > 0 || schemaIssues.length > 0
-    );
+    const stats = buildAdminQualityStats(rows);
 
     return (
       <div className="space-y-4">
         <div className="grid gap-3 md:grid-cols-4">
-          <QualityStat label="Indexed pages" value={indexableRows.length} />
-          <QualityStat label="Avg internal links" value={average(rows.map(({ article }) => article.internalLinks.length)).toFixed(1)} />
-          <QualityStat label="SEO issue rows" value={rowsWithErrors.length} />
-          <QualityStat label="Duplicate candidates" value={rows.reduce((sum, row) => sum + row.duplicateCandidateCount, 0)} />
+          <QualityStat label="Indexed pages" value={stats.indexedPages} />
+          <QualityStat label="Avg internal links" value={stats.avgInternalLinks.toFixed(1)} />
+          <QualityStat label="SEO issue rows" value={stats.seoIssueRows} />
+          <QualityStat label="Duplicate candidates" value={stats.duplicateCandidates} />
         </div>
         <table>
           <thead>
@@ -468,9 +453,9 @@ async function AdminTable({ filters, section }: { filters: Record<string, string
                   <td>{result.score}</td>
                   <td>{evidenceCount}</td>
                   <td>{article.internalLinks.length}</td>
-                  <td>{hreflangIssues.length ? hreflangIssues.map((issue) => issue.code).join(", ") : "-"}</td>
-                  <td>{schemaIssues.length ? schemaIssues.map((issue) => issue.code).join(", ") : "-"}</td>
-                  <td>{affiliateIssues.length ? affiliateIssues.map((issue) => issue.code).join(", ") : "-"}</td>
+                  <td>{issueCodes(hreflangIssues)}</td>
+                  <td>{issueCodes(schemaIssues)}</td>
+                  <td>{issueCodes(affiliateIssues)}</td>
                   <td>{duplicateCandidateCount || "-"}</td>
                 </tr>
               )
