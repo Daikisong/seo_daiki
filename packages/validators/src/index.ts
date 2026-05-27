@@ -12,6 +12,20 @@ import {
   hreflangKeyForArticle,
   sectionHrefForArticle
 } from "@global-import-lab/seo";
+import {
+  arrayField,
+  articleText,
+  booleanJsonField,
+  hostForUrl,
+  hostMatchesDomain,
+  isRecord,
+  normalizeUrl,
+  numericJsonField,
+  recordField,
+  sharedCommerceTerm,
+  stringField,
+  stringJsonField
+} from "./validationUtils";
 
 export interface ValidationIssue {
   code: string;
@@ -747,79 +761,6 @@ export function runQualityGate(input: QualityGateInput): QualityGateResult {
   return { score, indexStatus, issues, breakdown };
 }
 
-function normalizeUrl(value: string) {
-  try {
-    const url = new URL(value);
-    url.hash = "";
-    url.search = "";
-    url.pathname = url.pathname.endsWith("/") ? url.pathname : `${url.pathname}/`;
-    return url.toString();
-  } catch {
-    return value.endsWith("/") ? value : `${value}/`;
-  }
-}
-
-function articleText(article: Article) {
-  return [
-    article.title,
-    article.h1,
-    article.metaDescription,
-    article.summary,
-    article.contentMdx,
-    article.evidenceIds.join(" "),
-    ...article.sections.flatMap((section) => [section.heading, section.body]),
-    ...article.internalLinks.flatMap((link) => [link.label, link.href]),
-    ...article.affiliateLinks.flatMap((link) => [link.label, link.href, link.merchantSlug ?? ""])
-  ].join(" ");
-}
-
-function hostForUrl(value: string) {
-  try {
-    return new URL(value, "https://example.com").hostname.toLowerCase();
-  } catch {
-    return undefined;
-  }
-}
-
-function hostMatchesDomain(host: string, domain: string) {
-  const normalized = domain
-    .replace(/^https?:\/\//i, "")
-    .replace(/\/.*$/, "")
-    .replace(/^\*\./, "")
-    .toLowerCase();
-
-  return host === normalized || host.endsWith(`.${normalized}`);
-}
-
-function numericJsonField(value: unknown, field: string) {
-  if (!isRecord(value)) {
-    return undefined;
-  }
-  const raw = value[field];
-  return typeof raw === "number" && Number.isFinite(raw) ? raw : undefined;
-}
-
-function stringJsonField(value: unknown, field: string) {
-  if (!isRecord(value)) {
-    return undefined;
-  }
-  const raw = value[field];
-  return typeof raw === "string" ? raw : undefined;
-}
-
-function booleanJsonField(value: unknown, field: string) {
-  if (!isRecord(value)) {
-    return false;
-  }
-  return value[field] === true;
-}
-
-function sharedCommerceTerm(articleTextValue: string, linkText: string) {
-  const articleTerms = new Set((articleTextValue.toLowerCase().match(/[a-z0-9]+/g) ?? []).filter((term) => term.length > 3));
-  const linkTerms = (linkText.toLowerCase().match(/[a-z0-9]+/g) ?? []).filter((term) => term.length > 3);
-  return linkTerms.some((term) => articleTerms.has(term));
-}
-
 function validateBreadcrumbSchema(issues: ValidationIssue[], article: Article, canonical: string) {
   const breadcrumbs = buildBreadcrumbJsonLd([
     { name: "Home", url: absoluteUrl(`/${article.locale}/`) },
@@ -1091,23 +1032,4 @@ function requireUrlField(
   if (!value || normalizeUrl(value) !== normalizeUrl(expectedUrl)) {
     issues.push({ code, message, severity: "blocker" });
   }
-}
-
-function stringField(schema: Record<string, unknown>, field: string) {
-  const value = schema[field];
-  return typeof value === "string" ? value : undefined;
-}
-
-function recordField(schema: Record<string, unknown>, field: string) {
-  const value = schema[field];
-  return isRecord(value) ? value : undefined;
-}
-
-function arrayField(schema: Record<string, unknown>, field: string) {
-  const value = schema[field];
-  return Array.isArray(value) ? value : [];
-}
-
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return typeof value === "object" && value !== null && !Array.isArray(value);
 }
