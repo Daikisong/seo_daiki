@@ -1,15 +1,14 @@
 import type {
   Article,
-  ArticleSection,
   ArticleType,
-  EvidencePack,
-  InternalLink,
   Locale,
   Product
 } from "@global-import-lab/types";
 import { buildArticlesFromDrafts, buildArticleTranslationGroups } from "./article-assembly";
 import type { ArticleDraft } from "./article-draft-types";
 import { buildGeneratedDraftArticles } from "./planned-article-fixtures";
+import { sampleInternalLinks, sampleSections } from "./sample-article-helpers";
+import { buildSampleEvidencePacks } from "./sample-evidence-packs";
 import { buildTrendBlogDraftArticles } from "./trend-blog-article-fixtures";
 import { generatedProductFixtures } from "./product-fixtures";
 
@@ -537,82 +536,7 @@ export const products: Product[] = [
   ...generatedProductFixtures(updatedAt)
 ];
 
-export const evidencePacks: EvidencePack[] = products.flatMap((product) =>
-  (["en", "es", "pt-br"] as Locale[]).map((locale) => ({
-    id: `ep-${product.slug}-${locale}`,
-    productId: product.id,
-    locale,
-    packJson: {
-      product: {
-        id: product.id,
-        canonicalName: product.canonicalName,
-        slug: product.slug,
-        category: product.category
-      },
-      variants: product.variants,
-      sellerClaims: product.sellerClaims,
-      verifiedClaims: product.verifiedClaims,
-      reviewSignals: product.reviewSignals.filter((signal) => signal.locale === locale || signal.locale === "en"),
-      priceSnapshots: product.priceSnapshots,
-      marketRisks: product.marketRisks.filter((risk) => risk.locale === locale || risk.locale === "en"),
-      allowedClaims: [
-        "Seller claims must be labeled as seller claims until verified.",
-        "Use sustained-output values only when a VerifiedClaim exists.",
-        "Variant, plug, cable, customs, and return risks can be described from evidence."
-      ],
-      forbiddenClaims: [
-        "Do not say safety certification is verified unless a certification evidence record exists.",
-        "Do not copy review text.",
-        "Do not say every SKU supports the headline wattage."
-      ]
-    },
-    createdAt: updatedAt
-  }))
-);
-
-function internalLinks(locale: Locale): InternalLink[] {
-  const prefix = `/${locale}`;
-  const hubSlug = locale === "en" ? "usb-c-chargers" : locale === "es" ? "cargadores-usb-c" : "carregadores-usb-c";
-  return [
-    { label: "USB-C charger hub", href: `${prefix}/${hubSlug}/`, reason: "category_hub" },
-    {
-      label: "How we test USB-C chargers",
-      href: `${prefix}/methodology/how-we-test-usb-c-chargers/`,
-      reason: "methodology"
-    },
-    {
-      label: "65W charger output table",
-      href: `${prefix}/data/65w-gan-charger-output-table/`,
-      reason: "data"
-    },
-    {
-      label: "65W vs 100W charger comparison",
-      href: `${prefix}/compare/65w-vs-100w-gan-charger/`,
-      reason: "compare"
-    },
-    {
-      label: "Fake watts buying guide",
-      href: `${prefix}/guides/aliexpress-charger-fake-watts/`,
-      reason: "guide"
-    },
-    {
-      label: "Wrong plug option guide",
-      href: `${prefix}/guides/aliexpress-charger-wrong-plug-option/`,
-      reason: "guide"
-    }
-  ];
-}
-
-function sections(headings: string[], evidenceIds: string[]): ArticleSection[] {
-  return headings.map((heading, index) => ({
-    heading,
-    body:
-      index % 2 === 0
-        ? "This section separates seller claims from verified evidence, then explains the variant, plug, price, and return-risk implications before a buyer clicks an affiliate link."
-        : "The decision rule is intentionally conservative: buy only when the selected SKU matches the tested claim, the final shipped price stays in the buy zone, and the local risk matrix is acceptable.",
-    evidenceIds: evidenceIds.slice(index, index + 2)
-  }));
-}
+export const evidencePacks = buildSampleEvidencePacks(products, updatedAt);
 
 function englishCategoryHubDraft({
   id,
@@ -642,14 +566,14 @@ function englishCategoryHubDraft({
     metaDescription: `${title} with seller claims, verified evidence, variant traps, price truth, and import risk notes.`,
     summary,
     contentMdx: "category hub product evidence variant price verified market risk methodology data lab guide compare",
-    sections: sections(
+    sections: sampleSections(
       ["What this category verifies", "Products under watch", "Common traps", "Data, lab, and guides"],
       evidenceIds
     ),
     qualityScore,
     indexStatus,
     publishStatus: "published",
-    internalLinks: internalLinks("en"),
+    internalLinks: sampleInternalLinks("en"),
     affiliateLinks: [],
     evidenceIds,
     lastUpdated: updatedAt
@@ -670,14 +594,14 @@ const baseDraftArticles: ArticleDraft[] = [
     summary:
       "A category hub for USB-C chargers that links product reviews, lab data, problem guides, and country risk notes.",
     contentMdx: "variant plug cable evidence price verified customs return alternative",
-    sections: sections(
+    sections: sampleSections(
       ["What we verify", "Top products under watch", "Country risks", "Data and lab pages"],
       ["vc-baseus-output", "vc-baseus-temp", "risk-baseus-us", "sc-ugreen-100w-title"]
     ),
     qualityScore: 91,
     indexStatus: "index",
     publishStatus: "published",
-    internalLinks: internalLinks("en"),
+    internalLinks: sampleInternalLinks("en"),
     affiliateLinks: [],
     evidenceIds: ["vc-baseus-output", "vc-baseus-temp", "risk-baseus-us", "sc-ugreen-100w-title"],
     lastUpdated: updatedAt
@@ -695,14 +619,14 @@ const baseDraftArticles: ArticleDraft[] = [
     summary:
       "Un hub para separar promesas del vendedor, datos medidos, variantes peligrosas y riesgos de compra en español.",
     contentMdx: "variant plug cable evidence price verified customs return alternative",
-    sections: sections(
+    sections: sampleSections(
       ["Qué verificamos", "Productos bajo seguimiento", "Riesgos para España", "Datos y laboratorio"],
       ["vc-baseus-output", "vc-baseus-temp", "risk-baseus-es", "sc-baseus-cable"]
     ),
     qualityScore: 88,
     indexStatus: "index",
     publishStatus: "published",
-    internalLinks: internalLinks("es"),
+    internalLinks: sampleInternalLinks("es"),
     affiliateLinks: [],
     evidenceIds: ["vc-baseus-output", "vc-baseus-temp", "risk-baseus-es", "sc-baseus-cable"],
     lastUpdated: updatedAt
@@ -720,14 +644,14 @@ const baseDraftArticles: ArticleDraft[] = [
     summary:
       "Um hub em português do Brasil para entender dados medidos, armadilhas de variante e riscos de importação.",
     contentMdx: "variant plug cable evidence price verified customs return alternative",
-    sections: sections(
+    sections: sampleSections(
       ["O que verificamos", "Produtos monitorados", "Riscos no Brasil", "Dados e laboratório"],
       ["vc-baseus-output", "vc-baseus-temp", "risk-baseus-br", "sc-baseus-cable"]
     ),
     qualityScore: 87,
     indexStatus: "index",
     publishStatus: "published",
-    internalLinks: internalLinks("pt-br"),
+    internalLinks: sampleInternalLinks("pt-br"),
     affiliateLinks: [],
     evidenceIds: ["vc-baseus-output", "vc-baseus-temp", "risk-baseus-br", "sc-baseus-cable"],
     lastUpdated: updatedAt
@@ -797,14 +721,14 @@ const baseDraftArticles: ArticleDraft[] = [
     summary:
       "US buyers face low customs risk, but certification uncertainty, return friction, and misleading charger variants still matter before clicking an affiliate link.",
     contentMdx: "country customs certification return local alternative variant plug cable evidence price verified risk",
-    sections: sections(
+    sections: sampleSections(
       ["US buyer risk summary", "Certification and return tradeoffs", "Local alternatives", "Products to treat carefully", "Evidence"],
       ["risk-baseus-us", "sc-baseus-65w-title", "vc-baseus-output", "rs-baseus-wrong-plug-en"]
     ),
     qualityScore: 88,
     indexStatus: "index",
     publishStatus: "published",
-    internalLinks: internalLinks("en"),
+    internalLinks: sampleInternalLinks("en"),
     affiliateLinks: [],
     evidenceIds: ["risk-baseus-us", "sc-baseus-65w-title", "vc-baseus-output", "rs-baseus-wrong-plug-en"],
     lastUpdated: updatedAt
@@ -823,14 +747,14 @@ const baseDraftArticles: ArticleDraft[] = [
     summary:
       "UK buyers need a different rule from US buyers: check plug fit, VAT-inclusive landed price, CE claims, and whether a local retailer is safer.",
     contentMdx: "country uk vat ce plug return local alternative variant cable evidence price verified risk",
-    sections: sections(
+    sections: sampleSections(
       ["UK buyer risk summary", "Plug and VAT tradeoffs", "CE marking and warranty", "When a local UK seller wins", "Evidence"],
       ["risk-baseus-gb", "sc-baseus-cable", "vc-baseus-output", "rs-baseus-wrong-plug-en"]
     ),
     qualityScore: 86,
     indexStatus: "index",
     publishStatus: "published",
-    internalLinks: internalLinks("en"),
+    internalLinks: sampleInternalLinks("en"),
     affiliateLinks: [],
     evidenceIds: ["risk-baseus-gb", "sc-baseus-cable", "vc-baseus-output", "rs-baseus-wrong-plug-en"],
     lastUpdated: updatedAt
@@ -849,14 +773,14 @@ const baseDraftArticles: ArticleDraft[] = [
     summary:
       "En España el enchufe EU ayuda, pero el precio final, la marca CE no verificada y las devoluciones pueden eliminar la ventaja de importar.",
     contentMdx: "country customs certification return local alternative variant plug cable evidence price verified risk españa",
-    sections: sections(
+    sections: sampleSections(
       ["Resumen para España", "Enchufe EU e IVA", "CE y garantía", "Cuándo comprar local", "Evidencia"],
       ["risk-baseus-es", "sc-baseus-cable", "vc-baseus-output", "rs-baseus-compact-es"]
     ),
     qualityScore: 87,
     indexStatus: "index",
     publishStatus: "published",
-    internalLinks: internalLinks("es"),
+    internalLinks: sampleInternalLinks("es"),
     affiliateLinks: [],
     evidenceIds: ["risk-baseus-es", "sc-baseus-cable", "vc-baseus-output", "rs-baseus-compact-es"],
     lastUpdated: updatedAt
@@ -875,14 +799,14 @@ const baseDraftArticles: ArticleDraft[] = [
     summary:
       "No Brasil, o risco principal não é só o carregador; imposto, atraso, plugue e devolução podem apagar o preço baixo.",
     contentMdx: "country customs certification return local alternative variant plug cable evidence price verified risk brasil",
-    sections: sections(
+    sections: sampleSections(
       ["Resumo para o Brasil", "Imposto e atraso", "Plugue e certificação", "Quando comprar local", "Evidências"],
       ["risk-baseus-br", "rs-baseus-customs-pt", "sc-baseus-cable", "vc-baseus-output"]
     ),
     qualityScore: 87,
     indexStatus: "index",
     publishStatus: "published",
-    internalLinks: internalLinks("pt-br"),
+    internalLinks: sampleInternalLinks("pt-br"),
     affiliateLinks: [],
     evidenceIds: ["risk-baseus-br", "rs-baseus-customs-pt", "sc-baseus-cable", "vc-baseus-output"],
     lastUpdated: updatedAt
@@ -902,7 +826,7 @@ const baseDraftArticles: ArticleDraft[] = [
       "Good as a cheap travel charger only if the selected SKU is the real 65W variant; avoid it for certified office use.",
     contentMdx:
       "AffiliateDisclosure VerdictCard BuyAvoidCard SellerClaimTable VerifiedClaimTable VariantTrapMap PriceTruthCard ReviewSignalSummary MarketRiskMatrix AlternativesGrid EvidenceList UpdateLog variant plug cable evidence price verified",
-    sections: sections(
+    sections: sampleSections(
       [
         "30-second verdict",
         "Who should buy or avoid it",
@@ -917,7 +841,7 @@ const baseDraftArticles: ArticleDraft[] = [
     qualityScore: 94,
     indexStatus: "index",
     publishStatus: "published",
-    internalLinks: internalLinks("en"),
+    internalLinks: sampleInternalLinks("en"),
     affiliateLinks: [
       {
         label: "Check current AliExpress price",
@@ -949,7 +873,7 @@ const baseDraftArticles: ArticleDraft[] = [
       "Conviene solo si eliges la variante real de 65W y el precio final no supera la zona de compra.",
     contentMdx:
       "AffiliateDisclosure VerdictCard BuyAvoidCard SellerClaimTable VerifiedClaimTable VariantTrapMap PriceTruthCard ReviewSignalSummary MarketRiskMatrix AlternativesGrid EvidenceList UpdateLog variant plug cable evidence price verified",
-    sections: sections(
+    sections: sampleSections(
       [
         "Veredicto rápido",
         "Quién debería comprarlo",
@@ -964,7 +888,7 @@ const baseDraftArticles: ArticleDraft[] = [
     qualityScore: 90,
     indexStatus: "index",
     publishStatus: "published",
-    internalLinks: internalLinks("es"),
+    internalLinks: sampleInternalLinks("es"),
     affiliateLinks: [
       {
         label: "Ver precio actual en AliExpress",
@@ -990,7 +914,7 @@ const baseDraftArticles: ArticleDraft[] = [
       "Vale como carregador de viagem barato apenas se a variante for 65W real e o risco de imposto não apagar a vantagem.",
     contentMdx:
       "AffiliateDisclosure VerdictCard BuyAvoidCard SellerClaimTable VerifiedClaimTable VariantTrapMap PriceTruthCard ReviewSignalSummary MarketRiskMatrix AlternativesGrid EvidenceList UpdateLog variant plug cable evidence price verified customs return",
-    sections: sections(
+    sections: sampleSections(
       [
         "Veredito em 30 segundos",
         "Quem deve comprar ou evitar",
@@ -1005,7 +929,7 @@ const baseDraftArticles: ArticleDraft[] = [
     qualityScore: 89,
     indexStatus: "index",
     publishStatus: "published",
-    internalLinks: internalLinks("pt-br"),
+    internalLinks: sampleInternalLinks("pt-br"),
     affiliateLinks: [
       {
         label: "Ver preço atual no AliExpress",
@@ -1030,14 +954,14 @@ const baseDraftArticles: ArticleDraft[] = [
     summary:
       "The common problem is not always a fake product; it is often a 45W or no-cable option hiding under a 65W listing title.",
     contentMdx: "variant option plug cable evidence price verified seller claim",
-    sections: sections(
+    sections: sampleSections(
       ["30-second answer", "Most common causes", "How to check before buying", "Flagged products", "Evidence"],
       ["sc-baseus-65w-title", "var-baseus-45w-trap", "vc-baseus-pps-observed", "vc-baseus-output"]
     ),
     qualityScore: 86,
     indexStatus: "index",
     publishStatus: "published",
-    internalLinks: internalLinks("en"),
+    internalLinks: sampleInternalLinks("en"),
     affiliateLinks: [],
     evidenceIds: ["sc-baseus-65w-title", "var-baseus-45w-trap", "vc-baseus-pps-observed", "vc-baseus-output"],
     lastUpdated: updatedAt
@@ -1056,14 +980,14 @@ const baseDraftArticles: ArticleDraft[] = [
     summary:
       "Laptop charging failures usually trace back to the selected SKU, cable rating, or a PD profile mismatch.",
     contentMdx: "variant option plug cable evidence price verified laptop",
-    sections: sections(
+    sections: sampleSections(
       ["30-second answer", "Selected SKU mismatch", "Cable rating check", "PD profile evidence", "Safer alternatives"],
       ["rs-baseus-laptop-en", "var-baseus-45w-trap", "vc-baseus-pps-observed", "vc-baseus-output"]
     ),
     qualityScore: 84,
     indexStatus: "index",
     publishStatus: "published",
-    internalLinks: internalLinks("en"),
+    internalLinks: sampleInternalLinks("en"),
     affiliateLinks: [],
     evidenceIds: ["rs-baseus-laptop-en", "var-baseus-45w-trap", "vc-baseus-pps-observed", "vc-baseus-output"],
     lastUpdated: updatedAt
@@ -1082,14 +1006,14 @@ const baseDraftArticles: ArticleDraft[] = [
     summary:
       "The plug problem is a variant-selection problem, so the page maps which option carries which plug and cable bundle.",
     contentMdx: "variant option plug cable evidence price verified return",
-    sections: sections(
+    sections: sampleSections(
       ["30-second answer", "Plug option map", "Bundle traps", "Return risk", "Evidence"],
       ["rs-baseus-wrong-plug-en", "sc-baseus-cable", "risk-baseus-us", "var-baseus-65w-eu-cable"]
     ),
     qualityScore: 84,
     indexStatus: "index",
     publishStatus: "published",
-    internalLinks: internalLinks("en"),
+    internalLinks: sampleInternalLinks("en"),
     affiliateLinks: [],
     evidenceIds: ["rs-baseus-wrong-plug-en", "sc-baseus-cable", "risk-baseus-us", "var-baseus-65w-eu-cable"],
     lastUpdated: updatedAt
@@ -1108,14 +1032,14 @@ const baseDraftArticles: ArticleDraft[] = [
     summary:
       "A 65W charger is usually the lower-risk travel buy; 100W makes sense only when your laptop and cable setup can use it.",
     contentMdx: "variant option plug cable evidence price verified comparison alternative",
-    sections: sections(
+    sections: sampleSections(
       ["Comparison table", "Verified output gap", "Cable requirement", "Price zones", "Who should avoid each"],
       ["vc-baseus-output", "vc-ugreen-output", "sc-ugreen-100w-title", "ps-ugreen-us"]
     ),
     qualityScore: 88,
     indexStatus: "index",
     publishStatus: "published",
-    internalLinks: internalLinks("en"),
+    internalLinks: sampleInternalLinks("en"),
     affiliateLinks: [],
     evidenceIds: ["vc-baseus-output", "vc-ugreen-output", "sc-ugreen-100w-title", "ps-ugreen-us"],
     lastUpdated: updatedAt
@@ -1134,14 +1058,14 @@ const baseDraftArticles: ArticleDraft[] = [
     summary:
       "Importing makes sense only when the selected SKU is verified and the final price gap beats return and certification friction.",
     contentMdx: "compare local alternative price return certification customs variant evidence verified",
-    sections: sections(
+    sections: sampleSections(
       ["Comparison rule", "Price gap", "Return and certification risk", "When local wins", "Evidence"],
       ["vc-baseus-output", "sc-baseus-65w-title", "risk-baseus-us", "ps-baseus-us"]
     ),
     qualityScore: 86,
     indexStatus: "index",
     publishStatus: "published",
-    internalLinks: internalLinks("en"),
+    internalLinks: sampleInternalLinks("en"),
     affiliateLinks: [],
     evidenceIds: ["vc-baseus-output", "sc-baseus-65w-title", "risk-baseus-us", "ps-baseus-us"],
     lastUpdated: updatedAt
@@ -1160,14 +1084,14 @@ const baseDraftArticles: ArticleDraft[] = [
     summary:
       "This dataset is the evidence source for charger reviews, comparison pages, and problem-solving guides.",
     contentMdx: "BenchmarkTable DatasetDownload variant option plug cable evidence price verified",
-    sections: sections(
+    sections: sampleSections(
       ["Methodology", "Benchmark table", "Suspicious claim gaps", "Dataset download", "Update log"],
       ["vc-baseus-output", "vc-baseus-temp", "vc-ugreen-output", "sc-baseus-65w-title"]
     ),
     qualityScore: 92,
     indexStatus: "index",
     publishStatus: "published",
-    internalLinks: internalLinks("en"),
+    internalLinks: sampleInternalLinks("en"),
     affiliateLinks: [],
     evidenceIds: ["vc-baseus-output", "vc-baseus-temp", "vc-ugreen-output", "sc-baseus-65w-title"],
     lastUpdated: updatedAt
@@ -1186,14 +1110,14 @@ const baseDraftArticles: ArticleDraft[] = [
     summary:
       "This data page records which cable claims are seller labels, which e-marker checks exist, and when a cheap cable still carries variant risk.",
     contentMdx: "DatasetDownload BenchmarkTable cable e-marker 100W variant length evidence price verified",
-    sections: sections(
+    sections: sampleSections(
       ["Dataset scope", "E-marker evidence", "Length and SKU traps", "Price truth", "Reusable evidence"],
       ["vc-essager-emarker", "sc-essager-100w", "sc-essager-emarker", "sc-essager-length", "risk-essager-us"]
     ),
     qualityScore: 89,
     indexStatus: "index",
     publishStatus: "published",
-    internalLinks: internalLinks("en"),
+    internalLinks: sampleInternalLinks("en"),
     affiliateLinks: [],
     evidenceIds: ["vc-essager-emarker", "sc-essager-100w", "sc-essager-emarker", "sc-essager-length", "risk-essager-us"],
     lastUpdated: updatedAt
@@ -1212,7 +1136,7 @@ const baseDraftArticles: ArticleDraft[] = [
     summary:
       "Power bank capacity claims must be interpreted as cell rating first, then compared with usable output energy and import risk.",
     contentMdx: "DatasetDownload BenchmarkTable power bank capacity mAh Wh USB-C output evidence price customs return",
-    sections: sections(
+    sections: sampleSections(
       ["Dataset scope", "mAh versus Wh", "USB-C output evidence", "Shipping and return risk", "Reusable evidence"],
       [
         "vc-zmi-20000-power-bank-primary",
@@ -1224,7 +1148,7 @@ const baseDraftArticles: ArticleDraft[] = [
     qualityScore: 86,
     indexStatus: "index",
     publishStatus: "published",
-    internalLinks: internalLinks("en"),
+    internalLinks: sampleInternalLinks("en"),
     affiliateLinks: [],
     evidenceIds: [
       "vc-zmi-20000-power-bank-primary",
@@ -1248,14 +1172,14 @@ const baseDraftArticles: ArticleDraft[] = [
     summary:
       "The lab page records how the output and temperature numbers were collected before they are reused on review pages.",
     contentMdx: "TestMethodBlock BenchmarkTable variant option plug cable evidence price verified",
-    sections: sections(
+    sections: sampleSections(
       ["Test method", "Load result", "Temperature note", "Profile capture", "Reusable evidence"],
       ["vc-baseus-output", "vc-baseus-temp", "vc-baseus-pps-observed", "sc-baseus-65w-title"]
     ),
     qualityScore: 91,
     indexStatus: "index",
     publishStatus: "published",
-    internalLinks: internalLinks("en"),
+    internalLinks: sampleInternalLinks("en"),
     affiliateLinks: [],
     evidenceIds: ["vc-baseus-output", "vc-baseus-temp", "vc-baseus-pps-observed", "sc-baseus-65w-title"],
     lastUpdated: updatedAt
@@ -1273,14 +1197,14 @@ const baseDraftArticles: ArticleDraft[] = [
     summary:
       "A methodology page explaining how seller claims become evidence records and when a page is allowed to be indexed.",
     contentMdx: "methodology variant option plug cable evidence price verified quality gate",
-    sections: sections(
+    sections: sampleSections(
       ["SKU selection", "Seller claim ledger", "Load testing", "Risk scoring", "Index gate"],
       ["sc-baseus-65w-title", "vc-baseus-output", "vc-baseus-temp", "risk-baseus-us"]
     ),
     qualityScore: 83,
     indexStatus: "index",
     publishStatus: "published",
-    internalLinks: internalLinks("en"),
+    internalLinks: sampleInternalLinks("en"),
     affiliateLinks: [],
     evidenceIds: ["sc-baseus-65w-title", "vc-baseus-output", "vc-baseus-temp", "risk-baseus-us"],
     lastUpdated: updatedAt
@@ -1298,14 +1222,14 @@ const baseDraftArticles: ArticleDraft[] = [
     summary:
       "This methodology explains why a page can be indexed only when evidence, unique buyer value, and internal-link context are strong enough.",
     contentMdx: "methodology quality score identity confidence seller claim verified data variant trap price truth locale risk index gate",
-    sections: sections(
+    sections: sampleSections(
       ["Identity confidence", "Claim evidence", "Variant and price risk", "Locale risk", "Index decision"],
       ["sc-baseus-65w-title", "vc-baseus-output", "risk-baseus-us", "vc-essager-emarker"]
     ),
     qualityScore: 84,
     indexStatus: "index",
     publishStatus: "published",
-    internalLinks: internalLinks("en"),
+    internalLinks: sampleInternalLinks("en"),
     affiliateLinks: [],
     evidenceIds: ["sc-baseus-65w-title", "vc-baseus-output", "risk-baseus-us", "vc-essager-emarker"],
     lastUpdated: updatedAt
@@ -1323,14 +1247,14 @@ const baseDraftArticles: ArticleDraft[] = [
     summary:
       "The price truth score prevents cheap-looking imports from being recommended when shipping, coupons, SKU traps, or returns erase the savings.",
     contentMdx: "methodology price truth score normal price sale price shipping coupon final price buy wait avoid variant trap return risk",
-    sections: sections(
+    sections: sampleSections(
       ["Normal price", "Coupon-adjusted price", "Final shipped price", "Buy/wait/avoid thresholds", "Risk overrides"],
       ["ps-baseus-us", "ps-essager-us", "risk-baseus-us", "risk-essager-us"]
     ),
     qualityScore: 84,
     indexStatus: "index",
     publishStatus: "published",
-    internalLinks: internalLinks("en"),
+    internalLinks: sampleInternalLinks("en"),
     affiliateLinks: [],
     evidenceIds: ["ps-baseus-us", "ps-essager-us", "risk-baseus-us", "risk-essager-us"],
     lastUpdated: updatedAt
@@ -1349,14 +1273,14 @@ const baseDraftArticles: ArticleDraft[] = [
     summary:
       "Muchos problemas salen de comprar la variante de 45W dentro de una ficha que anuncia 65W.",
     contentMdx: "variant option plug cable evidence price verified seller claim",
-    sections: sections(
+    sections: sampleSections(
       ["Respuesta rápida", "Causas comunes", "Comprobación antes de comprar", "Productos marcados", "Evidencia"],
       ["sc-baseus-65w-title", "var-baseus-45w-trap", "vc-baseus-output", "risk-baseus-es"]
     ),
     qualityScore: 83,
     indexStatus: "index",
     publishStatus: "published",
-    internalLinks: internalLinks("es"),
+    internalLinks: sampleInternalLinks("es"),
     affiliateLinks: [],
     evidenceIds: ["sc-baseus-65w-title", "var-baseus-45w-trap", "vc-baseus-output", "risk-baseus-es"],
     lastUpdated: updatedAt
@@ -1375,14 +1299,14 @@ const baseDraftArticles: ArticleDraft[] = [
     summary:
       "O erro comum é escolher uma variante de 45W dentro de um anúncio que destaca 65W.",
     contentMdx: "variant option plug cable evidence price verified customs return",
-    sections: sections(
+    sections: sampleSections(
       ["Resposta rápida", "Causas comuns", "Checagem antes da compra", "Produtos marcados", "Evidências"],
       ["sc-baseus-65w-title", "var-baseus-45w-trap", "vc-baseus-output", "risk-baseus-br"]
     ),
     qualityScore: 82,
     indexStatus: "index",
     publishStatus: "published",
-    internalLinks: internalLinks("pt-br"),
+    internalLinks: sampleInternalLinks("pt-br"),
     affiliateLinks: [],
     evidenceIds: ["sc-baseus-65w-title", "var-baseus-45w-trap", "vc-baseus-output", "risk-baseus-br"],
     lastUpdated: updatedAt
@@ -1399,11 +1323,11 @@ const baseDraftArticles: ArticleDraft[] = [
     metaDescription: "Pending review page waiting for more variant and locale-risk evidence.",
     summary: "This draft is intentionally pending because it needs more local risk and review signal evidence.",
     contentMdx: "variant evidence price pending",
-    sections: sections(["Draft notes", "Missing evidence", "Next checks"], ["vc-ugreen-output", "sc-ugreen-100w-title"]),
+    sections: sampleSections(["Draft notes", "Missing evidence", "Next checks"], ["vc-ugreen-output", "sc-ugreen-100w-title"]),
     qualityScore: 66,
     indexStatus: "pending",
     publishStatus: "draft",
-    internalLinks: internalLinks("en").slice(0, 3),
+    internalLinks: sampleInternalLinks("en").slice(0, 3),
     affiliateLinks: [
       {
         label: "Check current AliExpress price",
@@ -1418,15 +1342,15 @@ const baseDraftArticles: ArticleDraft[] = [
 
 const trendBlogDraftArticles: ArticleDraft[] = buildTrendBlogDraftArticles({
   updatedAt,
-  internalLinks,
-  sections
+  internalLinks: sampleInternalLinks,
+  sections: sampleSections
 });
 
 const generatedDraftArticles: ArticleDraft[] = buildGeneratedDraftArticles({
   products,
   updatedAt,
-  internalLinks,
-  sections
+  internalLinks: sampleInternalLinks,
+  sections: sampleSections
 });
 
 const draftArticles: ArticleDraft[] = [...baseDraftArticles, ...trendBlogDraftArticles, ...generatedDraftArticles];
