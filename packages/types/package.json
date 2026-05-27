@@ -4,7 +4,15 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./articles": "./src/articles.ts",
+    "./locales": "./src/locales.ts",
+    "./markets": "./src/markets.ts",
+    "./monetization-records": "./src/monetization-records.ts",
+    "./products": "./src/products.ts",
+    "./publishing-records": "./src/publishing-records.ts",
+    "./serp-records": "./src/serp-records.ts",
+    "./trend-records": "./src/trend-records.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit"
