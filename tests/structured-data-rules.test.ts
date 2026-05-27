@@ -6,7 +6,20 @@ import {
   requireUrlField,
   validateItemListSchema
 } from "../packages/validators/src/structuredDataRules";
+import {
+  requireSchemaType as directRequireSchemaType,
+  requireTextField as directRequireTextField,
+  requireUrlField as directRequireUrlField
+} from "../packages/validators/src/structuredDataFieldRules";
+import { internalLinkSchemaItems as directInternalLinkSchemaItems } from "../packages/validators/src/structuredDataInternalLinks";
+import { validateItemListSchema as directValidateItemListSchema } from "../packages/validators/src/structuredDataItemListRules";
 import type { ValidationIssue } from "@global-import-lab/validators";
+
+assert.equal(requireSchemaType, directRequireSchemaType);
+assert.equal(requireTextField, directRequireTextField);
+assert.equal(requireUrlField, directRequireUrlField);
+assert.equal(internalLinkSchemaItems, directInternalLinkSchemaItems);
+assert.equal(validateItemListSchema, directValidateItemListSchema);
 
 const issues: ValidationIssue[] = [];
 
