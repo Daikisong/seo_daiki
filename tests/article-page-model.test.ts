@@ -8,6 +8,7 @@ import {
   reviewPathForProduct,
   unsafeAffiliateTargetRedirectAllowed
 } from "../apps/web/lib/content/article-page-model";
+import { linkedProductSnippetJsonLd } from "../apps/web/lib/content/article-page-jsonld-products";
 
 const product = productFixture("product-1", "65W GaN Charger");
 
@@ -94,6 +95,7 @@ const compareJsonLd = buildArticlePageJsonLd(
 );
 assert.equal(compareJsonLd.length, 4);
 assert.equal((compareJsonLd[1] as Record<string, unknown>)["@type"], "ItemList");
+assert.equal(linkedProductSnippetJsonLd(indexedReview, [product], [indexedReview]).length, 1);
 
 console.log("Article page model unit tests passed");
 
