@@ -9,14 +9,13 @@ from workers.python.distribution.owned_channel_paths import (
     TOPIC_ARTICLES_PATH,
     URL_INVENTORY_PATH,
 )
-from workers.python.distribution.owned_channel_rules import (
+from workers.python.distribution.owned_channel_article_rules import (
     AFFILIATE_HEAVY_TYPES,
-    DEFAULT_RULES,
     PREFERRED_DISTRIBUTION_TYPES,
     dedupe_articles,
-    distribution_rule_from_row,
     normalize_article,
 )
+from workers.python.distribution.owned_channel_rule_parser import DEFAULT_RULES, distribution_rule_from_row
 
 
 def source_articles(

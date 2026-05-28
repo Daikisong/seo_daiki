@@ -3,7 +3,11 @@ from __future__ import annotations
 import unittest
 
 from workers.python.distribution import owned_channel
+from workers.python.distribution import owned_channel_rules
+from workers.python.distribution.owned_channel_article_rules import dedupe_articles, normalize_article
+from workers.python.distribution.owned_channel_asset_rules import distribution_asset, distribution_asset_priority
 from workers.python.distribution.owned_channel_delivery import distribution_send_decision, distribution_send_result
+from workers.python.distribution.owned_channel_rule_parser import distribution_rule_from_row
 from workers.python.distribution.owned_channel_sources import (
     distribution_rules_from_rows,
     inventory_article_from_row,
@@ -16,6 +20,13 @@ class OwnedChannelModulesTest(unittest.TestCase):
     def test_owned_channel_facade_uses_split_modules(self) -> None:
         self.assertIs(owned_channel.distribution_send_decision, distribution_send_decision)
         self.assertIs(owned_channel.distribution_send_result, distribution_send_result)
+
+    def test_owned_channel_rules_facade_keeps_public_exports(self) -> None:
+        self.assertIs(owned_channel_rules.normalize_article, normalize_article)
+        self.assertIs(owned_channel_rules.dedupe_articles, dedupe_articles)
+        self.assertIs(owned_channel_rules.distribution_asset, distribution_asset)
+        self.assertIs(owned_channel_rules.distribution_asset_priority, distribution_asset_priority)
+        self.assertIs(owned_channel_rules.distribution_rule_from_row, distribution_rule_from_row)
 
     def test_inventory_article_rows_filter_and_normalize_index_candidates(self) -> None:
         rows = [
