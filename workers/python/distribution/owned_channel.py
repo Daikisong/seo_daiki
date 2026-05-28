@@ -2,28 +2,18 @@ from __future__ import annotations
 
 import os
 from datetime import datetime, timedelta, timezone
-from pathlib import Path
 from typing import Any
 
-from workers.python.common import DATA, read_csv, read_json, slugify, write_json
+from workers.python.common import DATA, read_json, write_json
+from workers.python.distribution.owned_channel_delivery import distribution_send_decision, distribution_send_result
+from workers.python.distribution.owned_channel_paths import DISTRIBUTION_ASSETS_PATH, DISTRIBUTION_SEND_REPORT_PATH
 from workers.python.distribution.owned_channel_rules import (
-    AFFILIATE_HEAVY_TYPES,
-    DEFAULT_RULES,
-    PREFERRED_DISTRIBUTION_TYPES,
     asset_types_for_platform,
-    dedupe_articles,
     distribution_asset,
     distribution_asset_priority,
-    distribution_priority,
-    distribution_rule_from_row,
-    normalize_article,
 )
+from workers.python.distribution.owned_channel_sources import distribution_rules, source_articles
 
-DISTRIBUTION_ASSETS_PATH = DATA / "exports" / "distribution_assets.json"
-DISTRIBUTION_SEND_REPORT_PATH = DATA / "exports" / "distribution_send_report.json"
-TOPIC_ARTICLES_PATH = DATA / "exports" / "topic_articles.json"
-LOCALIZED_TOPIC_ARTICLES_PATH = DATA / "exports" / "localized_topic_articles.json"
-URL_INVENTORY_PATH = DATA / "exports" / "initial_url_inventory.json"
 
 def generate_distribution_assets(article_id: str | None = None) -> str:
     articles = source_articles()
@@ -66,54 +56,10 @@ def send_approved_distribution_assets() -> str:
     for asset in assets:
         if not isinstance(asset, dict) or asset.get("status") not in {"approved", "scheduled"}:
             continue
-        if asset.get("platform") == "reddit":
-            results.append(result(asset, "skipped_reddit_draft_only", "Community auto-posting is disabled."))
-            continue
-        if not send_enabled:
-            results.append(result(asset, "skipped_disabled", "ENABLE_DISTRIBUTION_SEND is false."))
-            continue
-        if not postiz_ready:
-            results.append(result(asset, "blocked_missing_adapter", "POSTIZ_API_URL and POSTIZ_API_KEY are required to send."))
-            continue
-        results.append(result(asset, "blocked_not_implemented", "Postiz adapter is intentionally disabled in this local implementation."))
+        status, message = distribution_send_decision(asset, send_enabled, postiz_ready)
+        results.append(distribution_send_result(asset, status, message, now()))
 
     return str(write_json(DISTRIBUTION_SEND_REPORT_PATH, {"results": results, "sent": 0}))
-
-
-def source_articles() -> list[dict[str, Any]]:
-    topic_articles = read_json(TOPIC_ARTICLES_PATH, {"articles": []}).get("articles", [])
-    localized = read_json(LOCALIZED_TOPIC_ARTICLES_PATH, {"articles": []}).get("articles", [])
-    inventory = inventory_articles()
-    preferred_inventory = [article for article in inventory if article.get("type") in PREFERRED_DISTRIBUTION_TYPES]
-    generated_articles = [normalize_article(article) for article in [*topic_articles, *localized] if isinstance(article, dict)]
-    if topic_articles or localized:
-        return dedupe_articles([*preferred_inventory, *generated_articles, *inventory])
-    return inventory
-
-
-def inventory_articles() -> list[dict[str, Any]]:
-    inventory = read_json(URL_INVENTORY_PATH, [])
-    return [
-        {
-            "id": f"url-{slugify(str(row.get('path', row.get('slug', 'article'))))}",
-            "locale": row.get("locale", "en"),
-            "type": row.get("type", "guide"),
-            "slug": row.get("slug", ""),
-            "title": f"{row.get('type', 'guide')} {row.get('slug', '')}".strip(),
-            "summary": row.get("cluster", ""),
-            "path": row.get("path"),
-            "hasAffiliate": row.get("type") in AFFILIATE_HEAVY_TYPES,
-        }
-        for row in inventory
-        if isinstance(row, dict) and row.get("status") == "index_candidate"
-    ]
-
-
-def distribution_rules(path: Path) -> list[dict[str, Any]]:
-    if not path.exists():
-        return DEFAULT_RULES
-    rows = read_csv(path)
-    return [distribution_rule_from_row(row) for row in rows]
 
 
 def update_asset(asset_id: str, patch: dict[str, Any]) -> str:
@@ -128,10 +74,6 @@ def update_asset(asset_id: str, patch: dict[str, Any]) -> str:
     if not updated:
         raise ValueError(f"Distribution asset {asset_id} was not found.")
     return str(write_json(DISTRIBUTION_ASSETS_PATH, {"assets": assets}))
-
-
-def result(asset: dict[str, Any], status: str, message: str) -> dict[str, Any]:
-    return {"assetId": asset.get("id"), "platform": asset.get("platform"), "status": status, "message": message, "capturedAt": now()}
 
 
 def now() -> str:
