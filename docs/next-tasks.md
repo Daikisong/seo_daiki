@@ -1,11 +1,11 @@
 # Next Tasks
 
-1. Finish the current modularization/refactor pass with focused unit tests and static verification.
-2. Apply the SEO structure safety patches documented in `docs/next-goal-seo-structure-patches.md`.
-3. Production environment task: run the verified Prisma migration/seed flow against the managed Postgres instance that will back the deployed site.
+1. Apply the SEO structure safety patches documented in `docs/next-goal-seo-structure-patches.md`.
+2. Production environment task: run the verified Prisma migration/seed flow against the managed Postgres instance that will back the deployed site.
 
 Completed:
 
+- Current modularization/refactor pass: product fixtures, trend blog fixtures, planned article fixtures, sample hub/review/data/risk/problem/methodology/comparison/localized/pending drafts, and generated product fixture builders are split into focused specs/builders/modules with targeted tests and full static verification.
 - Phase 2: `/api/admin/article-status` and `pnpm db:admin -- set-index-status` now use the shared publish gate before any article can become indexable.
 - Phase 3: Merchant, AffiliateProgram, Offer, and AffiliatePlacement models now back production affiliate redirects; arbitrary `target=` redirects are blocked outside the local development escape hatch.
 - Phase 4: TrendSource, TrendSignal, Topic, TopicSignal, and ContentBrief models exist; worker commands now import trend CSVs, cluster topics, score them, generate briefs, and match affiliate merchants.
