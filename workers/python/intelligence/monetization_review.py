@@ -2,99 +2,44 @@ from __future__ import annotations
 
 from datetime import datetime, timezone
 
-from workers.python.common import DATA, read_json, slugify, write_json
-
-PRODUCT_ANALYSIS_PATH = DATA / "exports" / "product_candidate_analysis.json"
-MONETIZATION_REVIEWS_PATH = DATA / "exports" / "monetization_reviews.json"
-MONETIZED_PLACEMENTS_PATH = DATA / "exports" / "monetized_placement_drafts.json"
+from workers.python.common import read_json, write_json
+from workers.python.intelligence.monetization_review_apply import monetization_apply_payload, monetization_apply_result
+from workers.python.intelligence.monetization_review_paths import (
+    MONETIZATION_APPLY_REPORT_PATH,
+    MONETIZATION_REVIEWS_PATH,
+    MONETIZED_PLACEMENTS_PATH,
+    PRODUCT_ANALYSIS_PATH,
+)
+from workers.python.intelligence.monetization_review_placements import (
+    approved_candidate_ids,
+    blocked_placement_record,
+    monetized_placement_payload,
+    placement_draft_record,
+    placement_drafts_for_review,
+    review_allows_placement_drafts,
+)
+from workers.python.intelligence.monetization_review_records import (
+    analysis_matches_article,
+    monetization_review_record,
+    monetization_review_records,
+)
 
 
 def create_monetization_review(article_id: str | None = None) -> str:
     analyses = read_json(PRODUCT_ANALYSIS_PATH, {"analyses": []}).get("analyses", [])
-    reviews = []
-    for analysis in analyses:
-        if not isinstance(analysis, dict) or (article_id and analysis.get("articleId") != article_id):
-            continue
-        reviews.append(
-            {
-                "id": f"monetization-review-{slugify(str(analysis.get('articleId')))}",
-                "articleId": analysis.get("articleId"),
-                "market": analysis.get("market"),
-                "language": analysis.get("language"),
-                "productAnalysisId": analysis.get("id"),
-                "status": "pending_human_review",
-                "reviewerNotes": "Human must verify candidates, policies, prices, disclosures, and article fit before links.",
-                "approvedCandidateIdsJson": [],
-                "rejectedCandidateIdsJson": [],
-                "createdAt": now(),
-                "updatedAt": now(),
-            }
-        )
+    reviews = monetization_review_records(analyses, article_id, now)
     return str(write_json(MONETIZATION_REVIEWS_PATH, {"reviews": reviews}))
 
 
 def draft_monetized_placements(review_id: str | None = None) -> str:
     reviews = read_json(MONETIZATION_REVIEWS_PATH, {"reviews": []}).get("reviews", [])
     analyses = read_json(PRODUCT_ANALYSIS_PATH, {"analyses": []}).get("analyses", [])
-    analysis_by_id = {analysis.get("id"): analysis for analysis in analyses if isinstance(analysis, dict)}
-    placements = []
-    blocked = []
-    for review in reviews:
-        if not isinstance(review, dict) or (review_id and review.get("id") != review_id):
-            continue
-        if review.get("status") not in {"approved_candidates", "final_approved"}:
-            blocked.append(
-                {
-                    "reviewId": review.get("id"),
-                    "status": "blocked",
-                    "reason": "Human approval required before monetized placement drafts.",
-                }
-            )
-            continue
-        analysis = analysis_by_id.get(review.get("productAnalysisId"), {})
-        approved = set(review.get("approvedCandidateIdsJson") or [])
-        for candidate in analysis.get("candidatesJson", []):
-            if isinstance(candidate, dict) and candidate.get("id") in approved:
-                placements.append(
-                    {
-                        "id": f"placement-draft-{slugify(str(review.get('id')))}-{slugify(str(candidate.get('id')))}",
-                        "articleId": review.get("articleId"),
-                        "candidateId": candidate.get("id"),
-                        "merchant": candidate.get("sourceMerchant"),
-                        "placementType": "analysis_block",
-                        "anchorText": str(candidate.get("title")),
-                        "disclosureText": "Sponsored link may be added after final approval.",
-                        "rel": "sponsored nofollow",
-                        "status": "draft",
-                        "createdAt": now(),
-                    }
-                )
-    return str(write_json(MONETIZED_PLACEMENTS_PATH, {"placements": placements, "blocked": blocked}))
+    return str(write_json(MONETIZED_PLACEMENTS_PATH, monetized_placement_payload(reviews, analyses, review_id, now)))
 
 
 def apply_approved_monetization(review_id: str | None = None) -> str:
     reviews = read_json(MONETIZATION_REVIEWS_PATH, {"reviews": []}).get("reviews", [])
-    results = []
-    for review in reviews:
-        if not isinstance(review, dict) or (review_id and review.get("id") != review_id):
-            continue
-        if review.get("status") != "final_approved":
-            results.append(
-                {
-                    "reviewId": review.get("id"),
-                    "status": "not_applied",
-                    "reason": "Final human approval is required before article revision/link insertion.",
-                }
-            )
-        else:
-            results.append(
-                {
-                    "reviewId": review.get("id"),
-                    "status": "ready_for_manual_apply",
-                    "relEnforced": "sponsored nofollow",
-                }
-            )
-    return str(write_json(DATA / "exports" / "monetization_apply_report.json", {"results": results}))
+    return str(write_json(MONETIZATION_APPLY_REPORT_PATH, monetization_apply_payload(reviews, review_id)))
 
 
 def now() -> str:
