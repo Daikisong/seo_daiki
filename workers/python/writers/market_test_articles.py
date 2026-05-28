@@ -2,9 +2,21 @@ from __future__ import annotations
 
 from typing import Any
 
-from workers.python.common import read_json, slugify, write_json
-from workers.python.writers.content_strategy_rules import article_sections, markdown_article
+from workers.python.common import read_json, write_json
 from workers.python.writers.market_content_artifacts import CONTENT_STRATEGIES_PATH, TEST_ARTICLES_PATH, now
+from workers.python.writers.market_test_article_records import (
+    strategy_matches_filter,
+    test_article_record,
+    test_article_records_for_strategies,
+)
+from workers.python.writers.market_test_article_state import (
+    article_matches_id,
+    promote_index_candidate_record,
+    promote_index_candidate_rows,
+    publish_test_article_record,
+    publish_test_article_rows,
+    published_state_for_mode,
+)
 
 
 def generate_test_post(strategy_id: str | None = None) -> str:
@@ -13,40 +25,7 @@ def generate_test_post(strategy_id: str | None = None) -> str:
 
 
 def test_article_records(strategies: list[dict[str, Any]], strategy_id: str | None = None) -> list[dict[str, Any]]:
-    articles = []
-    for strategy in strategies:
-        if not isinstance(strategy, dict) or (strategy_id and strategy.get("id") != strategy_id):
-            continue
-        slug = str(strategy.get("slug") or slugify(str(strategy.get("titleStrategy"))))
-        article_id = f"test-article-{slugify(str(strategy.get('id')))}"
-        sections = article_sections(strategy)
-        title = str(strategy.get("titleStrategy") or "Market test post")
-        articles.append(
-            {
-                "id": article_id,
-                "strategyId": strategy.get("id"),
-                "articleId": article_id,
-                "market": strategy.get("market"),
-                "language": strategy.get("language"),
-                "slug": slug,
-                "title": title,
-                "h1": title,
-                "metaDescription": f"Market-specific test post for {title}. No affiliate links are inserted.",
-                "summary": str(strategy.get("recommendedAngle") or ""),
-                "contentMdx": markdown_article(title, sections),
-                "sections": sections,
-                "affiliateLinks": [],
-                "monetizationDeferred": True,
-                "productCandidateState": "pending",
-                "noindexReason": "Initial test article; index candidate requires human/editorial approval.",
-                "status": "test_pending",
-                "indexStatus": "noindex",
-                "publishStatus": "pending",
-                "createdAt": now(),
-                "updatedAt": now(),
-            }
-        )
-    return articles
+    return test_article_records_for_strategies(strategies, strategy_id, now)
 
 
 def publish_test_article(article_id: str | None = None, mode: str = "noindex") -> str:
@@ -58,18 +37,7 @@ def publish_test_article(article_id: str | None = None, mode: str = "noindex") -
 def publish_test_article_records(
     articles: list[dict[str, Any]], article_id: str | None = None, mode: str = "noindex"
 ) -> list[dict[str, Any]]:
-    rows = []
-    for article in articles:
-        if not isinstance(article, dict):
-            continue
-        row = dict(article)
-        if not article_id or row.get("id") == article_id or row.get("articleId") == article_id:
-            row["publishStatus"] = "published"
-            row["indexStatus"] = "noindex" if mode == "noindex" else "pending"
-            row["status"] = "test_published_noindex" if mode == "noindex" else "test_published_index_candidate"
-            row["updatedAt"] = now()
-        rows.append(row)
-    return rows
+    return publish_test_article_rows(articles, article_id, mode, now)
 
 
 def promote_index_candidate(article_id: str | None = None) -> str:
@@ -79,14 +47,4 @@ def promote_index_candidate(article_id: str | None = None) -> str:
 
 
 def promote_index_candidate_records(articles: list[dict[str, Any]], article_id: str | None = None) -> list[dict[str, Any]]:
-    rows = []
-    for article in articles:
-        if not isinstance(article, dict):
-            continue
-        row = dict(article)
-        if not article_id or row.get("id") == article_id or row.get("articleId") == article_id:
-            row["indexStatus"] = "pending"
-            row["status"] = "test_published_index_candidate"
-            row["updatedAt"] = now()
-        rows.append(row)
-    return rows
+    return promote_index_candidate_rows(articles, article_id, now)
