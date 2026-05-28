@@ -6,6 +6,13 @@ from pathlib import Path
 
 from workers.python.common import read_csv, read_json, write_json
 from workers.python.outreach.link_earning_assets import build_linkable_assets
+from workers.python.outreach.link_earning_io import (
+    assets_by_id,
+    linkable_assets_payload,
+    outreach_send_enabled,
+    prospects_by_id,
+    smtp_adapter_ready,
+)
 from workers.python.outreach.link_earning_messages import (
     approve_outreach_messages,
     build_outreach_send_report,
@@ -21,15 +28,12 @@ from workers.python.outreach.link_earning_paths import (
 )
 from workers.python.outreach.link_earning_prospects import build_imported_prospects, score_link_prospect_rows
 from workers.python.outreach.link_earning_suppression import suppression_entries
-from workers.python.outreach.link_earning_rules import (
-    is_suppressed,
-    suppression_reason,
-)
+
 
 def score_linkable_assets() -> str:
     inventory = read_json(URL_INVENTORY_PATH, [])
     assets = build_linkable_assets(inventory)
-    return str(write_json(LINKABLE_ASSETS_PATH, {"assets": assets[:100]}))
+    return str(write_json(LINKABLE_ASSETS_PATH, linkable_assets_payload(assets)))
 
 
 def import_link_prospects(path: Path) -> str:
@@ -49,7 +53,7 @@ def score_link_prospects() -> str:
 
 def draft_outreach() -> str:
     prospects = read_json(LINK_PROSPECT_SCORES_PATH, {"prospects": []}).get("prospects", [])
-    assets = {asset.get("id"): asset for asset in read_json(LINKABLE_ASSETS_PATH, {"assets": []}).get("assets", []) if isinstance(asset, dict)}
+    assets = assets_by_id(read_json(LINKABLE_ASSETS_PATH, {"assets": []}).get("assets", []))
     existing = read_json(OUTREACH_MESSAGES_PATH, {"messages": []}).get("messages", [])
     suppression = suppression_entries()
     messages = draft_outreach_messages(prospects, assets, existing, suppression, now)
@@ -59,11 +63,7 @@ def draft_outreach() -> str:
 def approve_outreach_message(message_id: str) -> str:
     payload = read_json(OUTREACH_MESSAGES_PATH, {"messages": []})
     messages = payload.get("messages", [])
-    prospects = {
-        str(prospect.get("id")): prospect
-        for prospect in read_json(LINK_PROSPECT_SCORES_PATH, {"prospects": []}).get("prospects", [])
-        if isinstance(prospect, dict)
-    }
+    prospects = prospects_by_id(read_json(LINK_PROSPECT_SCORES_PATH, {"prospects": []}).get("prospects", []))
     suppression = suppression_entries()
     try:
         updated_messages = approve_outreach_messages(messages, prospects, suppression, message_id, now)
@@ -75,14 +75,10 @@ def approve_outreach_message(message_id: str) -> str:
 
 def send_approved_outreach() -> str:
     messages = read_json(OUTREACH_MESSAGES_PATH, {"messages": []}).get("messages", [])
-    prospects = {
-        str(prospect.get("id")): prospect
-        for prospect in read_json(LINK_PROSPECT_SCORES_PATH, {"prospects": []}).get("prospects", [])
-        if isinstance(prospect, dict)
-    }
+    prospects = prospects_by_id(read_json(LINK_PROSPECT_SCORES_PATH, {"prospects": []}).get("prospects", []))
     suppression = suppression_entries()
-    send_enabled = os.getenv("ENABLE_OUTREACH_SEND", "false").lower() == "true"
-    smtp_ready = bool(os.getenv("SMTP_HOST") and os.getenv("OUTREACH_SENDER_EMAIL"))
+    send_enabled = outreach_send_enabled(os.environ)
+    smtp_ready = smtp_adapter_ready(os.environ)
     report = build_outreach_send_report(messages, prospects, suppression, send_enabled, smtp_ready, now)
     return str(write_json(OUTREACH_SEND_REPORT_PATH, report))
 
