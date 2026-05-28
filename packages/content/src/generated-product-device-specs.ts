@@ -1,0 +1,62 @@
+import type { GeneratedProductSpec } from "./generated-product-fixture-types";
+
+export const generatedDeviceProductSpecs: GeneratedProductSpec[] = [
+  {
+    id: "prod-zmi-20000-power-bank",
+    canonicalName: "ZMI-style 20000mAh 65W Power Bank",
+    slug: "zmi-20000mah-65w-power-bank",
+    category: "power-banks",
+    brandClaim: "ZMI",
+    claimType: "capacity",
+    claimValue: "20000mAh",
+    verifiedTestType: "usable_energy",
+    verifiedResult: "63",
+    verifiedUnit: "Wh observed",
+    optionName: "20000mAh 65W USB-C power bank",
+    trapOptionName: "10000mAh lower-capacity option",
+    wattageClaim: 65,
+    trapWattageClaim: 30,
+    sourceSlug: "zmi-20000-power-bank",
+    price: 46.5,
+    shipping: 5.2,
+    sellerName: "ZMI Power Store",
+    riskTopic: "capacity claim must be interpreted as cell rating, not USB output energy"
+  },
+  {
+    id: "prod-hoto-screwdriver",
+    canonicalName: "HOTO-style Electric Screwdriver Kit",
+    slug: "hoto-electric-screwdriver-kit",
+    category: "electric-screwdrivers",
+    brandClaim: "HOTO",
+    claimType: "torque",
+    claimValue: "4Nm",
+    verifiedTestType: "torque_check",
+    verifiedResult: "3.4",
+    verifiedUnit: "Nm observed",
+    optionName: "Screwdriver kit with battery and bits",
+    trapOptionName: "Bits-only accessory option",
+    sourceSlug: "hoto-screwdriver-kit",
+    price: 22.3,
+    shipping: 4.5,
+    sellerName: "HOTO Tool Store",
+    riskTopic: "accessory-only option can be mistaken for the full kit"
+  },
+  {
+    id: "prod-tuya-zigbee-sensor",
+    canonicalName: "Tuya-style Zigbee Door Sensor",
+    slug: "tuya-zigbee-door-sensor",
+    category: "smart-home-sensors",
+    brandClaim: "Tuya",
+    claimType: "protocol",
+    claimValue: "Zigbee",
+    verifiedTestType: "pairing_check",
+    verifiedResult: "Zigbee2MQTT paired",
+    optionName: "Zigbee door sensor",
+    trapOptionName: "Wi-Fi sensor option",
+    sourceSlug: "tuya-zigbee-sensor",
+    price: 6.4,
+    shipping: 1.2,
+    sellerName: "Tuya Smart Store",
+    riskTopic: "Wi-Fi and Zigbee options share one listing"
+  }
+];
