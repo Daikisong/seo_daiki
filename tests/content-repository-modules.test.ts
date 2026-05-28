@@ -21,6 +21,13 @@ import {
   getStaticArticleParams as directGetStaticArticleParams
 } from "../apps/web/lib/content/article-repository";
 import {
+  articlesForLocale,
+  articlesForType,
+  findArticleInList,
+  indexablePublishedArticles,
+  staticArticleParamsForType
+} from "../apps/web/lib/content/article-repository-selectors";
+import {
   getAllEvidencePacks as directGetAllEvidencePacks,
   getAllProducts as directGetAllProducts,
   getEvidencePack as directGetEvidencePack,
@@ -46,10 +53,16 @@ delete process.env.CONTENT_SOURCE;
 
 async function main() {
   const article = await getArticle("en", "review", "baseus-65w-gan-charger-real-output");
+  const allArticles = await getAllArticles();
   const indexedArticles = await getIndexedArticles();
   const products = await getAllProducts();
 
   assert.ok(article);
+  assert.equal(findArticleInList(allArticles, "en", "review", "baseus-65w-gan-charger-real-output")?.id, article.id);
+  assert.deepEqual(articlesForLocale(allArticles, "en"), await getLocaleArticles("en"));
+  assert.deepEqual(articlesForType(allArticles, "en", "review"), await getArticlesByType("en", "review"));
+  assert.deepEqual(indexablePublishedArticles(allArticles), indexedArticles);
+  assert.deepEqual(staticArticleParamsForType(allArticles, "review"), await getStaticArticleParams("review"));
   assert.equal(indexedArticles.every((item) => item.indexStatus === "index" && item.publishStatus === "published"), true);
   assert.ok(products.length > 0);
 }
