@@ -22,6 +22,7 @@ def run_steps(name: str, steps: list[PipelineStep], continue_on_error: bool, ext
                     "name": step_name,
                     "status": "pass",
                     "output": str(output),
+                    "output_path": str(output),
                     "started_at": step_started_at.isoformat(),
                     "finished_at": datetime.now(timezone.utc).isoformat(),
                 }
@@ -54,5 +55,5 @@ def run_steps(name: str, steps: list[PipelineStep], continue_on_error: bool, ext
     write_json(named_path, report)
     write_json(path, report)
     if status == "failed":
-        raise RuntimeError(f"Worker pipeline failed. See {path}.")
-    return str(path)
+        raise RuntimeError(f"Worker pipeline failed. See {named_path}.")
+    return str(named_path)

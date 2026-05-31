@@ -67,7 +67,8 @@ export default async function MarketPostPage({ params }: PageProps) {
         <h1 className="mt-3 text-4xl font-semibold">{post.title}</h1>
         <p className="mt-4 text-neutral-700">{post.summary}</p>
         <p className="mt-2 text-sm text-neutral-600">
-          {labels.status}: {post.status}. {labels.productCandidateAnalysis}: {post.productCandidateState}.
+          {labels.status}: {post.status}. {labels.productCandidateAnalysis}: {post.productCandidateState}.{" "}
+          {labels.monetizationDeferred}: {post.monetizationDeferred ? labels.yes : labels.no}.
         </p>
         <article className="mt-8 grid gap-5">
           {post.sections.map((section) => (

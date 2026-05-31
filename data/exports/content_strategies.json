@@ -7,9 +7,12 @@
       "market": "br",
       "language": "pt-br",
       "slug": "power-bank-real-capacity",
+      "strategyProvider": "dry-run",
       "selectedArticleType": "article",
       "recommendedAngle": "Answer power bank real capacity with market-specific evidence and fill gaps: comparison table, current model checks, structured summary.",
       "titleStrategy": "Power Bank Real Capacity: Market Test Guide for BR",
+      "h1": "Power Bank Real Capacity: Market Test Guide for BR",
+      "metaDescription": "Market-specific test article for power bank real capacity. Product links and monetization are deferred.",
       "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
       "sectionPlanJson": [
         {
@@ -48,6 +51,17 @@
         "Freshness/date checks",
         "Spec verification checklist and safety/certification notes"
       ],
+      "productCandidateNeedsJson": [
+        "Product candidate analysis pending.",
+        "Future candidates must be verified before any monetized placement."
+      ],
+      "forbiddenClaimsJson": [
+        "Do not claim first-hand testing without evidence.",
+        "Do not invent prices, discounts, medical outcomes, or availability.",
+        "Do not insert affiliate links in the test article.",
+        "Do not copy competitor wording or headings.",
+        "Do not claim a product is best without a comparison method."
+      ],
       "competitorPatternsJson": [
         "Product-card monetization appears, but this pipeline defers links"
       ],
@@ -66,8 +80,8 @@
       },
       "monetizationDeferred": true,
       "status": "brief_pending",
-      "createdAt": "2026-05-26T20:29:38.875652+00:00",
-      "updatedAt": "2026-05-26T20:29:38.875654+00:00"
+      "createdAt": "2026-05-31T08:03:26.619896+00:00",
+      "updatedAt": "2026-05-31T08:03:26.619897+00:00"
     },
     {
       "id": "content-strategy-trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-capacidade-real",
@@ -76,9 +90,12 @@
       "market": "br",
       "language": "pt-br",
       "slug": "power-bank-capacidade-real",
+      "strategyProvider": "dry-run",
       "selectedArticleType": "informational_test_post",
       "recommendedAngle": "Create a market-specific no-link test post for power bank capacidade real.",
       "titleStrategy": "Power Bank Capacidade Real: Market Test Guide for BR",
+      "h1": "Power Bank Capacidade Real: Market Test Guide for BR",
+      "metaDescription": "Market-specific test article for power bank capacidade real. Product links and monetization are deferred.",
       "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
       "sectionPlanJson": [
         {
@@ -114,12 +131,23 @@
         "Spec verification checklist and safety/certification notes",
         "Original data or testing plan before claiming superiority"
       ],
+      "productCandidateNeedsJson": [
+        "Product candidate analysis pending.",
+        "Future candidates must be verified before any monetized placement."
+      ],
+      "forbiddenClaimsJson": [
+        "Do not claim first-hand testing without evidence.",
+        "Do not invent prices, discounts, medical outcomes, or availability.",
+        "Do not insert affiliate links in the test article.",
+        "Do not copy competitor wording or headings.",
+        "Do not claim a product is best without a comparison method."
+      ],
       "competitorPatternsJson": [],
       "contentGapJson": {},
       "monetizationDeferred": true,
       "status": "brief_pending",
-      "createdAt": "2026-05-26T20:29:38.875667+00:00",
-      "updatedAt": "2026-05-26T20:29:38.875668+00:00"
+      "createdAt": "2026-05-31T08:03:26.619912+00:00",
+      "updatedAt": "2026-05-31T08:03:26.619913+00:00"
     },
     {
       "id": "content-strategy-trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-mah-real",
@@ -128,9 +156,12 @@
       "market": "br",
       "language": "pt-br",
       "slug": "power-bank-mah-real",
+      "strategyProvider": "dry-run",
       "selectedArticleType": "informational_test_post",
       "recommendedAngle": "Create a market-specific no-link test post for power bank mah real.",
       "titleStrategy": "Power Bank Mah Real: Market Test Guide for BR",
+      "h1": "Power Bank Mah Real: Market Test Guide for BR",
+      "metaDescription": "Market-specific test article for power bank mah real. Product links and monetization are deferred.",
       "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
       "sectionPlanJson": [
         {
@@ -166,12 +197,23 @@
         "Spec verification checklist and safety/certification notes",
         "Original data or testing plan before claiming superiority"
       ],
+      "productCandidateNeedsJson": [
+        "Product candidate analysis pending.",
+        "Future candidates must be verified before any monetized placement."
+      ],
+      "forbiddenClaimsJson": [
+        "Do not claim first-hand testing without evidence.",
+        "Do not invent prices, discounts, medical outcomes, or availability.",
+        "Do not insert affiliate links in the test article.",
+        "Do not copy competitor wording or headings.",
+        "Do not claim a product is best without a comparison method."
+      ],
       "competitorPatternsJson": [],
       "contentGapJson": {},
       "monetizationDeferred": true,
       "status": "brief_pending",
-      "createdAt": "2026-05-26T20:29:38.875679+00:00",
-      "updatedAt": "2026-05-26T20:29:38.875680+00:00"
+      "createdAt": "2026-05-31T08:03:26.619924+00:00",
+      "updatedAt": "2026-05-31T08:03:26.619924+00:00"
     },
     {
       "id": "content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-sleep",
@@ -180,9 +222,12 @@
       "market": "us",
       "language": "en",
       "slug": "magnesium-sleep",
+      "strategyProvider": "dry-run",
       "selectedArticleType": "article",
       "recommendedAngle": "Answer magnesium sleep with market-specific evidence and fill gaps: evidence or verification checklist, freshness signal, market-specific guidance.",
       "titleStrategy": "Magnesium Sleep: Market Test Guide for US",
+      "h1": "Magnesium Sleep: Market Test Guide for US",
+      "metaDescription": "Market-specific test article for magnesium sleep. Product links and monetization are deferred.",
       "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
       "sectionPlanJson": [
         {
@@ -226,6 +271,17 @@
         "HealthClaimGuard review and conservative evidence sources",
         "Original data or testing plan before claiming superiority"
       ],
+      "productCandidateNeedsJson": [
+        "Product candidate analysis pending.",
+        "Future candidates must be verified before any monetized placement."
+      ],
+      "forbiddenClaimsJson": [
+        "Do not claim first-hand testing without evidence.",
+        "Do not invent prices, discounts, medical outcomes, or availability.",
+        "Do not insert affiliate links in the test article.",
+        "Do not copy competitor wording or headings.",
+        "Do not claim a product is best without a comparison method."
+      ],
       "competitorPatternsJson": [
         "Comparison table appears in top results",
         "Product-card monetization appears, but this pipeline defers links",
@@ -246,8 +302,8 @@
       },
       "monetizationDeferred": true,
       "status": "brief_pending",
-      "createdAt": "2026-05-26T20:29:38.875691+00:00",
-      "updatedAt": "2026-05-26T20:29:38.875692+00:00"
+      "createdAt": "2026-05-31T08:03:26.619935+00:00",
+      "updatedAt": "2026-05-31T08:03:26.619936+00:00"
     },
     {
       "id": "content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-best-magnesium-for-sleep",
@@ -256,9 +312,12 @@
       "market": "us",
       "language": "en",
       "slug": "best-magnesium-for-sleep",
+      "strategyProvider": "dry-run",
       "selectedArticleType": "informational_test_post",
       "recommendedAngle": "Create a market-specific no-link test post for best magnesium for sleep.",
       "titleStrategy": "Best Magnesium For Sleep: Market Test Guide for US",
+      "h1": "Best Magnesium For Sleep: Market Test Guide for US",
+      "metaDescription": "Market-specific test article for best magnesium for sleep. Product links and monetization are deferred.",
       "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
       "sectionPlanJson": [
         {
@@ -294,12 +353,23 @@
         "HealthClaimGuard review and conservative evidence sources",
         "Original data or testing plan before claiming superiority"
       ],
+      "productCandidateNeedsJson": [
+        "Product candidate analysis pending.",
+        "Future candidates must be verified before any monetized placement."
+      ],
+      "forbiddenClaimsJson": [
+        "Do not claim first-hand testing without evidence.",
+        "Do not invent prices, discounts, medical outcomes, or availability.",
+        "Do not insert affiliate links in the test article.",
+        "Do not copy competitor wording or headings.",
+        "Do not claim a product is best without a comparison method."
+      ],
       "competitorPatternsJson": [],
       "contentGapJson": {},
       "monetizationDeferred": true,
       "status": "brief_pending",
-      "createdAt": "2026-05-26T20:29:38.875702+00:00",
-      "updatedAt": "2026-05-26T20:29:38.875703+00:00"
+      "createdAt": "2026-05-31T08:03:26.619946+00:00",
+      "updatedAt": "2026-05-31T08:03:26.619946+00:00"
     },
     {
       "id": "content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-glycinate-sleep",
@@ -308,9 +378,12 @@
       "market": "us",
       "language": "en",
       "slug": "magnesium-glycinate-sleep",
+      "strategyProvider": "dry-run",
       "selectedArticleType": "informational_test_post",
       "recommendedAngle": "Create a market-specific no-link test post for magnesium glycinate sleep.",
       "titleStrategy": "Magnesium Glycinate Sleep: Market Test Guide for US",
+      "h1": "Magnesium Glycinate Sleep: Market Test Guide for US",
+      "metaDescription": "Market-specific test article for magnesium glycinate sleep. Product links and monetization are deferred.",
       "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
       "sectionPlanJson": [
         {
@@ -346,12 +419,23 @@
         "HealthClaimGuard review and conservative evidence sources",
         "Original data or testing plan before claiming superiority"
       ],
+      "productCandidateNeedsJson": [
+        "Product candidate analysis pending.",
+        "Future candidates must be verified before any monetized placement."
+      ],
+      "forbiddenClaimsJson": [
+        "Do not claim first-hand testing without evidence.",
+        "Do not invent prices, discounts, medical outcomes, or availability.",
+        "Do not insert affiliate links in the test article.",
+        "Do not copy competitor wording or headings.",
+        "Do not claim a product is best without a comparison method."
+      ],
       "competitorPatternsJson": [],
       "contentGapJson": {},
       "monetizationDeferred": true,
       "status": "brief_pending",
-      "createdAt": "2026-05-26T20:29:38.875712+00:00",
-      "updatedAt": "2026-05-26T20:29:38.875713+00:00"
+      "createdAt": "2026-05-31T08:03:26.619956+00:00",
+      "updatedAt": "2026-05-31T08:03:26.619957+00:00"
     },
     {
       "id": "content-strategy-trend-keyword-trend-cluster-es-es-usb-c-charger-usb-c-charger",
@@ -360,9 +444,12 @@
       "market": "es",
       "language": "es",
       "slug": "usb-c-charger",
+      "strategyProvider": "dry-run",
       "selectedArticleType": "buyer_intent_test_post",
       "recommendedAngle": "Answer usb c charger with market-specific evidence and fill gaps: Spain retailer notes, editorial explanation, safety verification.",
       "titleStrategy": "Usb C Charger: Market Test Guide for ES",
+      "h1": "Usb C Charger: Market Test Guide for ES",
+      "metaDescription": "Market-specific test article for usb c charger. Product links and monetization are deferred.",
       "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
       "sectionPlanJson": [
         {
@@ -406,6 +493,17 @@
         "Spec verification checklist and safety/certification notes",
         "Original data or testing plan before claiming superiority"
       ],
+      "productCandidateNeedsJson": [
+        "Product candidate analysis pending.",
+        "Future candidates must be verified before any monetized placement."
+      ],
+      "forbiddenClaimsJson": [
+        "Do not claim first-hand testing without evidence.",
+        "Do not invent prices, discounts, medical outcomes, or availability.",
+        "Do not insert affiliate links in the test article.",
+        "Do not copy competitor wording or headings.",
+        "Do not claim a product is best without a comparison method."
+      ],
       "competitorPatternsJson": [
         "Comparison table appears in top results",
         "Product-card monetization appears, but this pipeline defers links",
@@ -426,8 +524,8 @@
       },
       "monetizationDeferred": true,
       "status": "brief_pending",
-      "createdAt": "2026-05-26T20:29:38.875724+00:00",
-      "updatedAt": "2026-05-26T20:29:38.875725+00:00"
+      "createdAt": "2026-05-31T08:03:26.619967+00:00",
+      "updatedAt": "2026-05-31T08:03:26.619967+00:00"
     },
     {
       "id": "content-strategy-trend-keyword-trend-cluster-es-es-usb-c-charger-cargador-usb-c-gan",
@@ -436,9 +534,12 @@
       "market": "es",
       "language": "es",
       "slug": "cargador-usb-c-gan",
+      "strategyProvider": "dry-run",
       "selectedArticleType": "informational_test_post",
       "recommendedAngle": "Create a market-specific no-link test post for cargador usb c gan.",
       "titleStrategy": "Cargador Usb C Gan: Market Test Guide for ES",
+      "h1": "Cargador Usb C Gan: Market Test Guide for ES",
+      "metaDescription": "Market-specific test article for cargador usb c gan. Product links and monetization are deferred.",
       "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
       "sectionPlanJson": [
         {
@@ -473,12 +574,23 @@
         "Freshness/date checks",
         "Original data or testing plan before claiming superiority"
       ],
+      "productCandidateNeedsJson": [
+        "Product candidate analysis pending.",
+        "Future candidates must be verified before any monetized placement."
+      ],
+      "forbiddenClaimsJson": [
+        "Do not claim first-hand testing without evidence.",
+        "Do not invent prices, discounts, medical outcomes, or availability.",
+        "Do not insert affiliate links in the test article.",
+        "Do not copy competitor wording or headings.",
+        "Do not claim a product is best without a comparison method."
+      ],
       "competitorPatternsJson": [],
       "contentGapJson": {},
       "monetizationDeferred": true,
       "status": "brief_pending",
-      "createdAt": "2026-05-26T20:29:38.875734+00:00",
-      "updatedAt": "2026-05-26T20:29:38.875735+00:00"
+      "createdAt": "2026-05-31T08:03:26.619980+00:00",
+      "updatedAt": "2026-05-31T08:03:26.619981+00:00"
     },
     {
       "id": "content-strategy-trend-keyword-trend-cluster-es-es-usb-c-charger-cargador-usb-c-rapido-seguro",
@@ -487,9 +599,12 @@
       "market": "es",
       "language": "es",
       "slug": "cargador-usb-c-rapido-seguro",
+      "strategyProvider": "dry-run",
       "selectedArticleType": "informational_test_post",
       "recommendedAngle": "Create a market-specific no-link test post for cargador usb c rapido seguro.",
       "titleStrategy": "Cargador Usb C Rapido Seguro: Market Test Guide for ES",
+      "h1": "Cargador Usb C Rapido Seguro: Market Test Guide for ES",
+      "metaDescription": "Market-specific test article for cargador usb c rapido seguro. Product links and monetization are deferred.",
       "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
       "sectionPlanJson": [
         {
@@ -524,12 +639,23 @@
         "Freshness/date checks",
         "Original data or testing plan before claiming superiority"
       ],
+      "productCandidateNeedsJson": [
+        "Product candidate analysis pending.",
+        "Future candidates must be verified before any monetized placement."
+      ],
+      "forbiddenClaimsJson": [
+        "Do not claim first-hand testing without evidence.",
+        "Do not invent prices, discounts, medical outcomes, or availability.",
+        "Do not insert affiliate links in the test article.",
+        "Do not copy competitor wording or headings.",
+        "Do not claim a product is best without a comparison method."
+      ],
       "competitorPatternsJson": [],
       "contentGapJson": {},
       "monetizationDeferred": true,
       "status": "brief_pending",
-      "createdAt": "2026-05-26T20:29:38.875745+00:00",
-      "updatedAt": "2026-05-26T20:29:38.875746+00:00"
+      "createdAt": "2026-05-31T08:03:26.619991+00:00",
+      "updatedAt": "2026-05-31T08:03:26.619992+00:00"
     },
     {
       "id": "content-strategy-trend-keyword-trend-cluster-jp-ja-compact-desk-gadget-compact-desk-gadget",
@@ -538,9 +664,12 @@
       "market": "jp",
       "language": "ja",
       "slug": "compact-desk-gadget",
+      "strategyProvider": "dry-run",
       "selectedArticleType": "article",
       "recommendedAngle": "Answer compact desk gadget with market-specific evidence and fill gaps: measurement criteria, spec table, work style segmentation.",
       "titleStrategy": "Compact Desk Gadget: Market Test Guide for JP",
+      "h1": "Compact Desk Gadget: Market Test Guide for JP",
+      "metaDescription": "Market-specific test article for compact desk gadget. Product links and monetization are deferred.",
       "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
       "sectionPlanJson": [
         {
@@ -583,6 +712,17 @@
         "Freshness/date checks",
         "Original data or testing plan before claiming superiority"
       ],
+      "productCandidateNeedsJson": [
+        "Product candidate analysis pending.",
+        "Future candidates must be verified before any monetized placement."
+      ],
+      "forbiddenClaimsJson": [
+        "Do not claim first-hand testing without evidence.",
+        "Do not invent prices, discounts, medical outcomes, or availability.",
+        "Do not insert affiliate links in the test article.",
+        "Do not copy competitor wording or headings.",
+        "Do not claim a product is best without a comparison method."
+      ],
       "competitorPatternsJson": [
         "Comparison table appears in top results",
         "Product-card monetization appears, but this pipeline defers links",
@@ -603,8 +743,8 @@
       },
       "monetizationDeferred": true,
       "status": "brief_pending",
-      "createdAt": "2026-05-26T20:29:38.875755+00:00",
-      "updatedAt": "2026-05-26T20:29:38.875756+00:00"
+      "createdAt": "2026-05-31T08:03:26.620038+00:00",
+      "updatedAt": "2026-05-31T08:03:26.620039+00:00"
     },
     {
       "id": "content-strategy-trend-keyword-trend-cluster-jp-ja-compact-desk-gadget-デスク-便利-グッズ",
@@ -613,9 +753,12 @@
       "market": "jp",
       "language": "ja",
       "slug": "デスク-便利-グッズ",
+      "strategyProvider": "dry-run",
       "selectedArticleType": "informational_test_post",
       "recommendedAngle": "Create a market-specific no-link test post for デスク 便利 グッズ.",
       "titleStrategy": "デスク 便利 グッズ: Market Test Guide for JP",
+      "h1": "デスク 便利 グッズ: Market Test Guide for JP",
+      "metaDescription": "Market-specific test article for デスク 便利 グッズ. Product links and monetization are deferred.",
       "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
       "sectionPlanJson": [
         {
@@ -650,12 +793,23 @@
         "Freshness/date checks",
         "Original data or testing plan before claiming superiority"
       ],
+      "productCandidateNeedsJson": [
+        "Product candidate analysis pending.",
+        "Future candidates must be verified before any monetized placement."
+      ],
+      "forbiddenClaimsJson": [
+        "Do not claim first-hand testing without evidence.",
+        "Do not invent prices, discounts, medical outcomes, or availability.",
+        "Do not insert affiliate links in the test article.",
+        "Do not copy competitor wording or headings.",
+        "Do not claim a product is best without a comparison method."
+      ],
       "competitorPatternsJson": [],
       "contentGapJson": {},
       "monetizationDeferred": true,
       "status": "brief_pending",
-      "createdAt": "2026-05-26T20:29:38.875768+00:00",
-      "updatedAt": "2026-05-26T20:29:38.875769+00:00"
+      "createdAt": "2026-05-31T08:03:26.620053+00:00",
+      "updatedAt": "2026-05-31T08:03:26.620054+00:00"
     },
     {
       "id": "content-strategy-trend-keyword-trend-cluster-de-de-travel-adapter-travel-adapter",
@@ -664,9 +818,12 @@
       "market": "de",
       "language": "de",
       "slug": "travel-adapter",
+      "strategyProvider": "dry-run",
       "selectedArticleType": "informational_test_post",
       "recommendedAngle": "Create a market-specific no-link test post for travel adapter.",
       "titleStrategy": "Travel Adapter: Market Test Guide for DE",
+      "h1": "Travel Adapter: Market Test Guide for DE",
+      "metaDescription": "Market-specific test article for travel adapter. Product links and monetization are deferred.",
       "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
       "sectionPlanJson": [
         {
@@ -702,12 +859,23 @@
         "Spec verification checklist and safety/certification notes",
         "Original data or testing plan before claiming superiority"
       ],
+      "productCandidateNeedsJson": [
+        "Product candidate analysis pending.",
+        "Future candidates must be verified before any monetized placement."
+      ],
+      "forbiddenClaimsJson": [
+        "Do not claim first-hand testing without evidence.",
+        "Do not invent prices, discounts, medical outcomes, or availability.",
+        "Do not insert affiliate links in the test article.",
+        "Do not copy competitor wording or headings.",
+        "Do not claim a product is best without a comparison method."
+      ],
       "competitorPatternsJson": [],
       "contentGapJson": {},
       "monetizationDeferred": true,
       "status": "brief_pending",
-      "createdAt": "2026-05-26T20:29:38.875778+00:00",
-      "updatedAt": "2026-05-26T20:29:38.875779+00:00"
+      "createdAt": "2026-05-31T08:03:26.620063+00:00",
+      "updatedAt": "2026-05-31T08:03:26.620064+00:00"
     },
     {
       "id": "content-strategy-trend-keyword-trend-cluster-de-de-travel-adapter-reiseadapter-usb-c",
@@ -716,9 +884,12 @@
       "market": "de",
       "language": "de",
       "slug": "reiseadapter-usb-c",
+      "strategyProvider": "dry-run",
       "selectedArticleType": "informational_test_post",
       "recommendedAngle": "Create a market-specific no-link test post for reiseadapter usb c.",
       "titleStrategy": "Reiseadapter Usb C: Market Test Guide for DE",
+      "h1": "Reiseadapter Usb C: Market Test Guide for DE",
+      "metaDescription": "Market-specific test article for reiseadapter usb c. Product links and monetization are deferred.",
       "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
       "sectionPlanJson": [
         {
@@ -754,12 +925,23 @@
         "Spec verification checklist and safety/certification notes",
         "Original data or testing plan before claiming superiority"
       ],
+      "productCandidateNeedsJson": [
+        "Product candidate analysis pending.",
+        "Future candidates must be verified before any monetized placement."
+      ],
+      "forbiddenClaimsJson": [
+        "Do not claim first-hand testing without evidence.",
+        "Do not invent prices, discounts, medical outcomes, or availability.",
+        "Do not insert affiliate links in the test article.",
+        "Do not copy competitor wording or headings.",
+        "Do not claim a product is best without a comparison method."
+      ],
       "competitorPatternsJson": [],
       "contentGapJson": {},
       "monetizationDeferred": true,
       "status": "brief_pending",
-      "createdAt": "2026-05-26T20:29:38.875789+00:00",
-      "updatedAt": "2026-05-26T20:29:38.875790+00:00"
+      "createdAt": "2026-05-31T08:03:26.620073+00:00",
+      "updatedAt": "2026-05-31T08:03:26.620073+00:00"
     },
     {
       "id": "content-strategy-trend-keyword-trend-cluster-fr-fr-beauty-ingredient-beauty-ingredient",
@@ -768,9 +950,12 @@
       "market": "fr",
       "language": "fr",
       "slug": "beauty-ingredient",
+      "strategyProvider": "dry-run",
       "selectedArticleType": "informational_test_post",
       "recommendedAngle": "Create a market-specific no-link test post for beauty ingredient.",
       "titleStrategy": "Beauty Ingredient: Market Test Guide for FR",
+      "h1": "Beauty Ingredient: Market Test Guide for FR",
+      "metaDescription": "Market-specific test article for beauty ingredient. Product links and monetization are deferred.",
       "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
       "sectionPlanJson": [
         {
@@ -805,12 +990,23 @@
         "Freshness/date checks",
         "Original data or testing plan before claiming superiority"
       ],
+      "productCandidateNeedsJson": [
+        "Product candidate analysis pending.",
+        "Future candidates must be verified before any monetized placement."
+      ],
+      "forbiddenClaimsJson": [
+        "Do not claim first-hand testing without evidence.",
+        "Do not invent prices, discounts, medical outcomes, or availability.",
+        "Do not insert affiliate links in the test article.",
+        "Do not copy competitor wording or headings.",
+        "Do not claim a product is best without a comparison method."
+      ],
       "competitorPatternsJson": [],
       "contentGapJson": {},
       "monetizationDeferred": true,
       "status": "brief_pending",
-      "createdAt": "2026-05-26T20:29:38.875801+00:00",
-      "updatedAt": "2026-05-26T20:29:38.875802+00:00"
+      "createdAt": "2026-05-31T08:03:26.620082+00:00",
+      "updatedAt": "2026-05-31T08:03:26.620083+00:00"
     },
     {
       "id": "content-strategy-trend-keyword-trend-cluster-fr-fr-beauty-ingredient-ingredient-beaute-tendance",
@@ -819,9 +1015,12 @@
       "market": "fr",
       "language": "fr",
       "slug": "ingredient-beaute-tendance",
+      "strategyProvider": "dry-run",
       "selectedArticleType": "informational_test_post",
       "recommendedAngle": "Create a market-specific no-link test post for ingredient beaute tendance.",
       "titleStrategy": "Ingredient Beaute Tendance: Market Test Guide for FR",
+      "h1": "Ingredient Beaute Tendance: Market Test Guide for FR",
+      "metaDescription": "Market-specific test article for ingredient beaute tendance. Product links and monetization are deferred.",
       "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
       "sectionPlanJson": [
         {
@@ -856,12 +1055,23 @@
         "Freshness/date checks",
         "Original data or testing plan before claiming superiority"
       ],
+      "productCandidateNeedsJson": [
+        "Product candidate analysis pending.",
+        "Future candidates must be verified before any monetized placement."
+      ],
+      "forbiddenClaimsJson": [
+        "Do not claim first-hand testing without evidence.",
+        "Do not invent prices, discounts, medical outcomes, or availability.",
+        "Do not insert affiliate links in the test article.",
+        "Do not copy competitor wording or headings.",
+        "Do not claim a product is best without a comparison method."
+      ],
       "competitorPatternsJson": [],
       "contentGapJson": {},
       "monetizationDeferred": true,
       "status": "brief_pending",
-      "createdAt": "2026-05-26T20:29:38.875811+00:00",
-      "updatedAt": "2026-05-26T20:29:38.875812+00:00"
+      "createdAt": "2026-05-31T08:03:26.620092+00:00",
+      "updatedAt": "2026-05-31T08:03:26.620093+00:00"
     },
     {
       "id": "content-strategy-trend-keyword-trend-cluster-mx-es-budget-smartwatch-budget-smartwatch",
@@ -870,9 +1080,12 @@
       "market": "mx",
       "language": "es",
       "slug": "budget-smartwatch",
+      "strategyProvider": "dry-run",
       "selectedArticleType": "informational_test_post",
       "recommendedAngle": "Create a market-specific no-link test post for budget smartwatch.",
       "titleStrategy": "Budget Smartwatch: Market Test Guide for MX",
+      "h1": "Budget Smartwatch: Market Test Guide for MX",
+      "metaDescription": "Market-specific test article for budget smartwatch. Product links and monetization are deferred.",
       "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
       "sectionPlanJson": [
         {
@@ -907,12 +1120,23 @@
         "Freshness/date checks",
         "Original data or testing plan before claiming superiority"
       ],
+      "productCandidateNeedsJson": [
+        "Product candidate analysis pending.",
+        "Future candidates must be verified before any monetized placement."
+      ],
+      "forbiddenClaimsJson": [
+        "Do not claim first-hand testing without evidence.",
+        "Do not invent prices, discounts, medical outcomes, or availability.",
+        "Do not insert affiliate links in the test article.",
+        "Do not copy competitor wording or headings.",
+        "Do not claim a product is best without a comparison method."
+      ],
       "competitorPatternsJson": [],
       "contentGapJson": {},
       "monetizationDeferred": true,
       "status": "brief_pending",
-      "createdAt": "2026-05-26T20:29:38.875820+00:00",
-      "updatedAt": "2026-05-26T20:29:38.875821+00:00"
+      "createdAt": "2026-05-31T08:03:26.620101+00:00",
+      "updatedAt": "2026-05-31T08:03:26.620101+00:00"
     },
     {
       "id": "content-strategy-trend-keyword-trend-cluster-mx-es-budget-smartwatch-smartwatch-economico-2026",
@@ -921,9 +1145,12 @@
       "market": "mx",
       "language": "es",
       "slug": "smartwatch-economico-2026",
+      "strategyProvider": "dry-run",
       "selectedArticleType": "informational_test_post",
       "recommendedAngle": "Create a market-specific no-link test post for smartwatch economico 2026.",
       "titleStrategy": "Smartwatch Economico 2026: Market Test Guide for MX",
+      "h1": "Smartwatch Economico 2026: Market Test Guide for MX",
+      "metaDescription": "Market-specific test article for smartwatch economico 2026. Product links and monetization are deferred.",
       "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
       "sectionPlanJson": [
         {
@@ -958,12 +1185,23 @@
         "Freshness/date checks",
         "Original data or testing plan before claiming superiority"
       ],
+      "productCandidateNeedsJson": [
+        "Product candidate analysis pending.",
+        "Future candidates must be verified before any monetized placement."
+      ],
+      "forbiddenClaimsJson": [
+        "Do not claim first-hand testing without evidence.",
+        "Do not invent prices, discounts, medical outcomes, or availability.",
+        "Do not insert affiliate links in the test article.",
+        "Do not copy competitor wording or headings.",
+        "Do not claim a product is best without a comparison method."
+      ],
       "competitorPatternsJson": [],
       "contentGapJson": {},
       "monetizationDeferred": true,
       "status": "brief_pending",
-      "createdAt": "2026-05-26T20:29:38.875830+00:00",
-      "updatedAt": "2026-05-26T20:29:38.875831+00:00"
+      "createdAt": "2026-05-31T08:03:26.620111+00:00",
+      "updatedAt": "2026-05-31T08:03:26.620111+00:00"
     },
     {
       "id": "content-strategy-trend-keyword-trend-cluster-kr-ko-gut-health-gut-health",
@@ -972,9 +1210,12 @@
       "market": "kr",
       "language": "ko",
       "slug": "gut-health",
+      "strategyProvider": "dry-run",
       "selectedArticleType": "article",
       "recommendedAngle": "Answer gut health with market-specific evidence and fill gaps: evidence checklist, freshness signal, health claim guard.",
       "titleStrategy": "Gut Health: Market Test Guide for KR",
+      "h1": "Gut Health: Market Test Guide for KR",
+      "metaDescription": "Market-specific test article for gut health. Product links and monetization are deferred.",
       "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
       "sectionPlanJson": [
         {
@@ -1018,6 +1259,17 @@
         "HealthClaimGuard review and conservative evidence sources",
         "Original data or testing plan before claiming superiority"
       ],
+      "productCandidateNeedsJson": [
+        "Product candidate analysis pending.",
+        "Future candidates must be verified before any monetized placement."
+      ],
+      "forbiddenClaimsJson": [
+        "Do not claim first-hand testing without evidence.",
+        "Do not invent prices, discounts, medical outcomes, or availability.",
+        "Do not insert affiliate links in the test article.",
+        "Do not copy competitor wording or headings.",
+        "Do not claim a product is best without a comparison method."
+      ],
       "competitorPatternsJson": [
         "Comparison table appears in top results",
         "Product-card monetization appears, but this pipeline defers links",
@@ -1038,8 +1290,8 @@
       },
       "monetizationDeferred": true,
       "status": "brief_pending",
-      "createdAt": "2026-05-26T20:29:38.875839+00:00",
-      "updatedAt": "2026-05-26T20:29:38.875840+00:00"
+      "createdAt": "2026-05-31T08:03:26.620120+00:00",
+      "updatedAt": "2026-05-31T08:03:26.620121+00:00"
     },
     {
       "id": "content-strategy-trend-keyword-trend-cluster-kr-ko-gut-health-gut-health-probiotic",
@@ -1048,9 +1300,12 @@
       "market": "kr",
       "language": "ko",
       "slug": "gut-health-probiotic",
+      "strategyProvider": "dry-run",
       "selectedArticleType": "informational_test_post",
       "recommendedAngle": "Create a market-specific no-link test post for gut health probiotic.",
       "titleStrategy": "Gut Health Probiotic: Market Test Guide for KR",
+      "h1": "Gut Health Probiotic: Market Test Guide for KR",
+      "metaDescription": "Market-specific test article for gut health probiotic. Product links and monetization are deferred.",
       "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
       "sectionPlanJson": [
         {
@@ -1086,12 +1341,23 @@
         "HealthClaimGuard review and conservative evidence sources",
         "Original data or testing plan before claiming superiority"
       ],
+      "productCandidateNeedsJson": [
+        "Product candidate analysis pending.",
+        "Future candidates must be verified before any monetized placement."
+      ],
+      "forbiddenClaimsJson": [
+        "Do not claim first-hand testing without evidence.",
+        "Do not invent prices, discounts, medical outcomes, or availability.",
+        "Do not insert affiliate links in the test article.",
+        "Do not copy competitor wording or headings.",
+        "Do not claim a product is best without a comparison method."
+      ],
       "competitorPatternsJson": [],
       "contentGapJson": {},
       "monetizationDeferred": true,
       "status": "brief_pending",
-      "createdAt": "2026-05-26T20:29:38.875848+00:00",
-      "updatedAt": "2026-05-26T20:29:38.875849+00:00"
+      "createdAt": "2026-05-31T08:03:26.620130+00:00",
+      "updatedAt": "2026-05-31T08:03:26.620130+00:00"
     },
     {
       "id": "content-strategy-trend-keyword-trend-cluster-kr-ko-gut-health-장-건강-유산균",
@@ -1100,9 +1366,12 @@
       "market": "kr",
       "language": "ko",
       "slug": "장-건강-유산균",
+      "strategyProvider": "dry-run",
       "selectedArticleType": "informational_test_post",
       "recommendedAngle": "Create a market-specific no-link test post for 장 건강 유산균.",
       "titleStrategy": "장 건강 유산균: Market Test Guide for KR",
+      "h1": "장 건강 유산균: Market Test Guide for KR",
+      "metaDescription": "Market-specific test article for 장 건강 유산균. Product links and monetization are deferred.",
       "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
       "sectionPlanJson": [
         {
@@ -1137,12 +1406,23 @@
         "Freshness/date checks",
         "Original data or testing plan before claiming superiority"
       ],
+      "productCandidateNeedsJson": [
+        "Product candidate analysis pending.",
+        "Future candidates must be verified before any monetized placement."
+      ],
+      "forbiddenClaimsJson": [
+        "Do not claim first-hand testing without evidence.",
+        "Do not invent prices, discounts, medical outcomes, or availability.",
+        "Do not insert affiliate links in the test article.",
+        "Do not copy competitor wording or headings.",
+        "Do not claim a product is best without a comparison method."
+      ],
       "competitorPatternsJson": [],
       "contentGapJson": {},
       "monetizationDeferred": true,
       "status": "brief_pending",
-      "createdAt": "2026-05-26T20:29:38.875858+00:00",
-      "updatedAt": "2026-05-26T20:29:38.875859+00:00"
+      "createdAt": "2026-05-31T08:03:26.620140+00:00",
+      "updatedAt": "2026-05-31T08:03:26.620141+00:00"
     }
   ]
 }

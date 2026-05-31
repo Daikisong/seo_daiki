@@ -35,7 +35,11 @@ export function readMarketPosts(market: MarketConfig): MarketPostView[] {
           heading: text(record(section).heading),
           body: text(record(section).body)
         })),
-        productCandidateState: text(row.productCandidateState) || "pending"
+        monetizationDeferred: row.monetizationDeferred !== false,
+        productCandidateState: text(row.productCandidateState) || "pending",
+        affiliateLinks: array(row.affiliateLinks),
+        indexStatus: text(row.indexStatus),
+        publishStatus: text(row.publishStatus)
       };
     });
 }

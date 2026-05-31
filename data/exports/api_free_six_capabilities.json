@@ -1,0 +1,14 @@
+{
+  "country_trend_detection": true,
+  "trend_keyword_generation": true,
+  "serp_observation_api_free": true,
+  "competitor_content_structure_analysis": true,
+  "dry_run_llm_content_strategy": true,
+  "website_test_posting": true,
+  "search_console_required": false,
+  "affiliate_api_required": false,
+  "brave_api_required": false,
+  "external_llm_required": false,
+  "monetized_links_inserted": false,
+  "human_approval_required_for_monetization": true
+}

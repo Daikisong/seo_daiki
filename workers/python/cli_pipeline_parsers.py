@@ -5,6 +5,11 @@ from workers.python.common import DATA
 
 
 def add_pipeline_commands(subcommands: Subcommands) -> None:
+    api_free_pipeline = subcommands.add_parser("pipeline:api-free-six")
+    api_free_pipeline.add_argument("--trend-signal-file", default=str(DATA / "seeds" / "trend-signals.csv"))
+    api_free_pipeline.add_argument("--serp-results-file", default=str(DATA / "seeds" / "serp-results.csv"))
+    api_free_pipeline.add_argument("--continue-on-error", action="store_true")
+    subcommands.add_parser("verify:api-free-six")
     trend_pipeline = subcommands.add_parser("pipeline:trend-to-post")
     trend_pipeline.add_argument("--trend-signal-file", default=str(DATA / "seeds" / "trend-signals.csv"))
     trend_pipeline.add_argument("--serp-results-file", default=str(DATA / "seeds" / "serp-results.csv"))

@@ -6,14 +6,26 @@ from pathlib import Path
 from workers.python.cli_dispatch_result import NOT_HANDLED, DispatchResult, handled
 from workers.python.common import DATA
 from workers.python.pipeline import (
+    run_api_free_six_pipeline,
     run_monetization_review_pipeline,
     run_post_to_product_analysis_pipeline,
     run_trend_to_post_pipeline,
     run_worker_pipeline,
 )
+from workers.python.verify_api_free_six import verify_api_free_six
 
 
 def run_pipeline_command(args: Namespace) -> DispatchResult:
+    if args.command == "pipeline:api-free-six":
+        return handled(
+            run_api_free_six_pipeline(
+                Path(args.trend_signal_file),
+                Path(args.serp_results_file),
+                continue_on_error=args.continue_on_error,
+            )
+        )
+    if args.command == "verify:api-free-six":
+        return handled(verify_api_free_six())
     if args.command == "pipeline:trend-to-post":
         return handled(
             run_trend_to_post_pipeline(

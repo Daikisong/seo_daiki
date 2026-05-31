@@ -7,7 +7,7 @@
       "canonicalTopic": "power bank real capacity",
       "slug": "power-bank-real-capacity",
       "category": "consumer-tech",
-      "detectedAt": "2026-05-26T20:29:38.871395+00:00",
+      "detectedAt": "2026-05-31T08:03:26.615085+00:00",
       "status": "scored",
       "signalCount": 2,
       "countriesSeenJson": [
@@ -41,7 +41,7 @@
       "canonicalTopic": "magnesium sleep",
       "slug": "magnesium-sleep",
       "category": "wellness",
-      "detectedAt": "2026-05-26T20:29:38.871440+00:00",
+      "detectedAt": "2026-05-31T08:03:26.615129+00:00",
       "status": "scored",
       "signalCount": 2,
       "countriesSeenJson": [
@@ -75,7 +75,7 @@
       "canonicalTopic": "usb c charger",
       "slug": "usb-c-charger",
       "category": "consumer-tech",
-      "detectedAt": "2026-05-26T20:29:38.871413+00:00",
+      "detectedAt": "2026-05-31T08:03:26.615103+00:00",
       "status": "scored",
       "signalCount": 2,
       "countriesSeenJson": [
@@ -109,7 +109,7 @@
       "canonicalTopic": "compact desk gadget",
       "slug": "compact-desk-gadget",
       "category": "consumer-tech",
-      "detectedAt": "2026-05-26T20:29:38.871425+00:00",
+      "detectedAt": "2026-05-31T08:03:26.615115+00:00",
       "status": "scored",
       "signalCount": 2,
       "countriesSeenJson": [
@@ -143,7 +143,7 @@
       "canonicalTopic": "travel adapter",
       "slug": "travel-adapter",
       "category": "consumer-tech",
-      "detectedAt": "2026-05-26T20:29:38.871406+00:00",
+      "detectedAt": "2026-05-31T08:03:26.615096+00:00",
       "status": "scored",
       "signalCount": 1,
       "countriesSeenJson": [
@@ -175,7 +175,7 @@
       "canonicalTopic": "beauty ingredient",
       "slug": "beauty-ingredient",
       "category": "beauty",
-      "detectedAt": "2026-05-26T20:29:38.871419+00:00",
+      "detectedAt": "2026-05-31T08:03:26.615108+00:00",
       "status": "scored",
       "signalCount": 1,
       "countriesSeenJson": [
@@ -207,7 +207,7 @@
       "canonicalTopic": "budget smartwatch",
       "slug": "budget-smartwatch",
       "category": "consumer-tech",
-      "detectedAt": "2026-05-26T20:29:38.871435+00:00",
+      "detectedAt": "2026-05-31T08:03:26.615125+00:00",
       "status": "scored",
       "signalCount": 1,
       "countriesSeenJson": [
@@ -239,7 +239,7 @@
       "canonicalTopic": "gut health",
       "slug": "gut-health",
       "category": "wellness",
-      "detectedAt": "2026-05-26T20:29:38.871430+00:00",
+      "detectedAt": "2026-05-31T08:03:26.615119+00:00",
       "status": "scored",
       "signalCount": 2,
       "countriesSeenJson": [
@@ -381,5 +381,5 @@
       "crossLanguageSynonymCluster": false
     }
   ],
-  "generatedAt": "2026-05-27T11:50:17.220996+00:00"
+  "generatedAt": "2026-05-31T08:03:26.615713+00:00"
 }

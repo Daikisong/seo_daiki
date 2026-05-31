@@ -7,6 +7,7 @@ from workers.python import pipeline_steps
 from workers.python.pipeline_monetization_steps import monetization_review_steps as direct_monetization_review_steps
 from workers.python.pipeline_product_steps import post_to_product_analysis_steps as direct_post_to_product_analysis_steps
 from workers.python.pipeline_steps import (
+    api_free_six_steps,
     monetization_review_steps,
     post_to_product_analysis_steps,
     trend_to_post_extra,
@@ -43,6 +44,33 @@ class PipelineStepsTest(unittest.TestCase):
         self.assertIs(pipeline_steps.trend_to_post_steps, direct_trend_to_post_steps)
         self.assertIs(pipeline_steps.post_to_product_analysis_steps, direct_post_to_product_analysis_steps)
         self.assertIs(pipeline_steps.monetization_review_steps, direct_monetization_review_steps)
+
+    def test_api_free_six_steps_are_exact_first_six_flow(self) -> None:
+        names = [name for name, _action in api_free_six_steps(Path("trend.csv"), Path("serp.csv"))]
+
+        self.assertEqual(
+            names,
+            [
+                "trend:init-markets",
+                "trend:import-signals",
+                "trend:normalize",
+                "trend:cluster",
+                "trend:score",
+                "trend:generate-keywords",
+                "trend:report",
+                "serp:import-results",
+                "serp:fetch-pages",
+                "serp:analyze-pages",
+                "serp:summarize-opportunity",
+                "serp:report",
+                "strategy:create",
+                "strategy:generate-brief",
+                "post:generate-test",
+                "post:publish-test --mode noindex",
+            ],
+        )
+        self.assertNotIn("products:discover-candidates", names)
+        self.assertNotIn("monetization:create-review", names)
 
 
 if __name__ == "__main__":

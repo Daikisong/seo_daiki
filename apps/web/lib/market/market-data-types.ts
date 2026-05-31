@@ -47,5 +47,9 @@ export interface MarketPostView {
   status: string;
   summary: string;
   sections: { heading: string; body: string }[];
+  monetizationDeferred: boolean;
   productCandidateState: string;
+  affiliateLinks: unknown[];
+  indexStatus: string;
+  publishStatus: string;
 }

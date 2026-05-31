@@ -5,6 +5,7 @@ from pathlib import Path
 from workers.python.common import DATA
 from workers.python.pipeline_runner import run_steps
 from workers.python.pipeline_steps import (
+    api_free_six_steps,
     monetization_review_steps,
     post_to_product_analysis_steps,
     trend_to_post_extra,
@@ -40,6 +41,32 @@ def run_trend_to_post_pipeline(
         trend_to_post_steps(trend_signal_file, serp_results_file),
         continue_on_error,
         extra=trend_to_post_extra(),
+    )
+
+
+def run_api_free_six_pipeline(
+    trend_signal_file: Path | None = None,
+    serp_results_file: Path | None = None,
+    continue_on_error: bool = False,
+) -> str:
+    return run_steps(
+        "api_free_six",
+        api_free_six_steps(trend_signal_file, serp_results_file),
+        continue_on_error,
+        extra={
+            "apiFree": True,
+            "defaultPipelineRunsMonetization": False,
+            "externalCredentialsRequired": False,
+            "disabledLaterPhases": {
+                "searchConsole": True,
+                "productCandidateAnalysis": True,
+                "monetizationReview": True,
+                "offerMatching": True,
+                "distributionDrafts": True,
+                "linkEarning": True,
+                "liveAffiliateApis": True,
+            },
+        },
     )
 
 

@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import Any
 
 from workers.python.common import read_json, slugify, write_json
-from workers.python.writers.content_strategy_rules import evidence_needed, section_plan, title_for
+from workers.python.writers.dry_run_strategy_refiner import dry_run_strategy_refiner
 from workers.python.writers.market_content_artifacts import (
     CONTENT_STRATEGIES_PATH,
     SERP_ANALYSIS_PATH,
@@ -46,7 +46,7 @@ def content_strategy_records(
         cluster = cluster_by_id.get(str(keyword.get("clusterId")), {})
         keyword_text = str(keyword.get("keyword") or "")
         rows = analyses_by_keyword.get(keyword_text, [])
-        sections = section_plan(keyword_text, opportunity, rows)
+        refined = dry_run_strategy_refiner(keyword, cluster, opportunity, rows)
         strategy_id = f"content-strategy-{slugify(str(keyword.get('id') or keyword_text))}"
         strategies.append(
             {
@@ -56,24 +56,7 @@ def content_strategy_records(
                 "market": keyword.get("market"),
                 "language": keyword.get("language"),
                 "slug": slugify(keyword_text),
-                "selectedArticleType": opportunity.get("recommendedArticleType") or "informational_test_post",
-                "recommendedAngle": opportunity.get("recommendedAngle")
-                or f"Create a market-specific no-link test post for {keyword_text}.",
-                "titleStrategy": title_for(keyword_text, keyword.get("market"), opportunity),
-                "introStrategy": (
-                    "Open with the user's immediate question, explain what can be verified now, "
-                    "and state that product links are deferred until review."
-                ),
-                "sectionPlanJson": sections,
-                "differentiationPlanJson": [
-                    "Use market-specific context instead of a generic global article.",
-                    "Explain competitor gaps without copying headings or wording.",
-                    "Include a verification checklist before any future monetization.",
-                ],
-                "evidenceNeededJson": evidence_needed(keyword_text, rows),
-                "competitorPatternsJson": opportunity.get("topPatternsJson") or [],
-                "contentGapJson": opportunity.get("contentGapJson") or {},
-                "monetizationDeferred": True,
+                **refined,
                 "status": status,
                 "createdAt": now(),
                 "updatedAt": now(),

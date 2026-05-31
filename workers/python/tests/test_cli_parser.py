@@ -21,6 +21,19 @@ class CliParserTests(unittest.TestCase):
         self.assertTrue(args.trend_signal_file.endswith("data/seeds/trend-signals.csv"))
         self.assertTrue(args.serp_results_file.endswith("data/seeds/serp-results.csv"))
 
+    def test_api_free_six_pipeline_parser(self) -> None:
+        args = build_parser().parse_args(["pipeline:api-free-six", "--continue-on-error"])
+
+        self.assertEqual(args.command, "pipeline:api-free-six")
+        self.assertTrue(args.continue_on_error)
+        self.assertTrue(args.trend_signal_file.endswith("data/seeds/trend-signals.csv"))
+        self.assertTrue(args.serp_results_file.endswith("data/seeds/serp-results.csv"))
+
+    def test_api_free_six_verify_parser(self) -> None:
+        args = build_parser().parse_args(["verify:api-free-six"])
+
+        self.assertEqual(args.command, "verify:api-free-six")
+
     def test_disabled_offer_matching_returns_guidance(self) -> None:
         args = build_parser().parse_args(["match-affiliate-offers"])
 
