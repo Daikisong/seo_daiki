@@ -493,6 +493,14 @@
       "pass": true
     },
     {
+      "name": "renders trust strip from top-page analysis",
+      "pass": true
+    },
+    {
+      "name": "renders inline jump links",
+      "pass": true
+    },
+    {
       "name": "renders key takeaways",
       "pass": true
     },
@@ -567,6 +575,10 @@
       "pass": true
     },
     {
+      "name": "styles top-page trust and jump patterns",
+      "pass": true
+    },
+    {
       "name": "keeps primary content visually dominant",
       "pass": true
     },
@@ -577,6 +589,220 @@
     {
       "name": "does not scale font size with viewport width",
       "pass": true
+    }
+  ],
+  "researchChecks": [
+    {
+      "name": "documents at least 50 actual top-ranking page formats",
+      "pass": true
+    },
+    {
+      "name": "top-page format analysis has unique URLs",
+      "pass": true
+    },
+    {
+      "name": "top-page format analysis stores reproducible SERP evidence",
+      "pass": true
+    },
+    {
+      "name": "top-page analysis covers current markets",
+      "pass": true
+    },
+    {
+      "name": "top-page analysis document exists",
+      "pass": true
+    }
+  ],
+  "routeReports": [
+    {
+      "slug": "iphone-16-promocao-brasil",
+      "path": "/br/pt-br/posts/iphone-16-promocao-brasil/",
+      "checks": [
+        {
+          "name": "route returned html",
+          "pass": true
+        },
+        {
+          "name": "trust strip rendered",
+          "pass": true
+        },
+        {
+          "name": "quick jumps rendered",
+          "pass": true
+        },
+        {
+          "name": "answer before quick jumps before summary",
+          "pass": true
+        },
+        {
+          "name": "sources rendered",
+          "pass": true
+        },
+        {
+          "name": "comparison table rendered",
+          "pass": true
+        },
+        {
+          "name": "no public SERP clutter",
+          "pass": true
+        },
+        {
+          "name": "no public internal research links",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "slug": "samsung-s90f-oled-deal",
+      "path": "/us/en/posts/samsung-s90f-oled-deal/",
+      "checks": [
+        {
+          "name": "route returned html",
+          "pass": true
+        },
+        {
+          "name": "trust strip rendered",
+          "pass": true
+        },
+        {
+          "name": "quick jumps rendered",
+          "pass": true
+        },
+        {
+          "name": "answer before quick jumps before summary",
+          "pass": true
+        },
+        {
+          "name": "sources rendered",
+          "pass": true
+        },
+        {
+          "name": "comparison table rendered",
+          "pass": true
+        },
+        {
+          "name": "no public SERP clutter",
+          "pass": true
+        },
+        {
+          "name": "no public internal research links",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "slug": "iphone-18-rumors-japan",
+      "path": "/jp/ja/posts/iphone-18-rumors-japan/",
+      "checks": [
+        {
+          "name": "route returned html",
+          "pass": true
+        },
+        {
+          "name": "trust strip rendered",
+          "pass": true
+        },
+        {
+          "name": "quick jumps rendered",
+          "pass": true
+        },
+        {
+          "name": "answer before quick jumps before summary",
+          "pass": true
+        },
+        {
+          "name": "sources rendered",
+          "pass": true
+        },
+        {
+          "name": "comparison table rendered",
+          "pass": true
+        },
+        {
+          "name": "no public SERP clutter",
+          "pass": true
+        },
+        {
+          "name": "no public internal research links",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "slug": "renta-2025-avisos-aeat",
+      "path": "/es/es/posts/renta-2025-avisos-aeat/",
+      "checks": [
+        {
+          "name": "route returned html",
+          "pass": true
+        },
+        {
+          "name": "trust strip rendered",
+          "pass": true
+        },
+        {
+          "name": "quick jumps rendered",
+          "pass": true
+        },
+        {
+          "name": "answer before quick jumps before summary",
+          "pass": true
+        },
+        {
+          "name": "sources rendered",
+          "pass": true
+        },
+        {
+          "name": "comparison table rendered",
+          "pass": true
+        },
+        {
+          "name": "no public SERP clutter",
+          "pass": true
+        },
+        {
+          "name": "no public internal research links",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "slug": "2026-대입-학폭-반영",
+      "path": "/kr/ko/posts/2026-%EB%8C%80%EC%9E%85-%ED%95%99%ED%8F%AD-%EB%B0%98%EC%98%81/",
+      "checks": [
+        {
+          "name": "route returned html",
+          "pass": true
+        },
+        {
+          "name": "trust strip rendered",
+          "pass": true
+        },
+        {
+          "name": "quick jumps rendered",
+          "pass": true
+        },
+        {
+          "name": "answer before quick jumps before summary",
+          "pass": true
+        },
+        {
+          "name": "sources rendered",
+          "pass": true
+        },
+        {
+          "name": "comparison table rendered",
+          "pass": true
+        },
+        {
+          "name": "no public SERP clutter",
+          "pass": true
+        },
+        {
+          "name": "no public internal research links",
+          "pass": true
+        }
+      ]
     }
   ]
 }

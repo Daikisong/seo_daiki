@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { CheckCircle2, Clock3, ExternalLink } from "lucide-react";
+import { CheckCircle2, Clock3, ExternalLink, ShieldCheck } from "lucide-react";
 import {
   buildExistingMarketContentHreflangMap,
   canonicalForMarketPath,
@@ -64,6 +64,8 @@ export default async function MarketPostPage({ params }: PageProps) {
   const sectionAnchors = post.sections.map((section) => ({ ...section, id: anchorId(section.heading) }));
   const [answerSection, ...bodySections] = sectionAnchors;
   const publicQuickFacts = post.quickFacts.filter((fact) => isPublicQuickFact(fact.label, fact.value)).slice(0, 3);
+  const quickJumpLinks = buildQuickJumpLinks(post, bodySections, market.language);
+  const trustItems = buildTrustItems(post, market.language);
   const canonical = canonicalForMarketPath(marketContentPath(market, "posts", post.slug));
 
   return (
@@ -143,6 +145,17 @@ export default async function MarketPostPage({ params }: PageProps) {
                 ))}
               </dl>
             ) : null}
+            <section className="market-article-trust-strip" aria-label={trustStripLabel(market.language)}>
+              <div>
+                <ShieldCheck aria-hidden />
+                <strong>{trustStripLabel(market.language)}</strong>
+              </div>
+              <ul>
+                {trustItems.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </section>
           </header>
 
           <div className="market-article-shell">
@@ -154,6 +167,19 @@ export default async function MarketPostPage({ params }: PageProps) {
                     <p key={paragraph}>{paragraph}</p>
                   ))}
                 </section>
+              ) : null}
+
+              {quickJumpLinks.length > 0 ? (
+                <nav className="market-article-quick-jumps" aria-label={quickJumpLabel(market.language)}>
+                  <span>{quickJumpLabel(market.language)}</span>
+                  <div>
+                    {quickJumpLinks.map((link) => (
+                      <a href={link.href} key={link.href}>
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                </nav>
               ) : null}
 
               <section className="market-article-snapshot" aria-labelledby="at-a-glance-heading">
@@ -286,6 +312,40 @@ function isPublicQuickFact(label: string, value: string): boolean {
   return !["index-ready", "index ready", "ready after editor", "editor checks", "공개 준비"].some((phrase) => combined.includes(phrase));
 }
 
+function buildQuickJumpLinks(
+  post: ReturnType<typeof readMarketPosts>[number],
+  bodySections: Array<{ heading: string; id: string }>,
+  language: string
+): Array<{ label: string; href: string }> {
+  const links: Array<{ label: string; href: string }> = [];
+  if (post.checklist.length > 0) {
+    links.push({ label: checklistLabel(language), href: "#checklist-heading" });
+  }
+  if (bodySections[0]) {
+    links.push({ label: bodySections[0].heading, href: `#${bodySections[0].id}` });
+  }
+  if (post.comparisonTable) {
+    links.push({ label: post.comparisonTable.title, href: "#comparison-heading" });
+  }
+  if (post.sourceLinks.length > 0) {
+    links.push({ label: sourcesLabel(language), href: "#sources-heading" });
+  }
+  return links.slice(0, 4);
+}
+
+function buildTrustItems(post: ReturnType<typeof readMarketPosts>[number], language: string): string[] {
+  const sourceCount = post.sourceLinks.length;
+  const items = [
+    sourceCountLabel(language, sourceCount),
+    checkedAtSentence(language, post.articleMeta.checkedAt),
+    monetizationSentence(language)
+  ];
+  if (post.articleMeta.reviewer) {
+    items.splice(1, 0, reviewerSentence(language, post.articleMeta.reviewer));
+  }
+  return items;
+}
+
 function marketGuideLabel(language: string): string {
   if (language === "es") return "Guía de mercado";
   if (language === "pt-br" || language === "pt") return "Guia de mercado";
@@ -300,6 +360,54 @@ function tocLabel(language: string): string {
   if (language === "ja") return "目次";
   if (language === "ko") return "목차";
   return "In this guide";
+}
+
+function quickJumpLabel(language: string): string {
+  if (language === "es") return "Ir a";
+  if (language === "pt-br" || language === "pt") return "Ir para";
+  if (language === "ja") return "すぐ見る";
+  if (language === "ko") return "바로 이동";
+  return "Jump to";
+}
+
+function trustStripLabel(language: string): string {
+  if (language === "es") return "Cómo se revisó";
+  if (language === "pt-br" || language === "pt") return "Como verificamos";
+  if (language === "ja") return "確認方法";
+  if (language === "ko") return "검토 방식";
+  return "How this was checked";
+}
+
+function sourceCountLabel(language: string, count: number): string {
+  if (language === "es") return `${count} fuentes revisadas, con prioridad para fuentes oficiales o primarias.`;
+  if (language === "pt-br" || language === "pt") return `${count} fontes verificadas, priorizando fontes oficiais ou primárias.`;
+  if (language === "ja") return `${count}件の情報源を確認し、公式または一次情報を優先しました。`;
+  if (language === "ko") return `확인한 출처 ${count}개, 공식 자료와 1차 자료를 우선했습니다.`;
+  return `${count} sources checked, prioritizing official or primary sources.`;
+}
+
+function reviewerSentence(language: string, reviewer: string): string {
+  if (language === "es") return `Revisión editorial: ${reviewer}.`;
+  if (language === "pt-br" || language === "pt") return `Revisão editorial: ${reviewer}.`;
+  if (language === "ja") return `編集確認: ${reviewer}。`;
+  if (language === "ko") return `편집 검토: ${reviewer}.`;
+  return `Editorial review: ${reviewer}.`;
+}
+
+function checkedAtSentence(language: string, checkedAt: string): string {
+  if (language === "es") return `Datos revisados el ${checkedAt}; precios y políticas pueden cambiar.`;
+  if (language === "pt-br" || language === "pt") return `Dados verificados em ${checkedAt}; preços e políticas podem mudar.`;
+  if (language === "ja") return `${checkedAt}時点で確認。価格や制度は変わる場合があります。`;
+  if (language === "ko") return `${checkedAt} 기준으로 확인했으며 가격과 정책은 바뀔 수 있습니다.`;
+  return `Checked on ${checkedAt}; prices and policies can change.`;
+}
+
+function monetizationSentence(language: string): string {
+  if (language === "es") return "Sin enlaces monetizados en esta publicación de prueba.";
+  if (language === "pt-br" || language === "pt") return "Sem links monetizados nesta publicação de teste.";
+  if (language === "ja") return "このテスト記事には収益化リンクを入れていません。";
+  if (language === "ko") return "이 테스트 글에는 수익화 링크를 넣지 않았습니다.";
+  return "No monetized links are inserted in this test post.";
 }
 
 function checklistLabel(language: string): string {

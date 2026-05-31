@@ -1,4 +1,5 @@
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { execFileSync } from "node:child_process";
 import { resolve } from "node:path";
 
 type Article = {
@@ -30,6 +31,9 @@ const articlesPath = resolve(root, "data/exports/test_articles.json");
 const pagePath = resolve(root, "apps/web/app/[locale]/[language]/posts/[slug]/page.tsx");
 const cssPath = resolve(root, "apps/web/app/globals.css");
 const reportPath = resolve(root, "data/exports/seo_article_quality_report.json");
+const topSeoAnalysisPath = resolve(root, "data/research/top-seo-page-format-analysis.json");
+const topSeoDocPath = resolve(root, "docs/top-seo-50-page-format-analysis.md");
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3001").replace(/\/$/, "");
 
 const forbiddenVisiblePhrases = [
   "test_published",
@@ -163,9 +167,13 @@ function main() {
   const articleReports = articles.map(scoreArticle);
 
   const pageSource = existsSync(pagePath) ? readFileSync(pagePath, "utf8") : "";
+  const topSeoAnalysis = readTopSeoAnalysis();
+  const routeReports = articles.map(renderedArticleChecks);
   const rendererChecks = [
     { name: "renders hero image", pass: pageSource.includes("<img") && pageSource.includes("heroImage") },
     { name: "renders article metadata", pass: pageSource.includes("articleMeta") && pageSource.includes("<time") },
+    { name: "renders trust strip from top-page analysis", pass: pageSource.includes("market-article-trust-strip") && pageSource.includes("buildTrustItems") },
+    { name: "renders inline jump links", pass: pageSource.includes("market-article-quick-jumps") && pageSource.includes("buildQuickJumpLinks") },
     { name: "renders key takeaways", pass: pageSource.includes("keyTakeaways") },
     { name: "renders verdict box", pass: pageSource.includes("verdictBox") },
     { name: "does not render pros and cons clutter", pass: !pageSource.includes("prosCons") && !pageSource.includes("market-article-signal-grid") },
@@ -188,6 +196,7 @@ function main() {
     { name: "uses fact rail not plain cards", pass: pageSource.includes("market-article-fact-rail") && cssSource.includes(".market-article-fact-rail") },
     { name: "uses dedicated prose styling", pass: pageSource.includes("market-article-prose") && cssSource.includes(".market-article-prose p") },
     { name: "uses compact answer and summary blocks", pass: pageSource.includes("market-article-answer") && cssSource.includes(".market-article-answer") && cssSource.includes(".market-article-verdict") },
+    { name: "styles top-page trust and jump patterns", pass: cssSource.includes(".market-article-trust-strip") && cssSource.includes(".market-article-quick-jumps") },
     { name: "keeps primary content visually dominant", pass: cssSource.includes("max-width: 1080px") && cssSource.includes("minmax(0, 760px)") },
     { name: "uses responsive mobile rules", pass: cssSource.includes("@media (max-width: 860px)") && cssSource.includes("@media (max-width: 560px)") },
     { name: "does not scale font size with viewport width", pass: !/font-size:\s*[^;]*(vw|clamp\()/i.test(cssSource) }
@@ -196,12 +205,23 @@ function main() {
   const failedArticles = articleReports.filter((article) => article.score < 99 || article.checks.some((check) => !check.pass));
   const failedRenderer = rendererChecks.filter((check) => !check.pass);
   const failedVisual = visualChecks.filter((check) => !check.pass);
+  const researchChecks = [
+    { name: "documents at least 50 actual top-ranking page formats", pass: topSeoAnalysis.pageCount >= 50 },
+    { name: "top-page format analysis has unique URLs", pass: topSeoAnalysis.uniqueUrlCount >= 50 },
+    { name: "top-page format analysis stores reproducible SERP evidence", pass: topSeoAnalysis.reproducibleEvidenceCount >= 50 },
+    { name: "top-page analysis covers current markets", pass: ["samsung_s90f_review", "iphone_16_br", "renta_2025", "iphone_18_jp", "kr_admission_bullying"].every((group) => topSeoAnalysis.groups.has(group)) },
+    { name: "top-page analysis document exists", pass: existsSync(topSeoDocPath) && readFileSync(topSeoDocPath, "utf8").includes("Total pages analyzed: 55") && readFileSync(topSeoDocPath, "utf8").includes("Reproducible Query Groups") }
+  ];
+  const failedResearch = researchChecks.filter((check) => !check.pass);
+  const failedRoutes = routeReports.filter((route) => route.checks.some((check) => !check.pass));
   const report = {
-    passed: failedArticles.length === 0 && failedRenderer.length === 0 && failedVisual.length === 0,
+    passed: failedArticles.length === 0 && failedRenderer.length === 0 && failedVisual.length === 0 && failedResearch.length === 0 && failedRoutes.length === 0,
     minimumScore: Math.min(...articleReports.map((article) => article.score)),
     articleReports,
     rendererChecks,
-    visualChecks
+    visualChecks,
+    researchChecks,
+    routeReports
   };
   writeFileSync(reportPath, `${JSON.stringify(report, null, 2)}\n`);
 
@@ -210,12 +230,81 @@ function main() {
       [
         failedArticles.length ? `Article scores below 99: ${failedArticles.map((article) => `${article.slug}:${article.score}`).join(", ")}` : "",
         failedRenderer.length ? `Renderer checks failed: ${failedRenderer.map((check) => check.name).join(", ")}` : "",
-        failedVisual.length ? `Visual checks failed: ${failedVisual.map((check) => check.name).join(", ")}` : ""
+        failedVisual.length ? `Visual checks failed: ${failedVisual.map((check) => check.name).join(", ")}` : "",
+        failedResearch.length ? `Research checks failed: ${failedResearch.map((check) => check.name).join(", ")}` : "",
+        failedRoutes.length ? `Rendered route checks failed: ${failedRoutes.map((route) => `${route.slug}:${route.checks.filter((check) => !check.pass).map((check) => check.name).join("|")}`).join(", ")}` : ""
       ].filter(Boolean).join("\n")
     );
   }
 
   console.log(`SEO article quality audit passed. Minimum score: ${report.minimumScore}. Report written to ${reportPath}.`);
+}
+
+function renderedArticleChecks(article: Article): { slug?: string; path: string; checks: Array<{ name: string; pass: boolean }> } {
+  const path = `/${article.market}/${article.language}/posts/${encodeURIComponent(article.slug ?? "")}/`;
+  const html = fetchRenderedHtml(`${siteUrl}${path}`);
+  const checks = [
+    { name: "route returned html", pass: html.length > 0 },
+    { name: "trust strip rendered", pass: html.includes("market-article-trust-strip") },
+    { name: "quick jumps rendered", pass: html.includes("market-article-quick-jumps") },
+    {
+      name: "answer before quick jumps before summary",
+      pass:
+        html.indexOf("market-article-answer") >= 0 &&
+        html.indexOf("market-article-answer") < html.indexOf("market-article-quick-jumps") &&
+        html.indexOf("market-article-quick-jumps") < html.indexOf("market-article-snapshot")
+    },
+    { name: "sources rendered", pass: html.includes("market-article-sources") && html.includes("noopener noreferrer") },
+    { name: "comparison table rendered", pass: html.includes("market-article-table-section") && html.includes("<table") },
+    { name: "no public SERP clutter", pass: !["serpReferences", "market-article-reviewed-pages", "Top pages checked", "확인한 상위 페이지", "상위 글", "검색 글"].some((phrase) => html.includes(phrase)) },
+    { name: "no public internal research links", pass: !["편집 큐", "트렌드 신호", "SERP 분석", "Global trend map"].some((phrase) => html.includes(phrase)) }
+  ];
+  return { slug: article.slug, path, checks };
+}
+
+function fetchRenderedHtml(url: string): string {
+  try {
+    const output = execFileSync("curl", ["-fsSL", url], { encoding: "utf8", timeout: 15000 });
+    return output;
+  } catch {
+    return "";
+  }
+}
+
+function readTopSeoAnalysis(): { pageCount: number; uniqueUrlCount: number; groups: Set<string>; reproducibleEvidenceCount: number } {
+  if (!existsSync(topSeoAnalysisPath)) {
+    return { pageCount: 0, uniqueUrlCount: 0, groups: new Set(), reproducibleEvidenceCount: 0 };
+  }
+  const payload = JSON.parse(readFileSync(topSeoAnalysisPath, "utf8")) as {
+    pages?: Array<{
+      url?: string;
+      queryGroup?: string;
+      serpEvidence?: {
+        searchQuery?: string;
+        searchEngine?: string;
+        capturedAt?: string;
+        serpLocale?: string;
+        device?: string;
+        observedResultPosition?: number;
+      };
+    }>;
+  };
+  const pages = Array.isArray(payload.pages) ? payload.pages : [];
+  return {
+    pageCount: pages.length,
+    uniqueUrlCount: new Set(pages.map((page) => page.url).filter(Boolean)).size,
+    groups: new Set(pages.map((page) => page.queryGroup).filter(Boolean) as string[]),
+    reproducibleEvidenceCount: pages.filter((page) =>
+      Boolean(
+        page.serpEvidence?.searchQuery &&
+          page.serpEvidence.searchEngine &&
+          page.serpEvidence.capturedAt &&
+          page.serpEvidence.serpLocale &&
+          page.serpEvidence.device &&
+          page.serpEvidence.observedResultPosition
+      )
+    ).length
+  };
 }
 
 main();

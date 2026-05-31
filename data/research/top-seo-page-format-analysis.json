@@ -1,0 +1,1846 @@
+{
+  "generatedAt": "2026-05-31",
+  "method": {
+    "summary": "Manual review of 55 high-ranking search results for the current test-post topic families. News-only pages and forums were avoided where a guide, blog, review, comparison, official source, or practical explainer was available.",
+    "searchDate": "2026-05-31",
+    "rankingEvidence": "Each page now stores serpEvidence with searchQuery, locale, device, observed position, capture timestamp, and reproducibility note. Rankings can vary, so this is evidence of the captured result set rather than a permanent ranking claim.",
+    "copyrightPolicy": "Stored only structural observations, not article bodies."
+  },
+  "patterns": {
+    "repeatedWinningBlocks": [
+      "Answer or verdict appears before deep explanation",
+      "Updated date, author/reviewer, and trust/method note appear near the top",
+      "Jump links or sticky contents reduce scanning effort",
+      "Comparison tables or specs tables appear before or beside long prose",
+      "Images are real product/context images with captions",
+      "Sources and methodology are separated from public competitor-analysis notes",
+      "Policy/tax/admission topics lead with official sources",
+      "Mobile pages keep the answer and checklist before secondary navigation"
+    ],
+    "avoid": [
+      "Public SERP-analysis language such as top-page format notes",
+      "Dashboard-like rails before the answer",
+      "Too many internal research links in public article pages",
+      "Unsupported superlatives, copied competitor wording, or hidden source context",
+      "Empty card grids, decorative complexity, and large blocks before the answer"
+    ]
+  },
+  "pages": [
+    {
+      "id": 1,
+      "queryGroup": "samsung_s90f_review",
+      "rankApprox": 1,
+      "title": "Samsung S90F OLED Review",
+      "url": "https://www.rtings.com/tv/reviews/samsung/s90f-oled",
+      "publisherType": "lab_review",
+      "observedFormat": [
+        "score/verdict",
+        "methodology label",
+        "dense jump navigation",
+        "test tables",
+        "pros/cons",
+        "price links"
+      ],
+      "adopt": [
+        "clear verdict",
+        "methodology/trust note",
+        "comparison data table"
+      ],
+      "avoid": [
+        "overly dense lab dashboard on public trend posts"
+      ],
+      "serpEvidence": {
+        "searchQuery": "Samsung S90F OLED review guide should you buy pros cons 2026",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "us",
+        "language": "en",
+        "country": "US",
+        "serpLocale": "gl=us hl=en",
+        "device": "desktop",
+        "observedResultPosition": 1,
+        "resultType": "lab_review",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 2,
+      "queryGroup": "samsung_s90f_review",
+      "rankApprox": 2,
+      "title": "Samsung S90F 65-inch review",
+      "url": "https://www.techradar.com/televisions/samsung-s90f-review",
+      "publisherType": "expert_review",
+      "observedFormat": [
+        "why trust box",
+        "jump-to list",
+        "two-minute review",
+        "price/release date",
+        "should you buy",
+        "how tested"
+      ],
+      "adopt": [
+        "why-trust strip",
+        "jump links",
+        "should-you-act section"
+      ],
+      "avoid": [
+        "affiliate offer density before editorial answer"
+      ],
+      "serpEvidence": {
+        "searchQuery": "Samsung S90F OLED review guide should you buy pros cons 2026",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "us",
+        "language": "en",
+        "country": "US",
+        "serpLocale": "gl=us hl=en",
+        "device": "desktop",
+        "observedResultPosition": 2,
+        "resultType": "expert_review",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 3,
+      "queryGroup": "samsung_s90f_review",
+      "rankApprox": 3,
+      "title": "Samsung S90F OLED TV review",
+      "url": "https://www.tomsguide.com/tvs/oled-tvs/samsung-s90f-oled-tv-review",
+      "publisherType": "expert_review",
+      "observedFormat": [
+        "hero image",
+        "review verdict",
+        "price/date",
+        "test results",
+        "how we test"
+      ],
+      "adopt": [
+        "reviewer/date near top",
+        "scannable test-result section"
+      ],
+      "avoid": [
+        "burying caveats below long prose"
+      ],
+      "serpEvidence": {
+        "searchQuery": "Samsung S90F OLED review guide should you buy pros cons 2026",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "us",
+        "language": "en",
+        "country": "US",
+        "serpLocale": "gl=us hl=en",
+        "device": "desktop",
+        "observedResultPosition": 3,
+        "resultType": "expert_review",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 4,
+      "queryGroup": "samsung_s90f_review",
+      "rankApprox": 4,
+      "title": "Samsung S90F OLED TV review UK",
+      "url": "https://www.tomsguide.com/uk/tvs/oled-tvs/samsung-s90f-oled-tv-review",
+      "publisherType": "expert_review",
+      "observedFormat": [
+        "regional variant",
+        "image-led review",
+        "short verdict",
+        "sectioned review"
+      ],
+      "adopt": [
+        "market-specific caveats",
+        "same structure for local variants"
+      ],
+      "avoid": [
+        "using one market's pricing as global proof"
+      ],
+      "serpEvidence": {
+        "searchQuery": "Samsung S90F OLED review guide should you buy pros cons 2026",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "us",
+        "language": "en",
+        "country": "US",
+        "serpLocale": "gl=us hl=en",
+        "device": "desktop",
+        "observedResultPosition": 4,
+        "resultType": "expert_review",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 5,
+      "queryGroup": "samsung_s90f_review",
+      "rankApprox": 5,
+      "title": "Samsung S90F OLED TV review: Unreal value for money",
+      "url": "https://www.sammobile.com/reviews/samsung-s90f-oled-tv-review-unreal-value-for-money/",
+      "publisherType": "brand_specialist_review",
+      "observedFormat": [
+        "clear value angle",
+        "region/size caveats",
+        "video support",
+        "pros/cons"
+      ],
+      "adopt": [
+        "specific value angle",
+        "size/region warning"
+      ],
+      "avoid": [
+        "fan-site tone without verification"
+      ],
+      "serpEvidence": {
+        "searchQuery": "Samsung S90F OLED review guide should you buy pros cons 2026",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "us",
+        "language": "en",
+        "country": "US",
+        "serpLocale": "gl=us hl=en",
+        "device": "desktop",
+        "observedResultPosition": 5,
+        "resultType": "brand_specialist_review",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 6,
+      "queryGroup": "samsung_s90f_review",
+      "rankApprox": 6,
+      "title": "Samsung S90F 65 OLED Review",
+      "url": "https://www.tech-logie.com/reviews/samsung-s90f-oled-review",
+      "publisherType": "blog_review",
+      "observedFormat": [
+        "short reading time",
+        "gaming-led angle",
+        "pros/cons",
+        "plain verdict"
+      ],
+      "adopt": [
+        "single reader profile angle",
+        "short readable sections"
+      ],
+      "avoid": [
+        "thin unsupported scoring"
+      ],
+      "serpEvidence": {
+        "searchQuery": "Samsung S90F OLED review guide should you buy pros cons 2026",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "us",
+        "language": "en",
+        "country": "US",
+        "serpLocale": "gl=us hl=en",
+        "device": "desktop",
+        "observedResultPosition": 6,
+        "resultType": "blog_review",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 7,
+      "queryGroup": "samsung_s90f_review",
+      "rankApprox": 7,
+      "title": "The QD OLED I'd Buy - Samsung S90F Review",
+      "url": "https://hometheaterreview.com/the-oled-id-buy-samsung-s90f-review/",
+      "publisherType": "enthusiast_review",
+      "observedFormat": [
+        "personal recommendation angle",
+        "home-theater framing",
+        "performance categories"
+      ],
+      "adopt": [
+        "reader scenario framing"
+      ],
+      "avoid": [
+        "personal claims without test/source support"
+      ],
+      "serpEvidence": {
+        "searchQuery": "Samsung S90F OLED review guide should you buy pros cons 2026",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "us",
+        "language": "en",
+        "country": "US",
+        "serpLocale": "gl=us hl=en",
+        "device": "desktop",
+        "observedResultPosition": 7,
+        "resultType": "enthusiast_review",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 8,
+      "queryGroup": "samsung_s90f_comparison",
+      "rankApprox": 1,
+      "title": "LG C5 vs Samsung S90F OLED",
+      "url": "https://www.rtings.com/tv/tools/compare/lg-c5-oled-samsung-s90f-oled/88602/92237",
+      "publisherType": "comparison_tool",
+      "observedFormat": [
+        "side-by-side specs",
+        "updated date",
+        "verdict comparison",
+        "test tables"
+      ],
+      "adopt": [
+        "side-by-side comparison table",
+        "updated comparison date"
+      ],
+      "avoid": [
+        "locked/premium data references as public proof"
+      ],
+      "serpEvidence": {
+        "searchQuery": "Samsung S90F vs LG C5 OLED review comparison 2026",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "us",
+        "language": "en",
+        "country": "US",
+        "serpLocale": "gl=us hl=en",
+        "device": "desktop",
+        "observedResultPosition": 1,
+        "resultType": "comparison_tool",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 9,
+      "queryGroup": "samsung_s90f_comparison",
+      "rankApprox": 2,
+      "title": "LG C5 OLED vs Samsung S90F",
+      "url": "https://www.tomsguide.com/tvs/lg-c5-oled-vs-samsung-s90f-which-mid-range-oled-tv-is-right-for-you",
+      "publisherType": "comparison_review",
+      "observedFormat": [
+        "face-off label",
+        "jump links",
+        "specs/design/performance/verdict"
+      ],
+      "adopt": [
+        "direct comparison sequence",
+        "verdict after table"
+      ],
+      "avoid": [
+        "comparison without final recommendation"
+      ],
+      "serpEvidence": {
+        "searchQuery": "Samsung S90F vs LG C5 OLED review comparison 2026",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "us",
+        "language": "en",
+        "country": "US",
+        "serpLocale": "gl=us hl=en",
+        "device": "desktop",
+        "observedResultPosition": 2,
+        "resultType": "comparison_review",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 10,
+      "queryGroup": "best_oled_tv",
+      "rankApprox": 1,
+      "title": "Best OLED TVs in 2026",
+      "url": "https://www.rtings.com/tv/reviews/best/by-type/oled",
+      "publisherType": "best_list_lab",
+      "observedFormat": [
+        "best-for categories",
+        "test basis",
+        "recommendation hierarchy"
+      ],
+      "adopt": [
+        "best-for labels",
+        "explain why each pick fits"
+      ],
+      "avoid": [
+        "best claims without evidence"
+      ],
+      "serpEvidence": {
+        "searchQuery": "best OLED TV 2026 buying guide review RTINGS TechRadar Tom's Guide",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "us",
+        "language": "en",
+        "country": "US",
+        "serpLocale": "gl=us hl=en",
+        "device": "desktop",
+        "observedResultPosition": 1,
+        "resultType": "best_list_lab",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 11,
+      "queryGroup": "best_oled_tv",
+      "rankApprox": 2,
+      "title": "Best OLED TVs tested",
+      "url": "https://www.tomsguide.com/tvs/oled-tvs/best-oled-tvs",
+      "publisherType": "best_list_review",
+      "observedFormat": [
+        "editor picks",
+        "images",
+        "why buy/avoid",
+        "how tested"
+      ],
+      "adopt": [
+        "buy/avoid criteria",
+        "how-tested block"
+      ],
+      "avoid": [
+        "too many product cards on non-product article"
+      ],
+      "serpEvidence": {
+        "searchQuery": "best OLED TV 2026 buying guide review RTINGS TechRadar Tom's Guide",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "us",
+        "language": "en",
+        "country": "US",
+        "serpLocale": "gl=us hl=en",
+        "device": "desktop",
+        "observedResultPosition": 2,
+        "resultType": "best_list_review",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 12,
+      "queryGroup": "best_oled_tv",
+      "rankApprox": 3,
+      "title": "The best OLED TVs for all budgets",
+      "url": "https://www.techradar.com/televisions/the-best-oled-tvs",
+      "publisherType": "best_list_review",
+      "observedFormat": [
+        "budget segmentation",
+        "trust note",
+        "review links",
+        "use-case sections"
+      ],
+      "adopt": [
+        "reader segment labels",
+        "trust note"
+      ],
+      "avoid": [
+        "ranking pages for research-only topics"
+      ],
+      "serpEvidence": {
+        "searchQuery": "best OLED TV 2026 buying guide review RTINGS TechRadar Tom's Guide",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "us",
+        "language": "en",
+        "country": "US",
+        "serpLocale": "gl=us hl=en",
+        "device": "desktop",
+        "observedResultPosition": 3,
+        "resultType": "best_list_review",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 13,
+      "queryGroup": "best_oled_tv",
+      "rankApprox": 4,
+      "title": "OLED TV Buying Guide 2026",
+      "url": "https://specdb.net/en/reviews/oled-tv-buying-guide-2026",
+      "publisherType": "buying_guide",
+      "observedFormat": [
+        "buying guide",
+        "FAQ-style headings",
+        "comparison snippets"
+      ],
+      "adopt": [
+        "FAQ-like direct answers",
+        "buying criteria"
+      ],
+      "avoid": [
+        "generic specs without local context"
+      ],
+      "serpEvidence": {
+        "searchQuery": "best OLED TV 2026 buying guide review RTINGS TechRadar Tom's Guide",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "us",
+        "language": "en",
+        "country": "US",
+        "serpLocale": "gl=us hl=en",
+        "device": "desktop",
+        "observedResultPosition": 4,
+        "resultType": "buying_guide",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 14,
+      "queryGroup": "best_oled_tv",
+      "rankApprox": 5,
+      "title": "Best OLED TVs 2026",
+      "url": "https://thetechsearch.com/best-oled-tvs-2026",
+      "publisherType": "buying_guide",
+      "observedFormat": [
+        "ranked list",
+        "top picks",
+        "spec references"
+      ],
+      "adopt": [
+        "scannable pick summaries"
+      ],
+      "avoid": [
+        "unsupported expert claims"
+      ],
+      "serpEvidence": {
+        "searchQuery": "best OLED TV 2026 buying guide review RTINGS TechRadar Tom's Guide",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "us",
+        "language": "en",
+        "country": "US",
+        "serpLocale": "gl=us hl=en",
+        "device": "desktop",
+        "observedResultPosition": 5,
+        "resultType": "buying_guide",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 15,
+      "queryGroup": "best_oled_tv",
+      "rankApprox": 6,
+      "title": "OLED TV Buying Guide 2026",
+      "url": "https://displayreviewz.com/oled-tv-buying-guide/",
+      "publisherType": "buying_guide",
+      "observedFormat": [
+        "long guide",
+        "best list",
+        "criteria explanation"
+      ],
+      "adopt": [
+        "criteria-before-products structure"
+      ],
+      "avoid": [
+        "long intro before answer"
+      ],
+      "serpEvidence": {
+        "searchQuery": "best OLED TV 2026 buying guide review RTINGS TechRadar Tom's Guide",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "us",
+        "language": "en",
+        "country": "US",
+        "serpLocale": "gl=us hl=en",
+        "device": "desktop",
+        "observedResultPosition": 6,
+        "resultType": "buying_guide",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 16,
+      "queryGroup": "iphone_16_br",
+      "rankApprox": 1,
+      "title": "Quanto vale a pena pagar no iPhone 16 em 2026?",
+      "url": "https://canaltech.com.br/smartphone/quanto-vale-a-pena-pagar-no-iphone-16-em-2026/",
+      "publisherType": "tech_explainer",
+      "observedFormat": [
+        "price threshold",
+        "historical low",
+        "updated context",
+        "offer caveats"
+      ],
+      "adopt": [
+        "price-threshold table",
+        "current-price caveat"
+      ],
+      "avoid": [
+        "treating deal headline as durable fact"
+      ],
+      "serpEvidence": {
+        "searchQuery": "iPhone 16 vale a pena comprar em 2026 Brasil guia review preço",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "br",
+        "language": "pt-br",
+        "country": "BR",
+        "serpLocale": "gl=br hl=pt-BR",
+        "device": "desktop",
+        "observedResultPosition": 1,
+        "resultType": "tech_explainer",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 17,
+      "queryGroup": "iphone_16_br",
+      "rankApprox": 2,
+      "title": "iPhone 16 vs iPhone 15: qual vale mais a pena?",
+      "url": "https://www.oficinadanet.com.br/comparativos/66367-iphone-16-vs-iphone-15-qual-vale-a-pena",
+      "publisherType": "comparison_review",
+      "observedFormat": [
+        "index",
+        "design/tela/processador/camera/bateria/preco",
+        "final recommendation"
+      ],
+      "adopt": [
+        "feature-by-feature comparison",
+        "clear final recommendation"
+      ],
+      "avoid": [
+        "comparison without buyer profile"
+      ],
+      "serpEvidence": {
+        "searchQuery": "iPhone 16 vale a pena comprar em 2026 Brasil guia review preço",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "br",
+        "language": "pt-br",
+        "country": "BR",
+        "serpLocale": "gl=br hl=pt-BR",
+        "device": "desktop",
+        "observedResultPosition": 2,
+        "resultType": "comparison_review",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 18,
+      "queryGroup": "iphone_16_br",
+      "rankApprox": 3,
+      "title": "iPhone 16: Vale a Pena Comprar em 2026?",
+      "url": "https://codeiot.com.br/iphone-16-review-vale-a-pena/",
+      "publisherType": "blog_review",
+      "observedFormat": [
+        "score card",
+        "updated date",
+        "pros/cons",
+        "price section"
+      ],
+      "adopt": [
+        "compact score/verdict card",
+        "pros/cons only if useful"
+      ],
+      "avoid": [
+        "over-styled review cards"
+      ],
+      "serpEvidence": {
+        "searchQuery": "iPhone 16 vale a pena comprar em 2026 Brasil guia review preço",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "br",
+        "language": "pt-br",
+        "country": "BR",
+        "serpLocale": "gl=br hl=pt-BR",
+        "device": "desktop",
+        "observedResultPosition": 3,
+        "resultType": "blog_review",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 19,
+      "queryGroup": "iphone_16_br",
+      "rankApprox": 4,
+      "title": "iPhone 16 vale a pena? Precos, perfis e alternativas",
+      "url": "https://digitalcomum.com.br/iphone-16-vale-a-pena-2026/",
+      "publisherType": "buyer_guide",
+      "observedFormat": [
+        "reader profile framing",
+        "price context",
+        "alternatives"
+      ],
+      "adopt": [
+        "who-should-buy profile box",
+        "alternatives section"
+      ],
+      "avoid": [
+        "one-size-fits-all verdict"
+      ],
+      "serpEvidence": {
+        "searchQuery": "iPhone 16 vale a pena comprar em 2026 Brasil guia review preço",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "br",
+        "language": "pt-br",
+        "country": "BR",
+        "serpLocale": "gl=br hl=pt-BR",
+        "device": "desktop",
+        "observedResultPosition": 4,
+        "resultType": "buyer_guide",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 20,
+      "queryGroup": "iphone_16_br",
+      "rankApprox": 5,
+      "title": "Melhor iPhone Para Comprar em 2026",
+      "url": "https://www.inevitavel.com.br/artigo/melhor-iphone-comprar-2026-guia-completo.html",
+      "publisherType": "buying_guide",
+      "observedFormat": [
+        "model comparison",
+        "price range",
+        "profile recommendations"
+      ],
+      "adopt": [
+        "profile-based recommendations"
+      ],
+      "avoid": [
+        "too many model cards before answer"
+      ],
+      "serpEvidence": {
+        "searchQuery": "iPhone 16 vale a pena comprar em 2026 Brasil guia review preço",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "br",
+        "language": "pt-br",
+        "country": "BR",
+        "serpLocale": "gl=br hl=pt-BR",
+        "device": "desktop",
+        "observedResultPosition": 5,
+        "resultType": "buying_guide",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 21,
+      "queryGroup": "iphone_16_br",
+      "rankApprox": 6,
+      "title": "iPhone 16 ainda vale a pena em 2026?",
+      "url": "https://reviewdopepe.com/2026/iphone-16-ainda-vale-a-pena-em-2026-review-completo/",
+      "publisherType": "blog_review",
+      "observedFormat": [
+        "direct yes/no",
+        "usage profile",
+        "offer link later"
+      ],
+      "adopt": [
+        "direct yes/no answer"
+      ],
+      "avoid": [
+        "affiliate CTA too early"
+      ],
+      "serpEvidence": {
+        "searchQuery": "iPhone 16 vale a pena comprar em 2026 Brasil guia review preço",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "br",
+        "language": "pt-br",
+        "country": "BR",
+        "serpLocale": "gl=br hl=pt-BR",
+        "device": "desktop",
+        "observedResultPosition": 6,
+        "resultType": "blog_review",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 22,
+      "queryGroup": "iphone_16_br",
+      "rankApprox": 7,
+      "title": "Vale a pena comprar um iPhone 16 em 2026?",
+      "url": "https://www.melhorescartoes.com.br/vale-a-pena-comprar-um-iphone-16.html",
+      "publisherType": "finance_buyer_guide",
+      "observedFormat": [
+        "value framing",
+        "resale angle",
+        "payment context"
+      ],
+      "adopt": [
+        "total-value framing",
+        "resale/payment caveat"
+      ],
+      "avoid": [
+        "financial claim without basis"
+      ],
+      "serpEvidence": {
+        "searchQuery": "iPhone 16 vale a pena comprar em 2026 Brasil guia review preço",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "br",
+        "language": "pt-br",
+        "country": "BR",
+        "serpLocale": "gl=br hl=pt-BR",
+        "device": "desktop",
+        "observedResultPosition": 7,
+        "resultType": "finance_buyer_guide",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 23,
+      "queryGroup": "iphone_16_br",
+      "rankApprox": 8,
+      "title": "iPhone 15 vs iPhone 16",
+      "url": "https://tecnoblog.net/guias/comparativo-apple-iphone-15-vs-iphone-16/",
+      "publisherType": "tech_comparison",
+      "observedFormat": [
+        "comparison guide",
+        "spec categories",
+        "question headings"
+      ],
+      "adopt": [
+        "question headings",
+        "spec comparison"
+      ],
+      "avoid": [
+        "thin category repetition"
+      ],
+      "serpEvidence": {
+        "searchQuery": "iPhone 16 vale a pena comprar em 2026 Brasil guia review preço",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "br",
+        "language": "pt-br",
+        "country": "BR",
+        "serpLocale": "gl=br hl=pt-BR",
+        "device": "desktop",
+        "observedResultPosition": 8,
+        "resultType": "tech_comparison",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 24,
+      "queryGroup": "iphone_16_br",
+      "rankApprox": 9,
+      "title": "Valor iPhone 16: precos atualizados no Brasil em 2026",
+      "url": "https://plusdin.com.br/valor-iphone-16/",
+      "publisherType": "price_guide",
+      "observedFormat": [
+        "price update",
+        "model variants",
+        "Brazil-specific explanation"
+      ],
+      "adopt": [
+        "price freshness note",
+        "local warranty/tax context"
+      ],
+      "avoid": [
+        "prices without checked date"
+      ],
+      "serpEvidence": {
+        "searchQuery": "iPhone 16 vale a pena comprar em 2026 Brasil guia review preço",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "br",
+        "language": "pt-br",
+        "country": "BR",
+        "serpLocale": "gl=br hl=pt-BR",
+        "device": "desktop",
+        "observedResultPosition": 9,
+        "resultType": "price_guide",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 25,
+      "queryGroup": "iphone_16_br",
+      "rankApprox": 10,
+      "title": "Qual iPhone Comprar em 2026?",
+      "url": "https://ideiasportal.com.br/melhor-iphone-para-comprar-2026/",
+      "publisherType": "buying_guide",
+      "observedFormat": [
+        "budget bands",
+        "model recommendations",
+        "simple comparisons"
+      ],
+      "adopt": [
+        "budget-band framing"
+      ],
+      "avoid": [
+        "generic model list without article-specific answer"
+      ],
+      "serpEvidence": {
+        "searchQuery": "iPhone 16 vale a pena comprar em 2026 Brasil guia review preço",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "br",
+        "language": "pt-br",
+        "country": "BR",
+        "serpLocale": "gl=br hl=pt-BR",
+        "device": "desktop",
+        "observedResultPosition": 10,
+        "resultType": "buying_guide",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 26,
+      "queryGroup": "iphone_16_br",
+      "rankApprox": 11,
+      "title": "iPhone 16 e Bom? Vale a Pena Comprar em 2026?",
+      "url": "https://melhorportal.com.br/iphone-16-e-bom-vale-a-pena-comprar/",
+      "publisherType": "buyer_guide",
+      "observedFormat": [
+        "question title",
+        "price analysis",
+        "camera/battery sections"
+      ],
+      "adopt": [
+        "question-led headings"
+      ],
+      "avoid": [
+        "unverified broad claims"
+      ],
+      "serpEvidence": {
+        "searchQuery": "iPhone 16 vale a pena comprar em 2026 Brasil guia review preço",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "br",
+        "language": "pt-br",
+        "country": "BR",
+        "serpLocale": "gl=br hl=pt-BR",
+        "device": "desktop",
+        "observedResultPosition": 11,
+        "resultType": "buyer_guide",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 27,
+      "queryGroup": "iphone_16_br_deal",
+      "rankApprox": 12,
+      "title": "Oferta: iPhone 16 por R$4.348 no Pix",
+      "url": "https://macmagazine.com.br/post/2026/03/03/oferta-iphone-16-128gb-por-r4-348-no-pix/",
+      "publisherType": "deal_blog",
+      "observedFormat": [
+        "price first",
+        "discount math",
+        "deal caveat"
+      ],
+      "adopt": [
+        "deal freshness warning"
+      ],
+      "avoid": [
+        "making old price look current"
+      ],
+      "serpEvidence": {
+        "searchQuery": "iPhone 16 promoção vale a pena Brasil 2026 cupom garantia loja",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "br",
+        "language": "pt-br",
+        "country": "BR",
+        "serpLocale": "gl=br hl=pt-BR",
+        "device": "desktop",
+        "observedResultPosition": 12,
+        "resultType": "deal_blog",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 28,
+      "queryGroup": "iphone_16_br_deal",
+      "rankApprox": 13,
+      "title": "Oferta relampago tem iPhone 16 por quase R$ 4 mil",
+      "url": "https://igmais.ig.com.br/2026-02-23/oferta-relampago-tem-iphone-16-por-quase-r--4-mil--vale-a-pena-.html",
+      "publisherType": "deal_explainer",
+      "observedFormat": [
+        "deal headline",
+        "opportunity warning",
+        "spec recap"
+      ],
+      "adopt": [
+        "short deal context only after verification"
+      ],
+      "avoid": [
+        "urgency language"
+      ],
+      "serpEvidence": {
+        "searchQuery": "iPhone 16 promoção vale a pena Brasil 2026 cupom garantia loja",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "br",
+        "language": "pt-br",
+        "country": "BR",
+        "serpLocale": "gl=br hl=pt-BR",
+        "device": "desktop",
+        "observedResultPosition": 13,
+        "resultType": "deal_explainer",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 29,
+      "queryGroup": "iphone_16_br",
+      "rankApprox": 14,
+      "title": "iPhone 16 Vale a Pena em 2026?",
+      "url": "https://www.promosnap.com.br/vale-a-pena/vale-a-pena-iphone-16",
+      "publisherType": "deal_buyer_guide",
+      "observedFormat": [
+        "yes/no answer",
+        "profile fit",
+        "price caveats"
+      ],
+      "adopt": [
+        "profile fit",
+        "what price makes sense"
+      ],
+      "avoid": [
+        "thin affiliate-style recommendation"
+      ],
+      "serpEvidence": {
+        "searchQuery": "iPhone 16 vale a pena comprar em 2026 Brasil guia review preço",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "br",
+        "language": "pt-br",
+        "country": "BR",
+        "serpLocale": "gl=br hl=pt-BR",
+        "device": "desktop",
+        "observedResultPosition": 14,
+        "resultType": "deal_buyer_guide",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 30,
+      "queryGroup": "iphone_buying_guide",
+      "rankApprox": 15,
+      "title": "Que iPhone Comprar em 2026?",
+      "url": "https://ioutlet.pt/que-iphone-comprar-modelos-recomendados-2/",
+      "publisherType": "retailer_guide",
+      "observedFormat": [
+        "direct answer",
+        "use-case mapping",
+        "condition/battery caveat"
+      ],
+      "adopt": [
+        "condition and battery caveats"
+      ],
+      "avoid": [
+        "retailer bias in neutral editorial"
+      ],
+      "serpEvidence": {
+        "searchQuery": "melhor iPhone para comprar em 2026 Brasil guia",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "br",
+        "language": "pt-br",
+        "country": "BR",
+        "serpLocale": "gl=br hl=pt-BR",
+        "device": "desktop",
+        "observedResultPosition": 15,
+        "resultType": "retailer_guide",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 31,
+      "queryGroup": "renta_2025",
+      "rankApprox": 1,
+      "title": "Avisos de Hacienda antes de multarte en la Renta 2025",
+      "url": "https://www.xataka.com/basics/avisos-hacienda-antes-multarte-renta-2025-estos-que-recibes-hay-errores-tu-declaracion-2026/amp",
+      "publisherType": "practical_explainer",
+      "observedFormat": [
+        "direct explanation",
+        "dated guide",
+        "types of notices",
+        "plain-language risk"
+      ],
+      "adopt": [
+        "plain-language official-process explanation"
+      ],
+      "avoid": [
+        "legal certainty beyond source"
+      ],
+      "serpEvidence": {
+        "searchQuery": "Renta 2025 Hacienda avisos antes de multarte guía Xataka OCU 2026",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "es",
+        "language": "es",
+        "country": "ES",
+        "serpLocale": "gl=es hl=es",
+        "device": "desktop",
+        "observedResultPosition": 1,
+        "resultType": "practical_explainer",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 32,
+      "queryGroup": "renta_2025",
+      "rankApprox": 2,
+      "title": "Guia de Renta 2025: calendario, pasos previos",
+      "url": "https://www.xataka.com/basics/guia-renta-2025-calendario-pasos-previos-como-prepararte-para-declaracion-2026",
+      "publisherType": "practical_guide",
+      "observedFormat": [
+        "calendar",
+        "preparation steps",
+        "who is affected"
+      ],
+      "adopt": [
+        "date table",
+        "preparation checklist"
+      ],
+      "avoid": [
+        "dates without checked source"
+      ],
+      "serpEvidence": {
+        "searchQuery": "Renta 2025 Hacienda avisos antes de multarte guía Xataka OCU 2026",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "es",
+        "language": "es",
+        "country": "ES",
+        "serpLocale": "gl=es hl=es",
+        "device": "desktop",
+        "observedResultPosition": 2,
+        "resultType": "practical_guide",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 33,
+      "queryGroup": "renta_2025",
+      "rankApprox": 3,
+      "title": "Borrador Renta 2025",
+      "url": "https://www.xataka.com/basics/borrador-renta-2025-como-entrar-presentar-online-tu-declaracion-2026-web-agencia-tributaria",
+      "publisherType": "how_to_guide",
+      "observedFormat": [
+        "step-by-step",
+        "official website path",
+        "error warning"
+      ],
+      "adopt": [
+        "step list",
+        "official path note"
+      ],
+      "avoid": [
+        "interface instructions that may change without date"
+      ],
+      "serpEvidence": {
+        "searchQuery": "Renta 2025 Hacienda avisos antes de multarte guía Xataka OCU 2026",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "es",
+        "language": "es",
+        "country": "ES",
+        "serpLocale": "gl=es hl=es",
+        "device": "desktop",
+        "observedResultPosition": 3,
+        "resultType": "how_to_guide",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 34,
+      "queryGroup": "renta_2025",
+      "rankApprox": 4,
+      "title": "Guia de la declaracion de la renta 2025-2026",
+      "url": "https://www.helpmycash.com/guias/203/guia-de-la-declaracion-de-la-renta/",
+      "publisherType": "finance_guide",
+      "observedFormat": [
+        "guide hub",
+        "deadline summary",
+        "action checklist"
+      ],
+      "adopt": [
+        "deadline/action summary"
+      ],
+      "avoid": [
+        "lead capture before answer"
+      ],
+      "serpEvidence": {
+        "searchQuery": "Renta 2025 Hacienda avisos antes de multarte guía Xataka OCU 2026",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "es",
+        "language": "es",
+        "country": "ES",
+        "serpLocale": "gl=es hl=es",
+        "device": "desktop",
+        "observedResultPosition": 4,
+        "resultType": "finance_guide",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 35,
+      "queryGroup": "renta_2025",
+      "rankApprox": 5,
+      "title": "Estas Obligado a Declarar la Renta 2025/2026?",
+      "url": "https://taxdown.es/como-hacer-declaracion-renta/como-saber-obligado-hacer-declarar-renta",
+      "publisherType": "tax_service_guide",
+      "observedFormat": [
+        "eligibility question",
+        "calculator CTA",
+        "threshold explanation"
+      ],
+      "adopt": [
+        "eligibility decision tree style"
+      ],
+      "avoid": [
+        "service CTA before neutral answer"
+      ],
+      "serpEvidence": {
+        "searchQuery": "Renta 2025 Hacienda avisos antes de multarte guía Xataka OCU 2026",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "es",
+        "language": "es",
+        "country": "ES",
+        "serpLocale": "gl=es hl=es",
+        "device": "desktop",
+        "observedResultPosition": 5,
+        "resultType": "tax_service_guide",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 36,
+      "queryGroup": "renta_2025",
+      "rankApprox": 6,
+      "title": "Declaracion de la Renta 2025/2026: Como presentarla sin errores",
+      "url": "https://www.rankia.com/blog/irpf-declaracion-renta/6726868-como-hacer-declaracion-renta",
+      "publisherType": "finance_blog",
+      "observedFormat": [
+        "long guide",
+        "common errors",
+        "obligation rules"
+      ],
+      "adopt": [
+        "common-mistake section"
+      ],
+      "avoid": [
+        "overly broad tax advice"
+      ],
+      "serpEvidence": {
+        "searchQuery": "Renta 2025 Hacienda avisos antes de multarte guía Xataka OCU 2026",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "es",
+        "language": "es",
+        "country": "ES",
+        "serpLocale": "gl=es hl=es",
+        "device": "desktop",
+        "observedResultPosition": 6,
+        "resultType": "finance_blog",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 37,
+      "queryGroup": "renta_2025",
+      "rankApprox": 7,
+      "title": "Declaracion de la Renta 2025-2026: Guia paso a paso",
+      "url": "https://calculafinanzas.es/guias/declaracion-renta-2025-2026",
+      "publisherType": "calculator_guide",
+      "observedFormat": [
+        "step guide",
+        "calculator support",
+        "deadlines"
+      ],
+      "adopt": [
+        "step-by-step sequence"
+      ],
+      "avoid": [
+        "calculator claims without explanation"
+      ],
+      "serpEvidence": {
+        "searchQuery": "Renta 2025 Hacienda avisos antes de multarte guía Xataka OCU 2026",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "es",
+        "language": "es",
+        "country": "ES",
+        "serpLocale": "gl=es hl=es",
+        "device": "desktop",
+        "observedResultPosition": 7,
+        "resultType": "calculator_guide",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 38,
+      "queryGroup": "renta_2025",
+      "rankApprox": 8,
+      "title": "Agencia Tributaria - Renta 2025",
+      "url": "https://www3.agenciatributaria.gob.es/Sede/Renta.html",
+      "publisherType": "official_source",
+      "observedFormat": [
+        "official hub",
+        "forms/services",
+        "navigation to action"
+      ],
+      "adopt": [
+        "official source first",
+        "action route clarity"
+      ],
+      "avoid": [
+        "summarizing official rules without source date"
+      ],
+      "serpEvidence": {
+        "searchQuery": "Renta 2025 Hacienda avisos antes de multarte guía Xataka OCU 2026",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "es",
+        "language": "es",
+        "country": "ES",
+        "serpLocale": "gl=es hl=es",
+        "device": "desktop",
+        "observedResultPosition": 8,
+        "resultType": "official_source",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 39,
+      "queryGroup": "renta_2025",
+      "rankApprox": 9,
+      "title": "Ministerio de Hacienda campaign note",
+      "url": "https://www.hacienda.gob.es/es-ES/Prensa/Noticias/paginas/2026/20260408-np-aeat-campana-renta-2025.aspx",
+      "publisherType": "official_source",
+      "observedFormat": [
+        "campaign dates",
+        "official notice",
+        "preventive warning explanation"
+      ],
+      "adopt": [
+        "official-first source ordering"
+      ],
+      "avoid": [
+        "calling official alerts penalties"
+      ],
+      "serpEvidence": {
+        "searchQuery": "Renta 2025 Hacienda avisos antes de multarte guía Xataka OCU 2026",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "es",
+        "language": "es",
+        "country": "ES",
+        "serpLocale": "gl=es hl=es",
+        "device": "desktop",
+        "observedResultPosition": 9,
+        "resultType": "official_source",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 40,
+      "queryGroup": "renta_2025",
+      "rankApprox": 10,
+      "title": "Guia rapida: quien esta obligado a presentar la declaracion",
+      "url": "https://elpais.com/economia/2026-03-20/guia-rapida-quien-esta-obligado-a-presentar-la-declaracion-de-la-renta-en-2026-y-quien-no.html",
+      "publisherType": "publisher_guide",
+      "observedFormat": [
+        "quick guide",
+        "threshold bullets",
+        "plain language"
+      ],
+      "adopt": [
+        "quick eligibility answer"
+      ],
+      "avoid": [
+        "paywall-dependent evidence"
+      ],
+      "serpEvidence": {
+        "searchQuery": "Renta 2025 Hacienda avisos antes de multarte guía Xataka OCU 2026",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "es",
+        "language": "es",
+        "country": "ES",
+        "serpLocale": "gl=es hl=es",
+        "device": "desktop",
+        "observedResultPosition": 10,
+        "resultType": "publisher_guide",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 41,
+      "queryGroup": "iphone_18",
+      "rankApprox": 1,
+      "title": "iPhone 18 release date expectations, price estimates, and upgrades",
+      "url": "https://www.phonearena.com/iphone-18-release-date-price-features-news",
+      "publisherType": "rumor_guide",
+      "observedFormat": [
+        "updated date",
+        "expected release/price/features",
+        "rumor labels"
+      ],
+      "adopt": [
+        "confidence labels",
+        "release/price table"
+      ],
+      "avoid": [
+        "rumor presented as fact"
+      ],
+      "serpEvidence": {
+        "searchQuery": "iPhone 18 rumors guide everything we know 2026",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "us",
+        "language": "en",
+        "country": "US",
+        "serpLocale": "gl=us hl=en",
+        "device": "desktop",
+        "observedResultPosition": 1,
+        "resultType": "rumor_guide",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 42,
+      "queryGroup": "iphone_18_jp",
+      "rankApprox": 2,
+      "title": "iPhone18の発売日はいつ？",
+      "url": "https://apple-gadget.jp/iphone18/",
+      "publisherType": "japanese_blog_guide",
+      "observedFormat": [
+        "question intro",
+        "date/price table",
+        "model split",
+        "affiliate products"
+      ],
+      "adopt": [
+        "model/date/price table",
+        "question-first intro"
+      ],
+      "avoid": [
+        "product promotion before caveat"
+      ],
+      "serpEvidence": {
+        "searchQuery": "iPhone 18 rumors Japan guide 発売日 価格 2026",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "jp",
+        "language": "ja",
+        "country": "JP",
+        "serpLocale": "gl=jp hl=ja",
+        "device": "desktop",
+        "observedResultPosition": 2,
+        "resultType": "japanese_blog_guide",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 43,
+      "queryGroup": "iphone_18_jp",
+      "rankApprox": 3,
+      "title": "iPhone18はいつ発売？噂・リーク情報を論点別に整理",
+      "url": "https://all-connect.co.jp/magazine/iphone_18/",
+      "publisherType": "japanese_guide",
+      "observedFormat": [
+        "not-announced caveat",
+        "topic-by-topic rumor",
+        "safety wording"
+      ],
+      "adopt": [
+        "not-confirmed warning",
+        "topic grouping"
+      ],
+      "avoid": [
+        "strong claims about leaks"
+      ],
+      "serpEvidence": {
+        "searchQuery": "iPhone 18 rumors Japan guide 発売日 価格 2026",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "jp",
+        "language": "ja",
+        "country": "JP",
+        "serpLocale": "gl=jp hl=ja",
+        "device": "desktop",
+        "observedResultPosition": 3,
+        "resultType": "japanese_guide",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 44,
+      "queryGroup": "iphone_18_jp",
+      "rankApprox": 4,
+      "title": "iPhone18の発売日、スペック、価格、予約方法",
+      "url": "https://www.goodsense.co.jp/iphone/iphone18-matome/",
+      "publisherType": "japanese_buying_guide",
+      "observedFormat": [
+        "release date",
+        "reservation method",
+        "carrier context",
+        "spec list"
+      ],
+      "adopt": [
+        "Japan carrier context"
+      ],
+      "avoid": [
+        "reservation advice before official confirmation"
+      ],
+      "serpEvidence": {
+        "searchQuery": "iPhone 18 rumors Japan guide 発売日 価格 2026",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "jp",
+        "language": "ja",
+        "country": "JP",
+        "serpLocale": "gl=jp hl=ja",
+        "device": "desktop",
+        "observedResultPosition": 4,
+        "resultType": "japanese_buying_guide",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 45,
+      "queryGroup": "iphone_18_jp",
+      "rankApprox": 5,
+      "title": "iPhone18の発売日はいつ？待つべき？",
+      "url": "https://news.mynavi.jp/sim-mobile/iphone18-release/",
+      "publisherType": "mobile_guide",
+      "observedFormat": [
+        "release prediction",
+        "price/spec summary",
+        "wait-or-buy framing"
+      ],
+      "adopt": [
+        "wait-or-buy framing"
+      ],
+      "avoid": [
+        "single predicted date as certainty"
+      ],
+      "serpEvidence": {
+        "searchQuery": "iPhone 18 rumors Japan guide 発売日 価格 2026",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "jp",
+        "language": "ja",
+        "country": "JP",
+        "serpLocale": "gl=jp hl=ja",
+        "device": "desktop",
+        "observedResultPosition": 5,
+        "resultType": "mobile_guide",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 46,
+      "queryGroup": "iphone_18",
+      "rankApprox": 6,
+      "title": "iPhone 18 rumors - everything we know so far",
+      "url": "https://www.tomsguide.com/phones/iphones/iphone-18-rumors-everything-we-know-so-far",
+      "publisherType": "rumor_roundup",
+      "observedFormat": [
+        "work-in-progress caveat",
+        "expected date/price",
+        "rumor sections"
+      ],
+      "adopt": [
+        "work-in-progress caveat",
+        "updated rumor grouping"
+      ],
+      "avoid": [
+        "rumor density without buyer answer"
+      ],
+      "serpEvidence": {
+        "searchQuery": "iPhone 18 rumors guide everything we know 2026",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "us",
+        "language": "en",
+        "country": "US",
+        "serpLocale": "gl=us hl=en",
+        "device": "desktop",
+        "observedResultPosition": 6,
+        "resultType": "rumor_roundup",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 47,
+      "queryGroup": "iphone_18",
+      "rankApprox": 7,
+      "title": "iPhone 18 rumored release schedule explained",
+      "url": "https://www.techradar.com/phones/iphone/iphone-18-rumored-release-schedule-explained-why-there-probably-wont-be-an-iphone-18-this-year-and-when-to-expect-the-iphone-18-pro-iphone-air-2-and-more",
+      "publisherType": "rumor_explainer",
+      "observedFormat": [
+        "schedule explanation",
+        "what to expect",
+        "plain caveat"
+      ],
+      "adopt": [
+        "explain schedule confusion plainly"
+      ],
+      "avoid": [
+        "long news lead before practical answer"
+      ],
+      "serpEvidence": {
+        "searchQuery": "iPhone 18 rumors guide everything we know 2026",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "us",
+        "language": "en",
+        "country": "US",
+        "serpLocale": "gl=us hl=en",
+        "device": "desktop",
+        "observedResultPosition": 7,
+        "resultType": "rumor_explainer",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 48,
+      "queryGroup": "iphone_18",
+      "rankApprox": 8,
+      "title": "iPhone 18 Rumors: All Leaks Revealed",
+      "url": "https://www.appleheadlines.com/iphone-18-rumors/",
+      "publisherType": "rumor_blog",
+      "observedFormat": [
+        "leak list",
+        "feature buckets",
+        "expected timeline"
+      ],
+      "adopt": [
+        "feature bucket table"
+      ],
+      "avoid": [
+        "leak aggregation without confidence levels"
+      ],
+      "serpEvidence": {
+        "searchQuery": "iPhone 18 rumors guide everything we know 2026",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "us",
+        "language": "en",
+        "country": "US",
+        "serpLocale": "gl=us hl=en",
+        "device": "desktop",
+        "observedResultPosition": 8,
+        "resultType": "rumor_blog",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 49,
+      "queryGroup": "iphone_18",
+      "rankApprox": 9,
+      "title": "iPhone 18: All the rumors at a glance",
+      "url": "https://www.apfelpatient.de/en/generally/iphone-18-all-rumors-at-a-glance",
+      "publisherType": "rumor_guide",
+      "observedFormat": [
+        "at-a-glance summary",
+        "release schedule",
+        "feature list"
+      ],
+      "adopt": [
+        "at-a-glance rumor table"
+      ],
+      "avoid": [
+        "global-only context for Japan page"
+      ],
+      "serpEvidence": {
+        "searchQuery": "iPhone 18 rumors guide everything we know 2026",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "us",
+        "language": "en",
+        "country": "US",
+        "serpLocale": "gl=us hl=en",
+        "device": "desktop",
+        "observedResultPosition": 9,
+        "resultType": "rumor_guide",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 50,
+      "queryGroup": "iphone_18",
+      "rankApprox": 10,
+      "title": "iPhone 18: price and release date predictions",
+      "url": "https://www.whathifi.com/smartphones-tablets/smartphones/iphone-18-price-and-release-date-predictions-spec-rumours-and-everything-we-know-so-far",
+      "publisherType": "consumer_tech_guide",
+      "observedFormat": [
+        "prediction framing",
+        "release/price/spec",
+        "expert tone"
+      ],
+      "adopt": [
+        "prediction labels",
+        "clear source status"
+      ],
+      "avoid": [
+        "price prediction without local-currency caveat"
+      ],
+      "serpEvidence": {
+        "searchQuery": "iPhone 18 rumors guide everything we know 2026",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "us",
+        "language": "en",
+        "country": "US",
+        "serpLocale": "gl=us hl=en",
+        "device": "desktop",
+        "observedResultPosition": 10,
+        "resultType": "consumer_tech_guide",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 51,
+      "queryGroup": "kr_admission_bullying",
+      "rankApprox": 1,
+      "title": "2026학년도 학폭 대입 반영 총정리",
+      "url": "https://ystudy200708.tistory.com/33",
+      "publisherType": "korean_blog_guide",
+      "observedFormat": [
+        "총정리 title",
+        "대학별 비교",
+        "표 중심",
+        "파일/근거 첨부"
+      ],
+      "adopt": [
+        "대학별 차이를 표로 보여주기",
+        "공식 파일 링크"
+      ],
+      "avoid": [
+        "대학별 결과 단정"
+      ],
+      "serpEvidence": {
+        "searchQuery": "2026 대입 학폭 반영 총정리 대학별 모집요강",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "kr",
+        "language": "ko",
+        "country": "KR",
+        "serpLocale": "gl=kr hl=ko",
+        "device": "desktop",
+        "observedResultPosition": 1,
+        "resultType": "korean_blog_guide",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 52,
+      "queryGroup": "kr_admission_bullying",
+      "rankApprox": 2,
+      "title": "2026 대입, 학교폭력 기록이 당락을 결정한다?",
+      "url": "https://study-duck.tistory.com/entry/2026-%EB%8C%80%EC%9E%85-%ED%95%99%EA%B5%90%ED%8F%AD%EB%A0%A5-%EA%B8%B0%EB%A1%9D%EC%9D%B4-%EB%8B%B9%EB%9D%BD%EC%9D%84-%EA%B2%B0%EC%A0%95%ED%95%9C%EB%8B%A4-%EB%B0%98%EC%98%81-%EB%B0%A9%EC%8B%9D%EA%B3%BC-%EC%A3%BC%EC%9D%98%EC%A0%90-%EC%B4%9D%EC%A0%95%EB%A6%AC",
+      "publisherType": "korean_blog_guide",
+      "observedFormat": [
+        "question headline",
+        "what changes",
+        "주의점",
+        "대학별 기준 확인"
+      ],
+      "adopt": [
+        "question headline answer",
+        "supporting checklist"
+      ],
+      "avoid": [
+        "fear-based framing"
+      ],
+      "serpEvidence": {
+        "searchQuery": "2026 대입 학폭 반영 총정리 대학별 모집요강",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "kr",
+        "language": "ko",
+        "country": "KR",
+        "serpLocale": "gl=kr hl=ko",
+        "device": "desktop",
+        "observedResultPosition": 2,
+        "resultType": "korean_blog_guide",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 53,
+      "queryGroup": "kr_admission_bullying",
+      "rankApprox": 3,
+      "title": "학교폭력 생기부 기록, 2027 대입에서 어디까지 불리할까?",
+      "url": "https://blog.sugar.legal/%ED%95%99%EA%B5%90%ED%8F%AD%EB%A0%A5-%EC%83%9D%EA%B8%B0%EB%B6%80-%EA%B8%B0%EB%A1%9D-2027-%EB%8C%80%EC%9E%85%EC%97%90%EC%84%9C-%EC%96%B4%EB%94%94%EA%B9%8C%EC%A7%80-%EB%B6%88%EB%A6%AC%ED%95%A0%EA%B9%8C-%EC%8B%A4%EC%A0%9C-%ED%83%88%EB%9D%BD-%EA%B8%B0%EC%A4%80-%EC%A0%95%EB%A6%AC-88964",
+      "publisherType": "legal_blog_guide",
+      "observedFormat": [
+        "legal risk angle",
+        "actual criteria",
+        "case/context",
+        "consult-before-action"
+      ],
+      "adopt": [
+        "risk caveats",
+        "when to ask expert"
+      ],
+      "avoid": [
+        "legal advice beyond source"
+      ],
+      "serpEvidence": {
+        "searchQuery": "2026 대입 학폭 반영 총정리 대학별 모집요강",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "kr",
+        "language": "ko",
+        "country": "KR",
+        "serpLocale": "gl=kr hl=ko",
+        "device": "desktop",
+        "observedResultPosition": 3,
+        "resultType": "legal_blog_guide",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 54,
+      "queryGroup": "kr_admission_bullying",
+      "rankApprox": 4,
+      "title": "2026 대입 전 전형에 학폭 기록 반영",
+      "url": "https://edu.donga.com/news/articleView.html?idxno=84852",
+      "publisherType": "education_publisher_guide",
+      "observedFormat": [
+        "policy summary",
+        "조치사항 기준",
+        "전문가 quote",
+        "대학 examples"
+      ],
+      "adopt": [
+        "전형별/조치별 차이를 분리"
+      ],
+      "avoid": [
+        "news-style lead replacing practical checklist"
+      ],
+      "serpEvidence": {
+        "searchQuery": "2026 대입 학폭 반영 총정리 대학별 모집요강",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "kr",
+        "language": "ko",
+        "country": "KR",
+        "serpLocale": "gl=kr hl=ko",
+        "device": "desktop",
+        "observedResultPosition": 4,
+        "resultType": "education_publisher_guide",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    },
+    {
+      "id": 55,
+      "queryGroup": "kr_admission_bullying",
+      "rankApprox": 5,
+      "title": "현 고1 치르는 2026대입부터 모든 전형 학폭 반영",
+      "url": "https://www.veritas-a.com/news/articleView.html?idxno=470532",
+      "publisherType": "education_publisher_guide",
+      "observedFormat": [
+        "policy background",
+        "전형계획 항목",
+        "admission-system detail"
+      ],
+      "adopt": [
+        "모집요강에서 볼 항목을 구체화"
+      ],
+      "avoid": [
+        "제도 설명만 있고 행동 목록 없는 구조"
+      ],
+      "serpEvidence": {
+        "searchQuery": "2026 대입 학폭 반영 총정리 대학별 모집요강",
+        "searchEngine": "web.search_query",
+        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "market": "kr",
+        "language": "ko",
+        "country": "KR",
+        "serpLocale": "gl=kr hl=ko",
+        "device": "desktop",
+        "observedResultPosition": 5,
+        "resultType": "education_publisher_guide",
+        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+      }
+    }
+  ]
+}
