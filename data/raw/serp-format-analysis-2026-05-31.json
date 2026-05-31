@@ -1,0 +1,116 @@
+{
+  "capturedAt": "2026-05-31",
+  "method": "Search top-result pages were reviewed for layout and information architecture only. Raw Google HTML scraping was not used. Article wording is original and does not copy competitor text.",
+  "formatPrinciplesApplied": [
+    "Add updated date, reading time, and verification basis directly under the lead.",
+    "Add an at-a-glance block before the long article body.",
+    "Add a verdict or practical-decision box above the checklist.",
+    "Add good-sign/watch-out blocks, similar to review pros/cons patterns.",
+    "Keep a jump-link table of contents.",
+    "Show top pages checked separately from official/source links.",
+    "Use comparison tables for decision support.",
+    "Keep monetized links absent until human approval."
+  ],
+  "markets": [
+    {
+      "market": "us",
+      "language": "en",
+      "keyword": "samsung s90f oled deal",
+      "observedTopPagePatterns": [
+        {
+          "url": "https://www.tomsguide.com/tvs/oled-tvs/samsung-s90f-oled-tv-review",
+          "pattern": "Hero image, verdict box, pros/cons, jump links, specs, test results."
+        },
+        {
+          "url": "https://www.techradar.com/televisions/samsung-s90f-review",
+          "pattern": "Review subtitle, author/date, verdict, price context, pros/cons, jump-to navigation, should-you-buy section."
+        },
+        {
+          "url": "https://www.rtings.com/tv/reviews/samsung/s90f-oled",
+          "pattern": "Measurement-led review, specs, use-case scores, comparison structure."
+        }
+      ],
+      "ourFormatResponse": "Added verdict, pros/cons-style decision signals, top pages checked, comparison table, and source verification."
+    },
+    {
+      "market": "es",
+      "language": "es",
+      "keyword": "renta 2025 avisos aeat",
+      "observedTopPagePatterns": [
+        {
+          "url": "https://www.xataka.com/basics/avisos-hacienda-antes-multarte-renta-2025-estos-que-recibes-hay-errores-tu-declaracion-2026/amp",
+          "pattern": "H1, subtitle, image, date, author, direct explainer intro, list of notice types."
+        },
+        {
+          "url": "https://www3.agenciatributaria.gob.es/Sede/Renta.html",
+          "pattern": "Official campaign hub and service entry points."
+        },
+        {
+          "url": "https://www.hacienda.gob.es/es-ES/Prensa/Noticias/paginas/2026/20260408-np-aeat-campana-renta-2025.aspx",
+          "pattern": "Official campaign timing and assistance details."
+        }
+      ],
+      "ourFormatResponse": "Added updated date, practical criterion box, notice-check checklist, date/action table, and official source grouping."
+    },
+    {
+      "market": "br",
+      "language": "pt-br",
+      "keyword": "iphone 16 promocao brasil",
+      "observedTopPagePatterns": [
+        {
+          "url": "https://www.mobilebit.com.br/produtos/2026/01/31/iphone-16-256-gb-sai-por-r-5-299-no-app-com-cupom-aplicado/",
+          "pattern": "Deal headline, discount subtitle, last updated timestamp, author, reading time, hero image, price/coupon context."
+        },
+        {
+          "url": "https://tecnoblog.net/achados/iphone-16-atinge-menor-preco-desde-marco-com-44-off-em-promocao/",
+          "pattern": "Deal hook, price framing, coupon/store context."
+        },
+        {
+          "url": "https://canaltech.com.br/smartphone/quanto-vale-a-pena-pagar-no-iphone-16-em-2026/",
+          "pattern": "Buying-guide threshold and alternative comparison."
+        }
+      ],
+      "ourFormatResponse": "Added quick deal verdict, price/seller watch-outs, purchase checklist, and comparison table without affiliate links."
+    },
+    {
+      "market": "jp",
+      "language": "ja",
+      "keyword": "iphone 18 rumors japan",
+      "observedTopPagePatterns": [
+        {
+          "url": "https://www.macrumors.com/roundup/iphone-18/",
+          "pattern": "At-a-glance bullets, rumored features, timeline, last-updated note, sectioned roundup."
+        },
+        {
+          "url": "https://www.macrumors.com/2026/05/09/iphone-18-pro-10-new-features/",
+          "pattern": "Feature list and model-specific rumor framing."
+        },
+        {
+          "url": "https://9to5mac.com/2026/01/30/iphone-18-isnt-launching-until-next-year-new-report-reaffirms/",
+          "pattern": "Launch timing hook and concise report analysis."
+        }
+      ],
+      "ourFormatResponse": "Added at-a-glance, rumor verdict, wait/not-wait signals, Japan-specific checks, and top-rumor reference list."
+    },
+    {
+      "market": "kr",
+      "language": "ko",
+      "keyword": "2026 대입 학폭 반영",
+      "observedTopPagePatterns": [
+        {
+          "url": "https://www.edudaegu.co.kr/news/articleView.html?idxno=6130",
+          "pattern": "Policy announcement framing and all-track reflection summary."
+        },
+        {
+          "url": "https://edu.donga.com/news/articleView.html?idxno=84852",
+          "pattern": "Student-facing explanation of measure-level disadvantages and university differences."
+        },
+        {
+          "url": "https://www.veritas-a.com/news/articleView.html?idxno=470532",
+          "pattern": "Admissions-track scope, university autonomy, timing context."
+        }
+      ],
+      "ourFormatResponse": "Added core-decision box, university-specific watch-outs, applicant checklist, track comparison table, and top-page reference block."
+    }
+  ]
+}

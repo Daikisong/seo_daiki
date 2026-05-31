@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { CheckCircle2, ExternalLink } from "lucide-react";
+import { CheckCircle2, Clock3, ExternalLink } from "lucide-react";
 import {
   buildExistingMarketContentHreflangMap,
   canonicalForMarketPath,
@@ -97,6 +97,16 @@ export default async function MarketPostPage({ params }: PageProps) {
               <p className="text-sm font-semibold uppercase text-teal-700">{marketGuideLabel(market.language)}</p>
               <h1 className="mt-3 text-balance text-4xl font-semibold leading-tight text-neutral-950 md:text-5xl">{post.title}</h1>
               <p className="mt-5 max-w-3xl text-lg leading-8 text-neutral-700">{post.summary}</p>
+              {post.articleMeta.checkedAt ? (
+                <div className="mt-5 flex flex-wrap gap-3 text-sm text-neutral-600">
+                  <span className="inline-flex items-center gap-2 rounded-sm border border-neutral-200 bg-white px-3 py-2">
+                    <Clock3 className="h-4 w-4 text-teal-700" aria-hidden />
+                    {updatedLabel(market.language)} <time dateTime={post.articleMeta.checkedAt}>{post.articleMeta.checkedAt}</time>
+                  </span>
+                  <span className="rounded-sm border border-neutral-200 bg-white px-3 py-2">{post.articleMeta.readingTime}</span>
+                  <span className="rounded-sm border border-neutral-200 bg-white px-3 py-2">{post.articleMeta.basis}</span>
+                </div>
+              ) : null}
               {post.quickFacts.length > 0 ? (
                 <dl className="mt-6 grid gap-3 sm:grid-cols-2">
                   {post.quickFacts.map((fact) => (
@@ -145,11 +155,78 @@ export default async function MarketPostPage({ params }: PageProps) {
                   </div>
                 </div>
               ) : null}
+              {post.serpReferences.length > 0 ? (
+                <div className="rounded-md border border-neutral-200 bg-white p-4">
+                  <h2 className="text-sm font-semibold uppercase text-neutral-500">{topPagesLabel(market.language)}</h2>
+                  <div className="mt-3 grid gap-3 text-sm">
+                    {post.serpReferences.slice(0, 4).map((reference) => (
+                      <a className="group block" href={reference.url} key={`${reference.rank}-${reference.url}`} rel="noopener noreferrer" target="_blank">
+                        <span className="block font-semibold text-neutral-900 group-hover:text-teal-700">
+                          {reference.rank}. {reference.label}
+                        </span>
+                        <span className="block leading-6 text-neutral-600">{reference.formatPattern}</span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
             </aside>
 
             <div className="min-w-0">
+              <section className="grid gap-5 md:grid-cols-[minmax(0,1.1fr)_minmax(260px,0.9fr)]" aria-labelledby="at-a-glance-heading">
+                <div className="rounded-md border border-neutral-200 bg-white p-5">
+                  <h2 id="at-a-glance-heading" className="text-xl font-semibold text-neutral-950">
+                    {atAGlanceLabel(market.language)}
+                  </h2>
+                  <ul className="mt-4 grid gap-3 text-sm leading-6 text-neutral-800">
+                    {post.keyTakeaways.map((item) => (
+                      <li className="flex gap-3" key={item}>
+                        <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-teal-700" aria-hidden />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                {post.verdictBox ? (
+                  <div className="rounded-md border border-neutral-900 bg-neutral-950 p-5 text-white">
+                    <p className="text-xs font-semibold uppercase text-teal-200">{post.verdictBox.label}</p>
+                    <p className="mt-3 text-base leading-7 text-neutral-100">{post.verdictBox.body}</p>
+                  </div>
+                ) : null}
+              </section>
+
+              {post.prosCons ? (
+                <section className="mt-6 grid gap-4 md:grid-cols-2" aria-labelledby="pros-cons-heading">
+                  <h2 id="pros-cons-heading" className="sr-only">
+                    {decisionSignalsLabel(market.language)}
+                  </h2>
+                  <div className="rounded-md border border-emerald-200 bg-emerald-50 p-5">
+                    <h3 className="text-lg font-semibold text-neutral-950">{positiveSignalsLabel(market.language)}</h3>
+                    <ul className="mt-3 grid gap-2 text-sm leading-6 text-neutral-800">
+                      {post.prosCons.pros.map((item) => (
+                        <li className="flex gap-3" key={item}>
+                          <span className="font-semibold text-emerald-700">+</span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="rounded-md border border-amber-200 bg-amber-50 p-5">
+                    <h3 className="text-lg font-semibold text-neutral-950">{cautionSignalsLabel(market.language)}</h3>
+                    <ul className="mt-3 grid gap-2 text-sm leading-6 text-neutral-800">
+                      {post.prosCons.cons.map((item) => (
+                        <li className="flex gap-3" key={item}>
+                          <span className="font-semibold text-amber-700">-</span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </section>
+              ) : null}
+
               {post.checklist.length > 0 ? (
-                <section className="rounded-md border border-teal-200 bg-teal-50 p-5" aria-labelledby="checklist-heading">
+                <section className="mt-6 rounded-md border border-teal-200 bg-teal-50 p-5" aria-labelledby="checklist-heading">
                   <h2 id="checklist-heading" className="text-xl font-semibold text-neutral-950">
                     {checklistLabel(market.language)}
                   </h2>
@@ -304,4 +381,52 @@ function checkedAtLabel(language: string): string {
   if (language === "ja") return "確認日:";
   if (language === "ko") return "확인일:";
   return "Checked:";
+}
+
+function updatedLabel(language: string): string {
+  if (language === "es") return "Actualizado:";
+  if (language === "pt-br" || language === "pt") return "Atualizado:";
+  if (language === "ja") return "更新:";
+  if (language === "ko") return "업데이트:";
+  return "Updated:";
+}
+
+function atAGlanceLabel(language: string): string {
+  if (language === "es") return "En resumen";
+  if (language === "pt-br" || language === "pt") return "Resumo rápido";
+  if (language === "ja") return "要点";
+  if (language === "ko") return "핵심 요약";
+  return "At a glance";
+}
+
+function decisionSignalsLabel(language: string): string {
+  if (language === "es") return "Señales de decisión";
+  if (language === "pt-br" || language === "pt") return "Sinais de decisão";
+  if (language === "ja") return "判断材料";
+  if (language === "ko") return "판단 기준";
+  return "Decision signals";
+}
+
+function positiveSignalsLabel(language: string): string {
+  if (language === "es") return "Buenas señales";
+  if (language === "pt-br" || language === "pt") return "Bons sinais";
+  if (language === "ja") return "良いサイン";
+  if (language === "ko") return "좋은 신호";
+  return "Good signs";
+}
+
+function cautionSignalsLabel(language: string): string {
+  if (language === "es") return "Señales de alerta";
+  if (language === "pt-br" || language === "pt") return "Sinais de alerta";
+  if (language === "ja") return "注意点";
+  if (language === "ko") return "주의 신호";
+  return "Watch-outs";
+}
+
+function topPagesLabel(language: string): string {
+  if (language === "es") return "Páginas revisadas";
+  if (language === "pt-br" || language === "pt") return "Páginas analisadas";
+  if (language === "ja") return "確認した上位ページ";
+  if (language === "ko") return "확인한 상위 페이지";
+  return "Top pages checked";
 }

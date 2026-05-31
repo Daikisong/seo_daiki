@@ -9,62 +9,87 @@
         {
           "name": "hero image with alt and caption",
           "pass": true,
-          "points": 12
-        },
-        {
-          "name": "summary is reader-facing",
-          "pass": true,
           "points": 8
         },
         {
-          "name": "at least six body sections",
-          "pass": true,
-          "points": 8
-        },
-        {
-          "name": "substantial body length",
-          "pass": true,
-          "points": 10
-        },
-        {
-          "name": "quick facts",
-          "pass": true,
-          "points": 8
-        },
-        {
-          "name": "checklist UI data",
-          "pass": true,
-          "points": 10
-        },
-        {
-          "name": "comparison table",
-          "pass": true,
-          "points": 10
-        },
-        {
-          "name": "source links with checked date",
-          "pass": true,
-          "points": 12
-        },
-        {
-          "name": "internal links",
+          "name": "article metadata",
           "pass": true,
           "points": 6
         },
         {
+          "name": "summary is reader-facing",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "at least six body sections",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "substantial body length",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "top-page format evidence",
+          "pass": true,
+          "points": 10
+        },
+        {
+          "name": "key takeaways",
+          "pass": true,
+          "points": 7
+        },
+        {
+          "name": "verdict box",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "pros and cons",
+          "pass": true,
+          "points": 7
+        },
+        {
+          "name": "quick facts",
+          "pass": true,
+          "points": 5
+        },
+        {
+          "name": "checklist UI data",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "comparison table",
+          "pass": true,
+          "points": 7
+        },
+        {
+          "name": "source links with checked date",
+          "pass": true,
+          "points": 7
+        },
+        {
+          "name": "internal links",
+          "pass": true,
+          "points": 4
+        },
+        {
           "name": "no visible internal workflow phrasing",
           "pass": true,
-          "points": 8
+          "points": 5
         },
         {
           "name": "safe monetization state",
           "pass": true,
-          "points": 4
+          "points": 2
         },
         {
           "name": "noindex until promotion",
           "pass": true,
-          "points": 4
+          "points": 2
         }
       ]
     },
@@ -75,62 +100,87 @@
         {
           "name": "hero image with alt and caption",
           "pass": true,
-          "points": 12
-        },
-        {
-          "name": "summary is reader-facing",
-          "pass": true,
           "points": 8
         },
         {
-          "name": "at least six body sections",
-          "pass": true,
-          "points": 8
-        },
-        {
-          "name": "substantial body length",
-          "pass": true,
-          "points": 10
-        },
-        {
-          "name": "quick facts",
-          "pass": true,
-          "points": 8
-        },
-        {
-          "name": "checklist UI data",
-          "pass": true,
-          "points": 10
-        },
-        {
-          "name": "comparison table",
-          "pass": true,
-          "points": 10
-        },
-        {
-          "name": "source links with checked date",
-          "pass": true,
-          "points": 12
-        },
-        {
-          "name": "internal links",
+          "name": "article metadata",
           "pass": true,
           "points": 6
         },
         {
+          "name": "summary is reader-facing",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "at least six body sections",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "substantial body length",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "top-page format evidence",
+          "pass": true,
+          "points": 10
+        },
+        {
+          "name": "key takeaways",
+          "pass": true,
+          "points": 7
+        },
+        {
+          "name": "verdict box",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "pros and cons",
+          "pass": true,
+          "points": 7
+        },
+        {
+          "name": "quick facts",
+          "pass": true,
+          "points": 5
+        },
+        {
+          "name": "checklist UI data",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "comparison table",
+          "pass": true,
+          "points": 7
+        },
+        {
+          "name": "source links with checked date",
+          "pass": true,
+          "points": 7
+        },
+        {
+          "name": "internal links",
+          "pass": true,
+          "points": 4
+        },
+        {
           "name": "no visible internal workflow phrasing",
           "pass": true,
-          "points": 8
+          "points": 5
         },
         {
           "name": "safe monetization state",
           "pass": true,
-          "points": 4
+          "points": 2
         },
         {
           "name": "noindex until promotion",
           "pass": true,
-          "points": 4
+          "points": 2
         }
       ]
     },
@@ -141,62 +191,87 @@
         {
           "name": "hero image with alt and caption",
           "pass": true,
-          "points": 12
-        },
-        {
-          "name": "summary is reader-facing",
-          "pass": true,
           "points": 8
         },
         {
-          "name": "at least six body sections",
-          "pass": true,
-          "points": 8
-        },
-        {
-          "name": "substantial body length",
-          "pass": true,
-          "points": 10
-        },
-        {
-          "name": "quick facts",
-          "pass": true,
-          "points": 8
-        },
-        {
-          "name": "checklist UI data",
-          "pass": true,
-          "points": 10
-        },
-        {
-          "name": "comparison table",
-          "pass": true,
-          "points": 10
-        },
-        {
-          "name": "source links with checked date",
-          "pass": true,
-          "points": 12
-        },
-        {
-          "name": "internal links",
+          "name": "article metadata",
           "pass": true,
           "points": 6
         },
         {
+          "name": "summary is reader-facing",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "at least six body sections",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "substantial body length",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "top-page format evidence",
+          "pass": true,
+          "points": 10
+        },
+        {
+          "name": "key takeaways",
+          "pass": true,
+          "points": 7
+        },
+        {
+          "name": "verdict box",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "pros and cons",
+          "pass": true,
+          "points": 7
+        },
+        {
+          "name": "quick facts",
+          "pass": true,
+          "points": 5
+        },
+        {
+          "name": "checklist UI data",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "comparison table",
+          "pass": true,
+          "points": 7
+        },
+        {
+          "name": "source links with checked date",
+          "pass": true,
+          "points": 7
+        },
+        {
+          "name": "internal links",
+          "pass": true,
+          "points": 4
+        },
+        {
           "name": "no visible internal workflow phrasing",
           "pass": true,
-          "points": 8
+          "points": 5
         },
         {
           "name": "safe monetization state",
           "pass": true,
-          "points": 4
+          "points": 2
         },
         {
           "name": "noindex until promotion",
           "pass": true,
-          "points": 4
+          "points": 2
         }
       ]
     },
@@ -207,62 +282,87 @@
         {
           "name": "hero image with alt and caption",
           "pass": true,
-          "points": 12
-        },
-        {
-          "name": "summary is reader-facing",
-          "pass": true,
           "points": 8
         },
         {
-          "name": "at least six body sections",
-          "pass": true,
-          "points": 8
-        },
-        {
-          "name": "substantial body length",
-          "pass": true,
-          "points": 10
-        },
-        {
-          "name": "quick facts",
-          "pass": true,
-          "points": 8
-        },
-        {
-          "name": "checklist UI data",
-          "pass": true,
-          "points": 10
-        },
-        {
-          "name": "comparison table",
-          "pass": true,
-          "points": 10
-        },
-        {
-          "name": "source links with checked date",
-          "pass": true,
-          "points": 12
-        },
-        {
-          "name": "internal links",
+          "name": "article metadata",
           "pass": true,
           "points": 6
         },
         {
+          "name": "summary is reader-facing",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "at least six body sections",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "substantial body length",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "top-page format evidence",
+          "pass": true,
+          "points": 10
+        },
+        {
+          "name": "key takeaways",
+          "pass": true,
+          "points": 7
+        },
+        {
+          "name": "verdict box",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "pros and cons",
+          "pass": true,
+          "points": 7
+        },
+        {
+          "name": "quick facts",
+          "pass": true,
+          "points": 5
+        },
+        {
+          "name": "checklist UI data",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "comparison table",
+          "pass": true,
+          "points": 7
+        },
+        {
+          "name": "source links with checked date",
+          "pass": true,
+          "points": 7
+        },
+        {
+          "name": "internal links",
+          "pass": true,
+          "points": 4
+        },
+        {
           "name": "no visible internal workflow phrasing",
           "pass": true,
-          "points": 8
+          "points": 5
         },
         {
           "name": "safe monetization state",
           "pass": true,
-          "points": 4
+          "points": 2
         },
         {
           "name": "noindex until promotion",
           "pass": true,
-          "points": 4
+          "points": 2
         }
       ]
     },
@@ -273,62 +373,87 @@
         {
           "name": "hero image with alt and caption",
           "pass": true,
-          "points": 12
-        },
-        {
-          "name": "summary is reader-facing",
-          "pass": true,
           "points": 8
         },
         {
-          "name": "at least six body sections",
-          "pass": true,
-          "points": 8
-        },
-        {
-          "name": "substantial body length",
-          "pass": true,
-          "points": 10
-        },
-        {
-          "name": "quick facts",
-          "pass": true,
-          "points": 8
-        },
-        {
-          "name": "checklist UI data",
-          "pass": true,
-          "points": 10
-        },
-        {
-          "name": "comparison table",
-          "pass": true,
-          "points": 10
-        },
-        {
-          "name": "source links with checked date",
-          "pass": true,
-          "points": 12
-        },
-        {
-          "name": "internal links",
+          "name": "article metadata",
           "pass": true,
           "points": 6
         },
         {
+          "name": "summary is reader-facing",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "at least six body sections",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "substantial body length",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "top-page format evidence",
+          "pass": true,
+          "points": 10
+        },
+        {
+          "name": "key takeaways",
+          "pass": true,
+          "points": 7
+        },
+        {
+          "name": "verdict box",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "pros and cons",
+          "pass": true,
+          "points": 7
+        },
+        {
+          "name": "quick facts",
+          "pass": true,
+          "points": 5
+        },
+        {
+          "name": "checklist UI data",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "comparison table",
+          "pass": true,
+          "points": 7
+        },
+        {
+          "name": "source links with checked date",
+          "pass": true,
+          "points": 7
+        },
+        {
+          "name": "internal links",
+          "pass": true,
+          "points": 4
+        },
+        {
           "name": "no visible internal workflow phrasing",
           "pass": true,
-          "points": 8
+          "points": 5
         },
         {
           "name": "safe monetization state",
           "pass": true,
-          "points": 4
+          "points": 2
         },
         {
           "name": "noindex until promotion",
           "pass": true,
-          "points": 4
+          "points": 2
         }
       ]
     }
@@ -336,6 +461,26 @@
   "rendererChecks": [
     {
       "name": "renders hero image",
+      "pass": true
+    },
+    {
+      "name": "renders article metadata",
+      "pass": true
+    },
+    {
+      "name": "renders key takeaways",
+      "pass": true
+    },
+    {
+      "name": "renders verdict box",
+      "pass": true
+    },
+    {
+      "name": "renders pros and cons",
+      "pass": true
+    },
+    {
+      "name": "renders top-page references",
       "pass": true
     },
     {

@@ -13,7 +13,12 @@ This is no longer the old sample-topic run. The live research evidence is stored
 The post renderer is no longer a thin status card. Each generated test post now has:
 
 - a hero image with alt text and caption
+- updated date, reading time, and verification basis
 - a table of contents
+- an at-a-glance block
+- a verdict/practical-decision box
+- good-sign/watch-out blocks based on the format of high-ranking review/guide pages
+- a visible top-pages-checked block
 - quick facts
 - a checklist UI
 - long-form reader-facing sections
@@ -65,7 +70,11 @@ Article scores:
 | `iphone-18-rumors-japan` | 100 |
 | `2026-대입-학폭-반영` | 100 |
 
-The audit fails if a post lacks the core reader/SEO blocks: hero image, substantial summary/body, quick facts, checklist, comparison table, source links, internal links, safe monetization state, or a clean index/noindex state.
+The audit now fails below 98 points. It requires the core reader/SEO blocks plus top-page format evidence: article metadata, key takeaways, verdict box, pros/cons-style decision signals, top pages checked, hero image, substantial summary/body, quick facts, checklist, comparison table, source links, internal links, safe monetization state, and a clean index/noindex state.
+
+The layout research snapshot is stored in:
+
+- `data/raw/serp-format-analysis-2026-05-31.json`
 
 ## Commands Run
 
@@ -114,6 +123,11 @@ Each rendered page was checked for:
 
 - H1
 - image
+- updated date
+- at-a-glance block
+- verdict box
+- good-sign/watch-out blocks
+- top-pages-checked block
 - table of contents
 - checklist
 - comparison table

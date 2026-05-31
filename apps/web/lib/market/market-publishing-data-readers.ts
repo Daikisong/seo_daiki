@@ -36,6 +36,21 @@ export function readMarketPosts(market: MarketConfig): MarketPostView[] {
           body: text(record(section).body)
         })),
         heroImage: imageValue(row.heroImage),
+        articleMeta: {
+          checkedAt: text(record(row.articleMeta).checkedAt),
+          readingTime: text(record(row.articleMeta).readingTime),
+          reviewer: text(record(row.articleMeta).reviewer),
+          basis: text(record(row.articleMeta).basis)
+        },
+        keyTakeaways: array(row.keyTakeaways).map((item) => text(item)).filter(Boolean),
+        verdictBox: verdictBoxValue(row.verdictBox),
+        prosCons: prosConsValue(row.prosCons),
+        serpReferences: array(row.serpReferences).map((item) => ({
+          rank: text(record(item).rank),
+          label: text(record(item).label),
+          url: text(record(item).url),
+          formatPattern: text(record(item).formatPattern)
+        })),
         quickFacts: array(row.quickFacts).map((item) => ({ label: text(record(item).label), value: text(record(item).value) })),
         checklist: array(row.checklist).map((item) => text(item)).filter(Boolean),
         comparisonTable: tableValue(row.comparisonTable),
@@ -58,6 +73,26 @@ export function readMarketPosts(market: MarketConfig): MarketPostView[] {
         publishStatus: text(row.publishStatus)
       };
     });
+}
+
+function verdictBoxValue(value: unknown): MarketPostView["verdictBox"] {
+  const row = record(value);
+  const label = text(row.label);
+  const body = text(row.body);
+  if (!label || !body) {
+    return undefined;
+  }
+  return { label, body };
+}
+
+function prosConsValue(value: unknown): MarketPostView["prosCons"] {
+  const row = record(value);
+  const pros = array(row.pros).map((item) => text(item)).filter(Boolean);
+  const cons = array(row.cons).map((item) => text(item)).filter(Boolean);
+  if (pros.length === 0 || cons.length === 0) {
+    return undefined;
+  }
+  return { pros, cons };
 }
 
 function imageValue(value: unknown): MarketPostView["heroImage"] {

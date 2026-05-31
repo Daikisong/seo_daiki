@@ -47,6 +47,59 @@
         "alt": "Smartphone on a desk",
         "caption": "Illustrative smartphone image. Confirm exact iPhone 16 model, storage, seller, and Brazilian warranty."
       },
+      "articleMeta": {
+        "checkedAt": "2026-05-31",
+        "readingTime": "6 min de leitura",
+        "reviewer": "Revisão editorial",
+        "basis": "Páginas bem posicionadas + fontes oficiais"
+      },
+      "keyTakeaways": [
+        "The winning format for deal intent starts with price, coupon, date, and seller checks.",
+        "A useful article separates the live offer from durable buying criteria.",
+        "The reader needs a quick verdict, specs that matter, and red flags before any store click."
+      ],
+      "verdictBox": {
+        "label": "Veredito rápido",
+        "body": "A promoção só faz sentido se o preço final, a nota fiscal, a garantia no Brasil e o vendedor forem confirmados no carrinho."
+      },
+      "prosCons": {
+        "pros": [
+          "Busca com intenção de compra clara",
+          "Há páginas de oferta e guias de preço",
+          "Especificações oficiais ajudam a confirmar o modelo"
+        ],
+        "cons": [
+          "Cupom pode expirar",
+          "Marketplace e garantia exigem checagem",
+          "Preço cheio pode inflar o desconto"
+        ]
+      },
+      "serpReferences": [
+        {
+          "rank": "1",
+          "label": "Mobile Bit iPhone 16 deal",
+          "url": "https://www.mobilebit.com.br/produtos/2026/01/31/iphone-16-256-gb-sai-por-r-5-299-no-app-com-cupom-aplicado/",
+          "formatPattern": "Deal headline, discount subtitle, last updated date, author, reading time, hero image."
+        },
+        {
+          "rank": "2",
+          "label": "Tecnoblog iPhone 16 deal",
+          "url": "https://tecnoblog.net/achados/iphone-16-atinge-menor-preco-desde-marco-com-44-off-em-promocao/",
+          "formatPattern": "Price-led deal post, coupon context, quick product reasons."
+        },
+        {
+          "rank": "3",
+          "label": "Canaltech buying threshold",
+          "url": "https://canaltech.com.br/smartphone/quanto-vale-a-pena-pagar-no-iphone-16-em-2026/",
+          "formatPattern": "Buying-guide framing with price threshold and alternatives."
+        },
+        {
+          "rank": "4",
+          "label": "Apple Brasil iPhone 16",
+          "url": "https://www.apple.com/br/iphone-16/",
+          "formatPattern": "Official specs and feature confirmation."
+        }
+      ],
       "quickFacts": [
         {
           "label": "Best for",
@@ -159,8 +212,8 @@
       "status": "test_published_noindex",
       "indexStatus": "noindex",
       "publishStatus": "published",
-      "createdAt": "2026-05-31T11:03:49.720511+00:00",
-      "updatedAt": "2026-05-31T11:03:49.721416+00:00"
+      "createdAt": "2026-05-31T11:19:10.870476+00:00",
+      "updatedAt": "2026-05-31T11:19:10.871928+00:00"
     },
     {
       "id": "test-article-content-strategy-trend-keyword-trend-cluster-us-en-samsung-s90f-oled-deal-samsung-s90f-oled-deal",
@@ -209,6 +262,59 @@
         "alt": "OLED television in a living room setup",
         "caption": "Illustrative OLED TV setup. Verify exact Samsung S90F size and retailer terms before buying."
       },
+      "articleMeta": {
+        "checkedAt": "2026-05-31",
+        "readingTime": "6 min read",
+        "reviewer": "Editorial review",
+        "basis": "Search top pages + primary sources"
+      },
+      "keyTakeaways": [
+        "Treat the deal page as a live-price signal, not final proof of value.",
+        "Compare the exact size, panel notes, return terms, and warranty before buying.",
+        "Use measurement-heavy reviews to judge performance and deal pages only for current pricing."
+      ],
+      "verdictBox": {
+        "label": "Verdict",
+        "body": "A strong S90F deal can be worth acting on, but only after the checkout price, seller, size, and panel evidence match your use case."
+      },
+      "prosCons": {
+        "pros": [
+          "Strong OLED review consensus",
+          "Clear gaming and movie use case",
+          "Several expert reviews provide test context"
+        ],
+        "cons": [
+          "Deal prices expire quickly",
+          "Panel and size caveats matter",
+          "No Dolby Vision can be a drawback"
+        ]
+      },
+      "serpReferences": [
+        {
+          "rank": "1",
+          "label": "Tom's Guide S90F review",
+          "url": "https://www.tomsguide.com/tvs/oled-tvs/samsung-s90f-oled-tv-review",
+          "formatPattern": "Hero image, verdict box, pros/cons, jump links, specs, test results."
+        },
+        {
+          "rank": "2",
+          "label": "TechRadar S90F review",
+          "url": "https://www.techradar.com/televisions/samsung-s90f-review",
+          "formatPattern": "Verdict, price links, pros/cons, jump-to navigation, should-you-buy section."
+        },
+        {
+          "rank": "3",
+          "label": "RTINGS S90F lab review",
+          "url": "https://www.rtings.com/tv/reviews/samsung/s90f-oled",
+          "formatPattern": "Specs, measurements, use-case scores, comparison-oriented review structure."
+        },
+        {
+          "rank": "4",
+          "label": "Technobezz S90F deal signal",
+          "url": "https://www.technobezz.com/best/samsung-class-s90f-smart-tv-with-nq4-processor-drops-to-179799",
+          "formatPattern": "Deal-led headline, price hook, short buying context."
+        }
+      ],
       "quickFacts": [
         {
           "label": "Best for",
@@ -321,8 +427,8 @@
       "status": "test_published_noindex",
       "indexStatus": "noindex",
       "publishStatus": "published",
-      "createdAt": "2026-05-31T11:03:49.720533+00:00",
-      "updatedAt": "2026-05-31T11:03:49.721426+00:00"
+      "createdAt": "2026-05-31T11:19:10.870501+00:00",
+      "updatedAt": "2026-05-31T11:19:10.871931+00:00"
     },
     {
       "id": "test-article-content-strategy-trend-keyword-trend-cluster-jp-ja-iphone-18-rumors-japan-iphone-18-rumors-japan",
@@ -371,6 +477,59 @@
         "alt": "Smartphone screen close-up",
         "caption": "Rumor coverage should not be treated as Apple confirmation. Japan pricing and carrier terms may differ."
       },
+      "articleMeta": {
+        "checkedAt": "2026-05-31",
+        "readingTime": "約6分",
+        "reviewer": "編集レビュー",
+        "basis": "上位ページ + 公式/検証情報"
+      },
+      "keyTakeaways": [
+        "Top rumor roundups separate at-a-glance bullets, timeline, and individual rumor sections.",
+        "Japan readers need local price, carrier, trade-in, and timing notes layered onto global rumors.",
+        "The article should label confidence and avoid treating leaks as Apple confirmation."
+      ],
+      "verdictBox": {
+        "label": "判断",
+        "body": "iPhone 18の噂は買い替え判断の材料にはなるが、正式発表前に価格・発売日・日本のキャリア条件を断定しない。"
+      },
+      "prosCons": {
+        "pros": [
+          "複数のApple系メディアで噂が整理されている",
+          "発売時期とモデル分割が読者の判断軸になる",
+          "日本向け確認事項を追加できる"
+        ],
+        "cons": [
+          "未確認情報が多い",
+          "Proと標準モデルの噂が混ざりやすい",
+          "日本価格は正式発表まで不明"
+        ]
+      },
+      "serpReferences": [
+        {
+          "rank": "1",
+          "label": "MacRumors iPhone 18 roundup",
+          "url": "https://www.macrumors.com/roundup/iphone-18/",
+          "formatPattern": "At a glance bullets, rumored features, timeline, last updated note, sectioned roundup."
+        },
+        {
+          "rank": "2",
+          "label": "MacRumors iPhone 18 Pro features",
+          "url": "https://www.macrumors.com/2026/05/09/iphone-18-pro-10-new-features/",
+          "formatPattern": "Feature list, rumor grouping, model-specific framing."
+        },
+        {
+          "rank": "3",
+          "label": "9to5Mac iPhone 18 timing",
+          "url": "https://9to5mac.com/2026/01/30/iphone-18-isnt-launching-until-next-year-new-report-reaffirms/",
+          "formatPattern": "Launch timing hook, report confirmation, concise analysis."
+        },
+        {
+          "rank": "4",
+          "label": "Mashable iPhone 18 rumor roundup",
+          "url": "https://mashable.com/tech/apple-iphone-18-news-rumors-leaks",
+          "formatPattern": "Rumor/news roundup with feature and color hooks."
+        }
+      ],
       "quickFacts": [
         {
           "label": "Best for",
@@ -483,8 +642,8 @@
       "status": "test_published_noindex",
       "indexStatus": "noindex",
       "publishStatus": "published",
-      "createdAt": "2026-05-31T11:03:49.720553+00:00",
-      "updatedAt": "2026-05-31T11:03:49.721427+00:00"
+      "createdAt": "2026-05-31T11:19:10.870525+00:00",
+      "updatedAt": "2026-05-31T11:19:10.871932+00:00"
     },
     {
       "id": "test-article-content-strategy-trend-keyword-trend-cluster-es-es-renta-2025-avisos-aeat-renta-2025-avisos-aeat",
@@ -533,6 +692,59 @@
         "alt": "Tax documents and calculator on a desk",
         "caption": "Tax campaign details change by date and personal situation. Use official AEAT sources for final action."
       },
+      "articleMeta": {
+        "checkedAt": "2026-05-31",
+        "readingTime": "6 min de lectura",
+        "reviewer": "Revisión editorial",
+        "basis": "Páginas mejor posicionadas + fuentes oficiales"
+      },
+      "keyTakeaways": [
+        "A tax notice is a prompt to verify data; it is not automatically a fine.",
+        "Official AEAT and Hacienda pages should outrank media summaries for final action.",
+        "The safest format is: dates, notice types, what to check, and what not to change without proof."
+      ],
+      "verdictBox": {
+        "label": "Criterio práctico",
+        "body": "Revisa el aviso dentro de canales oficiales, localiza el dato afectado y corrige solo con justificantes."
+      },
+      "prosCons": {
+        "pros": [
+          "Hay fuentes oficiales claras",
+          "La intención de búsqueda pide pasos concretos",
+          "Las fechas y avisos se pueden ordenar en tabla"
+        ],
+        "cons": [
+          "Una guía genérica puede causar errores",
+          "Los plazos cambian según forma de presentación",
+          "Las deducciones dependen de cada comunidad"
+        ]
+      },
+      "serpReferences": [
+        {
+          "rank": "1",
+          "label": "Xataka Basics aviso Hacienda",
+          "url": "https://www.xataka.com/basics/avisos-hacienda-antes-multarte-renta-2025-estos-que-recibes-hay-errores-tu-declaracion-2026/amp",
+          "formatPattern": "H1, subtitle, date, author, direct explainer intro, list of notice types."
+        },
+        {
+          "rank": "2",
+          "label": "AEAT Renta 2025",
+          "url": "https://www3.agenciatributaria.gob.es/Sede/Renta.html",
+          "formatPattern": "Official campaign hub with service entry points and current campaign framing."
+        },
+        {
+          "rank": "3",
+          "label": "Hacienda campaign release",
+          "url": "https://www.hacienda.gob.es/es-ES/Prensa/Noticias/paginas/2026/20260408-np-aeat-campana-renta-2025.aspx",
+          "formatPattern": "Official dates, assistance channels, campaign context."
+        },
+        {
+          "rank": "4",
+          "label": "AEAT press PDF",
+          "url": "https://sede.agenciatributaria.gob.es/static_files/Sede/Actualidad/Notas_prensa/2026/NP_Inicio_Campana_renta_2025.pdf",
+          "formatPattern": "Primary-source campaign details, preventive notices, support notes."
+        }
+      ],
       "quickFacts": [
         {
           "label": "Best for",
@@ -645,8 +857,8 @@
       "status": "test_published_noindex",
       "indexStatus": "noindex",
       "publishStatus": "published",
-      "createdAt": "2026-05-31T11:03:49.720570+00:00",
-      "updatedAt": "2026-05-31T11:03:49.721429+00:00"
+      "createdAt": "2026-05-31T11:19:10.870545+00:00",
+      "updatedAt": "2026-05-31T11:19:10.871933+00:00"
     },
     {
       "id": "test-article-content-strategy-trend-keyword-trend-cluster-kr-ko-2026-대입-학폭-반영-2026-대입-학폭-반영",
@@ -695,6 +907,59 @@
         "alt": "Students reviewing documents together",
         "caption": "대입 반영 방식은 대학별로 다릅니다. 최종 판단은 반드시 모집요강과 공식 자료로 확인하세요."
       },
+      "articleMeta": {
+        "checkedAt": "2026-05-31",
+        "readingTime": "약 6분",
+        "reviewer": "편집 검토",
+        "basis": "상위 검색 페이지 + 공식 근거"
+      },
+      "keyTakeaways": [
+        "상위 글은 전 전형 반영, 대학별 차이, 조치사항별 불이익을 먼저 정리한다.",
+        "독자는 기사보다 모집요강에서 무엇을 봐야 하는지 빠른 체크리스트가 필요하다.",
+        "대학별 감점·지원 제한을 단정하지 않고 확인 경로를 분리해야 한다."
+      ],
+      "verdictBox": {
+        "label": "핵심 판단",
+        "body": "2026 대입 학폭 반영은 모든 전형에서 확인해야 하지만, 실제 불이익 방식은 대학과 전형별 모집요강으로 따로 확인해야 합니다."
+      },
+      "prosCons": {
+        "pros": [
+          "공식 제도 방향이 명확함",
+          "대학별 차이를 표로 정리할 수 있음",
+          "학생·학부모 행동 목록으로 전환 가능"
+        ],
+        "cons": [
+          "무조건 탈락처럼 단정하면 위험",
+          "오래된 2024/2025 설명과 2026 기준이 섞일 수 있음",
+          "대학별 모집요강 확인이 필수"
+        ]
+      },
+      "serpReferences": [
+        {
+          "rank": "1",
+          "label": "대구교육신문 대교협 기본사항",
+          "url": "https://www.edudaegu.co.kr/news/articleView.html?idxno=6130",
+          "formatPattern": "제도 발표 중심, 전 전형 필수 반영을 빠르게 설명."
+        },
+        {
+          "rank": "2",
+          "label": "E동아 학폭 반영 가이드",
+          "url": "https://edu.donga.com/news/articleView.html?idxno=84852",
+          "formatPattern": "조치사항별 불이익, 대학별 차이, 수험생 관점 해설."
+        },
+        {
+          "rank": "3",
+          "label": "베리타스알파 2026 대입 학폭",
+          "url": "https://www.veritas-a.com/news/articleView.html?idxno=470532",
+          "formatPattern": "수시/정시 전형 범위, 대학 자율 반영, 일정 맥락."
+        },
+        {
+          "rank": "4",
+          "label": "경향신문 학폭 의무 반영",
+          "url": "https://www.khan.co.kr/article/202405022102025/",
+          "formatPattern": "시행계획 발표와 전형별 반영 방향 보도."
+        }
+      ],
       "quickFacts": [
         {
           "label": "대상",
@@ -807,8 +1072,8 @@
       "status": "test_published_noindex",
       "indexStatus": "noindex",
       "publishStatus": "published",
-      "createdAt": "2026-05-31T11:03:49.720588+00:00",
-      "updatedAt": "2026-05-31T11:03:49.721430+00:00"
+      "createdAt": "2026-05-31T11:19:10.870597+00:00",
+      "updatedAt": "2026-05-31T11:19:10.871934+00:00"
     }
   ]
 }

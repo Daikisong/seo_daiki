@@ -52,6 +52,27 @@ export interface MarketPostView {
     alt: string;
     caption: string;
   };
+  articleMeta: {
+    checkedAt: string;
+    readingTime: string;
+    reviewer: string;
+    basis: string;
+  };
+  keyTakeaways: string[];
+  verdictBox?: {
+    label: string;
+    body: string;
+  };
+  prosCons?: {
+    pros: string[];
+    cons: string[];
+  };
+  serpReferences: Array<{
+    rank: string;
+    label: string;
+    url: string;
+    formatPattern: string;
+  }>;
   quickFacts: Array<{ label: string; value: string }>;
   checklist: string[];
   comparisonTable?: {
