@@ -167,6 +167,7 @@
     "seo:validate": "NEXT_PUBLIC_SITE_URL=https://example.com pnpm --filter @global-import-lab/validators validate",
     "seo:market-audit": "tsx --tsconfig apps/web/tsconfig.json scripts/seo-market-audit.ts",
     "seo:article-quality": "tsx --tsconfig apps/web/tsconfig.json scripts/seo-article-quality-audit.ts",
+    "research:live-frontend": "tsx scripts/generate-live-trending-frontend-research.ts",
     "db:generate": "prisma generate --config prisma.config.ts",
     "db:migrate": "prisma migrate dev --config prisma.config.ts",
     "db:seed": "pnpm --filter @global-import-lab/db seed",

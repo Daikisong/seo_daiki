@@ -33,6 +33,8 @@ const cssPath = resolve(root, "apps/web/app/globals.css");
 const reportPath = resolve(root, "data/exports/seo_article_quality_report.json");
 const topSeoAnalysisPath = resolve(root, "data/research/top-seo-page-format-analysis.json");
 const topSeoDocPath = resolve(root, "docs/top-seo-50-page-format-analysis.md");
+const liveFrontendAnalysisPath = resolve(root, "data/research/live-trending-frontend-top-sites-2026-05-31.json");
+const liveFrontendDocPath = resolve(root, "docs/live-trending-100-frontend-format-analysis.md");
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3001").replace(/\/$/, "");
 
 const forbiddenVisiblePhrases = [
@@ -168,11 +170,13 @@ function main() {
 
   const pageSource = existsSync(pagePath) ? readFileSync(pagePath, "utf8") : "";
   const topSeoAnalysis = readTopSeoAnalysis();
+  const liveFrontendAnalysis = readLiveFrontendAnalysis();
   const routeReports = articles.map(renderedArticleChecks);
   const rendererChecks = [
     { name: "renders hero image", pass: pageSource.includes("<img") && pageSource.includes("heroImage") },
     { name: "renders article metadata", pass: pageSource.includes("articleMeta") && pageSource.includes("<time") },
     { name: "renders trust strip from top-page analysis", pass: pageSource.includes("market-article-trust-strip") && pageSource.includes("buildTrustItems") },
+    { name: "renders reader path from 100-site live trend analysis", pass: pageSource.includes("market-article-reader-path") && pageSource.includes("buildReaderPathItems") },
     { name: "renders inline jump links", pass: pageSource.includes("market-article-quick-jumps") && pageSource.includes("buildQuickJumpLinks") },
     { name: "renders key takeaways", pass: pageSource.includes("keyTakeaways") },
     { name: "renders verdict box", pass: pageSource.includes("verdictBox") },
@@ -196,7 +200,7 @@ function main() {
     { name: "uses fact rail not plain cards", pass: pageSource.includes("market-article-fact-rail") && cssSource.includes(".market-article-fact-rail") },
     { name: "uses dedicated prose styling", pass: pageSource.includes("market-article-prose") && cssSource.includes(".market-article-prose p") },
     { name: "uses compact answer and summary blocks", pass: pageSource.includes("market-article-answer") && cssSource.includes(".market-article-answer") && cssSource.includes(".market-article-verdict") },
-    { name: "styles top-page trust and jump patterns", pass: cssSource.includes(".market-article-trust-strip") && cssSource.includes(".market-article-quick-jumps") },
+    { name: "styles top-page trust, reader path, and jump patterns", pass: cssSource.includes(".market-article-trust-strip") && cssSource.includes(".market-article-reader-path") && cssSource.includes(".market-article-quick-jumps") },
     { name: "keeps primary content visually dominant", pass: cssSource.includes("max-width: 1080px") && cssSource.includes("minmax(0, 760px)") },
     { name: "uses responsive mobile rules", pass: cssSource.includes("@media (max-width: 860px)") && cssSource.includes("@media (max-width: 560px)") },
     { name: "does not scale font size with viewport width", pass: !/font-size:\s*[^;]*(vw|clamp\()/i.test(cssSource) }
@@ -210,7 +214,13 @@ function main() {
     { name: "top-page format analysis has unique URLs", pass: topSeoAnalysis.uniqueUrlCount >= 50 },
     { name: "top-page format analysis stores reproducible SERP evidence", pass: topSeoAnalysis.reproducibleEvidenceCount >= 50 },
     { name: "top-page analysis covers current markets", pass: ["samsung_s90f_review", "iphone_16_br", "renta_2025", "iphone_18_jp", "kr_admission_bullying"].every((group) => topSeoAnalysis.groups.has(group)) },
-    { name: "top-page analysis document exists", pass: existsSync(topSeoDocPath) && readFileSync(topSeoDocPath, "utf8").includes("Total pages analyzed: 55") && readFileSync(topSeoDocPath, "utf8").includes("Reproducible Query Groups") }
+    { name: "top-page analysis document exists", pass: existsSync(topSeoDocPath) && readFileSync(topSeoDocPath, "utf8").includes("Total pages analyzed: 55") && readFileSync(topSeoDocPath, "utf8").includes("Reproducible Query Groups") },
+    { name: "documents at least 100 live trend top-site frontend observations", pass: liveFrontendAnalysis.topSiteCount >= 100 },
+    { name: "live trend frontend analysis covers at least 20 trend groups", pass: liveFrontendAnalysis.groupCount >= 20 },
+    { name: "live trend frontend analysis has five sites per group", pass: liveFrontendAnalysis.groupsWithFiveSites === liveFrontendAnalysis.groupCount && liveFrontendAnalysis.groupCount >= 20 },
+    { name: "live trend frontend analysis covers multiple countries", pass: liveFrontendAnalysis.marketCount >= 12 },
+    { name: "live trend frontend analysis stores RSS evidence", pass: liveFrontendAnalysis.groupsWithRssEvidence === liveFrontendAnalysis.groupCount && liveFrontendAnalysis.groupCount >= 20 },
+    { name: "live trend frontend analysis document exists", pass: existsSync(liveFrontendDocPath) && readFileSync(liveFrontendDocPath, "utf8").includes("Top/primary sites reviewed: 105") && readFileSync(liveFrontendDocPath, "utf8").includes("Repeated Frontend Patterns") }
   ];
   const failedResearch = researchChecks.filter((check) => !check.pass);
   const failedRoutes = routeReports.filter((route) => route.checks.some((check) => !check.pass));
@@ -246,6 +256,7 @@ function renderedArticleChecks(article: Article): { slug?: string; path: string;
   const checks = [
     { name: "route returned html", pass: html.length > 0 },
     { name: "trust strip rendered", pass: html.includes("market-article-trust-strip") },
+    { name: "reader path rendered", pass: html.includes("market-article-reader-path") },
     { name: "quick jumps rendered", pass: html.includes("market-article-quick-jumps") },
     {
       name: "answer before quick jumps before summary",
@@ -302,6 +313,52 @@ function readTopSeoAnalysis(): { pageCount: number; uniqueUrlCount: number; grou
           page.serpEvidence.serpLocale &&
           page.serpEvidence.device &&
           page.serpEvidence.observedResultPosition
+      )
+    ).length
+  };
+}
+
+function readLiveFrontendAnalysis(): {
+  groupCount: number;
+  topSiteCount: number;
+  marketCount: number;
+  groupsWithFiveSites: number;
+  groupsWithRssEvidence: number;
+} {
+  if (!existsSync(liveFrontendAnalysisPath)) {
+    return { groupCount: 0, topSiteCount: 0, marketCount: 0, groupsWithFiveSites: 0, groupsWithRssEvidence: 0 };
+  }
+  const payload = JSON.parse(readFileSync(liveFrontendAnalysisPath, "utf8")) as {
+    groups?: Array<{
+      market?: string;
+      searchQuery?: string;
+      trendEvidence?: {
+        rssUrl?: string;
+        rssRank?: number;
+        approxTraffic?: string;
+        snapshotCapturedAt?: string;
+      };
+      topSites?: Array<{ url?: string; signals?: unknown[]; observedPosition?: number }>;
+    }>;
+  };
+  const groups = Array.isArray(payload.groups) ? payload.groups : [];
+  return {
+    groupCount: groups.length,
+    topSiteCount: groups.reduce((total, group) => total + (group.topSites?.length ?? 0), 0),
+    marketCount: new Set(groups.map((group) => group.market).filter(Boolean)).size,
+    groupsWithFiveSites: groups.filter((group) =>
+      Boolean(
+        group.searchQuery &&
+          group.topSites?.length === 5 &&
+          group.topSites.every((site) => site.url?.startsWith("http") && site.observedPosition && (site.signals ?? []).length >= 2)
+      )
+    ).length,
+    groupsWithRssEvidence: groups.filter((group) =>
+      Boolean(
+        group.trendEvidence?.rssUrl?.startsWith("https://trends.google.com/trending/rss") &&
+          group.trendEvidence.rssRank &&
+          group.trendEvidence.approxTraffic &&
+          group.trendEvidence.snapshotCapturedAt
       )
     ).length
   };

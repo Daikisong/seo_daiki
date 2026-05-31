@@ -497,6 +497,10 @@
       "pass": true
     },
     {
+      "name": "renders reader path from 100-site live trend analysis",
+      "pass": true
+    },
+    {
       "name": "renders inline jump links",
       "pass": true
     },
@@ -575,7 +579,7 @@
       "pass": true
     },
     {
-      "name": "styles top-page trust and jump patterns",
+      "name": "styles top-page trust, reader path, and jump patterns",
       "pass": true
     },
     {
@@ -611,6 +615,30 @@
     {
       "name": "top-page analysis document exists",
       "pass": true
+    },
+    {
+      "name": "documents at least 100 live trend top-site frontend observations",
+      "pass": true
+    },
+    {
+      "name": "live trend frontend analysis covers at least 20 trend groups",
+      "pass": true
+    },
+    {
+      "name": "live trend frontend analysis has five sites per group",
+      "pass": true
+    },
+    {
+      "name": "live trend frontend analysis covers multiple countries",
+      "pass": true
+    },
+    {
+      "name": "live trend frontend analysis stores RSS evidence",
+      "pass": true
+    },
+    {
+      "name": "live trend frontend analysis document exists",
+      "pass": true
     }
   ],
   "routeReports": [
@@ -624,6 +652,10 @@
         },
         {
           "name": "trust strip rendered",
+          "pass": true
+        },
+        {
+          "name": "reader path rendered",
           "pass": true
         },
         {
@@ -665,6 +697,10 @@
           "pass": true
         },
         {
+          "name": "reader path rendered",
+          "pass": true
+        },
+        {
           "name": "quick jumps rendered",
           "pass": true
         },
@@ -700,6 +736,10 @@
         },
         {
           "name": "trust strip rendered",
+          "pass": true
+        },
+        {
+          "name": "reader path rendered",
           "pass": true
         },
         {
@@ -741,6 +781,10 @@
           "pass": true
         },
         {
+          "name": "reader path rendered",
+          "pass": true
+        },
+        {
           "name": "quick jumps rendered",
           "pass": true
         },
@@ -776,6 +820,10 @@
         },
         {
           "name": "trust strip rendered",
+          "pass": true
+        },
+        {
+          "name": "reader path rendered",
           "pass": true
         },
         {

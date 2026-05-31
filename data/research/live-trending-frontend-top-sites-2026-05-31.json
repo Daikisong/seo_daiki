@@ -1,0 +1,2350 @@
+{
+  "generatedAt": "2026-05-31T21:45:00+09:00",
+  "method": "Start from live country-level Google Trends RSS seeds, select frontend-relevant trend groups, then review five high-ranking or primary pages per trend for information architecture and UI pattern only. No raw Google HTML scraping.",
+  "requirements": {
+    "minimumTrendGroups": 20,
+    "minimumTopSites": 100,
+    "requiredSitesPerGroup": 5,
+    "actualTrendGroups": 21,
+    "actualTopSites": 105,
+    "marketsCovered": [
+      "br",
+      "ca",
+      "de",
+      "es",
+      "gb",
+      "in",
+      "it",
+      "kr",
+      "nl",
+      "pl",
+      "pt",
+      "tr",
+      "us"
+    ]
+  },
+  "trendSnapshotFile": "data/raw/google-trends-rss-snapshot-2026-05-31-frontend-100.json",
+  "repeatedPatterns": [
+    {
+      "pattern": "answer_or_status_first",
+      "finding": "High-performing guide, public-service, finance, event, and health pages put the usable answer or current status before deep explanation.",
+      "frontendDecision": "Keep the direct-answer block above summaries, tables, and body prose."
+    },
+    {
+      "pattern": "trust_near_the_top",
+      "finding": "Top pages surface reviewed date, official-source basis, author/reviewer, route/source map, or medical/financial caveat near the hero.",
+      "frontendDecision": "Keep the trust strip directly under the hero facts and make it visible on every article route."
+    },
+    {
+      "pattern": "reader_path_before_dense_content",
+      "finding": "The clearest sites give readers a short path: check the current fact, compare the options, then verify the source.",
+      "frontendDecision": "Add a compact reader-path strip between trust evidence and the article body."
+    },
+    {
+      "pattern": "tables_for_comparison",
+      "finding": "Finance, travel, baggage, TV, health, and policy pages rely on tables or compact grids for decisions users compare quickly.",
+      "frontendDecision": "Keep comparison tables prominent and avoid hiding them below long prose."
+    },
+    {
+      "pattern": "checklists_for_action",
+      "finding": "Event, government-service, shopping, health, and travel pages convert uncertainty into checklists or step lists.",
+      "frontendDecision": "Keep checklist UI above the long body and make items visually scannable."
+    },
+    {
+      "pattern": "public_pages_hide_research_notes",
+      "finding": "Public pages do not expose SERP-analysis wording; they turn research into instructions, sources, and caveats.",
+      "frontendDecision": "Keep SERP references internal and do not render research/status language on public article pages."
+    }
+  ],
+  "groups": [
+    {
+      "id": "us-criminal-defense-attorney",
+      "market": "us",
+      "language": "en",
+      "country": "US",
+      "geo": "US",
+      "trendSeed": "criminal defense attorney",
+      "searchQuery": "criminal defense attorney how to choose guide 2026",
+      "serpLocale": "gl=us hl=en",
+      "selectedBecause": "US legal-service trend where top pages use checklists, evaluation criteria, and clear next steps.",
+      "topSites": [
+        {
+          "observedPosition": 1,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "How to Choose the Right Criminal Defense Attorney - LegalClarity",
+          "url": "https://legalclarity.org/how-to-choose-the-right-criminal-defense-attorney/",
+          "pageType": "legal guide",
+          "signals": [
+            "plain-language title",
+            "need assessment sections",
+            "decision checklist"
+          ]
+        },
+        {
+          "observedPosition": 2,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Choosing the Right Criminal Lawyer: Practical Tips for Defendants - Simpli.com",
+          "url": "https://www.simpli.com/history/choosing-right-criminal-lawyer-practical-tips-defendants",
+          "pageType": "legal explainer",
+          "signals": [
+            "question headings",
+            "bulleted consultation checklist",
+            "jurisdiction caveat"
+          ]
+        },
+        {
+          "observedPosition": 3,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "What to Look for When Picking a Criminal Defense Lawyer - LA Progressive",
+          "url": "https://www.laprogressive.com/sponsored/picking-a-criminal-defense-lawyer",
+          "pageType": "sponsored guide",
+          "signals": [
+            "hero image",
+            "author/date",
+            "step-by-step selection criteria"
+          ]
+        },
+        {
+          "observedPosition": 4,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Local Criminal Attorneys: How to Choose the Right Defense - Simpli.com",
+          "url": "https://www.simpli.com/history/local-criminal-attorneys-choose-right-defense",
+          "pageType": "local legal guide",
+          "signals": [
+            "local relevance framing",
+            "verification checklist",
+            "realistic expectations"
+          ]
+        },
+        {
+          "observedPosition": 5,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "How to Choose a Criminal Defense Lawyer - LegalClarity",
+          "url": "https://legalclarity.org/how-to-choose-a-criminal-defense-lawyer/",
+          "pageType": "legal guide",
+          "signals": [
+            "direct guide promise",
+            "directory/source path",
+            "final decision section"
+          ]
+        }
+      ],
+      "trendEvidence": {
+        "source": "Google Trends public Trending RSS endpoint",
+        "rssSnapshotFile": "data/raw/google-trends-rss-snapshot-2026-05-31-frontend-100.json",
+        "snapshotCapturedAt": "2026-05-31T12:54:23.213Z",
+        "rssUrl": "https://trends.google.com/trending/rss?geo=US",
+        "rssRank": 7,
+        "approxTraffic": "200+",
+        "pubDate": "Sun, 31 May 2026 04:40:00 -0700",
+        "relatedNewsItems": [
+          {
+            "title": "Norfolk attorney’s advice: With new gun law in sight, arm yourself with proof-of-purchase",
+            "url": "https://www.wavy.com/news/local-news/norfolk/norfolk-attorneys-advice-with-new-gun-law-in-sight-arm-yourself-with-proof-of-purchase/",
+            "source": "WAVY.com"
+          },
+          {
+            "title": "Some prosecutors won&apos;t enforce Virginia&apos;s incoming assault weapons ban, citing constitutional concerns",
+            "url": "https://www.wtvr.com/news/local-news/prosecutors-refuse-to-enforce-virginia-assault-weapons-ban-may-27-2026",
+            "source": "WTVR.com"
+          },
+          {
+            "title": "Can commonwealth’s attorneys in Virginia choose not to enforce certain laws?",
+            "url": "https://www.wric.com/news/politics/capitol-connection/can-commonwealths-attorneys-in-virginia-choose-not-to-enforce-certain-laws/",
+            "source": "WRIC ABC 8News"
+          }
+        ]
+      }
+    },
+    {
+      "id": "us-israel-day-parade",
+      "market": "us",
+      "language": "en",
+      "country": "US",
+      "geo": "US",
+      "trendSeed": "israel day parade",
+      "searchQuery": "Israel Day Parade 2026 guide route schedule NYC",
+      "serpLocale": "gl=us hl=en",
+      "selectedBecause": "US event trend where top pages prioritize route, schedule, access points, closures, and security notes.",
+      "topSites": [
+        {
+          "observedPosition": 1,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Record turnout expected at NYC Israel Day Parade - CBS New York",
+          "url": "https://www.cbsnews.com/newyork/news/nyc-israel-day-parade-2026/?intcid=CNR-01-0623",
+          "pageType": "event guide",
+          "signals": [
+            "route map",
+            "time block",
+            "security section"
+          ]
+        },
+        {
+          "observedPosition": 2,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Israel Day Parade 2026: Parade details, road closures and how to watch - FOX 5 NY",
+          "url": "https://www.fox5ny.com/news/israel-day-parade-2026-parade-details-road-closures-how-watch.amp",
+          "pageType": "event explainer",
+          "signals": [
+            "what-we-know block",
+            "road closures",
+            "watch instructions"
+          ]
+        },
+        {
+          "observedPosition": 3,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "2026 CELEBRATE ISRAEL PARADE - Uniformed Firefighters Association",
+          "url": "https://ufanyc.org/event/2026-celebrate-israel-parade/",
+          "pageType": "event listing",
+          "signals": [
+            "date/time details",
+            "venue metadata",
+            "organizer contact"
+          ]
+        },
+        {
+          "observedPosition": 4,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Celebrate Israel Parade Route Map - NYC DOT",
+          "url": "https://www.nyc.gov/html/dot/downloads/pdf/emb-2026-israel-day-parade-map.pdf",
+          "pageType": "official map PDF",
+          "signals": [
+            "map-first utility",
+            "route/dispersal labels",
+            "official source"
+          ]
+        },
+        {
+          "observedPosition": 5,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Israel Day Parade will feature tight security but no Mamdani - NY1",
+          "url": "https://ny1.com/nyc/all-boroughs/news/2026/05/29/israel-day-parade-will-feature-tight-security-but-no-mamdani",
+          "pageType": "local explainer",
+          "signals": [
+            "what-you-need-to-know bullets",
+            "image",
+            "security context"
+          ]
+        }
+      ],
+      "trendEvidence": {
+        "source": "Google Trends public Trending RSS endpoint",
+        "rssSnapshotFile": "data/raw/google-trends-rss-snapshot-2026-05-31-frontend-100.json",
+        "snapshotCapturedAt": "2026-05-31T12:54:23.213Z",
+        "rssUrl": "https://trends.google.com/trending/rss?geo=US",
+        "rssRank": 8,
+        "approxTraffic": "1000+",
+        "pubDate": "Sun, 31 May 2026 04:30:00 -0700",
+        "relatedNewsItems": [
+          {
+            "title": "Waning American Support for Israel Sets the Scene for Parade in New York",
+            "url": "https://www.nytimes.com/2026/05/31/nyregion/israel-day-parade-nyc.html",
+            "source": "The New York Times"
+          },
+          {
+            "title": "List of street closures for Israel Day Parade",
+            "url": "https://abc7ny.com/post/list-street-closures-israel-day-parade/19202578/",
+            "source": "ABC7 Eyewitness News"
+          },
+          {
+            "title": "NYC Mayor Zohran Mamdani will skip annual parade celebrating Israel but pledges big police presence",
+            "url": "https://www.yahoo.com/news/politics/articles/nyc-mayor-zohran-mamdani-skip-040139007.html",
+            "source": "Yahoo"
+          }
+        ]
+      }
+    },
+    {
+      "id": "gb-mortgages",
+      "market": "gb",
+      "language": "en",
+      "country": "GB",
+      "geo": "GB",
+      "trendSeed": "mortgages",
+      "searchQuery": "UK mortgage rates 2026 guide best deals compare",
+      "serpLocale": "gl=gb hl=en",
+      "selectedBecause": "UK finance trend where pages win with rate freshness, comparison tables, calculators, and fee warnings.",
+      "topSites": [
+        {
+          "observedPosition": 1,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Mortgage Rates UK 2026 | Best Deals & How to Compare",
+          "url": "https://www.krediks.com/gb/mortgage-rates-uk/",
+          "pageType": "finance guide",
+          "signals": [
+            "rate table",
+            "updated month",
+            "total-cost warning"
+          ]
+        },
+        {
+          "observedPosition": 2,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Best UK Mortgage Deals 2026 - Forbes Advisor UK",
+          "url": "https://www.forbes.com/uk/advisor/mortgages/",
+          "pageType": "comparison guide",
+          "signals": [
+            "ranked cards",
+            "methodology",
+            "editorial ratings"
+          ]
+        },
+        {
+          "observedPosition": 3,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Best Mortgage Rates UK 2026 - PocketWise",
+          "url": "https://pocketwise.co.uk/mortgages-property/best-mortgage-rates/",
+          "pageType": "finance guide",
+          "signals": [
+            "rate bands",
+            "buyer-type sections",
+            "plain-language caveats"
+          ]
+        },
+        {
+          "observedPosition": 4,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "UK Mortgage Guide 2026",
+          "url": "https://mortgagecalcuk.com/uk-mortgage-guide-2026",
+          "pageType": "calculator-led guide",
+          "signals": [
+            "calculator context",
+            "fee comparison",
+            "repayment examples"
+          ]
+        },
+        {
+          "observedPosition": 5,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Best Mortgage Rates UK - Mortgage Genie",
+          "url": "https://www.mortgagegenie.uk/best-mortgage-rates",
+          "pageType": "broker comparison",
+          "signals": [
+            "current-rate timestamp",
+            "comparison CTA",
+            "eligibility framing"
+          ]
+        }
+      ],
+      "trendEvidence": {
+        "source": "Google Trends public Trending RSS endpoint",
+        "rssSnapshotFile": "data/raw/google-trends-rss-snapshot-2026-05-31-frontend-100.json",
+        "snapshotCapturedAt": "2026-05-31T12:54:23.213Z",
+        "rssUrl": "https://trends.google.com/trending/rss?geo=GB",
+        "rssRank": 3,
+        "approxTraffic": "200+",
+        "pubDate": "Sun, 31 May 2026 05:20:00 -0700",
+        "relatedNewsItems": [
+          {
+            "title": "‘It feels unfair’: the Britons struggling to get a mortgage since Iran war began",
+            "url": "https://www.theguardian.com/money/2026/may/29/britons-struggling-mortgage-since-iran-war-began",
+            "source": "The Guardian"
+          },
+          {
+            "title": "Barclays and NatWest slash mortgage rates in &apos;significant shift&apos; by major lenders",
+            "url": "https://www.thisismoney.co.uk/money/mortgageshome/article-15858013/Barclays-NatWest-slash-mortgage-rates-significant-shift-major-lenders.html",
+            "source": "This is Money"
+          },
+          {
+            "title": "Consumers feel double-edged impact of interest rate hikes",
+            "url": "https://www.retailbankerinternational.com/analyst-comment/consumers-feel-double-edged-impact-interest-rate-hikes/",
+            "source": "Retail Banker International"
+          }
+        ]
+      }
+    },
+    {
+      "id": "gb-savings",
+      "market": "gb",
+      "language": "en",
+      "country": "GB",
+      "geo": "GB",
+      "trendSeed": "savings",
+      "searchQuery": "UK savings account guide best rates 2026",
+      "serpLocale": "gl=gb hl=en",
+      "selectedBecause": "UK savings trend where strong pages expose current rates, tax wrapper caveats, and safety limits.",
+      "topSites": [
+        {
+          "observedPosition": 1,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "The best cash ISAs - MoneyWeek",
+          "url": "https://moneyweek.com/personal-finance/savings/isas/best-cash-isas",
+          "pageType": "finance guide",
+          "signals": [
+            "rate freshness",
+            "tax allowance explanation",
+            "in-brief summary"
+          ]
+        },
+        {
+          "observedPosition": 2,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Best UK Savings Accounts 2026/27",
+          "url": "https://uktaxdrag.co.uk/best-uk-savings-accounts-2026-27.html",
+          "pageType": "finance comparison",
+          "signals": [
+            "table of sections",
+            "FSCS note",
+            "review date"
+          ]
+        },
+        {
+          "observedPosition": 3,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Best savings accounts in the UK 2026 - APYData",
+          "url": "https://apydata.com/blog/best-savings-accounts-uk-2026",
+          "pageType": "rate guide",
+          "signals": [
+            "rate-led headline",
+            "account-type comparison",
+            "short summary"
+          ]
+        },
+        {
+          "observedPosition": 4,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Best Savings Rates UK 2026 - PocketWise",
+          "url": "https://pocketwise.co.uk/personal-finance/budgeting/savings-rates-guide/",
+          "pageType": "finance guide",
+          "signals": [
+            "rate overview",
+            "account-type sections",
+            "risk caveats"
+          ]
+        },
+        {
+          "observedPosition": 5,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Best Instant Access Savings Accounts In 2026 - Forbes Advisor UK",
+          "url": "https://www.forbes.com/uk/advisor/savings/instant-access-savings-accounts/",
+          "pageType": "comparison guide",
+          "signals": [
+            "ranked provider cards",
+            "methodology",
+            "editorial review"
+          ]
+        }
+      ],
+      "trendEvidence": {
+        "source": "Google Trends public Trending RSS endpoint",
+        "rssSnapshotFile": "data/raw/google-trends-rss-snapshot-2026-05-31-frontend-100.json",
+        "snapshotCapturedAt": "2026-05-31T12:54:23.213Z",
+        "rssUrl": "https://trends.google.com/trending/rss?geo=GB",
+        "rssRank": 4,
+        "approxTraffic": "200+",
+        "pubDate": "Sun, 31 May 2026 05:20:00 -0700",
+        "relatedNewsItems": [
+          {
+            "title": "Governor Ron DeSantis Announces Special Session on Property Tax Relief & Unveils “Save Our Homes” Property Tax Elimination Proposal | Executive Office of the Governor",
+            "url": "https://www.flgov.com/eog/news/press/2026/governor-ron-desantis-announces-special-session-property-tax-relief-unveils-save",
+            "source": "Office of Governor Ron DeSantis"
+          },
+          {
+            "title": "Calculator to determine home property tax savings now available, DeSantis says",
+            "url": "https://www.nbcmiami.com/news/local/calculator-to-determine-home-property-tax-savings-now-available-desantis-says/3815218/",
+            "source": "NBC 6 South Florida"
+          },
+          {
+            "title": "Andrade warns &apos;Save Our Homes&apos; could impact school, law enforcement budgets in Florida",
+            "url": "https://weartv.com/news/local/budget-concerns-raised-as-desantis-seeks-250k-homestead-exemption-and-tax-phaseout",
+            "source": "WEAR-TV"
+          }
+        ]
+      }
+    },
+    {
+      "id": "gb-insurance",
+      "market": "gb",
+      "language": "en",
+      "country": "GB",
+      "geo": "GB",
+      "trendSeed": "insurance",
+      "searchQuery": "UK insurance guide compare 2026",
+      "serpLocale": "gl=gb hl=en",
+      "selectedBecause": "UK insurance trend where top UX is dominated by comparison cards, calculators, exclusions, and policy warnings.",
+      "topSites": [
+        {
+          "observedPosition": 1,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Best Car Insurance Companies - Forbes Advisor UK",
+          "url": "https://www.forbes.com/uk/advisor/car-insurance/best-car-insurance-companies/",
+          "pageType": "insurance comparison",
+          "signals": [
+            "ranked table",
+            "review criteria",
+            "policy caveats"
+          ]
+        },
+        {
+          "observedPosition": 2,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Car Insurance - MoneySuperMarket",
+          "url": "https://www.moneysupermarket.com/car-insurance/",
+          "pageType": "comparison landing page",
+          "signals": [
+            "quote CTA",
+            "benefit bullets",
+            "trust stats"
+          ]
+        },
+        {
+          "observedPosition": 3,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Compare Car Insurance - Compare the Market",
+          "url": "https://www.comparethemarket.com/car-insurance/",
+          "pageType": "comparison landing page",
+          "signals": [
+            "form-first layout",
+            "coverage explanation",
+            "FAQ accordion"
+          ]
+        },
+        {
+          "observedPosition": 4,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Car Insurance - Go.Compare",
+          "url": "https://www.gocompare.com/car-insurance/",
+          "pageType": "comparison landing page",
+          "signals": [
+            "step-by-step quote path",
+            "coverage cards",
+            "support FAQs"
+          ]
+        },
+        {
+          "observedPosition": 5,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Insurance guides - Which?",
+          "url": "https://www.which.co.uk/money/insurance",
+          "pageType": "consumer advice hub",
+          "signals": [
+            "category hub",
+            "expert advice",
+            "buyer protection framing"
+          ]
+        }
+      ],
+      "trendEvidence": {
+        "source": "Google Trends public Trending RSS endpoint",
+        "rssSnapshotFile": "data/raw/google-trends-rss-snapshot-2026-05-31-frontend-100.json",
+        "snapshotCapturedAt": "2026-05-31T12:54:23.213Z",
+        "rssUrl": "https://trends.google.com/trending/rss?geo=GB",
+        "rssRank": 5,
+        "approxTraffic": "200+",
+        "pubDate": "Sun, 31 May 2026 05:10:00 -0700",
+        "relatedNewsItems": [
+          {
+            "title": "Streeting suggests NI cut and North Sea drilling",
+            "url": "https://www.bbc.co.uk/news/articles/cy42z03r18xo",
+            "source": "BBC"
+          },
+          {
+            "title": "Streeting backs drilling for North Sea oil",
+            "url": "https://www.telegraph.co.uk/politics/2026/05/31/wes-streeting-north-sea-oil-drilling-labour-ed-miliband/",
+            "source": "The Telegraph"
+          },
+          {
+            "title": "Politics latest: Tax rise defended by minister after Streeting criticism",
+            "url": "https://news.sky.com/story/politics-latest-tories-criticise-delay-in-publishing-defence-funding-plan-12593360",
+            "source": "Sky News"
+          }
+        ]
+      }
+    },
+    {
+      "id": "gb-marks-and-spencer",
+      "market": "gb",
+      "language": "en",
+      "country": "GB",
+      "geo": "GB",
+      "trendSeed": "marks and spencer uk",
+      "searchQuery": "Marks and Spencer UK sale guide returns delivery",
+      "serpLocale": "gl=gb hl=en",
+      "selectedBecause": "UK retail trend where useful pages foreground sale policy, delivery, return windows, and product fit.",
+      "topSites": [
+        {
+          "observedPosition": 1,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Returns and Refunds - M&S",
+          "url": "https://www.marksandspencer.com/help-and-support/returns-and-refunds",
+          "pageType": "retail help page",
+          "signals": [
+            "policy answer first",
+            "sale return exception",
+            "FAQ structure"
+          ]
+        },
+        {
+          "observedPosition": 2,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Delivery - M&S",
+          "url": "https://www.marksandspencer.com/help-and-support/delivery",
+          "pageType": "retail help page",
+          "signals": [
+            "delivery option cards",
+            "exceptions",
+            "support hierarchy"
+          ]
+        },
+        {
+          "observedPosition": 3,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Sale - M&S",
+          "url": "https://www.marksandspencer.com/l/sale",
+          "pageType": "retail category page",
+          "signals": [
+            "category filters",
+            "sale navigation",
+            "product grid"
+          ]
+        },
+        {
+          "observedPosition": 4,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Marks and Spencer coats - Woman & Home",
+          "url": "https://www.womanandhome.com/fashion/marks-and-spencer-coats/",
+          "pageType": "shopping guide",
+          "signals": [
+            "expert intro",
+            "product roundup",
+            "return-policy context"
+          ]
+        },
+        {
+          "observedPosition": 5,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "M&S Help and Support",
+          "url": "https://www.marksandspencer.com/help-and-support",
+          "pageType": "support hub",
+          "signals": [
+            "topic hub",
+            "search/help entry",
+            "clear service categories"
+          ]
+        }
+      ],
+      "trendEvidence": {
+        "source": "Google Trends public Trending RSS endpoint",
+        "rssSnapshotFile": "data/raw/google-trends-rss-snapshot-2026-05-31-frontend-100.json",
+        "snapshotCapturedAt": "2026-05-31T12:54:23.213Z",
+        "rssUrl": "https://trends.google.com/trending/rss?geo=GB",
+        "rssRank": 7,
+        "approxTraffic": "1000+",
+        "pubDate": "Sun, 31 May 2026 04:30:00 -0700",
+        "relatedNewsItems": [
+          {
+            "title": "Former M&S chief appointed to tackle UK youth unemployment crisis",
+            "url": "https://www.theguardian.com/society/2026/may/30/former-ms-chief-appointed-to-tackle-uk-youth-unemployment-crisis",
+            "source": "The Guardian"
+          },
+          {
+            "title": "Former M&S boss drafted in to help ministers tackle NEET crisis",
+            "url": "https://news.sky.com/story/former-mands-boss-drafted-in-to-help-ministers-tackle-neet-crisis-13549430",
+            "source": "Sky News"
+          },
+          {
+            "title": "Ex-M&S chief to help government tackle youth unemployment",
+            "url": "https://www.bbc.co.uk/news/articles/cg5p9y25qj1o",
+            "source": "BBC"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ca-bike-for-brain-health",
+      "market": "ca",
+      "language": "en",
+      "country": "CA",
+      "geo": "CA",
+      "trendSeed": "bike for brain health",
+      "searchQuery": "Bike for Brain Health Toronto 2026 route guide",
+      "serpLocale": "gl=ca hl=en",
+      "selectedBecause": "Canada event trend where route maps, transport disruption, rider kits, and start-line instructions dominate UX.",
+      "topSites": [
+        {
+          "observedPosition": 1,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Mattamy Homes Bike for Brain Health",
+          "url": "https://bikeforbrainhealth.ca/",
+          "pageType": "official event page",
+          "signals": [
+            "route maps",
+            "registration CTA",
+            "cause explanation"
+          ]
+        },
+        {
+          "observedPosition": 2,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Bike for Brain Health 2026 - Trailforks",
+          "url": "https://www.trailforks.com/route/bike-for-brain-health-2026-30km/",
+          "pageType": "route map",
+          "signals": [
+            "map-first route",
+            "distance/difficulty metadata",
+            "local trail context"
+          ]
+        },
+        {
+          "observedPosition": 3,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Bike for Brain Health - Festivals Toronto",
+          "url": "https://festivalstoronto.com/events/bike-for-brain-health/",
+          "pageType": "event listing",
+          "signals": [
+            "date/location summary",
+            "short description",
+            "city-event format"
+          ]
+        },
+        {
+          "observedPosition": 4,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Bike for Brain Health Rider Kit",
+          "url": "https://bikeforbrainhealth.ca/wp-content/uploads/2025/05/Rider-Kit.pdf",
+          "pageType": "rider PDF",
+          "signals": [
+            "pre-event checklist",
+            "route plan",
+            "participant instructions"
+          ]
+        },
+        {
+          "observedPosition": 5,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Toronto weekend road and transit closures - CBC",
+          "url": "https://www.cbc.ca/news/canada/toronto/road-transit-closures-gta-9.7217898",
+          "pageType": "local service explainer",
+          "signals": [
+            "closure list",
+            "event context",
+            "practical planning"
+          ]
+        }
+      ],
+      "trendEvidence": {
+        "source": "Google Trends public Trending RSS endpoint",
+        "rssSnapshotFile": "data/raw/google-trends-rss-snapshot-2026-05-31-frontend-100.json",
+        "snapshotCapturedAt": "2026-05-31T12:54:23.213Z",
+        "rssUrl": "https://trends.google.com/trending/rss?geo=CA",
+        "rssRank": 1,
+        "approxTraffic": "500+",
+        "pubDate": "Sun, 31 May 2026 05:40:00 -0700",
+        "relatedNewsItems": [
+          {
+            "title": "What you need to know about TTC, GO, UP, road closures taking place this weekend",
+            "url": "https://www.cbc.ca/news/canada/toronto/road-transit-closures-gta-9.7217898",
+            "source": "CBC"
+          },
+          {
+            "title": "Gardiner Expressway to close this Sunday amid widespread TTC, GO train service suspensions",
+            "url": "https://www.cp24.com/local/toronto/2026/05/28/toronto-to-see-major-road-closures-transit-disruptions-this-weekend/",
+            "source": "CP24"
+          },
+          {
+            "title": "DVP, Gardiner weekend closure, TTC service for Bruno Mars",
+            "url": "https://www.thestar.com/news/gta/dvp-and-gardiner-to-close-this-weekend-ttc-adding-service-for-bruno-mars-concerts-heres-what-you-need-to-know/article_08311dba-0901-4a3d-917e-3df4b3a0d318.html",
+            "source": "Toronto Star"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ca-weather-montreal",
+      "market": "ca",
+      "language": "en",
+      "country": "CA",
+      "geo": "CA",
+      "trendSeed": "weather montreal",
+      "searchQuery": "weather Montreal forecast guide Environment Canada MeteoMedia",
+      "serpLocale": "gl=ca hl=en",
+      "selectedBecause": "Canada weather trend where top pages use current-condition cards, warning status, hourly tabs, and map modules.",
+      "topSites": [
+        {
+          "observedPosition": 1,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Montreal Forecast - Environment Canada",
+          "url": "https://weather.gc.ca/city/pages/qc-147_metric_e.html",
+          "pageType": "official weather page",
+          "signals": [
+            "current conditions",
+            "alerts",
+            "forecast table"
+          ]
+        },
+        {
+          "observedPosition": 2,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Montreal Weather - The Weather Network",
+          "url": "https://www.theweathernetwork.com/en/city/ca/quebec/montreal",
+          "pageType": "weather dashboard",
+          "signals": [
+            "hourly/daily tabs",
+            "map modules",
+            "condition cards"
+          ]
+        },
+        {
+          "observedPosition": 3,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Montreal Weather - MétéoMédia",
+          "url": "https://www.meteomedia.com/en/city/ca/quebec/montreal",
+          "pageType": "weather dashboard",
+          "signals": [
+            "localized forecast",
+            "warning modules",
+            "visual cards"
+          ]
+        },
+        {
+          "observedPosition": 4,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Tour la Nuit called off as severe weather hits Montreal - Montreal Gazette",
+          "url": "https://montrealgazette.com/news/tour-la-nuit-called-off-minutes-before-start-as-severe-weather-hits-montreal/",
+          "pageType": "local weather impact page",
+          "signals": [
+            "event impact first",
+            "updated status",
+            "local context"
+          ]
+        },
+        {
+          "observedPosition": 5,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Severe thunderstorm warning issued for Montreal area - CTV News",
+          "url": "https://www.ctvnews.ca/montreal/article/severe-thunderstorm-warning-issued-for-montreal-area-2/",
+          "pageType": "alert explainer",
+          "signals": [
+            "warning first",
+            "timing",
+            "safety context"
+          ]
+        }
+      ],
+      "trendEvidence": {
+        "source": "Google Trends public Trending RSS endpoint",
+        "rssSnapshotFile": "data/raw/google-trends-rss-snapshot-2026-05-31-frontend-100.json",
+        "snapshotCapturedAt": "2026-05-31T12:54:23.213Z",
+        "rssUrl": "https://trends.google.com/trending/rss?geo=CA",
+        "rssRank": 5,
+        "approxTraffic": "100+",
+        "pubDate": "Sun, 31 May 2026 04:40:00 -0700",
+        "relatedNewsItems": [
+          {
+            "title": "Tour la Nuit called off minutes before start as severe weather hits Montreal",
+            "url": "https://montrealgazette.com/news/tour-la-nuit-called-off-minutes-before-start-as-severe-weather-hits-montreal/",
+            "source": "Montreal Gazette"
+          },
+          {
+            "title": "Tour la Nuit participants can register for Tour de l&apos;Île after nighttime event cancelled",
+            "url": "https://www.cbc.ca/news/canada/montreal/tour-la-nuit-cancelled-due-to-weather-9.7217859",
+            "source": "CBC"
+          },
+          {
+            "title": "Montreal area no longer under severe thunderstorm warning",
+            "url": "https://www.ctvnews.ca/montreal/article/severe-thunderstorm-warning-issued-for-montreal-area-2/",
+            "source": "CTV News"
+          }
+        ]
+      }
+    },
+    {
+      "id": "es-moto-gp-hoy",
+      "market": "es",
+      "language": "es",
+      "country": "ES",
+      "geo": "ES",
+      "trendSeed": "moto gp hoy",
+      "searchQuery": "moto gp hoy horario donde ver guia 2026 España",
+      "serpLocale": "gl=es hl=es",
+      "selectedBecause": "Spain sports-viewing trend where pages win with schedule, channel, streaming, and race context blocks.",
+      "topSites": [
+        {
+          "observedPosition": 1,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Horario Moto GP hoy - LOS40",
+          "url": "https://los40.com/2026/05/31/horario-moto-gp-hoy-a-que-hora-es-la-carrera-en-italia-y-donde-verla-en-tv-y-online-en-directo/",
+          "pageType": "viewing guide",
+          "signals": [
+            "time answer first",
+            "where-to-watch section",
+            "race context"
+          ]
+        },
+        {
+          "observedPosition": 2,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "HORARIOS: Gran Premio Estrella Galicia 0,0 de España - MotoGP",
+          "url": "https://www.motogp.com/es/news/2026/04/14/time-schedule-spanish-gp/1020279",
+          "pageType": "official schedule",
+          "signals": [
+            "official source",
+            "schedule table",
+            "event framing"
+          ]
+        },
+        {
+          "observedPosition": 3,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "MotoGP 2026: Horarios, TV y dónde ver - ADSLZone",
+          "url": "https://www.adslzone.net/reportajes/como-ver/ver-moto-gp/",
+          "pageType": "streaming guide",
+          "signals": [
+            "platform comparison",
+            "season-wide guidance",
+            "FAQ structure"
+          ]
+        },
+        {
+          "observedPosition": 4,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "GP de Italia de MotoGP: canal TV, horarios, cómo y dónde ver - AS",
+          "url": "https://as.com/motor/motociclismo/gp-de-italia-de-motogp-canal-tv-horarios-como-y-donde-ver-las-carreras-en-mugello-en-directo-online-f202605-n/",
+          "pageType": "sports guide",
+          "signals": [
+            "channel/time blocks",
+            "live context",
+            "event-specific headline"
+          ]
+        },
+        {
+          "observedPosition": 5,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Horario MotoGP del GP de España 2026 - Motorbike Magazine",
+          "url": "https://www.motorbikemag.es/horario-motogp-gp-espana-2026-jerez-fecha-hora-como-ver-carreras-gratis-abierto/",
+          "pageType": "specialist guide",
+          "signals": [
+            "event schedule",
+            "how-to-watch",
+            "enthusiast context"
+          ]
+        }
+      ],
+      "trendEvidence": {
+        "source": "Google Trends public Trending RSS endpoint",
+        "rssSnapshotFile": "data/raw/google-trends-rss-snapshot-2026-05-31-frontend-100.json",
+        "snapshotCapturedAt": "2026-05-31T12:54:23.213Z",
+        "rssUrl": "https://trends.google.com/trending/rss?geo=ES",
+        "rssRank": 1,
+        "approxTraffic": "1000+",
+        "pubDate": "Sun, 31 May 2026 05:30:00 -0700",
+        "relatedNewsItems": [
+          {
+            "title": "Carrera GP Italia MotoGP, en directo: última hora de Márquez, Martín y Acosta hoy en Mugello, en vivo",
+            "url": "https://as.com/motor/motociclismo/carrera-gp-italia-motogp-en-directo-ultima-hora-de-marquez-martin-y-acosta-hoy-en-mugello-en-vivo-f202605-d/",
+            "source": "Diario AS"
+          },
+          {
+            "title": "Carrera MotoGP del GP Italia en directo | Marc Márquez en Mugello hoy en vivo",
+            "url": "https://www.marca.com/motor/motogp/gp-italia/2026/05/31/05_0502_20260531_7_1-directo.html",
+            "source": "MARCA"
+          },
+          {
+            "title": "Gran Premio de Italia en directo, la carrera de MotoGP en vivo",
+            "url": "https://elpais.com/deportes/motociclismo/2026-05-31/gran-premio-de-italia-en-directo-la-carrera-de-motogp-en-vivo.html",
+            "source": "EL PAÍS"
+          }
+        ]
+      }
+    },
+    {
+      "id": "br-pluto-tv",
+      "market": "br",
+      "language": "pt-br",
+      "country": "BR",
+      "geo": "BR",
+      "trendSeed": "pluto tv",
+      "searchQuery": "Pluto TV Brasil guia canais gratis 2026",
+      "serpLocale": "gl=br hl=pt-BR",
+      "selectedBecause": "Brazil streaming trend where top pages combine channel lists, free/legal explanation, and device instructions.",
+      "topSites": [
+        {
+          "observedPosition": 1,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Pluto TV: Como assistir séries e filmes grátis oficialmente - Tecnoup",
+          "url": "https://www.tecnoup.net.br/pluto-tv-como-assistir-series-e-filmes-gratis-oficialmente/",
+          "pageType": "streaming guide",
+          "signals": [
+            "updated guide",
+            "legal/free explanation",
+            "device instructions"
+          ]
+        },
+        {
+          "observedPosition": 2,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Pluto TV é GRÁTIS? - Minha Conexão",
+          "url": "https://www.minhaconexao.com.br/planos/streaming/pluto-tv",
+          "pageType": "consumer guide",
+          "signals": [
+            "answer-first title",
+            "channel examples",
+            "updated date"
+          ]
+        },
+        {
+          "observedPosition": 3,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Pluto TV lança seis novos canais - TV Pop",
+          "url": "https://www.tvpop.com.br/337513/pluto-tv-lanca-seis-novos-canais-em-janeiro-e-reforca-catalogo-gratuito/",
+          "pageType": "catalog update",
+          "signals": [
+            "new-channel list",
+            "catalog context",
+            "date freshness"
+          ]
+        },
+        {
+          "observedPosition": 4,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "List of channels on Pluto TV Brazil - TV Channel Lists",
+          "url": "https://www.tvchannellists.com/w/List_of_channels_on_Pluto_TV_%28Brazil%29",
+          "pageType": "reference list",
+          "signals": [
+            "long channel table",
+            "categorized listing",
+            "reference format"
+          ]
+        },
+        {
+          "observedPosition": 5,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Pluto TV Brasil",
+          "url": "https://pluto.tv/br/live-tv",
+          "pageType": "official app page",
+          "signals": [
+            "live channel grid",
+            "watch CTA",
+            "visual browsing"
+          ]
+        }
+      ],
+      "trendEvidence": {
+        "source": "Google Trends public Trending RSS endpoint",
+        "rssSnapshotFile": "data/raw/google-trends-rss-snapshot-2026-05-31-frontend-100.json",
+        "snapshotCapturedAt": "2026-05-31T12:54:23.213Z",
+        "rssUrl": "https://trends.google.com/trending/rss?geo=BR",
+        "rssRank": 1,
+        "approxTraffic": "500+",
+        "pubDate": "Sun, 31 May 2026 05:00:00 -0700",
+        "relatedNewsItems": [
+          {
+            "title": "Pluto TV Adds a New Live 24/7 Channel For Disaster Fans",
+            "url": "https://cordcuttersnews.com/pluto-tv-adds-a-new-live-24-7-channel-for-disaster-fans/",
+            "source": "| Cord Cutters News"
+          },
+          {
+            "title": "Pluto TV Quietly Adds 1 New Channel for Specific Fanbase",
+            "url": "https://www.yahoo.com/entertainment/tv/articles/pluto-tv-quietly-adds-1-004500372.html",
+            "source": "Yahoo"
+          },
+          {
+            "title": "Pluto TV Launches 24/7 Mayday Channel for Aviation Disaster Enthusiasts",
+            "url": "https://www.aol.com/lifestyle/pluto-tv-launches-24-7-004500442.html",
+            "source": "AOL.com"
+          }
+        ]
+      }
+    },
+    {
+      "id": "pt-fisco",
+      "market": "pt",
+      "language": "pt",
+      "country": "PT",
+      "geo": "PT",
+      "trendSeed": "fisco",
+      "searchQuery": "fisco Portugal IRS guia 2026 alerta email fraudulento",
+      "serpLocale": "gl=pt hl=pt",
+      "selectedBecause": "Portugal tax/security trend where pages foreground warnings, official action, and phishing avoidance.",
+      "topSites": [
+        {
+          "observedPosition": 1,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Fisco alerta para e-mail fraudulento - RTP",
+          "url": "https://www.rtp.pt/noticias/pais/fisco-alerta-para-e-mail-fraudulento-sobre-alteracao-da-declaracao-de-irs_n1744595",
+          "pageType": "public-service news explainer",
+          "signals": [
+            "warning first",
+            "source quote",
+            "what not to do"
+          ]
+        },
+        {
+          "observedPosition": 2,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Fisco alerta para e-mails e SMS falsos - RTP",
+          "url": "https://www.rtp.pt/noticias/economia/fisco-alerta-para-e-mails-e-sms-falsos-enviados-para-roubo-de-dados-pessoais_n1738848",
+          "pageType": "fraud explainer",
+          "signals": [
+            "risk summary",
+            "official-source basis",
+            "prevention steps"
+          ]
+        },
+        {
+          "observedPosition": 3,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Fisco alerta para mensagens fraudulentas - Diário de Notícias",
+          "url": "https://www.dn.pt/economia/fisco-alerta-para-mensagens-fraudulentas",
+          "pageType": "public-service explainer",
+          "signals": [
+            "short alert format",
+            "fraud warning",
+            "official attribution"
+          ]
+        },
+        {
+          "observedPosition": 4,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Portal das Finanças phishing alert PDF",
+          "url": "https://info.portaldasfinancas.gov.pt/pt/destaques/Documents/Alerta_Seguranca_Phishing_AT_20210408.pdf",
+          "pageType": "official alert PDF",
+          "signals": [
+            "official warning",
+            "security checklist",
+            "source authority"
+          ]
+        },
+        {
+          "observedPosition": 5,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "A deeper dive into the Dirty Dozen - IRS",
+          "url": "https://www.irs.gov/newsroom/a-deeper-dive-into-the-dirty-dozen-taxpayers-stay-alert-in-peak-filing-season",
+          "pageType": "tax-scam reference",
+          "signals": [
+            "scam taxonomy",
+            "action bullets",
+            "official public-service layout"
+          ]
+        }
+      ],
+      "trendEvidence": {
+        "source": "Google Trends public Trending RSS endpoint",
+        "rssSnapshotFile": "data/raw/google-trends-rss-snapshot-2026-05-31-frontend-100.json",
+        "snapshotCapturedAt": "2026-05-31T12:54:23.213Z",
+        "rssUrl": "https://trends.google.com/trending/rss?geo=PT",
+        "rssRank": 2,
+        "approxTraffic": "500+",
+        "pubDate": "Sun, 31 May 2026 03:10:00 -0700",
+        "relatedNewsItems": [
+          {
+            "title": "Fisco alerta para e-mail fraudulento sobre alteração da declaração de IRS",
+            "url": "https://www.publico.pt/2026/05/31/economia/noticia/fisco-alerta-email-fraudulento-alteracao-declaracao-irs-2176656",
+            "source": "Público"
+          },
+          {
+            "title": "Fisco alerta para mensagens fraudulentas: AT avisa contribuintes sobre esquemas de phishing e links maliciosos",
+            "url": "https://www.dn.pt/economia/fisco-alerta-para-mensagens-fraudulentas",
+            "source": "Diário de Notícias"
+          },
+          {
+            "title": "Fisco alerta para e-mails fraudulentos sobre alterações ao IRS",
+            "url": "https://www.almeirinense.com/2026/05/31/fisco-alerta-para-e-mails-fraudulentos-sobre-alteracoes-ao-irs/",
+            "source": "Jornal O Almeirinense"
+          }
+        ]
+      }
+    },
+    {
+      "id": "pt-heranca",
+      "market": "pt",
+      "language": "pt",
+      "country": "PT",
+      "geo": "PT",
+      "trendSeed": "herança",
+      "searchQuery": "herança Portugal guia imposto selo partilhas",
+      "serpLocale": "gl=pt hl=pt",
+      "selectedBecause": "Portugal inheritance trend where strong UX needs legal caveats, calculators, service steps, and official documents.",
+      "topSites": [
+        {
+          "observedPosition": 1,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Pedir a partilha e registo da herança - gov.pt",
+          "url": "https://www2.gov.pt/pt/servicos/pedir-a-partilha-e-registo-da-heranca",
+          "pageType": "official service page",
+          "signals": [
+            "eligibility questions",
+            "documents section",
+            "service CTA"
+          ]
+        },
+        {
+          "observedPosition": 2,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Simulador de Heranças - Orçamento Fácil",
+          "url": "https://www.orcamentofacil.pt/ferramentas/simulador-herancas",
+          "pageType": "calculator tool",
+          "signals": [
+            "input-driven UI",
+            "legal basis",
+            "reviewed date"
+          ]
+        },
+        {
+          "observedPosition": 3,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Quem é obrigado a pagar o imposto sobre herança? - ComparaJá",
+          "url": "https://www.comparaja.pt/financas-pessoais/artigos/imposto-sobre-heranca",
+          "pageType": "finance/legal guide",
+          "signals": [
+            "answer-first topic",
+            "exceptions",
+            "plain-language examples"
+          ]
+        },
+        {
+          "observedPosition": 4,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Guia Prático Heranças - OCC",
+          "url": "https://www.occ.pt/sites/default/files/public/2024-02/Guia_Pratico_HERANCAS_2.pdf",
+          "pageType": "professional PDF guide",
+          "signals": [
+            "FAQ format",
+            "official/professional source",
+            "procedural detail"
+          ]
+        },
+        {
+          "observedPosition": 5,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Inheritance tax calculator - Partida Final",
+          "url": "https://morte.pt/en/inheritance-calculator.html",
+          "pageType": "calculator tool",
+          "signals": [
+            "calculator first",
+            "stamp-duty explanation",
+            "scenario output"
+          ]
+        }
+      ],
+      "trendEvidence": {
+        "source": "Google Trends public Trending RSS endpoint",
+        "rssSnapshotFile": "data/raw/google-trends-rss-snapshot-2026-05-31-frontend-100.json",
+        "snapshotCapturedAt": "2026-05-31T12:54:23.213Z",
+        "rssUrl": "https://trends.google.com/trending/rss?geo=PT",
+        "rssRank": 3,
+        "approxTraffic": "200+",
+        "pubDate": "Sun, 31 May 2026 02:30:00 -0700",
+        "relatedNewsItems": [
+          {
+            "title": "Entenda o que diz a lei sobre herança e casamento sobre genro ou nora herdar bens da família",
+            "url": "https://tribunadoplanalto.com.br/entenda-o-que-diz-a-lei-sobre-heranca-e-casamento-sobre-genro-ou-nora-herdar-bens-da-familia/",
+            "source": "Tribuna do Planalto"
+          },
+          {
+            "title": "Genro ou nora podem herdar bens da família? Entenda o que diz a lei sobre herança e casamento",
+            "url": "https://ohoje.com/2026/05/29/genro-ou-nora-podem-herdar-bens-da-familia-entenda-o-que-diz-a-lei-sobre-heranca-e-casamento/",
+            "source": "O Hoje"
+          },
+          {
+            "title": "Veja como declarar herança no Imposto de Renda",
+            "url": "https://www1.folha.uol.com.br/mercado/2026/05/veja-como-declarar-heranca-no-imposto-de-renda.shtml",
+            "source": "Folha de S.Paulo"
+          }
+        ]
+      }
+    },
+    {
+      "id": "de-azoren",
+      "market": "de",
+      "language": "de",
+      "country": "DE",
+      "geo": "DE",
+      "trendSeed": "azoren",
+      "searchQuery": "Azores travel guide 2026 best islands itinerary",
+      "serpLocale": "gl=de hl=de",
+      "selectedBecause": "Germany travel trend where guide pages win with itinerary tables, map-like structure, and island-by-island fit.",
+      "topSites": [
+        {
+          "observedPosition": 1,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Complete Azores Island Hopping Guide - Travel Azores",
+          "url": "https://travel-azores.com/en/magazine/guia-completo-de-island-hopping-nos-acores",
+          "pageType": "travel itinerary guide",
+          "signals": [
+            "itinerary blocks",
+            "island-by-island grouping",
+            "route logistics"
+          ]
+        },
+        {
+          "observedPosition": 2,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Which Islands to Visit in the Azores? - Geeky Explorer",
+          "url": "https://www.geekyexplorer.com/best-islands-azores-itinerary/",
+          "pageType": "travel guide",
+          "signals": [
+            "style-based recommendations",
+            "island comparison",
+            "updated date"
+          ]
+        },
+        {
+          "observedPosition": 3,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Visit Azores",
+          "url": "https://www.visitazores.com/en",
+          "pageType": "official destination hub",
+          "signals": [
+            "visual destination cards",
+            "official navigation",
+            "planning categories"
+          ]
+        },
+        {
+          "observedPosition": 4,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Azores Getaways",
+          "url": "https://www.azoresgetaways.com/en-us/destination/azores",
+          "pageType": "travel hub",
+          "signals": [
+            "package-oriented UX",
+            "destination overview",
+            "visual itinerary cards"
+          ]
+        },
+        {
+          "observedPosition": 5,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "The Azores - Lonely Planet",
+          "url": "https://www.lonelyplanet.com/portugal/the-azores",
+          "pageType": "destination guide",
+          "signals": [
+            "overview first",
+            "things-to-do sections",
+            "travel planning hierarchy"
+          ]
+        }
+      ],
+      "trendEvidence": {
+        "source": "Google Trends public Trending RSS endpoint",
+        "rssSnapshotFile": "data/raw/google-trends-rss-snapshot-2026-05-31-frontend-100.json",
+        "snapshotCapturedAt": "2026-05-31T12:54:23.213Z",
+        "rssUrl": "https://trends.google.com/trending/rss?geo=DE",
+        "rssRank": 3,
+        "approxTraffic": "200+",
+        "pubDate": "Sun, 31 May 2026 05:00:00 -0700",
+        "relatedNewsItems": [
+          {
+            "title": "Lagoa das Sete Cidades: So planen Unternehmen den Azoren-Trip smarter",
+            "url": "https://www.it-boltwise.de/lagoa-das-sete-cidades-so-planen-unternehmen-den-azoren-trip-smarter.html",
+            "source": "it boltwise"
+          },
+          {
+            "title": "Sao Miguel Azoren-See? – Lagoa das Sete Cidades zwischen Mythos und Kraterwelten",
+            "url": "https://www.ad-hoc-news.de/unterhaltung/reisen/sao-miguel-azoren-see-lagoa-das-sete-cidades-zwischen-mythos-und/69454178",
+            "source": "Ad Hoc News"
+          },
+          {
+            "title": "Sete Cidades auf São Miguel: Doppelsee im Vulkankrater der Azoren",
+            "url": "https://www.it-boltwise.de/sete-cidades-auf-sao-miguel-doppelsee-im-vulkankrater-der-azoren.html",
+            "source": "it boltwise"
+          }
+        ]
+      }
+    },
+    {
+      "id": "de-olympia-hamburg",
+      "market": "de",
+      "language": "de",
+      "country": "DE",
+      "geo": "DE",
+      "trendSeed": "olympia hamburg",
+      "searchQuery": "Olympia Hamburg 2026 referendum guide",
+      "serpLocale": "gl=de hl=de",
+      "selectedBecause": "Germany civic trend where official pages use accessibility links, voting steps, downloads, and side navigation.",
+      "topSites": [
+        {
+          "observedPosition": 1,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Informationen zum Olympia-Referendum 2026 - hamburg.de",
+          "url": "https://www.hamburg.de/politik-und-verwaltung/behoerden/behoerde-fuer-inneres-und-sport/themen/wahlen/informationen-olympia-referendum-1160924",
+          "pageType": "official referendum page",
+          "signals": [
+            "official date/time",
+            "download block",
+            "accessibility links"
+          ]
+        },
+        {
+          "observedPosition": 2,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Wichtige Hinweise vor der Abstimmung - hamburg.de",
+          "url": "https://www.hamburg.de/politik-und-verwaltung/behoerden/behoerde-fuer-inneres-und-sport/presseservice/pressemeldungen/olympia-referendum-am-31-mai-2026-1178294",
+          "pageType": "official notice",
+          "signals": [
+            "action timing",
+            "threshold explanation",
+            "contact path"
+          ]
+        },
+        {
+          "observedPosition": 3,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Ihre Stimme für Olympia und Paralympics in Hamburg - hamburg.de",
+          "url": "https://www.hamburg.de/olympia/ihre-stimme-fuer-olympia-und-paralympics-in-hamburg-1155878",
+          "pageType": "official campaign explainer",
+          "signals": [
+            "how-to-vote section",
+            "plain-language support",
+            "official story flow"
+          ]
+        },
+        {
+          "observedPosition": 4,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Olympia-Bewerbung: Deine Stadt, deine Stimme, deine Spiele - hamburg.de",
+          "url": "https://www.hamburg.de/politik-und-verwaltung/behoerden/behoerde-fuer-inneres-und-sport/olympia-bewerbung-deine-stadt-deine-stimme-deine-spiele-buergerbeteiligung-startet-im-november-1109128",
+          "pageType": "civic explainer",
+          "signals": [
+            "public participation framing",
+            "benefit sections",
+            "official visuals"
+          ]
+        },
+        {
+          "observedPosition": 5,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Bürgerschaftsreferendum von 2026 - Wikipedia",
+          "url": "https://de.wikipedia.org/wiki/B%C3%BCrgerschaftsreferendum_von_2026_%C3%BCber_die_Bewerbung_Hamburgs_f%C3%BCr_die_Olympischen_Spiele",
+          "pageType": "reference page",
+          "signals": [
+            "structured reference",
+            "context links",
+            "neutral chronology"
+          ]
+        }
+      ],
+      "trendEvidence": {
+        "source": "Google Trends public Trending RSS endpoint",
+        "rssSnapshotFile": "data/raw/google-trends-rss-snapshot-2026-05-31-frontend-100.json",
+        "snapshotCapturedAt": "2026-05-31T12:54:23.213Z",
+        "rssUrl": "https://trends.google.com/trending/rss?geo=DE",
+        "rssRank": 5,
+        "approxTraffic": "500+",
+        "pubDate": "Sun, 31 May 2026 04:50:00 -0700",
+        "relatedNewsItems": [
+          {
+            "title": "Olympische Spiele in Deutschland: Hamburg stimmt über Olympia-Bewerbung ab",
+            "url": "https://www.zeit.de/sport/2026-05/hamburg-austragung-olympische-spiele-abstimmung-gxe",
+            "source": "DIE ZEIT"
+          },
+          {
+            "title": "Olympia-Referendum in Hamburg: Bislang fast 50 Prozent Wahlbeteiligung",
+            "url": "https://www.ndr.de/nachrichten/hamburg/olympia-referendum-in-hamburg-bislang-fast-50-prozent-wahlbeteiligung,olympia-648.html",
+            "source": "NDR.de"
+          },
+          {
+            "title": "Olympia-Entscheid: So viele Hamburger haben schon abgestimmt",
+            "url": "https://www.mopo.de/hamburg/liveticker-zur-olympia-wahl-wie-entscheidet-sich-hamburg/",
+            "source": "MOPO"
+          }
+        ]
+      }
+    },
+    {
+      "id": "it-bali",
+      "market": "it",
+      "language": "it",
+      "country": "IT",
+      "geo": "IT",
+      "trendSeed": "bali",
+      "searchQuery": "Bali travel guide 2026 guida Bali",
+      "serpLocale": "gl=it hl=it",
+      "selectedBecause": "Italy travel trend where top travel pages use visual hero media, budget boxes, entry checklist, and itinerary sections.",
+      "topSites": [
+        {
+          "observedPosition": 1,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Bali Travel Guide 2026",
+          "url": "https://itsbusinessmarket.com/bali-travel-guide/",
+          "pageType": "travel guide",
+          "signals": [
+            "budget planner",
+            "itinerary map mention",
+            "long table of contents"
+          ]
+        },
+        {
+          "observedPosition": 2,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Viajar a Bali en 2026 - En Bali",
+          "url": "https://enbali.net/viajar-a-bali-2026/",
+          "pageType": "resident guide",
+          "signals": [
+            "updated label",
+            "local expertise",
+            "planning checklist"
+          ]
+        },
+        {
+          "observedPosition": 3,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Bali travel guide - Lonely Planet",
+          "url": "https://www.lonelyplanet.com/indonesia/bali",
+          "pageType": "destination guide",
+          "signals": [
+            "visual destination hub",
+            "things to do",
+            "planning hierarchy"
+          ]
+        },
+        {
+          "observedPosition": 4,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Bali Travel Guide - Travel + Leisure",
+          "url": "https://www.travelandleisure.com/travel-guide/bali",
+          "pageType": "destination guide",
+          "signals": [
+            "hero image",
+            "best-time sections",
+            "where-to-stay flow"
+          ]
+        },
+        {
+          "observedPosition": 5,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Bali Holiday Secrets",
+          "url": "https://www.baliholidaysecrets.com/",
+          "pageType": "local travel guide",
+          "signals": [
+            "local tips",
+            "destination navigation",
+            "planning cards"
+          ]
+        }
+      ],
+      "trendEvidence": {
+        "source": "Google Trends public Trending RSS endpoint",
+        "rssSnapshotFile": "data/raw/google-trends-rss-snapshot-2026-05-31-frontend-100.json",
+        "snapshotCapturedAt": "2026-05-31T12:54:23.213Z",
+        "rssUrl": "https://trends.google.com/trending/rss?geo=IT",
+        "rssRank": 7,
+        "approxTraffic": "100+",
+        "pubDate": "Sun, 31 May 2026 05:10:00 -0700",
+        "relatedNewsItems": [
+          {
+            "title": "14 bashed, bottles broken in wild Bali brawl",
+            "url": "https://www.news.com.au/travel/travel-updates/incidents/shocking-moment-at-least-14-tourists-get-into-wild-brawl-in-popular-bali-nightclub/news-story/350b0f2b4158d47009a734c6c8397593",
+            "source": "News.com.au"
+          },
+          {
+            "title": "How the Viral Fight at Bali’s Jade Nightclub Unfolded",
+            "url": "https://thebalitimes.com/the-island/how-the-viral-fight-at-balis-jade-nightclub-unfolded/",
+            "source": "The Bali Times"
+          },
+          {
+            "title": "Moment huge nightclub brawl erupts as tourists smash liquor bottles over heads & punch each other",
+            "url": "https://www.thesun.co.uk/news/39247569/nightclub-brawl-erupts-shirtless-tourists-smash-bottles/",
+            "source": "The Sun"
+          }
+        ]
+      }
+    },
+    {
+      "id": "nl-nl-alert",
+      "market": "nl",
+      "language": "nl",
+      "country": "NL",
+      "geo": "NL",
+      "trendSeed": "nl alert",
+      "searchQuery": "NL Alert test Netherlands what to do guide",
+      "serpLocale": "gl=nl hl=nl",
+      "selectedBecause": "Netherlands public-warning trend where official pages lead with immediate action and accessibility.",
+      "topSites": [
+        {
+          "observedPosition": 1,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "NL-Alert Home",
+          "url": "https://www.nl-alert.nl/",
+          "pageType": "official public-warning hub",
+          "signals": [
+            "current/test message",
+            "what to do",
+            "app/support blocks"
+          ]
+        },
+        {
+          "observedPosition": 2,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Wat moet ik doen als de sirene gaat? - Rijksoverheid",
+          "url": "https://www.rijksoverheid.nl/onderwerpen/veiligheidsregios-en-crisisbeheersing/vraag-en-antwoord/wat-moet-ik-doen-als-de-sirene-gaat",
+          "pageType": "official FAQ",
+          "signals": [
+            "question title",
+            "step-by-step instructions",
+            "accessibility read-aloud"
+          ]
+        },
+        {
+          "observedPosition": 3,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "What should I do when the public warning siren sounds? - Government.nl",
+          "url": "https://www.government.nl/faq/what-to-do-when-the-public-warning-siren-sounds",
+          "pageType": "official FAQ",
+          "signals": [
+            "English alternate",
+            "action bullets",
+            "official answer"
+          ]
+        },
+        {
+          "observedPosition": 4,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Factsheet NL-Alert",
+          "url": "https://www.nl-alert.nl/binaries/nlalert/documenten/publicaties/2024/05/21/factsheet-nl-alert-eng/DT%2B-%2BNL-Alert_A4_Factsheet_EN_test_message_3juni2024.pdf",
+          "pageType": "official factsheet PDF",
+          "signals": [
+            "one-page summary",
+            "visual warning example",
+            "test-message explanation"
+          ]
+        },
+        {
+          "observedPosition": 5,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "NL-Alert - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/NL-Alert",
+          "pageType": "reference page",
+          "signals": [
+            "history/context",
+            "usage explanation",
+            "neutral structure"
+          ]
+        }
+      ],
+      "trendEvidence": {
+        "source": "Google Trends public Trending RSS endpoint",
+        "rssSnapshotFile": "data/raw/google-trends-rss-snapshot-2026-05-31-frontend-100.json",
+        "snapshotCapturedAt": "2026-05-31T12:54:23.213Z",
+        "rssUrl": "https://trends.google.com/trending/rss?geo=NL",
+        "rssRank": 6,
+        "approxTraffic": "100+",
+        "pubDate": "Sun, 31 May 2026 03:50:00 -0700",
+        "relatedNewsItems": [
+          {
+            "title": "Let op: maandag om 12.00 uur gaat je telefoon af -dit is waarom",
+            "url": "https://parkstadactueel.nl/2026/05/31/let-op-maandag-om-12-00-uur-gaat-je-telefoon-af-dit-is-waarom/",
+            "source": "Parkstad Actueel"
+          },
+          {
+            "title": "Nieuws - Veiligheidsregio Flevoland test NL-Alerts na gemiste meldingen bij Veluwebrand",
+            "url": "https://www.omroepflevoland.nl/nieuws/471536/veiligheidsregio-test-nl-alerts-na-gemiste-meldingen-bij-veluwebrand",
+            "source": "Omroep Flevoland"
+          },
+          {
+            "title": "Overheid verstuurt op 1 juni opnieuw NL-Alert testbericht",
+            "url": "https://www.novo3.nl/algemeen/overheid-verstuurt-op-1-juni-opnieuw-nl-alert-testbericht/",
+            "source": "NOVO3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "pl-wizzair",
+      "market": "pl",
+      "language": "pl",
+      "country": "PL",
+      "geo": "PL",
+      "trendSeed": "wizzair",
+      "searchQuery": "Wizz Air baggage guide 2026 Poland",
+      "serpLocale": "gl=pl hl=pl",
+      "selectedBecause": "Poland airline trend where top pages win with baggage dimensions, fee tables, and exception warnings.",
+      "topSites": [
+        {
+          "observedPosition": 1,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Wizz Air bagaż podręczny i rejestrowany - Rankomat",
+          "url": "https://rankomat.pl/turystyka/wizz-air-bagaz-podreczny-i-rejestrowany",
+          "pageType": "travel insurance guide",
+          "signals": [
+            "dimension answer first",
+            "reviewer/author",
+            "important-info bullets"
+          ]
+        },
+        {
+          "observedPosition": 2,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Wizz Air 2026 Zasady bagażowe - BaggyOne",
+          "url": "https://baggyone.com/pl-PL/airlines/wizz-air-w6-wzz",
+          "pageType": "baggage reference",
+          "signals": [
+            "allowance data",
+            "airline-specific route",
+            "compact rules"
+          ]
+        },
+        {
+          "observedPosition": 3,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Wizz Air Cabin Baggage & Hand Luggage Allowance",
+          "url": "https://www.cabincleared.com/wizz-air-cabin-baggage-hand-luggage-allowance",
+          "pageType": "baggage guide",
+          "signals": [
+            "2026 guide label",
+            "FAQ answers",
+            "packing advice"
+          ]
+        },
+        {
+          "observedPosition": 4,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Wizz Air bagaż 2026 - Meteoreporter",
+          "url": "https://meteoreporter.pl/wizz-air-bagaz-2026-wymiary-waga-i-jak-uniknac-oplat",
+          "pageType": "baggage guide",
+          "signals": [
+            "how to avoid fees",
+            "dimensions",
+            "fee warnings"
+          ]
+        },
+        {
+          "observedPosition": 5,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Wizz Air Baggage",
+          "url": "https://wizzair.com/en-gb/information-and-services/travel-information/baggage",
+          "pageType": "official airline guide",
+          "signals": [
+            "official policy",
+            "fee/allowance modules",
+            "service hierarchy"
+          ]
+        }
+      ],
+      "trendEvidence": {
+        "source": "Google Trends public Trending RSS endpoint",
+        "rssSnapshotFile": "data/raw/google-trends-rss-snapshot-2026-05-31-frontend-100.json",
+        "snapshotCapturedAt": "2026-05-31T12:54:23.213Z",
+        "rssUrl": "https://trends.google.com/trending/rss?geo=PL",
+        "rssRank": 1,
+        "approxTraffic": "100+",
+        "pubDate": "Sun, 31 May 2026 05:00:00 -0700",
+        "relatedNewsItems": [
+          {
+            "title": "Arrive three hours before flight home, airline boss tells UK holidaymakers",
+            "url": "https://www.bbc.com/news/articles/c8xw2kjlrlxo",
+            "source": "BBC"
+          },
+          {
+            "title": "Britons travelling home via EU airports ‘should allow three hours’ before flights",
+            "url": "https://www.theguardian.com/travel/2026/may/30/britons-travelling-home-via-eu-airports-should-allow-three-hours-before-flights-eu-ees",
+            "source": "The Guardian"
+          },
+          {
+            "title": "EES Slammed by American Journalist after “Chaos” at Lisbon Airport",
+            "url": "https://travelradar.aero/ees-slammed-by-american-journalist-after-chaos-at-lisbon-airport/",
+            "source": "Travel Radar"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tr-ozempic",
+      "market": "tr",
+      "language": "tr",
+      "country": "TR",
+      "geo": "TR",
+      "trendSeed": "ozempic",
+      "searchQuery": "Ozempic nedir yan etkileri rehber Türkiye 2026",
+      "serpLocale": "gl=tr hl=tr",
+      "selectedBecause": "Turkey health trend where safe UX needs medical review, contraindications, and no unsupported weight-loss claims.",
+      "topSites": [
+        {
+          "observedPosition": 1,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "GLP-1 İlaçlar Ozempic gibi Nedir? - Anadolu Sağlık",
+          "url": "https://www.anadolusaglik.org/saglik-rehberi/ozempic-nedir-ozempic-yan-etkileri-nelerdir",
+          "pageType": "hospital health guide",
+          "signals": [
+            "medical publication board",
+            "update date",
+            "general-information disclaimer"
+          ]
+        },
+        {
+          "observedPosition": 2,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Semaglutid Ozempic Nedir? - Prof. Dr. Mustafa Özdoğan",
+          "url": "https://www.drozdogan.com/semaglutid-ozempic-nedir-fda-onayi-turkiye-ruhsati-ve-geri-odeme-durumu/",
+          "pageType": "doctor-authored guide",
+          "signals": [
+            "approval status",
+            "side-effect profile",
+            "contraindication warnings"
+          ]
+        },
+        {
+          "observedPosition": 3,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Ozempic Side Effects - Healthline",
+          "url": "https://www.healthline.com/health/drugs/ozempic-side-effects",
+          "pageType": "medically reviewed health guide",
+          "signals": [
+            "medical reviewer",
+            "key takeaways",
+            "warning sections"
+          ]
+        },
+        {
+          "observedPosition": 4,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Ozempic Side Effects to Watch For - Drugs.com",
+          "url": "https://www.drugs.com/medical-answers/4-key-ozempic-side-effects-watch-3573389/",
+          "pageType": "drug reference",
+          "signals": [
+            "official answer format",
+            "review date",
+            "side-effect bullets"
+          ]
+        },
+        {
+          "observedPosition": 5,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Ozempic Side Effects: Common, Serious and Long Term - Drugs.com",
+          "url": "https://www.drugs.com/sfx/ozempic-side-effects.html",
+          "pageType": "drug reference",
+          "signals": [
+            "long side-effect list",
+            "review attribution",
+            "severity grouping"
+          ]
+        }
+      ],
+      "trendEvidence": {
+        "source": "Google Trends public Trending RSS endpoint",
+        "rssSnapshotFile": "data/raw/google-trends-rss-snapshot-2026-05-31-frontend-100.json",
+        "snapshotCapturedAt": "2026-05-31T12:54:23.213Z",
+        "rssUrl": "https://trends.google.com/trending/rss?geo=TR",
+        "rssRank": 5,
+        "approxTraffic": "200+",
+        "pubDate": "Sun, 31 May 2026 04:10:00 -0700",
+        "relatedNewsItems": [
+          {
+            "title": "Ozempic may be reshaping the brain, scientists say",
+            "url": "https://www.washingtonpost.com/health/2026/05/28/ozempic-may-be-reshaping-brain-scientists-say/",
+            "source": "The Washington Post"
+          },
+          {
+            "title": "Another effect of weight loss drugs could be changing the brain, research suggests",
+            "url": "https://www.the-independent.com/news/world/americas/ozempic-reshaping-brain-study-b2985428.html",
+            "source": "The Independent"
+          },
+          {
+            "title": "Semaglutide drives weight loss through cAMP-dependent mechanisms in GLP1R-expressing hindbrain neurons",
+            "url": "https://www.nature.com/articles/s42255-026-01534-8",
+            "source": "Nature"
+          }
+        ]
+      }
+    },
+    {
+      "id": "kr-department-store",
+      "market": "kr",
+      "language": "ko",
+      "country": "KR",
+      "geo": "KR",
+      "trendSeed": "백화점",
+      "searchQuery": "백화점 세일 2026 쇼핑 가이드",
+      "serpLocale": "gl=kr hl=ko",
+      "selectedBecause": "Korea retail trend where useful pages clarify sale period, participating stores, returns, and shopping decision cues.",
+      "topSites": [
+        {
+          "observedPosition": 1,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "백화점 3사 봄 세일 돌입 - 네이트 뉴스",
+          "url": "https://m.news.nate.com/view/20260325n09767",
+          "pageType": "retail event explainer",
+          "signals": [
+            "sale dates",
+            "brand participation",
+            "event context"
+          ]
+        },
+        {
+          "observedPosition": 2,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "트렌드+ 봄날엔 쇼핑 - Daum",
+          "url": "https://v.daum.net/v/9nbbebJ6A8",
+          "pageType": "retail trend explainer",
+          "signals": [
+            "campaign image",
+            "store comparison",
+            "seasonal shopping context"
+          ]
+        },
+        {
+          "observedPosition": 3,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "백화점 3사, 봄 정기 세일 돌입 - Daum",
+          "url": "https://v.daum.net/v/BrNGjWztSY?f=p",
+          "pageType": "retail event explainer",
+          "signals": [
+            "date answer",
+            "department-store comparison",
+            "promotion summary"
+          ]
+        },
+        {
+          "observedPosition": 4,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "2026 백화점 가을세일 가격 보장 및 환불 교환 팁",
+          "url": "https://9leedo.com/2026-%EB%B0%B1%ED%99%94%EC%A0%90-%EA%B0%80%EC%9D%84%EC%84%B8%EC%9D%BC-%EA%B0%80%EA%B2%A9-%EB%B3%B4%EC%9E%A5-%EB%B0%8F-%ED%99%98%EB%B6%88-%EA%B5%90%ED%99%98-%ED%8C%81/",
+          "pageType": "shopping guide",
+          "signals": [
+            "tips headline",
+            "refund/exchange focus",
+            "consumer decision framing"
+          ]
+        },
+        {
+          "observedPosition": 5,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "백화점 아기옷 브랜드 완벽 가이드 2026",
+          "url": "https://fellow744.tistory.com/entry/%EB%B0%B1%ED%99%94%EC%A0%90-%EC%95%84%EA%B8%B0%EC%98%B7-%EB%B8%8C%EB%9E%9C%EB%93%9C-%EC%99%84%EB%B2%BD-%EA%B0%80%EC%9D%B4%EB%93%9C-2026%EB%85%84-%EC%B5%9C%EC%8B%A0-%ED%8A%B8%EB%A0%8C%EB%93%9C-%EC%86%8C%EA%B0%9C",
+          "pageType": "shopping blog guide",
+          "signals": [
+            "category guide",
+            "brand comparison",
+            "consumer checklist potential"
+          ]
+        }
+      ],
+      "trendEvidence": {
+        "source": "Google Trends public Trending RSS endpoint",
+        "rssSnapshotFile": "data/raw/google-trends-rss-snapshot-2026-05-31-frontend-100.json",
+        "snapshotCapturedAt": "2026-05-31T12:54:23.213Z",
+        "rssUrl": "https://trends.google.com/trending/rss?geo=KR",
+        "rssRank": 3,
+        "approxTraffic": "500+",
+        "pubDate": "Sun, 31 May 2026 03:50:00 -0700",
+        "relatedNewsItems": [
+          {
+            "title": "백화점 천장 &apos;와르르&apos;‥150여 명 긴급 대피",
+            "url": "https://imnews.imbc.com/replay/2026/nwdesk/article/6826556_37004.html",
+            "source": "MBC 뉴스"
+          },
+          {
+            "title": "해운대 롯데백화점 식품관 천장 일부 무너져…영업 조기 종료",
+            "url": "https://news.kbs.co.kr/news/view.do?ncd=8574327",
+            "source": "KBS 뉴스"
+          },
+          {
+            "title": "롯데백화점 센텀시티점 천장 무너져··· 이용객 등 150명 긴급 대피",
+            "url": "https://www.khan.co.kr/article/202605311751001",
+            "source": "경향신문"
+          }
+        ]
+      }
+    },
+    {
+      "id": "in-pm-kisan",
+      "market": "in",
+      "language": "en",
+      "country": "IN",
+      "geo": "IN",
+      "trendSeed": "pm kisan",
+      "searchQuery": "PM Kisan status check official guide 2026",
+      "serpLocale": "gl=in hl=en",
+      "selectedBecause": "India government-scheme trend where useful pages must separate official portal actions from unofficial guides.",
+      "topSites": [
+        {
+          "observedPosition": 1,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "PM-Kisan Samman Nidhi",
+          "url": "https://pmkisan.gov.in/homenew.aspx",
+          "pageType": "official scheme page",
+          "signals": [
+            "official status",
+            "beneficiary tools",
+            "eligibility notices"
+          ]
+        },
+        {
+          "observedPosition": 2,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "How to Check PM Kisan Beneficiary Status by Mobile Number - SMC Insurance",
+          "url": "https://www.smcinsurance.com/government-schemes/articles/pm-kisan-beneficiary-status-by-mobile-number",
+          "pageType": "scheme guide",
+          "signals": [
+            "step-by-step path",
+            "installment context",
+            "last updated date"
+          ]
+        },
+        {
+          "observedPosition": 3,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "PM Kisan Status Check by Aadhaar & Mobile - Kisan Portal",
+          "url": "https://kisanportal.org/pm-kisan-status-check-by-aadhaar-mobile/",
+          "pageType": "scheme guide",
+          "signals": [
+            "official-channel warning",
+            "problem diagnosis",
+            "step list"
+          ]
+        },
+        {
+          "observedPosition": 4,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "How to check PM-KISAN beneficiary status - RTI Wiki",
+          "url": "https://righttoinformation.wiki/check-status/pm-kisan-status",
+          "pageType": "citizen guide",
+          "signals": [
+            "official portal instruction",
+            "status history",
+            "disclaimer"
+          ]
+        },
+        {
+          "observedPosition": 5,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "PM Kisan Beneficiary Status",
+          "url": "https://pmkisan.app/",
+          "pageType": "status guide",
+          "signals": [
+            "status CTA",
+            "installment summary",
+            "beneficiary-list framing"
+          ]
+        }
+      ],
+      "trendEvidence": {
+        "source": "Google Trends public Trending RSS endpoint",
+        "rssSnapshotFile": "data/raw/google-trends-rss-snapshot-2026-05-31-frontend-100.json",
+        "snapshotCapturedAt": "2026-05-31T12:54:23.213Z",
+        "rssUrl": "https://trends.google.com/trending/rss?geo=IN",
+        "rssRank": 3,
+        "approxTraffic": "200+",
+        "pubDate": "Sun, 31 May 2026 05:00:00 -0700",
+        "relatedNewsItems": [
+          {
+            "title": "PM Kisan 23rd Installment Date: PM Modi To Release Next Tranche Of Rs 2,000 On This Date",
+            "url": "https://www.news18.com/business/economy/pm-kisan-23rd-installment-date-pm-modi-to-release-next-tranche-of-rs-2000-on-this-date-3-10122069.html",
+            "source": "News18"
+          },
+          {
+            "title": "PM Kisan Samman Nidhi Scheme: When Will Farmers Receive PM Kisan 23rd Instalment? Here’s What We Know So Far",
+            "url": "https://www.goodreturns.in/news/pm-kisan-samman-nidhi-scheme-when-will-farmers-receive-pm-kisan-23rd-instalment-here-s-what-we-kno-1512015.html",
+            "source": "Goodreturns"
+          },
+          {
+            "title": "How to get PM Kisan 23rd installment: Complete eKYC and Aadhaar link guide",
+            "url": "https://english.mathrubhumi.com/lifestyle/how-to/pm-kisan-ekyc-23rd-installment-how-to-guide-r4ypps0o",
+            "source": "Mathrubhumi English"
+          }
+        ]
+      }
+    },
+    {
+      "id": "in-voter-card",
+      "market": "in",
+      "language": "en",
+      "country": "IN",
+      "geo": "IN",
+      "trendSeed": "voter card",
+      "searchQuery": "Election Commission India voter card apply online official guide 2026",
+      "serpLocale": "gl=in hl=en",
+      "selectedBecause": "India voter-service trend where top pages combine official routes, form numbers, document lists, and status tracking.",
+      "topSites": [
+        {
+          "observedPosition": 1,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "New Voter Card Apply Online - WBCareer",
+          "url": "https://wbcareer.org/new-voter-card-apply-online-complete-step-by-step-guide-2026-updated/",
+          "pageType": "citizen service guide",
+          "signals": [
+            "step-by-step title",
+            "official website path",
+            "verification status"
+          ]
+        },
+        {
+          "observedPosition": 2,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Voter ID Card 2026 - ClearTax",
+          "url": "https://cleartax.in/s/voter-id",
+          "pageType": "service guide",
+          "signals": [
+            "document requirements",
+            "status tracking",
+            "application process"
+          ]
+        },
+        {
+          "observedPosition": 3,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Voters' Services Portal",
+          "url": "https://voters.eci.gov.in/",
+          "pageType": "official service portal",
+          "signals": [
+            "form/service navigation",
+            "login/service CTA",
+            "official authority"
+          ]
+        },
+        {
+          "observedPosition": 4,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Election Commission of India",
+          "url": "https://www.eci.gov.in/",
+          "pageType": "official hub",
+          "signals": [
+            "official notices",
+            "navigation hierarchy",
+            "download resources"
+          ]
+        },
+        {
+          "observedPosition": 5,
+          "searchEngine": "web.search_query",
+          "capturedAt": "2026-05-31T21:45:00+09:00",
+          "reproducibilityNote": "Captured from live web search result sets and official/primary pages connected to the same Google Trends RSS seed. Rankings vary by user, locale, device, freshness, and personalization.",
+          "title": "Voter Guide Booklet - Maharashtra CEO",
+          "url": "https://ceoelection.maharashtra.gov.in/Downloads/pdf/ELC-Resources/English/Voter%20Guide%20Booklet-English.pdf",
+          "pageType": "official PDF guide",
+          "signals": [
+            "official guidebook",
+            "registration path",
+            "download format"
+          ]
+        }
+      ],
+      "trendEvidence": {
+        "source": "Google Trends public Trending RSS endpoint",
+        "rssSnapshotFile": "data/raw/google-trends-rss-snapshot-2026-05-31-frontend-100.json",
+        "snapshotCapturedAt": "2026-05-31T12:54:23.213Z",
+        "rssUrl": "https://trends.google.com/trending/rss?geo=IN",
+        "rssRank": 2,
+        "approxTraffic": "100+",
+        "pubDate": "Sun, 31 May 2026 05:10:00 -0700",
+        "relatedNewsItems": [
+          {
+            "title": "Oxygen cylinders, property deeds, govt supplies spill out of locked TMC office in Kolkata",
+            "url": "https://www.telegraphindia.com/west-bengal/kolkata/oxygen-cylinders-property-deeds-govt-supplies-found-inside-locked-tmc-office-in-kolkata-prnt/cid/2163091",
+            "source": "Telegraph India"
+          },
+          {
+            "title": "Once CPM’s, now TMC’s: Party office throws up relief stuff",
+            "url": "https://timesofindia.indiatimes.com/city/kolkata/once-cpms-now-tmcs-party-office-throws-up-relief-stuff/articleshow/131395004.cms",
+            "source": "The Times of India"
+          },
+          {
+            "title": "Large number of voter, Aadhaar cards found at TMC office in Kolkata’s Tangra",
+            "url": "https://theprint.in/india/large-number-of-voter-aadhaar-cards-found-at-tmc-office-in-kolkatas-tangra/2944342/",
+            "source": "ThePrint"
+          }
+        ]
+      }
+    }
+  ]
+}

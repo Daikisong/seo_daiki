@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { CheckCircle2, Clock3, ExternalLink, ShieldCheck } from "lucide-react";
+import { CheckCircle2, Clock3, ExternalLink, ListChecks, ShieldCheck } from "lucide-react";
 import {
   buildExistingMarketContentHreflangMap,
   canonicalForMarketPath,
@@ -66,6 +66,7 @@ export default async function MarketPostPage({ params }: PageProps) {
   const publicQuickFacts = post.quickFacts.filter((fact) => isPublicQuickFact(fact.label, fact.value)).slice(0, 3);
   const quickJumpLinks = buildQuickJumpLinks(post, bodySections, market.language);
   const trustItems = buildTrustItems(post, market.language);
+  const readerPathItems = buildReaderPathItems(post, answerSection, bodySections, market.language);
   const canonical = canonicalForMarketPath(marketContentPath(market, "posts", post.slug));
 
   return (
@@ -156,6 +157,25 @@ export default async function MarketPostPage({ params }: PageProps) {
                 ))}
               </ul>
             </section>
+            {readerPathItems.length > 0 ? (
+              <section className="market-article-reader-path" aria-label={readerPathLabel(market.language)}>
+                <div className="market-article-reader-path-heading">
+                  <ListChecks aria-hidden />
+                  <strong>{readerPathLabel(market.language)}</strong>
+                </div>
+                <ol>
+                  {readerPathItems.map((item) => (
+                    <li key={`${item.label}-${item.href}`}>
+                      <a href={item.href}>
+                        <span>{item.label}</span>
+                        <strong>{item.title}</strong>
+                        <em>{item.detail}</em>
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </section>
+            ) : null}
           </header>
 
           <div className="market-article-shell">
@@ -346,12 +366,107 @@ function buildTrustItems(post: ReturnType<typeof readMarketPosts>[number], langu
   return items;
 }
 
+function buildReaderPathItems(
+  post: ReturnType<typeof readMarketPosts>[number],
+  answerSection: { heading: string; id: string } | undefined,
+  bodySections: Array<{ heading: string; id: string }>,
+  language: string
+): Array<{ label: string; title: string; detail: string; href: string }> {
+  const items: Array<{ label: string; title: string; detail: string; href: string }> = [];
+  if (answerSection) {
+    items.push({
+      label: readerPathStepLabel(language, 1),
+      title: answerSection.heading,
+      detail: readerPathAnswerDetail(language),
+      href: `#${answerSection.id}`
+    });
+  }
+  if (post.checklist.length > 0) {
+    items.push({
+      label: readerPathStepLabel(language, 2),
+      title: checklistLabel(language),
+      detail: readerPathChecklistDetail(language),
+      href: "#checklist-heading"
+    });
+  }
+  if (post.comparisonTable) {
+    items.push({
+      label: readerPathStepLabel(language, 3),
+      title: post.comparisonTable.title,
+      detail: readerPathCompareDetail(language),
+      href: "#comparison-heading"
+    });
+  } else if (bodySections[0]) {
+    items.push({
+      label: readerPathStepLabel(language, 3),
+      title: bodySections[0].heading,
+      detail: readerPathCompareDetail(language),
+      href: `#${bodySections[0].id}`
+    });
+  }
+  if (post.sourceLinks.length > 0) {
+    items.push({
+      label: readerPathStepLabel(language, 4),
+      title: sourcesLabel(language),
+      detail: readerPathSourcesDetail(language),
+      href: "#sources-heading"
+    });
+  }
+  return items.slice(0, 4);
+}
+
 function marketGuideLabel(language: string): string {
   if (language === "es") return "Guía de mercado";
   if (language === "pt-br" || language === "pt") return "Guia de mercado";
   if (language === "ja") return "マーケットガイド";
   if (language === "ko") return "시장 가이드";
   return "Market guide";
+}
+
+function readerPathLabel(language: string): string {
+  if (language === "es") return "Ruta de lectura";
+  if (language === "pt-br" || language === "pt") return "Caminho de leitura";
+  if (language === "ja") return "読む順番";
+  if (language === "ko") return "읽는 순서";
+  return "Reader path";
+}
+
+function readerPathStepLabel(language: string, step: number): string {
+  if (language === "ja") return `Step ${step}`;
+  if (language === "ko") return `${step}단계`;
+  return `Step ${step}`;
+}
+
+function readerPathAnswerDetail(language: string): string {
+  if (language === "es") return "Empieza por la respuesta práctica antes de revisar detalles.";
+  if (language === "pt-br" || language === "pt") return "Comece pela resposta prática antes dos detalhes.";
+  if (language === "ja") return "詳細を見る前に、まず結論を確認します。";
+  if (language === "ko") return "세부 설명 전에 결론부터 확인합니다.";
+  return "Start with the practical answer before the details.";
+}
+
+function readerPathChecklistDetail(language: string): string {
+  if (language === "es") return "Comprueba los puntos que cambian la decisión.";
+  if (language === "pt-br" || language === "pt") return "Confira os pontos que mudam a decisão.";
+  if (language === "ja") return "判断を変える確認項目を先に見ます。";
+  if (language === "ko") return "판단을 바꾸는 확인 항목을 먼저 봅니다.";
+  return "Check the items that can change the decision.";
+}
+
+function readerPathCompareDetail(language: string): string {
+  if (language === "es") return "Compara opciones, riesgos o criterios en una vista rápida.";
+  if (language === "pt-br" || language === "pt") return "Compare opções, riscos ou critérios de forma rápida.";
+  if (language === "ja") return "選択肢、リスク、基準を短く比較します。";
+  if (language === "ko") return "선택지, 위험, 기준을 한눈에 비교합니다.";
+  return "Compare options, risks, or criteria in one quick view.";
+}
+
+function readerPathSourcesDetail(language: string): string {
+  if (language === "es") return "Termina verificando fuentes oficiales o primarias.";
+  if (language === "pt-br" || language === "pt") return "Finalize conferindo fontes oficiais ou primárias.";
+  if (language === "ja") return "最後に公式または一次情報を確認します。";
+  if (language === "ko") return "마지막으로 공식 자료와 1차 자료를 확인합니다.";
+  return "Finish by checking official or primary sources.";
 }
 
 function tocLabel(language: string): string {

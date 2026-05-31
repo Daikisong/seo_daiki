@@ -250,6 +250,79 @@ th {
   background: #0f766e;
 }
 
+.market-article-reader-path {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(160px, 0.2fr) minmax(0, 0.8fr);
+  gap: 1rem;
+  align-items: stretch;
+  border: 1px solid #1c1f24;
+  background: #fff;
+  padding: 1rem;
+}
+
+.market-article-reader-path-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: #111315;
+  font-size: 0.92rem;
+  font-weight: 850;
+}
+
+.market-article-reader-path-heading svg {
+  width: 1.05rem;
+  height: 1.05rem;
+  color: #0f766e;
+}
+
+.market-article-reader-path ol {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.market-article-reader-path a {
+  display: block;
+  min-height: 100%;
+  border-left: 3px solid #0f766e;
+  background: #fbfaf7;
+  padding: 0.85rem;
+}
+
+.market-article-reader-path a:hover {
+  background: #f4fbf8;
+}
+
+.market-article-reader-path span {
+  display: block;
+  color: #0f766e;
+  font-size: 0.72rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.market-article-reader-path strong {
+  display: block;
+  margin-top: 0.3rem;
+  color: #111315;
+  font-size: 0.92rem;
+  font-weight: 820;
+  line-height: 1.3;
+}
+
+.market-article-reader-path em {
+  display: block;
+  margin-top: 0.45rem;
+  color: #626b73;
+  font-size: 0.82rem;
+  font-style: normal;
+  line-height: 1.45;
+}
+
 .market-article-shell {
   display: grid;
   grid-template-columns: minmax(0, 760px) 260px;
@@ -603,6 +676,7 @@ th {
   .market-article-hero,
   .market-article-shell,
   .market-article-trust-strip,
+  .market-article-reader-path,
   .market-article-snapshot,
   .market-article-checklist ul,
   .market-article-sources > div {
@@ -624,6 +698,10 @@ th {
 
   .market-article-fact-rail {
     grid-template-columns: 1fr;
+  }
+
+  .market-article-reader-path ol {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .market-article-fact-rail div {
@@ -656,7 +734,8 @@ th {
   }
 
   .market-article-fact-rail,
-  .market-article-nav ol {
+  .market-article-nav ol,
+  .market-article-reader-path ol {
     grid-template-columns: 1fr;
   }
 
