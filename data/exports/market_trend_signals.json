@@ -13,7 +13,7 @@
       "configJson": {
         "importFile": "/home/eorb915/projects/seo_daiki/data/seeds/trend-signals.csv"
       },
-      "lastCollectedAt": "2026-05-31T08:03:26.613342+00:00"
+      "lastCollectedAt": "2026-05-31T09:29:46.018265+00:00"
     },
     {
       "id": "trend-source-es-es-manual_csv",
@@ -28,7 +28,7 @@
       "configJson": {
         "importFile": "/home/eorb915/projects/seo_daiki/data/seeds/trend-signals.csv"
       },
-      "lastCollectedAt": "2026-05-31T08:03:26.613376+00:00"
+      "lastCollectedAt": "2026-05-31T09:29:46.018296+00:00"
     },
     {
       "id": "trend-source-br-pt-br-manual_csv",
@@ -43,7 +43,7 @@
       "configJson": {
         "importFile": "/home/eorb915/projects/seo_daiki/data/seeds/trend-signals.csv"
       },
-      "lastCollectedAt": "2026-05-31T08:03:26.613390+00:00"
+      "lastCollectedAt": "2026-05-31T09:29:46.018311+00:00"
     },
     {
       "id": "trend-source-jp-ja-manual_csv",
@@ -58,7 +58,7 @@
       "configJson": {
         "importFile": "/home/eorb915/projects/seo_daiki/data/seeds/trend-signals.csv"
       },
-      "lastCollectedAt": "2026-05-31T08:03:26.613404+00:00"
+      "lastCollectedAt": "2026-05-31T09:29:46.018325+00:00"
     },
     {
       "id": "trend-source-kr-ko-manual_csv",
@@ -73,7 +73,7 @@
       "configJson": {
         "importFile": "/home/eorb915/projects/seo_daiki/data/seeds/trend-signals.csv"
       },
-      "lastCollectedAt": "2026-05-31T08:03:26.613623+00:00"
+      "lastCollectedAt": "2026-05-31T09:29:46.018697+00:00"
     },
     {
       "id": "trend-source-de-de-manual_csv",
@@ -88,7 +88,7 @@
       "configJson": {
         "importFile": "/home/eorb915/projects/seo_daiki/data/seeds/trend-signals.csv"
       },
-      "lastCollectedAt": "2026-05-31T08:03:26.613646+00:00"
+      "lastCollectedAt": "2026-05-31T09:29:46.018728+00:00"
     },
     {
       "id": "trend-source-mx-es-manual_csv",
@@ -103,7 +103,7 @@
       "configJson": {
         "importFile": "/home/eorb915/projects/seo_daiki/data/seeds/trend-signals.csv"
       },
-      "lastCollectedAt": "2026-05-31T08:03:26.613686+00:00"
+      "lastCollectedAt": "2026-05-31T09:29:46.018768+00:00"
     },
     {
       "id": "trend-source-fr-fr-manual_csv",
@@ -118,7 +118,7 @@
       "configJson": {
         "importFile": "/home/eorb915/projects/seo_daiki/data/seeds/trend-signals.csv"
       },
-      "lastCollectedAt": "2026-05-31T08:03:26.613694+00:00"
+      "lastCollectedAt": "2026-05-31T09:29:46.018776+00:00"
     }
   ],
   "signals": [

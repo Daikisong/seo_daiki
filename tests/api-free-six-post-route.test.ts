@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { canonicalForMarketPath, marketContentPath } from "@global-import-lab/seo";
 import { enabledMarkets, findMarket } from "../apps/web/lib/market/config";
 import { marketContentHreflangVariants, readMarketPosts } from "../apps/web/lib/market/market-data";
-import { generateMetadata, generateStaticParams } from "../apps/web/app/[market]/[language]/posts/[slug]/page";
+import { generateMetadata, generateStaticParams } from "../apps/web/app/[locale]/[language]/posts/[slug]/page";
 
 async function main() {
   const market = findMarket("us", "en");
@@ -20,14 +20,14 @@ async function main() {
   assert.equal(canonicalForMarketPath(path, "https://example.com"), "https://example.com/us/en/posts/magnesium-sleep/");
 
   const params = generateStaticParams();
-  assert.equal(params.some((item) => item.market === "us" && item.language === "en" && item.slug === post.slug), true);
+  assert.equal(params.some((item) => item.locale === "us" && item.language === "en" && item.slug === post.slug), true);
 
   const variants = marketContentHreflangVariants(enabledMarkets(), "posts", post.slug);
   assert.equal(variants.some((variant) => variant.market === "us" && variant.language === "en"), true);
   assert.equal(variants.some((variant) => variant.market === "gb" && variant.language === "en"), false);
 
   const metadata = await generateMetadata({
-    params: Promise.resolve({ market: "us", language: "en", slug: post.slug })
+    params: Promise.resolve({ locale: "us", language: "en", slug: post.slug })
   });
   assert.equal((metadata.robots as { index?: boolean }).index, false);
 

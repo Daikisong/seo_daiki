@@ -8,15 +8,15 @@ import { labelsForLanguage } from "@/lib/market/ui-labels";
 import { marketResearchMetadata } from "@/lib/seo/metadata";
 
 interface PageProps {
-  params: Promise<{ market: string; language: string }>;
+  params: Promise<{ locale: string; language: string }>;
 }
 
 export function generateStaticParams() {
-  return enabledMarkets().map((market) => ({ market: market.market, language: market.language }));
+  return enabledMarkets().map((market) => ({ locale: market.market, language: market.language }));
 }
 
 export async function generateMetadata({ params }: PageProps) {
-  const { market: marketCode, language } = await params;
+  const { locale: marketCode, language } = await params;
   const market = findMarket(marketCode, language);
   if (!market) {
     return {};
@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: PageProps) {
 }
 
 export default async function MarketCalendarPage({ params }: PageProps) {
-  const { market: marketCode, language } = await params;
+  const { locale: marketCode, language } = await params;
   const market = findMarket(marketCode, language);
   if (!market) {
     notFound();

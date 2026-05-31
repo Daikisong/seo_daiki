@@ -146,7 +146,7 @@ def verify_api_free_six() -> str:
         "test articles are noindex, non-monetized, and affiliateLinks=[]",
     )
 
-    route_source = read_text(ROOT / "apps/web/app/[market]/[language]/posts/[slug]/page.tsx")
+    route_source = read_text(ROOT / "apps/web/app/[locale]/[language]/posts/[slug]/page.tsx")
     data_reader_source = read_text(ROOT / "apps/web/lib/market/market-publishing-data-readers.ts")
     pipeline_steps = [str(row.get("name")) for row in list_rows(pipeline_report.get("steps"))]
     check("pipeline report passed", pipeline_report.get("status") == "pass", "pipeline_api_free_six_run.json status is pass")

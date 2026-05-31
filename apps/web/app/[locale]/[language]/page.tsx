@@ -9,15 +9,15 @@ import { labelsForLanguage } from "@/lib/market/ui-labels";
 import { shouldNoindexMarketHome } from "@/lib/seo/market-index-policy";
 
 interface MarketHomeProps {
-  params: Promise<{ market: string; language: string }>;
+  params: Promise<{ locale: string; language: string }>;
 }
 
 export function generateStaticParams() {
-  return enabledMarkets().map((market) => ({ market: market.market, language: market.language }));
+  return enabledMarkets().map((market) => ({ locale: market.market, language: market.language }));
 }
 
 export async function generateMetadata({ params }: MarketHomeProps) {
-  const { market: marketCode, language } = await params;
+  const { locale: marketCode, language } = await params;
   const market = findMarket(marketCode, language);
   if (!market) {
     return {};
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: MarketHomeProps) {
 }
 
 export default async function MarketHomePage({ params }: MarketHomeProps) {
-  const { market: marketCode, language } = await params;
+  const { locale: marketCode, language } = await params;
   const market = findMarket(marketCode, language);
   if (!market) {
     notFound();

@@ -13,17 +13,17 @@ import { labelsForLanguage } from "@/lib/market/ui-labels";
 import { marketResearchMetadata } from "@/lib/seo/metadata";
 
 interface PageProps {
-  params: Promise<{ market: string; language: string; slug: string }>;
+  params: Promise<{ locale: string; language: string; slug: string }>;
 }
 
 export function generateStaticParams() {
   return enabledMarkets().flatMap((market) =>
-    readMarketBriefs(market).map((brief) => ({ market: market.market, language: market.language, slug: brief.slug }))
+    readMarketBriefs(market).map((brief) => ({ locale: market.market, language: market.language, slug: brief.slug }))
   );
 }
 
 export async function generateMetadata({ params }: PageProps) {
-  const { market: marketCode, language, slug } = await params;
+  const { locale: marketCode, language, slug } = await params;
   const market = findMarket(marketCode, language);
   if (!market) {
     return {};
@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: PageProps) {
 }
 
 export default async function MarketBriefPage({ params }: PageProps) {
-  const { market: marketCode, language, slug } = await params;
+  const { locale: marketCode, language, slug } = await params;
   const market = findMarket(marketCode, language);
   if (!market) {
     notFound();

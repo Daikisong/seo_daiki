@@ -129,12 +129,12 @@ function checkRobotsSitemapPolicy() {
 
 function checkResearchNoindexSource() {
   const routeFiles = [
-    "apps/web/app/[market]/[language]/trends/[slug]/page.tsx",
-    "apps/web/app/[market]/[language]/keywords/[slug]/page.tsx",
-    "apps/web/app/[market]/[language]/serp/[slug]/page.tsx",
-    "apps/web/app/[market]/[language]/briefs/[slug]/page.tsx",
-    "apps/web/app/[market]/[language]/calendar/page.tsx",
-    "apps/web/app/[market]/[language]/posts/[slug]/page.tsx"
+    "apps/web/app/[locale]/[language]/trends/[slug]/page.tsx",
+    "apps/web/app/[locale]/[language]/keywords/[slug]/page.tsx",
+    "apps/web/app/[locale]/[language]/serp/[slug]/page.tsx",
+    "apps/web/app/[locale]/[language]/briefs/[slug]/page.tsx",
+    "apps/web/app/[locale]/[language]/calendar/page.tsx",
+    "apps/web/app/[locale]/[language]/posts/[slug]/page.tsx"
   ];
 
   for (const routeFile of routeFiles) {
