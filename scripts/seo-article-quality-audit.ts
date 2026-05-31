@@ -26,6 +26,7 @@ type Article = {
 const root = process.cwd();
 const articlesPath = resolve(root, "data/exports/test_articles.json");
 const pagePath = resolve(root, "apps/web/app/[locale]/[language]/posts/[slug]/page.tsx");
+const cssPath = resolve(root, "apps/web/app/globals.css");
 const reportPath = resolve(root, "data/exports/seo_article_quality_report.json");
 
 const forbiddenVisiblePhrases = [
@@ -38,6 +39,7 @@ const forbiddenVisiblePhrases = [
   "prefilled topic",
   "manual SERP",
   "수동 SERP",
+  "뉴스를",
   "미리 정한 예시",
   "국가별 트렌드 확인 뒤"
 ];
@@ -64,6 +66,14 @@ function scoreArticle(article: Article) {
       (article.serpReferences ?? []).every((source) => source.rank && source.label && source.url?.startsWith("http") && source.formatPattern),
     10
   );
+  add(
+    "top-page references avoid news framing",
+    (article.serpReferences ?? []).every((source) => {
+      const labelAndPattern = `${source.label ?? ""} ${source.formatPattern ?? ""}`.toLowerCase();
+      return !labelAndPattern.includes("news") && !labelAndPattern.includes("뉴스");
+    }),
+    4
+  );
   add("key takeaways", (article.keyTakeaways ?? []).length >= 3, 7);
   add("verdict box", Boolean(article.verdictBox?.label && article.verdictBox?.body), 6);
   add("pros and cons", Boolean((article.prosCons?.pros ?? []).length >= 3 && (article.prosCons?.cons ?? []).length >= 3), 7);
@@ -83,9 +93,10 @@ function scoreArticle(article: Article) {
   );
   add("no visible internal workflow phrasing", !forbiddenVisiblePhrases.some((phrase) => visibleText.includes(phrase)), 5);
   add("safe monetization state", article.monetizationDeferred === true && Array.isArray(article.affiliateLinks) && article.affiliateLinks.length === 0, 2);
-  add("noindex until promotion", article.indexStatus === "noindex" || article.indexStatus === "index", 2);
+  add("test post remains noindex until promotion", article.indexStatus === "noindex", 2);
 
-  const score = checks.reduce((total, check) => total + (check.pass ? check.points : 0), 0);
+  const rawScore = checks.reduce((total, check) => total + (check.pass ? check.points : 0), 0);
+  const score = Math.min(rawScore, 100);
   return { slug: article.slug, score, checks };
 }
 
@@ -113,21 +124,36 @@ function main() {
     { name: "renders Article JSON-LD", pass: pageSource.includes("@type") && pageSource.includes("Article") }
   ];
 
-  const failedArticles = articleReports.filter((article) => article.score < 98);
+  const cssSource = existsSync(cssPath) ? readFileSync(cssPath, "utf8") : "";
+  const visualChecks = [
+    { name: "uses editorial hero layout", pass: pageSource.includes("market-article-hero") && cssSource.includes(".market-article-hero") },
+    { name: "uses three-column article shell", pass: pageSource.includes("market-article-shell") && cssSource.includes("grid-template-columns: 210px") },
+    { name: "uses fact rail not plain cards", pass: pageSource.includes("market-article-fact-rail") && cssSource.includes(".market-article-fact-rail") },
+    { name: "uses custom visual summary block", pass: pageSource.includes("market-article-visual-summary") && cssSource.includes(".market-article-visual-summary") },
+    { name: "uses dedicated prose styling", pass: pageSource.includes("market-article-prose") && cssSource.includes(".market-article-prose p") },
+    { name: "uses polished decision blocks", pass: pageSource.includes("market-article-signal-grid") && cssSource.includes(".market-article-verdict") },
+    { name: "uses responsive mobile rules", pass: cssSource.includes("@media (max-width: 860px)") && cssSource.includes("@media (max-width: 560px)") },
+    { name: "does not scale font size with viewport width", pass: !/font-size:\s*[^;]*(vw|clamp\()/i.test(cssSource) }
+  ];
+
+  const failedArticles = articleReports.filter((article) => article.score < 99 || article.checks.some((check) => !check.pass));
   const failedRenderer = rendererChecks.filter((check) => !check.pass);
+  const failedVisual = visualChecks.filter((check) => !check.pass);
   const report = {
-    passed: failedArticles.length === 0 && failedRenderer.length === 0,
+    passed: failedArticles.length === 0 && failedRenderer.length === 0 && failedVisual.length === 0,
     minimumScore: Math.min(...articleReports.map((article) => article.score)),
     articleReports,
-    rendererChecks
+    rendererChecks,
+    visualChecks
   };
   writeFileSync(reportPath, `${JSON.stringify(report, null, 2)}\n`);
 
   if (!report.passed) {
     throw new Error(
       [
-        failedArticles.length ? `Article scores below 98: ${failedArticles.map((article) => `${article.slug}:${article.score}`).join(", ")}` : "",
-        failedRenderer.length ? `Renderer checks failed: ${failedRenderer.map((check) => check.name).join(", ")}` : ""
+        failedArticles.length ? `Article scores below 99: ${failedArticles.map((article) => `${article.slug}:${article.score}`).join(", ")}` : "",
+        failedRenderer.length ? `Renderer checks failed: ${failedRenderer.map((check) => check.name).join(", ")}` : "",
+        failedVisual.length ? `Visual checks failed: ${failedVisual.map((check) => check.name).join(", ")}` : ""
       ].filter(Boolean).join("\n")
     );
   }

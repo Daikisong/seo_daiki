@@ -1,6 +1,6 @@
 {
   "capturedAt": "2026-05-31",
-  "method": "Search top-result pages were reviewed for layout and information architecture only. Raw Google HTML scraping was not used. Article wording is original and does not copy competitor text.",
+  "method": "Search top-result blog, guide, review, official hub, and reference-style pages were reviewed for layout and information architecture only. One-off newspaper-style article layouts were excluded as format references. Raw Google HTML scraping was not used. Article wording is original and does not copy competitor text.",
   "formatPrinciplesApplied": [
     "Add updated date, reading time, and verification basis directly under the lead.",
     "Add an at-a-glance block before the long article body.",
@@ -98,16 +98,16 @@
       "keyword": "2026 대입 학폭 반영",
       "observedTopPagePatterns": [
         {
-          "url": "https://www.edudaegu.co.kr/news/articleView.html?idxno=6130",
-          "pattern": "Policy announcement framing and all-track reflection summary."
+          "url": "https://ystudy200708.tistory.com/33",
+          "pattern": "Blog-style total guide, university comparison, checklist-heavy structure, table-forward scanning."
         },
         {
-          "url": "https://edu.donga.com/news/articleView.html?idxno=84852",
-          "pattern": "Student-facing explanation of measure-level disadvantages and university differences."
+          "url": "https://blog.sugar.legal/%ED%95%99%EA%B5%90%ED%8F%AD%EB%A0%A5-%EC%83%9D%EA%B8%B0%EB%B6%80-%EA%B8%B0%EB%A1%9D-2027-%EB%8C%80%EC%9E%85%EC%97%90%EC%84%9C-%EC%96%B4%EB%94%94%EA%B9%8C%EC%A7%80-%EB%B6%88%EB%A6%AC%ED%95%A0%EA%B9%8C-%EC%8B%A4%EC%A0%9C-%ED%83%88%EB%9D%BD-%EA%B8%B0%EC%A4%80-%EC%A0%95%EB%A6%AC-88964",
+          "pattern": "Legal/education blog structure with problem framing, real criteria, examples, and consultation checklist."
         },
         {
-          "url": "https://www.veritas-a.com/news/articleView.html?idxno=470532",
-          "pattern": "Admissions-track scope, university autonomy, timing context."
+          "url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000030",
+          "pattern": "Official admission-information hub with table-based program details and verification path."
         }
       ],
       "ourFormatResponse": "Added core-decision box, university-specific watch-outs, applicant checklist, track comparison table, and top-page reference block."

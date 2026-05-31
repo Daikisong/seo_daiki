@@ -90,134 +90,100 @@ export default async function MarketPostPage({ params }: PageProps) {
         ]}
       />
       <SiteHeader />
-      <main className="mx-auto max-w-6xl px-4 py-10">
+      <main className="market-article-page">
         <article>
-          <header className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)] lg:items-center">
-            <div>
-              <p className="text-sm font-semibold uppercase text-teal-700">{marketGuideLabel(market.language)}</p>
-              <h1 className="mt-3 text-balance text-4xl font-semibold leading-tight text-neutral-950 md:text-5xl">{post.title}</h1>
-              <p className="mt-5 max-w-3xl text-lg leading-8 text-neutral-700">{post.summary}</p>
+          <header className="market-article-hero">
+            <div className="market-article-hero-copy">
+              <p className="market-article-kicker">{marketGuideLabel(market.language)}</p>
+              <h1 className="market-article-title">{post.title}</h1>
+              <p className="market-article-deck">{post.summary}</p>
               {post.articleMeta.checkedAt ? (
-                <div className="mt-5 flex flex-wrap gap-3 text-sm text-neutral-600">
-                  <span className="inline-flex items-center gap-2 rounded-sm border border-neutral-200 bg-white px-3 py-2">
-                    <Clock3 className="h-4 w-4 text-teal-700" aria-hidden />
+                <div className="market-article-meta">
+                  <span className="market-article-meta-item">
+                    <Clock3 aria-hidden />
                     {updatedLabel(market.language)} <time dateTime={post.articleMeta.checkedAt}>{post.articleMeta.checkedAt}</time>
                   </span>
-                  <span className="rounded-sm border border-neutral-200 bg-white px-3 py-2">{post.articleMeta.readingTime}</span>
-                  <span className="rounded-sm border border-neutral-200 bg-white px-3 py-2">{post.articleMeta.basis}</span>
+                  <span>{post.articleMeta.readingTime}</span>
+                  <span>{post.articleMeta.basis}</span>
                 </div>
-              ) : null}
-              {post.quickFacts.length > 0 ? (
-                <dl className="mt-6 grid gap-3 sm:grid-cols-2">
-                  {post.quickFacts.map((fact) => (
-                    <div className="rounded-md border border-neutral-200 bg-white p-4" key={`${fact.label}-${fact.value}`}>
-                      <dt className="text-xs font-semibold uppercase text-neutral-500">{fact.label}</dt>
-                      <dd className="mt-1 text-sm leading-6 text-neutral-800">{fact.value}</dd>
-                    </div>
-                  ))}
-                </dl>
               ) : null}
             </div>
             {post.heroImage ? (
-              <figure className="overflow-hidden rounded-md border border-neutral-200 bg-neutral-50">
-                <img className="aspect-[4/3] w-full object-cover" src={post.heroImage.src} alt={post.heroImage.alt} />
-                <figcaption className="border-t border-neutral-200 px-4 py-3 text-sm leading-6 text-neutral-600">
-                  {post.heroImage.caption}
-                </figcaption>
+              <figure className="market-article-hero-media">
+                <img src={post.heroImage.src} alt={post.heroImage.alt} />
+                <figcaption>{post.heroImage.caption}</figcaption>
               </figure>
+            ) : null}
+            {post.quickFacts.length > 0 ? (
+              <dl className="market-article-fact-rail">
+                {post.quickFacts.map((fact) => (
+                  <div key={`${fact.label}-${fact.value}`}>
+                    <dt>{fact.label}</dt>
+                    <dd>{fact.value}</dd>
+                  </div>
+                ))}
+              </dl>
             ) : null}
           </header>
 
-          <div className="mt-10 grid gap-10 lg:grid-cols-[260px_minmax(0,1fr)] lg:items-start">
-            <aside className="grid gap-5 lg:sticky lg:top-6">
-              <nav className="rounded-md border border-neutral-200 bg-white p-4" aria-label="Article table of contents">
-                <h2 className="text-sm font-semibold uppercase text-neutral-500">{tocLabel(market.language)}</h2>
-                <ol className="mt-3 grid gap-2 text-sm leading-6">
+          <div className="market-article-shell">
+            <aside className="market-article-left-rail">
+              <nav className="market-article-nav" aria-label="Article table of contents">
+                <h2>{tocLabel(market.language)}</h2>
+                <ol>
                   {sectionAnchors.map((section) => (
                     <li key={section.id}>
-                      <a className="text-neutral-700 hover:text-teal-700" href={`#${section.id}`}>
-                        {section.heading}
-                      </a>
+                      <a href={`#${section.id}`}>{section.heading}</a>
                     </li>
                   ))}
                 </ol>
               </nav>
-              {post.internalLinks.length > 0 ? (
-                <div className="rounded-md border border-neutral-200 bg-white p-4">
-                  <h2 className="text-sm font-semibold uppercase text-neutral-500">{internalLinksLabel(market.language)}</h2>
-                  <div className="mt-3 grid gap-3 text-sm">
-                    {post.internalLinks.map((link) => (
-                      <a className="rounded-sm text-neutral-800 hover:text-teal-700" href={link.href} key={link.href}>
-                        <span className="block font-semibold">{link.label}</span>
-                        <span className="block text-neutral-600">{link.note}</span>
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              ) : null}
-              {post.serpReferences.length > 0 ? (
-                <div className="rounded-md border border-neutral-200 bg-white p-4">
-                  <h2 className="text-sm font-semibold uppercase text-neutral-500">{topPagesLabel(market.language)}</h2>
-                  <div className="mt-3 grid gap-3 text-sm">
-                    {post.serpReferences.slice(0, 4).map((reference) => (
-                      <a className="group block" href={reference.url} key={`${reference.rank}-${reference.url}`} rel="noopener noreferrer" target="_blank">
-                        <span className="block font-semibold text-neutral-900 group-hover:text-teal-700">
-                          {reference.rank}. {reference.label}
-                        </span>
-                        <span className="block leading-6 text-neutral-600">{reference.formatPattern}</span>
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              ) : null}
             </aside>
 
-            <div className="min-w-0">
-              <section className="grid gap-5 md:grid-cols-[minmax(0,1.1fr)_minmax(260px,0.9fr)]" aria-labelledby="at-a-glance-heading">
-                <div className="rounded-md border border-neutral-200 bg-white p-5">
-                  <h2 id="at-a-glance-heading" className="text-xl font-semibold text-neutral-950">
-                    {atAGlanceLabel(market.language)}
-                  </h2>
-                  <ul className="mt-4 grid gap-3 text-sm leading-6 text-neutral-800">
+            <div className="market-article-main">
+              <section className="market-article-snapshot" aria-labelledby="at-a-glance-heading">
+                <div className="market-article-glance">
+                  <h2 id="at-a-glance-heading">{atAGlanceLabel(market.language)}</h2>
+                  <ul>
                     {post.keyTakeaways.map((item) => (
-                      <li className="flex gap-3" key={item}>
-                        <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-teal-700" aria-hidden />
+                      <li key={item}>
+                        <CheckCircle2 aria-hidden />
                         <span>{item}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
                 {post.verdictBox ? (
-                  <div className="rounded-md border border-neutral-900 bg-neutral-950 p-5 text-white">
-                    <p className="text-xs font-semibold uppercase text-teal-200">{post.verdictBox.label}</p>
-                    <p className="mt-3 text-base leading-7 text-neutral-100">{post.verdictBox.body}</p>
+                  <div className="market-article-verdict">
+                    <p>{post.verdictBox.label}</p>
+                    <strong>{post.verdictBox.body}</strong>
                   </div>
                 ) : null}
               </section>
 
               {post.prosCons ? (
-                <section className="mt-6 grid gap-4 md:grid-cols-2" aria-labelledby="pros-cons-heading">
+                <section className="market-article-signal-grid" aria-labelledby="pros-cons-heading">
                   <h2 id="pros-cons-heading" className="sr-only">
                     {decisionSignalsLabel(market.language)}
                   </h2>
-                  <div className="rounded-md border border-emerald-200 bg-emerald-50 p-5">
-                    <h3 className="text-lg font-semibold text-neutral-950">{positiveSignalsLabel(market.language)}</h3>
-                    <ul className="mt-3 grid gap-2 text-sm leading-6 text-neutral-800">
+                  <div className="market-article-signal market-article-signal-positive">
+                    <h3>{positiveSignalsLabel(market.language)}</h3>
+                    <ul>
                       {post.prosCons.pros.map((item) => (
-                        <li className="flex gap-3" key={item}>
-                          <span className="font-semibold text-emerald-700">+</span>
-                          <span>{item}</span>
+                        <li key={item}>
+                          <span>+</span>
+                          {item}
                         </li>
                       ))}
                     </ul>
                   </div>
-                  <div className="rounded-md border border-amber-200 bg-amber-50 p-5">
-                    <h3 className="text-lg font-semibold text-neutral-950">{cautionSignalsLabel(market.language)}</h3>
-                    <ul className="mt-3 grid gap-2 text-sm leading-6 text-neutral-800">
+                  <div className="market-article-signal market-article-signal-caution">
+                    <h3>{cautionSignalsLabel(market.language)}</h3>
+                    <ul>
                       {post.prosCons.cons.map((item) => (
-                        <li className="flex gap-3" key={item}>
-                          <span className="font-semibold text-amber-700">-</span>
-                          <span>{item}</span>
+                        <li key={item}>
+                          <span>-</span>
+                          {item}
                         </li>
                       ))}
                     </ul>
@@ -225,15 +191,31 @@ export default async function MarketPostPage({ params }: PageProps) {
                 </section>
               ) : null}
 
+              {post.quickFacts.length > 0 ? (
+                <section className="market-article-visual-summary" aria-labelledby="visual-summary-heading">
+                  <div>
+                    <p>{visualSummaryLabel(market.language)}</p>
+                    <h2 id="visual-summary-heading">{post.verdictBox?.label ?? atAGlanceLabel(market.language)}</h2>
+                  </div>
+                  <div className="market-article-visual-bars">
+                    {post.quickFacts.slice(0, 3).map((fact) => (
+                      <div className="market-article-visual-row" key={`visual-${fact.label}-${fact.value}`}>
+                        <span>{fact.label}</span>
+                        <strong>{fact.value}</strong>
+                        <i aria-hidden />
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              ) : null}
+
               {post.checklist.length > 0 ? (
-                <section className="mt-6 rounded-md border border-teal-200 bg-teal-50 p-5" aria-labelledby="checklist-heading">
-                  <h2 id="checklist-heading" className="text-xl font-semibold text-neutral-950">
-                    {checklistLabel(market.language)}
-                  </h2>
-                  <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+                <section className="market-article-checklist" aria-labelledby="checklist-heading">
+                  <h2 id="checklist-heading">{checklistLabel(market.language)}</h2>
+                  <ul>
                     {post.checklist.map((item) => (
-                      <li className="flex gap-3 text-sm leading-6 text-neutral-800" key={item}>
-                        <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-teal-700" aria-hidden />
+                      <li key={item}>
+                        <CheckCircle2 aria-hidden />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -241,42 +223,34 @@ export default async function MarketPostPage({ params }: PageProps) {
                 </section>
               ) : null}
 
-              <div className="mt-10 grid gap-10">
+              <div className="market-article-prose">
                 {sectionAnchors.map((section) => (
-                  <section className="scroll-mt-8" id={section.id} key={section.heading}>
-                    <h2 className="text-2xl font-semibold tracking-normal text-neutral-950">{section.heading}</h2>
-                    <div className="mt-3 grid gap-4 text-base leading-8 text-neutral-700">
-                      {paragraphs(section.body).map((paragraph) => (
-                        <p key={paragraph}>{paragraph}</p>
-                      ))}
-                    </div>
+                  <section id={section.id} key={section.heading}>
+                    <h2>{section.heading}</h2>
+                    {paragraphs(section.body).map((paragraph) => (
+                      <p key={paragraph}>{paragraph}</p>
+                    ))}
                   </section>
                 ))}
               </div>
 
               {post.comparisonTable ? (
-                <section className="mt-10" aria-labelledby="comparison-heading">
-                  <h2 id="comparison-heading" className="text-2xl font-semibold text-neutral-950">
-                    {post.comparisonTable.title}
-                  </h2>
-                  <div className="mt-4 overflow-x-auto rounded-md border border-neutral-200">
-                    <table className="min-w-full border-collapse bg-white text-left text-sm">
-                      <thead className="bg-neutral-100 text-neutral-700">
+                <section className="market-article-table-section" aria-labelledby="comparison-heading">
+                  <h2 id="comparison-heading">{post.comparisonTable.title}</h2>
+                  <div className="market-article-table-scroll">
+                    <table>
+                      <thead>
                         <tr>
                           {post.comparisonTable.columns.map((column) => (
-                            <th className="border-b border-neutral-200 px-4 py-3 font-semibold" key={column}>
-                              {column}
-                            </th>
+                            <th key={column}>{column}</th>
                           ))}
                         </tr>
                       </thead>
                       <tbody>
                         {post.comparisonTable.rows.map((row) => (
-                          <tr className="border-b border-neutral-100 last:border-b-0" key={row.join("|")}>
+                          <tr key={row.join("|")}>
                             {row.map((cell) => (
-                              <td className="align-top px-4 py-3 leading-6 text-neutral-700" key={cell}>
-                                {cell}
-                              </td>
+                              <td key={cell}>{cell}</td>
                             ))}
                           </tr>
                         ))}
@@ -287,35 +261,58 @@ export default async function MarketPostPage({ params }: PageProps) {
               ) : null}
 
               {post.sourceLinks.length > 0 ? (
-                <section className="mt-10 rounded-md border border-neutral-200 bg-white p-5" aria-labelledby="sources-heading">
-                  <h2 id="sources-heading" className="text-2xl font-semibold text-neutral-950">
-                    {sourcesLabel(market.language)}
-                  </h2>
-                  <div className="mt-4 grid gap-4">
+                <section className="market-article-sources" aria-labelledby="sources-heading">
+                  <h2 id="sources-heading">{sourcesLabel(market.language)}</h2>
+                  <div>
                     {post.sourceLinks.map((source) => (
-                      <a
-                        className="group rounded-md border border-neutral-100 p-4 hover:border-teal-600"
-                        href={source.url}
-                        key={source.url}
-                        rel="noopener noreferrer"
-                        target="_blank"
-                      >
-                        <span className="flex items-center gap-2 font-semibold text-neutral-950 group-hover:text-teal-700">
+                      <a href={source.url} key={source.url} rel="noopener noreferrer" target="_blank">
+                        <span>
                           {source.label}
-                          <ExternalLink className="h-4 w-4" aria-hidden />
+                          <ExternalLink aria-hidden />
                         </span>
                         {source.checkedAt ? (
-                          <span className="mt-1 block text-xs font-semibold uppercase text-neutral-500">
+                          <small>
                             {checkedAtLabel(market.language)} {source.checkedAt}
-                          </span>
+                          </small>
                         ) : null}
-                        <span className="mt-1 block text-sm leading-6 text-neutral-600">{source.note}</span>
+                        <em>{source.note}</em>
                       </a>
                     ))}
                   </div>
                 </section>
               ) : null}
             </div>
+
+            <aside className="market-article-right-rail">
+              {post.internalLinks.length > 0 ? (
+                <section className="market-article-side-panel">
+                  <h2>{internalLinksLabel(market.language)}</h2>
+                  <div>
+                    {post.internalLinks.map((link) => (
+                      <a href={link.href} key={link.href}>
+                        <strong>{link.label}</strong>
+                        <span>{link.note}</span>
+                      </a>
+                    ))}
+                  </div>
+                </section>
+              ) : null}
+              {post.serpReferences.length > 0 ? (
+                <section className="market-article-side-panel market-article-top-pages">
+                  <h2>{topPagesLabel(market.language)}</h2>
+                  <div>
+                    {post.serpReferences.slice(0, 4).map((reference) => (
+                      <a href={reference.url} key={`${reference.rank}-${reference.url}`} rel="noopener noreferrer" target="_blank">
+                        <strong>
+                          {reference.rank}. {reference.label}
+                        </strong>
+                        <span>{reference.formatPattern}</span>
+                      </a>
+                    ))}
+                  </div>
+                </section>
+              ) : null}
+            </aside>
           </div>
         </article>
       </main>
@@ -429,4 +426,12 @@ function topPagesLabel(language: string): string {
   if (language === "ja") return "確認した上位ページ";
   if (language === "ko") return "확인한 상위 페이지";
   return "Top pages checked";
+}
+
+function visualSummaryLabel(language: string): string {
+  if (language === "es") return "Mapa visual";
+  if (language === "pt-br" || language === "pt") return "Mapa visual";
+  if (language === "ja") return "視覚サマリー";
+  if (language === "ko") return "시각 요약";
+  return "Visual summary";
 }

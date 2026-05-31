@@ -131,7 +131,7 @@ def reader_facing_article_sections(strategy: dict[str, Any]) -> list[dict[str, s
             ),
             (
                 "Who Should Buy It",
-                "The S90F makes the most sense for people who play console or PC games, watch a lot of movies in a controlled-light room, and want OLED contrast with premium gaming features. It is less obvious for someone who mainly watches cable news in a very bright room all day, wants Dolby Vision specifically, or can find an LG C-series OLED with a better return policy and lower final price.",
+                "The S90F makes the most sense for people who play console or PC games, watch a lot of movies in a controlled-light room, and want OLED contrast with premium gaming features. It is less obvious for someone who mainly leaves static daytime TV on in a very bright room, wants Dolby Vision specifically, or can find an LG C-series OLED with a better return policy and lower final price.",
             ),
             (
                 "Deal Checklist",
@@ -254,8 +254,8 @@ def reader_facing_article_sections(strategy: dict[str, Any]) -> list[dict[str, s
                 "지원 전에는 다섯 가지를 확인하세요. 첫째, 학생부 기록과 삭제·보존 여부. 둘째, 지원 대학의 학폭 조치사항 반영 방식. 셋째, 전형별 감점 또는 지원 제한 기준. 넷째, 검정고시·자퇴·졸업생 등 본인 상황에 대한 제출 서류. 다섯째, 이의신청이나 소명 절차가 가능한지 여부입니다.",
             ),
             (
-                "뉴스를 볼 때 주의할 점",
-                "최근 학폭 증가나 대입 반영 기사만 보고 불안해할 필요는 없지만, 반대로 가볍게 넘겨서도 안 됩니다. 기사는 흐름을 이해하는 데 도움이 되고, 실제 지원 판단은 대학별 모집요강과 대교협·교육부 자료를 기준으로 해야 합니다. 특히 ‘무조건 불합격’이나 ‘전혀 영향 없음’처럼 단정적인 말은 믿기 어렵습니다.",
+                "검색 글을 볼 때 주의할 점",
+                "검색 상단의 정리 글만 보고 불안해할 필요는 없지만, 반대로 가볍게 넘겨서도 안 됩니다. 블로그형 총정리 글은 흐름을 이해하는 데 도움이 되고, 실제 지원 판단은 대학별 모집요강과 대교협·교육부 자료를 기준으로 해야 합니다. 특히 ‘무조건 불합격’이나 ‘전혀 영향 없음’처럼 단정적인 말은 믿기 어렵습니다.",
             ),
             (
                 "어디서 확인해야 하나",
@@ -420,7 +420,7 @@ def article_experience(strategy: dict[str, Any]) -> dict[str, Any]:
             "sourceLinks": [
                 {"label": "MacRumors iPhone 18 feature roundup", "url": "https://www.macrumors.com/2026/05/09/iphone-18-pro-10-new-features/", "note": "Apple rumor source used for feature claims."},
                 {"label": "9to5Mac iPhone 18 launch timing", "url": "https://9to5mac.com/2026/01/30/iphone-18-isnt-launching-until-next-year-new-report-reaffirms/", "note": "Launch timing and split-lineup context."},
-                {"label": "Mashable iPhone 18 news", "url": "https://mashable.com/tech/apple-iphone-18-news-rumors-leaks", "note": "Trend source for rumor roundup intent."},
+                {"label": "Tom's Guide iPhone 18 rumor guide", "url": "https://www.tomsguide.com/phones/iphones/iphone-18-rumors-everything-we-know-so-far", "note": "Guide-style roundup used for sectioning, summary, and rumor confidence format."},
                 {"label": "Macworld color leak coverage", "url": "https://www.macworld.com/article/3151620/new-leak-confirms-new-iphone-18-pro-dark-cherry-light-blue-colors.html", "note": "Narrow rumor example; treat cautiously."},
             ],
             "internalLinks": common_internal_links,
@@ -456,10 +456,10 @@ def article_experience(strategy: dict[str, Any]) -> dict[str, Any]:
                 ],
             },
             "sourceLinks": [
-                {"label": "대구교육신문 대교협 기본사항 보도", "url": "https://www.edudaegu.co.kr/news/articleView.html?idxno=6130", "note": "2026학년도 기본사항과 전 전형 반영 맥락."},
-                {"label": "E동아 2026 대입 학폭 반영 가이드", "url": "https://edu.donga.com/news/articleView.html?idxno=84852", "note": "조치사항별 불이익과 지원자 관점 설명."},
-                {"label": "Daum 뉴스 학폭 증가 트렌드", "url": "https://v.daum.net/v/20260531080300396", "note": "이번 검색 수요가 생긴 최신 뉴스 맥락."},
-                {"label": "연합뉴스 2026학년도 대입 반영", "url": "https://www.yna.co.kr/view/AKR20230830058000530", "note": "대교협 발표 초기 보도와 제도 배경."},
+                {"label": "2026학년도 학폭 대입 반영 총정리", "url": "https://ystudy200708.tistory.com/33", "note": "블로그형 총정리 글의 대학별 비교표와 확인 항목 구조."},
+                {"label": "법무법인 슈가스퀘어 대입 학폭 기준 정리", "url": "https://blog.sugar.legal/%ED%95%99%EA%B5%90%ED%8F%AD%EB%A0%A5-%EC%83%9D%EA%B8%B0%EB%B6%80-%EA%B8%B0%EB%A1%9D-2027-%EB%8C%80%EC%9E%85%EC%97%90%EC%84%9C-%EC%96%B4%EB%94%94%EA%B9%8C%EC%A7%80-%EB%B6%88%EB%A6%AC%ED%95%A0%EA%B9%8C-%EC%8B%A4%EC%A0%9C-%ED%83%88%EB%9D%BD-%EA%B8%B0%EC%A4%80-%EC%A0%95%EB%A6%AC-88964", "note": "블로그형 법률/입시 해설의 실제 기준 정리 방식."},
+                {"label": "한국대학교육협의회 2026 기본사항", "url": "https://kcue.or.kr/news/sub02/sub01.php?at=view&idx=24138", "note": "공식 제도 근거와 대학별 자율 반영 원칙."},
+                {"label": "정책브리핑 2026 대입 기본사항 자료", "url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156588049", "note": "교육부/대교협 자료와 가이드라인 파일 확인 경로."},
             ],
             "internalLinks": common_internal_links,
         },
@@ -664,9 +664,9 @@ def serp_format_experience(topic: str, language: str) -> dict[str, Any]:
                 },
                 {
                     "rank": "4",
-                    "label": "Mashable iPhone 18 rumor roundup",
-                    "url": "https://mashable.com/tech/apple-iphone-18-news-rumors-leaks",
-                    "formatPattern": "Rumor/news roundup with feature and color hooks.",
+                    "label": "Tom's Guide iPhone 18 rumor guide",
+                    "url": "https://www.tomsguide.com/phones/iphones/iphone-18-rumors-everything-we-know-so-far",
+                    "formatPattern": "Guide-style rumor roundup with updated date, scannable sections, and practical buyer context.",
                 },
             ],
         },
@@ -674,7 +674,7 @@ def serp_format_experience(topic: str, language: str) -> dict[str, Any]:
             "articleMeta": shared_meta,
             "keyTakeaways": [
                 "상위 글은 전 전형 반영, 대학별 차이, 조치사항별 불이익을 먼저 정리한다.",
-                "독자는 기사보다 모집요강에서 무엇을 봐야 하는지 빠른 체크리스트가 필요하다.",
+                "독자는 검색 글보다 모집요강에서 무엇을 봐야 하는지 빠른 체크리스트가 필요하다.",
                 "대학별 감점·지원 제한을 단정하지 않고 확인 경로를 분리해야 한다.",
             ],
             "verdictBox": {
@@ -688,27 +688,27 @@ def serp_format_experience(topic: str, language: str) -> dict[str, Any]:
             "serpReferences": [
                 {
                     "rank": "1",
-                    "label": "대구교육신문 대교협 기본사항",
-                    "url": "https://www.edudaegu.co.kr/news/articleView.html?idxno=6130",
-                    "formatPattern": "제도 발표 중심, 전 전형 필수 반영을 빠르게 설명.",
+                    "label": "Tistory 학폭 대입 반영 총정리",
+                    "url": "https://ystudy200708.tistory.com/33",
+                    "formatPattern": "총정리형 제목, 대학별 비교, 긴 체크리스트, 표 중심 구성.",
                 },
                 {
                     "rank": "2",
-                    "label": "E동아 학폭 반영 가이드",
-                    "url": "https://edu.donga.com/news/articleView.html?idxno=84852",
-                    "formatPattern": "조치사항별 불이익, 대학별 차이, 수험생 관점 해설.",
+                    "label": "슈가스퀘어 학폭 생기부 대입 기준",
+                    "url": "https://blog.sugar.legal/%ED%95%99%EA%B5%90%ED%8F%AD%EB%A0%A5-%EC%83%9D%EA%B8%B0%EB%B6%80-%EA%B8%B0%EB%A1%9D-2027-%EB%8C%80%EC%9E%85%EC%97%90%EC%84%9C-%EC%96%B4%EB%94%94%EA%B9%8C%EC%A7%80-%EB%B6%88%EB%A6%AC%ED%95%A0%EA%B9%8C-%EC%8B%A4%EC%A0%9C-%ED%83%88%EB%9D%BD-%EA%B8%B0%EC%A4%80-%EC%A0%95%EB%A6%AC-88964",
+                    "formatPattern": "법률 블로그형 문제 정의, 실제 기준, 대학별 사례, 상담 전 확인 목록.",
                 },
                 {
                     "rank": "3",
-                    "label": "베리타스알파 2026 대입 학폭",
-                    "url": "https://www.veritas-a.com/news/articleView.html?idxno=470532",
-                    "formatPattern": "수시/정시 전형 범위, 대학 자율 반영, 일정 맥락.",
+                    "label": "정책브리핑 2026 기본사항",
+                    "url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156588049",
+                    "formatPattern": "공식 자료 허브, 첨부파일, 제도 요약, 근거 확인 경로.",
                 },
                 {
                     "rank": "4",
-                    "label": "경향신문 학폭 의무 반영",
-                    "url": "https://www.khan.co.kr/article/202405022102025/",
-                    "formatPattern": "시행계획 발표와 전형별 반영 방향 보도.",
+                    "label": "대입정보포털 대학별 전형 정보",
+                    "url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000030",
+                    "formatPattern": "대학별 전형 상세, 표 기반 확인, 모집요강 검증 흐름.",
                 },
             ],
         },

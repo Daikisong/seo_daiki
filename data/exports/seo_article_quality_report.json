@@ -37,6 +37,11 @@
           "points": 10
         },
         {
+          "name": "top-page references avoid news framing",
+          "pass": true,
+          "points": 4
+        },
+        {
           "name": "key takeaways",
           "pass": true,
           "points": 7
@@ -87,7 +92,7 @@
           "points": 2
         },
         {
-          "name": "noindex until promotion",
+          "name": "test post remains noindex until promotion",
           "pass": true,
           "points": 2
         }
@@ -128,6 +133,11 @@
           "points": 10
         },
         {
+          "name": "top-page references avoid news framing",
+          "pass": true,
+          "points": 4
+        },
+        {
           "name": "key takeaways",
           "pass": true,
           "points": 7
@@ -178,7 +188,7 @@
           "points": 2
         },
         {
-          "name": "noindex until promotion",
+          "name": "test post remains noindex until promotion",
           "pass": true,
           "points": 2
         }
@@ -219,6 +229,11 @@
           "points": 10
         },
         {
+          "name": "top-page references avoid news framing",
+          "pass": true,
+          "points": 4
+        },
+        {
           "name": "key takeaways",
           "pass": true,
           "points": 7
@@ -269,7 +284,7 @@
           "points": 2
         },
         {
-          "name": "noindex until promotion",
+          "name": "test post remains noindex until promotion",
           "pass": true,
           "points": 2
         }
@@ -310,6 +325,11 @@
           "points": 10
         },
         {
+          "name": "top-page references avoid news framing",
+          "pass": true,
+          "points": 4
+        },
+        {
           "name": "key takeaways",
           "pass": true,
           "points": 7
@@ -360,7 +380,7 @@
           "points": 2
         },
         {
-          "name": "noindex until promotion",
+          "name": "test post remains noindex until promotion",
           "pass": true,
           "points": 2
         }
@@ -401,6 +421,11 @@
           "points": 10
         },
         {
+          "name": "top-page references avoid news framing",
+          "pass": true,
+          "points": 4
+        },
+        {
           "name": "key takeaways",
           "pass": true,
           "points": 7
@@ -451,7 +476,7 @@
           "points": 2
         },
         {
-          "name": "noindex until promotion",
+          "name": "test post remains noindex until promotion",
           "pass": true,
           "points": 2
         }
@@ -505,6 +530,40 @@
     },
     {
       "name": "renders Article JSON-LD",
+      "pass": true
+    }
+  ],
+  "visualChecks": [
+    {
+      "name": "uses editorial hero layout",
+      "pass": true
+    },
+    {
+      "name": "uses three-column article shell",
+      "pass": true
+    },
+    {
+      "name": "uses fact rail not plain cards",
+      "pass": true
+    },
+    {
+      "name": "uses custom visual summary block",
+      "pass": true
+    },
+    {
+      "name": "uses dedicated prose styling",
+      "pass": true
+    },
+    {
+      "name": "uses polished decision blocks",
+      "pass": true
+    },
+    {
+      "name": "uses responsive mobile rules",
+      "pass": true
+    },
+    {
+      "name": "does not scale font size with viewport width",
       "pass": true
     }
   ]

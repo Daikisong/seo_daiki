@@ -12,3 +12,5 @@ __pycache__
 .pytest_cache
 data/uploads
 packages/db/src/generated
+.artifacts
+.playwright-libs
