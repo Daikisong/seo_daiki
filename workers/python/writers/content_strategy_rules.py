@@ -254,8 +254,8 @@ def reader_facing_article_sections(strategy: dict[str, Any]) -> list[dict[str, s
                 "지원 전에는 다섯 가지를 확인하세요. 첫째, 학생부 기록과 삭제·보존 여부. 둘째, 지원 대학의 학폭 조치사항 반영 방식. 셋째, 전형별 감점 또는 지원 제한 기준. 넷째, 검정고시·자퇴·졸업생 등 본인 상황에 대한 제출 서류. 다섯째, 이의신청이나 소명 절차가 가능한지 여부입니다.",
             ),
             (
-                "검색 글을 볼 때 주의할 점",
-                "검색 상단의 정리 글만 보고 불안해할 필요는 없지만, 반대로 가볍게 넘겨서도 안 됩니다. 블로그형 총정리 글은 흐름을 이해하는 데 도움이 되고, 실제 지원 판단은 대학별 모집요강과 대교협·교육부 자료를 기준으로 해야 합니다. 특히 ‘무조건 불합격’이나 ‘전혀 영향 없음’처럼 단정적인 말은 믿기 어렵습니다.",
+                "외부 정리 자료를 볼 때 주의할 점",
+                "외부 정리 자료만 보고 불안해할 필요는 없지만, 반대로 가볍게 넘겨서도 안 됩니다. 입시 해설 자료는 흐름을 이해하는 데 도움이 되고, 실제 지원 판단은 대학별 모집요강과 대교협·교육부 자료를 기준으로 해야 합니다. 특히 ‘무조건 불합격’이나 ‘전혀 영향 없음’처럼 단정적인 말은 믿기 어렵습니다.",
             ),
             (
                 "어디서 확인해야 하나",
@@ -283,7 +283,6 @@ def article_experience(strategy: dict[str, Any]) -> dict[str, Any]:
                 {"label": "Best for", "value": "OLED movie and gaming buyers comparing a limited-time discount"},
                 {"label": "Main risk", "value": "Headline price may apply to one size, seller, or expired deal"},
                 {"label": "Must verify", "value": "Model number, size, return policy, warranty, final checkout price"},
-                {"label": "Index-ready status", "value": "Ready after editor checks live price and image licensing"},
             ],
             "checklist": [
                 "Confirm the exact screen size and model number.",
@@ -307,7 +306,7 @@ def article_experience(strategy: dict[str, Any]) -> dict[str, Any]:
                 {"label": "RTINGS Samsung S90F OLED review", "url": "https://www.rtings.com/tv/reviews/samsung/s90f-oled", "note": "Measurement-heavy review and test data."},
                 {"label": "Tom's Guide Samsung S90F review", "url": "https://www.tomsguide.com/tvs/oled-tvs/samsung-s90f-oled-tv-review", "note": "Hands-on review with pros, cons, and test results."},
                 {"label": "TechRadar Samsung S90F review", "url": "https://www.techradar.com/televisions/samsung-s90f-review", "note": "Buyer-oriented review and size caveats."},
-                {"label": "Technobezz deal signal", "url": "https://www.technobezz.com/best/samsung-class-s90f-smart-tv-with-nq4-processor-drops-to-179799", "note": "Trend/deal source; verify current price before publishing."},
+                {"label": "Technobezz deal context", "url": "https://www.technobezz.com/best/samsung-class-s90f-smart-tv-with-nq4-processor-drops-to-179799", "note": "Deal context; verify the current price and retailer terms before buying."},
             ],
             "internalLinks": common_internal_links,
         },
@@ -318,10 +317,9 @@ def article_experience(strategy: dict[str, Any]) -> dict[str, Any]:
                 "caption": "Tax campaign details change by date and personal situation. Use official AEAT sources for final action.",
             },
             "quickFacts": [
-                {"label": "Best for", "value": "Spanish taxpayers checking AEAT warnings before filing or correcting"},
-                {"label": "Main risk", "value": "Treating a warning as a fine or ignoring official messages"},
-                {"label": "Must verify", "value": "Sede electrónica, Renta WEB, campaign dates, supporting documents"},
-                {"label": "Index-ready status", "value": "Ready after editor confirms latest AEAT calendar dates"},
+                {"label": "Para quién", "value": "Contribuyentes que ven avisos de la AEAT antes de presentar o corregir"},
+                {"label": "Riesgo principal", "value": "Confundir un aviso preventivo con una multa o ignorar mensajes oficiales"},
+                {"label": "Comprobar", "value": "Sede electrónica, Renta WEB, calendario y justificantes"},
             ],
             "checklist": [
                 "Entra solo por la Sede electrónica o app oficial.",
@@ -342,10 +340,10 @@ def article_experience(strategy: dict[str, Any]) -> dict[str, Any]:
                 ],
             },
             "sourceLinks": [
-                {"label": "Agencia Tributaria - Renta 2025", "url": "https://www3.agenciatributaria.gob.es/Sede/Renta.html", "note": "Official campaign entry point."},
-                {"label": "Ministerio de Hacienda campaign note", "url": "https://www.hacienda.gob.es/es-ES/Prensa/Noticias/paginas/2026/20260408-np-aeat-campana-renta-2025.aspx", "note": "Official campaign timing and Renta Directa context."},
-                {"label": "AEAT press PDF", "url": "https://sede.agenciatributaria.gob.es/static_files/Sede/Actualidad/Notas_prensa/2026/NP_Inicio_Campana_renta_2025.pdf", "note": "Official notes about preventive notices and campaign support."},
-                {"label": "Xataka guide to Hacienda notices", "url": "https://www.xataka.com/basics/avisos-hacienda-antes-multarte-renta-2025-estos-que-recibes-hay-errores-tu-declaracion-2026/amp", "note": "Plain-language explainer used for reader intent comparison."},
+                {"label": "Agencia Tributaria - Renta 2025", "url": "https://www3.agenciatributaria.gob.es/Sede/Renta.html", "note": "Entrada oficial de la campaña y trámites."},
+                {"label": "Ministerio de Hacienda - campaña Renta", "url": "https://www.hacienda.gob.es/es-ES/Prensa/Noticias/paginas/2026/20260408-np-aeat-campana-renta-2025.aspx", "note": "Fechas oficiales y contexto de asistencia."},
+                {"label": "PDF oficial de la AEAT", "url": "https://sede.agenciatributaria.gob.es/static_files/Sede/Actualidad/Notas_prensa/2026/NP_Inicio_Campana_renta_2025.pdf", "note": "Notas oficiales sobre avisos preventivos y ayuda de campaña."},
+                {"label": "Guía de Xataka sobre avisos de Hacienda", "url": "https://www.xataka.com/basics/avisos-hacienda-antes-multarte-renta-2025-estos-que-recibes-hay-errores-tu-declaracion-2026/amp", "note": "Explicación en lenguaje claro para comparar la intención del lector."},
             ],
             "internalLinks": common_internal_links,
         },
@@ -356,10 +354,9 @@ def article_experience(strategy: dict[str, Any]) -> dict[str, Any]:
                 "caption": "Illustrative smartphone image. Confirm exact iPhone 16 model, storage, seller, and Brazilian warranty.",
             },
             "quickFacts": [
-                {"label": "Best for", "value": "Brazil buyers checking whether an iPhone 16 promotion is actually good"},
-                {"label": "Main risk", "value": "Expired coupon, marketplace seller, unclear warranty, or weak storage fit"},
-                {"label": "Must verify", "value": "Final cart price, nota fiscal, warranty, seller, storage, return window"},
-                {"label": "Index-ready status", "value": "Ready after editor confirms live price and store terms"},
+                {"label": "Para quem", "value": "Compradores no Brasil avaliando se uma promoção do iPhone 16 vale a pena"},
+                {"label": "Risco principal", "value": "Cupom expirado, marketplace, garantia pouco clara ou armazenamento insuficiente"},
+                {"label": "Verificar", "value": "Preço final, nota fiscal, garantia, vendedor, armazenamento e devolução"},
             ],
             "checklist": [
                 "Confira o preço final no carrinho.",
@@ -380,10 +377,10 @@ def article_experience(strategy: dict[str, Any]) -> dict[str, Any]:
                 ],
             },
             "sourceLinks": [
-                {"label": "Tecnoblog iPhone 16 deal signal", "url": "https://tecnoblog.net/achados/iphone-16-atinge-menor-preco-desde-marco-com-44-off-em-promocao/", "note": "Trend/deal source; price must be rechecked."},
-                {"label": "Canaltech iPhone 16 price context", "url": "https://canaltech.com.br/smartphone/quanto-vale-a-pena-pagar-no-iphone-16-em-2026/", "note": "Buying-threshold context."},
-                {"label": "Apple Brasil iPhone 16", "url": "https://www.apple.com/br/iphone-16/", "note": "Official specs and model details."},
-                {"label": "Tecnoblog official price cut context", "url": "https://tecnoblog.net/noticias/iphone-16-fica-ate-13-mais-barato-no-brasil-veja-os-novos-precos/", "note": "Brazil pricing context."},
+                {"label": "Tecnoblog - sinal de oferta do iPhone 16", "url": "https://tecnoblog.net/achados/iphone-16-atinge-menor-preco-desde-marco-com-44-off-em-promocao/", "note": "Fonte de oferta; o preço precisa ser conferido novamente."},
+                {"label": "Canaltech - contexto de preço do iPhone 16", "url": "https://canaltech.com.br/smartphone/quanto-vale-a-pena-pagar-no-iphone-16-em-2026/", "note": "Referência para avaliar faixa de preço e alternativas."},
+                {"label": "Apple Brasil - iPhone 16", "url": "https://www.apple.com/br/iphone-16/", "note": "Especificações oficiais e detalhes do modelo."},
+                {"label": "Tecnoblog - contexto de preço no Brasil", "url": "https://tecnoblog.net/noticias/iphone-16-fica-ate-13-mais-barato-no-brasil-veja-os-novos-precos/", "note": "Contexto de reajuste e preço oficial no mercado brasileiro."},
             ],
             "internalLinks": common_internal_links,
         },
@@ -394,10 +391,9 @@ def article_experience(strategy: dict[str, Any]) -> dict[str, Any]:
                 "caption": "Rumor coverage should not be treated as Apple confirmation. Japan pricing and carrier terms may differ.",
             },
             "quickFacts": [
-                {"label": "Best for", "value": "Japan readers deciding whether to wait for iPhone 18 rumors"},
-                {"label": "Main risk", "value": "Confusing Pro rumors, standard model timing, and Japan launch conditions"},
-                {"label": "Must verify", "value": "Apple announcement, Japan price, carrier plan, trade-in, model timing"},
-                {"label": "Index-ready status", "value": "Ready after editor updates latest rumor confidence levels"},
+                {"label": "対象", "value": "iPhone 18を待つべきか迷っている日本の読者"},
+                {"label": "主なリスク", "value": "Proモデルの噂、標準モデルの時期、日本の販売条件を混同すること"},
+                {"label": "確認すること", "value": "Apple公式発表、日本価格、キャリア施策、下取り、モデル別時期"},
             ],
             "checklist": [
                 "Proモデルの噂か標準モデルの噂か分けて読む。",
@@ -418,10 +414,10 @@ def article_experience(strategy: dict[str, Any]) -> dict[str, Any]:
                 ],
             },
             "sourceLinks": [
-                {"label": "MacRumors iPhone 18 feature roundup", "url": "https://www.macrumors.com/2026/05/09/iphone-18-pro-10-new-features/", "note": "Apple rumor source used for feature claims."},
-                {"label": "9to5Mac iPhone 18 launch timing", "url": "https://9to5mac.com/2026/01/30/iphone-18-isnt-launching-until-next-year-new-report-reaffirms/", "note": "Launch timing and split-lineup context."},
-                {"label": "Tom's Guide iPhone 18 rumor guide", "url": "https://www.tomsguide.com/phones/iphones/iphone-18-rumors-everything-we-know-so-far", "note": "Guide-style roundup used for sectioning, summary, and rumor confidence format."},
-                {"label": "Macworld color leak coverage", "url": "https://www.macworld.com/article/3151620/new-leak-confirms-new-iphone-18-pro-dark-cherry-light-blue-colors.html", "note": "Narrow rumor example; treat cautiously."},
+                {"label": "MacRumors - iPhone 18機能まとめ", "url": "https://www.macrumors.com/2026/05/09/iphone-18-pro-10-new-features/", "note": "機能に関する噂を確認するためのApple系情報源。"},
+                {"label": "9to5Mac - iPhone 18発売時期", "url": "https://9to5mac.com/2026/01/30/iphone-18-isnt-launching-until-next-year-new-report-reaffirms/", "note": "発売時期とラインアップ分割の文脈。"},
+                {"label": "Tom's Guide - iPhone 18噂ガイド", "url": "https://www.tomsguide.com/phones/iphones/iphone-18-rumors-everything-we-know-so-far", "note": "噂の整理、要約、信頼度の見せ方を確認。"},
+                {"label": "Macworld - カラー噂の例", "url": "https://www.macworld.com/article/3151620/new-leak-confirms-new-iphone-18-pro-dark-cherry-light-blue-colors.html", "note": "限定的な噂の例。購入判断では慎重に扱う。"},
             ],
             "internalLinks": common_internal_links,
         },
@@ -435,7 +431,6 @@ def article_experience(strategy: dict[str, Any]) -> dict[str, Any]:
                 {"label": "대상", "value": "2026학년도 대입 지원자와 학부모"},
                 {"label": "핵심 위험", "value": "대학별 반영 방식 차이를 무시하고 단정하는 것"},
                 {"label": "반드시 확인", "value": "학생부 기록, 대학별 모집요강, 전형별 감점/제한 기준"},
-                {"label": "공개 준비 상태", "value": "공식 자료 링크와 대학별 예시 확인 뒤 index 전환 가능"},
             ],
             "checklist": [
                 "학생부에 어떤 조치사항이 기재되어 있는지 확인한다.",
@@ -456,10 +451,10 @@ def article_experience(strategy: dict[str, Any]) -> dict[str, Any]:
                 ],
             },
             "sourceLinks": [
-                {"label": "2026학년도 학폭 대입 반영 총정리", "url": "https://ystudy200708.tistory.com/33", "note": "블로그형 총정리 글의 대학별 비교표와 확인 항목 구조."},
-                {"label": "법무법인 슈가스퀘어 대입 학폭 기준 정리", "url": "https://blog.sugar.legal/%ED%95%99%EA%B5%90%ED%8F%AD%EB%A0%A5-%EC%83%9D%EA%B8%B0%EB%B6%80-%EA%B8%B0%EB%A1%9D-2027-%EB%8C%80%EC%9E%85%EC%97%90%EC%84%9C-%EC%96%B4%EB%94%94%EA%B9%8C%EC%A7%80-%EB%B6%88%EB%A6%AC%ED%95%A0%EA%B9%8C-%EC%8B%A4%EC%A0%9C-%ED%83%88%EB%9D%BD-%EA%B8%B0%EC%A4%80-%EC%A0%95%EB%A6%AC-88964", "note": "블로그형 법률/입시 해설의 실제 기준 정리 방식."},
                 {"label": "한국대학교육협의회 2026 기본사항", "url": "https://kcue.or.kr/news/sub02/sub01.php?at=view&idx=24138", "note": "공식 제도 근거와 대학별 자율 반영 원칙."},
                 {"label": "정책브리핑 2026 대입 기본사항 자료", "url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156588049", "note": "교육부/대교협 자료와 가이드라인 파일 확인 경로."},
+                {"label": "대입정보포털 대학별 전형 정보", "url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000030", "note": "대학별 모집요강과 전형 정보를 확인하는 공식 경로."},
+                {"label": "2026학년도 학폭 대입 반영 총정리", "url": "https://ystudy200708.tistory.com/33", "note": "대학별 비교와 지원 전 확인 항목을 검토할 때 참고."},
             ],
             "internalLinks": common_internal_links,
         },
@@ -486,14 +481,19 @@ def article_experience(strategy: dict[str, Any]) -> dict[str, Any]:
 def serp_format_experience(topic: str, language: str) -> dict[str, Any]:
     checked_at = "2026-05-31"
     common_basis = {
-        "en": "Search top pages + primary sources",
-        "es": "Páginas mejor posicionadas + fuentes oficiales",
-        "pt-br": "Páginas bem posicionadas + fontes oficiais",
-        "ja": "上位ページ + 公式/検証情報",
-        "ko": "상위 검색 페이지 + 공식 근거",
-    }.get(language, "Search top pages + primary sources")
+        "en": "Sources checked",
+        "es": "Fuentes revisadas",
+        "pt-br": "Fontes verificadas",
+        "ja": "確認済み情報",
+        "ko": "확인한 자료",
+    }.get(language, "Sources checked")
     reading_time = {"es": "6 min de lectura", "pt-br": "6 min de leitura", "ja": "約6分", "ko": "약 6분"}.get(language, "6 min read")
-    reviewer = {"es": "Revisión editorial", "pt-br": "Revisão editorial", "ja": "編集レビュー", "ko": "편집 검토"}.get(language, "Editorial review")
+    reviewer = {
+        "es": "Equipo editorial de Global Import Lab",
+        "pt-br": "Equipe editorial da Global Import Lab",
+        "ja": "Global Import Lab編集チーム",
+        "ko": "Global Import Lab 편집팀",
+    }.get(language, "Global Import Lab editorial team")
 
     shared_meta = {
         "checkedAt": checked_at,
@@ -547,9 +547,9 @@ def serp_format_experience(topic: str, language: str) -> dict[str, Any]:
         "renta_2025": {
             "articleMeta": shared_meta,
             "keyTakeaways": [
-                "A tax notice is a prompt to verify data; it is not automatically a fine.",
-                "Official AEAT and Hacienda pages should outrank media summaries for final action.",
-                "The safest format is: dates, notice types, what to check, and what not to change without proof.",
+                "Un aviso fiscal sirve para revisar datos; no significa automáticamente una multa.",
+                "Para actuar, las páginas oficiales de la AEAT y Hacienda pesan más que cualquier resumen externo.",
+                "Comprueba fechas, tipo de aviso y justificantes antes de modificar la declaración.",
             ],
             "verdictBox": {
                 "label": "Criterio práctico",
@@ -589,9 +589,9 @@ def serp_format_experience(topic: str, language: str) -> dict[str, Any]:
         "iphone_16_br": {
             "articleMeta": shared_meta,
             "keyTakeaways": [
-                "The winning format for deal intent starts with price, coupon, date, and seller checks.",
-                "A useful article separates the live offer from durable buying criteria.",
-                "The reader needs a quick verdict, specs that matter, and red flags before any store click.",
+                "Antes de considerar a promoção, confira preço final, cupom, data e vendedor.",
+                "O artigo precisa separar a oferta do momento dos critérios duráveis de compra.",
+                "Antes de clicar em qualquer loja, o leitor precisa de veredito rápido, especificações importantes e sinais de alerta.",
             ],
             "verdictBox": {
                 "label": "Veredito rápido",
@@ -631,9 +631,9 @@ def serp_format_experience(topic: str, language: str) -> dict[str, Any]:
         "iphone_18_jp": {
             "articleMeta": shared_meta,
             "keyTakeaways": [
-                "Top rumor roundups separate at-a-glance bullets, timeline, and individual rumor sections.",
-                "Japan readers need local price, carrier, trade-in, and timing notes layered onto global rumors.",
-                "The article should label confidence and avoid treating leaks as Apple confirmation.",
+                "噂は、要点、発売時期、個別情報を分けて確認する必要がある。",
+                "日本の読者には、世界的な噂に加えて日本価格、キャリア、下取り、発売時期の確認が必要。",
+                "リークをApple公式発表のように扱わず、確度を分けて読むことが大切。",
             ],
             "verdictBox": {
                 "label": "判断",
@@ -673,8 +673,8 @@ def serp_format_experience(topic: str, language: str) -> dict[str, Any]:
         "kr_admission_bullying": {
             "articleMeta": shared_meta,
             "keyTakeaways": [
-                "상위 글은 전 전형 반영, 대학별 차이, 조치사항별 불이익을 먼저 정리한다.",
-                "독자는 검색 글보다 모집요강에서 무엇을 봐야 하는지 빠른 체크리스트가 필요하다.",
+                "모든 전형에서 학교폭력 조치사항 반영 방식을 확인해야 한다.",
+                "지원 대학 모집요강에서 감점, 지원 제한, 정성평가 반영 여부를 먼저 확인해야 한다.",
                 "대학별 감점·지원 제한을 단정하지 않고 확인 경로를 분리해야 한다.",
             ],
             "verdictBox": {

@@ -62,6 +62,8 @@ export default async function MarketPostPage({ params }: PageProps) {
     notFound();
   }
   const sectionAnchors = post.sections.map((section) => ({ ...section, id: anchorId(section.heading) }));
+  const [answerSection, ...bodySections] = sectionAnchors;
+  const publicQuickFacts = post.quickFacts.filter((fact) => isPublicQuickFact(fact.label, fact.value)).slice(0, 3);
   const canonical = canonicalForMarketPath(marketContentPath(market, "posts", post.slug));
 
   return (
@@ -76,7 +78,23 @@ export default async function MarketPostPage({ params }: PageProps) {
             image: post.heroImage?.src ? [post.heroImage.src] : undefined,
             mainEntityOfPage: canonical,
             inLanguage: market.language,
-            isAccessibleForFree: true
+            isAccessibleForFree: true,
+            datePublished: post.articleMeta.checkedAt,
+            dateModified: post.articleMeta.checkedAt,
+            author: {
+              "@type": "Organization",
+              name: "Global Import Lab Editorial Team"
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "Global Import Lab"
+            },
+            reviewedBy: post.articleMeta.reviewer
+              ? {
+                  "@type": "Organization",
+                  name: post.articleMeta.reviewer
+                }
+              : undefined
           },
           {
             "@context": "https://schema.org",
@@ -104,6 +122,7 @@ export default async function MarketPostPage({ params }: PageProps) {
                     {updatedLabel(market.language)} <time dateTime={post.articleMeta.checkedAt}>{post.articleMeta.checkedAt}</time>
                   </span>
                   <span>{post.articleMeta.readingTime}</span>
+                  {post.articleMeta.reviewer ? <span>{post.articleMeta.reviewer}</span> : null}
                   <span>{post.articleMeta.basis}</span>
                 </div>
               ) : null}
@@ -114,9 +133,9 @@ export default async function MarketPostPage({ params }: PageProps) {
                 <figcaption>{post.heroImage.caption}</figcaption>
               </figure>
             ) : null}
-            {post.quickFacts.length > 0 ? (
+            {publicQuickFacts.length > 0 ? (
               <dl className="market-article-fact-rail">
-                {post.quickFacts.map((fact) => (
+                {publicQuickFacts.map((fact) => (
                   <div key={`${fact.label}-${fact.value}`}>
                     <dt>{fact.label}</dt>
                     <dd>{fact.value}</dd>
@@ -127,20 +146,16 @@ export default async function MarketPostPage({ params }: PageProps) {
           </header>
 
           <div className="market-article-shell">
-            <aside className="market-article-left-rail">
-              <nav className="market-article-nav" aria-label="Article table of contents">
-                <h2>{tocLabel(market.language)}</h2>
-                <ol>
-                  {sectionAnchors.map((section) => (
-                    <li key={section.id}>
-                      <a href={`#${section.id}`}>{section.heading}</a>
-                    </li>
-                  ))}
-                </ol>
-              </nav>
-            </aside>
-
             <div className="market-article-main">
+              {answerSection ? (
+                <section className="market-article-answer" id={answerSection.id} aria-labelledby={`${answerSection.id}-heading`}>
+                  <h2 id={`${answerSection.id}-heading`}>{answerSection.heading}</h2>
+                  {paragraphs(answerSection.body).map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </section>
+              ) : null}
+
               <section className="market-article-snapshot" aria-labelledby="at-a-glance-heading">
                 <div className="market-article-glance">
                   <h2 id="at-a-glance-heading">{atAGlanceLabel(market.language)}</h2>
@@ -161,54 +176,6 @@ export default async function MarketPostPage({ params }: PageProps) {
                 ) : null}
               </section>
 
-              {post.prosCons ? (
-                <section className="market-article-signal-grid" aria-labelledby="pros-cons-heading">
-                  <h2 id="pros-cons-heading" className="sr-only">
-                    {decisionSignalsLabel(market.language)}
-                  </h2>
-                  <div className="market-article-signal market-article-signal-positive">
-                    <h3>{positiveSignalsLabel(market.language)}</h3>
-                    <ul>
-                      {post.prosCons.pros.map((item) => (
-                        <li key={item}>
-                          <span>+</span>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="market-article-signal market-article-signal-caution">
-                    <h3>{cautionSignalsLabel(market.language)}</h3>
-                    <ul>
-                      {post.prosCons.cons.map((item) => (
-                        <li key={item}>
-                          <span>-</span>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </section>
-              ) : null}
-
-              {post.quickFacts.length > 0 ? (
-                <section className="market-article-visual-summary" aria-labelledby="visual-summary-heading">
-                  <div>
-                    <p>{visualSummaryLabel(market.language)}</p>
-                    <h2 id="visual-summary-heading">{post.verdictBox?.label ?? atAGlanceLabel(market.language)}</h2>
-                  </div>
-                  <div className="market-article-visual-bars">
-                    {post.quickFacts.slice(0, 3).map((fact) => (
-                      <div className="market-article-visual-row" key={`visual-${fact.label}-${fact.value}`}>
-                        <span>{fact.label}</span>
-                        <strong>{fact.value}</strong>
-                        <i aria-hidden />
-                      </div>
-                    ))}
-                  </div>
-                </section>
-              ) : null}
-
               {post.checklist.length > 0 ? (
                 <section className="market-article-checklist" aria-labelledby="checklist-heading">
                   <h2 id="checklist-heading">{checklistLabel(market.language)}</h2>
@@ -224,7 +191,7 @@ export default async function MarketPostPage({ params }: PageProps) {
               ) : null}
 
               <div className="market-article-prose">
-                {sectionAnchors.map((section) => (
+                {bodySections.map((section) => (
                   <section id={section.id} key={section.heading}>
                     <h2>{section.heading}</h2>
                     {paragraphs(section.body).map((paragraph) => (
@@ -284,34 +251,16 @@ export default async function MarketPostPage({ params }: PageProps) {
             </div>
 
             <aside className="market-article-right-rail">
-              {post.internalLinks.length > 0 ? (
-                <section className="market-article-side-panel">
-                  <h2>{internalLinksLabel(market.language)}</h2>
-                  <div>
-                    {post.internalLinks.map((link) => (
-                      <a href={link.href} key={link.href}>
-                        <strong>{link.label}</strong>
-                        <span>{link.note}</span>
-                      </a>
-                    ))}
-                  </div>
-                </section>
-              ) : null}
-              {post.serpReferences.length > 0 ? (
-                <section className="market-article-side-panel market-article-top-pages">
-                  <h2>{topPagesLabel(market.language)}</h2>
-                  <div>
-                    {post.serpReferences.slice(0, 4).map((reference) => (
-                      <a href={reference.url} key={`${reference.rank}-${reference.url}`} rel="noopener noreferrer" target="_blank">
-                        <strong>
-                          {reference.rank}. {reference.label}
-                        </strong>
-                        <span>{reference.formatPattern}</span>
-                      </a>
-                    ))}
-                  </div>
-                </section>
-              ) : null}
+              <nav className="market-article-nav" aria-label="Article table of contents">
+                <h2>{tocLabel(market.language)}</h2>
+                <ol>
+                  {sectionAnchors.map((section) => (
+                    <li key={section.id}>
+                      <a href={`#${section.id}`}>{section.heading}</a>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
             </aside>
           </div>
         </article>
@@ -330,6 +279,11 @@ function anchorId(value: string): string {
 
 function paragraphs(value: string): string[] {
   return value.split(/\n{2,}/).map((item) => item.trim()).filter(Boolean);
+}
+
+function isPublicQuickFact(label: string, value: string): boolean {
+  const combined = `${label} ${value}`.toLowerCase();
+  return !["index-ready", "index ready", "ready after editor", "editor checks", "공개 준비"].some((phrase) => combined.includes(phrase));
 }
 
 function marketGuideLabel(language: string): string {
@@ -364,14 +318,6 @@ function sourcesLabel(language: string): string {
   return "Sources checked";
 }
 
-function internalLinksLabel(language: string): string {
-  if (language === "es") return "Más contexto";
-  if (language === "pt-br" || language === "pt") return "Mais contexto";
-  if (language === "ja") return "関連リンク";
-  if (language === "ko") return "관련 링크";
-  return "More context";
-}
-
 function checkedAtLabel(language: string): string {
   if (language === "es") return "Revisado:";
   if (language === "pt-br" || language === "pt") return "Verificado:";
@@ -394,44 +340,4 @@ function atAGlanceLabel(language: string): string {
   if (language === "ja") return "要点";
   if (language === "ko") return "핵심 요약";
   return "At a glance";
-}
-
-function decisionSignalsLabel(language: string): string {
-  if (language === "es") return "Señales de decisión";
-  if (language === "pt-br" || language === "pt") return "Sinais de decisão";
-  if (language === "ja") return "判断材料";
-  if (language === "ko") return "판단 기준";
-  return "Decision signals";
-}
-
-function positiveSignalsLabel(language: string): string {
-  if (language === "es") return "Buenas señales";
-  if (language === "pt-br" || language === "pt") return "Bons sinais";
-  if (language === "ja") return "良いサイン";
-  if (language === "ko") return "좋은 신호";
-  return "Good signs";
-}
-
-function cautionSignalsLabel(language: string): string {
-  if (language === "es") return "Señales de alerta";
-  if (language === "pt-br" || language === "pt") return "Sinais de alerta";
-  if (language === "ja") return "注意点";
-  if (language === "ko") return "주의 신호";
-  return "Watch-outs";
-}
-
-function topPagesLabel(language: string): string {
-  if (language === "es") return "Páginas revisadas";
-  if (language === "pt-br" || language === "pt") return "Páginas analisadas";
-  if (language === "ja") return "確認した上位ページ";
-  if (language === "ko") return "확인한 상위 페이지";
-  return "Top pages checked";
-}
-
-function visualSummaryLabel(language: string): string {
-  if (language === "es") return "Mapa visual";
-  if (language === "pt-br" || language === "pt") return "Mapa visual";
-  if (language === "ja") return "視覚サマリー";
-  if (language === "ko") return "시각 요약";
-  return "Visual summary";
 }

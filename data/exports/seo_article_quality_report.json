@@ -27,19 +27,19 @@
           "points": 6
         },
         {
+          "name": "first section gives the answer early",
+          "pass": true,
+          "points": 4
+        },
+        {
           "name": "substantial body length",
           "pass": true,
           "points": 6
         },
         {
-          "name": "top-page format evidence",
+          "name": "reviewer and checked date",
           "pass": true,
-          "points": 10
-        },
-        {
-          "name": "top-page references avoid news framing",
-          "pass": true,
-          "points": 4
+          "points": 8
         },
         {
           "name": "key takeaways",
@@ -50,11 +50,6 @@
           "name": "verdict box",
           "pass": true,
           "points": 6
-        },
-        {
-          "name": "pros and cons",
-          "pass": true,
-          "points": 7
         },
         {
           "name": "quick facts",
@@ -72,17 +67,22 @@
           "points": 7
         },
         {
-          "name": "source links with checked date",
-          "pass": true,
-          "points": 7
-        },
-        {
-          "name": "internal links",
+          "name": "official policy sources lead official-policy topics",
           "pass": true,
           "points": 4
         },
         {
+          "name": "source links with checked date",
+          "pass": true,
+          "points": 12
+        },
+        {
           "name": "no visible internal workflow phrasing",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "localized visible support text",
           "pass": true,
           "points": 5
         },
@@ -123,19 +123,19 @@
           "points": 6
         },
         {
+          "name": "first section gives the answer early",
+          "pass": true,
+          "points": 4
+        },
+        {
           "name": "substantial body length",
           "pass": true,
           "points": 6
         },
         {
-          "name": "top-page format evidence",
+          "name": "reviewer and checked date",
           "pass": true,
-          "points": 10
-        },
-        {
-          "name": "top-page references avoid news framing",
-          "pass": true,
-          "points": 4
+          "points": 8
         },
         {
           "name": "key takeaways",
@@ -146,11 +146,6 @@
           "name": "verdict box",
           "pass": true,
           "points": 6
-        },
-        {
-          "name": "pros and cons",
-          "pass": true,
-          "points": 7
         },
         {
           "name": "quick facts",
@@ -168,17 +163,22 @@
           "points": 7
         },
         {
-          "name": "source links with checked date",
-          "pass": true,
-          "points": 7
-        },
-        {
-          "name": "internal links",
+          "name": "official policy sources lead official-policy topics",
           "pass": true,
           "points": 4
         },
         {
+          "name": "source links with checked date",
+          "pass": true,
+          "points": 12
+        },
+        {
           "name": "no visible internal workflow phrasing",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "localized visible support text",
           "pass": true,
           "points": 5
         },
@@ -219,19 +219,19 @@
           "points": 6
         },
         {
+          "name": "first section gives the answer early",
+          "pass": true,
+          "points": 4
+        },
+        {
           "name": "substantial body length",
           "pass": true,
           "points": 6
         },
         {
-          "name": "top-page format evidence",
+          "name": "reviewer and checked date",
           "pass": true,
-          "points": 10
-        },
-        {
-          "name": "top-page references avoid news framing",
-          "pass": true,
-          "points": 4
+          "points": 8
         },
         {
           "name": "key takeaways",
@@ -242,11 +242,6 @@
           "name": "verdict box",
           "pass": true,
           "points": 6
-        },
-        {
-          "name": "pros and cons",
-          "pass": true,
-          "points": 7
         },
         {
           "name": "quick facts",
@@ -264,17 +259,22 @@
           "points": 7
         },
         {
-          "name": "source links with checked date",
-          "pass": true,
-          "points": 7
-        },
-        {
-          "name": "internal links",
+          "name": "official policy sources lead official-policy topics",
           "pass": true,
           "points": 4
         },
         {
+          "name": "source links with checked date",
+          "pass": true,
+          "points": 12
+        },
+        {
           "name": "no visible internal workflow phrasing",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "localized visible support text",
           "pass": true,
           "points": 5
         },
@@ -315,19 +315,19 @@
           "points": 6
         },
         {
+          "name": "first section gives the answer early",
+          "pass": true,
+          "points": 4
+        },
+        {
           "name": "substantial body length",
           "pass": true,
           "points": 6
         },
         {
-          "name": "top-page format evidence",
+          "name": "reviewer and checked date",
           "pass": true,
-          "points": 10
-        },
-        {
-          "name": "top-page references avoid news framing",
-          "pass": true,
-          "points": 4
+          "points": 8
         },
         {
           "name": "key takeaways",
@@ -338,11 +338,6 @@
           "name": "verdict box",
           "pass": true,
           "points": 6
-        },
-        {
-          "name": "pros and cons",
-          "pass": true,
-          "points": 7
         },
         {
           "name": "quick facts",
@@ -360,17 +355,22 @@
           "points": 7
         },
         {
-          "name": "source links with checked date",
-          "pass": true,
-          "points": 7
-        },
-        {
-          "name": "internal links",
+          "name": "official policy sources lead official-policy topics",
           "pass": true,
           "points": 4
         },
         {
+          "name": "source links with checked date",
+          "pass": true,
+          "points": 12
+        },
+        {
           "name": "no visible internal workflow phrasing",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "localized visible support text",
           "pass": true,
           "points": 5
         },
@@ -411,19 +411,19 @@
           "points": 6
         },
         {
+          "name": "first section gives the answer early",
+          "pass": true,
+          "points": 4
+        },
+        {
           "name": "substantial body length",
           "pass": true,
           "points": 6
         },
         {
-          "name": "top-page format evidence",
+          "name": "reviewer and checked date",
           "pass": true,
-          "points": 10
-        },
-        {
-          "name": "top-page references avoid news framing",
-          "pass": true,
-          "points": 4
+          "points": 8
         },
         {
           "name": "key takeaways",
@@ -434,11 +434,6 @@
           "name": "verdict box",
           "pass": true,
           "points": 6
-        },
-        {
-          "name": "pros and cons",
-          "pass": true,
-          "points": 7
         },
         {
           "name": "quick facts",
@@ -456,17 +451,22 @@
           "points": 7
         },
         {
-          "name": "source links with checked date",
-          "pass": true,
-          "points": 7
-        },
-        {
-          "name": "internal links",
+          "name": "official policy sources lead official-policy topics",
           "pass": true,
           "points": 4
         },
         {
+          "name": "source links with checked date",
+          "pass": true,
+          "points": 12
+        },
+        {
           "name": "no visible internal workflow phrasing",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "localized visible support text",
           "pass": true,
           "points": 5
         },
@@ -501,11 +501,11 @@
       "pass": true
     },
     {
-      "name": "renders pros and cons",
+      "name": "does not render pros and cons clutter",
       "pass": true
     },
     {
-      "name": "renders top-page references",
+      "name": "keeps SERP references internal",
       "pass": true
     },
     {
@@ -525,7 +525,15 @@
       "pass": true
     },
     {
-      "name": "renders internal links",
+      "name": "does not render public research links",
+      "pass": true
+    },
+    {
+      "name": "renders answer before summary blocks",
+      "pass": true
+    },
+    {
+      "name": "renders reviewer metadata",
       "pass": true
     },
     {
@@ -539,7 +547,11 @@
       "pass": true
     },
     {
-      "name": "uses three-column article shell",
+      "name": "uses simplified two-column article shell",
+      "pass": true
+    },
+    {
+      "name": "does not use dashboard-like three-column shell",
       "pass": true
     },
     {
@@ -547,15 +559,15 @@
       "pass": true
     },
     {
-      "name": "uses custom visual summary block",
-      "pass": true
-    },
-    {
       "name": "uses dedicated prose styling",
       "pass": true
     },
     {
-      "name": "uses polished decision blocks",
+      "name": "uses compact answer and summary blocks",
+      "pass": true
+    },
+    {
+      "name": "keeps primary content visually dominant",
       "pass": true
     },
     {

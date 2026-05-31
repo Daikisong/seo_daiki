@@ -50,13 +50,13 @@
       "articleMeta": {
         "checkedAt": "2026-05-31",
         "readingTime": "6 min de leitura",
-        "reviewer": "Revisão editorial",
-        "basis": "Páginas bem posicionadas + fontes oficiais"
+        "reviewer": "Equipe editorial da Global Import Lab",
+        "basis": "Fontes verificadas"
       },
       "keyTakeaways": [
-        "The winning format for deal intent starts with price, coupon, date, and seller checks.",
-        "A useful article separates the live offer from durable buying criteria.",
-        "The reader needs a quick verdict, specs that matter, and red flags before any store click."
+        "Antes de considerar a promoção, confira preço final, cupom, data e vendedor.",
+        "O artigo precisa separar a oferta do momento dos critérios duráveis de compra.",
+        "Antes de clicar em qualquer loja, o leitor precisa de veredito rápido, especificações importantes e sinais de alerta."
       ],
       "verdictBox": {
         "label": "Veredito rápido",
@@ -102,20 +102,16 @@
       ],
       "quickFacts": [
         {
-          "label": "Best for",
-          "value": "Brazil buyers checking whether an iPhone 16 promotion is actually good"
+          "label": "Para quem",
+          "value": "Compradores no Brasil avaliando se uma promoção do iPhone 16 vale a pena"
         },
         {
-          "label": "Main risk",
-          "value": "Expired coupon, marketplace seller, unclear warranty, or weak storage fit"
+          "label": "Risco principal",
+          "value": "Cupom expirado, marketplace, garantia pouco clara ou armazenamento insuficiente"
         },
         {
-          "label": "Must verify",
-          "value": "Final cart price, nota fiscal, warranty, seller, storage, return window"
-        },
-        {
-          "label": "Index-ready status",
-          "value": "Ready after editor confirms live price and store terms"
+          "label": "Verificar",
+          "value": "Preço final, nota fiscal, garantia, vendedor, armazenamento e devolução"
         }
       ],
       "checklist": [
@@ -158,27 +154,27 @@
       },
       "sourceLinks": [
         {
-          "label": "Tecnoblog iPhone 16 deal signal",
+          "label": "Tecnoblog - sinal de oferta do iPhone 16",
           "url": "https://tecnoblog.net/achados/iphone-16-atinge-menor-preco-desde-marco-com-44-off-em-promocao/",
-          "note": "Trend/deal source; price must be rechecked.",
+          "note": "Fonte de oferta; o preço precisa ser conferido novamente.",
           "checkedAt": "2026-05-31"
         },
         {
-          "label": "Canaltech iPhone 16 price context",
+          "label": "Canaltech - contexto de preço do iPhone 16",
           "url": "https://canaltech.com.br/smartphone/quanto-vale-a-pena-pagar-no-iphone-16-em-2026/",
-          "note": "Buying-threshold context.",
+          "note": "Referência para avaliar faixa de preço e alternativas.",
           "checkedAt": "2026-05-31"
         },
         {
-          "label": "Apple Brasil iPhone 16",
+          "label": "Apple Brasil - iPhone 16",
           "url": "https://www.apple.com/br/iphone-16/",
-          "note": "Official specs and model details.",
+          "note": "Especificações oficiais e detalhes do modelo.",
           "checkedAt": "2026-05-31"
         },
         {
-          "label": "Tecnoblog official price cut context",
+          "label": "Tecnoblog - contexto de preço no Brasil",
           "url": "https://tecnoblog.net/noticias/iphone-16-fica-ate-13-mais-barato-no-brasil-veja-os-novos-precos/",
-          "note": "Brazil pricing context.",
+          "note": "Contexto de reajuste e preço oficial no mercado brasileiro.",
           "checkedAt": "2026-05-31"
         }
       ],
@@ -212,8 +208,8 @@
       "status": "test_published_noindex",
       "indexStatus": "noindex",
       "publishStatus": "published",
-      "createdAt": "2026-05-31T11:31:53.164725+00:00",
-      "updatedAt": "2026-05-31T11:31:53.166361+00:00"
+      "createdAt": "2026-05-31T12:17:07.535009+00:00",
+      "updatedAt": "2026-05-31T12:17:07.536249+00:00"
     },
     {
       "id": "test-article-content-strategy-trend-keyword-trend-cluster-us-en-samsung-s90f-oled-deal-samsung-s90f-oled-deal",
@@ -265,8 +261,8 @@
       "articleMeta": {
         "checkedAt": "2026-05-31",
         "readingTime": "6 min read",
-        "reviewer": "Editorial review",
-        "basis": "Search top pages + primary sources"
+        "reviewer": "Global Import Lab editorial team",
+        "basis": "Sources checked"
       },
       "keyTakeaways": [
         "Treat the deal page as a live-price signal, not final proof of value.",
@@ -327,10 +323,6 @@
         {
           "label": "Must verify",
           "value": "Model number, size, return policy, warranty, final checkout price"
-        },
-        {
-          "label": "Index-ready status",
-          "value": "Ready after editor checks live price and image licensing"
         }
       ],
       "checklist": [
@@ -391,9 +383,9 @@
           "checkedAt": "2026-05-31"
         },
         {
-          "label": "Technobezz deal signal",
+          "label": "Technobezz deal context",
           "url": "https://www.technobezz.com/best/samsung-class-s90f-smart-tv-with-nq4-processor-drops-to-179799",
-          "note": "Trend/deal source; verify current price before publishing.",
+          "note": "Deal context; verify the current price and retailer terms before buying.",
           "checkedAt": "2026-05-31"
         }
       ],
@@ -427,8 +419,8 @@
       "status": "test_published_noindex",
       "indexStatus": "noindex",
       "publishStatus": "published",
-      "createdAt": "2026-05-31T11:31:53.164750+00:00",
-      "updatedAt": "2026-05-31T11:31:53.166363+00:00"
+      "createdAt": "2026-05-31T12:17:07.535048+00:00",
+      "updatedAt": "2026-05-31T12:17:07.536251+00:00"
     },
     {
       "id": "test-article-content-strategy-trend-keyword-trend-cluster-jp-ja-iphone-18-rumors-japan-iphone-18-rumors-japan",
@@ -480,13 +472,13 @@
       "articleMeta": {
         "checkedAt": "2026-05-31",
         "readingTime": "約6分",
-        "reviewer": "編集レビュー",
-        "basis": "上位ページ + 公式/検証情報"
+        "reviewer": "Global Import Lab編集チーム",
+        "basis": "確認済み情報"
       },
       "keyTakeaways": [
-        "Top rumor roundups separate at-a-glance bullets, timeline, and individual rumor sections.",
-        "Japan readers need local price, carrier, trade-in, and timing notes layered onto global rumors.",
-        "The article should label confidence and avoid treating leaks as Apple confirmation."
+        "噂は、要点、発売時期、個別情報を分けて確認する必要がある。",
+        "日本の読者には、世界的な噂に加えて日本価格、キャリア、下取り、発売時期の確認が必要。",
+        "リークをApple公式発表のように扱わず、確度を分けて読むことが大切。"
       ],
       "verdictBox": {
         "label": "判断",
@@ -532,20 +524,16 @@
       ],
       "quickFacts": [
         {
-          "label": "Best for",
-          "value": "Japan readers deciding whether to wait for iPhone 18 rumors"
+          "label": "対象",
+          "value": "iPhone 18を待つべきか迷っている日本の読者"
         },
         {
-          "label": "Main risk",
-          "value": "Confusing Pro rumors, standard model timing, and Japan launch conditions"
+          "label": "主なリスク",
+          "value": "Proモデルの噂、標準モデルの時期、日本の販売条件を混同すること"
         },
         {
-          "label": "Must verify",
-          "value": "Apple announcement, Japan price, carrier plan, trade-in, model timing"
-        },
-        {
-          "label": "Index-ready status",
-          "value": "Ready after editor updates latest rumor confidence levels"
+          "label": "確認すること",
+          "value": "Apple公式発表、日本価格、キャリア施策、下取り、モデル別時期"
         }
       ],
       "checklist": [
@@ -588,27 +576,27 @@
       },
       "sourceLinks": [
         {
-          "label": "MacRumors iPhone 18 feature roundup",
+          "label": "MacRumors - iPhone 18機能まとめ",
           "url": "https://www.macrumors.com/2026/05/09/iphone-18-pro-10-new-features/",
-          "note": "Apple rumor source used for feature claims.",
+          "note": "機能に関する噂を確認するためのApple系情報源。",
           "checkedAt": "2026-05-31"
         },
         {
-          "label": "9to5Mac iPhone 18 launch timing",
+          "label": "9to5Mac - iPhone 18発売時期",
           "url": "https://9to5mac.com/2026/01/30/iphone-18-isnt-launching-until-next-year-new-report-reaffirms/",
-          "note": "Launch timing and split-lineup context.",
+          "note": "発売時期とラインアップ分割の文脈。",
           "checkedAt": "2026-05-31"
         },
         {
-          "label": "Tom's Guide iPhone 18 rumor guide",
+          "label": "Tom's Guide - iPhone 18噂ガイド",
           "url": "https://www.tomsguide.com/phones/iphones/iphone-18-rumors-everything-we-know-so-far",
-          "note": "Guide-style roundup used for sectioning, summary, and rumor confidence format.",
+          "note": "噂の整理、要約、信頼度の見せ方を確認。",
           "checkedAt": "2026-05-31"
         },
         {
-          "label": "Macworld color leak coverage",
+          "label": "Macworld - カラー噂の例",
           "url": "https://www.macworld.com/article/3151620/new-leak-confirms-new-iphone-18-pro-dark-cherry-light-blue-colors.html",
-          "note": "Narrow rumor example; treat cautiously.",
+          "note": "限定的な噂の例。購入判断では慎重に扱う。",
           "checkedAt": "2026-05-31"
         }
       ],
@@ -642,8 +630,8 @@
       "status": "test_published_noindex",
       "indexStatus": "noindex",
       "publishStatus": "published",
-      "createdAt": "2026-05-31T11:31:53.165000+00:00",
-      "updatedAt": "2026-05-31T11:31:53.166365+00:00"
+      "createdAt": "2026-05-31T12:17:07.535074+00:00",
+      "updatedAt": "2026-05-31T12:17:07.536253+00:00"
     },
     {
       "id": "test-article-content-strategy-trend-keyword-trend-cluster-es-es-renta-2025-avisos-aeat-renta-2025-avisos-aeat",
@@ -695,13 +683,13 @@
       "articleMeta": {
         "checkedAt": "2026-05-31",
         "readingTime": "6 min de lectura",
-        "reviewer": "Revisión editorial",
-        "basis": "Páginas mejor posicionadas + fuentes oficiales"
+        "reviewer": "Equipo editorial de Global Import Lab",
+        "basis": "Fuentes revisadas"
       },
       "keyTakeaways": [
-        "A tax notice is a prompt to verify data; it is not automatically a fine.",
-        "Official AEAT and Hacienda pages should outrank media summaries for final action.",
-        "The safest format is: dates, notice types, what to check, and what not to change without proof."
+        "Un aviso fiscal sirve para revisar datos; no significa automáticamente una multa.",
+        "Para actuar, las páginas oficiales de la AEAT y Hacienda pesan más que cualquier resumen externo.",
+        "Comprueba fechas, tipo de aviso y justificantes antes de modificar la declaración."
       ],
       "verdictBox": {
         "label": "Criterio práctico",
@@ -747,20 +735,16 @@
       ],
       "quickFacts": [
         {
-          "label": "Best for",
-          "value": "Spanish taxpayers checking AEAT warnings before filing or correcting"
+          "label": "Para quién",
+          "value": "Contribuyentes que ven avisos de la AEAT antes de presentar o corregir"
         },
         {
-          "label": "Main risk",
-          "value": "Treating a warning as a fine or ignoring official messages"
+          "label": "Riesgo principal",
+          "value": "Confundir un aviso preventivo con una multa o ignorar mensajes oficiales"
         },
         {
-          "label": "Must verify",
-          "value": "Sede electrónica, Renta WEB, campaign dates, supporting documents"
-        },
-        {
-          "label": "Index-ready status",
-          "value": "Ready after editor confirms latest AEAT calendar dates"
+          "label": "Comprobar",
+          "value": "Sede electrónica, Renta WEB, calendario y justificantes"
         }
       ],
       "checklist": [
@@ -805,25 +789,25 @@
         {
           "label": "Agencia Tributaria - Renta 2025",
           "url": "https://www3.agenciatributaria.gob.es/Sede/Renta.html",
-          "note": "Official campaign entry point.",
+          "note": "Entrada oficial de la campaña y trámites.",
           "checkedAt": "2026-05-31"
         },
         {
-          "label": "Ministerio de Hacienda campaign note",
+          "label": "Ministerio de Hacienda - campaña Renta",
           "url": "https://www.hacienda.gob.es/es-ES/Prensa/Noticias/paginas/2026/20260408-np-aeat-campana-renta-2025.aspx",
-          "note": "Official campaign timing and Renta Directa context.",
+          "note": "Fechas oficiales y contexto de asistencia.",
           "checkedAt": "2026-05-31"
         },
         {
-          "label": "AEAT press PDF",
+          "label": "PDF oficial de la AEAT",
           "url": "https://sede.agenciatributaria.gob.es/static_files/Sede/Actualidad/Notas_prensa/2026/NP_Inicio_Campana_renta_2025.pdf",
-          "note": "Official notes about preventive notices and campaign support.",
+          "note": "Notas oficiales sobre avisos preventivos y ayuda de campaña.",
           "checkedAt": "2026-05-31"
         },
         {
-          "label": "Xataka guide to Hacienda notices",
+          "label": "Guía de Xataka sobre avisos de Hacienda",
           "url": "https://www.xataka.com/basics/avisos-hacienda-antes-multarte-renta-2025-estos-que-recibes-hay-errores-tu-declaracion-2026/amp",
-          "note": "Plain-language explainer used for reader intent comparison.",
+          "note": "Explicación en lenguaje claro para comparar la intención del lector.",
           "checkedAt": "2026-05-31"
         }
       ],
@@ -857,8 +841,8 @@
       "status": "test_published_noindex",
       "indexStatus": "noindex",
       "publishStatus": "published",
-      "createdAt": "2026-05-31T11:31:53.165030+00:00",
-      "updatedAt": "2026-05-31T11:31:53.166366+00:00"
+      "createdAt": "2026-05-31T12:17:07.535097+00:00",
+      "updatedAt": "2026-05-31T12:17:07.536254+00:00"
     },
     {
       "id": "test-article-content-strategy-trend-keyword-trend-cluster-kr-ko-2026-대입-학폭-반영-2026-대입-학폭-반영",
@@ -871,7 +855,7 @@
       "h1": "2026 대입 학폭 반영: 학생과 학부모가 먼저 확인할 점",
       "metaDescription": "2026학년도 대입에서 학교폭력 조치사항이 어떻게 반영되는지, 학생과 학부모가 대학별 모집요강에서 확인해야 할 전형별 반영 방식, 감점·지원 제한 가능성, 상담 전 체크리스트를 정리합니다.",
       "summary": "2026학년도 대입에서 학교폭력 조치사항이 어떻게 반영되는지, 학생과 학부모가 대학별 모집요강에서 확인해야 할 전형별 반영 방식, 감점·지원 제한 가능성, 상담 전 체크리스트를 정리합니다.",
-      "contentMdx": "# 2026 대입 학폭 반영: 학생과 학부모가 먼저 확인할 점\n\n## 핵심 정리\n2026학년도 대입부터 학교폭력 조치사항은 모든 대입 전형에서 확인해야 하는 요소가 됐습니다. 학생부교과, 학생부종합, 논술, 수능, 실기·실적 전형처럼 전형 유형이 달라도 대학은 학폭 조치사항을 반영해야 합니다. 다만 모든 대학이 똑같이 감점하거나 똑같이 탈락시키는 것은 아니므로, 최종 판단은 반드시 지원 대학의 2026학년도 모집요강과 전형 시행계획으로 확인해야 합니다.\n\n## 학생과 학부모가 먼저 봐야 할 것\n가장 먼저 확인할 것은 학생부에 어떤 조치사항이 기재되어 있는지, 해당 기록이 대입 자료에 제공되는지, 지원하려는 대학이 그 기록을 어떤 방식으로 반영하는지입니다. 같은 조치라도 대학에 따라 정량 감점, 정성평가 반영, 지원 자격 제한처럼 방식이 달라질 수 있습니다.\n\n## 전형별로 어떻게 달라질 수 있나\n학생부종합전형에서는 학폭 조치사항이 학교생활 전반의 평가 맥락에서 검토될 수 있고, 학생부교과전형이나 정시에서는 감점표처럼 정량 반영되는 대학도 있습니다. 논술이나 실기 전형도 예외라고 보면 안 됩니다. 2026학년도에는 전 전형 반영이 핵심이므로, ‘정시는 괜찮다’거나 ‘논술은 상관없다’고 단정하면 위험합니다.\n\n## 조치 번호만 보고 결론 내리면 안 되는 이유\n학교폭력 조치사항은 1호부터 9호까지 있지만, 번호 하나만으로 모든 대학의 결과를 예측할 수는 없습니다. 어떤 대학은 낮은 조치도 평가에 반영할 수 있고, 어떤 대학은 높은 조치에 대해 더 큰 감점이나 지원 제한을 둘 수 있습니다. 그래서 인터넷 표 하나로 결론을 내리기보다, 대학별 반영 기준을 직접 확인해야 합니다.\n\n## 지원 전 체크리스트\n지원 전에는 다섯 가지를 확인하세요. 첫째, 학생부 기록과 삭제·보존 여부. 둘째, 지원 대학의 학폭 조치사항 반영 방식. 셋째, 전형별 감점 또는 지원 제한 기준. 넷째, 검정고시·자퇴·졸업생 등 본인 상황에 대한 제출 서류. 다섯째, 이의신청이나 소명 절차가 가능한지 여부입니다.\n\n## 검색 글을 볼 때 주의할 점\n검색 상단의 정리 글만 보고 불안해할 필요는 없지만, 반대로 가볍게 넘겨서도 안 됩니다. 블로그형 총정리 글은 흐름을 이해하는 데 도움이 되고, 실제 지원 판단은 대학별 모집요강과 대교협·교육부 자료를 기준으로 해야 합니다. 특히 ‘무조건 불합격’이나 ‘전혀 영향 없음’처럼 단정적인 말은 믿기 어렵습니다.\n\n## 어디서 확인해야 하나\n가장 중요한 출처는 지원 대학의 2026학년도 모집요강, 대학입학전형 시행계획, 한국대학교육협의회와 교육부가 안내한 2026학년도 대입 기본사항 및 학폭 반영 가이드라인입니다. 입시기관 글은 이해를 돕는 자료로 쓰고, 최종 지원 전략은 공식 자료와 학교 상담을 함께 확인하는 방식이 안전합니다.",
+      "contentMdx": "# 2026 대입 학폭 반영: 학생과 학부모가 먼저 확인할 점\n\n## 핵심 정리\n2026학년도 대입부터 학교폭력 조치사항은 모든 대입 전형에서 확인해야 하는 요소가 됐습니다. 학생부교과, 학생부종합, 논술, 수능, 실기·실적 전형처럼 전형 유형이 달라도 대학은 학폭 조치사항을 반영해야 합니다. 다만 모든 대학이 똑같이 감점하거나 똑같이 탈락시키는 것은 아니므로, 최종 판단은 반드시 지원 대학의 2026학년도 모집요강과 전형 시행계획으로 확인해야 합니다.\n\n## 학생과 학부모가 먼저 봐야 할 것\n가장 먼저 확인할 것은 학생부에 어떤 조치사항이 기재되어 있는지, 해당 기록이 대입 자료에 제공되는지, 지원하려는 대학이 그 기록을 어떤 방식으로 반영하는지입니다. 같은 조치라도 대학에 따라 정량 감점, 정성평가 반영, 지원 자격 제한처럼 방식이 달라질 수 있습니다.\n\n## 전형별로 어떻게 달라질 수 있나\n학생부종합전형에서는 학폭 조치사항이 학교생활 전반의 평가 맥락에서 검토될 수 있고, 학생부교과전형이나 정시에서는 감점표처럼 정량 반영되는 대학도 있습니다. 논술이나 실기 전형도 예외라고 보면 안 됩니다. 2026학년도에는 전 전형 반영이 핵심이므로, ‘정시는 괜찮다’거나 ‘논술은 상관없다’고 단정하면 위험합니다.\n\n## 조치 번호만 보고 결론 내리면 안 되는 이유\n학교폭력 조치사항은 1호부터 9호까지 있지만, 번호 하나만으로 모든 대학의 결과를 예측할 수는 없습니다. 어떤 대학은 낮은 조치도 평가에 반영할 수 있고, 어떤 대학은 높은 조치에 대해 더 큰 감점이나 지원 제한을 둘 수 있습니다. 그래서 인터넷 표 하나로 결론을 내리기보다, 대학별 반영 기준을 직접 확인해야 합니다.\n\n## 지원 전 체크리스트\n지원 전에는 다섯 가지를 확인하세요. 첫째, 학생부 기록과 삭제·보존 여부. 둘째, 지원 대학의 학폭 조치사항 반영 방식. 셋째, 전형별 감점 또는 지원 제한 기준. 넷째, 검정고시·자퇴·졸업생 등 본인 상황에 대한 제출 서류. 다섯째, 이의신청이나 소명 절차가 가능한지 여부입니다.\n\n## 외부 정리 자료를 볼 때 주의할 점\n외부 정리 자료만 보고 불안해할 필요는 없지만, 반대로 가볍게 넘겨서도 안 됩니다. 입시 해설 자료는 흐름을 이해하는 데 도움이 되고, 실제 지원 판단은 대학별 모집요강과 대교협·교육부 자료를 기준으로 해야 합니다. 특히 ‘무조건 불합격’이나 ‘전혀 영향 없음’처럼 단정적인 말은 믿기 어렵습니다.\n\n## 어디서 확인해야 하나\n가장 중요한 출처는 지원 대학의 2026학년도 모집요강, 대학입학전형 시행계획, 한국대학교육협의회와 교육부가 안내한 2026학년도 대입 기본사항 및 학폭 반영 가이드라인입니다. 입시기관 글은 이해를 돕는 자료로 쓰고, 최종 지원 전략은 공식 자료와 학교 상담을 함께 확인하는 방식이 안전합니다.",
       "sections": [
         {
           "heading": "핵심 정리",
@@ -894,8 +878,8 @@
           "body": "지원 전에는 다섯 가지를 확인하세요. 첫째, 학생부 기록과 삭제·보존 여부. 둘째, 지원 대학의 학폭 조치사항 반영 방식. 셋째, 전형별 감점 또는 지원 제한 기준. 넷째, 검정고시·자퇴·졸업생 등 본인 상황에 대한 제출 서류. 다섯째, 이의신청이나 소명 절차가 가능한지 여부입니다."
         },
         {
-          "heading": "검색 글을 볼 때 주의할 점",
-          "body": "검색 상단의 정리 글만 보고 불안해할 필요는 없지만, 반대로 가볍게 넘겨서도 안 됩니다. 블로그형 총정리 글은 흐름을 이해하는 데 도움이 되고, 실제 지원 판단은 대학별 모집요강과 대교협·교육부 자료를 기준으로 해야 합니다. 특히 ‘무조건 불합격’이나 ‘전혀 영향 없음’처럼 단정적인 말은 믿기 어렵습니다."
+          "heading": "외부 정리 자료를 볼 때 주의할 점",
+          "body": "외부 정리 자료만 보고 불안해할 필요는 없지만, 반대로 가볍게 넘겨서도 안 됩니다. 입시 해설 자료는 흐름을 이해하는 데 도움이 되고, 실제 지원 판단은 대학별 모집요강과 대교협·교육부 자료를 기준으로 해야 합니다. 특히 ‘무조건 불합격’이나 ‘전혀 영향 없음’처럼 단정적인 말은 믿기 어렵습니다."
         },
         {
           "heading": "어디서 확인해야 하나",
@@ -910,12 +894,12 @@
       "articleMeta": {
         "checkedAt": "2026-05-31",
         "readingTime": "약 6분",
-        "reviewer": "편집 검토",
-        "basis": "상위 검색 페이지 + 공식 근거"
+        "reviewer": "Global Import Lab 편집팀",
+        "basis": "확인한 자료"
       },
       "keyTakeaways": [
-        "상위 글은 전 전형 반영, 대학별 차이, 조치사항별 불이익을 먼저 정리한다.",
-        "독자는 검색 글보다 모집요강에서 무엇을 봐야 하는지 빠른 체크리스트가 필요하다.",
+        "모든 전형에서 학교폭력 조치사항 반영 방식을 확인해야 한다.",
+        "지원 대학 모집요강에서 감점, 지원 제한, 정성평가 반영 여부를 먼저 확인해야 한다.",
         "대학별 감점·지원 제한을 단정하지 않고 확인 경로를 분리해야 한다."
       ],
       "verdictBox": {
@@ -972,10 +956,6 @@
         {
           "label": "반드시 확인",
           "value": "학생부 기록, 대학별 모집요강, 전형별 감점/제한 기준"
-        },
-        {
-          "label": "공개 준비 상태",
-          "value": "공식 자료 링크와 대학별 예시 확인 뒤 index 전환 가능"
         }
       ],
       "checklist": [
@@ -1018,18 +998,6 @@
       },
       "sourceLinks": [
         {
-          "label": "2026학년도 학폭 대입 반영 총정리",
-          "url": "https://ystudy200708.tistory.com/33",
-          "note": "블로그형 총정리 글의 대학별 비교표와 확인 항목 구조.",
-          "checkedAt": "2026-05-31"
-        },
-        {
-          "label": "법무법인 슈가스퀘어 대입 학폭 기준 정리",
-          "url": "https://blog.sugar.legal/%ED%95%99%EA%B5%90%ED%8F%AD%EB%A0%A5-%EC%83%9D%EA%B8%B0%EB%B6%80-%EA%B8%B0%EB%A1%9D-2027-%EB%8C%80%EC%9E%85%EC%97%90%EC%84%9C-%EC%96%B4%EB%94%94%EA%B9%8C%EC%A7%80-%EB%B6%88%EB%A6%AC%ED%95%A0%EA%B9%8C-%EC%8B%A4%EC%A0%9C-%ED%83%88%EB%9D%BD-%EA%B8%B0%EC%A4%80-%EC%A0%95%EB%A6%AC-88964",
-          "note": "블로그형 법률/입시 해설의 실제 기준 정리 방식.",
-          "checkedAt": "2026-05-31"
-        },
-        {
           "label": "한국대학교육협의회 2026 기본사항",
           "url": "https://kcue.or.kr/news/sub02/sub01.php?at=view&idx=24138",
           "note": "공식 제도 근거와 대학별 자율 반영 원칙.",
@@ -1039,6 +1007,18 @@
           "label": "정책브리핑 2026 대입 기본사항 자료",
           "url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156588049",
           "note": "교육부/대교협 자료와 가이드라인 파일 확인 경로.",
+          "checkedAt": "2026-05-31"
+        },
+        {
+          "label": "대입정보포털 대학별 전형 정보",
+          "url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000030",
+          "note": "대학별 모집요강과 전형 정보를 확인하는 공식 경로.",
+          "checkedAt": "2026-05-31"
+        },
+        {
+          "label": "2026학년도 학폭 대입 반영 총정리",
+          "url": "https://ystudy200708.tistory.com/33",
+          "note": "대학별 비교와 지원 전 확인 항목을 검토할 때 참고.",
           "checkedAt": "2026-05-31"
         }
       ],
@@ -1072,8 +1052,8 @@
       "status": "test_published_noindex",
       "indexStatus": "noindex",
       "publishStatus": "published",
-      "createdAt": "2026-05-31T11:31:53.165085+00:00",
-      "updatedAt": "2026-05-31T11:31:53.166367+00:00"
+      "createdAt": "2026-05-31T12:17:07.535122+00:00",
+      "updatedAt": "2026-05-31T12:17:07.536255+00:00"
     }
   ]
 }
