@@ -16,32 +16,32 @@
       "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
       "sectionPlanJson": [
         {
-          "heading": "Direct answer",
-          "purpose": "Answer the market user's query first."
+          "heading": "Quick answer",
+          "purpose": "Give the reader the practical answer first."
         },
         {
-          "heading": "Why this is trending in this market",
-          "purpose": "Separate local signal from global noise."
+          "heading": "Why it matters now",
+          "purpose": "Explain the current user need in plain language."
         },
         {
-          "heading": "What top pages already cover",
-          "purpose": "Summarize patterns without copying wording."
+          "heading": "What to check",
+          "purpose": "Turn the topic into a useful reader checklist."
         },
         {
-          "heading": "What to verify before buying or recommending",
-          "purpose": "List evidence and risk checks."
+          "heading": "Common mistakes",
+          "purpose": "Warn readers about likely wrong assumptions."
         },
         {
-          "heading": "Gaps this test post should fill",
+          "heading": "Details that are easy to miss",
           "purpose": "Brazil warranty; avoid expired deal; compare current price; independent drawbacks"
         },
         {
-          "heading": "Comparison criteria to add later",
-          "purpose": "Prepare a future table without product links."
+          "heading": "How to compare options",
+          "purpose": "Explain the criteria readers should use before deciding."
         },
         {
-          "heading": "Product candidate analysis pending",
-          "purpose": "Make monetization deferral explicit."
+          "heading": "Sources to verify",
+          "purpose": "Point readers to official or primary sources."
         }
       ],
       "differentiationPlanJson": [
@@ -197,8 +197,8 @@
       ],
       "monetizationDeferred": true,
       "status": "brief_pending",
-      "createdAt": "2026-05-31T09:58:03.827977+00:00",
-      "updatedAt": "2026-05-31T09:58:03.827981+00:00"
+      "createdAt": "2026-05-31T10:37:14.841429+00:00",
+      "updatedAt": "2026-05-31T10:37:14.841431+00:00"
     },
     {
       "id": "content-strategy-trend-keyword-trend-cluster-us-en-samsung-s90f-oled-deal-samsung-s90f-oled-deal",
@@ -216,32 +216,32 @@
       "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
       "sectionPlanJson": [
         {
-          "heading": "Direct answer",
-          "purpose": "Answer the market user's query first."
+          "heading": "Quick answer",
+          "purpose": "Give the reader the practical answer first."
         },
         {
-          "heading": "Why this is trending in this market",
-          "purpose": "Separate local signal from global noise."
+          "heading": "Why it matters now",
+          "purpose": "Explain the current user need in plain language."
         },
         {
-          "heading": "What top pages already cover",
-          "purpose": "Summarize patterns without copying wording."
+          "heading": "What to check",
+          "purpose": "Turn the topic into a useful reader checklist."
         },
         {
-          "heading": "What to verify before buying or recommending",
-          "purpose": "List evidence and risk checks."
+          "heading": "Common mistakes",
+          "purpose": "Warn readers about likely wrong assumptions."
         },
         {
-          "heading": "Gaps this test post should fill",
+          "heading": "Details that are easy to miss",
           "purpose": "US return and warranty context; US stock check; current deal validation; deal context"
         },
         {
-          "heading": "Comparison criteria to add later",
-          "purpose": "Prepare a future table without product links."
+          "heading": "How to compare options",
+          "purpose": "Explain the criteria readers should use before deciding."
         },
         {
-          "heading": "Product candidate analysis pending",
-          "purpose": "Make monetization deferral explicit."
+          "heading": "Sources to verify",
+          "purpose": "Point readers to official or primary sources."
         }
       ],
       "differentiationPlanJson": [
@@ -400,8 +400,8 @@
       ],
       "monetizationDeferred": true,
       "status": "brief_pending",
-      "createdAt": "2026-05-31T09:58:03.827999+00:00",
-      "updatedAt": "2026-05-31T09:58:03.828000+00:00"
+      "createdAt": "2026-05-31T10:37:14.841448+00:00",
+      "updatedAt": "2026-05-31T10:37:14.841449+00:00"
     },
     {
       "id": "content-strategy-trend-keyword-trend-cluster-jp-ja-iphone-18-rumors-japan-iphone-18-rumors-japan",
@@ -419,28 +419,28 @@
       "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
       "sectionPlanJson": [
         {
-          "heading": "Direct answer",
-          "purpose": "Answer the market user's query first."
+          "heading": "Quick answer",
+          "purpose": "Give the reader the practical answer first."
         },
         {
-          "heading": "Why this is trending in this market",
-          "purpose": "Separate local signal from global noise."
+          "heading": "Why it matters now",
+          "purpose": "Explain the current user need in plain language."
         },
         {
-          "heading": "What top pages already cover",
-          "purpose": "Summarize patterns without copying wording."
+          "heading": "What to check",
+          "purpose": "Turn the topic into a useful reader checklist."
         },
         {
-          "heading": "What to verify before buying or recommending",
-          "purpose": "List evidence and risk checks."
+          "heading": "Common mistakes",
+          "purpose": "Warn readers about likely wrong assumptions."
         },
         {
-          "heading": "Gaps this test post should fill",
+          "heading": "Details that are easy to miss",
           "purpose": "Japan buyer context; Japan carrier relevance; Japan release caveat; avoid certainty"
         },
         {
-          "heading": "Product candidate analysis pending",
-          "purpose": "Make monetization deferral explicit."
+          "heading": "Sources to verify",
+          "purpose": "Point readers to official or primary sources."
         }
       ],
       "differentiationPlanJson": [
@@ -589,8 +589,8 @@
       ],
       "monetizationDeferred": true,
       "status": "brief_pending",
-      "createdAt": "2026-05-31T09:58:03.828015+00:00",
-      "updatedAt": "2026-05-31T09:58:03.828015+00:00"
+      "createdAt": "2026-05-31T10:37:14.841465+00:00",
+      "updatedAt": "2026-05-31T10:37:14.841465+00:00"
     },
     {
       "id": "content-strategy-trend-keyword-trend-cluster-es-es-renta-2025-avisos-aeat-renta-2025-avisos-aeat",
@@ -608,28 +608,28 @@
       "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
       "sectionPlanJson": [
         {
-          "heading": "Direct answer",
-          "purpose": "Answer the market user's query first."
+          "heading": "Quick answer",
+          "purpose": "Give the reader the practical answer first."
         },
         {
-          "heading": "Why this is trending in this market",
-          "purpose": "Separate local signal from global noise."
+          "heading": "Why it matters now",
+          "purpose": "Explain the current user need in plain language."
         },
         {
-          "heading": "What top pages already cover",
-          "purpose": "Summarize patterns without copying wording."
+          "heading": "What to check",
+          "purpose": "Turn the topic into a useful reader checklist."
         },
         {
-          "heading": "What to verify before buying or recommending",
-          "purpose": "List evidence and risk checks."
+          "heading": "Common mistakes",
+          "purpose": "Warn readers about likely wrong assumptions."
         },
         {
-          "heading": "Gaps this test post should fill",
+          "heading": "Details that are easy to miss",
           "purpose": "common mistakes; deadline caveats; deadline table; mobile notice flow"
         },
         {
-          "heading": "Product candidate analysis pending",
-          "purpose": "Make monetization deferral explicit."
+          "heading": "Sources to verify",
+          "purpose": "Point readers to official or primary sources."
         }
       ],
       "differentiationPlanJson": [
@@ -782,8 +782,8 @@
       ],
       "monetizationDeferred": true,
       "status": "brief_pending",
-      "createdAt": "2026-05-31T09:58:03.828029+00:00",
-      "updatedAt": "2026-05-31T09:58:03.828030+00:00"
+      "createdAt": "2026-05-31T10:37:14.841480+00:00",
+      "updatedAt": "2026-05-31T10:37:14.841481+00:00"
     },
     {
       "id": "content-strategy-trend-keyword-trend-cluster-kr-ko-2026-대입-학폭-반영-2026-대입-학폭-반영",
@@ -801,28 +801,28 @@
       "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
       "sectionPlanJson": [
         {
-          "heading": "Direct answer",
-          "purpose": "Answer the market user's query first."
+          "heading": "Quick answer",
+          "purpose": "Give the reader the practical answer first."
         },
         {
-          "heading": "Why this is trending in this market",
-          "purpose": "Separate local signal from global noise."
+          "heading": "Why it matters now",
+          "purpose": "Explain the current user need in plain language."
         },
         {
-          "heading": "What top pages already cover",
-          "purpose": "Summarize patterns without copying wording."
+          "heading": "What to check",
+          "purpose": "Turn the topic into a useful reader checklist."
         },
         {
-          "heading": "What to verify before buying or recommending",
-          "purpose": "List evidence and risk checks."
+          "heading": "Common mistakes",
+          "purpose": "Warn readers about likely wrong assumptions."
         },
         {
-          "heading": "Gaps this test post should fill",
+          "heading": "Details that are easy to miss",
           "purpose": "avoid universal penalty claim; latest 2026 update; official PDF reference; official admissions rule"
         },
         {
-          "heading": "Product candidate analysis pending",
-          "purpose": "Make monetization deferral explicit."
+          "heading": "Sources to verify",
+          "purpose": "Point readers to official or primary sources."
         }
       ],
       "differentiationPlanJson": [
@@ -971,8 +971,8 @@
       ],
       "monetizationDeferred": true,
       "status": "brief_pending",
-      "createdAt": "2026-05-31T09:58:03.828047+00:00",
-      "updatedAt": "2026-05-31T09:58:03.828047+00:00"
+      "createdAt": "2026-05-31T10:37:14.841498+00:00",
+      "updatedAt": "2026-05-31T10:37:14.841499+00:00"
     }
   ]
 }

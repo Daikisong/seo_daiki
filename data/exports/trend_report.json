@@ -7,7 +7,7 @@
       "canonicalTopic": "iphone 16 promocao brasil",
       "slug": "iphone-16-promocao-brasil",
       "category": "general",
-      "detectedAt": "2026-05-31T09:58:03.824175+00:00",
+      "detectedAt": "2026-05-31T10:37:14.836871+00:00",
       "status": "scored",
       "signalCount": 2,
       "countriesSeenJson": [
@@ -41,7 +41,7 @@
       "canonicalTopic": "samsung s90f oled deal",
       "slug": "samsung-s90f-oled-deal",
       "category": "general",
-      "detectedAt": "2026-05-31T09:58:03.824210+00:00",
+      "detectedAt": "2026-05-31T10:37:14.836906+00:00",
       "status": "scored",
       "signalCount": 2,
       "countriesSeenJson": [
@@ -75,7 +75,7 @@
       "canonicalTopic": "iphone 18 rumors japan",
       "slug": "iphone-18-rumors-japan",
       "category": "general",
-      "detectedAt": "2026-05-31T09:58:03.824194+00:00",
+      "detectedAt": "2026-05-31T10:37:14.836889+00:00",
       "status": "scored",
       "signalCount": 2,
       "countriesSeenJson": [
@@ -109,7 +109,7 @@
       "canonicalTopic": "renta 2025 avisos aeat",
       "slug": "renta-2025-avisos-aeat",
       "category": "general",
-      "detectedAt": "2026-05-31T09:58:03.824187+00:00",
+      "detectedAt": "2026-05-31T10:37:14.836882+00:00",
       "status": "scored",
       "signalCount": 2,
       "countriesSeenJson": [
@@ -143,7 +143,7 @@
       "canonicalTopic": "2026 대입 학폭 반영",
       "slug": "2026-대입-학폭-반영",
       "category": "general",
-      "detectedAt": "2026-05-31T09:58:03.824203+00:00",
+      "detectedAt": "2026-05-31T10:37:14.836899+00:00",
       "status": "scored",
       "signalCount": 2,
       "countriesSeenJson": [
@@ -243,5 +243,5 @@
       "crossLanguageSynonymCluster": false
     }
   ],
-  "generatedAt": "2026-05-31T09:58:03.824641+00:00"
+  "generatedAt": "2026-05-31T10:37:14.837543+00:00"
 }

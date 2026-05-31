@@ -13,7 +13,7 @@
       "configJson": {
         "importFile": "/home/eorb915/projects/seo_daiki/data/seeds/trend-signals.csv"
       },
-      "lastCollectedAt": "2026-05-31T09:58:03.823038+00:00"
+      "lastCollectedAt": "2026-05-31T10:37:14.834690+00:00"
     },
     {
       "id": "trend-source-es-es-google_trending_now_export",
@@ -28,7 +28,7 @@
       "configJson": {
         "importFile": "/home/eorb915/projects/seo_daiki/data/seeds/trend-signals.csv"
       },
-      "lastCollectedAt": "2026-05-31T09:58:03.823068+00:00"
+      "lastCollectedAt": "2026-05-31T10:37:14.834721+00:00"
     },
     {
       "id": "trend-source-br-pt-br-google_trending_now_export",
@@ -43,7 +43,7 @@
       "configJson": {
         "importFile": "/home/eorb915/projects/seo_daiki/data/seeds/trend-signals.csv"
       },
-      "lastCollectedAt": "2026-05-31T09:58:03.823085+00:00"
+      "lastCollectedAt": "2026-05-31T10:37:14.834739+00:00"
     },
     {
       "id": "trend-source-jp-ja-google_trending_now_export",
@@ -58,7 +58,7 @@
       "configJson": {
         "importFile": "/home/eorb915/projects/seo_daiki/data/seeds/trend-signals.csv"
       },
-      "lastCollectedAt": "2026-05-31T09:58:03.823102+00:00"
+      "lastCollectedAt": "2026-05-31T10:37:14.834756+00:00"
     },
     {
       "id": "trend-source-kr-ko-google_trending_now_export",
@@ -73,7 +73,7 @@
       "configJson": {
         "importFile": "/home/eorb915/projects/seo_daiki/data/seeds/trend-signals.csv"
       },
-      "lastCollectedAt": "2026-05-31T09:58:03.823117+00:00"
+      "lastCollectedAt": "2026-05-31T10:37:14.834770+00:00"
     }
   ],
   "signals": [

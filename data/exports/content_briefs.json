@@ -13,32 +13,32 @@
       "monetizationDeferred": true,
       "outlineJson": [
         {
-          "heading": "Direct answer",
-          "purpose": "Answer the market user's query first."
+          "heading": "Quick answer",
+          "purpose": "Give the reader the practical answer first."
         },
         {
-          "heading": "Why this is trending in this market",
-          "purpose": "Separate local signal from global noise."
+          "heading": "Why it matters now",
+          "purpose": "Explain the current user need in plain language."
         },
         {
-          "heading": "What top pages already cover",
-          "purpose": "Summarize patterns without copying wording."
+          "heading": "What to check",
+          "purpose": "Turn the topic into a useful reader checklist."
         },
         {
-          "heading": "What to verify before buying or recommending",
-          "purpose": "List evidence and risk checks."
+          "heading": "Common mistakes",
+          "purpose": "Warn readers about likely wrong assumptions."
         },
         {
-          "heading": "Gaps this test post should fill",
+          "heading": "Details that are easy to miss",
           "purpose": "Brazil warranty; avoid expired deal; compare current price; independent drawbacks"
         },
         {
-          "heading": "Comparison criteria to add later",
-          "purpose": "Prepare a future table without product links."
+          "heading": "How to compare options",
+          "purpose": "Explain the criteria readers should use before deciding."
         },
         {
-          "heading": "Product candidate analysis pending",
-          "purpose": "Make monetization deferral explicit."
+          "heading": "Sources to verify",
+          "purpose": "Point readers to official or primary sources."
         }
       ],
       "requiredEvidenceJson": [
@@ -51,9 +51,9 @@
         "Do not invent prices, discounts, medical outcomes, or availability.",
         "Do not insert affiliate links in the test article."
       ],
-      "briefMarkdown": "# iPhone 16 em promoção no Brasil: o que verificar antes de comprar\n\nAngle: Responder se iphone 16 promocao brasil merece atenção agora com checagem de preço, garantia e contexto do Brasil.\n\nMonetization: deferred. Product links are forbidden in the first test post.\n\n## Outline\n- Direct answer: Answer the market user's query first.\n- Why this is trending in this market: Separate local signal from global noise.\n- What top pages already cover: Summarize patterns without copying wording.\n- What to verify before buying or recommending: List evidence and risk checks.\n- Gaps this test post should fill: Brazil warranty; avoid expired deal; compare current price; independent drawbacks\n- Comparison criteria to add later: Prepare a future table without product links.\n- Product candidate analysis pending: Make monetization deferral explicit.",
+      "briefMarkdown": "# iPhone 16 em promoção no Brasil: o que verificar antes de comprar\n\nReader angle: Responder se iphone 16 promocao brasil merece atenção agora com checagem de preço, garantia e contexto do Brasil.\n\n## Outline\n- Quick answer: Give the reader the practical answer first.\n- Why it matters now: Explain the current user need in plain language.\n- What to check: Turn the topic into a useful reader checklist.\n- Common mistakes: Warn readers about likely wrong assumptions.\n- Details that are easy to miss: Brazil warranty; avoid expired deal; compare current price; independent drawbacks\n- How to compare options: Explain the criteria readers should use before deciding.\n- Sources to verify: Point readers to official or primary sources.",
       "status": "draft",
-      "createdAt": "2026-05-31T09:58:03.828728+00:00"
+      "createdAt": "2026-05-31T10:37:14.842561+00:00"
     },
     {
       "id": "brief-content-strategy-trend-keyword-trend-cluster-us-en-samsung-s90f-oled-deal-samsung-s90f-oled-deal",
@@ -68,32 +68,32 @@
       "monetizationDeferred": true,
       "outlineJson": [
         {
-          "heading": "Direct answer",
-          "purpose": "Answer the market user's query first."
+          "heading": "Quick answer",
+          "purpose": "Give the reader the practical answer first."
         },
         {
-          "heading": "Why this is trending in this market",
-          "purpose": "Separate local signal from global noise."
+          "heading": "Why it matters now",
+          "purpose": "Explain the current user need in plain language."
         },
         {
-          "heading": "What top pages already cover",
-          "purpose": "Summarize patterns without copying wording."
+          "heading": "What to check",
+          "purpose": "Turn the topic into a useful reader checklist."
         },
         {
-          "heading": "What to verify before buying or recommending",
-          "purpose": "List evidence and risk checks."
+          "heading": "Common mistakes",
+          "purpose": "Warn readers about likely wrong assumptions."
         },
         {
-          "heading": "Gaps this test post should fill",
+          "heading": "Details that are easy to miss",
           "purpose": "US return and warranty context; US stock check; current deal validation; deal context"
         },
         {
-          "heading": "Comparison criteria to add later",
-          "purpose": "Prepare a future table without product links."
+          "heading": "How to compare options",
+          "purpose": "Explain the criteria readers should use before deciding."
         },
         {
-          "heading": "Product candidate analysis pending",
-          "purpose": "Make monetization deferral explicit."
+          "heading": "Sources to verify",
+          "purpose": "Point readers to official or primary sources."
         }
       ],
       "requiredEvidenceJson": [
@@ -106,9 +106,9 @@
         "Do not invent prices, discounts, medical outcomes, or availability.",
         "Do not insert affiliate links in the test article."
       ],
-      "briefMarkdown": "# Samsung S90F OLED deal: what US buyers should verify first\n\nAngle: Answer samsung s90f oled deal with market-specific evidence and fill gaps: US return and warranty context, US stock check, current deal validation.\n\nMonetization: deferred. Product links are forbidden in the first test post.\n\n## Outline\n- Direct answer: Answer the market user's query first.\n- Why this is trending in this market: Separate local signal from global noise.\n- What top pages already cover: Summarize patterns without copying wording.\n- What to verify before buying or recommending: List evidence and risk checks.\n- Gaps this test post should fill: US return and warranty context; US stock check; current deal validation; deal context\n- Comparison criteria to add later: Prepare a future table without product links.\n- Product candidate analysis pending: Make monetization deferral explicit.",
+      "briefMarkdown": "# Samsung S90F OLED deal: what US buyers should verify first\n\nReader angle: Answer samsung s90f oled deal with market-specific evidence and fill gaps: US return and warranty context, US stock check, current deal validation.\n\n## Outline\n- Quick answer: Give the reader the practical answer first.\n- Why it matters now: Explain the current user need in plain language.\n- What to check: Turn the topic into a useful reader checklist.\n- Common mistakes: Warn readers about likely wrong assumptions.\n- Details that are easy to miss: US return and warranty context; US stock check; current deal validation; deal context\n- How to compare options: Explain the criteria readers should use before deciding.\n- Sources to verify: Point readers to official or primary sources.",
       "status": "draft",
-      "createdAt": "2026-05-31T09:58:03.828738+00:00"
+      "createdAt": "2026-05-31T10:37:14.842571+00:00"
     },
     {
       "id": "brief-content-strategy-trend-keyword-trend-cluster-jp-ja-iphone-18-rumors-japan-iphone-18-rumors-japan",
@@ -123,28 +123,28 @@
       "monetizationDeferred": true,
       "outlineJson": [
         {
-          "heading": "Direct answer",
-          "purpose": "Answer the market user's query first."
+          "heading": "Quick answer",
+          "purpose": "Give the reader the practical answer first."
         },
         {
-          "heading": "Why this is trending in this market",
-          "purpose": "Separate local signal from global noise."
+          "heading": "Why it matters now",
+          "purpose": "Explain the current user need in plain language."
         },
         {
-          "heading": "What top pages already cover",
-          "purpose": "Summarize patterns without copying wording."
+          "heading": "What to check",
+          "purpose": "Turn the topic into a useful reader checklist."
         },
         {
-          "heading": "What to verify before buying or recommending",
-          "purpose": "List evidence and risk checks."
+          "heading": "Common mistakes",
+          "purpose": "Warn readers about likely wrong assumptions."
         },
         {
-          "heading": "Gaps this test post should fill",
+          "heading": "Details that are easy to miss",
           "purpose": "Japan buyer context; Japan carrier relevance; Japan release caveat; avoid certainty"
         },
         {
-          "heading": "Product candidate analysis pending",
-          "purpose": "Make monetization deferral explicit."
+          "heading": "Sources to verify",
+          "purpose": "Point readers to official or primary sources."
         }
       ],
       "requiredEvidenceJson": [
@@ -158,9 +158,9 @@
         "Do not invent prices, discounts, medical outcomes, or availability.",
         "Do not insert affiliate links in the test article."
       ],
-      "briefMarkdown": "# iPhone 18の噂: 日本で確認すべきポイント\n\nAngle: iphone 18 rumors japan について、確定情報と噂を分け、日本の読者が確認すべき点を整理する。\n\nMonetization: deferred. Product links are forbidden in the first test post.\n\n## Outline\n- Direct answer: Answer the market user's query first.\n- Why this is trending in this market: Separate local signal from global noise.\n- What top pages already cover: Summarize patterns without copying wording.\n- What to verify before buying or recommending: List evidence and risk checks.\n- Gaps this test post should fill: Japan buyer context; Japan carrier relevance; Japan release caveat; avoid certainty\n- Product candidate analysis pending: Make monetization deferral explicit.",
+      "briefMarkdown": "# iPhone 18の噂: 日本で確認すべきポイント\n\nReader angle: iphone 18 rumors japan について、確定情報と噂を分け、日本の読者が確認すべき点を整理する。\n\n## Outline\n- Quick answer: Give the reader the practical answer first.\n- Why it matters now: Explain the current user need in plain language.\n- What to check: Turn the topic into a useful reader checklist.\n- Common mistakes: Warn readers about likely wrong assumptions.\n- Details that are easy to miss: Japan buyer context; Japan carrier relevance; Japan release caveat; avoid certainty\n- Sources to verify: Point readers to official or primary sources.",
       "status": "draft",
-      "createdAt": "2026-05-31T09:58:03.828747+00:00"
+      "createdAt": "2026-05-31T10:37:14.842580+00:00"
     },
     {
       "id": "brief-content-strategy-trend-keyword-trend-cluster-es-es-renta-2025-avisos-aeat-renta-2025-avisos-aeat",
@@ -175,28 +175,28 @@
       "monetizationDeferred": true,
       "outlineJson": [
         {
-          "heading": "Direct answer",
-          "purpose": "Answer the market user's query first."
+          "heading": "Quick answer",
+          "purpose": "Give the reader the practical answer first."
         },
         {
-          "heading": "Why this is trending in this market",
-          "purpose": "Separate local signal from global noise."
+          "heading": "Why it matters now",
+          "purpose": "Explain the current user need in plain language."
         },
         {
-          "heading": "What top pages already cover",
-          "purpose": "Summarize patterns without copying wording."
+          "heading": "What to check",
+          "purpose": "Turn the topic into a useful reader checklist."
         },
         {
-          "heading": "What to verify before buying or recommending",
-          "purpose": "List evidence and risk checks."
+          "heading": "Common mistakes",
+          "purpose": "Warn readers about likely wrong assumptions."
         },
         {
-          "heading": "Gaps this test post should fill",
+          "heading": "Details that are easy to miss",
           "purpose": "common mistakes; deadline caveats; deadline table; mobile notice flow"
         },
         {
-          "heading": "Product candidate analysis pending",
-          "purpose": "Make monetization deferral explicit."
+          "heading": "Sources to verify",
+          "purpose": "Point readers to official or primary sources."
         }
       ],
       "requiredEvidenceJson": [
@@ -209,9 +209,9 @@
         "Do not invent prices, discounts, medical outcomes, or availability.",
         "Do not insert affiliate links in the test article."
       ],
-      "briefMarkdown": "# Renta 2025 y AEAT: qué comprobar antes de corregir una declaración\n\nAngle: Resolver la búsqueda sobre renta 2025 avisos aeat con una guía práctica basada en fuentes oficiales y cubrir: common mistakes, deadline caveats, deadline table.\n\nMonetization: deferred. Product links are forbidden in the first test post.\n\n## Outline\n- Direct answer: Answer the market user's query first.\n- Why this is trending in this market: Separate local signal from global noise.\n- What top pages already cover: Summarize patterns without copying wording.\n- What to verify before buying or recommending: List evidence and risk checks.\n- Gaps this test post should fill: common mistakes; deadline caveats; deadline table; mobile notice flow\n- Product candidate analysis pending: Make monetization deferral explicit.",
+      "briefMarkdown": "# Renta 2025 y AEAT: qué comprobar antes de corregir una declaración\n\nReader angle: Resolver la búsqueda sobre renta 2025 avisos aeat con una guía práctica basada en fuentes oficiales y cubrir: common mistakes, deadline caveats, deadline table.\n\n## Outline\n- Quick answer: Give the reader the practical answer first.\n- Why it matters now: Explain the current user need in plain language.\n- What to check: Turn the topic into a useful reader checklist.\n- Common mistakes: Warn readers about likely wrong assumptions.\n- Details that are easy to miss: common mistakes; deadline caveats; deadline table; mobile notice flow\n- Sources to verify: Point readers to official or primary sources.",
       "status": "draft",
-      "createdAt": "2026-05-31T09:58:03.828755+00:00"
+      "createdAt": "2026-05-31T10:37:14.842587+00:00"
     },
     {
       "id": "brief-content-strategy-trend-keyword-trend-cluster-kr-ko-2026-대입-학폭-반영-2026-대입-학폭-반영",
@@ -226,28 +226,28 @@
       "monetizationDeferred": true,
       "outlineJson": [
         {
-          "heading": "Direct answer",
-          "purpose": "Answer the market user's query first."
+          "heading": "Quick answer",
+          "purpose": "Give the reader the practical answer first."
         },
         {
-          "heading": "Why this is trending in this market",
-          "purpose": "Separate local signal from global noise."
+          "heading": "Why it matters now",
+          "purpose": "Explain the current user need in plain language."
         },
         {
-          "heading": "What top pages already cover",
-          "purpose": "Summarize patterns without copying wording."
+          "heading": "What to check",
+          "purpose": "Turn the topic into a useful reader checklist."
         },
         {
-          "heading": "What to verify before buying or recommending",
-          "purpose": "List evidence and risk checks."
+          "heading": "Common mistakes",
+          "purpose": "Warn readers about likely wrong assumptions."
         },
         {
-          "heading": "Gaps this test post should fill",
+          "heading": "Details that are easy to miss",
           "purpose": "avoid universal penalty claim; latest 2026 update; official PDF reference; official admissions rule"
         },
         {
-          "heading": "Product candidate analysis pending",
-          "purpose": "Make monetization deferral explicit."
+          "heading": "Sources to verify",
+          "purpose": "Point readers to official or primary sources."
         }
       ],
       "requiredEvidenceJson": [
@@ -261,9 +261,9 @@
         "Do not invent prices, discounts, medical outcomes, or availability.",
         "Do not insert affiliate links in the test article."
       ],
-      "briefMarkdown": "# 2026 대입 학폭 반영: 학생과 학부모가 먼저 확인할 점\n\nAngle: 2026 대입 학폭 반영 이슈를 정책 근거와 학생·학부모 확인사항 중심으로 정리한다.\n\nMonetization: deferred. Product links are forbidden in the first test post.\n\n## Outline\n- Direct answer: Answer the market user's query first.\n- Why this is trending in this market: Separate local signal from global noise.\n- What top pages already cover: Summarize patterns without copying wording.\n- What to verify before buying or recommending: List evidence and risk checks.\n- Gaps this test post should fill: avoid universal penalty claim; latest 2026 update; official PDF reference; official admissions rule\n- Product candidate analysis pending: Make monetization deferral explicit.",
+      "briefMarkdown": "# 2026 대입 학폭 반영: 학생과 학부모가 먼저 확인할 점\n\nReader angle: 2026 대입 학폭 반영 이슈를 정책 근거와 학생·학부모 확인사항 중심으로 정리한다.\n\n## Outline\n- Quick answer: Give the reader the practical answer first.\n- Why it matters now: Explain the current user need in plain language.\n- What to check: Turn the topic into a useful reader checklist.\n- Common mistakes: Warn readers about likely wrong assumptions.\n- Details that are easy to miss: avoid universal penalty claim; latest 2026 update; official PDF reference; official admissions rule\n- Sources to verify: Point readers to official or primary sources.",
       "status": "draft",
-      "createdAt": "2026-05-31T09:58:03.828764+00:00"
+      "createdAt": "2026-05-31T10:37:14.842597+00:00"
     }
   ]
 }

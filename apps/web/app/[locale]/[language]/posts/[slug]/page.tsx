@@ -10,7 +10,6 @@ import { SiteHeader } from "@/components/layout/SiteHeader";
 import { enabledMarkets, findMarket } from "@/lib/market/config";
 import { marketContentHreflangVariants, readMarketPosts } from "@/lib/market/market-data";
 import { routeSlugMatches } from "@/lib/market/route-slugs";
-import { labelsForLanguage } from "@/lib/market/ui-labels";
 import { marketResearchMetadata } from "@/lib/seo/metadata";
 
 interface PageProps {
@@ -41,8 +40,8 @@ export async function generateMetadata({ params }: PageProps) {
     indexable: true
   };
   return marketResearchMetadata({
-    title: post ? `${post.title} | Test Post` : `${market.country} Test Post`,
-    description: post?.summary ?? `Website test post for ${market.country}.`,
+    title: post ? post.title : `${market.country} Market Guide`,
+    description: post?.summary ?? `Market guide for ${market.country}.`,
     canonical: canonicalForMarketPath(path),
     hreflangMap: buildExistingMarketContentHreflangMap(variants, currentVariant)
   });
@@ -58,19 +57,13 @@ export default async function MarketPostPage({ params }: PageProps) {
   if (!post) {
     notFound();
   }
-  const { labels } = labelsForLanguage(market.language);
-
   return (
     <>
       <SiteHeader />
       <main className="mx-auto max-w-4xl px-4 py-10">
-        <p className="text-sm font-semibold uppercase text-teal-700">{labels.websiteTestPost}</p>
+        <p className="text-sm font-semibold uppercase text-teal-700">{marketGuideLabel(market.language)}</p>
         <h1 className="mt-3 text-4xl font-semibold">{post.title}</h1>
         <p className="mt-4 text-neutral-700">{post.summary}</p>
-        <p className="mt-2 text-sm text-neutral-600">
-          {labels.status}: {post.status}. {labels.productCandidateAnalysis}: {post.productCandidateState}.{" "}
-          {labels.monetizationDeferred}: {post.monetizationDeferred ? labels.yes : labels.no}.
-        </p>
         <article className="mt-8 grid gap-5">
           {post.sections.map((section) => (
             <section className="rounded-md border border-neutral-200 bg-white p-4" key={section.heading}>
@@ -83,4 +76,12 @@ export default async function MarketPostPage({ params }: PageProps) {
       <SiteFooter />
     </>
   );
+}
+
+function marketGuideLabel(language: string): string {
+  if (language === "es") return "Guía de mercado";
+  if (language === "pt-br" || language === "pt") return "Guia de mercado";
+  if (language === "ja") return "マーケットガイド";
+  if (language === "ko") return "시장 가이드";
+  return "Market guide";
 }

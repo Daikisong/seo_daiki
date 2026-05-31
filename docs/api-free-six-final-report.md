@@ -2,7 +2,7 @@
 
 ## Pass/Fail
 
-Pass. The step 1-6 flow now runs from real country-level trend research through noindex website test posts.
+Pass. The step 1-6 flow now runs from real country-level trend research through noindex website test posts with reader-facing article copy.
 
 This is no longer the old sample-topic run. The live research evidence is stored in:
 
@@ -53,7 +53,18 @@ Website smoke check:
 200 /kr/ko/posts/2026-%EB%8C%80%EC%9E%85-%ED%95%99%ED%8F%AD-%EB%B0%98%EC%98%81/
 ```
 
-All five returned `noindex`.
+All five returned `200`. They remain `noindex` in metadata, but visible page copy no longer shows internal workflow labels.
+
+Visible-page audit:
+
+```text
+visible_bad=none for:
+/us/en/posts/samsung-s90f-oled-deal/
+/es/es/posts/renta-2025-avisos-aeat/
+/br/pt-br/posts/iphone-16-promocao-brasil/
+/jp/ja/posts/iphone-18-rumors-japan/
+/kr/ko/posts/2026-%EB%8C%80%EC%9E%85-%ED%95%99%ED%8F%AD-%EB%B0%98%EC%98%81/
+```
 
 ## What Changed
 
@@ -61,7 +72,9 @@ All five returned `noindex`.
 - Replaced fake `example-*.test` SERP rows with real URLs from publishers, official pages, and review sources.
 - Added a country trend research record and selection rationale.
 - Made strategy creation skip keywords that do not have SERP opportunity evidence.
-- Improved generated test post body sections so they use competitor patterns, gaps, and verification needs instead of generic filler.
+- Rewrote generated post bodies into reader-facing guides instead of internal QA/research notes.
+- Hid internal article state, product-candidate status, and monetization state from the public post route.
+- Updated page footer copy so article pages do not mention affiliate controls to readers.
 - Added encoded slug handling so Korean market post URLs resolve correctly.
 
 ## Still Intentionally Not Done
