@@ -54,7 +54,8 @@ assert.equal(legacyLocaleDefaultMarketPath("fr"), undefined);
 
 const originalSiteUrl = process.env.NEXT_PUBLIC_SITE_URL;
 delete process.env.NEXT_PUBLIC_SITE_URL;
-assert.equal(getSiteUrl(), "https://example.com");
+assert.equal(getSiteUrl({ NODE_ENV: "development" }), "http://localhost:3000");
+assert.throws(() => getSiteUrl({ NODE_ENV: "production" }), /NEXT_PUBLIC_SITE_URL is required/);
 process.env.NEXT_PUBLIC_SITE_URL = "https://example.test/";
 assert.equal(getSiteUrl(), "https://example.test");
 if (originalSiteUrl === undefined) {

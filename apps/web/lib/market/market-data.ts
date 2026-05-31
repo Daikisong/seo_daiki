@@ -14,6 +14,7 @@ export {
 } from "./market-data-readers";
 export {
   marketKey,
+  marketContentHreflangVariants,
   marketsWithContentSlug,
   readMarketContentBySection
 } from "./market-data-routing";

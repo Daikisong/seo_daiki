@@ -1,13 +1,15 @@
 # SEO Rules
 
-## URL and Locale
+## URL, Market, and Locale
 
-- Initial locales: `/en`, `/es`, `/pt-br`
+- Trend-first market silos use explicit market/language routes such as `/us/en/`, `/es/es/`, `/br/pt-br/`, and `/kr/ko/`.
+- Legacy locale entry points `/en`, `/es`, and `/pt-br` redirect to their default market routes.
 - No automatic IP or browser-language redirects
 - Every page shows language switch links
 - A client-side language preference banner may suggest another locale, but it never redirects automatically
 - Each localized page uses a self canonical URL
 - Hreflang alternates include available localized variants and `x-default`
+- Market content hreflang alternates must be generated only from existing variants. For example, `/us/en/trends/magnesium-sleep/` must not emit `/gb/en/trends/magnesium-sleep/` unless the GB variant exists.
 - Review paths are localized: `/en/reviews`, `/es/resenas`, `/pt-br/analises`
 - Guide paths are localized: `/en/guides`, `/es/guias`, `/pt-br/guias`
 - Country-risk paths are regional guide URLs when the content is truly country-specific: `/en-us/guides`, `/en-gb/guides`, `/es-es/guias`, `/pt-br/guias`
@@ -49,9 +51,9 @@ internal links are thin
 
 ## Sitemaps
 
-- `/sitemap.xml` lists only published, indexable article URLs.
-- `/sitemaps/index.xml` lists non-empty split sitemap files.
-- Split sitemap examples: `/sitemaps/en-hubs.xml`, `/sitemaps/en-products.xml`, `/sitemaps/en-guides.xml`, `/sitemaps/en-lab.xml`, `/sitemaps/en-methodology.xml`, `/sitemaps/es-products.xml`, `/sitemaps/pt-br-products.xml`.
+- `/sitemap.xml` lists only published, indexable article URLs, global overview pages, and market homes that meet content-depth thresholds.
+- `/sitemaps/index.xml` is not advertised until a real sitemap index route exists.
+- Market homes are included only when they have at least 3 trend clusters, 3 SERP opportunities, or 1 public-ready post. Empty markets stay out by default.
 - Country-risk articles are included in the guides sitemap bucket because their canonical URLs are market guide pages, for example `/en-us/guides/aliexpress-chargers-us-buyers/` and `/es-es/guias/cargadores-aliexpress-espana/`.
 - Pending or noindex pages can exist for users and admins, but they do not appear in sitemap output.
 

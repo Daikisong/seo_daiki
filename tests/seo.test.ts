@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import {
+  buildExistingMarketContentHreflangMap,
   buildMarketContentHreflangMap,
   buildMarketHreflangMap,
   buildMarketSectionHreflangMap,
@@ -64,6 +65,31 @@ assert.equal(marketMap["x-default"], "https://example.com/global/markets/");
 const contentMap = buildMarketContentHreflangMap([us, gb], us, "trends", "gan-charger", "https://example.com");
 assert.equal(contentMap["en-US"], "https://example.com/us/en/trends/gan-charger/");
 assert.equal(contentMap["en-GB"], "https://example.com/gb/en/trends/gan-charger/");
+
+const existingVariantMap = buildExistingMarketContentHreflangMap(
+  [
+    {
+      market: "us",
+      language: "en",
+      path: "/us/en/trends/magnesium-sleep/",
+      hreflang: "en-US",
+      exists: true,
+      indexable: true
+    }
+  ],
+  {
+    market: "us",
+    language: "en",
+    path: "/us/en/trends/magnesium-sleep/",
+    hreflang: "en-US",
+    exists: true,
+    indexable: true
+  },
+  "https://example.com"
+);
+assert.equal(existingVariantMap["en-US"], "https://example.com/us/en/trends/magnesium-sleep/");
+assert.equal(existingVariantMap["en-GB"], undefined);
+assert.equal(existingVariantMap["x-default"], "https://example.com/global/trend-map/");
 
 const sectionMap = buildMarketSectionHreflangMap([us, gb], us, "calendar", "https://example.com");
 assert.equal(sectionMap["en-US"], "https://example.com/us/en/calendar/");

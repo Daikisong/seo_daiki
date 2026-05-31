@@ -1,0 +1,271 @@
+{
+  "summary": {
+    "passed": true,
+    "issues": 0,
+    "warnings": 0,
+    "markets": 18,
+    "researchSections": [
+      "trends",
+      "keywords",
+      "serp",
+      "briefs",
+      "posts"
+    ]
+  },
+  "marketSitemapEligibility": [
+    {
+      "market": "us",
+      "language": "en",
+      "pathPrefix": "/us/en",
+      "noindexHome": true,
+      "eligible": false,
+      "includeEmptyMarketsOverride": false,
+      "counts": {
+        "trends": 1,
+        "serpOpportunities": 1,
+        "publicReadyPosts": 0
+      },
+      "reasons": []
+    },
+    {
+      "market": "gb",
+      "language": "en",
+      "pathPrefix": "/gb/en",
+      "noindexHome": true,
+      "eligible": false,
+      "includeEmptyMarketsOverride": false,
+      "counts": {
+        "trends": 0,
+        "serpOpportunities": 0,
+        "publicReadyPosts": 0
+      },
+      "reasons": []
+    },
+    {
+      "market": "ca",
+      "language": "en",
+      "pathPrefix": "/ca/en",
+      "noindexHome": true,
+      "eligible": false,
+      "includeEmptyMarketsOverride": false,
+      "counts": {
+        "trends": 0,
+        "serpOpportunities": 0,
+        "publicReadyPosts": 0
+      },
+      "reasons": []
+    },
+    {
+      "market": "au",
+      "language": "en",
+      "pathPrefix": "/au/en",
+      "noindexHome": true,
+      "eligible": false,
+      "includeEmptyMarketsOverride": false,
+      "counts": {
+        "trends": 0,
+        "serpOpportunities": 0,
+        "publicReadyPosts": 0
+      },
+      "reasons": []
+    },
+    {
+      "market": "es",
+      "language": "es",
+      "pathPrefix": "/es/es",
+      "noindexHome": true,
+      "eligible": false,
+      "includeEmptyMarketsOverride": false,
+      "counts": {
+        "trends": 1,
+        "serpOpportunities": 1,
+        "publicReadyPosts": 0
+      },
+      "reasons": []
+    },
+    {
+      "market": "mx",
+      "language": "es",
+      "pathPrefix": "/mx/es",
+      "noindexHome": true,
+      "eligible": false,
+      "includeEmptyMarketsOverride": false,
+      "counts": {
+        "trends": 1,
+        "serpOpportunities": 0,
+        "publicReadyPosts": 0
+      },
+      "reasons": []
+    },
+    {
+      "market": "br",
+      "language": "pt-br",
+      "pathPrefix": "/br/pt-br",
+      "noindexHome": true,
+      "eligible": false,
+      "includeEmptyMarketsOverride": false,
+      "counts": {
+        "trends": 1,
+        "serpOpportunities": 1,
+        "publicReadyPosts": 0
+      },
+      "reasons": []
+    },
+    {
+      "market": "pt",
+      "language": "pt",
+      "pathPrefix": "/pt/pt",
+      "noindexHome": true,
+      "eligible": false,
+      "includeEmptyMarketsOverride": false,
+      "counts": {
+        "trends": 0,
+        "serpOpportunities": 0,
+        "publicReadyPosts": 0
+      },
+      "reasons": []
+    },
+    {
+      "market": "fr",
+      "language": "fr",
+      "pathPrefix": "/fr/fr",
+      "noindexHome": true,
+      "eligible": false,
+      "includeEmptyMarketsOverride": false,
+      "counts": {
+        "trends": 1,
+        "serpOpportunities": 0,
+        "publicReadyPosts": 0
+      },
+      "reasons": []
+    },
+    {
+      "market": "de",
+      "language": "de",
+      "pathPrefix": "/de/de",
+      "noindexHome": true,
+      "eligible": false,
+      "includeEmptyMarketsOverride": false,
+      "counts": {
+        "trends": 1,
+        "serpOpportunities": 0,
+        "publicReadyPosts": 0
+      },
+      "reasons": []
+    },
+    {
+      "market": "it",
+      "language": "it",
+      "pathPrefix": "/it/it",
+      "noindexHome": true,
+      "eligible": false,
+      "includeEmptyMarketsOverride": false,
+      "counts": {
+        "trends": 0,
+        "serpOpportunities": 0,
+        "publicReadyPosts": 0
+      },
+      "reasons": []
+    },
+    {
+      "market": "nl",
+      "language": "nl",
+      "pathPrefix": "/nl/nl",
+      "noindexHome": true,
+      "eligible": false,
+      "includeEmptyMarketsOverride": false,
+      "counts": {
+        "trends": 0,
+        "serpOpportunities": 0,
+        "publicReadyPosts": 0
+      },
+      "reasons": []
+    },
+    {
+      "market": "pl",
+      "language": "pl",
+      "pathPrefix": "/pl/pl",
+      "noindexHome": true,
+      "eligible": false,
+      "includeEmptyMarketsOverride": false,
+      "counts": {
+        "trends": 0,
+        "serpOpportunities": 0,
+        "publicReadyPosts": 0
+      },
+      "reasons": []
+    },
+    {
+      "market": "tr",
+      "language": "tr",
+      "pathPrefix": "/tr/tr",
+      "noindexHome": true,
+      "eligible": false,
+      "includeEmptyMarketsOverride": false,
+      "counts": {
+        "trends": 0,
+        "serpOpportunities": 0,
+        "publicReadyPosts": 0
+      },
+      "reasons": []
+    },
+    {
+      "market": "id",
+      "language": "id",
+      "pathPrefix": "/id/id",
+      "noindexHome": true,
+      "eligible": false,
+      "includeEmptyMarketsOverride": false,
+      "counts": {
+        "trends": 0,
+        "serpOpportunities": 0,
+        "publicReadyPosts": 0
+      },
+      "reasons": []
+    },
+    {
+      "market": "jp",
+      "language": "ja",
+      "pathPrefix": "/jp/ja",
+      "noindexHome": true,
+      "eligible": false,
+      "includeEmptyMarketsOverride": false,
+      "counts": {
+        "trends": 1,
+        "serpOpportunities": 1,
+        "publicReadyPosts": 0
+      },
+      "reasons": []
+    },
+    {
+      "market": "kr",
+      "language": "ko",
+      "pathPrefix": "/kr/ko",
+      "noindexHome": true,
+      "eligible": false,
+      "includeEmptyMarketsOverride": false,
+      "counts": {
+        "trends": 1,
+        "serpOpportunities": 1,
+        "publicReadyPosts": 0
+      },
+      "reasons": []
+    },
+    {
+      "market": "in",
+      "language": "en",
+      "pathPrefix": "/in/en",
+      "noindexHome": true,
+      "eligible": false,
+      "includeEmptyMarketsOverride": false,
+      "counts": {
+        "trends": 0,
+        "serpOpportunities": 0,
+        "publicReadyPosts": 0
+      },
+      "reasons": []
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

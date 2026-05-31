@@ -32,7 +32,7 @@ assert.equal(sitemapPriority(articleFixture({ type: "methodology" })), 0.7);
 
 assert.deepEqual(
   buildSitemapEntries([guide, draft, noindex]).map((entry) => entry.url),
-  ["https://example.com/en/guides/charger-guide/"]
+  ["http://localhost:3000/en/guides/charger-guide/"]
 );
 
 console.log("SEO sitemap policy module tests passed");

@@ -1,6 +1,35 @@
 import type { Metadata } from "next";
 import { canonicalForArticle, localeConfig } from "@global-import-lab/seo";
-import type { Article } from "@global-import-lab/types";
+import type { Article, HreflangMap } from "@global-import-lab/types";
+
+export type MarketResearchMetadataInput = {
+  title: string;
+  description: string;
+  canonical: string;
+  hreflangMap?: HreflangMap;
+};
+
+export const researchRobots = {
+  index: false,
+  follow: true
+} as const;
+
+export function marketResearchMetadata({
+  title,
+  description,
+  canonical,
+  hreflangMap
+}: MarketResearchMetadataInput): Metadata {
+  return {
+    title,
+    description,
+    alternates: {
+      canonical,
+      languages: hreflangMap
+    },
+    robots: researchRobots
+  };
+}
 
 export function metadataForArticle(article: Article, options: { forceNoindex?: boolean } = {}): Metadata {
   const canonical = canonicalForArticle(article);
