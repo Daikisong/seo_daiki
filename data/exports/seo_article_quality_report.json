@@ -493,15 +493,23 @@
       "pass": true
     },
     {
-      "name": "renders trust strip from top-page analysis",
+      "name": "renders review-guide article topbar",
       "pass": true
     },
     {
-      "name": "renders reader path from 100-site live trend analysis",
+      "name": "renders quick verdict, score, and highlight panel",
       "pass": true
     },
     {
-      "name": "renders inline jump links",
+      "name": "renders four-card review method strip",
+      "pass": true
+    },
+    {
+      "name": "renders quick navigation chips from article sections",
+      "pass": true
+    },
+    {
+      "name": "uses quick navigation instead of duplicate jump-link clutter",
       "pass": true
     },
     {
@@ -513,7 +521,7 @@
       "pass": true
     },
     {
-      "name": "does not render pros and cons clutter",
+      "name": "renders fit card from pros/cons without old signal-grid clutter",
       "pass": true
     },
     {
@@ -525,7 +533,7 @@
       "pass": true
     },
     {
-      "name": "renders checklist",
+      "name": "renders checklist with action controls",
       "pass": true
     },
     {
@@ -541,7 +549,7 @@
       "pass": true
     },
     {
-      "name": "renders answer before summary blocks",
+      "name": "renders answer before checklist and fit blocks",
       "pass": true
     },
     {
@@ -559,7 +567,7 @@
       "pass": true
     },
     {
-      "name": "uses simplified two-column article shell",
+      "name": "uses selected Image #1 single-column review reading frame",
       "pass": true
     },
     {
@@ -567,7 +575,7 @@
       "pass": true
     },
     {
-      "name": "uses fact rail not plain cards",
+      "name": "uses top reference method strip not old fact rail",
       "pass": true
     },
     {
@@ -575,15 +583,23 @@
       "pass": true
     },
     {
-      "name": "uses compact answer and summary blocks",
+      "name": "uses compact answer, verdict, and score blocks",
       "pass": true
     },
     {
-      "name": "styles top-page trust, reader path, and jump patterns",
+      "name": "styles review summary, method strip, quick nav, and side-card patterns",
+      "pass": true
+    },
+    {
+      "name": "renders checklist and fit cards as first decision blocks",
       "pass": true
     },
     {
       "name": "keeps primary content visually dominant",
+      "pass": true
+    },
+    {
+      "name": "uses selected Image #1 reference file",
       "pass": true
     },
     {
@@ -651,7 +667,11 @@
           "pass": true
         },
         {
-          "name": "trust strip rendered",
+          "name": "review summary rendered",
+          "pass": true
+        },
+        {
+          "name": "method strip rendered",
           "pass": true
         },
         {
@@ -659,11 +679,19 @@
           "pass": true
         },
         {
-          "name": "quick jumps rendered",
+          "name": "Image #1 topbar rendered",
           "pass": true
         },
         {
-          "name": "answer before quick jumps before summary",
+          "name": "fit card rendered",
+          "pass": true
+        },
+        {
+          "name": "side cards rendered",
+          "pass": true
+        },
+        {
+          "name": "reader path before answer before decision cards",
           "pass": true
         },
         {
@@ -693,7 +721,11 @@
           "pass": true
         },
         {
-          "name": "trust strip rendered",
+          "name": "review summary rendered",
+          "pass": true
+        },
+        {
+          "name": "method strip rendered",
           "pass": true
         },
         {
@@ -701,11 +733,19 @@
           "pass": true
         },
         {
-          "name": "quick jumps rendered",
+          "name": "Image #1 topbar rendered",
           "pass": true
         },
         {
-          "name": "answer before quick jumps before summary",
+          "name": "fit card rendered",
+          "pass": true
+        },
+        {
+          "name": "side cards rendered",
+          "pass": true
+        },
+        {
+          "name": "reader path before answer before decision cards",
           "pass": true
         },
         {
@@ -735,7 +775,11 @@
           "pass": true
         },
         {
-          "name": "trust strip rendered",
+          "name": "review summary rendered",
+          "pass": true
+        },
+        {
+          "name": "method strip rendered",
           "pass": true
         },
         {
@@ -743,11 +787,19 @@
           "pass": true
         },
         {
-          "name": "quick jumps rendered",
+          "name": "Image #1 topbar rendered",
           "pass": true
         },
         {
-          "name": "answer before quick jumps before summary",
+          "name": "fit card rendered",
+          "pass": true
+        },
+        {
+          "name": "side cards rendered",
+          "pass": true
+        },
+        {
+          "name": "reader path before answer before decision cards",
           "pass": true
         },
         {
@@ -777,7 +829,11 @@
           "pass": true
         },
         {
-          "name": "trust strip rendered",
+          "name": "review summary rendered",
+          "pass": true
+        },
+        {
+          "name": "method strip rendered",
           "pass": true
         },
         {
@@ -785,11 +841,19 @@
           "pass": true
         },
         {
-          "name": "quick jumps rendered",
+          "name": "Image #1 topbar rendered",
           "pass": true
         },
         {
-          "name": "answer before quick jumps before summary",
+          "name": "fit card rendered",
+          "pass": true
+        },
+        {
+          "name": "side cards rendered",
+          "pass": true
+        },
+        {
+          "name": "reader path before answer before decision cards",
           "pass": true
         },
         {
@@ -819,7 +883,11 @@
           "pass": true
         },
         {
-          "name": "trust strip rendered",
+          "name": "review summary rendered",
+          "pass": true
+        },
+        {
+          "name": "method strip rendered",
           "pass": true
         },
         {
@@ -827,11 +895,19 @@
           "pass": true
         },
         {
-          "name": "quick jumps rendered",
+          "name": "Image #1 topbar rendered",
           "pass": true
         },
         {
-          "name": "answer before quick jumps before summary",
+          "name": "fit card rendered",
+          "pass": true
+        },
+        {
+          "name": "side cards rendered",
+          "pass": true
+        },
+        {
+          "name": "reader path before answer before decision cards",
           "pass": true
         },
         {

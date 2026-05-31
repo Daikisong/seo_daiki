@@ -254,9 +254,9 @@
         }
       ],
       "heroImage": {
-        "src": "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=1400&q=80",
-        "alt": "OLED television in a living room setup",
-        "caption": "Illustrative OLED TV setup. Verify exact Samsung S90F size and retailer terms before buying."
+        "src": "/images/market-guides/us-samsung-s90f-oled-hero.png",
+        "alt": "Large unbranded OLED television in a modern living room showing green abstract light waves",
+        "caption": "Generated review-guide hero image. Verify exact Samsung S90F size and retailer terms before buying."
       },
       "articleMeta": {
         "checkedAt": "2026-05-31",
@@ -887,9 +887,9 @@
         }
       ],
       "heroImage": {
-        "src": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1400&q=80",
-        "alt": "Students reviewing documents together",
-        "caption": "대입 반영 방식은 대학별로 다릅니다. 최종 판단은 반드시 모집요강과 공식 자료로 확인하세요."
+        "src": "/images/market-guides/kr-2026-admission-checklist-hero.png",
+        "alt": "2026 대입 체크리스트와 학폭 반영 확인 항목이 놓인 한국어 입시 자료 책상 이미지",
+        "caption": "학폭 반영 방식은 대학별로 다릅니다. 최종 판단은 모집요강과 공식 자료로 확인하세요."
       },
       "articleMeta": {
         "checkedAt": "2026-05-31",

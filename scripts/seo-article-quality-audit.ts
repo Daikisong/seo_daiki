@@ -35,7 +35,8 @@ const topSeoAnalysisPath = resolve(root, "data/research/top-seo-page-format-anal
 const topSeoDocPath = resolve(root, "docs/top-seo-50-page-format-analysis.md");
 const liveFrontendAnalysisPath = resolve(root, "data/research/live-trending-frontend-top-sites-2026-05-31.json");
 const liveFrontendDocPath = resolve(root, "docs/live-trending-100-frontend-format-analysis.md");
-const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3001").replace(/\/$/, "");
+const selectedUiReferencePath = resolve(root, "docs/0531/ui-ref-01-editorial-guide-ko.png");
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
 
 const forbiddenVisiblePhrases = [
   "test_published",
@@ -175,19 +176,21 @@ function main() {
   const rendererChecks = [
     { name: "renders hero image", pass: pageSource.includes("<img") && pageSource.includes("heroImage") },
     { name: "renders article metadata", pass: pageSource.includes("articleMeta") && pageSource.includes("<time") },
-    { name: "renders trust strip from top-page analysis", pass: pageSource.includes("market-article-trust-strip") && pageSource.includes("buildTrustItems") },
-    { name: "renders reader path from 100-site live trend analysis", pass: pageSource.includes("market-article-reader-path") && pageSource.includes("buildReaderPathItems") },
-    { name: "renders inline jump links", pass: pageSource.includes("market-article-quick-jumps") && pageSource.includes("buildQuickJumpLinks") },
+    { name: "renders review-guide article topbar", pass: pageSource.includes("MarketArticleTopbar") && pageSource.includes("market-article-topbar") },
+    { name: "renders quick verdict, score, and highlight panel", pass: pageSource.includes("market-article-review-summary") && pageSource.includes("buildReviewSummary") },
+    { name: "renders four-card review method strip", pass: pageSource.includes("market-article-trust-strip") && pageSource.includes("buildTrustCards") && pageSource.includes("methodDisclosureLabel") },
+    { name: "renders quick navigation chips from article sections", pass: pageSource.includes("market-article-reader-path") && pageSource.includes("buildReaderPathItems") },
+    { name: "uses quick navigation instead of duplicate jump-link clutter", pass: !pageSource.includes("market-article-quick-jumps") && !pageSource.includes("buildQuickJumpLinks") },
     { name: "renders key takeaways", pass: pageSource.includes("keyTakeaways") },
     { name: "renders verdict box", pass: pageSource.includes("verdictBox") },
-    { name: "does not render pros and cons clutter", pass: !pageSource.includes("prosCons") && !pageSource.includes("market-article-signal-grid") },
+    { name: "renders fit card from pros/cons without old signal-grid clutter", pass: pageSource.includes("market-article-fit-card") && pageSource.includes("buildFitItems") && !pageSource.includes("market-article-signal-grid") },
     { name: "keeps SERP references internal", pass: !pageSource.includes("serpReferences") && !pageSource.includes("market-article-reviewed-pages") },
     { name: "renders table of contents", pass: pageSource.includes("Article table of contents") },
-    { name: "renders checklist", pass: pageSource.includes("post.checklist") && pageSource.includes("CheckCircle2") },
+    { name: "renders checklist with action controls", pass: pageSource.includes("post.checklist") && pageSource.includes("market-article-checkmark") && pageSource.includes("checkActionLabel") },
     { name: "renders comparison table", pass: pageSource.includes("comparisonTable") && pageSource.includes("<table") },
     { name: "renders source links", pass: pageSource.includes("sourceLinks") && pageSource.includes("noopener noreferrer") },
     { name: "does not render public research links", pass: !pageSource.includes("publicInternalLinks") && !pageSource.includes("internalLinks.map") },
-    { name: "renders answer before summary blocks", pass: pageSource.indexOf("market-article-answer") > -1 && pageSource.indexOf("market-article-answer") < pageSource.indexOf("market-article-snapshot") },
+    { name: "renders answer before checklist and fit blocks", pass: pageSource.indexOf("market-article-answer") > -1 && pageSource.indexOf("market-article-answer") < pageSource.indexOf("market-article-decision-grid") },
     { name: "renders reviewer metadata", pass: pageSource.includes("reviewedBy") && pageSource.includes("articleMeta.reviewer") },
     { name: "renders Article JSON-LD", pass: pageSource.includes("@type") && pageSource.includes("Article") }
   ];
@@ -195,13 +198,15 @@ function main() {
   const cssSource = existsSync(cssPath) ? readFileSync(cssPath, "utf8") : "";
   const visualChecks = [
     { name: "uses editorial hero layout", pass: pageSource.includes("market-article-hero") && cssSource.includes(".market-article-hero") },
-    { name: "uses simplified two-column article shell", pass: pageSource.includes("market-article-shell") && cssSource.includes("grid-template-columns: minmax(0, 760px) 260px") },
+    { name: "uses selected Image #1 single-column review reading frame", pass: pageSource.includes("market-article-shell") && cssSource.includes("grid-template-columns: minmax(0, 1fr)") && cssSource.includes(".market-article-right-rail") && cssSource.includes("display: none") },
     { name: "does not use dashboard-like three-column shell", pass: !cssSource.includes("210px minmax(0, 720px) 270px") && !pageSource.includes("market-article-left-rail") },
-    { name: "uses fact rail not plain cards", pass: pageSource.includes("market-article-fact-rail") && cssSource.includes(".market-article-fact-rail") },
+    { name: "uses top reference method strip not old fact rail", pass: !pageSource.includes("market-article-fact-rail") && cssSource.includes("grid-template-columns: repeat(4, minmax(0, 1fr))") },
     { name: "uses dedicated prose styling", pass: pageSource.includes("market-article-prose") && cssSource.includes(".market-article-prose p") },
-    { name: "uses compact answer and summary blocks", pass: pageSource.includes("market-article-answer") && cssSource.includes(".market-article-answer") && cssSource.includes(".market-article-verdict") },
-    { name: "styles top-page trust, reader path, and jump patterns", pass: cssSource.includes(".market-article-trust-strip") && cssSource.includes(".market-article-reader-path") && cssSource.includes(".market-article-quick-jumps") },
-    { name: "keeps primary content visually dominant", pass: cssSource.includes("max-width: 1080px") && cssSource.includes("minmax(0, 760px)") },
+    { name: "uses compact answer, verdict, and score blocks", pass: pageSource.includes("market-article-answer") && cssSource.includes(".market-article-answer") && cssSource.includes(".market-article-review-summary") },
+    { name: "styles review summary, method strip, quick nav, and side-card patterns", pass: cssSource.includes(".market-article-review-summary") && cssSource.includes(".market-article-trust-strip") && cssSource.includes(".market-article-reader-path") && cssSource.includes(".market-article-side-card") },
+    { name: "renders checklist and fit cards as first decision blocks", pass: pageSource.includes("market-article-decision-grid") && cssSource.includes(".market-article-decision-grid") && cssSource.includes(".market-article-fit-card") },
+    { name: "keeps primary content visually dominant", pass: cssSource.includes("max-width: 1180px") && cssSource.includes("market-article-main") },
+    { name: "uses selected Image #1 reference file", pass: existsSync(selectedUiReferencePath) },
     { name: "uses responsive mobile rules", pass: cssSource.includes("@media (max-width: 860px)") && cssSource.includes("@media (max-width: 560px)") },
     { name: "does not scale font size with viewport width", pass: !/font-size:\s*[^;]*(vw|clamp\()/i.test(cssSource) }
   ];
@@ -255,15 +260,20 @@ function renderedArticleChecks(article: Article): { slug?: string; path: string;
   const html = fetchRenderedHtml(`${siteUrl}${path}`);
   const checks = [
     { name: "route returned html", pass: html.length > 0 },
-    { name: "trust strip rendered", pass: html.includes("market-article-trust-strip") },
+    { name: "review summary rendered", pass: html.includes("market-article-review-summary") },
+    { name: "method strip rendered", pass: html.includes("market-article-trust-strip") },
     { name: "reader path rendered", pass: html.includes("market-article-reader-path") },
-    { name: "quick jumps rendered", pass: html.includes("market-article-quick-jumps") },
+    { name: "Image #1 topbar rendered", pass: html.includes("market-article-topbar") },
+    { name: "fit card rendered", pass: html.includes("market-article-fit-card") },
+    { name: "side cards rendered", pass: html.includes("market-article-side-card") },
     {
-      name: "answer before quick jumps before summary",
+      name: "reader path before answer before decision cards",
       pass:
+        html.indexOf("market-article-reader-path") >= 0 &&
         html.indexOf("market-article-answer") >= 0 &&
-        html.indexOf("market-article-answer") < html.indexOf("market-article-quick-jumps") &&
-        html.indexOf("market-article-quick-jumps") < html.indexOf("market-article-snapshot")
+        html.indexOf("market-article-decision-grid") >= 0 &&
+        html.indexOf("market-article-reader-path") < html.indexOf("market-article-answer") &&
+        html.indexOf("market-article-answer") < html.indexOf("market-article-decision-grid")
     },
     { name: "sources rendered", pass: html.includes("market-article-sources") && html.includes("noopener noreferrer") },
     { name: "comparison table rendered", pass: html.includes("market-article-table-section") && html.includes("<table") },

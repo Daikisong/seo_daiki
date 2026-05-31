@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   trailingSlash: true,
+  devIndicators: false,
   transpilePackages: [
     "@global-import-lab/content",
     "@global-import-lab/db",
