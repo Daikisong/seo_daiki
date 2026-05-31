@@ -1,0 +1,59 @@
+{
+  "passed": true,
+  "minimumSerpReferences": 3,
+  "minimumOverlappingSources": 2,
+  "articleCount": 5,
+  "failedCount": 0,
+  "reports": [
+    {
+      "slug": "iphone-16-promocao-brasil",
+      "market": "br",
+      "language": "pt-br",
+      "passed": true,
+      "issues": [],
+      "serpReferenceCount": 4,
+      "uniqueSerpDomains": 4,
+      "overlappingSourceCount": 3
+    },
+    {
+      "slug": "samsung-s90f-oled-deal",
+      "market": "us",
+      "language": "en",
+      "passed": true,
+      "issues": [],
+      "serpReferenceCount": 4,
+      "uniqueSerpDomains": 4,
+      "overlappingSourceCount": 4
+    },
+    {
+      "slug": "iphone-18-rumors-japan",
+      "market": "jp",
+      "language": "ja",
+      "passed": true,
+      "issues": [],
+      "serpReferenceCount": 4,
+      "uniqueSerpDomains": 3,
+      "overlappingSourceCount": 3
+    },
+    {
+      "slug": "renta-2025-avisos-aeat",
+      "market": "es",
+      "language": "es",
+      "passed": true,
+      "issues": [],
+      "serpReferenceCount": 4,
+      "uniqueSerpDomains": 4,
+      "overlappingSourceCount": 4
+    },
+    {
+      "slug": "2026-대입-학폭-반영",
+      "market": "kr",
+      "language": "ko",
+      "passed": true,
+      "issues": [],
+      "serpReferenceCount": 4,
+      "uniqueSerpDomains": 4,
+      "overlappingSourceCount": 3
+    }
+  ]
+}

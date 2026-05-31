@@ -1,6 +1,6 @@
-# Next Goal: SEO Structure Safety Patches
+# SEO Structure Safety Patches
 
-This is the next goal after the current modularization/refactor pass is finished.
+Status: applied. Kept as the checklist for future regression checks.
 
 Captured from the latest SEO feedback on 2026-05-28. Treat this as the next
 implementation target after the current modularization goal is fully verified
@@ -85,4 +85,5 @@ Do not add affiliate API, distribution, outreach, or monetization features for t
 - `pnpm typecheck`
 - `pnpm seo:validate`
 - `pnpm seo:market-audit`
+- `pnpm seo:serp-audit`
 - `pnpm build`

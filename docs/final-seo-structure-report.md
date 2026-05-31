@@ -10,6 +10,7 @@
 - Added conditional market home sitemap eligibility.
 - Added UI label packs for all initial market languages.
 - Added `pnpm seo:market-audit`.
+- Added `pnpm seo:serp-audit` so each test article must carry structured SERP evidence before promotion.
 
 ## Indexable By Default
 
@@ -54,6 +55,7 @@ Content detail pages use only actual variants. A US-only slug does not create GB
 - Public article promotion is intentionally not implemented yet.
 - Legacy locale-only product routes still exist and should be migrated later.
 - Search Console submission should wait until market homes have real public depth.
+- `pnpm seo:serp-audit` verifies that SERP evidence exists in the article export; it does not perform unauthorized live Google scraping.
 
 ## Checks Run
 
@@ -63,6 +65,7 @@ Required checks now pass:
 pnpm typecheck              # passed
 pnpm seo:validate           # passed
 pnpm seo:market-audit       # passed
+pnpm seo:serp-audit         # passed
 pnpm build                  # passed
 ```
 
@@ -70,6 +73,12 @@ The latest market audit report is:
 
 ```text
 data/exports/seo_market_audit.json
+```
+
+The latest SERP article quality report is:
+
+```text
+data/exports/serp_article_quality_report.json
 ```
 
 Production builds require `NEXT_PUBLIC_SITE_URL`. Local build verification used the ignored app-level env file with `https://example.com`.
