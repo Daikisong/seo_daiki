@@ -1,21 +1,845 @@
 {
   "analyses": [
     {
-      "id": "competitor-analysis-serp-result-serp-br-powerbank-1",
-      "serpResultId": "serp-result-serp-br-powerbank-1",
+      "id": "competitor-analysis-serp-result-serp-br-iphone-16-1",
+      "serpResultId": "serp-result-serp-br-iphone-16-1",
       "market": "br",
       "language": "pt-br",
-      "keyword": "power bank real capacity",
-      "pageTitle": "Power bank capacidade real",
-      "h1": "Power bank capacidade real",
+      "keyword": "iphone 16 promocao brasil",
+      "pageTitle": "iPhone 16 atinge menor preço desde março com 44% OFF em promoção",
+      "h1": "iPhone 16 atinge menor preço desde março com 44% OFF em promoção",
       "headingsJson": [
-        "mAh vs Wh",
-        "Perdas",
-        "Como testar"
+        "Preço no Pix",
+        "Cupom",
+        "Ficha rápida",
+        "Por que comprar",
+        "Link da oferta"
       ],
-      "wordCountEstimate": 1900,
+      "wordCountEstimate": 950,
+      "contentTypeGuess": "deal",
+      "intentServed": "commercial",
+      "monetizationPattern": "deal_editorial",
+      "affiliatePattern": "likely",
+      "comparisonTablePresent": false,
+      "productLinksPresent": true,
+      "originalDataPresent": false,
+      "freshnessSignalsJson": [
+        "Published May 2026"
+      ],
+      "contentAnglesJson": [
+        "discount",
+        "coupon",
+        "storage",
+        "Amazon offer"
+      ],
+      "missingAnglesJson": [
+        "price freshness",
+        "marketplace seller check",
+        "warranty notes"
+      ],
+      "strengthsJson": [
+        "fast trend match",
+        "clear deal hook"
+      ],
+      "weaknessesJson": [
+        "price can expire",
+        "affiliate focused"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-05-31T09:58:03.826410+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-br-iphone-16-2",
+      "serpResultId": "serp-result-serp-br-iphone-16-2",
+      "market": "br",
+      "language": "pt-br",
+      "keyword": "iphone 16 promocao brasil",
+      "pageTitle": "iPhone 16 atinge menor preço histórico na Amazon",
+      "h1": "iPhone 16 atinge menor preço histórico na Amazon",
+      "headingsJson": [
+        "Preço histórico",
+        "Ficha técnica",
+        "Amazon",
+        "Oferta por tempo limitado"
+      ],
+      "wordCountEstimate": 900,
+      "contentTypeGuess": "deal",
+      "intentServed": "commercial",
+      "monetizationPattern": "deal_editorial",
+      "affiliatePattern": "likely",
+      "comparisonTablePresent": false,
+      "productLinksPresent": true,
+      "originalDataPresent": false,
+      "freshnessSignalsJson": [
+        "Published Mar 2026"
+      ],
+      "contentAnglesJson": [
+        "lowest price",
+        "storage",
+        "retailer",
+        "specs"
+      ],
+      "missingAnglesJson": [
+        "compare current price",
+        "avoid expired deal",
+        "installment caveat"
+      ],
+      "strengthsJson": [
+        "good price framing"
+      ],
+      "weaknessesJson": [
+        "older deal",
+        "needs current validation"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-05-31T09:58:03.826422+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-br-iphone-16-3",
+      "serpResultId": "serp-result-serp-br-iphone-16-3",
+      "market": "br",
+      "language": "pt-br",
+      "keyword": "iphone 16 promocao brasil",
+      "pageTitle": "Quanto vale a pena pagar no iPhone 16 em 2026",
+      "h1": "Quanto vale a pena pagar no iPhone 16 em 2026",
+      "headingsJson": [
+        "Preço ideal",
+        "Alternativas",
+        "Quando esperar",
+        "Custo-benefício"
+      ],
+      "wordCountEstimate": 1700,
+      "contentTypeGuess": "guide",
+      "intentServed": "commercial_research",
+      "monetizationPattern": "affiliate_editorial",
+      "affiliatePattern": "likely",
+      "comparisonTablePresent": false,
+      "productLinksPresent": true,
+      "originalDataPresent": false,
+      "freshnessSignalsJson": [
+        "Published 2026"
+      ],
+      "contentAnglesJson": [
+        "value threshold",
+        "alternatives",
+        "timing"
+      ],
+      "missingAnglesJson": [
+        "official spec source",
+        "Brazil warranty",
+        "price history method"
+      ],
+      "strengthsJson": [
+        "better decision framing"
+      ],
+      "weaknessesJson": [
+        "no live price validation",
+        "limited risk checklist"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-05-31T09:58:03.826431+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-br-iphone-16-4",
+      "serpResultId": "serp-result-serp-br-iphone-16-4",
+      "market": "br",
+      "language": "pt-br",
+      "keyword": "iphone 16 promocao brasil",
+      "pageTitle": "iPhone 16 - Apple Brasil",
+      "h1": "iPhone 16 - Apple Brasil",
+      "headingsJson": [
+        "Apple Intelligence",
+        "Camera Control",
+        "Chip A18",
+        "Battery",
+        "Compare models"
+      ],
+      "wordCountEstimate": 2200,
+      "contentTypeGuess": "official",
+      "intentServed": "commercial",
+      "monetizationPattern": "manufacturer",
+      "affiliatePattern": "none_obvious",
+      "comparisonTablePresent": true,
+      "productLinksPresent": true,
+      "originalDataPresent": true,
+      "freshnessSignalsJson": [
+        "Official product page"
+      ],
+      "contentAnglesJson": [
+        "confirmed specs",
+        "models",
+        "features",
+        "official price"
+      ],
+      "missingAnglesJson": [
+        "independent drawbacks",
+        "retailer warranty differences"
+      ],
+      "strengthsJson": [
+        "authoritative specs"
+      ],
+      "weaknessesJson": [
+        "marketing copy",
+        "no deal context"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-05-31T09:58:03.826438+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-es-renta-aeat-1",
+      "serpResultId": "serp-result-serp-es-renta-aeat-1",
+      "market": "es",
+      "language": "es",
+      "keyword": "renta 2025 avisos aeat",
+      "pageTitle": "Renta 2025: Así te avisa Hacienda si has cometido un error en la declaración",
+      "h1": "Renta 2025: Así te avisa Hacienda si has cometido un error en la declaración",
+      "headingsJson": [
+        "Sede electrónica",
+        "SMS o correo",
+        "App de Hacienda",
+        "Carta postal",
+        "Qué hacer después"
+      ],
+      "wordCountEstimate": 1200,
       "contentTypeGuess": "article",
       "intentServed": "informational",
+      "monetizationPattern": "editorial",
+      "affiliatePattern": "none_obvious",
+      "comparisonTablePresent": false,
+      "productLinksPresent": false,
+      "originalDataPresent": false,
+      "freshnessSignalsJson": [
+        "Published 29 May 2026"
+      ],
+      "contentAnglesJson": [
+        "notification channels",
+        "error warning",
+        "taxpayer action"
+      ],
+      "missingAnglesJson": [
+        "official link checklist",
+        "what not to do",
+        "deadline table"
+      ],
+      "strengthsJson": [
+        "very timely",
+        "simple explanation"
+      ],
+      "weaknessesJson": [
+        "needs official-source separation",
+        "limited step detail"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-05-31T09:58:03.826447+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-es-renta-aeat-2",
+      "serpResultId": "serp-result-serp-es-renta-aeat-2",
+      "market": "es",
+      "language": "es",
+      "keyword": "renta 2025 avisos aeat",
+      "pageTitle": "Agencia Tributaria: Campaña de Renta 2025",
+      "h1": "Agencia Tributaria: Campaña de Renta 2025",
+      "headingsJson": [
+        "Servicios de Renta",
+        "Calendario",
+        "Renta WEB",
+        "Cita previa",
+        "Ayuda"
+      ],
+      "wordCountEstimate": 1800,
+      "contentTypeGuess": "official",
+      "intentServed": "transactional",
+      "monetizationPattern": "government",
+      "affiliatePattern": "none_obvious",
+      "comparisonTablePresent": false,
+      "productLinksPresent": false,
+      "originalDataPresent": true,
+      "freshnessSignalsJson": [
+        "Official 2026 campaign"
+      ],
+      "contentAnglesJson": [
+        "official campaign",
+        "dates",
+        "services",
+        "access points"
+      ],
+      "missingAnglesJson": [
+        "plain-language path",
+        "common mistakes",
+        "mobile notice flow"
+      ],
+      "strengthsJson": [
+        "primary authority",
+        "stable source"
+      ],
+      "weaknessesJson": [
+        "hard to scan for beginners"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-05-31T09:58:03.826455+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-es-renta-aeat-3",
+      "serpResultId": "serp-result-serp-es-renta-aeat-3",
+      "market": "es",
+      "language": "es",
+      "keyword": "renta 2025 avisos aeat",
+      "pageTitle": "Avisos de Hacienda antes de multarte en la Renta 2025",
+      "h1": "Avisos de Hacienda antes de multarte en la Renta 2025",
+      "headingsJson": [
+        "Tipos de avisos",
+        "Cómo corregir",
+        "Qué revisar",
+        "Declaración rectificativa"
+      ],
+      "wordCountEstimate": 1900,
+      "contentTypeGuess": "guide",
+      "intentServed": "informational",
+      "monetizationPattern": "editorial",
+      "affiliatePattern": "none_obvious",
+      "comparisonTablePresent": false,
+      "productLinksPresent": false,
+      "originalDataPresent": false,
+      "freshnessSignalsJson": [
+        "Published 2026"
+      ],
+      "contentAnglesJson": [
+        "warning types",
+        "correction steps",
+        "preventive action"
+      ],
+      "missingAnglesJson": [
+        "official-source hierarchy",
+        "regional exceptions",
+        "deadline caveats"
+      ],
+      "strengthsJson": [
+        "clear beginner guide",
+        "actionable flow"
+      ],
+      "weaknessesJson": [
+        "not official advice",
+        "needs caution language"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-05-31T09:58:03.826463+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-es-renta-aeat-4",
+      "serpResultId": "serp-result-serp-es-renta-aeat-4",
+      "market": "es",
+      "language": "es",
+      "keyword": "renta 2025 avisos aeat",
+      "pageTitle": "La presentación instantánea de declaraciones con Renta Directa estará disponible ya este año",
+      "h1": "La presentación instantánea de declaraciones con Renta Directa estará disponible ya este año",
+      "headingsJson": [
+        "Campaign launch",
+        "Renta Directa",
+        "Assistance dates",
+        "Preventive notices"
+      ],
+      "wordCountEstimate": 1600,
+      "contentTypeGuess": "official",
+      "intentServed": "informational",
+      "monetizationPattern": "government",
+      "affiliatePattern": "none_obvious",
+      "comparisonTablePresent": false,
+      "productLinksPresent": false,
+      "originalDataPresent": true,
+      "freshnessSignalsJson": [
+        "Published 8 Apr 2026"
+      ],
+      "contentAnglesJson": [
+        "official dates",
+        "assistance channels",
+        "preventive messages"
+      ],
+      "missingAnglesJson": [
+        "short user checklist",
+        "notification examples"
+      ],
+      "strengthsJson": [
+        "authoritative timeline"
+      ],
+      "weaknessesJson": [
+        "dense government language"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-05-31T09:58:03.826470+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-jp-iphone-18-1",
+      "serpResultId": "serp-result-serp-jp-iphone-18-1",
+      "market": "jp",
+      "language": "ja",
+      "keyword": "iphone 18 rumors japan",
+      "pageTitle": "iPhone 18 news: The latest leaks rumored features and colors",
+      "h1": "iPhone 18 news: the latest leaks rumored features and colors",
+      "headingsJson": [
+        "Release rumors",
+        "Design leaks",
+        "Camera rumors",
+        "Colors",
+        "What is not confirmed"
+      ],
+      "wordCountEstimate": 1600,
+      "contentTypeGuess": "article",
+      "intentServed": "informational",
+      "monetizationPattern": "affiliate_editorial",
+      "affiliatePattern": "likely",
+      "comparisonTablePresent": false,
+      "productLinksPresent": false,
+      "originalDataPresent": false,
+      "freshnessSignalsJson": [
+        "Published 2026"
+      ],
+      "contentAnglesJson": [
+        "rumor roundup",
+        "colors",
+        "features",
+        "launch timing"
+      ],
+      "missingAnglesJson": [
+        "Japan buyer context",
+        "confidence labels",
+        "source credibility table"
+      ],
+      "strengthsJson": [
+        "good overview"
+      ],
+      "weaknessesJson": [
+        "rumor heavy",
+        "not localized to Japan"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-05-31T09:58:03.826478+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-jp-iphone-18-2",
+      "serpResultId": "serp-result-serp-jp-iphone-18-2",
+      "market": "jp",
+      "language": "ja",
+      "keyword": "iphone 18 rumors japan",
+      "pageTitle": "iPhone 18 Pro Launching in September With These 10 New Features",
+      "h1": "iPhone 18 Pro Launching in September With These 10 New Features",
+      "headingsJson": [
+        "Display",
+        "Modem",
+        "Camera",
+        "Colors",
+        "Battery",
+        "Launch timing"
+      ],
+      "wordCountEstimate": 2100,
+      "contentTypeGuess": "article",
+      "intentServed": "informational",
+      "monetizationPattern": "affiliate_editorial",
+      "affiliatePattern": "likely",
+      "comparisonTablePresent": false,
+      "productLinksPresent": false,
+      "originalDataPresent": false,
+      "freshnessSignalsJson": [
+        "Published May 2026"
+      ],
+      "contentAnglesJson": [
+        "feature list",
+        "supply-chain rumors",
+        "launch expectation"
+      ],
+      "missingAnglesJson": [
+        "confirmed vs rumored table",
+        "Japan carrier relevance"
+      ],
+      "strengthsJson": [
+        "strong Apple-rumor coverage"
+      ],
+      "weaknessesJson": [
+        "many claims need confidence tags"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-05-31T09:58:03.826485+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-jp-iphone-18-3",
+      "serpResultId": "serp-result-serp-jp-iphone-18-3",
+      "market": "jp",
+      "language": "ja",
+      "keyword": "iphone 18 rumors japan",
+      "pageTitle": "iPhone 18 Pro: Six new features are coming later this year",
+      "h1": "iPhone 18 Pro: Six new features are coming later this year",
+      "headingsJson": [
+        "New colors",
+        "Design",
+        "Camera",
+        "Chip",
+        "Modem",
+        "Release window"
+      ],
+      "wordCountEstimate": 1500,
+      "contentTypeGuess": "article",
+      "intentServed": "informational",
+      "monetizationPattern": "affiliate_editorial",
+      "affiliatePattern": "likely",
+      "comparisonTablePresent": false,
+      "productLinksPresent": false,
+      "originalDataPresent": false,
+      "freshnessSignalsJson": [
+        "Published May 2026"
+      ],
+      "contentAnglesJson": [
+        "feature summary",
+        "design change",
+        "camera rumor"
+      ],
+      "missingAnglesJson": [
+        "avoid certainty",
+        "explain source repetition",
+        "Japan release caveat"
+      ],
+      "strengthsJson": [
+        "concise structure"
+      ],
+      "weaknessesJson": [
+        "not enough verification depth"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-05-31T09:58:03.826492+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-jp-iphone-18-4",
+      "serpResultId": "serp-result-serp-jp-iphone-18-4",
+      "market": "jp",
+      "language": "ja",
+      "keyword": "iphone 18 rumors japan",
+      "pageTitle": "New leak confirms new iPhone 18 Pro Dark Cherry Light Blue colors",
+      "h1": "New leak confirms new iPhone 18 Pro Dark Cherry Light Blue colors",
+      "headingsJson": [
+        "Color leak",
+        "Dummy models",
+        "Previous rumors",
+        "What could change"
+      ],
+      "wordCountEstimate": 1100,
+      "contentTypeGuess": "article",
+      "intentServed": "informational",
+      "monetizationPattern": "editorial",
+      "affiliatePattern": "none_obvious",
+      "comparisonTablePresent": false,
+      "productLinksPresent": false,
+      "originalDataPresent": false,
+      "freshnessSignalsJson": [
+        "Published May 2026"
+      ],
+      "contentAnglesJson": [
+        "color rumors",
+        "dummy models",
+        "leak validation"
+      ],
+      "missingAnglesJson": [
+        "avoid headline overclaim",
+        "separate color from specs"
+      ],
+      "strengthsJson": [
+        "narrow fresh angle"
+      ],
+      "weaknessesJson": [
+        "too narrow for full guide"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-05-31T09:58:03.826500+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-kr-admissions-bullying-1",
+      "serpResultId": "serp-result-serp-kr-admissions-bullying-1",
+      "market": "kr",
+      "language": "ko",
+      "keyword": "2026 대입 학폭 반영",
+      "pageTitle": "'대입 의무 반영'에도 오히려 늘어난 고교 학교폭력",
+      "h1": "'대입 의무 반영'에도 오히려 늘어난 고교 학교폭력",
+      "headingsJson": [
+        "학폭 증가",
+        "대입 반영",
+        "학생부 기록",
+        "현장 우려"
+      ],
+      "wordCountEstimate": 900,
+      "contentTypeGuess": "article",
+      "intentServed": "informational",
+      "monetizationPattern": "news",
+      "affiliatePattern": "none_obvious",
+      "comparisonTablePresent": false,
+      "productLinksPresent": false,
+      "originalDataPresent": false,
+      "freshnessSignalsJson": [
+        "Published 31 May 2026"
+      ],
+      "contentAnglesJson": [
+        "trend trigger",
+        "school violence increase",
+        "admissions concern"
+      ],
+      "missingAnglesJson": [
+        "official admissions rule",
+        "student-parent checklist"
+      ],
+      "strengthsJson": [
+        "very timely",
+        "explains why topic resurfaced"
+      ],
+      "weaknessesJson": [
+        "news-first",
+        "needs policy source"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-05-31T09:58:03.826509+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-kr-admissions-bullying-2",
+      "serpResultId": "serp-result-serp-kr-admissions-bullying-2",
+      "market": "kr",
+      "language": "ko",
+      "keyword": "2026 대입 학폭 반영",
+      "pageTitle": "대교협 2026학년도 대학입학전형기본사항 확정 발표",
+      "h1": "대교협 2026학년도 대학입학전형기본사항 확정 발표",
+      "headingsJson": [
+        "기본사항",
+        "전 전형 반영",
+        "대학별 반영",
+        "수험생 유의점"
+      ],
+      "wordCountEstimate": 1500,
+      "contentTypeGuess": "article",
+      "intentServed": "informational",
+      "monetizationPattern": "education_editorial",
+      "affiliatePattern": "none_obvious",
+      "comparisonTablePresent": false,
+      "productLinksPresent": false,
+      "originalDataPresent": false,
+      "freshnessSignalsJson": [
+        "Published 2026"
+      ],
+      "contentAnglesJson": [
+        "official plan summary",
+        "all admissions tracks",
+        "school violence record"
+      ],
+      "missingAnglesJson": [
+        "official PDF reference",
+        "university-specific differences"
+      ],
+      "strengthsJson": [
+        "clear policy framing"
+      ],
+      "weaknessesJson": [
+        "secondary source",
+        "needs examples"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-05-31T09:58:03.826517+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-kr-admissions-bullying-3",
+      "serpResultId": "serp-result-serp-kr-admissions-bullying-3",
+      "market": "kr",
+      "language": "ko",
+      "keyword": "2026 대입 학폭 반영",
+      "pageTitle": "고2 대입 땐 수시 80% 학폭 의무 반영",
+      "h1": "고2 대입 땐 수시 80% 학폭 의무 반영",
+      "headingsJson": [
+        "모집 인원",
+        "수시 비중",
+        "학폭 반영",
+        "대교협 발표"
+      ],
+      "wordCountEstimate": 1200,
+      "contentTypeGuess": "article",
+      "intentServed": "informational",
+      "monetizationPattern": "news",
+      "affiliatePattern": "none_obvious",
+      "comparisonTablePresent": false,
+      "productLinksPresent": false,
+      "originalDataPresent": false,
+      "freshnessSignalsJson": [
+        "Published 2024"
+      ],
+      "contentAnglesJson": [
+        "admissions plan",
+        "application year",
+        "policy overview"
+      ],
+      "missingAnglesJson": [
+        "latest 2026 update",
+        "student action list"
+      ],
+      "strengthsJson": [
+        "good background"
+      ],
+      "weaknessesJson": [
+        "not current enough alone"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-05-31T09:58:03.826525+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-kr-admissions-bullying-4",
+      "serpResultId": "serp-result-serp-kr-admissions-bullying-4",
+      "market": "kr",
+      "language": "ko",
+      "keyword": "2026 대입 학폭 반영",
+      "pageTitle": "2026 대입 전 전형에 학폭 기록 반영 조치사항별 불이익 정도는",
+      "h1": "2026 대입 전 전형에 학폭 기록 반영 조치사항별 불이익 정도는",
+      "headingsJson": [
+        "조치사항",
+        "대학별 감점",
+        "전형별 반영",
+        "주의사항"
+      ],
+      "wordCountEstimate": 1400,
+      "contentTypeGuess": "guide",
+      "intentServed": "informational",
+      "monetizationPattern": "education_editorial",
+      "affiliatePattern": "none_obvious",
+      "comparisonTablePresent": false,
+      "productLinksPresent": false,
+      "originalDataPresent": false,
+      "freshnessSignalsJson": [
+        "Published 2025"
+      ],
+      "contentAnglesJson": [
+        "measure levels",
+        "possible disadvantages",
+        "university differences"
+      ],
+      "missingAnglesJson": [
+        "official caveat",
+        "avoid universal penalty claim"
+      ],
+      "strengthsJson": [
+        "actionable detail"
+      ],
+      "weaknessesJson": [
+        "may imply fixed outcomes",
+        "needs caution"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-05-31T09:58:03.826533+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-us-samsung-s90f-1",
+      "serpResultId": "serp-result-serp-us-samsung-s90f-1",
+      "market": "us",
+      "language": "en",
+      "keyword": "samsung s90f oled deal",
+      "pageTitle": "Samsung Class S90F Smart TV with NQ4 processor drops to $1797.99",
+      "h1": "Samsung Class S90F Smart TV with NQ4 processor drops to $1797.99",
+      "headingsJson": [
+        "Deal summary",
+        "Key specs",
+        "Why the price matters",
+        "Where to buy"
+      ],
+      "wordCountEstimate": 850,
+      "contentTypeGuess": "deal",
+      "intentServed": "commercial",
+      "monetizationPattern": "deal_editorial",
+      "affiliatePattern": "likely",
+      "comparisonTablePresent": false,
+      "productLinksPresent": true,
+      "originalDataPresent": false,
+      "freshnessSignalsJson": [
+        "Published May 2026"
+      ],
+      "contentAnglesJson": [
+        "price drop",
+        "screen size",
+        "processor",
+        "retailer CTA"
+      ],
+      "missingAnglesJson": [
+        "price timestamp",
+        "return policy",
+        "panel variant check"
+      ],
+      "strengthsJson": [
+        "fast trend match",
+        "clear offer framing"
+      ],
+      "weaknessesJson": [
+        "deal heavy",
+        "thin verification",
+        "price can expire"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-05-31T09:58:03.826540+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-us-samsung-s90f-2",
+      "serpResultId": "serp-result-serp-us-samsung-s90f-2",
+      "market": "us",
+      "language": "en",
+      "keyword": "samsung s90f oled deal",
+      "pageTitle": "Samsung S90F OLED TV Review",
+      "h1": "Samsung S90F OLED TV Review",
+      "headingsJson": [
+        "Test results",
+        "Picture quality",
+        "HDR brightness",
+        "Gaming",
+        "Inputs",
+        "Compared to other TVs"
+      ],
+      "wordCountEstimate": 5200,
+      "contentTypeGuess": "review",
+      "intentServed": "commercial_research",
+      "monetizationPattern": "editorial_testing",
+      "affiliatePattern": "none_obvious",
+      "comparisonTablePresent": true,
+      "productLinksPresent": false,
+      "originalDataPresent": true,
+      "freshnessSignalsJson": [
+        "Updated 2026"
+      ],
+      "contentAnglesJson": [
+        "lab testing",
+        "brightness",
+        "VRR",
+        "variant list"
+      ],
+      "missingAnglesJson": [
+        "deal context",
+        "US stock check",
+        "simple buyer checklist"
+      ],
+      "strengthsJson": [
+        "deep measurements",
+        "clear methodology"
+      ],
+      "weaknessesJson": [
+        "too technical for quick deal readers"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-05-31T09:58:03.826547+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-us-samsung-s90f-3",
+      "serpResultId": "serp-result-serp-us-samsung-s90f-3",
+      "market": "us",
+      "language": "en",
+      "keyword": "samsung s90f oled deal",
+      "pageTitle": "I just tested the Samsung S90F OLED and it's my favorite TV of the year but it's not perfect",
+      "h1": "I just tested the Samsung S90F OLED and it is my favorite TV of the year",
+      "headingsJson": [
+        "Pros and cons",
+        "Design",
+        "Performance",
+        "Gaming",
+        "Smart TV",
+        "Verdict"
+      ],
+      "wordCountEstimate": 2600,
+      "contentTypeGuess": "review",
+      "intentServed": "commercial_research",
       "monetizationPattern": "affiliate_editorial",
       "affiliatePattern": "likely",
       "comparisonTablePresent": false,
@@ -25,402 +849,73 @@
         "Updated 2026"
       ],
       "contentAnglesJson": [
-        "capacity math",
-        "test method",
-        "import notes"
+        "hands-on testing",
+        "measurement table",
+        "drawbacks"
       ],
       "missingAnglesJson": [
-        "comparison table",
-        "current model checks"
+        "price expiry",
+        "retailer verification",
+        "panel lottery note"
       ],
       "strengthsJson": [
-        "strong education"
+        "readable pros and cons",
+        "real testing"
       ],
       "weaknessesJson": [
-        "limited product comparison"
+        "affiliate CTA present",
+        "single-size framing"
       ],
       "extractionStatus": "summary_only",
-      "analyzedAt": "2026-05-31T09:29:46.023159+00:00"
+      "analyzedAt": "2026-05-31T09:58:03.826554+00:00"
     },
     {
-      "id": "competitor-analysis-serp-result-serp-br-powerbank-2",
-      "serpResultId": "serp-result-serp-br-powerbank-2",
-      "market": "br",
-      "language": "pt-br",
-      "keyword": "power bank real capacity",
-      "pageTitle": "Qual power bank entrega a capacidade real",
-      "h1": "Qual power bank entrega a capacidade real",
-      "headingsJson": [
-        "Experiencias",
-        "Modelos citados",
-        "Problemas"
-      ],
-      "wordCountEstimate": 1200,
-      "contentTypeGuess": "forum",
-      "intentServed": "informational",
-      "monetizationPattern": "community",
-      "affiliatePattern": "none_obvious",
-      "comparisonTablePresent": false,
-      "productLinksPresent": false,
-      "originalDataPresent": false,
-      "freshnessSignalsJson": [
-        "Recent replies"
-      ],
-      "contentAnglesJson": [
-        "user experience",
-        "brand complaints"
-      ],
-      "missingAnglesJson": [
-        "structured summary",
-        "verification checklist"
-      ],
-      "strengthsJson": [
-        "real user concerns"
-      ],
-      "weaknessesJson": [
-        "unstructured and hard to scan"
-      ],
-      "extractionStatus": "summary_only",
-      "analyzedAt": "2026-05-31T09:29:46.023174+00:00"
-    },
-    {
-      "id": "competitor-analysis-serp-result-serp-es-usbc-1",
-      "serpResultId": "serp-result-serp-es-usbc-1",
-      "market": "es",
-      "language": "es",
-      "keyword": "usb c charger",
-      "pageTitle": "Guia de cargadores USB C GaN",
-      "h1": "Guia de cargadores USB C GaN",
-      "headingsJson": [
-        "Potencia",
-        "Seguridad",
-        "Compatibilidad"
-      ],
-      "wordCountEstimate": 1600,
-      "contentTypeGuess": "article",
-      "intentServed": "commercial",
-      "monetizationPattern": "affiliate_editorial",
-      "affiliatePattern": "likely",
-      "comparisonTablePresent": true,
-      "productLinksPresent": true,
-      "originalDataPresent": false,
-      "freshnessSignalsJson": [
-        "Updated 2026"
-      ],
-      "contentAnglesJson": [
-        "power",
-        "safety",
-        "compatibility"
-      ],
-      "missingAnglesJson": [
-        "testing method",
-        "Spain retailer notes"
-      ],
-      "strengthsJson": [
-        "good spec coverage"
-      ],
-      "weaknessesJson": [
-        "no original measurements"
-      ],
-      "extractionStatus": "summary_only",
-      "analyzedAt": "2026-05-31T09:29:46.023182+00:00"
-    },
-    {
-      "id": "competitor-analysis-serp-result-serp-es-usbc-2",
-      "serpResultId": "serp-result-serp-es-usbc-2",
-      "market": "es",
-      "language": "es",
-      "keyword": "usb c charger",
-      "pageTitle": "Cargadores USB C populares",
-      "h1": "Cargadores USB C populares",
-      "headingsJson": [
-        "Filtros",
-        "Precios",
-        "Marcas"
-      ],
-      "wordCountEstimate": 900,
-      "contentTypeGuess": "ecommerce",
-      "intentServed": "transactional",
-      "monetizationPattern": "ecommerce_result",
-      "affiliatePattern": "none_obvious",
-      "comparisonTablePresent": true,
-      "productLinksPresent": true,
-      "originalDataPresent": false,
-      "freshnessSignalsJson": [
-        "Updated 2026"
-      ],
-      "contentAnglesJson": [
-        "price",
-        "brand",
-        "stock"
-      ],
-      "missingAnglesJson": [
-        "editorial explanation",
-        "safety verification"
-      ],
-      "strengthsJson": [
-        "clear product availability"
-      ],
-      "weaknessesJson": [
-        "thin educational content"
-      ],
-      "extractionStatus": "summary_only",
-      "analyzedAt": "2026-05-31T09:29:46.023189+00:00"
-    },
-    {
-      "id": "competitor-analysis-serp-result-serp-jp-desk-1",
-      "serpResultId": "serp-result-serp-jp-desk-1",
-      "market": "jp",
-      "language": "ja",
-      "keyword": "compact desk gadget",
-      "pageTitle": "デスク便利グッズ 小型",
-      "h1": "デスク便利グッズ 小型",
-      "headingsJson": [
-        "省スペース",
-        "選び方",
-        "注意点"
-      ],
-      "wordCountEstimate": 1500,
-      "contentTypeGuess": "article",
-      "intentServed": "informational",
-      "monetizationPattern": "affiliate_editorial",
-      "affiliatePattern": "likely",
-      "comparisonTablePresent": true,
-      "productLinksPresent": true,
-      "originalDataPresent": false,
-      "freshnessSignalsJson": [
-        "Updated 2026"
-      ],
-      "contentAnglesJson": [
-        "space saving",
-        "organization",
-        "desk setup"
-      ],
-      "missingAnglesJson": [
-        "measurement criteria",
-        "work style segmentation"
-      ],
-      "strengthsJson": [
-        "good visual idea"
-      ],
-      "weaknessesJson": [
-        "no systematic comparison"
-      ],
-      "extractionStatus": "summary_only",
-      "analyzedAt": "2026-05-31T09:29:46.023197+00:00"
-    },
-    {
-      "id": "competitor-analysis-serp-result-serp-jp-desk-2",
-      "serpResultId": "serp-result-serp-jp-desk-2",
-      "market": "jp",
-      "language": "ja",
-      "keyword": "compact desk gadget",
-      "pageTitle": "デスク周り便利グッズ動画",
-      "h1": "デスク周り便利グッズ動画",
-      "headingsJson": [
-        "Items shown",
-        "Setup tips",
-        "Where to buy"
-      ],
-      "wordCountEstimate": 700,
-      "contentTypeGuess": "video",
-      "intentServed": "informational",
-      "monetizationPattern": "creator_affiliate",
-      "affiliatePattern": "likely",
-      "comparisonTablePresent": false,
-      "productLinksPresent": true,
-      "originalDataPresent": false,
-      "freshnessSignalsJson": [
-        "Posted 2026"
-      ],
-      "contentAnglesJson": [
-        "visual demo",
-        "creator picks"
-      ],
-      "missingAnglesJson": [
-        "written checklist",
-        "spec table"
-      ],
-      "strengthsJson": [
-        "strong visuals"
-      ],
-      "weaknessesJson": [
-        "not searchable enough"
-      ],
-      "extractionStatus": "summary_only",
-      "analyzedAt": "2026-05-31T09:29:46.023204+00:00"
-    },
-    {
-      "id": "competitor-analysis-serp-result-serp-kr-gut-1",
-      "serpResultId": "serp-result-serp-kr-gut-1",
-      "market": "kr",
-      "language": "ko",
-      "keyword": "gut health",
-      "pageTitle": "장 건강 관리 기본",
-      "h1": "장 건강 관리 기본",
-      "headingsJson": [
-        "생활 습관",
-        "유산균",
-        "주의사항"
-      ],
-      "wordCountEstimate": 1700,
-      "contentTypeGuess": "article",
-      "intentServed": "informational",
-      "monetizationPattern": "editorial_or_publisher",
-      "affiliatePattern": "none_obvious",
-      "comparisonTablePresent": false,
-      "productLinksPresent": false,
-      "originalDataPresent": false,
-      "freshnessSignalsJson": [
-        "Updated 2026"
-      ],
-      "contentAnglesJson": [
-        "diet",
-        "lifestyle",
-        "probiotics"
-      ],
-      "missingAnglesJson": [
-        "product candidate criteria",
-        "evidence checklist"
-      ],
-      "strengthsJson": [
-        "conservative claims"
-      ],
-      "weaknessesJson": [
-        "no market product path"
-      ],
-      "extractionStatus": "summary_only",
-      "analyzedAt": "2026-05-31T09:29:46.023212+00:00"
-    },
-    {
-      "id": "competitor-analysis-serp-result-serp-kr-gut-2",
-      "serpResultId": "serp-result-serp-kr-gut-2",
-      "market": "kr",
-      "language": "ko",
-      "keyword": "gut health",
-      "pageTitle": "유산균 선택 가이드",
-      "h1": "유산균 선택 가이드",
-      "headingsJson": [
-        "균주",
-        "보관",
-        "가격"
-      ],
-      "wordCountEstimate": 2100,
-      "contentTypeGuess": "buyer_guide",
-      "intentServed": "commercial",
-      "monetizationPattern": "affiliate_editorial",
-      "affiliatePattern": "likely",
-      "comparisonTablePresent": true,
-      "productLinksPresent": true,
-      "originalDataPresent": false,
-      "freshnessSignalsJson": [
-        "Updated 2025"
-      ],
-      "contentAnglesJson": [
-        "ingredient",
-        "storage",
-        "price"
-      ],
-      "missingAnglesJson": [
-        "health claim guard",
-        "freshness signal"
-      ],
-      "strengthsJson": [
-        "strong buying criteria"
-      ],
-      "weaknessesJson": [
-        "needs stricter claim review"
-      ],
-      "extractionStatus": "summary_only",
-      "analyzedAt": "2026-05-31T09:29:46.023218+00:00"
-    },
-    {
-      "id": "competitor-analysis-serp-result-serp-us-magnesium-1",
-      "serpResultId": "serp-result-serp-us-magnesium-1",
+      "id": "competitor-analysis-serp-result-serp-us-samsung-s90f-4",
+      "serpResultId": "serp-result-serp-us-samsung-s90f-4",
       "market": "us",
       "language": "en",
-      "keyword": "magnesium sleep",
-      "pageTitle": "Magnesium for Sleep Benefits and Types",
-      "h1": "Magnesium for Sleep Benefits and Types",
+      "keyword": "samsung s90f oled deal",
+      "pageTitle": "Samsung S90F 65-inch review",
+      "h1": "Samsung S90F 65-inch review",
       "headingsJson": [
-        "Types of magnesium",
-        "When to take it",
-        "Safety notes"
+        "Price and availability",
+        "Specs",
+        "Picture quality",
+        "Sound",
+        "Design",
+        "Should you buy it"
       ],
-      "wordCountEstimate": 1800,
-      "contentTypeGuess": "article",
-      "intentServed": "informational",
-      "monetizationPattern": "editorial_or_publisher",
-      "affiliatePattern": "none_obvious",
+      "wordCountEstimate": 3100,
+      "contentTypeGuess": "review",
+      "intentServed": "commercial_research",
+      "monetizationPattern": "affiliate_editorial",
+      "affiliatePattern": "likely",
       "comparisonTablePresent": false,
-      "productLinksPresent": false,
-      "originalDataPresent": false,
+      "productLinksPresent": true,
+      "originalDataPresent": true,
       "freshnessSignalsJson": [
         "Updated 2026"
       ],
       "contentAnglesJson": [
-        "benefits",
-        "safety",
-        "timing"
+        "positioning",
+        "performance",
+        "value",
+        "panel caveat"
       ],
       "missingAnglesJson": [
-        "market-specific guidance",
-        "product verification checklist"
+        "current deal validation",
+        "US return and warranty context"
       ],
       "strengthsJson": [
-        "clear safety section",
-        "good definitions"
+        "strong buyer framing",
+        "clear caveats"
       ],
       "weaknessesJson": [
-        "no market context",
-        "no testing data"
+        "may not match every size",
+        "deal timing absent"
       ],
       "extractionStatus": "summary_only",
-      "analyzedAt": "2026-05-31T09:29:46.023225+00:00"
-    },
-    {
-      "id": "competitor-analysis-serp-result-serp-us-magnesium-2",
-      "serpResultId": "serp-result-serp-us-magnesium-2",
-      "market": "us",
-      "language": "en",
-      "keyword": "magnesium sleep",
-      "pageTitle": "Best Magnesium for Sleep",
-      "h1": "Best Magnesium for Sleep",
-      "headingsJson": [
-        "Top picks",
-        "Comparison table",
-        "How to choose"
-      ],
-      "wordCountEstimate": 2300,
-      "contentTypeGuess": "buyer_guide",
-      "intentServed": "commercial",
-      "monetizationPattern": "affiliate_editorial",
-      "affiliatePattern": "likely",
-      "comparisonTablePresent": true,
-      "productLinksPresent": true,
-      "originalDataPresent": false,
-      "freshnessSignalsJson": [
-        "Updated 2025"
-      ],
-      "contentAnglesJson": [
-        "comparison",
-        "product cards",
-        "dosage notes"
-      ],
-      "missingAnglesJson": [
-        "evidence or verification checklist",
-        "freshness signal"
-      ],
-      "strengthsJson": [
-        "strong table",
-        "clear CTA"
-      ],
-      "weaknessesJson": [
-        "affiliate heavy",
-        "limited evidence"
-      ],
-      "extractionStatus": "summary_only",
-      "analyzedAt": "2026-05-31T09:29:46.023231+00:00"
+      "analyzedAt": "2026-05-31T09:58:03.826560+00:00"
     }
   ]
 }

@@ -1,28 +1,30 @@
 {
   "opportunities": [
     {
-      "id": "serp-opportunity-trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-sleep",
-      "keywordId": "trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-sleep",
-      "market": "us",
-      "language": "en",
-      "keyword": "magnesium sleep",
-      "opportunityScore": 71.86,
+      "id": "serp-opportunity-trend-keyword-trend-cluster-kr-ko-2026-대입-학폭-반영-2026-대입-학폭-반영",
+      "keywordId": "trend-keyword-trend-cluster-kr-ko-2026-대입-학폭-반영-2026-대입-학폭-반영",
+      "market": "kr",
+      "language": "ko",
+      "keyword": "2026 대입 학폭 반영",
+      "opportunityScore": 81.42,
       "dominantIntent": "informational",
       "dominantContentTypesJson": [
         "article",
-        "buyer_guide"
+        "guide"
       ],
       "topPatternsJson": [
-        "Comparison table appears in top results",
-        "Product-card monetization appears, but this pipeline defers links",
         "Original data/testing is weak across competitors"
       ],
       "contentGapJson": {
         "missingAngles": [
-          "evidence or verification checklist",
-          "freshness signal",
-          "market-specific guidance",
-          "product verification checklist"
+          "avoid universal penalty claim",
+          "latest 2026 update",
+          "official PDF reference",
+          "official admissions rule",
+          "official caveat",
+          "student action list",
+          "student-parent checklist",
+          "university-specific differences"
         ],
         "canDifferentiateWith": [
           "market notes",
@@ -30,34 +32,35 @@
           "clear no-link test post"
         ]
       },
-      "recommendedAngle": "Answer magnesium sleep with market-specific evidence and fill gaps: evidence or verification checklist, freshness signal, market-specific guidance.",
+      "recommendedAngle": "Answer 2026 대입 학폭 반영 with market-specific evidence and fill gaps: avoid universal penalty claim, latest 2026 update, official PDF reference.",
       "recommendedArticleType": "article",
       "shouldWrite": true,
       "reason": "Trend signal plus manual SERP gaps show a test post opportunity."
     },
     {
-      "id": "serp-opportunity-trend-keyword-trend-cluster-es-es-usb-c-charger-usb-c-charger",
-      "keywordId": "trend-keyword-trend-cluster-es-es-usb-c-charger-usb-c-charger",
-      "market": "es",
-      "language": "es",
-      "keyword": "usb c charger",
-      "opportunityScore": 69.22,
-      "dominantIntent": "commercial",
+      "id": "serp-opportunity-trend-keyword-trend-cluster-jp-ja-iphone-18-rumors-japan-iphone-18-rumors-japan",
+      "keywordId": "trend-keyword-trend-cluster-jp-ja-iphone-18-rumors-japan-iphone-18-rumors-japan",
+      "market": "jp",
+      "language": "ja",
+      "keyword": "iphone 18 rumors japan",
+      "opportunityScore": 79.65,
+      "dominantIntent": "informational",
       "dominantContentTypesJson": [
-        "article",
-        "ecommerce"
+        "article"
       ],
       "topPatternsJson": [
-        "Comparison table appears in top results",
-        "Product-card monetization appears, but this pipeline defers links",
         "Original data/testing is weak across competitors"
       ],
       "contentGapJson": {
         "missingAngles": [
-          "Spain retailer notes",
-          "editorial explanation",
-          "safety verification",
-          "testing method"
+          "Japan buyer context",
+          "Japan carrier relevance",
+          "Japan release caveat",
+          "avoid certainty",
+          "avoid headline overclaim",
+          "confidence labels",
+          "confirmed vs rumored table",
+          "explain source repetition"
         ],
         "canDifferentiateWith": [
           "market notes",
@@ -65,102 +68,76 @@
           "clear no-link test post"
         ]
       },
-      "recommendedAngle": "Answer usb c charger with market-specific evidence and fill gaps: Spain retailer notes, editorial explanation, safety verification.",
+      "recommendedAngle": "Answer iphone 18 rumors japan with market-specific evidence and fill gaps: Japan buyer context, Japan carrier relevance, Japan release caveat.",
+      "recommendedArticleType": "article",
+      "shouldWrite": true,
+      "reason": "Trend signal plus manual SERP gaps show a test post opportunity."
+    },
+    {
+      "id": "serp-opportunity-trend-keyword-trend-cluster-br-pt-br-iphone-16-promocao-brasil-iphone-16-promocao-brasil",
+      "keywordId": "trend-keyword-trend-cluster-br-pt-br-iphone-16-promocao-brasil-iphone-16-promocao-brasil",
+      "market": "br",
+      "language": "pt-br",
+      "keyword": "iphone 16 promocao brasil",
+      "opportunityScore": 77.24,
+      "dominantIntent": "commercial",
+      "dominantContentTypesJson": [
+        "deal",
+        "guide",
+        "official"
+      ],
+      "topPatternsJson": [
+        "Comparison table appears in top results",
+        "Product-card monetization appears, but this pipeline defers links"
+      ],
+      "contentGapJson": {
+        "missingAngles": [
+          "Brazil warranty",
+          "avoid expired deal",
+          "compare current price",
+          "independent drawbacks",
+          "installment caveat",
+          "marketplace seller check",
+          "official spec source",
+          "price freshness"
+        ],
+        "canDifferentiateWith": [
+          "market notes",
+          "verification checklist",
+          "clear no-link test post"
+        ]
+      },
+      "recommendedAngle": "Answer iphone 16 promocao brasil with market-specific evidence and fill gaps: Brazil warranty, avoid expired deal, compare current price.",
       "recommendedArticleType": "buyer_intent_test_post",
       "shouldWrite": true,
       "reason": "Trend signal plus manual SERP gaps show a test post opportunity."
     },
     {
-      "id": "serp-opportunity-trend-keyword-trend-cluster-jp-ja-compact-desk-gadget-compact-desk-gadget",
-      "keywordId": "trend-keyword-trend-cluster-jp-ja-compact-desk-gadget-compact-desk-gadget",
-      "market": "jp",
-      "language": "ja",
-      "keyword": "compact desk gadget",
-      "opportunityScore": 68.51,
-      "dominantIntent": "informational",
+      "id": "serp-opportunity-trend-keyword-trend-cluster-us-en-samsung-s90f-oled-deal-samsung-s90f-oled-deal",
+      "keywordId": "trend-keyword-trend-cluster-us-en-samsung-s90f-oled-deal-samsung-s90f-oled-deal",
+      "market": "us",
+      "language": "en",
+      "keyword": "samsung s90f oled deal",
+      "opportunityScore": 74.16,
+      "dominantIntent": "commercial_research",
       "dominantContentTypesJson": [
-        "article",
-        "video"
+        "review",
+        "deal"
       ],
       "topPatternsJson": [
         "Comparison table appears in top results",
-        "Product-card monetization appears, but this pipeline defers links",
-        "Original data/testing is weak across competitors"
-      ],
-      "contentGapJson": {
-        "missingAngles": [
-          "measurement criteria",
-          "spec table",
-          "work style segmentation",
-          "written checklist"
-        ],
-        "canDifferentiateWith": [
-          "market notes",
-          "verification checklist",
-          "clear no-link test post"
-        ]
-      },
-      "recommendedAngle": "Answer compact desk gadget with market-specific evidence and fill gaps: measurement criteria, spec table, work style segmentation.",
-      "recommendedArticleType": "article",
-      "shouldWrite": true,
-      "reason": "Trend signal plus manual SERP gaps show a test post opportunity."
-    },
-    {
-      "id": "serp-opportunity-trend-keyword-trend-cluster-kr-ko-gut-health-gut-health",
-      "keywordId": "trend-keyword-trend-cluster-kr-ko-gut-health-gut-health",
-      "market": "kr",
-      "language": "ko",
-      "keyword": "gut health",
-      "opportunityScore": 66.46,
-      "dominantIntent": "informational",
-      "dominantContentTypesJson": [
-        "article",
-        "buyer_guide"
-      ],
-      "topPatternsJson": [
-        "Comparison table appears in top results",
-        "Product-card monetization appears, but this pipeline defers links",
-        "Original data/testing is weak across competitors"
-      ],
-      "contentGapJson": {
-        "missingAngles": [
-          "evidence checklist",
-          "freshness signal",
-          "health claim guard",
-          "product candidate criteria"
-        ],
-        "canDifferentiateWith": [
-          "market notes",
-          "verification checklist",
-          "clear no-link test post"
-        ]
-      },
-      "recommendedAngle": "Answer gut health with market-specific evidence and fill gaps: evidence checklist, freshness signal, health claim guard.",
-      "recommendedArticleType": "article",
-      "shouldWrite": true,
-      "reason": "Trend signal plus manual SERP gaps show a test post opportunity."
-    },
-    {
-      "id": "serp-opportunity-trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-real-capacity",
-      "keywordId": "trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-real-capacity",
-      "market": "br",
-      "language": "pt-br",
-      "keyword": "power bank real capacity",
-      "opportunityScore": 63.15,
-      "dominantIntent": "informational",
-      "dominantContentTypesJson": [
-        "article",
-        "forum"
-      ],
-      "topPatternsJson": [
         "Product-card monetization appears, but this pipeline defers links"
       ],
       "contentGapJson": {
         "missingAngles": [
-          "comparison table",
-          "current model checks",
-          "structured summary",
-          "verification checklist"
+          "US return and warranty context",
+          "US stock check",
+          "current deal validation",
+          "deal context",
+          "panel lottery note",
+          "panel variant check",
+          "price expiry",
+          "price timestamp"
         ],
         "canDifferentiateWith": [
           "market notes",
@@ -168,8 +145,46 @@
           "clear no-link test post"
         ]
       },
-      "recommendedAngle": "Answer power bank real capacity with market-specific evidence and fill gaps: comparison table, current model checks, structured summary.",
-      "recommendedArticleType": "article",
+      "recommendedAngle": "Answer samsung s90f oled deal with market-specific evidence and fill gaps: US return and warranty context, US stock check, current deal validation.",
+      "recommendedArticleType": "buyer_intent_test_post",
+      "shouldWrite": true,
+      "reason": "Trend signal plus manual SERP gaps show a test post opportunity."
+    },
+    {
+      "id": "serp-opportunity-trend-keyword-trend-cluster-es-es-renta-2025-avisos-aeat-renta-2025-avisos-aeat",
+      "keywordId": "trend-keyword-trend-cluster-es-es-renta-2025-avisos-aeat-renta-2025-avisos-aeat",
+      "market": "es",
+      "language": "es",
+      "keyword": "renta 2025 avisos aeat",
+      "opportunityScore": 72.27,
+      "dominantIntent": "informational",
+      "dominantContentTypesJson": [
+        "official",
+        "article",
+        "guide"
+      ],
+      "topPatternsJson": [
+        "Standard guide format dominates"
+      ],
+      "contentGapJson": {
+        "missingAngles": [
+          "common mistakes",
+          "deadline caveats",
+          "deadline table",
+          "mobile notice flow",
+          "notification examples",
+          "official link checklist",
+          "official-source hierarchy",
+          "plain-language path"
+        ],
+        "canDifferentiateWith": [
+          "market notes",
+          "verification checklist",
+          "clear no-link test post"
+        ]
+      },
+      "recommendedAngle": "Answer renta 2025 avisos aeat with market-specific evidence and fill gaps: common mistakes, deadline caveats, deadline table.",
+      "recommendedArticleType": "official",
       "shouldWrite": true,
       "reason": "Trend signal plus manual SERP gaps show a test post opportunity."
     }

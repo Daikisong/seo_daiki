@@ -42,6 +42,8 @@ def content_strategy_records(
         if not isinstance(keyword, dict) or (keyword_id and keyword.get("id") != keyword_id):
             continue
         opportunity = opportunity_by_keyword_id.get(str(keyword.get("id")), {})
+        if not opportunity or opportunity.get("shouldWrite") is False:
+            continue
         status = "rejected" if opportunity and opportunity.get("shouldWrite") is False else "brief_pending"
         cluster = cluster_by_id.get(str(keyword.get("clusterId")), {})
         keyword_text = str(keyword.get("keyword") or "")

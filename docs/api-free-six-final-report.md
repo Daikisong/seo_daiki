@@ -2,107 +2,72 @@
 
 ## Pass/Fail
 
-Pass. The API-free step 1-6 flow now runs from local seed files through noindex website test posts.
+Pass. The step 1-6 flow now runs from real country-level trend research through noindex website test posts.
+
+This is no longer the old sample-topic run. The live research evidence is stored in:
+
+- `data/raw/google-trends-rss-snapshot-2026-05-31.json`
+- `data/raw/live-country-trend-selection-2026-05-31.json`
+- `docs/live-country-trend-research.md`
+
+## Actual Topics Used
+
+| Market | Country trend source | Selected post topic | Generated route |
+| --- | --- | --- | --- |
+| US/en | Google Trends RSS `samsung oled 4k s90f smart tv` | Samsung S90F OLED deal | `/us/en/posts/samsung-s90f-oled-deal/` |
+| ES/es | Google Trends RSS `agencia tributaria renta 2025` | Renta 2025 AEAT notices | `/es/es/posts/renta-2025-avisos-aeat/` |
+| BR/pt-br | Google Trends RSS `iphone 16` | iPhone 16 promotion in Brazil | `/br/pt-br/posts/iphone-16-promocao-brasil/` |
+| JP/ja | Google Trends RSS `アイフォン` | iPhone 18 rumors in Japan | `/jp/ja/posts/iphone-18-rumors-japan/` |
+| KR/ko | Google Trends RSS `대학 입시` | 2026 admissions and school-violence reflection | `/kr/ko/posts/2026-대입-학폭-반영/` |
+
+## Current Counts
+
+- 5 trend clusters
+- 11 trend keywords
+- 20 real SERP/source rows
+- 20 competitor content analyses
+- 5 SERP opportunities
+- 5 content strategies
+- 5 content briefs
+- 5 noindex test articles
 
 ## Commands Run
 
 ```bash
 pnpm pipeline:api-free-six
 pnpm verify:api-free-six
-pnpm test:python
 pnpm test:api-free-six-post-route
-pnpm test:seo-route-modules
-pnpm test:seo
+pnpm seo:market-audit
 pnpm seo:validate
 pnpm typecheck
 pnpm build
 ```
 
-## Outputs Generated
-
-- `data/exports/market_trend_sources.json`
-- `data/exports/market_trend_signals.json`
-- `data/exports/trend_clusters.json`
-- `data/exports/trend_keywords.json`
-- `data/exports/trend_report.json`
-- `data/exports/serp_results.json`
-- `data/exports/competitor_content_analysis.json`
-- `data/exports/serp_opportunity_report.json`
-- `data/exports/content_strategies.json`
-- `data/exports/content_briefs.json`
-- `data/exports/test_articles.json`
-- `data/exports/pipeline_api_free_six_run.json`
-- `data/exports/api_free_six_verification.json`
-- `data/exports/api_free_six_capabilities.json`
-
-Current counts:
-
-- 8 trend clusters
-- 20 trend keywords
-- 10 SERP results
-- 10 competitor analyses
-- 5 SERP opportunities
-- 20 content strategies
-- 20 content briefs
-- 20 noindex test articles
-
-## Generated Test Post Routes
-
-Examples from the verification report:
-
-- `/br/pt-br/posts/power-bank-real-capacity/`
-- `/us/en/posts/magnesium-sleep/`
-- `/es/es/posts/usb-c-charger/`
-- `/jp/ja/posts/compact-desk-gadget/`
-- `/kr/ko/posts/gut-health/`
-
-The full generated route list is in:
+Website smoke check:
 
 ```text
-data/exports/api_free_six_verification.json
+200 /us/en/posts/samsung-s90f-oled-deal/
+200 /es/es/posts/renta-2025-avisos-aeat/
+200 /br/pt-br/posts/iphone-16-promocao-brasil/
+200 /jp/ja/posts/iphone-18-rumors-japan/
+200 /kr/ko/posts/2026-%EB%8C%80%EC%9E%85-%ED%95%99%ED%8F%AD-%EB%B0%98%EC%98%81/
 ```
 
-## Files Patched
+All five returned `noindex`.
 
-- worker pipeline command/parser/runner files
-- dry-run strategy refiner
-- API-free verification command
-- market post data reader/type
-- market post web route
-- package scripts
-- route and pipeline tests
-- API-free audit/success/final docs
-- API-free output capability/report JSON files
+## What Changed
 
-## Dry-Run / Manual Steps
+- Replaced old example topics with real country-level Google Trends RSS selections.
+- Replaced fake `example-*.test` SERP rows with real URLs from publishers, official pages, and review sources.
+- Added a country trend research record and selection rationale.
+- Made strategy creation skip keywords that do not have SERP opportunity evidence.
+- Improved generated test post body sections so they use competitor patterns, gaps, and verification needs instead of generic filler.
+- Added encoded slug handling so Korean market post URLs resolve correctly.
 
-- Trend signals are imported from `data/seeds/trend-signals.csv`.
-- SERP observations are imported from `data/seeds/serp-results.csv`.
-- Competitor page analysis uses `data/seeds/competitor-page-summaries.csv`.
-- Strategy generation uses the deterministic `dry-run` refiner.
-- Test posts are published as `published` + `noindex`, not public index candidates.
+## Still Intentionally Not Done
 
-## APIs Intentionally Not Required
-
-- Search Console
-- Brave API
-- Google API
-- OpenAI, Gemini, Anthropic, Ollama, or other LLM API
-- AliExpress, Temu, Amazon, iHerb, or other affiliate APIs
-- distribution/posting/outreach APIs
-
-## Remaining Weaknesses
-
-- The dry-run strategy is deterministic and conservative; it is good for API-free validation, not final editorial quality.
-- SERP data is fixture/manual CSV based, so it proves the local pipeline contract, not live ranking freshness.
-- Test posts remain noindex. A separate editorial promotion path is still required before public indexing.
-
-## Exact Next Step
-
-After API-free step 1-6, the next step is controlled editorial review of generated test posts:
-
-```text
-review noindex test posts -> improve content depth -> decide which posts become public index candidates
-```
-
-Do not move to product candidate analysis or monetization until selected test posts have passed editorial review.
+- No affiliate APIs.
+- No monetized links.
+- No raw Google Search HTML scraping.
+- No public index promotion.
+- No automatic community posting or outreach.

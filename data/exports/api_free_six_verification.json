@@ -14,12 +14,12 @@
     {
       "name": "trend clusters minimum",
       "status": "pass",
-      "detail": "8 trend clusters found"
+      "detail": "5 trend clusters found"
     },
     {
       "name": "trend keywords minimum",
       "status": "pass",
-      "detail": "20 trend keywords found"
+      "detail": "11 trend keywords found"
     },
     {
       "name": "trend report exists",
@@ -29,17 +29,17 @@
     {
       "name": "trend markets minimum",
       "status": "pass",
-      "detail": "8 trend markets found"
+      "detail": "5 trend markets found"
     },
     {
       "name": "serp results minimum",
       "status": "pass",
-      "detail": "10 SERP results found"
+      "detail": "20 SERP results found"
     },
     {
       "name": "competitor analyses minimum",
       "status": "pass",
-      "detail": "10 competitor analyses found"
+      "detail": "20 competitor analyses found"
     },
     {
       "name": "serp opportunities minimum",
@@ -54,12 +54,12 @@
     {
       "name": "content strategies minimum",
       "status": "pass",
-      "detail": "20 content strategies found"
+      "detail": "5 content strategies found"
     },
     {
       "name": "content briefs minimum",
       "status": "pass",
-      "detail": "20 content briefs found"
+      "detail": "5 content briefs found"
     },
     {
       "name": "strategy fields",
@@ -74,7 +74,7 @@
     {
       "name": "test articles minimum",
       "status": "pass",
-      "detail": "20 test articles found"
+      "detail": "5 test articles found"
     },
     {
       "name": "test article fields",
@@ -133,25 +133,10 @@
     }
   ],
   "generatedRoutes": [
-    "/br/pt-br/posts/power-bank-real-capacity/",
-    "/br/pt-br/posts/power-bank-capacidade-real/",
-    "/br/pt-br/posts/power-bank-mah-real/",
-    "/us/en/posts/magnesium-sleep/",
-    "/us/en/posts/best-magnesium-for-sleep/",
-    "/us/en/posts/magnesium-glycinate-sleep/",
-    "/es/es/posts/usb-c-charger/",
-    "/es/es/posts/cargador-usb-c-gan/",
-    "/es/es/posts/cargador-usb-c-rapido-seguro/",
-    "/jp/ja/posts/compact-desk-gadget/",
-    "/jp/ja/posts/デスク-便利-グッズ/",
-    "/de/de/posts/travel-adapter/",
-    "/de/de/posts/reiseadapter-usb-c/",
-    "/fr/fr/posts/beauty-ingredient/",
-    "/fr/fr/posts/ingredient-beaute-tendance/",
-    "/mx/es/posts/budget-smartwatch/",
-    "/mx/es/posts/smartwatch-economico-2026/",
-    "/kr/ko/posts/gut-health/",
-    "/kr/ko/posts/gut-health-probiotic/",
-    "/kr/ko/posts/장-건강-유산균/"
+    "/br/pt-br/posts/iphone-16-promocao-brasil/",
+    "/us/en/posts/samsung-s90f-oled-deal/",
+    "/jp/ja/posts/iphone-18-rumors-japan/",
+    "/es/es/posts/renta-2025-avisos-aeat/",
+    "/kr/ko/posts/2026-대입-학폭-반영/"
   ]
 }

@@ -8,7 +8,7 @@ async function main() {
   const market = findMarket("us", "en");
   assert.ok(market);
 
-  const post = readMarketPosts(market).find((item) => item.slug === "magnesium-sleep");
+  const post = readMarketPosts(market).find((item) => item.slug === "samsung-s90f-oled-deal");
   assert.ok(post);
   assert.equal(post.affiliateLinks.length, 0);
   assert.equal(post.monetizationDeferred, true);
@@ -16,8 +16,11 @@ async function main() {
   assert.equal(post.indexStatus, "noindex");
 
   const path = marketContentPath(market, "posts", post.slug);
-  assert.equal(path, "/us/en/posts/magnesium-sleep/");
-  assert.equal(canonicalForMarketPath(path, "https://example.com"), "https://example.com/us/en/posts/magnesium-sleep/");
+  assert.equal(path, "/us/en/posts/samsung-s90f-oled-deal/");
+  assert.equal(
+    canonicalForMarketPath(path, "https://example.com"),
+    "https://example.com/us/en/posts/samsung-s90f-oled-deal/"
+  );
 
   const params = generateStaticParams();
   assert.equal(params.some((item) => item.locale === "us" && item.language === "en" && item.slug === post.slug), true);

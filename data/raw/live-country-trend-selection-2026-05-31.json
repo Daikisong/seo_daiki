@@ -1,0 +1,64 @@
+{
+  "capturedAt": "2026-05-31T10:15:00+00:00",
+  "method": "Country-level Google Trends RSS snapshot first, then manual editorial selection, then manual SERP/source review. No raw Google Search HTML scraping.",
+  "snapshotFile": "data/raw/google-trends-rss-snapshot-2026-05-31.json",
+  "selectedMarkets": [
+    {
+      "market": "us",
+      "language": "en",
+      "rssTrend": "samsung oled 4k s90f smart tv",
+      "rssRank": 9,
+      "selectedTopic": "samsung s90f oled deal",
+      "reason": "Actual US RSS trend tied to a consumer-tech buying decision. Sports, lottery, celebrity, and legal-personal-injury terms were excluded as poor fit or high risk.",
+      "trendSourceUrl": "https://trends.google.com/trending/rss?geo=US",
+      "evidenceUrl": "https://www.technobezz.com/best/samsung-class-s90f-smart-tv-with-nq4-processor-drops-to-179799"
+    },
+    {
+      "market": "es",
+      "language": "es",
+      "rssTrend": "agencia tributaria renta 2025",
+      "rssRank": 5,
+      "selectedTopic": "renta 2025 avisos aeat",
+      "reason": "Actual Spain RSS trend with public-service intent. Lottery and sports terms were excluded.",
+      "trendSourceUrl": "https://trends.google.com/trending/rss?geo=ES",
+      "evidenceUrl": "https://www.hoy.es/sociedad/declaracion-renta-2026-presencial-fechas-clave-solicitar-20260529140608-nt.html"
+    },
+    {
+      "market": "br",
+      "language": "pt-br",
+      "rssTrend": "iphone 16",
+      "rssRank": 7,
+      "selectedTopic": "iphone 16 promocao brasil",
+      "reason": "Actual Brazil RSS trend tied to a current consumer purchase/deal question. Sports, weather, and tax-deadline terms were excluded for this run.",
+      "trendSourceUrl": "https://trends.google.com/trending/rss?geo=BR",
+      "evidenceUrl": "https://tecnoblog.net/achados/iphone-16-atinge-menor-preco-desde-marco-com-44-off-em-promocao/"
+    },
+    {
+      "market": "jp",
+      "language": "ja",
+      "rssTrend": "アイフォン",
+      "rssRank": 6,
+      "selectedTopic": "iphone 18 rumors japan",
+      "reason": "Actual Japan RSS trend tied to iPhone 18 rumor coverage. Entertainment and sports terms were excluded.",
+      "trendSourceUrl": "https://trends.google.com/trending/rss?geo=JP",
+      "evidenceUrl": "https://mashable.com/tech/apple-iphone-18-news-rumors-leaks"
+    },
+    {
+      "market": "kr",
+      "language": "ko",
+      "rssTrend": "대학 입시",
+      "rssRank": 9,
+      "selectedTopic": "2026 대입 학폭 반영",
+      "reason": "Actual Korea RSS trend tied to admissions policy and school-violence reflection. Politics, sports, and celebrity body/health gossip terms were excluded.",
+      "trendSourceUrl": "https://trends.google.com/trending/rss?geo=KR",
+      "evidenceUrl": "https://v.daum.net/v/20260531080300396"
+    }
+  ],
+  "excludedPatternExamples": [
+    "live sports match queries",
+    "political-personality controversy",
+    "lottery result checks",
+    "celebrity gossip",
+    "crime/death accident terms without durable article value"
+  ]
+}

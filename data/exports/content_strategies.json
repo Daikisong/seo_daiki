@@ -1,18 +1,18 @@
 {
   "strategies": [
     {
-      "id": "content-strategy-trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-real-capacity",
-      "keywordId": "trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-real-capacity",
-      "clusterId": "trend-cluster-br-pt-br-power-bank-real-capacity",
+      "id": "content-strategy-trend-keyword-trend-cluster-br-pt-br-iphone-16-promocao-brasil-iphone-16-promocao-brasil",
+      "keywordId": "trend-keyword-trend-cluster-br-pt-br-iphone-16-promocao-brasil-iphone-16-promocao-brasil",
+      "clusterId": "trend-cluster-br-pt-br-iphone-16-promocao-brasil",
       "market": "br",
       "language": "pt-br",
-      "slug": "power-bank-real-capacity",
+      "slug": "iphone-16-promocao-brasil",
       "strategyProvider": "dry-run",
-      "selectedArticleType": "article",
-      "recommendedAngle": "Answer power bank real capacity with market-specific evidence and fill gaps: comparison table, current model checks, structured summary.",
-      "titleStrategy": "Power Bank Real Capacity: Market Test Guide for BR",
-      "h1": "Power Bank Real Capacity: Market Test Guide for BR",
-      "metaDescription": "Market-specific test article for power bank real capacity. Product links and monetization are deferred.",
+      "selectedArticleType": "buyer_intent_test_post",
+      "recommendedAngle": "Responder se iphone 16 promocao brasil merece atenção agora com checagem de preço, garantia e contexto do Brasil.",
+      "titleStrategy": "iPhone 16 em promoção no Brasil: o que verificar antes de comprar",
+      "h1": "iPhone 16 em promoção no Brasil: o que verificar antes de comprar",
+      "metaDescription": "Market-specific test article for iphone 16 promocao brasil. Product links and monetization are deferred.",
       "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
       "sectionPlanJson": [
         {
@@ -33,7 +33,11 @@
         },
         {
           "heading": "Gaps this test post should fill",
-          "purpose": "comparison table; current model checks; structured summary; verification checklist"
+          "purpose": "Brazil warranty; avoid expired deal; compare current price; independent drawbacks"
+        },
+        {
+          "heading": "Comparison criteria to add later",
+          "purpose": "Prepare a future table without product links."
         },
         {
           "heading": "Product candidate analysis pending",
@@ -48,8 +52,7 @@
       "evidenceNeededJson": [
         "SERP source URLs and summaries",
         "Market-specific availability context",
-        "Freshness/date checks",
-        "Spec verification checklist and safety/certification notes"
+        "Freshness/date checks"
       ],
       "productCandidateNeedsJson": [
         "Product candidate analysis pending.",
@@ -63,14 +66,19 @@
         "Do not claim a product is best without a comparison method."
       ],
       "competitorPatternsJson": [
+        "Comparison table appears in top results",
         "Product-card monetization appears, but this pipeline defers links"
       ],
       "contentGapJson": {
         "missingAngles": [
-          "comparison table",
-          "current model checks",
-          "structured summary",
-          "verification checklist"
+          "Brazil warranty",
+          "avoid expired deal",
+          "compare current price",
+          "independent drawbacks",
+          "installment caveat",
+          "marketplace seller check",
+          "official spec source",
+          "price freshness"
         ],
         "canDifferentiateWith": [
           "market notes",
@@ -78,378 +86,133 @@
           "clear no-link test post"
         ]
       },
-      "monetizationDeferred": true,
-      "status": "brief_pending",
-      "createdAt": "2026-05-31T09:29:46.024595+00:00",
-      "updatedAt": "2026-05-31T09:29:46.024596+00:00"
-    },
-    {
-      "id": "content-strategy-trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-capacidade-real",
-      "keywordId": "trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-capacidade-real",
-      "clusterId": "trend-cluster-br-pt-br-power-bank-real-capacity",
-      "market": "br",
-      "language": "pt-br",
-      "slug": "power-bank-capacidade-real",
-      "strategyProvider": "dry-run",
-      "selectedArticleType": "informational_test_post",
-      "recommendedAngle": "Create a market-specific no-link test post for power bank capacidade real.",
-      "titleStrategy": "Power Bank Capacidade Real: Market Test Guide for BR",
-      "h1": "Power Bank Capacidade Real: Market Test Guide for BR",
-      "metaDescription": "Market-specific test article for power bank capacidade real. Product links and monetization are deferred.",
-      "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
-      "sectionPlanJson": [
+      "competitorSummaryJson": [
         {
-          "heading": "Direct answer",
-          "purpose": "Answer the market user's query first."
+          "title": "iPhone 16 atinge menor preço desde março com 44% OFF em promoção",
+          "type": "deal",
+          "intent": "commercial",
+          "monetization": "deal_editorial",
+          "hasComparisonTable": false,
+          "hasProductLinks": true,
+          "hasOriginalData": false,
+          "angles": [
+            "discount",
+            "coupon",
+            "storage",
+            "Amazon offer"
+          ],
+          "gaps": [
+            "price freshness",
+            "marketplace seller check",
+            "warranty notes"
+          ],
+          "strengths": [
+            "fast trend match",
+            "clear deal hook"
+          ],
+          "weaknesses": [
+            "price can expire",
+            "affiliate focused"
+          ]
         },
         {
-          "heading": "Why this is trending in this market",
-          "purpose": "Separate local signal from global noise."
+          "title": "iPhone 16 atinge menor preço histórico na Amazon",
+          "type": "deal",
+          "intent": "commercial",
+          "monetization": "deal_editorial",
+          "hasComparisonTable": false,
+          "hasProductLinks": true,
+          "hasOriginalData": false,
+          "angles": [
+            "lowest price",
+            "storage",
+            "retailer",
+            "specs"
+          ],
+          "gaps": [
+            "compare current price",
+            "avoid expired deal",
+            "installment caveat"
+          ],
+          "strengths": [
+            "good price framing"
+          ],
+          "weaknesses": [
+            "older deal",
+            "needs current validation"
+          ]
         },
         {
-          "heading": "What top pages already cover",
-          "purpose": "Summarize patterns without copying wording."
+          "title": "Quanto vale a pena pagar no iPhone 16 em 2026",
+          "type": "guide",
+          "intent": "commercial_research",
+          "monetization": "affiliate_editorial",
+          "hasComparisonTable": false,
+          "hasProductLinks": true,
+          "hasOriginalData": false,
+          "angles": [
+            "value threshold",
+            "alternatives",
+            "timing"
+          ],
+          "gaps": [
+            "official spec source",
+            "Brazil warranty",
+            "price history method"
+          ],
+          "strengths": [
+            "better decision framing"
+          ],
+          "weaknesses": [
+            "no live price validation",
+            "limited risk checklist"
+          ]
         },
         {
-          "heading": "What to verify before buying or recommending",
-          "purpose": "List evidence and risk checks."
-        },
-        {
-          "heading": "Product candidate analysis pending",
-          "purpose": "Make monetization deferral explicit."
+          "title": "iPhone 16 - Apple Brasil",
+          "type": "official",
+          "intent": "commercial",
+          "monetization": "manufacturer",
+          "hasComparisonTable": true,
+          "hasProductLinks": true,
+          "hasOriginalData": true,
+          "angles": [
+            "confirmed specs",
+            "models",
+            "features",
+            "official price"
+          ],
+          "gaps": [
+            "independent drawbacks",
+            "retailer warranty differences"
+          ],
+          "strengths": [
+            "authoritative specs"
+          ],
+          "weaknesses": [
+            "marketing copy",
+            "no deal context"
+          ]
         }
       ],
-      "differentiationPlanJson": [
-        "Use market-specific context instead of a generic global article.",
-        "Explain competitor gaps without copying headings or wording.",
-        "Include a verification checklist before any future monetization."
-      ],
-      "evidenceNeededJson": [
-        "SERP source URLs and summaries",
-        "Market-specific availability context",
-        "Freshness/date checks",
-        "Spec verification checklist and safety/certification notes",
-        "Original data or testing plan before claiming superiority"
-      ],
-      "productCandidateNeedsJson": [
-        "Product candidate analysis pending.",
-        "Future candidates must be verified before any monetized placement."
-      ],
-      "forbiddenClaimsJson": [
-        "Do not claim first-hand testing without evidence.",
-        "Do not invent prices, discounts, medical outcomes, or availability.",
-        "Do not insert affiliate links in the test article.",
-        "Do not copy competitor wording or headings.",
-        "Do not claim a product is best without a comparison method."
-      ],
-      "competitorPatternsJson": [],
-      "contentGapJson": {},
       "monetizationDeferred": true,
       "status": "brief_pending",
-      "createdAt": "2026-05-31T09:29:46.024610+00:00",
-      "updatedAt": "2026-05-31T09:29:46.024611+00:00"
+      "createdAt": "2026-05-31T09:58:03.827977+00:00",
+      "updatedAt": "2026-05-31T09:58:03.827981+00:00"
     },
     {
-      "id": "content-strategy-trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-mah-real",
-      "keywordId": "trend-keyword-trend-cluster-br-pt-br-power-bank-real-capacity-power-bank-mah-real",
-      "clusterId": "trend-cluster-br-pt-br-power-bank-real-capacity",
-      "market": "br",
-      "language": "pt-br",
-      "slug": "power-bank-mah-real",
-      "strategyProvider": "dry-run",
-      "selectedArticleType": "informational_test_post",
-      "recommendedAngle": "Create a market-specific no-link test post for power bank mah real.",
-      "titleStrategy": "Power Bank Mah Real: Market Test Guide for BR",
-      "h1": "Power Bank Mah Real: Market Test Guide for BR",
-      "metaDescription": "Market-specific test article for power bank mah real. Product links and monetization are deferred.",
-      "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
-      "sectionPlanJson": [
-        {
-          "heading": "Direct answer",
-          "purpose": "Answer the market user's query first."
-        },
-        {
-          "heading": "Why this is trending in this market",
-          "purpose": "Separate local signal from global noise."
-        },
-        {
-          "heading": "What top pages already cover",
-          "purpose": "Summarize patterns without copying wording."
-        },
-        {
-          "heading": "What to verify before buying or recommending",
-          "purpose": "List evidence and risk checks."
-        },
-        {
-          "heading": "Product candidate analysis pending",
-          "purpose": "Make monetization deferral explicit."
-        }
-      ],
-      "differentiationPlanJson": [
-        "Use market-specific context instead of a generic global article.",
-        "Explain competitor gaps without copying headings or wording.",
-        "Include a verification checklist before any future monetization."
-      ],
-      "evidenceNeededJson": [
-        "SERP source URLs and summaries",
-        "Market-specific availability context",
-        "Freshness/date checks",
-        "Spec verification checklist and safety/certification notes",
-        "Original data or testing plan before claiming superiority"
-      ],
-      "productCandidateNeedsJson": [
-        "Product candidate analysis pending.",
-        "Future candidates must be verified before any monetized placement."
-      ],
-      "forbiddenClaimsJson": [
-        "Do not claim first-hand testing without evidence.",
-        "Do not invent prices, discounts, medical outcomes, or availability.",
-        "Do not insert affiliate links in the test article.",
-        "Do not copy competitor wording or headings.",
-        "Do not claim a product is best without a comparison method."
-      ],
-      "competitorPatternsJson": [],
-      "contentGapJson": {},
-      "monetizationDeferred": true,
-      "status": "brief_pending",
-      "createdAt": "2026-05-31T09:29:46.024621+00:00",
-      "updatedAt": "2026-05-31T09:29:46.024622+00:00"
-    },
-    {
-      "id": "content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-sleep",
-      "keywordId": "trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-sleep",
-      "clusterId": "trend-cluster-us-en-magnesium-sleep",
+      "id": "content-strategy-trend-keyword-trend-cluster-us-en-samsung-s90f-oled-deal-samsung-s90f-oled-deal",
+      "keywordId": "trend-keyword-trend-cluster-us-en-samsung-s90f-oled-deal-samsung-s90f-oled-deal",
+      "clusterId": "trend-cluster-us-en-samsung-s90f-oled-deal",
       "market": "us",
       "language": "en",
-      "slug": "magnesium-sleep",
-      "strategyProvider": "dry-run",
-      "selectedArticleType": "article",
-      "recommendedAngle": "Answer magnesium sleep with market-specific evidence and fill gaps: evidence or verification checklist, freshness signal, market-specific guidance.",
-      "titleStrategy": "Magnesium Sleep: Market Test Guide for US",
-      "h1": "Magnesium Sleep: Market Test Guide for US",
-      "metaDescription": "Market-specific test article for magnesium sleep. Product links and monetization are deferred.",
-      "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
-      "sectionPlanJson": [
-        {
-          "heading": "Direct answer",
-          "purpose": "Answer the market user's query first."
-        },
-        {
-          "heading": "Why this is trending in this market",
-          "purpose": "Separate local signal from global noise."
-        },
-        {
-          "heading": "What top pages already cover",
-          "purpose": "Summarize patterns without copying wording."
-        },
-        {
-          "heading": "What to verify before buying or recommending",
-          "purpose": "List evidence and risk checks."
-        },
-        {
-          "heading": "Gaps this test post should fill",
-          "purpose": "evidence or verification checklist; freshness signal; market-specific guidance; product verification checklist"
-        },
-        {
-          "heading": "Comparison criteria to add later",
-          "purpose": "Prepare a future table without product links."
-        },
-        {
-          "heading": "Product candidate analysis pending",
-          "purpose": "Make monetization deferral explicit."
-        }
-      ],
-      "differentiationPlanJson": [
-        "Use market-specific context instead of a generic global article.",
-        "Explain competitor gaps without copying headings or wording.",
-        "Include a verification checklist before any future monetization."
-      ],
-      "evidenceNeededJson": [
-        "SERP source URLs and summaries",
-        "Market-specific availability context",
-        "Freshness/date checks",
-        "HealthClaimGuard review and conservative evidence sources",
-        "Original data or testing plan before claiming superiority"
-      ],
-      "productCandidateNeedsJson": [
-        "Product candidate analysis pending.",
-        "Future candidates must be verified before any monetized placement."
-      ],
-      "forbiddenClaimsJson": [
-        "Do not claim first-hand testing without evidence.",
-        "Do not invent prices, discounts, medical outcomes, or availability.",
-        "Do not insert affiliate links in the test article.",
-        "Do not copy competitor wording or headings.",
-        "Do not claim a product is best without a comparison method."
-      ],
-      "competitorPatternsJson": [
-        "Comparison table appears in top results",
-        "Product-card monetization appears, but this pipeline defers links",
-        "Original data/testing is weak across competitors"
-      ],
-      "contentGapJson": {
-        "missingAngles": [
-          "evidence or verification checklist",
-          "freshness signal",
-          "market-specific guidance",
-          "product verification checklist"
-        ],
-        "canDifferentiateWith": [
-          "market notes",
-          "verification checklist",
-          "clear no-link test post"
-        ]
-      },
-      "monetizationDeferred": true,
-      "status": "brief_pending",
-      "createdAt": "2026-05-31T09:29:46.024633+00:00",
-      "updatedAt": "2026-05-31T09:29:46.024634+00:00"
-    },
-    {
-      "id": "content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-best-magnesium-for-sleep",
-      "keywordId": "trend-keyword-trend-cluster-us-en-magnesium-sleep-best-magnesium-for-sleep",
-      "clusterId": "trend-cluster-us-en-magnesium-sleep",
-      "market": "us",
-      "language": "en",
-      "slug": "best-magnesium-for-sleep",
-      "strategyProvider": "dry-run",
-      "selectedArticleType": "informational_test_post",
-      "recommendedAngle": "Create a market-specific no-link test post for best magnesium for sleep.",
-      "titleStrategy": "Best Magnesium For Sleep: Market Test Guide for US",
-      "h1": "Best Magnesium For Sleep: Market Test Guide for US",
-      "metaDescription": "Market-specific test article for best magnesium for sleep. Product links and monetization are deferred.",
-      "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
-      "sectionPlanJson": [
-        {
-          "heading": "Direct answer",
-          "purpose": "Answer the market user's query first."
-        },
-        {
-          "heading": "Why this is trending in this market",
-          "purpose": "Separate local signal from global noise."
-        },
-        {
-          "heading": "What top pages already cover",
-          "purpose": "Summarize patterns without copying wording."
-        },
-        {
-          "heading": "What to verify before buying or recommending",
-          "purpose": "List evidence and risk checks."
-        },
-        {
-          "heading": "Product candidate analysis pending",
-          "purpose": "Make monetization deferral explicit."
-        }
-      ],
-      "differentiationPlanJson": [
-        "Use market-specific context instead of a generic global article.",
-        "Explain competitor gaps without copying headings or wording.",
-        "Include a verification checklist before any future monetization."
-      ],
-      "evidenceNeededJson": [
-        "SERP source URLs and summaries",
-        "Market-specific availability context",
-        "Freshness/date checks",
-        "HealthClaimGuard review and conservative evidence sources",
-        "Original data or testing plan before claiming superiority"
-      ],
-      "productCandidateNeedsJson": [
-        "Product candidate analysis pending.",
-        "Future candidates must be verified before any monetized placement."
-      ],
-      "forbiddenClaimsJson": [
-        "Do not claim first-hand testing without evidence.",
-        "Do not invent prices, discounts, medical outcomes, or availability.",
-        "Do not insert affiliate links in the test article.",
-        "Do not copy competitor wording or headings.",
-        "Do not claim a product is best without a comparison method."
-      ],
-      "competitorPatternsJson": [],
-      "contentGapJson": {},
-      "monetizationDeferred": true,
-      "status": "brief_pending",
-      "createdAt": "2026-05-31T09:29:46.024644+00:00",
-      "updatedAt": "2026-05-31T09:29:46.024645+00:00"
-    },
-    {
-      "id": "content-strategy-trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-glycinate-sleep",
-      "keywordId": "trend-keyword-trend-cluster-us-en-magnesium-sleep-magnesium-glycinate-sleep",
-      "clusterId": "trend-cluster-us-en-magnesium-sleep",
-      "market": "us",
-      "language": "en",
-      "slug": "magnesium-glycinate-sleep",
-      "strategyProvider": "dry-run",
-      "selectedArticleType": "informational_test_post",
-      "recommendedAngle": "Create a market-specific no-link test post for magnesium glycinate sleep.",
-      "titleStrategy": "Magnesium Glycinate Sleep: Market Test Guide for US",
-      "h1": "Magnesium Glycinate Sleep: Market Test Guide for US",
-      "metaDescription": "Market-specific test article for magnesium glycinate sleep. Product links and monetization are deferred.",
-      "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
-      "sectionPlanJson": [
-        {
-          "heading": "Direct answer",
-          "purpose": "Answer the market user's query first."
-        },
-        {
-          "heading": "Why this is trending in this market",
-          "purpose": "Separate local signal from global noise."
-        },
-        {
-          "heading": "What top pages already cover",
-          "purpose": "Summarize patterns without copying wording."
-        },
-        {
-          "heading": "What to verify before buying or recommending",
-          "purpose": "List evidence and risk checks."
-        },
-        {
-          "heading": "Product candidate analysis pending",
-          "purpose": "Make monetization deferral explicit."
-        }
-      ],
-      "differentiationPlanJson": [
-        "Use market-specific context instead of a generic global article.",
-        "Explain competitor gaps without copying headings or wording.",
-        "Include a verification checklist before any future monetization."
-      ],
-      "evidenceNeededJson": [
-        "SERP source URLs and summaries",
-        "Market-specific availability context",
-        "Freshness/date checks",
-        "HealthClaimGuard review and conservative evidence sources",
-        "Original data or testing plan before claiming superiority"
-      ],
-      "productCandidateNeedsJson": [
-        "Product candidate analysis pending.",
-        "Future candidates must be verified before any monetized placement."
-      ],
-      "forbiddenClaimsJson": [
-        "Do not claim first-hand testing without evidence.",
-        "Do not invent prices, discounts, medical outcomes, or availability.",
-        "Do not insert affiliate links in the test article.",
-        "Do not copy competitor wording or headings.",
-        "Do not claim a product is best without a comparison method."
-      ],
-      "competitorPatternsJson": [],
-      "contentGapJson": {},
-      "monetizationDeferred": true,
-      "status": "brief_pending",
-      "createdAt": "2026-05-31T09:29:46.024655+00:00",
-      "updatedAt": "2026-05-31T09:29:46.024655+00:00"
-    },
-    {
-      "id": "content-strategy-trend-keyword-trend-cluster-es-es-usb-c-charger-usb-c-charger",
-      "keywordId": "trend-keyword-trend-cluster-es-es-usb-c-charger-usb-c-charger",
-      "clusterId": "trend-cluster-es-es-usb-c-charger",
-      "market": "es",
-      "language": "es",
-      "slug": "usb-c-charger",
+      "slug": "samsung-s90f-oled-deal",
       "strategyProvider": "dry-run",
       "selectedArticleType": "buyer_intent_test_post",
-      "recommendedAngle": "Answer usb c charger with market-specific evidence and fill gaps: Spain retailer notes, editorial explanation, safety verification.",
-      "titleStrategy": "Usb C Charger: Market Test Guide for ES",
-      "h1": "Usb C Charger: Market Test Guide for ES",
-      "metaDescription": "Market-specific test article for usb c charger. Product links and monetization are deferred.",
+      "recommendedAngle": "Answer samsung s90f oled deal with market-specific evidence and fill gaps: US return and warranty context, US stock check, current deal validation.",
+      "titleStrategy": "Samsung S90F OLED deal: what US buyers should verify first",
+      "h1": "Samsung S90F OLED deal: what US buyers should verify first",
+      "metaDescription": "Market-specific test article for samsung s90f oled deal. Product links and monetization are deferred.",
       "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
       "sectionPlanJson": [
         {
@@ -470,7 +233,7 @@
         },
         {
           "heading": "Gaps this test post should fill",
-          "purpose": "Spain retailer notes; editorial explanation; safety verification; testing method"
+          "purpose": "US return and warranty context; US stock check; current deal validation; deal context"
         },
         {
           "heading": "Comparison criteria to add later",
@@ -489,9 +252,7 @@
       "evidenceNeededJson": [
         "SERP source URLs and summaries",
         "Market-specific availability context",
-        "Freshness/date checks",
-        "Spec verification checklist and safety/certification notes",
-        "Original data or testing plan before claiming superiority"
+        "Freshness/date checks"
       ],
       "productCandidateNeedsJson": [
         "Product candidate analysis pending.",
@@ -506,15 +267,18 @@
       ],
       "competitorPatternsJson": [
         "Comparison table appears in top results",
-        "Product-card monetization appears, but this pipeline defers links",
-        "Original data/testing is weak across competitors"
+        "Product-card monetization appears, but this pipeline defers links"
       ],
       "contentGapJson": {
         "missingAngles": [
-          "Spain retailer notes",
-          "editorial explanation",
-          "safety verification",
-          "testing method"
+          "US return and warranty context",
+          "US stock check",
+          "current deal validation",
+          "deal context",
+          "panel lottery note",
+          "panel variant check",
+          "price expiry",
+          "price timestamp"
         ],
         "canDifferentiateWith": [
           "market notes",
@@ -522,154 +286,136 @@
           "clear no-link test post"
         ]
       },
-      "monetizationDeferred": true,
-      "status": "brief_pending",
-      "createdAt": "2026-05-31T09:29:46.024665+00:00",
-      "updatedAt": "2026-05-31T09:29:46.024666+00:00"
-    },
-    {
-      "id": "content-strategy-trend-keyword-trend-cluster-es-es-usb-c-charger-cargador-usb-c-gan",
-      "keywordId": "trend-keyword-trend-cluster-es-es-usb-c-charger-cargador-usb-c-gan",
-      "clusterId": "trend-cluster-es-es-usb-c-charger",
-      "market": "es",
-      "language": "es",
-      "slug": "cargador-usb-c-gan",
-      "strategyProvider": "dry-run",
-      "selectedArticleType": "informational_test_post",
-      "recommendedAngle": "Create a market-specific no-link test post for cargador usb c gan.",
-      "titleStrategy": "Cargador Usb C Gan: Market Test Guide for ES",
-      "h1": "Cargador Usb C Gan: Market Test Guide for ES",
-      "metaDescription": "Market-specific test article for cargador usb c gan. Product links and monetization are deferred.",
-      "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
-      "sectionPlanJson": [
+      "competitorSummaryJson": [
         {
-          "heading": "Direct answer",
-          "purpose": "Answer the market user's query first."
+          "title": "Samsung Class S90F Smart TV with NQ4 processor drops to $1797.99",
+          "type": "deal",
+          "intent": "commercial",
+          "monetization": "deal_editorial",
+          "hasComparisonTable": false,
+          "hasProductLinks": true,
+          "hasOriginalData": false,
+          "angles": [
+            "price drop",
+            "screen size",
+            "processor",
+            "retailer CTA"
+          ],
+          "gaps": [
+            "price timestamp",
+            "return policy",
+            "panel variant check"
+          ],
+          "strengths": [
+            "fast trend match",
+            "clear offer framing"
+          ],
+          "weaknesses": [
+            "deal heavy",
+            "thin verification",
+            "price can expire"
+          ]
         },
         {
-          "heading": "Why this is trending in this market",
-          "purpose": "Separate local signal from global noise."
+          "title": "Samsung S90F OLED TV Review",
+          "type": "review",
+          "intent": "commercial_research",
+          "monetization": "editorial_testing",
+          "hasComparisonTable": true,
+          "hasProductLinks": false,
+          "hasOriginalData": true,
+          "angles": [
+            "lab testing",
+            "brightness",
+            "VRR",
+            "variant list"
+          ],
+          "gaps": [
+            "deal context",
+            "US stock check",
+            "simple buyer checklist"
+          ],
+          "strengths": [
+            "deep measurements",
+            "clear methodology"
+          ],
+          "weaknesses": [
+            "too technical for quick deal readers"
+          ]
         },
         {
-          "heading": "What top pages already cover",
-          "purpose": "Summarize patterns without copying wording."
+          "title": "I just tested the Samsung S90F OLED and it's my favorite TV of the year but it's not perfect",
+          "type": "review",
+          "intent": "commercial_research",
+          "monetization": "affiliate_editorial",
+          "hasComparisonTable": false,
+          "hasProductLinks": true,
+          "hasOriginalData": true,
+          "angles": [
+            "hands-on testing",
+            "measurement table",
+            "drawbacks"
+          ],
+          "gaps": [
+            "price expiry",
+            "retailer verification",
+            "panel lottery note"
+          ],
+          "strengths": [
+            "readable pros and cons",
+            "real testing"
+          ],
+          "weaknesses": [
+            "affiliate CTA present",
+            "single-size framing"
+          ]
         },
         {
-          "heading": "What to verify before buying or recommending",
-          "purpose": "List evidence and risk checks."
-        },
-        {
-          "heading": "Product candidate analysis pending",
-          "purpose": "Make monetization deferral explicit."
+          "title": "Samsung S90F 65-inch review",
+          "type": "review",
+          "intent": "commercial_research",
+          "monetization": "affiliate_editorial",
+          "hasComparisonTable": false,
+          "hasProductLinks": true,
+          "hasOriginalData": true,
+          "angles": [
+            "positioning",
+            "performance",
+            "value",
+            "panel caveat"
+          ],
+          "gaps": [
+            "current deal validation",
+            "US return and warranty context"
+          ],
+          "strengths": [
+            "strong buyer framing",
+            "clear caveats"
+          ],
+          "weaknesses": [
+            "may not match every size",
+            "deal timing absent"
+          ]
         }
       ],
-      "differentiationPlanJson": [
-        "Use market-specific context instead of a generic global article.",
-        "Explain competitor gaps without copying headings or wording.",
-        "Include a verification checklist before any future monetization."
-      ],
-      "evidenceNeededJson": [
-        "SERP source URLs and summaries",
-        "Market-specific availability context",
-        "Freshness/date checks",
-        "Original data or testing plan before claiming superiority"
-      ],
-      "productCandidateNeedsJson": [
-        "Product candidate analysis pending.",
-        "Future candidates must be verified before any monetized placement."
-      ],
-      "forbiddenClaimsJson": [
-        "Do not claim first-hand testing without evidence.",
-        "Do not invent prices, discounts, medical outcomes, or availability.",
-        "Do not insert affiliate links in the test article.",
-        "Do not copy competitor wording or headings.",
-        "Do not claim a product is best without a comparison method."
-      ],
-      "competitorPatternsJson": [],
-      "contentGapJson": {},
       "monetizationDeferred": true,
       "status": "brief_pending",
-      "createdAt": "2026-05-31T09:29:46.024677+00:00",
-      "updatedAt": "2026-05-31T09:29:46.024678+00:00"
+      "createdAt": "2026-05-31T09:58:03.827999+00:00",
+      "updatedAt": "2026-05-31T09:58:03.828000+00:00"
     },
     {
-      "id": "content-strategy-trend-keyword-trend-cluster-es-es-usb-c-charger-cargador-usb-c-rapido-seguro",
-      "keywordId": "trend-keyword-trend-cluster-es-es-usb-c-charger-cargador-usb-c-rapido-seguro",
-      "clusterId": "trend-cluster-es-es-usb-c-charger",
-      "market": "es",
-      "language": "es",
-      "slug": "cargador-usb-c-rapido-seguro",
-      "strategyProvider": "dry-run",
-      "selectedArticleType": "informational_test_post",
-      "recommendedAngle": "Create a market-specific no-link test post for cargador usb c rapido seguro.",
-      "titleStrategy": "Cargador Usb C Rapido Seguro: Market Test Guide for ES",
-      "h1": "Cargador Usb C Rapido Seguro: Market Test Guide for ES",
-      "metaDescription": "Market-specific test article for cargador usb c rapido seguro. Product links and monetization are deferred.",
-      "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
-      "sectionPlanJson": [
-        {
-          "heading": "Direct answer",
-          "purpose": "Answer the market user's query first."
-        },
-        {
-          "heading": "Why this is trending in this market",
-          "purpose": "Separate local signal from global noise."
-        },
-        {
-          "heading": "What top pages already cover",
-          "purpose": "Summarize patterns without copying wording."
-        },
-        {
-          "heading": "What to verify before buying or recommending",
-          "purpose": "List evidence and risk checks."
-        },
-        {
-          "heading": "Product candidate analysis pending",
-          "purpose": "Make monetization deferral explicit."
-        }
-      ],
-      "differentiationPlanJson": [
-        "Use market-specific context instead of a generic global article.",
-        "Explain competitor gaps without copying headings or wording.",
-        "Include a verification checklist before any future monetization."
-      ],
-      "evidenceNeededJson": [
-        "SERP source URLs and summaries",
-        "Market-specific availability context",
-        "Freshness/date checks",
-        "Original data or testing plan before claiming superiority"
-      ],
-      "productCandidateNeedsJson": [
-        "Product candidate analysis pending.",
-        "Future candidates must be verified before any monetized placement."
-      ],
-      "forbiddenClaimsJson": [
-        "Do not claim first-hand testing without evidence.",
-        "Do not invent prices, discounts, medical outcomes, or availability.",
-        "Do not insert affiliate links in the test article.",
-        "Do not copy competitor wording or headings.",
-        "Do not claim a product is best without a comparison method."
-      ],
-      "competitorPatternsJson": [],
-      "contentGapJson": {},
-      "monetizationDeferred": true,
-      "status": "brief_pending",
-      "createdAt": "2026-05-31T09:29:46.024687+00:00",
-      "updatedAt": "2026-05-31T09:29:46.024688+00:00"
-    },
-    {
-      "id": "content-strategy-trend-keyword-trend-cluster-jp-ja-compact-desk-gadget-compact-desk-gadget",
-      "keywordId": "trend-keyword-trend-cluster-jp-ja-compact-desk-gadget-compact-desk-gadget",
-      "clusterId": "trend-cluster-jp-ja-compact-desk-gadget",
+      "id": "content-strategy-trend-keyword-trend-cluster-jp-ja-iphone-18-rumors-japan-iphone-18-rumors-japan",
+      "keywordId": "trend-keyword-trend-cluster-jp-ja-iphone-18-rumors-japan-iphone-18-rumors-japan",
+      "clusterId": "trend-cluster-jp-ja-iphone-18-rumors-japan",
       "market": "jp",
       "language": "ja",
-      "slug": "compact-desk-gadget",
+      "slug": "iphone-18-rumors-japan",
       "strategyProvider": "dry-run",
       "selectedArticleType": "article",
-      "recommendedAngle": "Answer compact desk gadget with market-specific evidence and fill gaps: measurement criteria, spec table, work style segmentation.",
-      "titleStrategy": "Compact Desk Gadget: Market Test Guide for JP",
-      "h1": "Compact Desk Gadget: Market Test Guide for JP",
-      "metaDescription": "Market-specific test article for compact desk gadget. Product links and monetization are deferred.",
+      "recommendedAngle": "iphone 18 rumors japan について、確定情報と噂を分け、日本の読者が確認すべき点を整理する。",
+      "titleStrategy": "iPhone 18の噂: 日本で確認すべきポイント",
+      "h1": "iPhone 18の噂: 日本で確認すべきポイント",
+      "metaDescription": "Market-specific test article for iphone 18 rumors japan. Product links and monetization are deferred.",
       "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
       "sectionPlanJson": [
         {
@@ -690,11 +436,7 @@
         },
         {
           "heading": "Gaps this test post should fill",
-          "purpose": "measurement criteria; spec table; work style segmentation; written checklist"
-        },
-        {
-          "heading": "Comparison criteria to add later",
-          "purpose": "Prepare a future table without product links."
+          "purpose": "Japan buyer context; Japan carrier relevance; Japan release caveat; avoid certainty"
         },
         {
           "heading": "Product candidate analysis pending",
@@ -724,16 +466,18 @@
         "Do not claim a product is best without a comparison method."
       ],
       "competitorPatternsJson": [
-        "Comparison table appears in top results",
-        "Product-card monetization appears, but this pipeline defers links",
         "Original data/testing is weak across competitors"
       ],
       "contentGapJson": {
         "missingAngles": [
-          "measurement criteria",
-          "spec table",
-          "work style segmentation",
-          "written checklist"
+          "Japan buyer context",
+          "Japan carrier relevance",
+          "Japan release caveat",
+          "avoid certainty",
+          "avoid headline overclaim",
+          "confidence labels",
+          "confirmed vs rumored table",
+          "explain source repetition"
         ],
         "canDifferentiateWith": [
           "market notes",
@@ -741,481 +485,126 @@
           "clear no-link test post"
         ]
       },
-      "monetizationDeferred": true,
-      "status": "brief_pending",
-      "createdAt": "2026-05-31T09:29:46.024731+00:00",
-      "updatedAt": "2026-05-31T09:29:46.024731+00:00"
-    },
-    {
-      "id": "content-strategy-trend-keyword-trend-cluster-jp-ja-compact-desk-gadget-デスク-便利-グッズ",
-      "keywordId": "trend-keyword-trend-cluster-jp-ja-compact-desk-gadget-デスク-便利-グッズ",
-      "clusterId": "trend-cluster-jp-ja-compact-desk-gadget",
-      "market": "jp",
-      "language": "ja",
-      "slug": "デスク-便利-グッズ",
-      "strategyProvider": "dry-run",
-      "selectedArticleType": "informational_test_post",
-      "recommendedAngle": "Create a market-specific no-link test post for デスク 便利 グッズ.",
-      "titleStrategy": "デスク 便利 グッズ: Market Test Guide for JP",
-      "h1": "デスク 便利 グッズ: Market Test Guide for JP",
-      "metaDescription": "Market-specific test article for デスク 便利 グッズ. Product links and monetization are deferred.",
-      "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
-      "sectionPlanJson": [
+      "competitorSummaryJson": [
         {
-          "heading": "Direct answer",
-          "purpose": "Answer the market user's query first."
+          "title": "iPhone 18 news: The latest leaks rumored features and colors",
+          "type": "article",
+          "intent": "informational",
+          "monetization": "affiliate_editorial",
+          "hasComparisonTable": false,
+          "hasProductLinks": false,
+          "hasOriginalData": false,
+          "angles": [
+            "rumor roundup",
+            "colors",
+            "features",
+            "launch timing"
+          ],
+          "gaps": [
+            "Japan buyer context",
+            "confidence labels",
+            "source credibility table"
+          ],
+          "strengths": [
+            "good overview"
+          ],
+          "weaknesses": [
+            "rumor heavy",
+            "not localized to Japan"
+          ]
         },
         {
-          "heading": "Why this is trending in this market",
-          "purpose": "Separate local signal from global noise."
+          "title": "iPhone 18 Pro Launching in September With These 10 New Features",
+          "type": "article",
+          "intent": "informational",
+          "monetization": "affiliate_editorial",
+          "hasComparisonTable": false,
+          "hasProductLinks": false,
+          "hasOriginalData": false,
+          "angles": [
+            "feature list",
+            "supply-chain rumors",
+            "launch expectation"
+          ],
+          "gaps": [
+            "confirmed vs rumored table",
+            "Japan carrier relevance"
+          ],
+          "strengths": [
+            "strong Apple-rumor coverage"
+          ],
+          "weaknesses": [
+            "many claims need confidence tags"
+          ]
         },
         {
-          "heading": "What top pages already cover",
-          "purpose": "Summarize patterns without copying wording."
+          "title": "iPhone 18 Pro: Six new features are coming later this year",
+          "type": "article",
+          "intent": "informational",
+          "monetization": "affiliate_editorial",
+          "hasComparisonTable": false,
+          "hasProductLinks": false,
+          "hasOriginalData": false,
+          "angles": [
+            "feature summary",
+            "design change",
+            "camera rumor"
+          ],
+          "gaps": [
+            "avoid certainty",
+            "explain source repetition",
+            "Japan release caveat"
+          ],
+          "strengths": [
+            "concise structure"
+          ],
+          "weaknesses": [
+            "not enough verification depth"
+          ]
         },
         {
-          "heading": "What to verify before buying or recommending",
-          "purpose": "List evidence and risk checks."
-        },
-        {
-          "heading": "Product candidate analysis pending",
-          "purpose": "Make monetization deferral explicit."
+          "title": "New leak confirms new iPhone 18 Pro Dark Cherry Light Blue colors",
+          "type": "article",
+          "intent": "informational",
+          "monetization": "editorial",
+          "hasComparisonTable": false,
+          "hasProductLinks": false,
+          "hasOriginalData": false,
+          "angles": [
+            "color rumors",
+            "dummy models",
+            "leak validation"
+          ],
+          "gaps": [
+            "avoid headline overclaim",
+            "separate color from specs"
+          ],
+          "strengths": [
+            "narrow fresh angle"
+          ],
+          "weaknesses": [
+            "too narrow for full guide"
+          ]
         }
       ],
-      "differentiationPlanJson": [
-        "Use market-specific context instead of a generic global article.",
-        "Explain competitor gaps without copying headings or wording.",
-        "Include a verification checklist before any future monetization."
-      ],
-      "evidenceNeededJson": [
-        "SERP source URLs and summaries",
-        "Market-specific availability context",
-        "Freshness/date checks",
-        "Original data or testing plan before claiming superiority"
-      ],
-      "productCandidateNeedsJson": [
-        "Product candidate analysis pending.",
-        "Future candidates must be verified before any monetized placement."
-      ],
-      "forbiddenClaimsJson": [
-        "Do not claim first-hand testing without evidence.",
-        "Do not invent prices, discounts, medical outcomes, or availability.",
-        "Do not insert affiliate links in the test article.",
-        "Do not copy competitor wording or headings.",
-        "Do not claim a product is best without a comparison method."
-      ],
-      "competitorPatternsJson": [],
-      "contentGapJson": {},
       "monetizationDeferred": true,
       "status": "brief_pending",
-      "createdAt": "2026-05-31T09:29:46.024746+00:00",
-      "updatedAt": "2026-05-31T09:29:46.024746+00:00"
+      "createdAt": "2026-05-31T09:58:03.828015+00:00",
+      "updatedAt": "2026-05-31T09:58:03.828015+00:00"
     },
     {
-      "id": "content-strategy-trend-keyword-trend-cluster-de-de-travel-adapter-travel-adapter",
-      "keywordId": "trend-keyword-trend-cluster-de-de-travel-adapter-travel-adapter",
-      "clusterId": "trend-cluster-de-de-travel-adapter",
-      "market": "de",
-      "language": "de",
-      "slug": "travel-adapter",
-      "strategyProvider": "dry-run",
-      "selectedArticleType": "informational_test_post",
-      "recommendedAngle": "Create a market-specific no-link test post for travel adapter.",
-      "titleStrategy": "Travel Adapter: Market Test Guide for DE",
-      "h1": "Travel Adapter: Market Test Guide for DE",
-      "metaDescription": "Market-specific test article for travel adapter. Product links and monetization are deferred.",
-      "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
-      "sectionPlanJson": [
-        {
-          "heading": "Direct answer",
-          "purpose": "Answer the market user's query first."
-        },
-        {
-          "heading": "Why this is trending in this market",
-          "purpose": "Separate local signal from global noise."
-        },
-        {
-          "heading": "What top pages already cover",
-          "purpose": "Summarize patterns without copying wording."
-        },
-        {
-          "heading": "What to verify before buying or recommending",
-          "purpose": "List evidence and risk checks."
-        },
-        {
-          "heading": "Product candidate analysis pending",
-          "purpose": "Make monetization deferral explicit."
-        }
-      ],
-      "differentiationPlanJson": [
-        "Use market-specific context instead of a generic global article.",
-        "Explain competitor gaps without copying headings or wording.",
-        "Include a verification checklist before any future monetization."
-      ],
-      "evidenceNeededJson": [
-        "SERP source URLs and summaries",
-        "Market-specific availability context",
-        "Freshness/date checks",
-        "Spec verification checklist and safety/certification notes",
-        "Original data or testing plan before claiming superiority"
-      ],
-      "productCandidateNeedsJson": [
-        "Product candidate analysis pending.",
-        "Future candidates must be verified before any monetized placement."
-      ],
-      "forbiddenClaimsJson": [
-        "Do not claim first-hand testing without evidence.",
-        "Do not invent prices, discounts, medical outcomes, or availability.",
-        "Do not insert affiliate links in the test article.",
-        "Do not copy competitor wording or headings.",
-        "Do not claim a product is best without a comparison method."
-      ],
-      "competitorPatternsJson": [],
-      "contentGapJson": {},
-      "monetizationDeferred": true,
-      "status": "brief_pending",
-      "createdAt": "2026-05-31T09:29:46.024756+00:00",
-      "updatedAt": "2026-05-31T09:29:46.024757+00:00"
-    },
-    {
-      "id": "content-strategy-trend-keyword-trend-cluster-de-de-travel-adapter-reiseadapter-usb-c",
-      "keywordId": "trend-keyword-trend-cluster-de-de-travel-adapter-reiseadapter-usb-c",
-      "clusterId": "trend-cluster-de-de-travel-adapter",
-      "market": "de",
-      "language": "de",
-      "slug": "reiseadapter-usb-c",
-      "strategyProvider": "dry-run",
-      "selectedArticleType": "informational_test_post",
-      "recommendedAngle": "Create a market-specific no-link test post for reiseadapter usb c.",
-      "titleStrategy": "Reiseadapter Usb C: Market Test Guide for DE",
-      "h1": "Reiseadapter Usb C: Market Test Guide for DE",
-      "metaDescription": "Market-specific test article for reiseadapter usb c. Product links and monetization are deferred.",
-      "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
-      "sectionPlanJson": [
-        {
-          "heading": "Direct answer",
-          "purpose": "Answer the market user's query first."
-        },
-        {
-          "heading": "Why this is trending in this market",
-          "purpose": "Separate local signal from global noise."
-        },
-        {
-          "heading": "What top pages already cover",
-          "purpose": "Summarize patterns without copying wording."
-        },
-        {
-          "heading": "What to verify before buying or recommending",
-          "purpose": "List evidence and risk checks."
-        },
-        {
-          "heading": "Product candidate analysis pending",
-          "purpose": "Make monetization deferral explicit."
-        }
-      ],
-      "differentiationPlanJson": [
-        "Use market-specific context instead of a generic global article.",
-        "Explain competitor gaps without copying headings or wording.",
-        "Include a verification checklist before any future monetization."
-      ],
-      "evidenceNeededJson": [
-        "SERP source URLs and summaries",
-        "Market-specific availability context",
-        "Freshness/date checks",
-        "Spec verification checklist and safety/certification notes",
-        "Original data or testing plan before claiming superiority"
-      ],
-      "productCandidateNeedsJson": [
-        "Product candidate analysis pending.",
-        "Future candidates must be verified before any monetized placement."
-      ],
-      "forbiddenClaimsJson": [
-        "Do not claim first-hand testing without evidence.",
-        "Do not invent prices, discounts, medical outcomes, or availability.",
-        "Do not insert affiliate links in the test article.",
-        "Do not copy competitor wording or headings.",
-        "Do not claim a product is best without a comparison method."
-      ],
-      "competitorPatternsJson": [],
-      "contentGapJson": {},
-      "monetizationDeferred": true,
-      "status": "brief_pending",
-      "createdAt": "2026-05-31T09:29:46.024766+00:00",
-      "updatedAt": "2026-05-31T09:29:46.024766+00:00"
-    },
-    {
-      "id": "content-strategy-trend-keyword-trend-cluster-fr-fr-beauty-ingredient-beauty-ingredient",
-      "keywordId": "trend-keyword-trend-cluster-fr-fr-beauty-ingredient-beauty-ingredient",
-      "clusterId": "trend-cluster-fr-fr-beauty-ingredient",
-      "market": "fr",
-      "language": "fr",
-      "slug": "beauty-ingredient",
-      "strategyProvider": "dry-run",
-      "selectedArticleType": "informational_test_post",
-      "recommendedAngle": "Create a market-specific no-link test post for beauty ingredient.",
-      "titleStrategy": "Beauty Ingredient: Market Test Guide for FR",
-      "h1": "Beauty Ingredient: Market Test Guide for FR",
-      "metaDescription": "Market-specific test article for beauty ingredient. Product links and monetization are deferred.",
-      "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
-      "sectionPlanJson": [
-        {
-          "heading": "Direct answer",
-          "purpose": "Answer the market user's query first."
-        },
-        {
-          "heading": "Why this is trending in this market",
-          "purpose": "Separate local signal from global noise."
-        },
-        {
-          "heading": "What top pages already cover",
-          "purpose": "Summarize patterns without copying wording."
-        },
-        {
-          "heading": "What to verify before buying or recommending",
-          "purpose": "List evidence and risk checks."
-        },
-        {
-          "heading": "Product candidate analysis pending",
-          "purpose": "Make monetization deferral explicit."
-        }
-      ],
-      "differentiationPlanJson": [
-        "Use market-specific context instead of a generic global article.",
-        "Explain competitor gaps without copying headings or wording.",
-        "Include a verification checklist before any future monetization."
-      ],
-      "evidenceNeededJson": [
-        "SERP source URLs and summaries",
-        "Market-specific availability context",
-        "Freshness/date checks",
-        "Original data or testing plan before claiming superiority"
-      ],
-      "productCandidateNeedsJson": [
-        "Product candidate analysis pending.",
-        "Future candidates must be verified before any monetized placement."
-      ],
-      "forbiddenClaimsJson": [
-        "Do not claim first-hand testing without evidence.",
-        "Do not invent prices, discounts, medical outcomes, or availability.",
-        "Do not insert affiliate links in the test article.",
-        "Do not copy competitor wording or headings.",
-        "Do not claim a product is best without a comparison method."
-      ],
-      "competitorPatternsJson": [],
-      "contentGapJson": {},
-      "monetizationDeferred": true,
-      "status": "brief_pending",
-      "createdAt": "2026-05-31T09:29:46.024775+00:00",
-      "updatedAt": "2026-05-31T09:29:46.024776+00:00"
-    },
-    {
-      "id": "content-strategy-trend-keyword-trend-cluster-fr-fr-beauty-ingredient-ingredient-beaute-tendance",
-      "keywordId": "trend-keyword-trend-cluster-fr-fr-beauty-ingredient-ingredient-beaute-tendance",
-      "clusterId": "trend-cluster-fr-fr-beauty-ingredient",
-      "market": "fr",
-      "language": "fr",
-      "slug": "ingredient-beaute-tendance",
-      "strategyProvider": "dry-run",
-      "selectedArticleType": "informational_test_post",
-      "recommendedAngle": "Create a market-specific no-link test post for ingredient beaute tendance.",
-      "titleStrategy": "Ingredient Beaute Tendance: Market Test Guide for FR",
-      "h1": "Ingredient Beaute Tendance: Market Test Guide for FR",
-      "metaDescription": "Market-specific test article for ingredient beaute tendance. Product links and monetization are deferred.",
-      "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
-      "sectionPlanJson": [
-        {
-          "heading": "Direct answer",
-          "purpose": "Answer the market user's query first."
-        },
-        {
-          "heading": "Why this is trending in this market",
-          "purpose": "Separate local signal from global noise."
-        },
-        {
-          "heading": "What top pages already cover",
-          "purpose": "Summarize patterns without copying wording."
-        },
-        {
-          "heading": "What to verify before buying or recommending",
-          "purpose": "List evidence and risk checks."
-        },
-        {
-          "heading": "Product candidate analysis pending",
-          "purpose": "Make monetization deferral explicit."
-        }
-      ],
-      "differentiationPlanJson": [
-        "Use market-specific context instead of a generic global article.",
-        "Explain competitor gaps without copying headings or wording.",
-        "Include a verification checklist before any future monetization."
-      ],
-      "evidenceNeededJson": [
-        "SERP source URLs and summaries",
-        "Market-specific availability context",
-        "Freshness/date checks",
-        "Original data or testing plan before claiming superiority"
-      ],
-      "productCandidateNeedsJson": [
-        "Product candidate analysis pending.",
-        "Future candidates must be verified before any monetized placement."
-      ],
-      "forbiddenClaimsJson": [
-        "Do not claim first-hand testing without evidence.",
-        "Do not invent prices, discounts, medical outcomes, or availability.",
-        "Do not insert affiliate links in the test article.",
-        "Do not copy competitor wording or headings.",
-        "Do not claim a product is best without a comparison method."
-      ],
-      "competitorPatternsJson": [],
-      "contentGapJson": {},
-      "monetizationDeferred": true,
-      "status": "brief_pending",
-      "createdAt": "2026-05-31T09:29:46.024785+00:00",
-      "updatedAt": "2026-05-31T09:29:46.024786+00:00"
-    },
-    {
-      "id": "content-strategy-trend-keyword-trend-cluster-mx-es-budget-smartwatch-budget-smartwatch",
-      "keywordId": "trend-keyword-trend-cluster-mx-es-budget-smartwatch-budget-smartwatch",
-      "clusterId": "trend-cluster-mx-es-budget-smartwatch",
-      "market": "mx",
+      "id": "content-strategy-trend-keyword-trend-cluster-es-es-renta-2025-avisos-aeat-renta-2025-avisos-aeat",
+      "keywordId": "trend-keyword-trend-cluster-es-es-renta-2025-avisos-aeat-renta-2025-avisos-aeat",
+      "clusterId": "trend-cluster-es-es-renta-2025-avisos-aeat",
+      "market": "es",
       "language": "es",
-      "slug": "budget-smartwatch",
+      "slug": "renta-2025-avisos-aeat",
       "strategyProvider": "dry-run",
-      "selectedArticleType": "informational_test_post",
-      "recommendedAngle": "Create a market-specific no-link test post for budget smartwatch.",
-      "titleStrategy": "Budget Smartwatch: Market Test Guide for MX",
-      "h1": "Budget Smartwatch: Market Test Guide for MX",
-      "metaDescription": "Market-specific test article for budget smartwatch. Product links and monetization are deferred.",
-      "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
-      "sectionPlanJson": [
-        {
-          "heading": "Direct answer",
-          "purpose": "Answer the market user's query first."
-        },
-        {
-          "heading": "Why this is trending in this market",
-          "purpose": "Separate local signal from global noise."
-        },
-        {
-          "heading": "What top pages already cover",
-          "purpose": "Summarize patterns without copying wording."
-        },
-        {
-          "heading": "What to verify before buying or recommending",
-          "purpose": "List evidence and risk checks."
-        },
-        {
-          "heading": "Product candidate analysis pending",
-          "purpose": "Make monetization deferral explicit."
-        }
-      ],
-      "differentiationPlanJson": [
-        "Use market-specific context instead of a generic global article.",
-        "Explain competitor gaps without copying headings or wording.",
-        "Include a verification checklist before any future monetization."
-      ],
-      "evidenceNeededJson": [
-        "SERP source URLs and summaries",
-        "Market-specific availability context",
-        "Freshness/date checks",
-        "Original data or testing plan before claiming superiority"
-      ],
-      "productCandidateNeedsJson": [
-        "Product candidate analysis pending.",
-        "Future candidates must be verified before any monetized placement."
-      ],
-      "forbiddenClaimsJson": [
-        "Do not claim first-hand testing without evidence.",
-        "Do not invent prices, discounts, medical outcomes, or availability.",
-        "Do not insert affiliate links in the test article.",
-        "Do not copy competitor wording or headings.",
-        "Do not claim a product is best without a comparison method."
-      ],
-      "competitorPatternsJson": [],
-      "contentGapJson": {},
-      "monetizationDeferred": true,
-      "status": "brief_pending",
-      "createdAt": "2026-05-31T09:29:46.024794+00:00",
-      "updatedAt": "2026-05-31T09:29:46.024795+00:00"
-    },
-    {
-      "id": "content-strategy-trend-keyword-trend-cluster-mx-es-budget-smartwatch-smartwatch-economico-2026",
-      "keywordId": "trend-keyword-trend-cluster-mx-es-budget-smartwatch-smartwatch-economico-2026",
-      "clusterId": "trend-cluster-mx-es-budget-smartwatch",
-      "market": "mx",
-      "language": "es",
-      "slug": "smartwatch-economico-2026",
-      "strategyProvider": "dry-run",
-      "selectedArticleType": "informational_test_post",
-      "recommendedAngle": "Create a market-specific no-link test post for smartwatch economico 2026.",
-      "titleStrategy": "Smartwatch Economico 2026: Market Test Guide for MX",
-      "h1": "Smartwatch Economico 2026: Market Test Guide for MX",
-      "metaDescription": "Market-specific test article for smartwatch economico 2026. Product links and monetization are deferred.",
-      "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
-      "sectionPlanJson": [
-        {
-          "heading": "Direct answer",
-          "purpose": "Answer the market user's query first."
-        },
-        {
-          "heading": "Why this is trending in this market",
-          "purpose": "Separate local signal from global noise."
-        },
-        {
-          "heading": "What top pages already cover",
-          "purpose": "Summarize patterns without copying wording."
-        },
-        {
-          "heading": "What to verify before buying or recommending",
-          "purpose": "List evidence and risk checks."
-        },
-        {
-          "heading": "Product candidate analysis pending",
-          "purpose": "Make monetization deferral explicit."
-        }
-      ],
-      "differentiationPlanJson": [
-        "Use market-specific context instead of a generic global article.",
-        "Explain competitor gaps without copying headings or wording.",
-        "Include a verification checklist before any future monetization."
-      ],
-      "evidenceNeededJson": [
-        "SERP source URLs and summaries",
-        "Market-specific availability context",
-        "Freshness/date checks",
-        "Original data or testing plan before claiming superiority"
-      ],
-      "productCandidateNeedsJson": [
-        "Product candidate analysis pending.",
-        "Future candidates must be verified before any monetized placement."
-      ],
-      "forbiddenClaimsJson": [
-        "Do not claim first-hand testing without evidence.",
-        "Do not invent prices, discounts, medical outcomes, or availability.",
-        "Do not insert affiliate links in the test article.",
-        "Do not copy competitor wording or headings.",
-        "Do not claim a product is best without a comparison method."
-      ],
-      "competitorPatternsJson": [],
-      "contentGapJson": {},
-      "monetizationDeferred": true,
-      "status": "brief_pending",
-      "createdAt": "2026-05-31T09:29:46.024804+00:00",
-      "updatedAt": "2026-05-31T09:29:46.024805+00:00"
-    },
-    {
-      "id": "content-strategy-trend-keyword-trend-cluster-kr-ko-gut-health-gut-health",
-      "keywordId": "trend-keyword-trend-cluster-kr-ko-gut-health-gut-health",
-      "clusterId": "trend-cluster-kr-ko-gut-health",
-      "market": "kr",
-      "language": "ko",
-      "slug": "gut-health",
-      "strategyProvider": "dry-run",
-      "selectedArticleType": "article",
-      "recommendedAngle": "Answer gut health with market-specific evidence and fill gaps: evidence checklist, freshness signal, health claim guard.",
-      "titleStrategy": "Gut Health: Market Test Guide for KR",
-      "h1": "Gut Health: Market Test Guide for KR",
-      "metaDescription": "Market-specific test article for gut health. Product links and monetization are deferred.",
+      "selectedArticleType": "official",
+      "recommendedAngle": "Resolver la búsqueda sobre renta 2025 avisos aeat con una guía práctica basada en fuentes oficiales y cubrir: common mistakes, deadline caveats, deadline table.",
+      "titleStrategy": "Renta 2025 y AEAT: qué comprobar antes de corregir una declaración",
+      "h1": "Renta 2025 y AEAT: qué comprobar antes de corregir una declaración",
+      "metaDescription": "Market-specific test article for renta 2025 avisos aeat. Product links and monetization are deferred.",
       "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
       "sectionPlanJson": [
         {
@@ -1236,11 +625,200 @@
         },
         {
           "heading": "Gaps this test post should fill",
-          "purpose": "evidence checklist; freshness signal; health claim guard; product candidate criteria"
+          "purpose": "common mistakes; deadline caveats; deadline table; mobile notice flow"
         },
         {
-          "heading": "Comparison criteria to add later",
-          "purpose": "Prepare a future table without product links."
+          "heading": "Product candidate analysis pending",
+          "purpose": "Make monetization deferral explicit."
+        }
+      ],
+      "differentiationPlanJson": [
+        "Use market-specific context instead of a generic global article.",
+        "Explain competitor gaps without copying headings or wording.",
+        "Include a verification checklist before any future monetization."
+      ],
+      "evidenceNeededJson": [
+        "SERP source URLs and summaries",
+        "Market-specific availability context",
+        "Freshness/date checks"
+      ],
+      "productCandidateNeedsJson": [
+        "Product candidate analysis pending.",
+        "Future candidates must be verified before any monetized placement."
+      ],
+      "forbiddenClaimsJson": [
+        "Do not claim first-hand testing without evidence.",
+        "Do not invent prices, discounts, medical outcomes, or availability.",
+        "Do not insert affiliate links in the test article.",
+        "Do not copy competitor wording or headings.",
+        "Do not claim a product is best without a comparison method."
+      ],
+      "competitorPatternsJson": [
+        "Standard guide format dominates"
+      ],
+      "contentGapJson": {
+        "missingAngles": [
+          "common mistakes",
+          "deadline caveats",
+          "deadline table",
+          "mobile notice flow",
+          "notification examples",
+          "official link checklist",
+          "official-source hierarchy",
+          "plain-language path"
+        ],
+        "canDifferentiateWith": [
+          "market notes",
+          "verification checklist",
+          "clear no-link test post"
+        ]
+      },
+      "competitorSummaryJson": [
+        {
+          "title": "Renta 2025: Así te avisa Hacienda si has cometido un error en la declaración",
+          "type": "article",
+          "intent": "informational",
+          "monetization": "editorial",
+          "hasComparisonTable": false,
+          "hasProductLinks": false,
+          "hasOriginalData": false,
+          "angles": [
+            "notification channels",
+            "error warning",
+            "taxpayer action"
+          ],
+          "gaps": [
+            "official link checklist",
+            "what not to do",
+            "deadline table"
+          ],
+          "strengths": [
+            "very timely",
+            "simple explanation"
+          ],
+          "weaknesses": [
+            "needs official-source separation",
+            "limited step detail"
+          ]
+        },
+        {
+          "title": "Agencia Tributaria: Campaña de Renta 2025",
+          "type": "official",
+          "intent": "transactional",
+          "monetization": "government",
+          "hasComparisonTable": false,
+          "hasProductLinks": false,
+          "hasOriginalData": true,
+          "angles": [
+            "official campaign",
+            "dates",
+            "services",
+            "access points"
+          ],
+          "gaps": [
+            "plain-language path",
+            "common mistakes",
+            "mobile notice flow"
+          ],
+          "strengths": [
+            "primary authority",
+            "stable source"
+          ],
+          "weaknesses": [
+            "hard to scan for beginners"
+          ]
+        },
+        {
+          "title": "Avisos de Hacienda antes de multarte en la Renta 2025",
+          "type": "guide",
+          "intent": "informational",
+          "monetization": "editorial",
+          "hasComparisonTable": false,
+          "hasProductLinks": false,
+          "hasOriginalData": false,
+          "angles": [
+            "warning types",
+            "correction steps",
+            "preventive action"
+          ],
+          "gaps": [
+            "official-source hierarchy",
+            "regional exceptions",
+            "deadline caveats"
+          ],
+          "strengths": [
+            "clear beginner guide",
+            "actionable flow"
+          ],
+          "weaknesses": [
+            "not official advice",
+            "needs caution language"
+          ]
+        },
+        {
+          "title": "La presentación instantánea de declaraciones con Renta Directa estará disponible ya este año",
+          "type": "official",
+          "intent": "informational",
+          "monetization": "government",
+          "hasComparisonTable": false,
+          "hasProductLinks": false,
+          "hasOriginalData": true,
+          "angles": [
+            "official dates",
+            "assistance channels",
+            "preventive messages"
+          ],
+          "gaps": [
+            "short user checklist",
+            "notification examples"
+          ],
+          "strengths": [
+            "authoritative timeline"
+          ],
+          "weaknesses": [
+            "dense government language"
+          ]
+        }
+      ],
+      "monetizationDeferred": true,
+      "status": "brief_pending",
+      "createdAt": "2026-05-31T09:58:03.828029+00:00",
+      "updatedAt": "2026-05-31T09:58:03.828030+00:00"
+    },
+    {
+      "id": "content-strategy-trend-keyword-trend-cluster-kr-ko-2026-대입-학폭-반영-2026-대입-학폭-반영",
+      "keywordId": "trend-keyword-trend-cluster-kr-ko-2026-대입-학폭-반영-2026-대입-학폭-반영",
+      "clusterId": "trend-cluster-kr-ko-2026-대입-학폭-반영",
+      "market": "kr",
+      "language": "ko",
+      "slug": "2026-대입-학폭-반영",
+      "strategyProvider": "dry-run",
+      "selectedArticleType": "article",
+      "recommendedAngle": "2026 대입 학폭 반영 이슈를 정책 근거와 학생·학부모 확인사항 중심으로 정리한다.",
+      "titleStrategy": "2026 대입 학폭 반영: 학생과 학부모가 먼저 확인할 점",
+      "h1": "2026 대입 학폭 반영: 학생과 학부모가 먼저 확인할 점",
+      "metaDescription": "Market-specific test article for 2026 대입 학폭 반영. Product links and monetization are deferred.",
+      "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
+      "sectionPlanJson": [
+        {
+          "heading": "Direct answer",
+          "purpose": "Answer the market user's query first."
+        },
+        {
+          "heading": "Why this is trending in this market",
+          "purpose": "Separate local signal from global noise."
+        },
+        {
+          "heading": "What top pages already cover",
+          "purpose": "Summarize patterns without copying wording."
+        },
+        {
+          "heading": "What to verify before buying or recommending",
+          "purpose": "List evidence and risk checks."
+        },
+        {
+          "heading": "Gaps this test post should fill",
+          "purpose": "avoid universal penalty claim; latest 2026 update; official PDF reference; official admissions rule"
         },
         {
           "heading": "Product candidate analysis pending",
@@ -1256,7 +834,6 @@
         "SERP source URLs and summaries",
         "Market-specific availability context",
         "Freshness/date checks",
-        "HealthClaimGuard review and conservative evidence sources",
         "Original data or testing plan before claiming superiority"
       ],
       "productCandidateNeedsJson": [
@@ -1271,16 +848,18 @@
         "Do not claim a product is best without a comparison method."
       ],
       "competitorPatternsJson": [
-        "Comparison table appears in top results",
-        "Product-card monetization appears, but this pipeline defers links",
         "Original data/testing is weak across competitors"
       ],
       "contentGapJson": {
         "missingAngles": [
-          "evidence checklist",
-          "freshness signal",
-          "health claim guard",
-          "product candidate criteria"
+          "avoid universal penalty claim",
+          "latest 2026 update",
+          "official PDF reference",
+          "official admissions rule",
+          "official caveat",
+          "student action list",
+          "student-parent checklist",
+          "university-specific differences"
         ],
         "canDifferentiateWith": [
           "market notes",
@@ -1288,141 +867,112 @@
           "clear no-link test post"
         ]
       },
-      "monetizationDeferred": true,
-      "status": "brief_pending",
-      "createdAt": "2026-05-31T09:29:46.024814+00:00",
-      "updatedAt": "2026-05-31T09:29:46.024815+00:00"
-    },
-    {
-      "id": "content-strategy-trend-keyword-trend-cluster-kr-ko-gut-health-gut-health-probiotic",
-      "keywordId": "trend-keyword-trend-cluster-kr-ko-gut-health-gut-health-probiotic",
-      "clusterId": "trend-cluster-kr-ko-gut-health",
-      "market": "kr",
-      "language": "ko",
-      "slug": "gut-health-probiotic",
-      "strategyProvider": "dry-run",
-      "selectedArticleType": "informational_test_post",
-      "recommendedAngle": "Create a market-specific no-link test post for gut health probiotic.",
-      "titleStrategy": "Gut Health Probiotic: Market Test Guide for KR",
-      "h1": "Gut Health Probiotic: Market Test Guide for KR",
-      "metaDescription": "Market-specific test article for gut health probiotic. Product links and monetization are deferred.",
-      "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
-      "sectionPlanJson": [
+      "competitorSummaryJson": [
         {
-          "heading": "Direct answer",
-          "purpose": "Answer the market user's query first."
+          "title": "'대입 의무 반영'에도 오히려 늘어난 고교 학교폭력",
+          "type": "article",
+          "intent": "informational",
+          "monetization": "news",
+          "hasComparisonTable": false,
+          "hasProductLinks": false,
+          "hasOriginalData": false,
+          "angles": [
+            "trend trigger",
+            "school violence increase",
+            "admissions concern"
+          ],
+          "gaps": [
+            "official admissions rule",
+            "student-parent checklist"
+          ],
+          "strengths": [
+            "very timely",
+            "explains why topic resurfaced"
+          ],
+          "weaknesses": [
+            "news-first",
+            "needs policy source"
+          ]
         },
         {
-          "heading": "Why this is trending in this market",
-          "purpose": "Separate local signal from global noise."
+          "title": "대교협 2026학년도 대학입학전형기본사항 확정 발표",
+          "type": "article",
+          "intent": "informational",
+          "monetization": "education_editorial",
+          "hasComparisonTable": false,
+          "hasProductLinks": false,
+          "hasOriginalData": false,
+          "angles": [
+            "official plan summary",
+            "all admissions tracks",
+            "school violence record"
+          ],
+          "gaps": [
+            "official PDF reference",
+            "university-specific differences"
+          ],
+          "strengths": [
+            "clear policy framing"
+          ],
+          "weaknesses": [
+            "secondary source",
+            "needs examples"
+          ]
         },
         {
-          "heading": "What top pages already cover",
-          "purpose": "Summarize patterns without copying wording."
+          "title": "고2 대입 땐 수시 80% 학폭 의무 반영",
+          "type": "article",
+          "intent": "informational",
+          "monetization": "news",
+          "hasComparisonTable": false,
+          "hasProductLinks": false,
+          "hasOriginalData": false,
+          "angles": [
+            "admissions plan",
+            "application year",
+            "policy overview"
+          ],
+          "gaps": [
+            "latest 2026 update",
+            "student action list"
+          ],
+          "strengths": [
+            "good background"
+          ],
+          "weaknesses": [
+            "not current enough alone"
+          ]
         },
         {
-          "heading": "What to verify before buying or recommending",
-          "purpose": "List evidence and risk checks."
-        },
-        {
-          "heading": "Product candidate analysis pending",
-          "purpose": "Make monetization deferral explicit."
+          "title": "2026 대입 전 전형에 학폭 기록 반영 조치사항별 불이익 정도는",
+          "type": "guide",
+          "intent": "informational",
+          "monetization": "education_editorial",
+          "hasComparisonTable": false,
+          "hasProductLinks": false,
+          "hasOriginalData": false,
+          "angles": [
+            "measure levels",
+            "possible disadvantages",
+            "university differences"
+          ],
+          "gaps": [
+            "official caveat",
+            "avoid universal penalty claim"
+          ],
+          "strengths": [
+            "actionable detail"
+          ],
+          "weaknesses": [
+            "may imply fixed outcomes",
+            "needs caution"
+          ]
         }
       ],
-      "differentiationPlanJson": [
-        "Use market-specific context instead of a generic global article.",
-        "Explain competitor gaps without copying headings or wording.",
-        "Include a verification checklist before any future monetization."
-      ],
-      "evidenceNeededJson": [
-        "SERP source URLs and summaries",
-        "Market-specific availability context",
-        "Freshness/date checks",
-        "HealthClaimGuard review and conservative evidence sources",
-        "Original data or testing plan before claiming superiority"
-      ],
-      "productCandidateNeedsJson": [
-        "Product candidate analysis pending.",
-        "Future candidates must be verified before any monetized placement."
-      ],
-      "forbiddenClaimsJson": [
-        "Do not claim first-hand testing without evidence.",
-        "Do not invent prices, discounts, medical outcomes, or availability.",
-        "Do not insert affiliate links in the test article.",
-        "Do not copy competitor wording or headings.",
-        "Do not claim a product is best without a comparison method."
-      ],
-      "competitorPatternsJson": [],
-      "contentGapJson": {},
       "monetizationDeferred": true,
       "status": "brief_pending",
-      "createdAt": "2026-05-31T09:29:46.024823+00:00",
-      "updatedAt": "2026-05-31T09:29:46.024824+00:00"
-    },
-    {
-      "id": "content-strategy-trend-keyword-trend-cluster-kr-ko-gut-health-장-건강-유산균",
-      "keywordId": "trend-keyword-trend-cluster-kr-ko-gut-health-장-건강-유산균",
-      "clusterId": "trend-cluster-kr-ko-gut-health",
-      "market": "kr",
-      "language": "ko",
-      "slug": "장-건강-유산균",
-      "strategyProvider": "dry-run",
-      "selectedArticleType": "informational_test_post",
-      "recommendedAngle": "Create a market-specific no-link test post for 장 건강 유산균.",
-      "titleStrategy": "장 건강 유산균: Market Test Guide for KR",
-      "h1": "장 건강 유산균: Market Test Guide for KR",
-      "metaDescription": "Market-specific test article for 장 건강 유산균. Product links and monetization are deferred.",
-      "introStrategy": "Open with the user's immediate question, explain what can be verified now, and state that product links are deferred until review.",
-      "sectionPlanJson": [
-        {
-          "heading": "Direct answer",
-          "purpose": "Answer the market user's query first."
-        },
-        {
-          "heading": "Why this is trending in this market",
-          "purpose": "Separate local signal from global noise."
-        },
-        {
-          "heading": "What top pages already cover",
-          "purpose": "Summarize patterns without copying wording."
-        },
-        {
-          "heading": "What to verify before buying or recommending",
-          "purpose": "List evidence and risk checks."
-        },
-        {
-          "heading": "Product candidate analysis pending",
-          "purpose": "Make monetization deferral explicit."
-        }
-      ],
-      "differentiationPlanJson": [
-        "Use market-specific context instead of a generic global article.",
-        "Explain competitor gaps without copying headings or wording.",
-        "Include a verification checklist before any future monetization."
-      ],
-      "evidenceNeededJson": [
-        "SERP source URLs and summaries",
-        "Market-specific availability context",
-        "Freshness/date checks",
-        "Original data or testing plan before claiming superiority"
-      ],
-      "productCandidateNeedsJson": [
-        "Product candidate analysis pending.",
-        "Future candidates must be verified before any monetized placement."
-      ],
-      "forbiddenClaimsJson": [
-        "Do not claim first-hand testing without evidence.",
-        "Do not invent prices, discounts, medical outcomes, or availability.",
-        "Do not insert affiliate links in the test article.",
-        "Do not copy competitor wording or headings.",
-        "Do not claim a product is best without a comparison method."
-      ],
-      "competitorPatternsJson": [],
-      "contentGapJson": {},
-      "monetizationDeferred": true,
-      "status": "brief_pending",
-      "createdAt": "2026-05-31T09:29:46.024834+00:00",
-      "updatedAt": "2026-05-31T09:29:46.024834+00:00"
+      "createdAt": "2026-05-31T09:58:03.828047+00:00",
+      "updatedAt": "2026-05-31T09:58:03.828047+00:00"
     }
   ]
 }

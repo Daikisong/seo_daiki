@@ -9,6 +9,7 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { enabledMarkets, findMarket } from "@/lib/market/config";
 import { marketContentHreflangVariants, readMarketPosts } from "@/lib/market/market-data";
+import { routeSlugMatches } from "@/lib/market/route-slugs";
 import { labelsForLanguage } from "@/lib/market/ui-labels";
 import { marketResearchMetadata } from "@/lib/seo/metadata";
 
@@ -28,7 +29,7 @@ export async function generateMetadata({ params }: PageProps) {
   if (!market) {
     return {};
   }
-  const post = readMarketPosts(market).find((item) => item.slug === slug);
+  const post = readMarketPosts(market).find((item) => routeSlugMatches(item.slug, slug));
   const path = marketContentPath(market, "posts", slug);
   const variants = marketContentHreflangVariants(enabledMarkets(), "posts", slug);
   const currentVariant = variants.find((variant) => variant.market === market.market && variant.language === market.language) ?? {
@@ -53,7 +54,7 @@ export default async function MarketPostPage({ params }: PageProps) {
   if (!market) {
     notFound();
   }
-  const post = readMarketPosts(market).find((item) => item.slug === slug);
+  const post = readMarketPosts(market).find((item) => routeSlugMatches(item.slug, slug));
   if (!post) {
     notFound();
   }
