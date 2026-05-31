@@ -20,9 +20,9 @@ class ContentStrategyRulesTest(unittest.TestCase):
             [{"comparisonTablePresent": True}],
         )
         headings = [item["heading"] for item in plan]
-        self.assertIn("Gaps this test post should fill", headings)
-        self.assertIn("Comparison criteria to add later", headings)
-        self.assertEqual(headings[-1], "Product candidate analysis pending")
+        self.assertIn("Details that are easy to miss", headings)
+        self.assertIn("How to compare options", headings)
+        self.assertEqual(headings[-1], "Sources to verify")
 
     def test_evidence_needed_prevents_unsupported_claims(self) -> None:
         needs = evidence_needed("magnesium sleep", [{"originalDataPresent": False}])
@@ -43,9 +43,10 @@ class ContentStrategyRulesTest(unittest.TestCase):
         }
         sections = article_sections(strategy)
         article = markdown_article("USB C Charger", sections)
-        self.assertIn("No affiliate links", sections[0]["body"])
-        self.assertIn("Product candidate analysis pending", article)
-        self.assertIn("Product links are forbidden", brief_markdown(strategy))
+        self.assertIn("practical takeaway", sections[0]["body"])
+        self.assertIn("## Quick Answer", article)
+        self.assertNotIn("Product candidate analysis pending", article)
+        self.assertIn("Reader angle", brief_markdown(strategy))
 
 
 if __name__ == "__main__":

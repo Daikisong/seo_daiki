@@ -47,6 +47,21 @@ export interface MarketPostView {
   status: string;
   summary: string;
   sections: { heading: string; body: string }[];
+  heroImage?: {
+    src: string;
+    alt: string;
+    caption: string;
+  };
+  quickFacts: Array<{ label: string; value: string }>;
+  checklist: string[];
+  comparisonTable?: {
+    title: string;
+    columns: string[];
+    rows: string[][];
+  };
+  sourceLinks: Array<{ label: string; url: string; note: string; checkedAt: string }>;
+  internalLinks: Array<{ label: string; href: string; note: string }>;
+  seoReadinessScore: number;
   monetizationDeferred: boolean;
   productCandidateState: string;
   affiliateLinks: unknown[];

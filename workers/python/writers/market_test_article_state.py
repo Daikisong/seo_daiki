@@ -66,3 +66,41 @@ def promote_index_candidate_rows(
         for article in articles
         if isinstance(article, dict)
     ]
+
+
+def article_status_for_index_status(index_status: str) -> str:
+    if index_status == "index":
+        return "test_published_index"
+    if index_status == "noindex":
+        return "test_published_noindex"
+    return "test_published_index_candidate"
+
+
+def set_article_index_status_record(
+    article: dict[str, Any],
+    article_id: str | None,
+    index_status: str,
+    now_factory: Callable[[], str],
+) -> dict[str, Any]:
+    row = dict(article)
+    if article_matches_id(row, article_id):
+        row["publishStatus"] = "published"
+        row["indexStatus"] = index_status
+        row["status"] = article_status_for_index_status(index_status)
+        row["updatedAt"] = now_factory()
+    return row
+
+
+def set_article_index_status_rows(
+    articles: list[Any],
+    article_id: str | None,
+    index_status: str,
+    now_factory: Callable[[], str],
+) -> list[dict[str, Any]]:
+    if index_status not in {"index", "noindex", "pending"}:
+        raise ValueError(f"Unsupported index status: {index_status}")
+    return [
+        set_article_index_status_record(article, article_id, index_status, now_factory)
+        for article in articles
+        if isinstance(article, dict)
+    ]

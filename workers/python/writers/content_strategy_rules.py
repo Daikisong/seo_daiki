@@ -100,10 +100,10 @@ def article_summary(strategy: dict[str, Any]) -> str:
             "nota fiscal, armazenamento e alternativas."
         ),
         "iphone_18_jp": (
-            "iPhone 18の噂を、確定情報と未確認情報に分けて整理し、日本で買う前に確認すべき発売時期・キャリア・買い替え判断をまとめます。"
+            "iPhone 18の噂を、確定情報と未確認情報に分けて整理し、日本で買う前に確認すべき発売時期、キャリア販売、下取り条件、今すぐ買うべきか待つべきかの判断軸をまとめます。"
         ),
         "kr_admission_bullying": (
-            "2026학년도 대입에서 학교폭력 조치사항이 어떻게 반영되는지, 학생과 학부모가 대학별 모집요강에서 무엇을 확인해야 하는지 정리합니다."
+            "2026학년도 대입에서 학교폭력 조치사항이 어떻게 반영되는지, 학생과 학부모가 대학별 모집요강에서 확인해야 할 전형별 반영 방식, 감점·지원 제한 가능성, 상담 전 체크리스트를 정리합니다."
         ),
     }
     return summaries.get(topic) or str(strategy.get("recommendedAngle") or "")
@@ -264,6 +264,272 @@ def reader_facing_article_sections(strategy: dict[str, Any]) -> list[dict[str, s
         ],
     }
     return [{"heading": heading, "body": body} for heading, body in sections.get(topic, [])]
+
+
+def article_experience(strategy: dict[str, Any]) -> dict[str, Any]:
+    topic = topic_key(strategy)
+    market = str(strategy.get("market") or "")
+    language = str(strategy.get("language") or "")
+    slug = str(strategy.get("slug") or "")
+    common_internal_links = localized_internal_links(language, market, slug)
+    experiences: dict[str, dict[str, Any]] = {
+        "samsung_s90f": {
+            "heroImage": {
+                "src": "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=1400&q=80",
+                "alt": "OLED television in a living room setup",
+                "caption": "Illustrative OLED TV setup. Verify exact Samsung S90F size and retailer terms before buying.",
+            },
+            "quickFacts": [
+                {"label": "Best for", "value": "OLED movie and gaming buyers comparing a limited-time discount"},
+                {"label": "Main risk", "value": "Headline price may apply to one size, seller, or expired deal"},
+                {"label": "Must verify", "value": "Model number, size, return policy, warranty, final checkout price"},
+                {"label": "Index-ready status", "value": "Ready after editor checks live price and image licensing"},
+            ],
+            "checklist": [
+                "Confirm the exact screen size and model number.",
+                "Check whether the seller is the retailer or a marketplace seller.",
+                "Compare final checkout price after tax, shipping, and coupons.",
+                "Confirm return policy for opened-box TV issues.",
+                "Check whether the reviewed panel size matches the listing you plan to buy.",
+                "Compare against LG C-series and Samsung S95F pricing before deciding.",
+            ],
+            "comparisonTable": {
+                "title": "Samsung S90F deal decision table",
+                "columns": ["Question", "Good sign", "Warning sign"],
+                "rows": [
+                    ["Price", "Still lower at checkout after tax and shipping", "Deal page price differs from cart price"],
+                    ["Seller", "Sold by a major retailer with clear returns", "Marketplace seller with unclear support"],
+                    ["Use case", "Gaming, movies, OLED contrast matter most", "Very bright room or Dolby Vision is a must"],
+                    ["Evidence", "Review size matches listing size", "Only a different size was tested"],
+                ],
+            },
+            "sourceLinks": [
+                {"label": "RTINGS Samsung S90F OLED review", "url": "https://www.rtings.com/tv/reviews/samsung/s90f-oled", "note": "Measurement-heavy review and test data."},
+                {"label": "Tom's Guide Samsung S90F review", "url": "https://www.tomsguide.com/tvs/oled-tvs/samsung-s90f-oled-tv-review", "note": "Hands-on review with pros, cons, and test results."},
+                {"label": "TechRadar Samsung S90F review", "url": "https://www.techradar.com/televisions/samsung-s90f-review", "note": "Buyer-oriented review and size caveats."},
+                {"label": "Technobezz deal signal", "url": "https://www.technobezz.com/best/samsung-class-s90f-smart-tv-with-nq4-processor-drops-to-179799", "note": "Trend/deal source; verify current price before publishing."},
+            ],
+            "internalLinks": common_internal_links,
+        },
+        "renta_2025": {
+            "heroImage": {
+                "src": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=80",
+                "alt": "Tax documents and calculator on a desk",
+                "caption": "Tax campaign details change by date and personal situation. Use official AEAT sources for final action.",
+            },
+            "quickFacts": [
+                {"label": "Best for", "value": "Spanish taxpayers checking AEAT warnings before filing or correcting"},
+                {"label": "Main risk", "value": "Treating a warning as a fine or ignoring official messages"},
+                {"label": "Must verify", "value": "Sede electrónica, Renta WEB, campaign dates, supporting documents"},
+                {"label": "Index-ready status", "value": "Ready after editor confirms latest AEAT calendar dates"},
+            ],
+            "checklist": [
+                "Entra solo por la Sede electrónica o app oficial.",
+                "Identifica qué dato provoca el aviso.",
+                "Compara con certificados de empresa, banco, alquiler o donativos.",
+                "Revisa deducciones autonómicas antes de corregir.",
+                "Guarda justificantes de cualquier cambio.",
+                "Pide ayuda si afecta a importes relevantes o situaciones complejas.",
+            ],
+            "comparisonTable": {
+                "title": "Qué hacer según el tipo de aviso",
+                "columns": ["Aviso", "Qué revisar", "Qué no hacer"],
+                "rows": [
+                    ["Dato fiscal diferente", "Certificado o justificante original", "Cambiar la casilla sin documento"],
+                    ["Deducción autonómica", "Requisitos de tu comunidad", "Copiar una guía genérica"],
+                    ["Ingreso omitido", "Pagador, fecha e importe", "Presentar deprisa sin comparar"],
+                    ["Cita o asistencia", "Calendario oficial AEAT", "Esperar al último día"],
+                ],
+            },
+            "sourceLinks": [
+                {"label": "Agencia Tributaria - Renta 2025", "url": "https://www3.agenciatributaria.gob.es/Sede/Renta.html", "note": "Official campaign entry point."},
+                {"label": "Ministerio de Hacienda campaign note", "url": "https://www.hacienda.gob.es/es-ES/Prensa/Noticias/paginas/2026/20260408-np-aeat-campana-renta-2025.aspx", "note": "Official campaign timing and Renta Directa context."},
+                {"label": "AEAT press PDF", "url": "https://sede.agenciatributaria.gob.es/static_files/Sede/Actualidad/Notas_prensa/2026/NP_Inicio_Campana_renta_2025.pdf", "note": "Official notes about preventive notices and campaign support."},
+                {"label": "Xataka guide to Hacienda notices", "url": "https://www.xataka.com/basics/avisos-hacienda-antes-multarte-renta-2025-estos-que-recibes-hay-errores-tu-declaracion-2026/amp", "note": "Plain-language explainer used for reader intent comparison."},
+            ],
+            "internalLinks": common_internal_links,
+        },
+        "iphone_16_br": {
+            "heroImage": {
+                "src": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1400&q=80",
+                "alt": "Smartphone on a desk",
+                "caption": "Illustrative smartphone image. Confirm exact iPhone 16 model, storage, seller, and Brazilian warranty.",
+            },
+            "quickFacts": [
+                {"label": "Best for", "value": "Brazil buyers checking whether an iPhone 16 promotion is actually good"},
+                {"label": "Main risk", "value": "Expired coupon, marketplace seller, unclear warranty, or weak storage fit"},
+                {"label": "Must verify", "value": "Final cart price, nota fiscal, warranty, seller, storage, return window"},
+                {"label": "Index-ready status", "value": "Ready after editor confirms live price and store terms"},
+            ],
+            "checklist": [
+                "Confira o preço final no carrinho.",
+                "Verifique se há nota fiscal em seu CPF.",
+                "Confirme garantia válida no Brasil.",
+                "Compare Pix e parcelamento sem juros.",
+                "Cheque armazenamento, cor e vendedor.",
+                "Compare com iPhone 15, iPhone 16e, iPhone 17 e Androids equivalentes.",
+            ],
+            "comparisonTable": {
+                "title": "iPhone 16 promoção: vale a pena?",
+                "columns": ["Critério", "Sinal positivo", "Sinal de alerta"],
+                "rows": [
+                    ["Preço", "Abaixo do histórico recente no carrinho", "Desconto calculado sobre preço cheio"],
+                    ["Loja", "Vendedor confiável e nota fiscal clara", "Marketplace sem suporte claro"],
+                    ["Uso", "Ecossistema Apple e anos de uso", "128 GB já é pouco para você"],
+                    ["Alternativas", "Diferença boa contra modelos novos", "iPhone 17 ou 16e perto do mesmo preço"],
+                ],
+            },
+            "sourceLinks": [
+                {"label": "Tecnoblog iPhone 16 deal signal", "url": "https://tecnoblog.net/achados/iphone-16-atinge-menor-preco-desde-marco-com-44-off-em-promocao/", "note": "Trend/deal source; price must be rechecked."},
+                {"label": "Canaltech iPhone 16 price context", "url": "https://canaltech.com.br/smartphone/quanto-vale-a-pena-pagar-no-iphone-16-em-2026/", "note": "Buying-threshold context."},
+                {"label": "Apple Brasil iPhone 16", "url": "https://www.apple.com/br/iphone-16/", "note": "Official specs and model details."},
+                {"label": "Tecnoblog official price cut context", "url": "https://tecnoblog.net/noticias/iphone-16-fica-ate-13-mais-barato-no-brasil-veja-os-novos-precos/", "note": "Brazil pricing context."},
+            ],
+            "internalLinks": common_internal_links,
+        },
+        "iphone_18_jp": {
+            "heroImage": {
+                "src": "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=1400&q=80",
+                "alt": "Smartphone screen close-up",
+                "caption": "Rumor coverage should not be treated as Apple confirmation. Japan pricing and carrier terms may differ.",
+            },
+            "quickFacts": [
+                {"label": "Best for", "value": "Japan readers deciding whether to wait for iPhone 18 rumors"},
+                {"label": "Main risk", "value": "Confusing Pro rumors, standard model timing, and Japan launch conditions"},
+                {"label": "Must verify", "value": "Apple announcement, Japan price, carrier plan, trade-in, model timing"},
+                {"label": "Index-ready status", "value": "Ready after editor updates latest rumor confidence levels"},
+            ],
+            "checklist": [
+                "Proモデルの噂か標準モデルの噂か分けて読む。",
+                "Apple公式発表とリーク情報を混同しない。",
+                "日本価格、キャリア施策、下取り条件を確認する。",
+                "今の端末のバッテリー状態と買い替え時期を比べる。",
+                "単独リークより複数メディアで一致する情報を重視する。",
+                "正式発表前に発売日や価格を断定しない。",
+            ],
+            "comparisonTable": {
+                "title": "iPhone 18を待つべきか",
+                "columns": ["状況", "待つ理由", "待たなくてよい理由"],
+                "rows": [
+                    ["Proモデル狙い", "カメラやチップ進化を待てる", "現行Proの割引が大きい"],
+                    ["標準モデル狙い", "発売時期の噂を確認したい", "今の端末が故障・劣化している"],
+                    ["キャリア購入", "施策や返却条件を見たい", "現行プランで十分安い"],
+                    ["噂の信頼度", "複数媒体で一致している", "単独リークや色だけの話"],
+                ],
+            },
+            "sourceLinks": [
+                {"label": "MacRumors iPhone 18 feature roundup", "url": "https://www.macrumors.com/2026/05/09/iphone-18-pro-10-new-features/", "note": "Apple rumor source used for feature claims."},
+                {"label": "9to5Mac iPhone 18 launch timing", "url": "https://9to5mac.com/2026/01/30/iphone-18-isnt-launching-until-next-year-new-report-reaffirms/", "note": "Launch timing and split-lineup context."},
+                {"label": "Mashable iPhone 18 news", "url": "https://mashable.com/tech/apple-iphone-18-news-rumors-leaks", "note": "Trend source for rumor roundup intent."},
+                {"label": "Macworld color leak coverage", "url": "https://www.macworld.com/article/3151620/new-leak-confirms-new-iphone-18-pro-dark-cherry-light-blue-colors.html", "note": "Narrow rumor example; treat cautiously."},
+            ],
+            "internalLinks": common_internal_links,
+        },
+        "kr_admission_bullying": {
+            "heroImage": {
+                "src": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1400&q=80",
+                "alt": "Students reviewing documents together",
+                "caption": "대입 반영 방식은 대학별로 다릅니다. 최종 판단은 반드시 모집요강과 공식 자료로 확인하세요.",
+            },
+            "quickFacts": [
+                {"label": "대상", "value": "2026학년도 대입 지원자와 학부모"},
+                {"label": "핵심 위험", "value": "대학별 반영 방식 차이를 무시하고 단정하는 것"},
+                {"label": "반드시 확인", "value": "학생부 기록, 대학별 모집요강, 전형별 감점/제한 기준"},
+                {"label": "공개 준비 상태", "value": "공식 자료 링크와 대학별 예시 확인 뒤 index 전환 가능"},
+            ],
+            "checklist": [
+                "학생부에 어떤 조치사항이 기재되어 있는지 확인한다.",
+                "지원 대학의 2026학년도 모집요강을 직접 확인한다.",
+                "전형별 감점, 정성평가, 지원 제한 여부를 나눠 본다.",
+                "졸업생, 검정고시, 전학 등 본인 상황에 필요한 서류를 확인한다.",
+                "오래된 입시 글과 2026학년도 기준을 구분한다.",
+                "불확실하면 학교 상담 또는 대학 입학처에 확인한다.",
+            ],
+            "comparisonTable": {
+                "title": "전형별 확인 포인트",
+                "columns": ["전형", "확인할 점", "주의할 점"],
+                "rows": [
+                    ["학생부종합", "정성평가 반영 방식", "대학별 판단 기준이 다를 수 있음"],
+                    ["학생부교과", "정량 감점표 여부", "점수 차이가 큰 모집단위는 영향이 커질 수 있음"],
+                    ["정시/수능", "수능 전형 반영 방식", "정시는 괜찮다고 단정하면 위험"],
+                    ["논술/실기", "지원 제한 또는 감점 여부", "전형명만 보고 예외로 판단하지 말 것"],
+                ],
+            },
+            "sourceLinks": [
+                {"label": "대구교육신문 대교협 기본사항 보도", "url": "https://www.edudaegu.co.kr/news/articleView.html?idxno=6130", "note": "2026학년도 기본사항과 전 전형 반영 맥락."},
+                {"label": "E동아 2026 대입 학폭 반영 가이드", "url": "https://edu.donga.com/news/articleView.html?idxno=84852", "note": "조치사항별 불이익과 지원자 관점 설명."},
+                {"label": "Daum 뉴스 학폭 증가 트렌드", "url": "https://v.daum.net/v/20260531080300396", "note": "이번 검색 수요가 생긴 최신 뉴스 맥락."},
+                {"label": "연합뉴스 2026학년도 대입 반영", "url": "https://www.yna.co.kr/view/AKR20230830058000530", "note": "대교협 발표 초기 보도와 제도 배경."},
+            ],
+            "internalLinks": common_internal_links,
+        },
+    }
+    selected = experiences.get(topic, {})
+    for source in selected.get("sourceLinks", []):
+        source.setdefault("checkedAt", "2026-05-31")
+    return {
+        "heroImage": selected.get("heroImage"),
+        "quickFacts": selected.get("quickFacts", []),
+        "checklist": selected.get("checklist", []),
+        "comparisonTable": selected.get("comparisonTable"),
+        "sourceLinks": selected.get("sourceLinks", []),
+        "internalLinks": selected.get("internalLinks", common_internal_links),
+        "seoReadinessScore": seo_readiness_score(selected),
+    }
+
+
+def seo_readiness_score(experience: dict[str, Any]) -> int:
+    score_value = 72
+    if experience.get("heroImage"):
+        score_value += 6
+    if len(experience.get("quickFacts", [])) >= 4:
+        score_value += 5
+    if len(experience.get("checklist", [])) >= 5:
+        score_value += 6
+    if experience.get("comparisonTable"):
+        score_value += 5
+    if len(experience.get("sourceLinks", [])) >= 3:
+        score_value += 6
+    if len(experience.get("internalLinks", [])) >= 2:
+        score_value += 3
+    return min(score_value, 100)
+
+
+def localized_internal_links(language: str, market: str, slug: str) -> list[dict[str, str]]:
+    if language == "es":
+        return [
+            {"label": "Portada del mercado", "href": f"/{market}/{language}/", "note": "Ver la cola editorial de este mercado."},
+            {"label": "Señal de tendencia", "href": f"/{market}/{language}/trends/{slug}/", "note": "Revisar el origen del tema."},
+            {"label": "Análisis SERP", "href": f"/{market}/{language}/serp/{slug}/", "note": "Ver patrones y huecos de los resultados revisados."},
+            {"label": "Mapa global", "href": "/global/trend-map/", "note": "Comparar señales entre mercados."},
+        ]
+    if language == "pt-br":
+        return [
+            {"label": "Página do mercado", "href": f"/{market}/{language}/", "note": "Ver a fila editorial deste mercado."},
+            {"label": "Sinal de tendência", "href": f"/{market}/{language}/trends/{slug}/", "note": "Revisar a origem do tema."},
+            {"label": "Análise SERP", "href": f"/{market}/{language}/serp/{slug}/", "note": "Ver padrões e lacunas dos resultados revisados."},
+            {"label": "Mapa global", "href": "/global/trend-map/", "note": "Comparar sinais entre mercados."},
+        ]
+    if language == "ja":
+        return [
+            {"label": "市場ページ", "href": f"/{market}/{language}/", "note": "この市場の編集キューを見る。"},
+            {"label": "トレンド信号", "href": f"/{market}/{language}/trends/{slug}/", "note": "テーマの発生元を確認する。"},
+            {"label": "SERP分析", "href": f"/{market}/{language}/serp/{slug}/", "note": "参照結果の傾向と不足点を見る。"},
+            {"label": "グローバルマップ", "href": "/global/trend-map/", "note": "市場間の傾向を比較する。"},
+        ]
+    if language == "ko":
+        return [
+            {"label": "시장 홈", "href": f"/{market}/{language}/", "note": "이 시장의 편집 큐를 봅니다."},
+            {"label": "트렌드 신호", "href": f"/{market}/{language}/trends/{slug}/", "note": "주제가 어디서 시작됐는지 확인합니다."},
+            {"label": "SERP 분석", "href": f"/{market}/{language}/serp/{slug}/", "note": "참조 결과의 패턴과 빈틈을 봅니다."},
+            {"label": "글로벌 트렌드 맵", "href": "/global/trend-map/", "note": "시장 간 신호를 비교합니다."},
+        ]
+    return [
+        {"label": "Market trend desk", "href": f"/{market}/{language}/", "note": "See this market's current trend queue."},
+        {"label": "Trend signal", "href": f"/{market}/{language}/trends/{slug}/", "note": "Review where this topic came from."},
+        {"label": "SERP analysis", "href": f"/{market}/{language}/serp/{slug}/", "note": "See reviewed result patterns and gaps."},
+        {"label": "Global trend map", "href": "/global/trend-map/", "note": "Compare patterns across markets."},
+    ]
 
 
 def topic_key(strategy: dict[str, Any]) -> str:

@@ -18,6 +18,8 @@ from workers.python.writers.market_test_articles import (
     promote_index_candidate_records,
     publish_test_article,
     publish_test_article_records,
+    set_article_index_status,
+    set_article_index_status_records,
     test_article_records,
 )
 
@@ -39,5 +41,7 @@ __all__ = [
     "promote_index_candidate_records",
     "publish_test_article",
     "publish_test_article_records",
+    "set_article_index_status",
+    "set_article_index_status_records",
     "test_article_records",
 ]

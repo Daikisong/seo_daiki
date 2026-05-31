@@ -42,6 +42,116 @@
           "body": "Use páginas de ofertas como sinal de preço, mas confirme especificações no site da Apple Brasil e compare análises de compra em veículos como Canaltech e Tecnoblog. Para preço, confie no valor final do carrinho, não no título da matéria."
         }
       ],
+      "heroImage": {
+        "src": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1400&q=80",
+        "alt": "Smartphone on a desk",
+        "caption": "Illustrative smartphone image. Confirm exact iPhone 16 model, storage, seller, and Brazilian warranty."
+      },
+      "quickFacts": [
+        {
+          "label": "Best for",
+          "value": "Brazil buyers checking whether an iPhone 16 promotion is actually good"
+        },
+        {
+          "label": "Main risk",
+          "value": "Expired coupon, marketplace seller, unclear warranty, or weak storage fit"
+        },
+        {
+          "label": "Must verify",
+          "value": "Final cart price, nota fiscal, warranty, seller, storage, return window"
+        },
+        {
+          "label": "Index-ready status",
+          "value": "Ready after editor confirms live price and store terms"
+        }
+      ],
+      "checklist": [
+        "Confira o preço final no carrinho.",
+        "Verifique se há nota fiscal em seu CPF.",
+        "Confirme garantia válida no Brasil.",
+        "Compare Pix e parcelamento sem juros.",
+        "Cheque armazenamento, cor e vendedor.",
+        "Compare com iPhone 15, iPhone 16e, iPhone 17 e Androids equivalentes."
+      ],
+      "comparisonTable": {
+        "title": "iPhone 16 promoção: vale a pena?",
+        "columns": [
+          "Critério",
+          "Sinal positivo",
+          "Sinal de alerta"
+        ],
+        "rows": [
+          [
+            "Preço",
+            "Abaixo do histórico recente no carrinho",
+            "Desconto calculado sobre preço cheio"
+          ],
+          [
+            "Loja",
+            "Vendedor confiável e nota fiscal clara",
+            "Marketplace sem suporte claro"
+          ],
+          [
+            "Uso",
+            "Ecossistema Apple e anos de uso",
+            "128 GB já é pouco para você"
+          ],
+          [
+            "Alternativas",
+            "Diferença boa contra modelos novos",
+            "iPhone 17 ou 16e perto do mesmo preço"
+          ]
+        ]
+      },
+      "sourceLinks": [
+        {
+          "label": "Tecnoblog iPhone 16 deal signal",
+          "url": "https://tecnoblog.net/achados/iphone-16-atinge-menor-preco-desde-marco-com-44-off-em-promocao/",
+          "note": "Trend/deal source; price must be rechecked.",
+          "checkedAt": "2026-05-31"
+        },
+        {
+          "label": "Canaltech iPhone 16 price context",
+          "url": "https://canaltech.com.br/smartphone/quanto-vale-a-pena-pagar-no-iphone-16-em-2026/",
+          "note": "Buying-threshold context.",
+          "checkedAt": "2026-05-31"
+        },
+        {
+          "label": "Apple Brasil iPhone 16",
+          "url": "https://www.apple.com/br/iphone-16/",
+          "note": "Official specs and model details.",
+          "checkedAt": "2026-05-31"
+        },
+        {
+          "label": "Tecnoblog official price cut context",
+          "url": "https://tecnoblog.net/noticias/iphone-16-fica-ate-13-mais-barato-no-brasil-veja-os-novos-precos/",
+          "note": "Brazil pricing context.",
+          "checkedAt": "2026-05-31"
+        }
+      ],
+      "internalLinks": [
+        {
+          "label": "Página do mercado",
+          "href": "/br/pt-br/",
+          "note": "Ver a fila editorial deste mercado."
+        },
+        {
+          "label": "Sinal de tendência",
+          "href": "/br/pt-br/trends/iphone-16-promocao-brasil/",
+          "note": "Revisar a origem do tema."
+        },
+        {
+          "label": "Análise SERP",
+          "href": "/br/pt-br/serp/iphone-16-promocao-brasil/",
+          "note": "Ver padrões e lacunas dos resultados revisados."
+        },
+        {
+          "label": "Mapa global",
+          "href": "/global/trend-map/",
+          "note": "Comparar sinais entre mercados."
+        }
+      ],
+      "seoReadinessScore": 100,
       "affiliateLinks": [],
       "monetizationDeferred": true,
       "productCandidateState": "pending",
@@ -49,8 +159,8 @@
       "status": "test_published_noindex",
       "indexStatus": "noindex",
       "publishStatus": "published",
-      "createdAt": "2026-05-31T10:37:14.843137+00:00",
-      "updatedAt": "2026-05-31T10:37:14.844026+00:00"
+      "createdAt": "2026-05-31T11:03:49.720511+00:00",
+      "updatedAt": "2026-05-31T11:03:49.721416+00:00"
     },
     {
       "id": "test-article-content-strategy-trend-keyword-trend-cluster-us-en-samsung-s90f-oled-deal-samsung-s90f-oled-deal",
@@ -94,6 +204,116 @@
           "body": "Use the deal page only for the current offer. Use RTINGS, Tom's Guide, and TechRadar-style reviews for performance context. Use Samsung or the retailer listing for exact model numbers, warranty language, and included services. If those three sources disagree, trust the checkout page for price, the retailer for return terms, and measurement-based reviews for performance."
         }
       ],
+      "heroImage": {
+        "src": "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=1400&q=80",
+        "alt": "OLED television in a living room setup",
+        "caption": "Illustrative OLED TV setup. Verify exact Samsung S90F size and retailer terms before buying."
+      },
+      "quickFacts": [
+        {
+          "label": "Best for",
+          "value": "OLED movie and gaming buyers comparing a limited-time discount"
+        },
+        {
+          "label": "Main risk",
+          "value": "Headline price may apply to one size, seller, or expired deal"
+        },
+        {
+          "label": "Must verify",
+          "value": "Model number, size, return policy, warranty, final checkout price"
+        },
+        {
+          "label": "Index-ready status",
+          "value": "Ready after editor checks live price and image licensing"
+        }
+      ],
+      "checklist": [
+        "Confirm the exact screen size and model number.",
+        "Check whether the seller is the retailer or a marketplace seller.",
+        "Compare final checkout price after tax, shipping, and coupons.",
+        "Confirm return policy for opened-box TV issues.",
+        "Check whether the reviewed panel size matches the listing you plan to buy.",
+        "Compare against LG C-series and Samsung S95F pricing before deciding."
+      ],
+      "comparisonTable": {
+        "title": "Samsung S90F deal decision table",
+        "columns": [
+          "Question",
+          "Good sign",
+          "Warning sign"
+        ],
+        "rows": [
+          [
+            "Price",
+            "Still lower at checkout after tax and shipping",
+            "Deal page price differs from cart price"
+          ],
+          [
+            "Seller",
+            "Sold by a major retailer with clear returns",
+            "Marketplace seller with unclear support"
+          ],
+          [
+            "Use case",
+            "Gaming, movies, OLED contrast matter most",
+            "Very bright room or Dolby Vision is a must"
+          ],
+          [
+            "Evidence",
+            "Review size matches listing size",
+            "Only a different size was tested"
+          ]
+        ]
+      },
+      "sourceLinks": [
+        {
+          "label": "RTINGS Samsung S90F OLED review",
+          "url": "https://www.rtings.com/tv/reviews/samsung/s90f-oled",
+          "note": "Measurement-heavy review and test data.",
+          "checkedAt": "2026-05-31"
+        },
+        {
+          "label": "Tom's Guide Samsung S90F review",
+          "url": "https://www.tomsguide.com/tvs/oled-tvs/samsung-s90f-oled-tv-review",
+          "note": "Hands-on review with pros, cons, and test results.",
+          "checkedAt": "2026-05-31"
+        },
+        {
+          "label": "TechRadar Samsung S90F review",
+          "url": "https://www.techradar.com/televisions/samsung-s90f-review",
+          "note": "Buyer-oriented review and size caveats.",
+          "checkedAt": "2026-05-31"
+        },
+        {
+          "label": "Technobezz deal signal",
+          "url": "https://www.technobezz.com/best/samsung-class-s90f-smart-tv-with-nq4-processor-drops-to-179799",
+          "note": "Trend/deal source; verify current price before publishing.",
+          "checkedAt": "2026-05-31"
+        }
+      ],
+      "internalLinks": [
+        {
+          "label": "Market trend desk",
+          "href": "/us/en/",
+          "note": "See this market's current trend queue."
+        },
+        {
+          "label": "Trend signal",
+          "href": "/us/en/trends/samsung-s90f-oled-deal/",
+          "note": "Review where this topic came from."
+        },
+        {
+          "label": "SERP analysis",
+          "href": "/us/en/serp/samsung-s90f-oled-deal/",
+          "note": "See reviewed result patterns and gaps."
+        },
+        {
+          "label": "Global trend map",
+          "href": "/global/trend-map/",
+          "note": "Compare patterns across markets."
+        }
+      ],
+      "seoReadinessScore": 100,
       "affiliateLinks": [],
       "monetizationDeferred": true,
       "productCandidateState": "pending",
@@ -101,8 +321,8 @@
       "status": "test_published_noindex",
       "indexStatus": "noindex",
       "publishStatus": "published",
-      "createdAt": "2026-05-31T10:37:14.843157+00:00",
-      "updatedAt": "2026-05-31T10:37:14.844032+00:00"
+      "createdAt": "2026-05-31T11:03:49.720533+00:00",
+      "updatedAt": "2026-05-31T11:03:49.721426+00:00"
     },
     {
       "id": "test-article-content-strategy-trend-keyword-trend-cluster-jp-ja-iphone-18-rumors-japan-iphone-18-rumors-japan",
@@ -113,8 +333,8 @@
       "slug": "iphone-18-rumors-japan",
       "title": "iPhone 18の噂: 日本で確認すべきポイント",
       "h1": "iPhone 18の噂: 日本で確認すべきポイント",
-      "metaDescription": "iPhone 18の噂を、確定情報と未確認情報に分けて整理し、日本で買う前に確認すべき発売時期・キャリア・買い替え判断をまとめます。",
-      "summary": "iPhone 18の噂を、確定情報と未確認情報に分けて整理し、日本で買う前に確認すべき発売時期・キャリア・買い替え判断をまとめます。",
+      "metaDescription": "iPhone 18の噂を、確定情報と未確認情報に分けて整理し、日本で買う前に確認すべき発売時期、キャリア販売、下取り条件、今すぐ買うべきか待つべきかの判断軸をまとめます。",
+      "summary": "iPhone 18の噂を、確定情報と未確認情報に分けて整理し、日本で買う前に確認すべき発売時期、キャリア販売、下取り条件、今すぐ買うべきか待つべきかの判断軸をまとめます。",
       "contentMdx": "# iPhone 18の噂: 日本で確認すべきポイント\n\n## 結論\niPhone 18の噂は、今すぐ買うべき機種を決めるための確定情報ではありません。現時点で見るべきなのは、どの噂が複数の信頼できるApple系メディアで繰り返されているか、どれが単なる色やデザインの話か、そして日本での発売時期・キャリア販売・下取りに影響するかです。\n\n## いま出ている主な噂\nMacRumorsや9to5Mac、Macworld系の記事では、iPhone 18 Pro系の発売時期、チップ、カメラ、通信モデム、色、折りたたみiPhoneとの同時期展開などが話題になっています。ただしAppleが正式発表した内容ではないため、スペック表として受け取るのは早すぎます。\n\n## Proモデルと標準モデルを分けて考える\n注意したいのは、iPhone 18という名前で語られていても、噂の中心がiPhone 18 Pro/Pro Maxなのか、標準のiPhone 18なのかで意味が違うことです。複数の噂ではPro系が2026年秋、標準モデルは別時期になる可能性も語られています。買い替え判断ではここを混同しないことが重要です。\n\n## 日本で確認すべきこと\n日本の読者は、米国発の噂をそのまま購入判断に使わず、日本での価格、キャリアの端末購入プログラム、SIM/eSIM対応、下取り条件、Apple Storeと量販店の在庫、保証サービスを確認する必要があります。海外記事の価格や発売予想は、日本の実売価格とは別物です。\n\n## 待つべき人\n今のiPhoneに不満が少なく、カメラやAI処理、通信性能の大きな進化を待ちたい人は、正式発表まで待つ価値があります。特にProモデルを狙う人、下取り価格を見ながら買いたい人、キャリアの分割施策を使う人は、噂だけで予約準備を進めるより発表後の条件を見た方が安全です。\n\n## 待たなくていい人\nバッテリー劣化や故障で今すぐ必要な人、最新Pro機能にこだわらない人、セール中の現行モデルで十分な人は、iPhone 18の噂を理由に無理に待つ必要はありません。噂を待っている間にも、現行モデルの在庫や下取り条件は変わります。\n\n## 情報の見分け方\nApple公式発表、複数メディアで一致するサプライチェーン情報、単独リーク、SNS投稿を分けて読みましょう。色やデザインの噂は変わりやすく、発売時期やチップの話も正式発表までは確定ではありません。この記事では、噂は噂として扱い、購入判断は日本での正式条件が出てから行う前提で整理します。",
       "sections": [
         {
@@ -146,6 +366,116 @@
           "body": "Apple公式発表、複数メディアで一致するサプライチェーン情報、単独リーク、SNS投稿を分けて読みましょう。色やデザインの噂は変わりやすく、発売時期やチップの話も正式発表までは確定ではありません。この記事では、噂は噂として扱い、購入判断は日本での正式条件が出てから行う前提で整理します。"
         }
       ],
+      "heroImage": {
+        "src": "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=1400&q=80",
+        "alt": "Smartphone screen close-up",
+        "caption": "Rumor coverage should not be treated as Apple confirmation. Japan pricing and carrier terms may differ."
+      },
+      "quickFacts": [
+        {
+          "label": "Best for",
+          "value": "Japan readers deciding whether to wait for iPhone 18 rumors"
+        },
+        {
+          "label": "Main risk",
+          "value": "Confusing Pro rumors, standard model timing, and Japan launch conditions"
+        },
+        {
+          "label": "Must verify",
+          "value": "Apple announcement, Japan price, carrier plan, trade-in, model timing"
+        },
+        {
+          "label": "Index-ready status",
+          "value": "Ready after editor updates latest rumor confidence levels"
+        }
+      ],
+      "checklist": [
+        "Proモデルの噂か標準モデルの噂か分けて読む。",
+        "Apple公式発表とリーク情報を混同しない。",
+        "日本価格、キャリア施策、下取り条件を確認する。",
+        "今の端末のバッテリー状態と買い替え時期を比べる。",
+        "単独リークより複数メディアで一致する情報を重視する。",
+        "正式発表前に発売日や価格を断定しない。"
+      ],
+      "comparisonTable": {
+        "title": "iPhone 18を待つべきか",
+        "columns": [
+          "状況",
+          "待つ理由",
+          "待たなくてよい理由"
+        ],
+        "rows": [
+          [
+            "Proモデル狙い",
+            "カメラやチップ進化を待てる",
+            "現行Proの割引が大きい"
+          ],
+          [
+            "標準モデル狙い",
+            "発売時期の噂を確認したい",
+            "今の端末が故障・劣化している"
+          ],
+          [
+            "キャリア購入",
+            "施策や返却条件を見たい",
+            "現行プランで十分安い"
+          ],
+          [
+            "噂の信頼度",
+            "複数媒体で一致している",
+            "単独リークや色だけの話"
+          ]
+        ]
+      },
+      "sourceLinks": [
+        {
+          "label": "MacRumors iPhone 18 feature roundup",
+          "url": "https://www.macrumors.com/2026/05/09/iphone-18-pro-10-new-features/",
+          "note": "Apple rumor source used for feature claims.",
+          "checkedAt": "2026-05-31"
+        },
+        {
+          "label": "9to5Mac iPhone 18 launch timing",
+          "url": "https://9to5mac.com/2026/01/30/iphone-18-isnt-launching-until-next-year-new-report-reaffirms/",
+          "note": "Launch timing and split-lineup context.",
+          "checkedAt": "2026-05-31"
+        },
+        {
+          "label": "Mashable iPhone 18 news",
+          "url": "https://mashable.com/tech/apple-iphone-18-news-rumors-leaks",
+          "note": "Trend source for rumor roundup intent.",
+          "checkedAt": "2026-05-31"
+        },
+        {
+          "label": "Macworld color leak coverage",
+          "url": "https://www.macworld.com/article/3151620/new-leak-confirms-new-iphone-18-pro-dark-cherry-light-blue-colors.html",
+          "note": "Narrow rumor example; treat cautiously.",
+          "checkedAt": "2026-05-31"
+        }
+      ],
+      "internalLinks": [
+        {
+          "label": "市場ページ",
+          "href": "/jp/ja/",
+          "note": "この市場の編集キューを見る。"
+        },
+        {
+          "label": "トレンド信号",
+          "href": "/jp/ja/trends/iphone-18-rumors-japan/",
+          "note": "テーマの発生元を確認する。"
+        },
+        {
+          "label": "SERP分析",
+          "href": "/jp/ja/serp/iphone-18-rumors-japan/",
+          "note": "参照結果の傾向と不足点を見る。"
+        },
+        {
+          "label": "グローバルマップ",
+          "href": "/global/trend-map/",
+          "note": "市場間の傾向を比較する。"
+        }
+      ],
+      "seoReadinessScore": 100,
       "affiliateLinks": [],
       "monetizationDeferred": true,
       "productCandidateState": "pending",
@@ -153,8 +483,8 @@
       "status": "test_published_noindex",
       "indexStatus": "noindex",
       "publishStatus": "published",
-      "createdAt": "2026-05-31T10:37:14.843173+00:00",
-      "updatedAt": "2026-05-31T10:37:14.844034+00:00"
+      "createdAt": "2026-05-31T11:03:49.720553+00:00",
+      "updatedAt": "2026-05-31T11:03:49.721427+00:00"
     },
     {
       "id": "test-article-content-strategy-trend-keyword-trend-cluster-es-es-renta-2025-avisos-aeat-renta-2025-avisos-aeat",
@@ -198,6 +528,116 @@
           "body": "Comprueba siempre la Sede de la Agencia Tributaria, el calendario oficial de la campaña, las notas del Ministerio de Hacienda y los avisos que aparecen dentro de Renta WEB o la app. Los artículos de medios ayudan a entender el problema, pero la decisión final debe apoyarse en la información oficial y en tus documentos."
         }
       ],
+      "heroImage": {
+        "src": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=80",
+        "alt": "Tax documents and calculator on a desk",
+        "caption": "Tax campaign details change by date and personal situation. Use official AEAT sources for final action."
+      },
+      "quickFacts": [
+        {
+          "label": "Best for",
+          "value": "Spanish taxpayers checking AEAT warnings before filing or correcting"
+        },
+        {
+          "label": "Main risk",
+          "value": "Treating a warning as a fine or ignoring official messages"
+        },
+        {
+          "label": "Must verify",
+          "value": "Sede electrónica, Renta WEB, campaign dates, supporting documents"
+        },
+        {
+          "label": "Index-ready status",
+          "value": "Ready after editor confirms latest AEAT calendar dates"
+        }
+      ],
+      "checklist": [
+        "Entra solo por la Sede electrónica o app oficial.",
+        "Identifica qué dato provoca el aviso.",
+        "Compara con certificados de empresa, banco, alquiler o donativos.",
+        "Revisa deducciones autonómicas antes de corregir.",
+        "Guarda justificantes de cualquier cambio.",
+        "Pide ayuda si afecta a importes relevantes o situaciones complejas."
+      ],
+      "comparisonTable": {
+        "title": "Qué hacer según el tipo de aviso",
+        "columns": [
+          "Aviso",
+          "Qué revisar",
+          "Qué no hacer"
+        ],
+        "rows": [
+          [
+            "Dato fiscal diferente",
+            "Certificado o justificante original",
+            "Cambiar la casilla sin documento"
+          ],
+          [
+            "Deducción autonómica",
+            "Requisitos de tu comunidad",
+            "Copiar una guía genérica"
+          ],
+          [
+            "Ingreso omitido",
+            "Pagador, fecha e importe",
+            "Presentar deprisa sin comparar"
+          ],
+          [
+            "Cita o asistencia",
+            "Calendario oficial AEAT",
+            "Esperar al último día"
+          ]
+        ]
+      },
+      "sourceLinks": [
+        {
+          "label": "Agencia Tributaria - Renta 2025",
+          "url": "https://www3.agenciatributaria.gob.es/Sede/Renta.html",
+          "note": "Official campaign entry point.",
+          "checkedAt": "2026-05-31"
+        },
+        {
+          "label": "Ministerio de Hacienda campaign note",
+          "url": "https://www.hacienda.gob.es/es-ES/Prensa/Noticias/paginas/2026/20260408-np-aeat-campana-renta-2025.aspx",
+          "note": "Official campaign timing and Renta Directa context.",
+          "checkedAt": "2026-05-31"
+        },
+        {
+          "label": "AEAT press PDF",
+          "url": "https://sede.agenciatributaria.gob.es/static_files/Sede/Actualidad/Notas_prensa/2026/NP_Inicio_Campana_renta_2025.pdf",
+          "note": "Official notes about preventive notices and campaign support.",
+          "checkedAt": "2026-05-31"
+        },
+        {
+          "label": "Xataka guide to Hacienda notices",
+          "url": "https://www.xataka.com/basics/avisos-hacienda-antes-multarte-renta-2025-estos-que-recibes-hay-errores-tu-declaracion-2026/amp",
+          "note": "Plain-language explainer used for reader intent comparison.",
+          "checkedAt": "2026-05-31"
+        }
+      ],
+      "internalLinks": [
+        {
+          "label": "Portada del mercado",
+          "href": "/es/es/",
+          "note": "Ver la cola editorial de este mercado."
+        },
+        {
+          "label": "Señal de tendencia",
+          "href": "/es/es/trends/renta-2025-avisos-aeat/",
+          "note": "Revisar el origen del tema."
+        },
+        {
+          "label": "Análisis SERP",
+          "href": "/es/es/serp/renta-2025-avisos-aeat/",
+          "note": "Ver patrones y huecos de los resultados revisados."
+        },
+        {
+          "label": "Mapa global",
+          "href": "/global/trend-map/",
+          "note": "Comparar señales entre mercados."
+        }
+      ],
+      "seoReadinessScore": 100,
       "affiliateLinks": [],
       "monetizationDeferred": true,
       "productCandidateState": "pending",
@@ -205,8 +645,8 @@
       "status": "test_published_noindex",
       "indexStatus": "noindex",
       "publishStatus": "published",
-      "createdAt": "2026-05-31T10:37:14.843186+00:00",
-      "updatedAt": "2026-05-31T10:37:14.844035+00:00"
+      "createdAt": "2026-05-31T11:03:49.720570+00:00",
+      "updatedAt": "2026-05-31T11:03:49.721429+00:00"
     },
     {
       "id": "test-article-content-strategy-trend-keyword-trend-cluster-kr-ko-2026-대입-학폭-반영-2026-대입-학폭-반영",
@@ -217,8 +657,8 @@
       "slug": "2026-대입-학폭-반영",
       "title": "2026 대입 학폭 반영: 학생과 학부모가 먼저 확인할 점",
       "h1": "2026 대입 학폭 반영: 학생과 학부모가 먼저 확인할 점",
-      "metaDescription": "2026학년도 대입에서 학교폭력 조치사항이 어떻게 반영되는지, 학생과 학부모가 대학별 모집요강에서 무엇을 확인해야 하는지 정리합니다.",
-      "summary": "2026학년도 대입에서 학교폭력 조치사항이 어떻게 반영되는지, 학생과 학부모가 대학별 모집요강에서 무엇을 확인해야 하는지 정리합니다.",
+      "metaDescription": "2026학년도 대입에서 학교폭력 조치사항이 어떻게 반영되는지, 학생과 학부모가 대학별 모집요강에서 확인해야 할 전형별 반영 방식, 감점·지원 제한 가능성, 상담 전 체크리스트를 정리합니다.",
+      "summary": "2026학년도 대입에서 학교폭력 조치사항이 어떻게 반영되는지, 학생과 학부모가 대학별 모집요강에서 확인해야 할 전형별 반영 방식, 감점·지원 제한 가능성, 상담 전 체크리스트를 정리합니다.",
       "contentMdx": "# 2026 대입 학폭 반영: 학생과 학부모가 먼저 확인할 점\n\n## 핵심 정리\n2026학년도 대입부터 학교폭력 조치사항은 모든 대입 전형에서 확인해야 하는 요소가 됐습니다. 학생부교과, 학생부종합, 논술, 수능, 실기·실적 전형처럼 전형 유형이 달라도 대학은 학폭 조치사항을 반영해야 합니다. 다만 모든 대학이 똑같이 감점하거나 똑같이 탈락시키는 것은 아니므로, 최종 판단은 반드시 지원 대학의 2026학년도 모집요강과 전형 시행계획으로 확인해야 합니다.\n\n## 학생과 학부모가 먼저 봐야 할 것\n가장 먼저 확인할 것은 학생부에 어떤 조치사항이 기재되어 있는지, 해당 기록이 대입 자료에 제공되는지, 지원하려는 대학이 그 기록을 어떤 방식으로 반영하는지입니다. 같은 조치라도 대학에 따라 정량 감점, 정성평가 반영, 지원 자격 제한처럼 방식이 달라질 수 있습니다.\n\n## 전형별로 어떻게 달라질 수 있나\n학생부종합전형에서는 학폭 조치사항이 학교생활 전반의 평가 맥락에서 검토될 수 있고, 학생부교과전형이나 정시에서는 감점표처럼 정량 반영되는 대학도 있습니다. 논술이나 실기 전형도 예외라고 보면 안 됩니다. 2026학년도에는 전 전형 반영이 핵심이므로, ‘정시는 괜찮다’거나 ‘논술은 상관없다’고 단정하면 위험합니다.\n\n## 조치 번호만 보고 결론 내리면 안 되는 이유\n학교폭력 조치사항은 1호부터 9호까지 있지만, 번호 하나만으로 모든 대학의 결과를 예측할 수는 없습니다. 어떤 대학은 낮은 조치도 평가에 반영할 수 있고, 어떤 대학은 높은 조치에 대해 더 큰 감점이나 지원 제한을 둘 수 있습니다. 그래서 인터넷 표 하나로 결론을 내리기보다, 대학별 반영 기준을 직접 확인해야 합니다.\n\n## 지원 전 체크리스트\n지원 전에는 다섯 가지를 확인하세요. 첫째, 학생부 기록과 삭제·보존 여부. 둘째, 지원 대학의 학폭 조치사항 반영 방식. 셋째, 전형별 감점 또는 지원 제한 기준. 넷째, 검정고시·자퇴·졸업생 등 본인 상황에 대한 제출 서류. 다섯째, 이의신청이나 소명 절차가 가능한지 여부입니다.\n\n## 뉴스를 볼 때 주의할 점\n최근 학폭 증가나 대입 반영 기사만 보고 불안해할 필요는 없지만, 반대로 가볍게 넘겨서도 안 됩니다. 기사는 흐름을 이해하는 데 도움이 되고, 실제 지원 판단은 대학별 모집요강과 대교협·교육부 자료를 기준으로 해야 합니다. 특히 ‘무조건 불합격’이나 ‘전혀 영향 없음’처럼 단정적인 말은 믿기 어렵습니다.\n\n## 어디서 확인해야 하나\n가장 중요한 출처는 지원 대학의 2026학년도 모집요강, 대학입학전형 시행계획, 한국대학교육협의회와 교육부가 안내한 2026학년도 대입 기본사항 및 학폭 반영 가이드라인입니다. 입시기관 글은 이해를 돕는 자료로 쓰고, 최종 지원 전략은 공식 자료와 학교 상담을 함께 확인하는 방식이 안전합니다.",
       "sections": [
         {
@@ -250,6 +690,116 @@
           "body": "가장 중요한 출처는 지원 대학의 2026학년도 모집요강, 대학입학전형 시행계획, 한국대학교육협의회와 교육부가 안내한 2026학년도 대입 기본사항 및 학폭 반영 가이드라인입니다. 입시기관 글은 이해를 돕는 자료로 쓰고, 최종 지원 전략은 공식 자료와 학교 상담을 함께 확인하는 방식이 안전합니다."
         }
       ],
+      "heroImage": {
+        "src": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1400&q=80",
+        "alt": "Students reviewing documents together",
+        "caption": "대입 반영 방식은 대학별로 다릅니다. 최종 판단은 반드시 모집요강과 공식 자료로 확인하세요."
+      },
+      "quickFacts": [
+        {
+          "label": "대상",
+          "value": "2026학년도 대입 지원자와 학부모"
+        },
+        {
+          "label": "핵심 위험",
+          "value": "대학별 반영 방식 차이를 무시하고 단정하는 것"
+        },
+        {
+          "label": "반드시 확인",
+          "value": "학생부 기록, 대학별 모집요강, 전형별 감점/제한 기준"
+        },
+        {
+          "label": "공개 준비 상태",
+          "value": "공식 자료 링크와 대학별 예시 확인 뒤 index 전환 가능"
+        }
+      ],
+      "checklist": [
+        "학생부에 어떤 조치사항이 기재되어 있는지 확인한다.",
+        "지원 대학의 2026학년도 모집요강을 직접 확인한다.",
+        "전형별 감점, 정성평가, 지원 제한 여부를 나눠 본다.",
+        "졸업생, 검정고시, 전학 등 본인 상황에 필요한 서류를 확인한다.",
+        "오래된 입시 글과 2026학년도 기준을 구분한다.",
+        "불확실하면 학교 상담 또는 대학 입학처에 확인한다."
+      ],
+      "comparisonTable": {
+        "title": "전형별 확인 포인트",
+        "columns": [
+          "전형",
+          "확인할 점",
+          "주의할 점"
+        ],
+        "rows": [
+          [
+            "학생부종합",
+            "정성평가 반영 방식",
+            "대학별 판단 기준이 다를 수 있음"
+          ],
+          [
+            "학생부교과",
+            "정량 감점표 여부",
+            "점수 차이가 큰 모집단위는 영향이 커질 수 있음"
+          ],
+          [
+            "정시/수능",
+            "수능 전형 반영 방식",
+            "정시는 괜찮다고 단정하면 위험"
+          ],
+          [
+            "논술/실기",
+            "지원 제한 또는 감점 여부",
+            "전형명만 보고 예외로 판단하지 말 것"
+          ]
+        ]
+      },
+      "sourceLinks": [
+        {
+          "label": "대구교육신문 대교협 기본사항 보도",
+          "url": "https://www.edudaegu.co.kr/news/articleView.html?idxno=6130",
+          "note": "2026학년도 기본사항과 전 전형 반영 맥락.",
+          "checkedAt": "2026-05-31"
+        },
+        {
+          "label": "E동아 2026 대입 학폭 반영 가이드",
+          "url": "https://edu.donga.com/news/articleView.html?idxno=84852",
+          "note": "조치사항별 불이익과 지원자 관점 설명.",
+          "checkedAt": "2026-05-31"
+        },
+        {
+          "label": "Daum 뉴스 학폭 증가 트렌드",
+          "url": "https://v.daum.net/v/20260531080300396",
+          "note": "이번 검색 수요가 생긴 최신 뉴스 맥락.",
+          "checkedAt": "2026-05-31"
+        },
+        {
+          "label": "연합뉴스 2026학년도 대입 반영",
+          "url": "https://www.yna.co.kr/view/AKR20230830058000530",
+          "note": "대교협 발표 초기 보도와 제도 배경.",
+          "checkedAt": "2026-05-31"
+        }
+      ],
+      "internalLinks": [
+        {
+          "label": "시장 홈",
+          "href": "/kr/ko/",
+          "note": "이 시장의 편집 큐를 봅니다."
+        },
+        {
+          "label": "트렌드 신호",
+          "href": "/kr/ko/trends/2026-대입-학폭-반영/",
+          "note": "주제가 어디서 시작됐는지 확인합니다."
+        },
+        {
+          "label": "SERP 분석",
+          "href": "/kr/ko/serp/2026-대입-학폭-반영/",
+          "note": "참조 결과의 패턴과 빈틈을 봅니다."
+        },
+        {
+          "label": "글로벌 트렌드 맵",
+          "href": "/global/trend-map/",
+          "note": "시장 간 신호를 비교합니다."
+        }
+      ],
+      "seoReadinessScore": 100,
       "affiliateLinks": [],
       "monetizationDeferred": true,
       "productCandidateState": "pending",
@@ -257,8 +807,8 @@
       "status": "test_published_noindex",
       "indexStatus": "noindex",
       "publishStatus": "published",
-      "createdAt": "2026-05-31T10:37:14.843200+00:00",
-      "updatedAt": "2026-05-31T10:37:14.844036+00:00"
+      "createdAt": "2026-05-31T11:03:49.720588+00:00",
+      "updatedAt": "2026-05-31T11:03:49.721430+00:00"
     }
   ]
 }

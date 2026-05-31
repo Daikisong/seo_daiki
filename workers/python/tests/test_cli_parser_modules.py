@@ -50,11 +50,15 @@ class CliParserModuleTests(unittest.TestCase):
     def test_content_and_calendar_commands_parse_arguments(self) -> None:
         parser = cli_parser.build_parser()
         post = parser.parse_args(["post:publish-test", "--article-id", "article-1"])
+        index_status = parser.parse_args(["post:set-index-status", "--article-id", "article-1", "--index-status", "index"])
         calendar = parser.parse_args(["calendar:explain", "--market", "kr"])
 
         self.assertEqual(post.command, "post:publish-test")
         self.assertEqual(post.article_id, "article-1")
         self.assertEqual(post.mode, "noindex")
+        self.assertEqual(index_status.command, "post:set-index-status")
+        self.assertEqual(index_status.article_id, "article-1")
+        self.assertEqual(index_status.index_status, "index")
         self.assertEqual(calendar.command, "calendar:explain")
         self.assertEqual(calendar.market, "kr")
 

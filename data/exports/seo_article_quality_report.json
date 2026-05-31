@@ -1,0 +1,366 @@
+{
+  "passed": true,
+  "minimumScore": 100,
+  "articleReports": [
+    {
+      "slug": "iphone-16-promocao-brasil",
+      "score": 100,
+      "checks": [
+        {
+          "name": "hero image with alt and caption",
+          "pass": true,
+          "points": 12
+        },
+        {
+          "name": "summary is reader-facing",
+          "pass": true,
+          "points": 8
+        },
+        {
+          "name": "at least six body sections",
+          "pass": true,
+          "points": 8
+        },
+        {
+          "name": "substantial body length",
+          "pass": true,
+          "points": 10
+        },
+        {
+          "name": "quick facts",
+          "pass": true,
+          "points": 8
+        },
+        {
+          "name": "checklist UI data",
+          "pass": true,
+          "points": 10
+        },
+        {
+          "name": "comparison table",
+          "pass": true,
+          "points": 10
+        },
+        {
+          "name": "source links with checked date",
+          "pass": true,
+          "points": 12
+        },
+        {
+          "name": "internal links",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "no visible internal workflow phrasing",
+          "pass": true,
+          "points": 8
+        },
+        {
+          "name": "safe monetization state",
+          "pass": true,
+          "points": 4
+        },
+        {
+          "name": "noindex until promotion",
+          "pass": true,
+          "points": 4
+        }
+      ]
+    },
+    {
+      "slug": "samsung-s90f-oled-deal",
+      "score": 100,
+      "checks": [
+        {
+          "name": "hero image with alt and caption",
+          "pass": true,
+          "points": 12
+        },
+        {
+          "name": "summary is reader-facing",
+          "pass": true,
+          "points": 8
+        },
+        {
+          "name": "at least six body sections",
+          "pass": true,
+          "points": 8
+        },
+        {
+          "name": "substantial body length",
+          "pass": true,
+          "points": 10
+        },
+        {
+          "name": "quick facts",
+          "pass": true,
+          "points": 8
+        },
+        {
+          "name": "checklist UI data",
+          "pass": true,
+          "points": 10
+        },
+        {
+          "name": "comparison table",
+          "pass": true,
+          "points": 10
+        },
+        {
+          "name": "source links with checked date",
+          "pass": true,
+          "points": 12
+        },
+        {
+          "name": "internal links",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "no visible internal workflow phrasing",
+          "pass": true,
+          "points": 8
+        },
+        {
+          "name": "safe monetization state",
+          "pass": true,
+          "points": 4
+        },
+        {
+          "name": "noindex until promotion",
+          "pass": true,
+          "points": 4
+        }
+      ]
+    },
+    {
+      "slug": "iphone-18-rumors-japan",
+      "score": 100,
+      "checks": [
+        {
+          "name": "hero image with alt and caption",
+          "pass": true,
+          "points": 12
+        },
+        {
+          "name": "summary is reader-facing",
+          "pass": true,
+          "points": 8
+        },
+        {
+          "name": "at least six body sections",
+          "pass": true,
+          "points": 8
+        },
+        {
+          "name": "substantial body length",
+          "pass": true,
+          "points": 10
+        },
+        {
+          "name": "quick facts",
+          "pass": true,
+          "points": 8
+        },
+        {
+          "name": "checklist UI data",
+          "pass": true,
+          "points": 10
+        },
+        {
+          "name": "comparison table",
+          "pass": true,
+          "points": 10
+        },
+        {
+          "name": "source links with checked date",
+          "pass": true,
+          "points": 12
+        },
+        {
+          "name": "internal links",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "no visible internal workflow phrasing",
+          "pass": true,
+          "points": 8
+        },
+        {
+          "name": "safe monetization state",
+          "pass": true,
+          "points": 4
+        },
+        {
+          "name": "noindex until promotion",
+          "pass": true,
+          "points": 4
+        }
+      ]
+    },
+    {
+      "slug": "renta-2025-avisos-aeat",
+      "score": 100,
+      "checks": [
+        {
+          "name": "hero image with alt and caption",
+          "pass": true,
+          "points": 12
+        },
+        {
+          "name": "summary is reader-facing",
+          "pass": true,
+          "points": 8
+        },
+        {
+          "name": "at least six body sections",
+          "pass": true,
+          "points": 8
+        },
+        {
+          "name": "substantial body length",
+          "pass": true,
+          "points": 10
+        },
+        {
+          "name": "quick facts",
+          "pass": true,
+          "points": 8
+        },
+        {
+          "name": "checklist UI data",
+          "pass": true,
+          "points": 10
+        },
+        {
+          "name": "comparison table",
+          "pass": true,
+          "points": 10
+        },
+        {
+          "name": "source links with checked date",
+          "pass": true,
+          "points": 12
+        },
+        {
+          "name": "internal links",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "no visible internal workflow phrasing",
+          "pass": true,
+          "points": 8
+        },
+        {
+          "name": "safe monetization state",
+          "pass": true,
+          "points": 4
+        },
+        {
+          "name": "noindex until promotion",
+          "pass": true,
+          "points": 4
+        }
+      ]
+    },
+    {
+      "slug": "2026-대입-학폭-반영",
+      "score": 100,
+      "checks": [
+        {
+          "name": "hero image with alt and caption",
+          "pass": true,
+          "points": 12
+        },
+        {
+          "name": "summary is reader-facing",
+          "pass": true,
+          "points": 8
+        },
+        {
+          "name": "at least six body sections",
+          "pass": true,
+          "points": 8
+        },
+        {
+          "name": "substantial body length",
+          "pass": true,
+          "points": 10
+        },
+        {
+          "name": "quick facts",
+          "pass": true,
+          "points": 8
+        },
+        {
+          "name": "checklist UI data",
+          "pass": true,
+          "points": 10
+        },
+        {
+          "name": "comparison table",
+          "pass": true,
+          "points": 10
+        },
+        {
+          "name": "source links with checked date",
+          "pass": true,
+          "points": 12
+        },
+        {
+          "name": "internal links",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "no visible internal workflow phrasing",
+          "pass": true,
+          "points": 8
+        },
+        {
+          "name": "safe monetization state",
+          "pass": true,
+          "points": 4
+        },
+        {
+          "name": "noindex until promotion",
+          "pass": true,
+          "points": 4
+        }
+      ]
+    }
+  ],
+  "rendererChecks": [
+    {
+      "name": "renders hero image",
+      "pass": true
+    },
+    {
+      "name": "renders table of contents",
+      "pass": true
+    },
+    {
+      "name": "renders checklist",
+      "pass": true
+    },
+    {
+      "name": "renders comparison table",
+      "pass": true
+    },
+    {
+      "name": "renders source links",
+      "pass": true
+    },
+    {
+      "name": "renders internal links",
+      "pass": true
+    },
+    {
+      "name": "renders Article JSON-LD",
+      "pass": true
+    }
+  ]
+}

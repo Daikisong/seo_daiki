@@ -16,6 +16,8 @@ from workers.python.writers.market_test_article_state import (
     publish_test_article_record,
     publish_test_article_rows,
     published_state_for_mode,
+    set_article_index_status_record,
+    set_article_index_status_rows,
 )
 
 
@@ -48,3 +50,15 @@ def promote_index_candidate(article_id: str | None = None) -> str:
 
 def promote_index_candidate_records(articles: list[dict[str, Any]], article_id: str | None = None) -> list[dict[str, Any]]:
     return promote_index_candidate_rows(articles, article_id, now)
+
+
+def set_article_index_status(article_id: str | None = None, index_status: str = "index") -> str:
+    payload = read_json(TEST_ARTICLES_PATH, {"articles": []})
+    articles = set_article_index_status_records(payload.get("articles", []), article_id, index_status)
+    return str(write_json(TEST_ARTICLES_PATH, {"articles": articles}))
+
+
+def set_article_index_status_records(
+    articles: list[dict[str, Any]], article_id: str | None = None, index_status: str = "index"
+) -> list[dict[str, Any]]:
+    return set_article_index_status_rows(articles, article_id, index_status, now)

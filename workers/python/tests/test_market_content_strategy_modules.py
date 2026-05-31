@@ -77,7 +77,7 @@ class MarketContentStrategyModuleTests(unittest.TestCase):
 
         self.assertEqual(briefs[0]["id"], "brief-content-strategy-kw-us-usb")
         self.assertIn("Do not insert affiliate links in the test article.", briefs[0]["forbiddenClaimsJson"])
-        self.assertIn("Product links are forbidden", briefs[0]["briefMarkdown"])
+        self.assertIn("Reader angle", briefs[0]["briefMarkdown"])
 
     def test_test_article_records_default_to_pending_noindex(self) -> None:
         with patch("workers.python.writers.market_test_articles.now", return_value="2026-05-28T00:00:00+00:00"):
@@ -99,7 +99,7 @@ class MarketContentStrategyModuleTests(unittest.TestCase):
         self.assertEqual(articles[0]["publishStatus"], "pending")
         self.assertEqual(articles[0]["indexStatus"], "noindex")
         self.assertEqual(articles[0]["affiliateLinks"], [])
-        self.assertIn("No affiliate links", articles[0]["contentMdx"])
+        self.assertIn("## Quick Answer", articles[0]["contentMdx"])
 
     def test_publish_and_promote_records_update_only_requested_article(self) -> None:
         articles = [

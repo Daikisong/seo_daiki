@@ -4,7 +4,7 @@ from collections.abc import Callable
 from typing import Any
 
 from workers.python.common import slugify
-from workers.python.writers.content_strategy_rules import article_sections, article_summary, markdown_article
+from workers.python.writers.content_strategy_rules import article_experience, article_sections, article_summary, markdown_article
 
 
 def strategy_matches_filter(strategy: dict[str, Any], strategy_id: str | None = None) -> bool:
@@ -17,6 +17,7 @@ def test_article_record(strategy: dict[str, Any], now_factory: Callable[[], str]
     sections = article_sections(strategy)
     title = str(strategy.get("titleStrategy") or "Market test post")
     summary = article_summary(strategy)
+    experience = article_experience(strategy)
     timestamp = now_factory()
     return {
         "id": article_id,
@@ -31,6 +32,7 @@ def test_article_record(strategy: dict[str, Any], now_factory: Callable[[], str]
         "summary": summary,
         "contentMdx": markdown_article(title, sections),
         "sections": sections,
+        **experience,
         "affiliateLinks": [],
         "monetizationDeferred": True,
         "productCandidateState": "pending",

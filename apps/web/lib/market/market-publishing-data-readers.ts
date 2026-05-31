@@ -35,6 +35,22 @@ export function readMarketPosts(market: MarketConfig): MarketPostView[] {
           heading: text(record(section).heading),
           body: text(record(section).body)
         })),
+        heroImage: imageValue(row.heroImage),
+        quickFacts: array(row.quickFacts).map((item) => ({ label: text(record(item).label), value: text(record(item).value) })),
+        checklist: array(row.checklist).map((item) => text(item)).filter(Boolean),
+        comparisonTable: tableValue(row.comparisonTable),
+        sourceLinks: array(row.sourceLinks).map((item) => ({
+          label: text(record(item).label),
+          url: text(record(item).url),
+          note: text(record(item).note),
+          checkedAt: text(record(item).checkedAt)
+        })),
+        internalLinks: array(row.internalLinks).map((item) => ({
+          label: text(record(item).label),
+          href: text(record(item).href),
+          note: text(record(item).note)
+        })),
+        seoReadinessScore: Number(row.seoReadinessScore) || 0,
         monetizationDeferred: row.monetizationDeferred !== false,
         productCandidateState: text(row.productCandidateState) || "pending",
         affiliateLinks: array(row.affiliateLinks),
@@ -42,6 +58,32 @@ export function readMarketPosts(market: MarketConfig): MarketPostView[] {
         publishStatus: text(row.publishStatus)
       };
     });
+}
+
+function imageValue(value: unknown): MarketPostView["heroImage"] {
+  const row = record(value);
+  const src = text(row.src);
+  if (!src) {
+    return undefined;
+  }
+  return {
+    src,
+    alt: text(row.alt),
+    caption: text(row.caption)
+  };
+}
+
+function tableValue(value: unknown): MarketPostView["comparisonTable"] {
+  const row = record(value);
+  const title = text(row.title);
+  const columns = array(row.columns).map((item) => text(item)).filter(Boolean);
+  const rows = array(row.rows)
+    .map((item) => array(item).map((cell) => text(cell)))
+    .filter((item) => item.length > 0);
+  if (!title || columns.length === 0 || rows.length === 0) {
+    return undefined;
+  }
+  return { title, columns, rows };
 }
 
 export function readMarketCalendar(market: MarketConfig) {

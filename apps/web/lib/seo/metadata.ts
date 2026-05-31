@@ -7,6 +7,8 @@ export type MarketResearchMetadataInput = {
   description: string;
   canonical: string;
   hreflangMap?: HreflangMap;
+  image?: string;
+  index?: boolean;
 };
 
 export const researchRobots = {
@@ -18,7 +20,9 @@ export function marketResearchMetadata({
   title,
   description,
   canonical,
-  hreflangMap
+  hreflangMap,
+  image,
+  index = false
 }: MarketResearchMetadataInput): Metadata {
   return {
     title,
@@ -27,7 +31,21 @@ export function marketResearchMetadata({
       canonical,
       languages: hreflangMap
     },
-    robots: researchRobots
+    robots: { index, follow: true },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      siteName: "Global Import Lab",
+      type: "article",
+      images: image ? [{ url: image }] : undefined
+    },
+    twitter: {
+      card: image ? "summary_large_image" : "summary",
+      title,
+      description,
+      images: image ? [image] : undefined
+    }
   };
 }
 

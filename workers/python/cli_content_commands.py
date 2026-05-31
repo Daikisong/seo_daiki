@@ -9,6 +9,7 @@ from workers.python.writers.market_content_strategy import (
     generate_test_post,
     promote_index_candidate,
     publish_test_article,
+    set_article_index_status,
 )
 
 
@@ -23,4 +24,6 @@ def run_content_command(args: Namespace) -> DispatchResult:
         return handled(publish_test_article(args.article_id, args.mode))
     if args.command == "post:promote-index-candidate":
         return handled(promote_index_candidate(args.article_id))
+    if args.command == "post:set-index-status":
+        return handled(set_article_index_status(args.article_id, args.index_status))
     return NOT_HANDLED

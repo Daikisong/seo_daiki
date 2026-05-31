@@ -15,3 +15,6 @@ def add_content_commands(subcommands: Subcommands) -> None:
     post_publish.add_argument("--mode", default="noindex")
     post_promote = subcommands.add_parser("post:promote-index-candidate")
     post_promote.add_argument("--article-id")
+    post_index_status = subcommands.add_parser("post:set-index-status")
+    post_index_status.add_argument("--article-id")
+    post_index_status.add_argument("--index-status", choices=("index", "noindex", "pending"), default="index")
