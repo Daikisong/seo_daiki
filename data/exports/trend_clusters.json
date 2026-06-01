@@ -1,13 +1,47 @@
 {
   "clusters": [
     {
+      "id": "trend-cluster-kr-ko-게이밍-모니터-구매-가이드",
+      "market": "kr",
+      "language": "ko",
+      "canonicalTopic": "게이밍 모니터 구매 가이드",
+      "slug": "게이밍-모니터-구매-가이드",
+      "category": "general",
+      "detectedAt": "2026-06-01T18:13:45.923175+00:00",
+      "status": "scored",
+      "signalCount": 2,
+      "countriesSeenJson": [
+        "KR"
+      ],
+      "relatedKeywordsJson": [
+        "게이밍 모니터 구매 기준",
+        "게이밍 모니터 추천"
+      ],
+      "score": 79.28,
+      "scoreBreakdownJson": {
+        "velocityScore": 67.5,
+        "sourceCorroborationScore": 73,
+        "marketSpecificityScore": 96.5,
+        "contentOpportunityScore": 79.0,
+        "commercialHintScore": 85.0,
+        "evidenceHintScore": 75.5,
+        "freshnessScore": 89.5,
+        "noisePenalty": 0,
+        "compliancePenalty": 0
+      },
+      "signalIds": [
+        "market-trend-signal-kr-ko-google-trending-now-export-게이밍-모니터-추천-11",
+        "market-trend-signal-kr-ko-google-trending-now-export-게이밍-모니터-구매-기준-12"
+      ]
+    },
+    {
       "id": "trend-cluster-br-pt-br-iphone-16-promocao-brasil",
       "market": "br",
       "language": "pt-br",
       "canonicalTopic": "iphone 16 promocao brasil",
       "slug": "iphone-16-promocao-brasil",
       "category": "general",
-      "detectedAt": "2026-05-31T12:17:07.529170+00:00",
+      "detectedAt": "2026-06-01T18:13:45.923129+00:00",
       "status": "scored",
       "signalCount": 2,
       "countriesSeenJson": [
@@ -41,7 +75,7 @@
       "canonicalTopic": "samsung s90f oled deal",
       "slug": "samsung-s90f-oled-deal",
       "category": "general",
-      "detectedAt": "2026-05-31T12:17:07.529212+00:00",
+      "detectedAt": "2026-06-01T18:13:45.923181+00:00",
       "status": "scored",
       "signalCount": 2,
       "countriesSeenJson": [
@@ -69,13 +103,47 @@
       ]
     },
     {
+      "id": "trend-cluster-jp-ja-runway-aleph-2-ai-video-editing",
+      "market": "jp",
+      "language": "ja",
+      "canonicalTopic": "runway aleph 2 ai video editing",
+      "slug": "runway-aleph-2-ai-video-editing",
+      "category": "general",
+      "detectedAt": "2026-06-01T18:13:45.923158+00:00",
+      "status": "scored",
+      "signalCount": 2,
+      "countriesSeenJson": [
+        "JP"
+      ],
+      "relatedKeywordsJson": [
+        "runway aleph 2 ai video editing",
+        "runway aleph 2 edit studio"
+      ],
+      "score": 77.52,
+      "scoreBreakdownJson": {
+        "velocityScore": 63.0,
+        "sourceCorroborationScore": 73,
+        "marketSpecificityScore": 95.0,
+        "contentOpportunityScore": 79.0,
+        "commercialHintScore": 81.0,
+        "evidenceHintScore": 73.0,
+        "freshnessScore": 91.0,
+        "noisePenalty": 0,
+        "compliancePenalty": 0
+      },
+      "signalIds": [
+        "market-trend-signal-jp-ja-google-trending-now-export-runway-aleph-2-ai-video-editing-9",
+        "market-trend-signal-jp-ja-google-trending-now-export-runway-aleph-2-edit-studio-10"
+      ]
+    },
+    {
       "id": "trend-cluster-jp-ja-iphone-18-rumors-japan",
       "market": "jp",
       "language": "ja",
       "canonicalTopic": "iphone 18 rumors japan",
       "slug": "iphone-18-rumors-japan",
       "category": "general",
-      "detectedAt": "2026-05-31T12:17:07.529195+00:00",
+      "detectedAt": "2026-06-01T18:13:45.923150+00:00",
       "status": "scored",
       "signalCount": 2,
       "countriesSeenJson": [
@@ -109,7 +177,7 @@
       "canonicalTopic": "renta 2025 avisos aeat",
       "slug": "renta-2025-avisos-aeat",
       "category": "general",
-      "detectedAt": "2026-05-31T12:17:07.529187+00:00",
+      "detectedAt": "2026-06-01T18:13:45.923142+00:00",
       "status": "scored",
       "signalCount": 2,
       "countriesSeenJson": [
@@ -137,37 +205,37 @@
       ]
     },
     {
-      "id": "trend-cluster-kr-ko-2026-대입-학폭-반영",
+      "id": "trend-cluster-kr-ko-kbo-올스타-팬투표-2026",
       "market": "kr",
       "language": "ko",
-      "canonicalTopic": "2026 대입 학폭 반영",
-      "slug": "2026-대입-학폭-반영",
+      "canonicalTopic": "kbo 올스타 팬투표 2026",
+      "slug": "kbo-올스타-팬투표-2026",
       "category": "general",
-      "detectedAt": "2026-05-31T12:17:07.529206+00:00",
+      "detectedAt": "2026-06-01T18:13:45.923168+00:00",
       "status": "scored",
       "signalCount": 2,
       "countriesSeenJson": [
         "KR"
       ],
       "relatedKeywordsJson": [
-        "2026 대입 학폭 반영",
-        "대입 학교폭력 의무 반영"
+        "kbo 올스타 팬투표 2026",
+        "kbo 올스타전 팬투표"
       ],
-      "score": 73.62,
+      "score": 71.79,
       "scoreBreakdownJson": {
-        "velocityScore": 68.0,
+        "velocityScore": 66.5,
         "sourceCorroborationScore": 73,
-        "marketSpecificityScore": 98.0,
+        "marketSpecificityScore": 97.0,
         "contentOpportunityScore": 79.0,
-        "commercialHintScore": 11.0,
-        "evidenceHintScore": 89.0,
-        "freshnessScore": 90.0,
+        "commercialHintScore": 8.0,
+        "evidenceHintScore": 81.0,
+        "freshnessScore": 87.0,
         "noisePenalty": 0,
         "compliancePenalty": 0
       },
       "signalIds": [
-        "market-trend-signal-kr-ko-google-trending-now-export-2026-대입-학폭-반영-9",
-        "market-trend-signal-kr-ko-google-trending-now-export-대입-학교폭력-의무-반영-10"
+        "market-trend-signal-kr-ko-google-trending-now-export-kbo-올스타-팬투표-2026-13",
+        "market-trend-signal-kr-ko-google-trending-now-export-kbo-올스타전-팬투표-14"
       ]
     }
   ]

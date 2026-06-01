@@ -30,6 +30,10 @@ def test_article_records(strategies: list[dict[str, Any]], strategy_id: str | No
     return test_article_records_for_strategies(strategies, strategy_id, now)
 
 
+# Public API keeps its old name; this only prevents pytest from collecting it.
+test_article_records.__test__ = False
+
+
 def publish_test_article(article_id: str | None = None, mode: str = "noindex") -> str:
     payload = read_json(TEST_ARTICLES_PATH, {"articles": []})
     articles = publish_test_article_records(payload.get("articles", []), article_id, mode)

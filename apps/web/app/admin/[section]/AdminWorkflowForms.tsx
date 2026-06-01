@@ -3,12 +3,12 @@ import {
   topicStatuses
 } from "@/lib/admin/admin-section-config";
 import { jobButtonLabel } from "@/lib/admin/admin-form-utils";
-import type {
-  readContentBriefRows,
-  readTopicRows
-} from "@/lib/admin/admin-section-data";
+type StatusFormRow = {
+  id: string;
+  status: string;
+};
 
-export function TopicStatusForm({ topic }: { topic: Awaited<ReturnType<typeof readTopicRows>>[number] }) {
+export function TopicStatusForm({ topic }: { topic: StatusFormRow }) {
   return (
     <form action="/api/admin/topic-status" className="grid min-w-52 gap-2" method="post">
       <input name="id" type="hidden" value={topic.id} />
@@ -24,7 +24,7 @@ export function TopicStatusForm({ topic }: { topic: Awaited<ReturnType<typeof re
   );
 }
 
-export function ContentBriefStatusForm({ brief }: { brief: Awaited<ReturnType<typeof readContentBriefRows>>[number] }) {
+export function ContentBriefStatusForm({ brief }: { brief: StatusFormRow }) {
   return (
     <form action="/api/admin/content-brief-status" className="grid min-w-52 gap-2" method="post">
       <input name="id" type="hidden" value={brief.id} />

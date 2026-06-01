@@ -1,4 +1,5 @@
 export type MarketContentSection = "trends" | "keywords" | "serp" | "briefs" | "posts";
+export type MarketContentBranch = "review" | "news";
 export type SluggedMarketItem = { slug: string };
 
 export interface MarketTrendView {
@@ -83,6 +84,9 @@ export interface MarketPostView {
   sourceLinks: Array<{ label: string; url: string; note: string; checkedAt: string }>;
   internalLinks: Array<{ label: string; href: string; note: string }>;
   seoReadinessScore: number;
+  contentBranch: MarketContentBranch;
+  monetizationRoute: string;
+  marketExpansionPolicy: string;
   monetizationDeferred: boolean;
   productCandidateState: string;
   affiliateLinks: unknown[];

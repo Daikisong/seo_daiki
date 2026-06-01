@@ -1,5 +1,7 @@
 # Architecture
 
+Current core architecture notes live in [`docs/core/architecture.md`](core/architecture.md). This file remains as the broader historical system overview, but new refactors should use `docs/core` as the first reference.
+
 Global Import Lab is built as a monorepo.
 
 ```text

@@ -1,43 +1,6 @@
 {
   "opportunities": [
     {
-      "id": "serp-opportunity-trend-keyword-trend-cluster-kr-ko-2026-대입-학폭-반영-2026-대입-학폭-반영",
-      "keywordId": "trend-keyword-trend-cluster-kr-ko-2026-대입-학폭-반영-2026-대입-학폭-반영",
-      "market": "kr",
-      "language": "ko",
-      "keyword": "2026 대입 학폭 반영",
-      "opportunityScore": 81.42,
-      "dominantIntent": "informational",
-      "dominantContentTypesJson": [
-        "article",
-        "guide"
-      ],
-      "topPatternsJson": [
-        "Original data/testing is weak across competitors"
-      ],
-      "contentGapJson": {
-        "missingAngles": [
-          "avoid universal penalty claim",
-          "latest 2026 update",
-          "official PDF reference",
-          "official admissions rule",
-          "official caveat",
-          "student action list",
-          "student-parent checklist",
-          "university-specific differences"
-        ],
-        "canDifferentiateWith": [
-          "market notes",
-          "verification checklist",
-          "clear no-link test post"
-        ]
-      },
-      "recommendedAngle": "Answer 2026 대입 학폭 반영 with market-specific evidence and fill gaps: avoid universal penalty claim, latest 2026 update, official PDF reference.",
-      "recommendedArticleType": "article",
-      "shouldWrite": true,
-      "reason": "Trend signal plus manual SERP gaps show a test post opportunity."
-    },
-    {
       "id": "serp-opportunity-trend-keyword-trend-cluster-jp-ja-iphone-18-rumors-japan-iphone-18-rumors-japan",
       "keywordId": "trend-keyword-trend-cluster-jp-ja-iphone-18-rumors-japan-iphone-18-rumors-japan",
       "market": "jp",
@@ -69,6 +32,42 @@
         ]
       },
       "recommendedAngle": "Answer iphone 18 rumors japan with market-specific evidence and fill gaps: Japan buyer context, Japan carrier relevance, Japan release caveat.",
+      "recommendedArticleType": "article",
+      "shouldWrite": true,
+      "reason": "Trend signal plus manual SERP gaps show a test post opportunity."
+    },
+    {
+      "id": "serp-opportunity-trend-keyword-trend-cluster-kr-ko-kbo-올스타-팬투표-2026-kbo-올스타-팬투표-2026",
+      "keywordId": "trend-keyword-trend-cluster-kr-ko-kbo-올스타-팬투표-2026-kbo-올스타-팬투표-2026",
+      "market": "kr",
+      "language": "ko",
+      "keyword": "kbo 올스타 팬투표 2026",
+      "opportunityScore": 77.31,
+      "dominantIntent": "informational",
+      "dominantContentTypesJson": [
+        "article"
+      ],
+      "topPatternsJson": [
+        "Original data/testing is weak across competitors"
+      ],
+      "contentGapJson": {
+        "missingAngles": [
+          "감정적 제목 완화",
+          "공식 일정 확인",
+          "공식 후보표 연결",
+          "관람 준비",
+          "선수 누락 맥락",
+          "앱 참여 방식",
+          "주의점",
+          "투표 실무 안내"
+        ],
+        "canDifferentiateWith": [
+          "market notes",
+          "verification checklist",
+          "clear no-link test post"
+        ]
+      },
+      "recommendedAngle": "Answer kbo 올스타 팬투표 2026 with market-specific evidence and fill gaps: 감정적 제목 완화, 공식 일정 확인, 공식 후보표 연결.",
       "recommendedArticleType": "article",
       "shouldWrite": true,
       "reason": "Trend signal plus manual SERP gaps show a test post opportunity."
@@ -113,6 +112,45 @@
       "reason": "Trend signal plus manual SERP gaps show a test post opportunity."
     },
     {
+      "id": "serp-opportunity-trend-keyword-trend-cluster-jp-ja-runway-aleph-2-ai-video-editing-runway-aleph-2-ai-video-editing",
+      "keywordId": "trend-keyword-trend-cluster-jp-ja-runway-aleph-2-ai-video-editing-runway-aleph-2-ai-video-editing",
+      "market": "jp",
+      "language": "ja",
+      "keyword": "runway aleph 2 ai video editing",
+      "opportunityScore": 74.2,
+      "dominantIntent": "commercial_research",
+      "dominantContentTypesJson": [
+        "article",
+        "official",
+        "guide"
+      ],
+      "topPatternsJson": [
+        "Comparison table appears in top results",
+        "Product-card monetization appears, but this pipeline defers links"
+      ],
+      "contentGapJson": {
+        "missingAngles": [
+          "Japan creator use case",
+          "alternative tools",
+          "commercial rights",
+          "commercial-use checklist",
+          "cost checklist",
+          "independent comparison",
+          "pricing",
+          "pricing comparison"
+        ],
+        "canDifferentiateWith": [
+          "market notes",
+          "verification checklist",
+          "clear no-link test post"
+        ]
+      },
+      "recommendedAngle": "Answer runway aleph 2 ai video editing with market-specific evidence and fill gaps: Japan creator use case, alternative tools, commercial rights.",
+      "recommendedArticleType": "buyer_intent_test_post",
+      "shouldWrite": true,
+      "reason": "Trend signal plus manual SERP gaps show a test post opportunity."
+    },
+    {
       "id": "serp-opportunity-trend-keyword-trend-cluster-us-en-samsung-s90f-oled-deal-samsung-s90f-oled-deal",
       "keywordId": "trend-keyword-trend-cluster-us-en-samsung-s90f-oled-deal-samsung-s90f-oled-deal",
       "market": "us",
@@ -146,6 +184,43 @@
         ]
       },
       "recommendedAngle": "Answer samsung s90f oled deal with market-specific evidence and fill gaps: US return and warranty context, US stock check, current deal validation.",
+      "recommendedArticleType": "buyer_intent_test_post",
+      "shouldWrite": true,
+      "reason": "Trend signal plus manual SERP gaps show a test post opportunity."
+    },
+    {
+      "id": "serp-opportunity-trend-keyword-trend-cluster-kr-ko-게이밍-모니터-구매-가이드-게이밍-모니터-추천",
+      "keywordId": "trend-keyword-trend-cluster-kr-ko-게이밍-모니터-구매-가이드-게이밍-모니터-추천",
+      "market": "kr",
+      "language": "ko",
+      "keyword": "게이밍 모니터 추천",
+      "opportunityScore": 72.96,
+      "dominantIntent": "commercial_research",
+      "dominantContentTypesJson": [
+        "guide"
+      ],
+      "topPatternsJson": [
+        "Comparison table appears in top results",
+        "Product-card monetization appears, but this pipeline defers links"
+      ],
+      "contentGapJson": {
+        "missingAngles": [
+          "AS 정책",
+          "가격대",
+          "경쟁 제품 비교",
+          "독립 평가",
+          "모델 코드 확인",
+          "보증",
+          "세부 모델명",
+          "실구매 체크리스트"
+        ],
+        "canDifferentiateWith": [
+          "market notes",
+          "verification checklist",
+          "clear no-link test post"
+        ]
+      },
+      "recommendedAngle": "Answer 게이밍 모니터 추천 with market-specific evidence and fill gaps: AS 정책, 가격대, 경쟁 제품 비교.",
       "recommendedArticleType": "buyer_intent_test_post",
       "shouldWrite": true,
       "reason": "Trend signal plus manual SERP gaps show a test post opportunity."

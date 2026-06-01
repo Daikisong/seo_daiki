@@ -1,6 +1,242 @@
 {
   "articles": [
     {
+      "id": "test-article-content-strategy-trend-keyword-trend-cluster-kr-ko-게이밍-모니터-구매-가이드-게이밍-모니터-추천",
+      "strategyId": "content-strategy-trend-keyword-trend-cluster-kr-ko-게이밍-모니터-구매-가이드-게이밍-모니터-추천",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-kr-ko-게이밍-모니터-구매-가이드-게이밍-모니터-추천",
+      "market": "kr",
+      "language": "ko",
+      "slug": "게이밍-모니터-추천",
+      "title": "게이밍 모니터 추천 2026: QHD 180Hz와 OLED 중 먼저 볼 것",
+      "h1": "게이밍 모니터 추천 2026: QHD 180Hz와 OLED 중 먼저 볼 것",
+      "metaDescription": "한국에서 게임 관심이 다시 올라온 흐름에 맞춰, 게이밍 모니터를 살 때 먼저 정해야 할 해상도, 주사율, 패널, 응답속도, AS와 가격대 기준을 한 번에 비교합니다.",
+      "summary": "한국에서 게임 관심이 다시 올라온 흐름에 맞춰, 게이밍 모니터를 살 때 먼저 정해야 할 해상도, 주사율, 패널, 응답속도, AS와 가격대 기준을 한 번에 비교합니다.",
+      "contentMdx": "# 게이밍 모니터 추천 2026: QHD 180Hz와 OLED 중 먼저 볼 것\n\n## 빠른 결론\n2026년에 게이밍 모니터를 새로 산다면 먼저 QHD 해상도와 144~180Hz급 주사율을 기준으로 잡는 편이 가장 무난합니다. FPS를 오래 한다면 24~27형, QHD 이상 RPG나 콘솔 게임을 많이 한다면 27~32형이 편합니다. OLED는 화면 반응과 명암이 뛰어나지만 가격, 번인 보증, 밝은 방 사용성을 꼭 같이 확인해야 합니다.\n\n## 왜 지금 다시 보는가\n한국 Google Trends RSS에서 2026년 6월 1일 기준으로 '게임' 관심 흐름이 잡혔고, 실제 구매 의도는 모니터, 키보드, 헤드셋 같은 주변기기 비교로 이어질 가능성이 큽니다. 그중 모니터는 가격대가 넓고 사양 표기가 복잡해서 독자가 구매 전 정리된 기준을 가장 필요로 하는 품목입니다.\n\n## 먼저 정할 사양\n해상도는 FHD, QHD, 4K 중에서 정하고, 주사율은 최소 144Hz 이상을 봅니다. 그래픽카드가 중급이면 QHD 144~180Hz가 균형이 좋고, 고사양 PC나 콘솔을 쓴다면 4K 120Hz 이상도 후보가 됩니다. 패널은 IPS가 색감과 범용성이 좋고, VA는 명암비가 강하며, OLED는 반응속도와 암부 표현이 좋지만 가격과 보증 조건을 더 봐야 합니다.\n\n## 게임 장르별 선택법\n발로란트, 오버워치, 배틀그라운드처럼 빠른 움직임이 많은 게임은 24~27형, 144Hz 이상, 낮은 응답 지연을 우선합니다. 로스트아크, 콘솔 RPG, 오픈월드 게임을 많이 한다면 27~32형 QHD 또는 4K가 더 만족스럽습니다. 영상 편집과 게임을 같이 한다면 색역, 밝기, 스탠드 조절, USB-C 입력까지 함께 보면 좋습니다.\n\n## 실구매 전 체크리스트\n상세페이지의 1ms 표기만 보지 말고 실제 리뷰에서 잔상, 오버슈트, 입력 지연을 확인하세요. 또한 HDMI 2.1 여부, DP 버전, VRR 또는 G-Sync/FreeSync 호환, 스탠드 높낮이 조절, 무상보증 기간, 패널 교환 정책, 불량화소 기준을 함께 봐야 합니다. 같은 모델명처럼 보여도 세부 코드와 출시 연식이 다를 수 있습니다.\n\n## 가격대별 현실적인 기준\n20만 원대는 FHD 144~180Hz나 입문형 QHD를 보는 구간입니다. 30~50만 원대는 27형 QHD 고주사율 제품이 많아 가장 대중적인 선택지가 됩니다. 70만 원 이상부터는 4K 고주사율, 미니 LED, OLED 같은 프리미엄 기능을 비교하게 되며, 이때는 성능보다 AS와 장기 사용 리스크까지 함께 따지는 편이 안전합니다.\n\n## 확인한 자료\n이번 글은 오늘 확인한 한국 관심 흐름과 국내 구매 가이드형 페이지들의 공통 구성을 바탕으로 만들었습니다. 제품 순위 자체를 단정하지 않고, 해상도, 주사율, 패널, 단자, 보증, 가격대처럼 어떤 모델에도 적용되는 구매 기준을 먼저 정리했습니다.",
+      "sections": [
+        {
+          "heading": "빠른 결론",
+          "body": "2026년에 게이밍 모니터를 새로 산다면 먼저 QHD 해상도와 144~180Hz급 주사율을 기준으로 잡는 편이 가장 무난합니다. FPS를 오래 한다면 24~27형, QHD 이상 RPG나 콘솔 게임을 많이 한다면 27~32형이 편합니다. OLED는 화면 반응과 명암이 뛰어나지만 가격, 번인 보증, 밝은 방 사용성을 꼭 같이 확인해야 합니다."
+        },
+        {
+          "heading": "왜 지금 다시 보는가",
+          "body": "한국 Google Trends RSS에서 2026년 6월 1일 기준으로 '게임' 관심 흐름이 잡혔고, 실제 구매 의도는 모니터, 키보드, 헤드셋 같은 주변기기 비교로 이어질 가능성이 큽니다. 그중 모니터는 가격대가 넓고 사양 표기가 복잡해서 독자가 구매 전 정리된 기준을 가장 필요로 하는 품목입니다."
+        },
+        {
+          "heading": "먼저 정할 사양",
+          "body": "해상도는 FHD, QHD, 4K 중에서 정하고, 주사율은 최소 144Hz 이상을 봅니다. 그래픽카드가 중급이면 QHD 144~180Hz가 균형이 좋고, 고사양 PC나 콘솔을 쓴다면 4K 120Hz 이상도 후보가 됩니다. 패널은 IPS가 색감과 범용성이 좋고, VA는 명암비가 강하며, OLED는 반응속도와 암부 표현이 좋지만 가격과 보증 조건을 더 봐야 합니다."
+        },
+        {
+          "heading": "게임 장르별 선택법",
+          "body": "발로란트, 오버워치, 배틀그라운드처럼 빠른 움직임이 많은 게임은 24~27형, 144Hz 이상, 낮은 응답 지연을 우선합니다. 로스트아크, 콘솔 RPG, 오픈월드 게임을 많이 한다면 27~32형 QHD 또는 4K가 더 만족스럽습니다. 영상 편집과 게임을 같이 한다면 색역, 밝기, 스탠드 조절, USB-C 입력까지 함께 보면 좋습니다."
+        },
+        {
+          "heading": "실구매 전 체크리스트",
+          "body": "상세페이지의 1ms 표기만 보지 말고 실제 리뷰에서 잔상, 오버슈트, 입력 지연을 확인하세요. 또한 HDMI 2.1 여부, DP 버전, VRR 또는 G-Sync/FreeSync 호환, 스탠드 높낮이 조절, 무상보증 기간, 패널 교환 정책, 불량화소 기준을 함께 봐야 합니다. 같은 모델명처럼 보여도 세부 코드와 출시 연식이 다를 수 있습니다."
+        },
+        {
+          "heading": "가격대별 현실적인 기준",
+          "body": "20만 원대는 FHD 144~180Hz나 입문형 QHD를 보는 구간입니다. 30~50만 원대는 27형 QHD 고주사율 제품이 많아 가장 대중적인 선택지가 됩니다. 70만 원 이상부터는 4K 고주사율, 미니 LED, OLED 같은 프리미엄 기능을 비교하게 되며, 이때는 성능보다 AS와 장기 사용 리스크까지 함께 따지는 편이 안전합니다."
+        },
+        {
+          "heading": "확인한 자료",
+          "body": "이번 글은 오늘 확인한 한국 관심 흐름과 국내 구매 가이드형 페이지들의 공통 구성을 바탕으로 만들었습니다. 제품 순위 자체를 단정하지 않고, 해상도, 주사율, 패널, 단자, 보증, 가격대처럼 어떤 모델에도 적용되는 구매 기준을 먼저 정리했습니다."
+        }
+      ],
+      "heroImage": {
+        "src": "/images/trend-articles/gaming-monitor-korea-2026.png",
+        "alt": "밝은 책상 위에 놓인 게이밍 모니터와 키보드",
+        "caption": "게이밍 모니터는 해상도, 주사율, 패널, 보증 조건을 함께 봐야 장기 만족도가 높습니다."
+      },
+      "articleMeta": {
+        "checkedAt": "2026-05-31",
+        "readingTime": "약 6분",
+        "reviewer": "리뷰 가이드 편집팀",
+        "basis": "확인한 자료"
+      },
+      "keyTakeaways": [
+        "대부분의 게이머는 QHD 144~180Hz급을 기준으로 비교하면 실패 확률이 낮다.",
+        "OLED는 반응성과 명암이 강점이지만 가격, 밝기, 번인 보증을 같이 봐야 한다.",
+        "제품 링크를 붙이기 전에는 실제 가격, AS, 세부 모델명, 단자 구성을 다시 확인해야 한다."
+      ],
+      "verdictBox": {
+        "label": "추천",
+        "body": "처음 고르는 게이밍 모니터라면 27형 QHD 144~180Hz IPS 계열을 기준으로 두고, 예산과 게임 장르에 따라 OLED나 4K로 올리는 방식이 가장 안전합니다."
+      },
+      "prosCons": {
+        "pros": [
+          "구매 의도가 분명해 비교표와 체크리스트가 잘 맞음",
+          "제품 후보를 나중에 붙이기 쉬움",
+          "가격대별 선택 기준이 명확함"
+        ],
+        "cons": [
+          "가격과 재고가 자주 바뀜",
+          "모델명과 세부 코드가 복잡함",
+          "스펙 표기만으로 실제 잔상을 판단하기 어려움"
+        ]
+      },
+      "serpReferences": [
+        {
+          "rank": "1",
+          "label": "똑체크 게이밍 모니터 추천",
+          "url": "https://ddokcheck.com/gaming-monitor-recommendation-top5/",
+          "formatPattern": "추천 목록, 제품 카드, 핵심 스펙 표, 구매 기준, 빠른 비교표를 보여주는 구성."
+        },
+        {
+          "rank": "2",
+          "label": "Tomorrow Bliss 게이밍 모니터 추천",
+          "url": "https://tomorrowbliss.com/%EA%B2%8C%EC%9D%B4%EB%B0%8D-%EB%AA%A8%EB%8B%88%ED%84%B0-%EC%B6%94%EC%B2%9C/",
+          "formatPattern": "가격대와 사양을 나누어 설명하고, 입문자가 읽기 쉬운 guide 섹션과 checklist 구성."
+        },
+        {
+          "rank": "3",
+          "label": "CARESIDE 게이밍 모니터 추천",
+          "url": "https://careside.co.kr/best-gaming-monitor/",
+          "formatPattern": "목록형 비교, 장단점, 구매 전 checklist, ranking 형태를 결합한 구성."
+        },
+        {
+          "rank": "4",
+          "label": "MSI 게이밍 모니터 가이드",
+          "url": "https://kr.msi.com/blog/how-to-choose-a-gaming-monitor",
+          "formatPattern": "official 제조사 guide 섹션으로 해상도, 주사율, 패널 spec을 설명하는 구성."
+        }
+      ],
+      "quickFacts": [
+        {
+          "label": "추천 기준",
+          "value": "대부분의 PC 게이머는 27형 QHD 144~180Hz부터 비교"
+        },
+        {
+          "label": "주요 리스크",
+          "value": "1ms 표기만 보고 잔상, 입력 지연, 보증을 놓치는 것"
+        },
+        {
+          "label": "먼저 확인",
+          "value": "해상도, 주사율, 패널, HDMI/DP, VRR, AS 정책"
+        },
+        {
+          "label": "가격 기준",
+          "value": "30~50만 원대는 QHD 고주사율 제품 비교가 가장 현실적"
+        }
+      ],
+      "checklist": [
+        "내 그래픽카드가 QHD 고주사율을 안정적으로 낼 수 있는지 확인한다.",
+        "게임 장르에 맞게 24형, 27형, 32형 중 화면 크기를 먼저 고른다.",
+        "상세페이지의 1ms 문구보다 실제 잔상과 입력 지연 평가를 확인한다.",
+        "HDMI 2.1, DP 버전, VRR, G-Sync/FreeSync 호환을 확인한다.",
+        "스탠드 높낮이, 피벗, 베사홀, 책상 깊이까지 함께 본다.",
+        "불량화소와 패널 보증, OLED 번인 보증 조건을 확인한다."
+      ],
+      "comparisonTable": {
+        "title": "게이밍 모니터 선택 기준표",
+        "columns": [
+          "사용자 유형",
+          "우선 사양",
+          "주의할 점"
+        ],
+        "rows": [
+          [
+            "FPS 위주",
+            "24~27형, 144Hz 이상, 낮은 입력 지연",
+            "큰 화면보다 반응성과 시야 확보가 중요"
+          ],
+          [
+            "RPG/콘솔 위주",
+            "27~32형 QHD 또는 4K, HDR, 명암비",
+            "그래픽카드 성능과 콘솔 주사율 지원 확인"
+          ],
+          [
+            "작업 겸용",
+            "IPS/QHD, 색역, 밝기, 스탠드 조절",
+            "게임 성능만 보고 색 정확도를 놓치지 않기"
+          ],
+          [
+            "프리미엄 OLED",
+            "빠른 응답, 높은 명암, 번인 보증",
+            "가격과 장기 보증 조건을 반드시 확인"
+          ]
+        ]
+      },
+      "sourceLinks": [
+        {
+          "label": "Google Trends RSS KR",
+          "url": "https://trends.google.com/trending/rss?geo=KR",
+          "note": "2026-06-01에 한국 시장의 게임 관련 관심 흐름을 확인.",
+          "checkedAt": "2026-05-31"
+        },
+        {
+          "label": "똑체크 게이밍 모니터 추천",
+          "url": "https://ddokcheck.com/gaming-monitor-recommendation-top5/",
+          "note": "제품 카드와 구매 기준 구성 확인.",
+          "checkedAt": "2026-05-31"
+        },
+        {
+          "label": "Tomorrow Bliss 게이밍 모니터 추천",
+          "url": "https://tomorrowbliss.com/%EA%B2%8C%EC%9D%B4%EB%B0%8D-%EB%AA%A8%EB%8B%88%ED%84%B0-%EC%B6%94%EC%B2%9C/",
+          "note": "해상도, 주사율, 가격대 설명 흐름 확인.",
+          "checkedAt": "2026-05-31"
+        },
+        {
+          "label": "CARESIDE 게이밍 모니터 추천",
+          "url": "https://careside.co.kr/best-gaming-monitor/",
+          "note": "목록형 비교, 장단점, 구매 전 확인 항목 구성 확인.",
+          "checkedAt": "2026-05-31"
+        }
+      ],
+      "internalLinks": [
+        {
+          "label": "시장 홈",
+          "href": "/kr/ko/",
+          "note": "이 시장의 편집 큐를 봅니다."
+        },
+        {
+          "label": "트렌드 신호",
+          "href": "/kr/ko/trends/게이밍-모니터-추천/",
+          "note": "주제가 어디서 시작됐는지 확인합니다."
+        },
+        {
+          "label": "SERP 분석",
+          "href": "/kr/ko/serp/게이밍-모니터-추천/",
+          "note": "참조 결과의 패턴과 빈틈을 봅니다."
+        },
+        {
+          "label": "글로벌 트렌드 맵",
+          "href": "/global/trend-map/",
+          "note": "시장 간 신호를 비교합니다."
+        }
+      ],
+      "seoReadinessScore": 100,
+      "affiliateLinks": [],
+      "contentBranch": "review",
+      "monetizationRoute": "review_comparison",
+      "commerceFitScore": 100,
+      "informationalFitScore": 26,
+      "localizationPolicyJson": {
+        "strategy": "translate_all_product_markets",
+        "targetRule": "all_enabled_markets",
+        "createTranslationGroup": true,
+        "createLocalizedDrafts": true,
+        "requiresMarketAdaptation": true,
+        "translationOnlyIndexable": false,
+        "requiredLocalSignals": [
+          "localized title/h1/meta",
+          "local search intent and SERP angle",
+          "local price, availability, warranty, retailer, and return-policy context",
+          "local product candidate availability or explicit no-offer note",
+          "non-boilerplate localized examples"
+        ],
+        "reason": "Product/review-comparison topics should be localized across enabled markets, then kept noindex until each market has local SERP, price, availability, warranty, retailer, and product-candidate context."
+      },
+      "marketExpansionPolicy": "translate_all_product_markets",
+      "monetizationDeferred": true,
+      "productCandidateState": "allowed_pending",
+      "noindexReason": "Initial test article; index candidate requires human/editorial approval.",
+      "status": "test_pending",
+      "indexStatus": "noindex",
+      "publishStatus": "pending",
+      "createdAt": "2026-06-01T18:13:45.949155+00:00",
+      "updatedAt": "2026-06-01T18:13:45.949155+00:00"
+    },
+    {
       "id": "test-article-content-strategy-trend-keyword-trend-cluster-br-pt-br-iphone-16-promocao-brasil-iphone-16-promocao-brasil",
       "strategyId": "content-strategy-trend-keyword-trend-cluster-br-pt-br-iphone-16-promocao-brasil-iphone-16-promocao-brasil",
       "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-br-pt-br-iphone-16-promocao-brasil-iphone-16-promocao-brasil",
@@ -50,7 +286,7 @@
       "articleMeta": {
         "checkedAt": "2026-05-31",
         "readingTime": "6 min de leitura",
-        "reviewer": "Equipe editorial da Global Import Lab",
+        "reviewer": "Equipe editorial do Guia de reviews",
         "basis": "Fontes verificadas"
       },
       "keyTakeaways": [
@@ -202,14 +438,35 @@
       ],
       "seoReadinessScore": 100,
       "affiliateLinks": [],
+      "contentBranch": "review",
+      "monetizationRoute": "review_comparison",
+      "commerceFitScore": 100,
+      "informationalFitScore": 8,
+      "localizationPolicyJson": {
+        "strategy": "translate_all_product_markets",
+        "targetRule": "all_enabled_markets",
+        "createTranslationGroup": true,
+        "createLocalizedDrafts": true,
+        "requiresMarketAdaptation": true,
+        "translationOnlyIndexable": false,
+        "requiredLocalSignals": [
+          "localized title/h1/meta",
+          "local search intent and SERP angle",
+          "local price, availability, warranty, retailer, and return-policy context",
+          "local product candidate availability or explicit no-offer note",
+          "non-boilerplate localized examples"
+        ],
+        "reason": "Product/review-comparison topics should be localized across enabled markets, then kept noindex until each market has local SERP, price, availability, warranty, retailer, and product-candidate context."
+      },
+      "marketExpansionPolicy": "translate_all_product_markets",
       "monetizationDeferred": true,
-      "productCandidateState": "pending",
+      "productCandidateState": "allowed_pending",
       "noindexReason": "Initial test article; index candidate requires human/editorial approval.",
-      "status": "test_published_noindex",
+      "status": "test_pending",
       "indexStatus": "noindex",
-      "publishStatus": "published",
-      "createdAt": "2026-05-31T12:17:07.535009+00:00",
-      "updatedAt": "2026-05-31T12:17:07.536249+00:00"
+      "publishStatus": "pending",
+      "createdAt": "2026-06-01T18:13:45.949187+00:00",
+      "updatedAt": "2026-06-01T18:13:45.949187+00:00"
     },
     {
       "id": "test-article-content-strategy-trend-keyword-trend-cluster-us-en-samsung-s90f-oled-deal-samsung-s90f-oled-deal",
@@ -254,14 +511,14 @@
         }
       ],
       "heroImage": {
-        "src": "/images/market-guides/us-samsung-s90f-oled-hero.png",
-        "alt": "Large unbranded OLED television in a modern living room showing green abstract light waves",
-        "caption": "Generated review-guide hero image. Verify exact Samsung S90F size and retailer terms before buying."
+        "src": "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=1400&q=80",
+        "alt": "OLED television in a living room setup",
+        "caption": "Illustrative OLED TV setup. Verify exact Samsung S90F size and retailer terms before buying."
       },
       "articleMeta": {
         "checkedAt": "2026-05-31",
         "readingTime": "6 min read",
-        "reviewer": "Global Import Lab editorial team",
+        "reviewer": "Review Guide editorial team",
         "basis": "Sources checked"
       },
       "keyTakeaways": [
@@ -413,14 +670,277 @@
       ],
       "seoReadinessScore": 100,
       "affiliateLinks": [],
+      "contentBranch": "review",
+      "monetizationRoute": "review_comparison",
+      "commerceFitScore": 100,
+      "informationalFitScore": 16,
+      "localizationPolicyJson": {
+        "strategy": "translate_all_product_markets",
+        "targetRule": "all_enabled_markets",
+        "createTranslationGroup": true,
+        "createLocalizedDrafts": true,
+        "requiresMarketAdaptation": true,
+        "translationOnlyIndexable": false,
+        "requiredLocalSignals": [
+          "localized title/h1/meta",
+          "local search intent and SERP angle",
+          "local price, availability, warranty, retailer, and return-policy context",
+          "local product candidate availability or explicit no-offer note",
+          "non-boilerplate localized examples"
+        ],
+        "reason": "Product/review-comparison topics should be localized across enabled markets, then kept noindex until each market has local SERP, price, availability, warranty, retailer, and product-candidate context."
+      },
+      "marketExpansionPolicy": "translate_all_product_markets",
       "monetizationDeferred": true,
-      "productCandidateState": "pending",
+      "productCandidateState": "allowed_pending",
       "noindexReason": "Initial test article; index candidate requires human/editorial approval.",
-      "status": "test_published_noindex",
+      "status": "test_pending",
       "indexStatus": "noindex",
-      "publishStatus": "published",
-      "createdAt": "2026-05-31T12:17:07.535048+00:00",
-      "updatedAt": "2026-05-31T12:17:07.536251+00:00"
+      "publishStatus": "pending",
+      "createdAt": "2026-06-01T18:13:45.949211+00:00",
+      "updatedAt": "2026-06-01T18:13:45.949211+00:00"
+    },
+    {
+      "id": "test-article-content-strategy-trend-keyword-trend-cluster-jp-ja-runway-aleph-2-ai-video-editing-runway-aleph-2-ai-video-editing",
+      "strategyId": "content-strategy-trend-keyword-trend-cluster-jp-ja-runway-aleph-2-ai-video-editing-runway-aleph-2-ai-video-editing",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-jp-ja-runway-aleph-2-ai-video-editing-runway-aleph-2-ai-video-editing",
+      "market": "jp",
+      "language": "ja",
+      "slug": "runway-aleph-2-ai-video-editing",
+      "title": "Runway Aleph 2.0: AI動画編集ツールを試す前に比較すべき点",
+      "h1": "Runway Aleph 2.0: AI動画編集ツールを試す前に比較すべき点",
+      "metaDescription": "Runway Aleph 2.0とEdit Studioの新機能を、既存動画の編集で何が変わるのか、料金とクレジットをどう見るべきか、CapCutやAdobe系ツールと比較する前に何を確認すべきかまで整理します。",
+      "summary": "Runway Aleph 2.0とEdit Studioの新機能を、既存動画の編集で何が変わるのか、料金とクレジットをどう見るべきか、CapCutやAdobe系ツールと比較する前に何を確認すべきかまで整理します。",
+      "contentMdx": "# Runway Aleph 2.0: AI動画編集ツールを試す前に比較すべき点\n\n## 結論\nRunway Aleph 2.0は、AIで動画を一から作るというより、既存動画をあとから直すための編集モデルとして見ると判断しやすいツールです。背景や人物の見え方、画角、スタイル、細かな修正をテキスト指示で変えたいクリエイターには試す価値があります。ただし、商用案件で使う前に料金、クレジット消費、権利、修正精度、代替ツールとの差を確認する必要があります。\n\n## なぜ今話題なのか\n日本のGoogle Trends RSSでは、2026年5月31日に「チャット」関連の上昇検索としてRunway Aleph 2.0とEdit Studioの話題が出ていました。Ledge.aiは既存動画の一部編集を全体に反映するEdit Studioを紹介し、SlashGear Japan系の記事ではRunway MCPを通じてClaudeやChatGPTから動画生成モデルを呼び出す文脈も扱われています。つまり読者の関心は、単なる発表ニュースではなく、AI編集を実際の制作フローに入れられるかに移っています。\n\n## Aleph 2.0で何ができるのか\nAleph 2.0の中心は、動画内の要素を後から変える、雰囲気や被写体の見え方を調整する、既存素材に編集をかけるという用途です。従来の動画生成AIが「新しい映像を作る」方向に寄っていたのに対し、Aleph 2.0は撮影済み素材や生成済み動画を修正する場面で価値が出ます。SNS広告、商品紹介、短尺動画、社内プレゼン素材では、最初から撮り直すより速い可能性があります。\n\n## 試す前に比較すべき相手\n比較対象はRunwayだけではありません。短尺SNSならCapCut系のAI編集、プロ案件ならAdobe Premiere ProやAfter EffectsのAI機能、画像や短い素材中心ならCanvaや他の生成AI動画ツールも候補になります。Runwayを選ぶ理由は、単に新しいからではなく、既存動画の修正、生成映像との連携、チームでの制作、出力品質が自分の案件に合うかどうかです。\n\n## 料金とクレジットで見るポイント\nAI動画ツールは月額だけで判断すると失敗します。確認すべきなのは、動画生成や編集でどれだけクレジットを使うか、失敗出力にもコストがかかるか、商用利用できるプランか、チーム共有が必要か、納品解像度や書き出し制限があるかです。特にクライアントワークでは、試行錯誤の回数がそのままコストになります。\n\n## 向いている人と向いていない人\n向いているのは、短尺動画を頻繁に作るマーケター、撮影素材を再利用したい制作者、AI動画の修正に時間を取られているチームです。逆に、長尺編集、厳密な字幕管理、音声整音、複雑なタイムライン編集が中心なら、Runwayだけで完結させるより既存編集ソフトと組み合わせる方が現実的です。\n\n## 導入前チェックリスト\n試す前に、使う素材の権利、商用利用条件、必要な解像度、クレジット上限、修正回数、チーム共有、納品先の品質基準を決めてください。1本だけのデモで判断せず、同じ素材でRunway、CapCut、Adobe系ツールを比べると、自分のワークフローに合うかが見えます。\n\n## 確認した資料\nトレンド元はGoogle Trends RSS JPの上昇検索です。内容確認にはLedge.aiのRunway Aleph 2.0記事、Runway公式ページ、Runway HelpのEdit Studio説明、TECH NOISYのRunway MCP記事を使いました。ニュース見出しだけで断定せず、公式情報と制作ワークフロー目線の比較に分けて整理しています。",
+      "sections": [
+        {
+          "heading": "結論",
+          "body": "Runway Aleph 2.0は、AIで動画を一から作るというより、既存動画をあとから直すための編集モデルとして見ると判断しやすいツールです。背景や人物の見え方、画角、スタイル、細かな修正をテキスト指示で変えたいクリエイターには試す価値があります。ただし、商用案件で使う前に料金、クレジット消費、権利、修正精度、代替ツールとの差を確認する必要があります。"
+        },
+        {
+          "heading": "なぜ今話題なのか",
+          "body": "日本のGoogle Trends RSSでは、2026年5月31日に「チャット」関連の上昇検索としてRunway Aleph 2.0とEdit Studioの話題が出ていました。Ledge.aiは既存動画の一部編集を全体に反映するEdit Studioを紹介し、SlashGear Japan系の記事ではRunway MCPを通じてClaudeやChatGPTから動画生成モデルを呼び出す文脈も扱われています。つまり読者の関心は、単なる発表ニュースではなく、AI編集を実際の制作フローに入れられるかに移っています。"
+        },
+        {
+          "heading": "Aleph 2.0で何ができるのか",
+          "body": "Aleph 2.0の中心は、動画内の要素を後から変える、雰囲気や被写体の見え方を調整する、既存素材に編集をかけるという用途です。従来の動画生成AIが「新しい映像を作る」方向に寄っていたのに対し、Aleph 2.0は撮影済み素材や生成済み動画を修正する場面で価値が出ます。SNS広告、商品紹介、短尺動画、社内プレゼン素材では、最初から撮り直すより速い可能性があります。"
+        },
+        {
+          "heading": "試す前に比較すべき相手",
+          "body": "比較対象はRunwayだけではありません。短尺SNSならCapCut系のAI編集、プロ案件ならAdobe Premiere ProやAfter EffectsのAI機能、画像や短い素材中心ならCanvaや他の生成AI動画ツールも候補になります。Runwayを選ぶ理由は、単に新しいからではなく、既存動画の修正、生成映像との連携、チームでの制作、出力品質が自分の案件に合うかどうかです。"
+        },
+        {
+          "heading": "料金とクレジットで見るポイント",
+          "body": "AI動画ツールは月額だけで判断すると失敗します。確認すべきなのは、動画生成や編集でどれだけクレジットを使うか、失敗出力にもコストがかかるか、商用利用できるプランか、チーム共有が必要か、納品解像度や書き出し制限があるかです。特にクライアントワークでは、試行錯誤の回数がそのままコストになります。"
+        },
+        {
+          "heading": "向いている人と向いていない人",
+          "body": "向いているのは、短尺動画を頻繁に作るマーケター、撮影素材を再利用したい制作者、AI動画の修正に時間を取られているチームです。逆に、長尺編集、厳密な字幕管理、音声整音、複雑なタイムライン編集が中心なら、Runwayだけで完結させるより既存編集ソフトと組み合わせる方が現実的です。"
+        },
+        {
+          "heading": "導入前チェックリスト",
+          "body": "試す前に、使う素材の権利、商用利用条件、必要な解像度、クレジット上限、修正回数、チーム共有、納品先の品質基準を決めてください。1本だけのデモで判断せず、同じ素材でRunway、CapCut、Adobe系ツールを比べると、自分のワークフローに合うかが見えます。"
+        },
+        {
+          "heading": "確認した資料",
+          "body": "トレンド元はGoogle Trends RSS JPの上昇検索です。内容確認にはLedge.aiのRunway Aleph 2.0記事、Runway公式ページ、Runway HelpのEdit Studio説明、TECH NOISYのRunway MCP記事を使いました。ニュース見出しだけで断定せず、公式情報と制作ワークフロー目線の比較に分けて整理しています。"
+        }
+      ],
+      "heroImage": {
+        "src": "/images/trend-articles/runway-aleph-ai-video-editor.png",
+        "alt": "AI動画編集のタイムライン画面を表示した制作デスク",
+        "caption": "AI動画編集ツールはデモ映像だけでなく、料金、権利、修正精度、制作フローで比較する必要があります。"
+      },
+      "articleMeta": {
+        "checkedAt": "2026-05-31",
+        "readingTime": "約6分",
+        "reviewer": "レビューガイド編集部",
+        "basis": "確認済み情報"
+      },
+      "keyTakeaways": [
+        "Runway Aleph 2.0は既存動画の修正用途で評価すると判断しやすい。",
+        "料金は月額だけでなくクレジット消費と失敗出力のコストを見る必要がある。",
+        "CapCutやAdobe系ツールと同じ素材で比較してから制作フローに入れるべき。"
+      ],
+      "verdictBox": {
+        "label": "判断",
+        "body": "短尺動画や生成素材の修正が多いチームは試す価値あり。ただし商用利用、料金、クレジット、権利確認なしで本番投入しない。"
+      },
+      "prosCons": {
+        "pros": [
+          "既存動画の編集用途が明確",
+          "生成と修正を同じ流れで扱える",
+          "日本でもAI動画編集への関心が出ている"
+        ],
+        "cons": [
+          "料金とクレジット消費が読みづらい",
+          "細部修正は一発で決まらない可能性",
+          "長尺編集は既存ソフト併用が現実的"
+        ]
+      },
+      "serpReferences": [
+        {
+          "rank": "1",
+          "label": "Ledge.ai Runway Aleph 2.0",
+          "url": "https://ledge.ai/articles/runway_aleph_2_edit_studio",
+          "formatPattern": "Japanese trend-news headline, feature summary, Edit Studio explanation, quick product context."
+        },
+        {
+          "rank": "2",
+          "label": "Runway official Aleph page",
+          "url": "https://runwayml.com/product/aleph-2",
+          "formatPattern": "Official product hero, feature sections, demo-led capability framing, model positioning."
+        },
+        {
+          "rank": "3",
+          "label": "Runway Help Edit Studio",
+          "url": "https://help.runwayml.com/hc/en-us/articles/44720423850131-Edit-Studio",
+          "formatPattern": "Help-center guide, step-by-step feature sections, practical workflow instructions."
+        },
+        {
+          "rank": "4",
+          "label": "TECH NOISY Runway MCP",
+          "url": "https://tech-noisy.com/2026/05/29/runway-mcp-gen-4-5-veo-integration/",
+          "formatPattern": "Tech-blog explainer, integration headline, tool workflow context, ChatGPT and Claude angle."
+        }
+      ],
+      "quickFacts": [
+        {
+          "label": "対象",
+          "value": "AIで既存動画を直したい制作者、マーケター、短尺動画チーム"
+        },
+        {
+          "label": "主なリスク",
+          "value": "料金とクレジット消費、商用利用条件、意図通りに直らない出力"
+        },
+        {
+          "label": "比較対象",
+          "value": "Runway、CapCut、Adobe Premiere Pro/After Effects、Canva系AI動画ツール"
+        }
+      ],
+      "checklist": [
+        "既存動画のどこをAIで直したいのかを決める。",
+        "商用利用できるプランか確認する。",
+        "月額だけでなくクレジット消費を確認する。",
+        "失敗出力や再生成のコストを見積もる。",
+        "CapCutやAdobe系ツールでも同じ作業を試す。",
+        "納品解像度、透かし、チーム共有、素材権利を確認する。"
+      ],
+      "comparisonTable": {
+        "title": "AI動画編集ツール比較の見方",
+        "columns": [
+          "比較軸",
+          "Runway Aleph 2.0で見る点",
+          "代替ツールで見る点"
+        ],
+        "rows": [
+          [
+            "既存動画の修正",
+            "テキスト指示で映像全体の整合性を保てるか",
+            "手動編集やテンプレ編集で十分か"
+          ],
+          [
+            "料金",
+            "月額とクレジット消費の両方",
+            "買い切り、月額、無料枠の制限"
+          ],
+          [
+            "商用利用",
+            "プラン別の利用条件と素材権利",
+            "広告案件で使えるか"
+          ],
+          [
+            "制作フロー",
+            "生成から修正まで一体化できるか",
+            "既存編集ソフトとの連携しやすさ"
+          ]
+        ]
+      },
+      "sourceLinks": [
+        {
+          "label": "Google Trends RSS JP",
+          "url": "https://trends.google.com/trending/rss?geo=JP",
+          "note": "2026-05-31の上昇検索でRunway Aleph 2.0関連ニュースを確認。",
+          "checkedAt": "2026-05-31"
+        },
+        {
+          "label": "Ledge.ai - Runway Aleph 2.0",
+          "url": "https://ledge.ai/articles/runway_aleph_2_edit_studio",
+          "note": "日本語トレンド元ニュース。Edit StudioとAleph 2.0の概要確認。",
+          "checkedAt": "2026-05-31"
+        },
+        {
+          "label": "Runway公式 - Aleph",
+          "url": "https://runwayml.com/product/aleph-2",
+          "note": "公式機能説明。実際の可否や仕様は公式情報を優先。",
+          "checkedAt": "2026-05-31"
+        },
+        {
+          "label": "Runway Help - Edit Studio",
+          "url": "https://help.runwayml.com/hc/en-us/articles/44720423850131-Edit-Studio",
+          "note": "Edit Studioの使い方と機能範囲の確認。",
+          "checkedAt": "2026-05-31"
+        },
+        {
+          "label": "TECH NOISY - Runway MCP",
+          "url": "https://tech-noisy.com/2026/05/29/runway-mcp-gen-4-5-veo-integration/",
+          "note": "ChatGPT/Claudeからの利用文脈を確認。",
+          "checkedAt": "2026-05-31"
+        }
+      ],
+      "internalLinks": [
+        {
+          "label": "市場ページ",
+          "href": "/jp/ja/",
+          "note": "この市場の編集キューを見る。"
+        },
+        {
+          "label": "トレンド信号",
+          "href": "/jp/ja/trends/runway-aleph-2-ai-video-editing/",
+          "note": "テーマの発生元を確認する。"
+        },
+        {
+          "label": "SERP分析",
+          "href": "/jp/ja/serp/runway-aleph-2-ai-video-editing/",
+          "note": "参照結果の傾向と不足点を見る。"
+        },
+        {
+          "label": "グローバルマップ",
+          "href": "/global/trend-map/",
+          "note": "市場間の傾向を比較する。"
+        }
+      ],
+      "seoReadinessScore": 100,
+      "affiliateLinks": [],
+      "contentBranch": "review",
+      "monetizationRoute": "review_comparison",
+      "commerceFitScore": 100,
+      "informationalFitScore": 26,
+      "localizationPolicyJson": {
+        "strategy": "translate_all_product_markets",
+        "targetRule": "all_enabled_markets",
+        "createTranslationGroup": true,
+        "createLocalizedDrafts": true,
+        "requiresMarketAdaptation": true,
+        "translationOnlyIndexable": false,
+        "requiredLocalSignals": [
+          "localized title/h1/meta",
+          "local search intent and SERP angle",
+          "local price, availability, warranty, retailer, and return-policy context",
+          "local product candidate availability or explicit no-offer note",
+          "non-boilerplate localized examples"
+        ],
+        "reason": "Product/review-comparison topics should be localized across enabled markets, then kept noindex until each market has local SERP, price, availability, warranty, retailer, and product-candidate context."
+      },
+      "marketExpansionPolicy": "translate_all_product_markets",
+      "monetizationDeferred": true,
+      "productCandidateState": "allowed_pending",
+      "noindexReason": "Initial test article; index candidate requires human/editorial approval.",
+      "status": "test_pending",
+      "indexStatus": "noindex",
+      "publishStatus": "pending",
+      "createdAt": "2026-06-01T18:13:45.949237+00:00",
+      "updatedAt": "2026-06-01T18:13:45.949237+00:00"
     },
     {
       "id": "test-article-content-strategy-trend-keyword-trend-cluster-jp-ja-iphone-18-rumors-japan-iphone-18-rumors-japan",
@@ -472,7 +992,7 @@
       "articleMeta": {
         "checkedAt": "2026-05-31",
         "readingTime": "約6分",
-        "reviewer": "Global Import Lab編集チーム",
+        "reviewer": "レビューガイド編集部",
         "basis": "確認済み情報"
       },
       "keyTakeaways": [
@@ -513,7 +1033,7 @@
           "rank": "3",
           "label": "9to5Mac iPhone 18 timing",
           "url": "https://9to5mac.com/2026/01/30/iphone-18-isnt-launching-until-next-year-new-report-reaffirms/",
-          "formatPattern": "Launch timing headline hook, source citation, concise analysis section, and report confirmation."
+          "formatPattern": "Launch timeline hook, report source confirmation, concise section analysis."
         },
         {
           "rank": "4",
@@ -624,14 +1144,29 @@
       ],
       "seoReadinessScore": 100,
       "affiliateLinks": [],
+      "contentBranch": "news",
+      "monetizationRoute": "informational_explainer",
+      "commerceFitScore": 4,
+      "informationalFitScore": 83,
+      "localizationPolicyJson": {
+        "strategy": "source_market_only",
+        "targetRule": "source_market_only",
+        "createTranslationGroup": false,
+        "createLocalizedDrafts": false,
+        "requiresMarketAdaptation": false,
+        "translationOnlyIndexable": false,
+        "requiredLocalSignals": [],
+        "reason": "Informational topics stay in the source market unless a separate market trend/SERP opportunity is detected."
+      },
+      "marketExpansionPolicy": "source_market_only",
       "monetizationDeferred": true,
-      "productCandidateState": "pending",
+      "productCandidateState": "skipped_informational",
       "noindexReason": "Initial test article; index candidate requires human/editorial approval.",
-      "status": "test_published_noindex",
+      "status": "test_pending",
       "indexStatus": "noindex",
-      "publishStatus": "published",
-      "createdAt": "2026-05-31T12:17:07.535074+00:00",
-      "updatedAt": "2026-05-31T12:17:07.536253+00:00"
+      "publishStatus": "pending",
+      "createdAt": "2026-06-01T18:13:45.949259+00:00",
+      "updatedAt": "2026-06-01T18:13:45.949259+00:00"
     },
     {
       "id": "test-article-content-strategy-trend-keyword-trend-cluster-es-es-renta-2025-avisos-aeat-renta-2025-avisos-aeat",
@@ -683,7 +1218,7 @@
       "articleMeta": {
         "checkedAt": "2026-05-31",
         "readingTime": "6 min de lectura",
-        "reviewer": "Equipo editorial de Global Import Lab",
+        "reviewer": "Equipo editorial de Guía de reseñas",
         "basis": "Fuentes revisadas"
       },
       "keyTakeaways": [
@@ -835,191 +1370,210 @@
       ],
       "seoReadinessScore": 100,
       "affiliateLinks": [],
+      "contentBranch": "news",
+      "monetizationRoute": "informational_explainer",
+      "commerceFitScore": 8,
+      "informationalFitScore": 95,
+      "localizationPolicyJson": {
+        "strategy": "source_market_only",
+        "targetRule": "source_market_only",
+        "createTranslationGroup": false,
+        "createLocalizedDrafts": false,
+        "requiresMarketAdaptation": false,
+        "translationOnlyIndexable": false,
+        "requiredLocalSignals": [],
+        "reason": "Informational topics stay in the source market unless a separate market trend/SERP opportunity is detected."
+      },
+      "marketExpansionPolicy": "source_market_only",
       "monetizationDeferred": true,
-      "productCandidateState": "pending",
+      "productCandidateState": "skipped_informational",
       "noindexReason": "Initial test article; index candidate requires human/editorial approval.",
-      "status": "test_published_noindex",
+      "status": "test_pending",
       "indexStatus": "noindex",
-      "publishStatus": "published",
-      "createdAt": "2026-05-31T12:17:07.535097+00:00",
-      "updatedAt": "2026-05-31T12:17:07.536254+00:00"
+      "publishStatus": "pending",
+      "createdAt": "2026-06-01T18:13:45.949281+00:00",
+      "updatedAt": "2026-06-01T18:13:45.949281+00:00"
     },
     {
-      "id": "test-article-content-strategy-trend-keyword-trend-cluster-kr-ko-2026-대입-학폭-반영-2026-대입-학폭-반영",
-      "strategyId": "content-strategy-trend-keyword-trend-cluster-kr-ko-2026-대입-학폭-반영-2026-대입-학폭-반영",
-      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-kr-ko-2026-대입-학폭-반영-2026-대입-학폭-반영",
+      "id": "test-article-content-strategy-trend-keyword-trend-cluster-kr-ko-kbo-올스타-팬투표-2026-kbo-올스타-팬투표-2026",
+      "strategyId": "content-strategy-trend-keyword-trend-cluster-kr-ko-kbo-올스타-팬투표-2026-kbo-올스타-팬투표-2026",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-kr-ko-kbo-올스타-팬투표-2026-kbo-올스타-팬투표-2026",
       "market": "kr",
       "language": "ko",
-      "slug": "2026-대입-학폭-반영",
-      "title": "2026 대입 학폭 반영: 학생과 학부모가 먼저 확인할 점",
-      "h1": "2026 대입 학폭 반영: 학생과 학부모가 먼저 확인할 점",
-      "metaDescription": "2026학년도 대입에서 학교폭력 조치사항이 어떻게 반영되는지, 학생과 학부모가 대학별 모집요강에서 확인해야 할 전형별 반영 방식, 감점·지원 제한 가능성, 상담 전 체크리스트를 정리합니다.",
-      "summary": "2026학년도 대입에서 학교폭력 조치사항이 어떻게 반영되는지, 학생과 학부모가 대학별 모집요강에서 확인해야 할 전형별 반영 방식, 감점·지원 제한 가능성, 상담 전 체크리스트를 정리합니다.",
-      "contentMdx": "# 2026 대입 학폭 반영: 학생과 학부모가 먼저 확인할 점\n\n## 핵심 정리\n2026학년도 대입부터 학교폭력 조치사항은 모든 대입 전형에서 확인해야 하는 요소가 됐습니다. 학생부교과, 학생부종합, 논술, 수능, 실기·실적 전형처럼 전형 유형이 달라도 대학은 학폭 조치사항을 반영해야 합니다. 다만 모든 대학이 똑같이 감점하거나 똑같이 탈락시키는 것은 아니므로, 최종 판단은 반드시 지원 대학의 2026학년도 모집요강과 전형 시행계획으로 확인해야 합니다.\n\n## 학생과 학부모가 먼저 봐야 할 것\n가장 먼저 확인할 것은 학생부에 어떤 조치사항이 기재되어 있는지, 해당 기록이 대입 자료에 제공되는지, 지원하려는 대학이 그 기록을 어떤 방식으로 반영하는지입니다. 같은 조치라도 대학에 따라 정량 감점, 정성평가 반영, 지원 자격 제한처럼 방식이 달라질 수 있습니다.\n\n## 전형별로 어떻게 달라질 수 있나\n학생부종합전형에서는 학폭 조치사항이 학교생활 전반의 평가 맥락에서 검토될 수 있고, 학생부교과전형이나 정시에서는 감점표처럼 정량 반영되는 대학도 있습니다. 논술이나 실기 전형도 예외라고 보면 안 됩니다. 2026학년도에는 전 전형 반영이 핵심이므로, ‘정시는 괜찮다’거나 ‘논술은 상관없다’고 단정하면 위험합니다.\n\n## 조치 번호만 보고 결론 내리면 안 되는 이유\n학교폭력 조치사항은 1호부터 9호까지 있지만, 번호 하나만으로 모든 대학의 결과를 예측할 수는 없습니다. 어떤 대학은 낮은 조치도 평가에 반영할 수 있고, 어떤 대학은 높은 조치에 대해 더 큰 감점이나 지원 제한을 둘 수 있습니다. 그래서 인터넷 표 하나로 결론을 내리기보다, 대학별 반영 기준을 직접 확인해야 합니다.\n\n## 지원 전 체크리스트\n지원 전에는 다섯 가지를 확인하세요. 첫째, 학생부 기록과 삭제·보존 여부. 둘째, 지원 대학의 학폭 조치사항 반영 방식. 셋째, 전형별 감점 또는 지원 제한 기준. 넷째, 검정고시·자퇴·졸업생 등 본인 상황에 대한 제출 서류. 다섯째, 이의신청이나 소명 절차가 가능한지 여부입니다.\n\n## 외부 정리 자료를 볼 때 주의할 점\n외부 정리 자료만 보고 불안해할 필요는 없지만, 반대로 가볍게 넘겨서도 안 됩니다. 입시 해설 자료는 흐름을 이해하는 데 도움이 되고, 실제 지원 판단은 대학별 모집요강과 대교협·교육부 자료를 기준으로 해야 합니다. 특히 ‘무조건 불합격’이나 ‘전혀 영향 없음’처럼 단정적인 말은 믿기 어렵습니다.\n\n## 어디서 확인해야 하나\n가장 중요한 출처는 지원 대학의 2026학년도 모집요강, 대학입학전형 시행계획, 한국대학교육협의회와 교육부가 안내한 2026학년도 대입 기본사항 및 학폭 반영 가이드라인입니다. 입시기관 글은 이해를 돕는 자료로 쓰고, 최종 지원 전략은 공식 자료와 학교 상담을 함께 확인하는 방식이 안전합니다.",
+      "slug": "kbo-올스타-팬투표-2026",
+      "title": "KBO 올스타 팬투표 2026: 후보와 일정 확인할 점",
+      "h1": "KBO 올스타 팬투표 2026: 후보와 일정 확인할 점",
+      "metaDescription": "2026 KBO 올스타전 팬투표가 시작된 흐름을 바탕으로, 후보 확인 방법과 투표 일정, 잠실구장 마지막 올스타전이라는 맥락, 팬이 헷갈리기 쉬운 확인사항을 정리합니다.",
+      "summary": "2026 KBO 올스타전 팬투표가 시작된 흐름을 바탕으로, 후보 확인 방법과 투표 일정, 잠실구장 마지막 올스타전이라는 맥락, 팬이 헷갈리기 쉬운 확인사항을 정리합니다.",
+      "contentMdx": "# KBO 올스타 팬투표 2026: 후보와 일정 확인할 점\n\n## 빠른 결론\n2026 KBO 올스타전 팬투표는 6월 1일 후보 공개와 함께 본격적으로 관심이 오른 주제입니다. 독자가 먼저 확인할 것은 세 가지입니다. 투표가 언제 시작되는지, 베스트12 후보가 어떤 기준으로 나뉘는지, 그리고 내가 응원하는 선수가 후보 명단에 실제로 포함됐는지입니다. 올해는 잠실구장 마지막 올스타전이라는 상징성까지 있어 팬 관심이 더 크게 붙었습니다.\n\n## 왜 지금 검색이 늘었나\n한국 Google Trends RSS에서 2026년 6월 1일 기준으로 'kbo 올스타 투표'와 'kbo'가 함께 잡혔습니다. 관련 기사들은 KBO가 베스트12 팬투표 후보 120명을 발표했다는 점, 신한은행 SOL뱅크 앱을 통한 팬투표가 시작된다는 점, 그리고 잠실구장 마지막 올스타전이라는 맥락을 함께 다루고 있습니다. 단순 경기 결과가 아니라 팬 참여 일정과 후보 명단 확인 수요가 동시에 생긴 흐름입니다.\n\n## 팬이 먼저 확인할 일정\n가장 먼저 볼 것은 투표 시작일과 마감일입니다. 기사 기준으로 팬투표는 6월 1일부터 시작되는 흐름으로 보도됐고, 최종 베스트12는 투표 결과와 선수단 투표 등을 거쳐 정해지는 구조입니다. 정확한 기간과 방식은 KBO 공식 안내와 투표가 열리는 앱 화면을 다시 확인하는 것이 안전합니다. 기사 제목만 보고 바로 투표했다고 판단하면 일정이나 방식이 바뀐 세부 조건을 놓칠 수 있습니다.\n\n## 후보 명단을 볼 때 헷갈리는 점\n올스타 후보는 포지션과 구단, 리그 구분에 따라 나뉩니다. 팬 입장에서는 '왜 이 선수가 없지?'라고 느낄 수 있지만, 후보 선정 기준이나 포지션 배정, 팀별 후보 구성에 따라 명단이 달라질 수 있습니다. 특히 류현진처럼 화제성이 큰 선수가 후보에 없다는 식의 기사도 함께 나오기 때문에, 특정 선수의 누락 여부는 공식 후보표와 기사 맥락을 같이 봐야 합니다.\n\n## 투표 전에 체크할 것\n투표 전에는 내가 사용하는 앱이나 계정으로 실제 참여가 가능한지, 1일 투표 횟수 제한이 있는지, 포지션별로 몇 명을 선택해야 하는지, 중복 투표나 변경이 가능한지 확인해야 합니다. 팬투표는 응원팀 선수만 고르는 이벤트처럼 보이지만, 실제 결과는 구단별 팬덤 규모와 포지션 경쟁 구도에 따라 크게 달라질 수 있습니다.\n\n## 올스타전 관람을 생각한다면\n올스타전 자체에 관심이 있다면 투표만 볼 것이 아니라 장소, 티켓 오픈, 예매 일정, 좌석, 교통도 따로 확인해야 합니다. 올해는 잠실구장 마지막 올스타전이라는 보도가 붙어 있어 티켓 관심이 평소보다 커질 수 있습니다. 투표 결과 발표와 티켓 예매는 다른 일정일 수 있으니, KBO와 예매처 공지를 따로 보는 편이 안전합니다.\n\n## 확인한 자료\n이번 글은 2026년 6월 1일 한국 Google Trends RSS에서 확인한 상승 검색어와, 연합뉴스·디지털투데이·조선일보 등 관련 보도에서 공통으로 반복된 정보를 기준으로 정리했습니다. 기사 문장을 따라 쓰지 않고, 팬이 실제로 확인해야 할 일정, 후보 명단, 투표 방식, 관람 준비 항목으로 다시 구성했습니다.",
       "sections": [
         {
-          "heading": "핵심 정리",
-          "body": "2026학년도 대입부터 학교폭력 조치사항은 모든 대입 전형에서 확인해야 하는 요소가 됐습니다. 학생부교과, 학생부종합, 논술, 수능, 실기·실적 전형처럼 전형 유형이 달라도 대학은 학폭 조치사항을 반영해야 합니다. 다만 모든 대학이 똑같이 감점하거나 똑같이 탈락시키는 것은 아니므로, 최종 판단은 반드시 지원 대학의 2026학년도 모집요강과 전형 시행계획으로 확인해야 합니다."
+          "heading": "빠른 결론",
+          "body": "2026 KBO 올스타전 팬투표는 6월 1일 후보 공개와 함께 본격적으로 관심이 오른 주제입니다. 독자가 먼저 확인할 것은 세 가지입니다. 투표가 언제 시작되는지, 베스트12 후보가 어떤 기준으로 나뉘는지, 그리고 내가 응원하는 선수가 후보 명단에 실제로 포함됐는지입니다. 올해는 잠실구장 마지막 올스타전이라는 상징성까지 있어 팬 관심이 더 크게 붙었습니다."
         },
         {
-          "heading": "학생과 학부모가 먼저 봐야 할 것",
-          "body": "가장 먼저 확인할 것은 학생부에 어떤 조치사항이 기재되어 있는지, 해당 기록이 대입 자료에 제공되는지, 지원하려는 대학이 그 기록을 어떤 방식으로 반영하는지입니다. 같은 조치라도 대학에 따라 정량 감점, 정성평가 반영, 지원 자격 제한처럼 방식이 달라질 수 있습니다."
+          "heading": "왜 지금 검색이 늘었나",
+          "body": "한국 Google Trends RSS에서 2026년 6월 1일 기준으로 'kbo 올스타 투표'와 'kbo'가 함께 잡혔습니다. 관련 기사들은 KBO가 베스트12 팬투표 후보 120명을 발표했다는 점, 신한은행 SOL뱅크 앱을 통한 팬투표가 시작된다는 점, 그리고 잠실구장 마지막 올스타전이라는 맥락을 함께 다루고 있습니다. 단순 경기 결과가 아니라 팬 참여 일정과 후보 명단 확인 수요가 동시에 생긴 흐름입니다."
         },
         {
-          "heading": "전형별로 어떻게 달라질 수 있나",
-          "body": "학생부종합전형에서는 학폭 조치사항이 학교생활 전반의 평가 맥락에서 검토될 수 있고, 학생부교과전형이나 정시에서는 감점표처럼 정량 반영되는 대학도 있습니다. 논술이나 실기 전형도 예외라고 보면 안 됩니다. 2026학년도에는 전 전형 반영이 핵심이므로, ‘정시는 괜찮다’거나 ‘논술은 상관없다’고 단정하면 위험합니다."
+          "heading": "팬이 먼저 확인할 일정",
+          "body": "가장 먼저 볼 것은 투표 시작일과 마감일입니다. 기사 기준으로 팬투표는 6월 1일부터 시작되는 흐름으로 보도됐고, 최종 베스트12는 투표 결과와 선수단 투표 등을 거쳐 정해지는 구조입니다. 정확한 기간과 방식은 KBO 공식 안내와 투표가 열리는 앱 화면을 다시 확인하는 것이 안전합니다. 기사 제목만 보고 바로 투표했다고 판단하면 일정이나 방식이 바뀐 세부 조건을 놓칠 수 있습니다."
         },
         {
-          "heading": "조치 번호만 보고 결론 내리면 안 되는 이유",
-          "body": "학교폭력 조치사항은 1호부터 9호까지 있지만, 번호 하나만으로 모든 대학의 결과를 예측할 수는 없습니다. 어떤 대학은 낮은 조치도 평가에 반영할 수 있고, 어떤 대학은 높은 조치에 대해 더 큰 감점이나 지원 제한을 둘 수 있습니다. 그래서 인터넷 표 하나로 결론을 내리기보다, 대학별 반영 기준을 직접 확인해야 합니다."
+          "heading": "후보 명단을 볼 때 헷갈리는 점",
+          "body": "올스타 후보는 포지션과 구단, 리그 구분에 따라 나뉩니다. 팬 입장에서는 '왜 이 선수가 없지?'라고 느낄 수 있지만, 후보 선정 기준이나 포지션 배정, 팀별 후보 구성에 따라 명단이 달라질 수 있습니다. 특히 류현진처럼 화제성이 큰 선수가 후보에 없다는 식의 기사도 함께 나오기 때문에, 특정 선수의 누락 여부는 공식 후보표와 기사 맥락을 같이 봐야 합니다."
         },
         {
-          "heading": "지원 전 체크리스트",
-          "body": "지원 전에는 다섯 가지를 확인하세요. 첫째, 학생부 기록과 삭제·보존 여부. 둘째, 지원 대학의 학폭 조치사항 반영 방식. 셋째, 전형별 감점 또는 지원 제한 기준. 넷째, 검정고시·자퇴·졸업생 등 본인 상황에 대한 제출 서류. 다섯째, 이의신청이나 소명 절차가 가능한지 여부입니다."
+          "heading": "투표 전에 체크할 것",
+          "body": "투표 전에는 내가 사용하는 앱이나 계정으로 실제 참여가 가능한지, 1일 투표 횟수 제한이 있는지, 포지션별로 몇 명을 선택해야 하는지, 중복 투표나 변경이 가능한지 확인해야 합니다. 팬투표는 응원팀 선수만 고르는 이벤트처럼 보이지만, 실제 결과는 구단별 팬덤 규모와 포지션 경쟁 구도에 따라 크게 달라질 수 있습니다."
         },
         {
-          "heading": "외부 정리 자료를 볼 때 주의할 점",
-          "body": "외부 정리 자료만 보고 불안해할 필요는 없지만, 반대로 가볍게 넘겨서도 안 됩니다. 입시 해설 자료는 흐름을 이해하는 데 도움이 되고, 실제 지원 판단은 대학별 모집요강과 대교협·교육부 자료를 기준으로 해야 합니다. 특히 ‘무조건 불합격’이나 ‘전혀 영향 없음’처럼 단정적인 말은 믿기 어렵습니다."
+          "heading": "올스타전 관람을 생각한다면",
+          "body": "올스타전 자체에 관심이 있다면 투표만 볼 것이 아니라 장소, 티켓 오픈, 예매 일정, 좌석, 교통도 따로 확인해야 합니다. 올해는 잠실구장 마지막 올스타전이라는 보도가 붙어 있어 티켓 관심이 평소보다 커질 수 있습니다. 투표 결과 발표와 티켓 예매는 다른 일정일 수 있으니, KBO와 예매처 공지를 따로 보는 편이 안전합니다."
         },
         {
-          "heading": "어디서 확인해야 하나",
-          "body": "가장 중요한 출처는 지원 대학의 2026학년도 모집요강, 대학입학전형 시행계획, 한국대학교육협의회와 교육부가 안내한 2026학년도 대입 기본사항 및 학폭 반영 가이드라인입니다. 입시기관 글은 이해를 돕는 자료로 쓰고, 최종 지원 전략은 공식 자료와 학교 상담을 함께 확인하는 방식이 안전합니다."
+          "heading": "확인한 자료",
+          "body": "이번 글은 2026년 6월 1일 한국 Google Trends RSS에서 확인한 상승 검색어와, 연합뉴스·디지털투데이·조선일보 등 관련 보도에서 공통으로 반복된 정보를 기준으로 정리했습니다. 기사 문장을 따라 쓰지 않고, 팬이 실제로 확인해야 할 일정, 후보 명단, 투표 방식, 관람 준비 항목으로 다시 구성했습니다."
         }
       ],
       "heroImage": {
-        "src": "/images/market-guides/kr-2026-admission-checklist-hero.png",
-        "alt": "2026 대입 체크리스트와 학폭 반영 확인 항목이 놓인 한국어 입시 자료 책상 이미지",
-        "caption": "학폭 반영 방식은 대학별로 다릅니다. 최종 판단은 모집요강과 공식 자료로 확인하세요."
+        "src": "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?auto=format&fit=crop&w=1400&q=80",
+        "alt": "야구장 관중석과 그라운드",
+        "caption": "올스타 팬투표는 후보 명단, 투표 기간, 앱 안내를 공식 공지와 함께 확인해야 합니다."
       },
       "articleMeta": {
-        "checkedAt": "2026-05-31",
+        "checkedAt": "2026-06-02",
         "readingTime": "약 6분",
-        "reviewer": "Global Import Lab 편집팀",
+        "reviewer": "리뷰 가이드 편집팀",
         "basis": "확인한 자료"
       },
       "keyTakeaways": [
-        "모든 전형에서 학교폭력 조치사항 반영 방식을 확인해야 한다.",
-        "지원 대학 모집요강에서 감점, 지원 제한, 정성평가 반영 여부를 먼저 확인해야 한다.",
-        "대학별 감점·지원 제한을 단정하지 않고 확인 경로를 분리해야 한다."
+        "KR Google Trends RSS에서 KBO 올스타 투표와 KBO 검색 관심이 함께 확인됐다.",
+        "핵심은 후보 120명 발표, 팬투표 시작, 잠실구장 마지막 올스타전이라는 세 가지 맥락이다.",
+        "투표 전에는 후보표, 기간, 앱 참여 방식, 최종 선정 방식을 공식 안내로 다시 확인해야 한다."
       ],
       "verdictBox": {
-        "label": "핵심 판단",
-        "body": "2026 대입 학폭 반영은 모든 전형에서 확인해야 하지만, 실제 불이익 방식은 대학과 전형별 모집요강으로 따로 확인해야 합니다."
+        "label": "요약",
+        "body": "지금 필요한 글은 승부 예측보다 팬이 바로 확인할 일정, 후보 명단, 투표 방식, 관람 준비를 한 번에 정리하는 뉴스 설명형 글입니다."
       },
       "prosCons": {
         "pros": [
-          "공식 제도 방향이 명확함",
-          "대학별 차이를 표로 정리할 수 있음",
-          "학생·학부모 행동 목록으로 전환 가능"
+          "실시간 검색 관심과 실제 보도가 맞물림",
+          "팬이 바로 행동할 수 있는 일정형 주제",
+          "후보·투표 방식·관람 준비로 구조화하기 좋음"
         ],
         "cons": [
-          "무조건 탈락처럼 단정하면 위험",
-          "오래된 2024/2025 설명과 2026 기준이 섞일 수 있음",
-          "대학별 모집요강 확인이 필수"
+          "투표 기간과 세부 방식은 공식 안내로 재확인 필요",
+          "선수 후보 관련 이슈는 팬덤 반응과 사실을 구분해야 함",
+          "티켓 일정은 별도 공지가 필요할 수 있음"
         ]
       },
       "serpReferences": [
         {
           "rank": "1",
-          "label": "Tistory 학폭 대입 반영 총정리",
-          "url": "https://ystudy200708.tistory.com/33",
-          "formatPattern": "총정리형 제목, 대학별 비교, 긴 체크리스트, 표 중심 구성."
+          "label": "연합뉴스 KBO 올스타 후보 발표",
+          "url": "https://www.yna.co.kr/view/AKR20260601143900007",
+          "formatPattern": "핵심 사실을 먼저 제시하고 후보 발표, 투표 시작, 일정 맥락을 짧게 정리하는 뉴스형 구조."
         },
         {
           "rank": "2",
-          "label": "슈가스퀘어 학폭 생기부 대입 기준",
-          "url": "https://blog.sugar.legal/%ED%95%99%EA%B5%90%ED%8F%AD%EB%A0%A5-%EC%83%9D%EA%B8%B0%EB%B6%80-%EA%B8%B0%EB%A1%9D-2027-%EB%8C%80%EC%9E%85%EC%97%90%EC%84%9C-%EC%96%B4%EB%94%94%EA%B9%8C%EC%A7%80-%EB%B6%88%EB%A6%AC%ED%95%A0%EA%B9%8C-%EC%8B%A4%EC%A0%9C-%ED%83%88%EB%9D%BD-%EA%B8%B0%EC%A4%80-%EC%A0%95%EB%A6%AC-88964",
-          "formatPattern": "법률 블로그형 문제 정의, 실제 기준, 대학별 사례, 상담 전 확인 목록."
+          "label": "디지털투데이 KBO 팬투표 시작",
+          "url": "https://www.digitaltoday.co.kr/en/view/59476/shinhan-bank-to-open-kbo-all-star-game-fan-voting-on-june-1",
+          "formatPattern": "투표 시작일과 앱 참여 경로를 중심으로 정리하는 공지형 뉴스 구조."
         },
         {
           "rank": "3",
-          "label": "정책브리핑 2026 기본사항",
-          "url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156588049",
-          "formatPattern": "공식 자료 허브, 첨부파일, 제도 요약, 근거 확인 경로."
+          "label": "조선일보 류현진 후보 제외 이슈",
+          "url": "https://www.chosun.com/sports/baseball/2026/06/02/G5RDIMBWMRQTMOBYGIZTSNLCGI/",
+          "formatPattern": "팬 관심이 큰 선수 누락 이슈를 중심으로 후보 명단 확인 수요를 끌어내는 스포츠 뉴스 구조."
         },
         {
           "rank": "4",
-          "label": "대입정보포털 대학별 전형 정보",
-          "url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000030",
-          "formatPattern": "대학별 전형 상세, 표 기반 확인, 모집요강 검증 흐름."
+          "label": "Daum KBO 올스타 후보 보도",
+          "url": "https://v.daum.net/v/20260601180700261",
+          "formatPattern": "잠실구장 마지막 올스타전이라는 배경과 후보 발표를 묶는 포털 뉴스형 구조."
         }
       ],
       "quickFacts": [
         {
-          "label": "대상",
-          "value": "2026학년도 대입 지원자와 학부모"
+          "label": "트렌드 확인",
+          "value": "KR Google Trends RSS에서 2026-06-01 기준 KBO 올스타 투표 관심 확인"
         },
         {
-          "label": "핵심 위험",
-          "value": "대학별 반영 방식 차이를 무시하고 단정하는 것"
+          "label": "핵심 이슈",
+          "value": "베스트12 후보 120명 발표와 팬투표 시작"
         },
         {
-          "label": "반드시 확인",
-          "value": "학생부 기록, 대학별 모집요강, 전형별 감점/제한 기준"
+          "label": "팬 체크",
+          "value": "후보 명단, 투표 기간, 앱 참여 방식, 최종 발표 일정"
+        },
+        {
+          "label": "주의점",
+          "value": "선수 누락 이슈는 공식 후보표와 포지션 기준을 함께 확인"
         }
       ],
       "checklist": [
-        "학생부에 어떤 조치사항이 기재되어 있는지 확인한다.",
-        "지원 대학의 2026학년도 모집요강을 직접 확인한다.",
-        "전형별 감점, 정성평가, 지원 제한 여부를 나눠 본다.",
-        "졸업생, 검정고시, 전학 등 본인 상황에 필요한 서류를 확인한다.",
-        "오래된 입시 글과 2026학년도 기준을 구분한다.",
-        "불확실하면 학교 상담 또는 대학 입학처에 확인한다."
+        "KBO 공식 안내에서 팬투표 기간을 다시 확인한다.",
+        "신한 SOL뱅크 등 투표 앱에서 실제 참여 가능 여부를 확인한다.",
+        "후보 명단을 포지션별로 보고 응원 선수 포함 여부를 확인한다.",
+        "1일 투표 횟수, 중복 선택, 변경 가능 여부를 확인한다.",
+        "최종 베스트12 발표 방식과 선수단 투표 반영 여부를 확인한다.",
+        "올스타전 관람 예정이면 티켓 공지와 예매 일정을 별도로 확인한다."
       ],
       "comparisonTable": {
-        "title": "전형별 확인 포인트",
+        "title": "KBO 올스타 팬투표 확인표",
         "columns": [
-          "전형",
-          "확인할 점",
-          "주의할 점"
+          "확인 항목",
+          "먼저 볼 곳",
+          "놓치기 쉬운 점"
         ],
         "rows": [
           [
-            "학생부종합",
-            "정성평가 반영 방식",
-            "대학별 판단 기준이 다를 수 있음"
+            "후보 명단",
+            "KBO 공식 안내와 관련 보도",
+            "포지션과 구단별 후보 구분"
           ],
           [
-            "학생부교과",
-            "정량 감점표 여부",
-            "점수 차이가 큰 모집단위는 영향이 커질 수 있음"
+            "투표 방식",
+            "투표 앱 화면",
+            "1일 투표 횟수와 변경 가능 여부"
           ],
           [
-            "정시/수능",
-            "수능 전형 반영 방식",
-            "정시는 괜찮다고 단정하면 위험"
+            "선수 누락 이슈",
+            "공식 후보표",
+            "화제성 기사와 실제 후보 기준 구분"
           ],
           [
-            "논술/실기",
-            "지원 제한 또는 감점 여부",
-            "전형명만 보고 예외로 판단하지 말 것"
+            "관람 준비",
+            "KBO/예매처 공지",
+            "투표 일정과 티켓 일정은 별도일 수 있음"
           ]
         ]
       },
       "sourceLinks": [
         {
-          "label": "한국대학교육협의회 2026 기본사항",
-          "url": "https://kcue.or.kr/news/sub02/sub01.php?at=view&idx=24138",
-          "note": "공식 제도 근거와 대학별 자율 반영 원칙.",
-          "checkedAt": "2026-05-31"
+          "label": "Google Trends RSS KR",
+          "url": "https://trends.google.com/trending/rss?geo=KR",
+          "note": "2026-06-01 기준 'kbo 올스타 투표'와 'kbo' 상승 검색 확인.",
+          "checkedAt": "2026-06-02"
         },
         {
-          "label": "정책브리핑 2026 대입 기본사항 자료",
-          "url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156588049",
-          "note": "교육부/대교협 자료와 가이드라인 파일 확인 경로.",
-          "checkedAt": "2026-05-31"
+          "label": "연합뉴스 - KBO 올스타 팬투표 후보 발표",
+          "url": "https://www.yna.co.kr/view/AKR20260601143900007",
+          "note": "팬투표 후보 120명 발표 보도.",
+          "checkedAt": "2026-06-02"
         },
         {
-          "label": "대입정보포털 대학별 전형 정보",
-          "url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000030",
-          "note": "대학별 모집요강과 전형 정보를 확인하는 공식 경로.",
-          "checkedAt": "2026-05-31"
+          "label": "디지털투데이 - KBO 올스타 팬투표 시작",
+          "url": "https://www.digitaltoday.co.kr/en/view/59476/shinhan-bank-to-open-kbo-all-star-game-fan-voting-on-june-1",
+          "note": "신한은행 SOL뱅크 KBO 올스타 팬투표 시작 보도.",
+          "checkedAt": "2026-06-02"
         },
         {
-          "label": "2026학년도 학폭 대입 반영 총정리",
-          "url": "https://ystudy200708.tistory.com/33",
-          "note": "대학별 비교와 지원 전 확인 항목을 검토할 때 참고.",
-          "checkedAt": "2026-05-31"
+          "label": "조선일보 - 류현진 후보 제외 이슈",
+          "url": "https://www.chosun.com/sports/baseball/2026/06/02/G5RDIMBWMRQTMOBYGIZTSNLCGI/",
+          "note": "후보 명단 확인 시 팬들이 헷갈릴 수 있는 선수 누락 이슈 확인.",
+          "checkedAt": "2026-06-02"
         }
       ],
       "internalLinks": [
@@ -1030,12 +1584,12 @@
         },
         {
           "label": "트렌드 신호",
-          "href": "/kr/ko/trends/2026-대입-학폭-반영/",
+          "href": "/kr/ko/trends/kbo-올스타-팬투표-2026/",
           "note": "주제가 어디서 시작됐는지 확인합니다."
         },
         {
           "label": "SERP 분석",
-          "href": "/kr/ko/serp/2026-대입-학폭-반영/",
+          "href": "/kr/ko/serp/kbo-올스타-팬투표-2026/",
           "note": "참조 결과의 패턴과 빈틈을 봅니다."
         },
         {
@@ -1046,14 +1600,29 @@
       ],
       "seoReadinessScore": 100,
       "affiliateLinks": [],
+      "contentBranch": "news",
+      "monetizationRoute": "informational_explainer",
+      "commerceFitScore": 0,
+      "informationalFitScore": 73,
+      "localizationPolicyJson": {
+        "strategy": "source_market_only",
+        "targetRule": "source_market_only",
+        "createTranslationGroup": false,
+        "createLocalizedDrafts": false,
+        "requiresMarketAdaptation": false,
+        "translationOnlyIndexable": false,
+        "requiredLocalSignals": [],
+        "reason": "Informational topics stay in the source market unless a separate market trend/SERP opportunity is detected."
+      },
+      "marketExpansionPolicy": "source_market_only",
       "monetizationDeferred": true,
-      "productCandidateState": "pending",
+      "productCandidateState": "skipped_informational",
       "noindexReason": "Initial test article; index candidate requires human/editorial approval.",
-      "status": "test_published_noindex",
+      "status": "test_pending",
       "indexStatus": "noindex",
-      "publishStatus": "published",
-      "createdAt": "2026-05-31T12:17:07.535122+00:00",
-      "updatedAt": "2026-05-31T12:17:07.536255+00:00"
+      "publishStatus": "pending",
+      "createdAt": "2026-06-01T18:13:45.949330+00:00",
+      "updatedAt": "2026-06-01T18:13:45.949330+00:00"
     }
   ]
 }

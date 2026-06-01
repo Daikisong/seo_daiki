@@ -1,241 +1,212 @@
 # Trend Monetization Router
 
-This is a simple decision layer between trend detection and product candidate
-discovery.
+This router decides the content branch after trend discovery and SERP analysis.
 
-The problem:
-
-```text
-Trend is popular
-does not mean
-Trend should get product links
-```
-
-Example:
+Plain rule:
 
 ```text
-2026 대입 학폭 반영
+Trending topic
+does not automatically mean
+product-link article
 ```
 
-This can be a real Korean trend, but it should not flow into AliExpress, Temu,
-Amazon, or iHerb product recommendations. A product block would feel forced and
-would damage trust.
+The system now uses only two branches.
 
-## Goal
+## Branch 1: informational_explainer
 
-Before product candidate discovery runs, every trend/article gets a monetization
-route:
-
-```text
-commerce_ready
-health_commerce_guarded
-research_only
-blocked_for_monetization
-```
-
-## Routes
-
-### commerce_ready
-
-Use when a trend naturally becomes product comparison.
+Use this when the searcher mainly wants an explanation, policy summary, date,
+official source, checklist, or practical next step.
 
 Examples:
 
-- OLED TV discount
+- `renta 2025 avisos aeat`
+- visa rule changes
+- tax filing dates
+- government support programs
+- unconfirmed future product rumors
+
+Allowed flow:
+
+```text
+Trend -> SERP -> ContentStrategy -> TestArticle
+```
+
+Blocked flow:
+
+```text
+ProductCandidateDiscovery
+ProductCandidateAnalysisBlock
+MonetizationReview
+Affiliate links
+```
+
+Easy example:
+
+```text
+대입 학폭 반영
+-> students and parents need policy explanation
+-> no AliExpress/Amazon/iHerb product block
+-> keep it in KR/ko only unless another market has its own trend signal
+```
+
+## Branch 2: review_comparison
+
+Use this when the SERP and query show buying, review, comparison, price, deal,
+spec, warranty, availability, or product category intent.
+
+Examples:
+
+- `Samsung S90F OLED deal`
+- `iPhone 16 promoção Brasil`
 - USB-C charger
 - GaN charger
 - power bank
 - travel adapter
 - desk gadget
 - budget smartwatch
+- magnesium supplement
+- probiotic / gut health supplement
+- beauty ingredient product comparison
 
-Allowed next step:
-
-```text
-ProductCandidateDiscovery -> ProductCandidateAnalysisBlock
-```
-
-### health_commerce_guarded
-
-Use when a trend can connect to supplements or wellness products, but claims
-need guardrails.
-
-Examples:
-
-- magnesium sleep
-- probiotics / gut health
-- vitamin D
-- beauty ingredient
-- collagen
-
-Allowed next step:
+Allowed flow:
 
 ```text
-ProductCandidateDiscovery allowed
-but health claim guard required
-```
-
-Rules:
-
-- Do not say a supplement treats, cures, or prevents a disease.
-- Do not promise sleep, weight loss, gut recovery, hormone balance, or medical effects.
-- Prefer wording like "may support" only when supported by evidence.
-- Add evidence requirements and disclaimers before monetization review.
-- Human approval remains required.
-
-Example:
-
-```text
-Magnesium sleep
--> product comparison possible
--> blocked phrases: "cures insomnia", "treats anxiety", "guaranteed sleep"
-```
-
-### research_only
-
-Use when the trend has informational traffic but product links would feel
-unnatural.
-
-Examples:
-
-- tax filing
-- visa rules
-- government support programs
-- college admissions policy
-- school policy changes without a product angle
-
-Allowed next step:
-
-```text
-ContentStrategy -> TestArticle
-```
-
-Blocked next step:
-
-```text
-ProductCandidateDiscovery
-```
-
-Example:
-
-```text
-종합소득세 신고 기간
--> useful informational article
--> no product candidate analysis
-```
-
-### blocked_for_monetization
-
-Use when monetization would damage trust or create sensitive-topic risk.
-
-Examples:
-
-- school violence
-- minors involved in harm
-- legal disputes
-- victim/crime issues
-- medical diagnosis
-- emergency health symptoms
-- tragedy or active crisis
-
-Allowed next step:
-
-```text
-Information-only article, if editorially appropriate
-```
-
-Blocked next step:
-
-```text
-ProductCandidateDiscovery
-MonetizationReview
-Affiliate link insertion
-```
-
-Example:
-
-```text
-2026 대입 학폭 반영
--> trend may be real
--> article can explain policy
--> product links are blocked
-```
-
-## Scoring Idea
-
-This should be implemented later as a score, not keyword hardcoding.
-
-```text
-commerce_fit_score =
-  buyerIntentScore * 0.25
-+ productEntityScore * 0.20
-+ serpCommercialPatternScore * 0.20
-+ catalogMatchScore * 0.20
-+ comparisonPotentialScore * 0.15
-- complianceRiskPenalty
-- sensitivityRiskPenalty
-```
-
-Plain explanation:
-
-- `buyerIntentScore`: does the query sound like buying, comparing, reviewing, or pricing?
-- `productEntityScore`: is there a real product category?
-- `serpCommercialPatternScore`: do top pages use product cards, review boxes, prices, or comparison tables?
-- `catalogMatchScore`: can real merchant products be found without forcing it?
-- `comparisonPotentialScore`: can products be compared by specs, price, capacity, ingredients, compatibility, or use case?
-- `complianceRiskPenalty`: are there claims that need legal, medical, or policy caution?
-- `sensitivityRiskPenalty`: would monetization look exploitative or harmful?
-
-## Suggested Thresholds
-
-```text
-commerce_fit_score >= 75
-and sensitivity risk low
--> commerce_ready
-
-health/wellness product exists
-and disease/medical claim risk is controllable
--> health_commerce_guarded
-
-commerce_fit_score < 45
-and sensitivity risk low
--> research_only
-
-sensitivity risk high
--> blocked_for_monetization
-```
-
-## Pipeline Rule
-
-The product pipeline must not run just because a trend is popular.
-
-Correct flow:
-
-```text
-TrendCluster
--> TrendKeyword
--> SERP Intelligence
+Trend
+-> SERP
 -> ContentStrategy
 -> TestArticle
--> Trend Monetization Router
--> ProductCandidateDiscovery only if route allows it
+-> TranslationGroup
+-> MarketLocalizedDrafts
+-> ProductCandidateDiscovery
+-> ProductCandidateAnalysisBlock
+-> Human review later
 ```
 
-## First Implementation Later
-
-When implemented, add fields like:
+Still blocked:
 
 ```text
-monetizationRoute
-commerceFitScore
-sensitivityRiskScore
-healthClaimRiskScore
-routeReason
-blockedNextSteps
-requiredGuards
+Automatic affiliate link insertion
 ```
 
-Do not implement live merchant APIs as part of this router.
+Health and supplement topics stay in `review_comparison` when a real product
+comparison makes sense. They must carry a `health_claim_guard` before any human
+monetization review.
 
-This router only decides whether the article is allowed to enter product
-candidate discovery.
+Easy example:
+
+```text
+마그네슘 수면
+-> supplement comparison can make sense
+-> health claims need guardrails
+-> no claim like "cures insomnia"
+```
+
+## Market Expansion Rule
+
+The two branches also decide whether the article should be expanded into other
+markets.
+
+```text
+review_comparison
+-> product-related article
+-> translate/localize for all enabled markets
+-> keep translated drafts noindex until local adaptation passes
+
+informational_explainer
+-> policy/news/explainer article
+-> source market only
+-> do not create a market-wide translation batch
+```
+
+Easy examples:
+
+```text
+게이밍 모니터 추천
+-> review_comparison
+-> KR article can become JP/ja, US/en, DE/de, ES/es... localized drafts
+-> each draft still needs local SERP, price, warranty, retailer, and availability notes
+
+대입 학폭 반영
+-> informational_explainer
+-> KR/ko article only
+-> translating it to DE/de or JP/ja would make little SEO/user sense
+```
+
+Important: product pages are not just copied translations. A localized product
+article must add market-specific price, availability, warranty, retailer, return
+policy, SERP angle, and product candidate context before it can become an index
+candidate.
+
+## Where This Runs
+
+The router runs after SERP opportunity analysis and before content strategy.
+
+```text
+TrendSignal
+-> TrendCluster
+-> TrendKeyword
+-> SERP Intelligence
+-> Trend Monetization Router
+-> ContentStrategy
+-> TestArticle
+```
+
+The product pipeline runs the router again before product discovery so old or
+manual articles are checked with the same rule.
+
+## Scoring
+
+The router is not a hardcoded topic list. It scores signals from SERP and the
+article draft.
+
+```text
+commerce_fit_score:
+- commercial or buyer intent
+- review/deal/comparison article type
+- product category words
+- buying words such as price, discount, compare, buy
+- supplement/health product words
+
+informational_fit_score:
+- informational intent
+- official/article/guide type
+- policy, tax, visa, school, legal, application words
+- rumor/future wording
+```
+
+Decision rule:
+
+```text
+commerce_fit_score >= 35
+and commerce_fit_score is at least 10 points higher than informational_fit_score
+-> review_comparison
+
+otherwise
+-> informational_explainer
+```
+
+## Output
+
+The command writes:
+
+```text
+data/exports/trend_monetization_routes.json
+```
+
+Each record includes:
+
+- `route`
+- `commerceFitScore`
+- `informationalFitScore`
+- `routeReason`
+- `localizationPolicy`
+- `allowedNextSteps`
+- `blockedNextSteps`
+- `requiredGuards`
+- `signals`
+
+Command:
+
+```bash
+pnpm trend:route-monetization
+```

@@ -24,8 +24,8 @@ export function SiteHeader({
               <Search aria-hidden size={20} />
             </span>
             <span>
-              <span className="block text-base font-semibold">Global Import Lab</span>
-              <span className="block text-xs text-neutral-500">Market trend research desk</span>
+              <span className="block text-base font-semibold">Review Guide</span>
+              <span className="block text-xs text-neutral-500">Market reviews and buying checks</span>
             </span>
           </Link>
           <div className="flex flex-col gap-3 md:items-end">

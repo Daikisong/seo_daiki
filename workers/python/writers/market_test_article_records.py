@@ -34,8 +34,14 @@ def test_article_record(strategy: dict[str, Any], now_factory: Callable[[], str]
         "sections": sections,
         **experience,
         "affiliateLinks": [],
+        "contentBranch": strategy.get("contentBranch") or content_branch_for_strategy(strategy),
+        "monetizationRoute": strategy.get("monetizationRoute"),
+        "commerceFitScore": strategy.get("commerceFitScore"),
+        "informationalFitScore": strategy.get("informationalFitScore"),
+        "localizationPolicyJson": strategy.get("localizationPolicyJson"),
+        "marketExpansionPolicy": strategy.get("marketExpansionPolicy"),
         "monetizationDeferred": True,
-        "productCandidateState": "pending",
+        "productCandidateState": product_candidate_state(strategy),
         "noindexReason": "Initial test article; index candidate requires human/editorial approval.",
         "status": "test_pending",
         "indexStatus": "noindex",
@@ -55,3 +61,22 @@ def test_article_records_for_strategies(
         for strategy in strategies
         if isinstance(strategy, dict) and strategy_matches_filter(strategy, strategy_id)
     ]
+
+
+# These are production helpers with historical `test_` names, not pytest tests.
+test_article_record.__test__ = False
+test_article_records_for_strategies.__test__ = False
+
+
+def product_candidate_state(strategy: dict[str, Any]) -> str:
+    if strategy.get("monetizationRoute") == "review_comparison":
+        return "allowed_pending"
+    if strategy.get("monetizationRoute") == "informational_explainer":
+        return "skipped_informational"
+    return "pending"
+
+
+def content_branch_for_strategy(strategy: dict[str, Any]) -> str:
+    if strategy.get("monetizationRoute") == "informational_explainer":
+        return "news"
+    return "review"

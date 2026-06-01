@@ -5,15 +5,28 @@ Product candidate discovery starts only after a trend article exists.
 Before product candidate discovery runs, the article should pass the Trend
 Monetization Router in `docs/trend-monetization-router.md`.
 
-Allowed routes:
+Allowed route:
 
-- `commerce_ready`
-- `health_commerce_guarded`
+- `review_comparison`
 
-Blocked routes:
+Skipped route:
 
-- `research_only`
-- `blocked_for_monetization`
+- `informational_explainer`
+
+Example:
+
+```text
+Samsung S90F OLED deal
+-> review_comparison
+-> product candidate discovery can run
+
+게이밍 모니터 추천
+-> informational_explainer
+-> product candidate discovery is skipped
+```
+
+Health and supplement topics can still be `review_comparison` when the reader
+expects product comparison, but the route must include `health_claim_guard`.
 
 Sources enabled now:
 

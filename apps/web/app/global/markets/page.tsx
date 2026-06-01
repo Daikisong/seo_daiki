@@ -16,7 +16,7 @@ export default function GlobalMarketsPage() {
         </p>
         <div className="mt-8 grid gap-3 md:grid-cols-3">
           {markets.map((market) => (
-            <Link className="rounded-md border border-neutral-200 bg-white p-4 hover:border-teal-700" href={market.pathPrefix + "/"} key={market.pathPrefix}>
+            <Link className="rounded-md border border-neutral-200 bg-white p-4 hover:border-teal-700" href={`${market.pathPrefix}/reviews/`} key={market.pathPrefix}>
               <span className="block text-lg font-semibold">{market.country} / {market.language}</span>
               <span className="block text-sm text-neutral-600">{market.currency} / {market.timezone}</span>
             </Link>

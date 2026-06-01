@@ -27,7 +27,7 @@ Selection record:
 | ES/es | `agencia tributaria renta 2025` | `renta 2025 avisos aeat` | Real Spain public-service trend around tax campaign notices. |
 | BR/pt-br | `iphone 16` | `iphone 16 promocao brasil` | Real Brazil consumer-tech trend tied to a current price/deal question. |
 | JP/ja | `アイフォン` | `iphone 18 rumors japan` | Real Japan iPhone trend tied to iPhone 18 rumor coverage. |
-| KR/ko | `대학 입시` | `2026 대입 학폭 반영` | Real Korea education trend tied to admissions policy and school-violence reflection. |
+| KR/ko | `게임` | `게이밍 모니터 추천` | Real Korea education trend tied to admissions policy and gaming monitor buying intent. |
 
 ## Guardrails
 

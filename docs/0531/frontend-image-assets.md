@@ -4,7 +4,7 @@
 
 - Project path: `apps/web/public/images/market-guides/kr-2026-admission-checklist-hero.png`
 - Generated source path: `/home/eorb915/.codex/generated_images/019e641b-a316-7d10-ad48-cddfcf8e9c2b/ig_07055b7c752b2509016a1c4c3410d4819191cc47f4c735d950.png`
-- Usage: `/kr/ko/posts/2026-대입-학폭-반영/` hero image and Open Graph image.
+- Usage: `/kr/ko/posts/게이밍-모니터-추천/` hero image and Open Graph image.
 
 Prompt summary:
 

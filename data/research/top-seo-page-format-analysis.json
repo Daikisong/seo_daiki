@@ -1677,169 +1677,173 @@
     },
     {
       "id": 51,
-      "queryGroup": "kr_admission_bullying",
+      "queryGroup": "kr_gaming_monitor",
       "rankApprox": 1,
-      "title": "2026학년도 학폭 대입 반영 총정리",
-      "url": "https://ystudy200708.tistory.com/33",
-      "publisherType": "korean_blog_guide",
+      "title": "게이밍 모니터 추천 TOP5",
+      "url": "https://ddokcheck.com/gaming-monitor-recommendation-top5/",
+      "publisherType": "korean_review_blog",
       "observedFormat": [
-        "총정리 title",
-        "대학별 비교",
-        "표 중심",
-        "파일/근거 첨부"
+        "추천 목록",
+        "제품 카드",
+        "핵심 스펙",
+        "구매 기준"
       ],
       "adopt": [
-        "대학별 차이를 표로 보여주기",
-        "공식 파일 링크"
+        "첫 화면에서 결론과 기준 제시",
+        "표로 해상도와 주사율 비교"
       ],
       "avoid": [
-        "대학별 결과 단정"
+        "순위만 단정하고 보증과 세부 모델을 빼는 구성"
       ],
       "serpEvidence": {
-        "searchQuery": "2026 대입 학폭 반영 총정리 대학별 모집요강",
+        "searchQuery": "게이밍 모니터 추천 QHD 180Hz OLED",
         "searchEngine": "web.search_query",
-        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "capturedAt": "2026-06-01T20:50:00+09:00",
         "market": "kr",
         "language": "ko",
         "country": "KR",
         "serpLocale": "gl=kr hl=ko",
         "device": "desktop",
         "observedResultPosition": 1,
-        "resultType": "korean_blog_guide",
-        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+        "resultType": "korean_review_blog",
+        "reproducibilityNote": "Captured from live web search result set on 2026-06-01. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
       }
     },
     {
       "id": 52,
-      "queryGroup": "kr_admission_bullying",
+      "queryGroup": "kr_gaming_monitor",
       "rankApprox": 2,
-      "title": "2026 대입, 학교폭력 기록이 당락을 결정한다?",
-      "url": "https://study-duck.tistory.com/entry/2026-%EB%8C%80%EC%9E%85-%ED%95%99%EA%B5%90%ED%8F%AD%EB%A0%A5-%EA%B8%B0%EB%A1%9D%EC%9D%B4-%EB%8B%B9%EB%9D%BD%EC%9D%84-%EA%B2%B0%EC%A0%95%ED%95%9C%EB%8B%A4-%EB%B0%98%EC%98%81-%EB%B0%A9%EC%8B%9D%EA%B3%BC-%EC%A3%BC%EC%9D%98%EC%A0%90-%EC%B4%9D%EC%A0%95%EB%A6%AC",
-      "publisherType": "korean_blog_guide",
+      "title": "게이밍 모니터 추천 구매 가이드",
+      "url": "https://tomorrowbliss.com/%EA%B2%8C%EC%9D%B4%EB%B0%8D-%EB%AA%A8%EB%8B%88%ED%84%B0-%EC%B6%94%EC%B2%9C/",
+      "publisherType": "korean_buying_guide",
       "observedFormat": [
-        "question headline",
-        "what changes",
-        "주의점",
-        "대학별 기준 확인"
+        "해상도 설명",
+        "주사율 설명",
+        "가격대",
+        "추천 모델"
       ],
       "adopt": [
-        "question headline answer",
-        "supporting checklist"
+        "입문자가 이해하기 쉬운 용어 설명",
+        "가격대별 선택 기준"
       ],
       "avoid": [
-        "fear-based framing"
+        "실측 리뷰 없이 최고라고 단정"
       ],
       "serpEvidence": {
-        "searchQuery": "2026 대입 학폭 반영 총정리 대학별 모집요강",
+        "searchQuery": "게이밍 모니터 추천 QHD 180Hz OLED",
         "searchEngine": "web.search_query",
-        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "capturedAt": "2026-06-01T20:50:00+09:00",
         "market": "kr",
         "language": "ko",
         "country": "KR",
         "serpLocale": "gl=kr hl=ko",
         "device": "desktop",
         "observedResultPosition": 2,
-        "resultType": "korean_blog_guide",
-        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+        "resultType": "korean_buying_guide",
+        "reproducibilityNote": "Captured from live web search result set on 2026-06-01. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
       }
     },
     {
       "id": 53,
-      "queryGroup": "kr_admission_bullying",
+      "queryGroup": "kr_gaming_monitor",
       "rankApprox": 3,
-      "title": "학교폭력 생기부 기록, 2027 대입에서 어디까지 불리할까?",
-      "url": "https://blog.sugar.legal/%ED%95%99%EA%B5%90%ED%8F%AD%EB%A0%A5-%EC%83%9D%EA%B8%B0%EB%B6%80-%EA%B8%B0%EB%A1%9D-2027-%EB%8C%80%EC%9E%85%EC%97%90%EC%84%9C-%EC%96%B4%EB%94%94%EA%B9%8C%EC%A7%80-%EB%B6%88%EB%A6%AC%ED%95%A0%EA%B9%8C-%EC%8B%A4%EC%A0%9C-%ED%83%88%EB%9D%BD-%EA%B8%B0%EC%A4%80-%EC%A0%95%EB%A6%AC-88964",
-      "publisherType": "legal_blog_guide",
+      "title": "게이밍 모니터 추천 순위",
+      "url": "https://careside.co.kr/best-gaming-monitor/",
+      "publisherType": "korean_affiliate_guide",
       "observedFormat": [
-        "legal risk angle",
-        "actual criteria",
-        "case/context",
-        "consult-before-action"
+        "목록형 비교",
+        "장점",
+        "단점",
+        "구매 전 확인 항목"
       ],
       "adopt": [
-        "risk caveats",
-        "when to ask expert"
+        "장단점과 체크리스트를 나란히 배치",
+        "제품 후보를 표로 정리"
       ],
       "avoid": [
-        "legal advice beyond source"
+        "가격 최신성 확인 없는 링크 나열"
       ],
       "serpEvidence": {
-        "searchQuery": "2026 대입 학폭 반영 총정리 대학별 모집요강",
+        "searchQuery": "게이밍 모니터 추천 QHD 180Hz OLED",
         "searchEngine": "web.search_query",
-        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "capturedAt": "2026-06-01T20:50:00+09:00",
         "market": "kr",
         "language": "ko",
         "country": "KR",
         "serpLocale": "gl=kr hl=ko",
         "device": "desktop",
         "observedResultPosition": 3,
-        "resultType": "legal_blog_guide",
-        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+        "resultType": "korean_affiliate_guide",
+        "reproducibilityNote": "Captured from live web search result set on 2026-06-01. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
       }
     },
     {
       "id": 54,
-      "queryGroup": "kr_admission_bullying",
+      "queryGroup": "kr_gaming_monitor",
       "rankApprox": 4,
-      "title": "2026 대입 전 전형에 학폭 기록 반영",
-      "url": "https://edu.donga.com/news/articleView.html?idxno=84852",
-      "publisherType": "education_publisher_guide",
+      "title": "게이밍 모니터 선택 방법",
+      "url": "https://kr.msi.com/blog/how-to-choose-a-gaming-monitor",
+      "publisherType": "manufacturer_guide",
       "observedFormat": [
-        "policy summary",
-        "조치사항 기준",
-        "전문가 quote",
-        "대학 examples"
+        "해상도",
+        "주사율",
+        "응답속도",
+        "패널",
+        "크기"
       ],
       "adopt": [
-        "전형별/조치별 차이를 분리"
+        "사양 용어를 짧게 정의",
+        "제조사 스펙은 근거로만 사용"
       ],
       "avoid": [
-        "news-style lead replacing practical checklist"
+        "제조사 관점만으로 추천 결론 내기"
       ],
       "serpEvidence": {
-        "searchQuery": "2026 대입 학폭 반영 총정리 대학별 모집요강",
+        "searchQuery": "게이밍 모니터 추천 QHD 180Hz OLED",
         "searchEngine": "web.search_query",
-        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "capturedAt": "2026-06-01T20:50:00+09:00",
         "market": "kr",
         "language": "ko",
         "country": "KR",
         "serpLocale": "gl=kr hl=ko",
         "device": "desktop",
         "observedResultPosition": 4,
-        "resultType": "education_publisher_guide",
-        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+        "resultType": "manufacturer_guide",
+        "reproducibilityNote": "Captured from live web search result set on 2026-06-01. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
       }
     },
     {
       "id": 55,
-      "queryGroup": "kr_admission_bullying",
+      "queryGroup": "kr_gaming_monitor",
       "rankApprox": 5,
-      "title": "현 고1 치르는 2026대입부터 모든 전형 학폭 반영",
-      "url": "https://www.veritas-a.com/news/articleView.html?idxno=470532",
-      "publisherType": "education_publisher_guide",
+      "title": "게이밍 모니터 구매 전 확인할 점",
+      "url": "https://www.displayninja.com/best-gaming-monitor/",
+      "publisherType": "reference_review_guide",
       "observedFormat": [
-        "policy background",
-        "전형계획 항목",
-        "admission-system detail"
+        "제품 분류",
+        "사양 비교",
+        "구매 가이드",
+        "업데이트 표시"
       ],
       "adopt": [
-        "모집요강에서 볼 항목을 구체화"
+        "업데이트 날짜와 비교 기준 표시",
+        "추천 대상별 분기"
       ],
       "avoid": [
-        "제도 설명만 있고 행동 목록 없는 구조"
+        "해외 가격을 한국 실구매가처럼 쓰기"
       ],
       "serpEvidence": {
-        "searchQuery": "2026 대입 학폭 반영 총정리 대학별 모집요강",
+        "searchQuery": "게이밍 모니터 추천 QHD 180Hz OLED",
         "searchEngine": "web.search_query",
-        "capturedAt": "2026-05-31T00:00:00+09:00",
+        "capturedAt": "2026-06-01T20:50:00+09:00",
         "market": "kr",
         "language": "ko",
         "country": "KR",
         "serpLocale": "gl=kr hl=ko",
         "device": "desktop",
         "observedResultPosition": 5,
-        "resultType": "education_publisher_guide",
-        "reproducibilityNote": "Captured from live web search result set on 2026-05-31. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
+        "resultType": "reference_review_guide",
+        "reproducibilityNote": "Captured from live web search result set on 2026-06-01. Rankings can vary by user, location, freshness, and personalization; this stores the query and observed position used for format analysis."
       }
     }
   ]

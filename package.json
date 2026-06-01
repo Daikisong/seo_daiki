@@ -183,6 +183,7 @@
     "trend:score": "python3 workers/python/cli.py trend:score",
     "trend:report": "python3 workers/python/cli.py trend:report",
     "trend:generate-keywords": "python3 workers/python/cli.py trend:generate-keywords",
+    "trend:route-monetization": "python3 workers/python/cli.py trend:route-monetization",
     "serp:import": "python3 workers/python/cli.py serp:import-results --file data/seeds/serp-results.csv",
     "serp:analyze": "python3 workers/python/cli.py serp:analyze-pages",
     "serp:report": "python3 workers/python/cli.py serp:report",

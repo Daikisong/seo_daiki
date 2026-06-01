@@ -21,7 +21,7 @@ export default async function LocaleHomePage({ params }: LocalePageProps) {
   }
   const defaultMarket = defaultMarketForLegacyLocale(localeParam);
   if (defaultMarket) {
-    permanentRedirect(`${defaultMarket.pathPrefix}/`);
+    permanentRedirect(`${defaultMarket.pathPrefix}/reviews/`);
   }
 
   const articles = (await getLocaleArticles(localeParam)).filter((article) => article.publishStatus === "published");

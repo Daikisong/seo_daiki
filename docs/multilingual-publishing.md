@@ -21,6 +21,24 @@ TranslationGroup
 
 Translation-only pages remain `noindex` until they have local search intent, local market/risk notes, local offer availability or an explicit no-offer note, hreflang group membership, and non-boilerplate localized content.
 
+Market-wide localization is only automatic for `review_comparison` topics. These
+are product-related articles where the same buyer problem can exist across
+markets, such as chargers, monitors, supplements, adapters, and gadgets.
+`informational_explainer` topics stay in the source market/language unless a
+separate market trend and SERP opportunity exists.
+
+Easy example:
+
+```text
+게이밍 모니터 추천
+-> review_comparison
+-> create localized drafts for enabled markets
+
+대입 학폭 반영
+-> informational_explainer
+-> KR/ko only
+```
+
 ## Localization Score
 
 ```text

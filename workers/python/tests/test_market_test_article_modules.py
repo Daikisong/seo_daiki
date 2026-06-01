@@ -40,6 +40,9 @@ class MarketTestArticleModuleTests(unittest.TestCase):
             "titleStrategy": "USB C Charger",
             "recommendedAngle": "Compare charger specs before choosing.",
             "sectionPlanJson": [{"heading": "Direct answer", "purpose": "Answer first."}],
+            "monetizationRoute": "review_comparison",
+            "marketExpansionPolicy": "translate_all_product_markets",
+            "localizationPolicyJson": {"targetRule": "all_enabled_markets"},
         }
 
         article = test_article_record(strategy, lambda: "2026-05-28T00:00:00+00:00")
@@ -48,8 +51,11 @@ class MarketTestArticleModuleTests(unittest.TestCase):
         self.assertEqual(article["indexStatus"], "noindex")
         self.assertEqual(article["publishStatus"], "pending")
         self.assertEqual(article["affiliateLinks"], [])
+        self.assertEqual(article["contentBranch"], "review")
         self.assertTrue(article["monetizationDeferred"])
-        self.assertEqual(article["productCandidateState"], "pending")
+        self.assertEqual(article["productCandidateState"], "allowed_pending")
+        self.assertEqual(article["marketExpansionPolicy"], "translate_all_product_markets")
+        self.assertEqual(article["localizationPolicyJson"]["targetRule"], "all_enabled_markets")
         self.assertIn("## Quick Answer", article["contentMdx"])
         self.assertEqual(article["createdAt"], article["updatedAt"])
 

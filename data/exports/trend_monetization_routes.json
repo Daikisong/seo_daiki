@@ -1,0 +1,516 @@
+{
+  "routes": [
+    {
+      "id": "trend-route-test-article-content-strategy-trend-keyword-trend-cluster-jp-ja-iphone-18-rumors-japan-iphone-18-rumors-japan",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-jp-ja-iphone-18-rumors-japan-iphone-18-rumors-japan",
+      "strategyId": "content-strategy-trend-keyword-trend-cluster-jp-ja-iphone-18-rumors-japan-iphone-18-rumors-japan",
+      "keywordId": "trend-keyword-trend-cluster-jp-ja-iphone-18-rumors-japan-iphone-18-rumors-japan",
+      "market": "jp",
+      "language": "ja",
+      "slug": "iphone-18-rumors-japan",
+      "keyword": "iphone 18 rumors japan",
+      "title": "iPhone 18の噂: 日本で確認すべきポイント",
+      "summary": "iPhone 18の噂を、確定情報と未確認情報に分けて整理し、日本で買う前に確認すべき発売時期、キャリア販売、下取り条件、今すぐ買うべきか待つべきかの判断軸をまとめます。",
+      "route": "informational_explainer",
+      "commerceFitScore": 4,
+      "informationalFitScore": 83,
+      "routeReason": "SERP and article signals are mainly policy, official, rumor, or informational; product links should be skipped.",
+      "localizationPolicy": {
+        "strategy": "source_market_only",
+        "targetRule": "source_market_only",
+        "createTranslationGroup": false,
+        "createLocalizedDrafts": false,
+        "requiresMarketAdaptation": false,
+        "translationOnlyIndexable": false,
+        "requiredLocalSignals": [],
+        "reason": "Informational topics stay in the source market unless a separate market trend/SERP opportunity is detected."
+      },
+      "allowedNextSteps": [
+        "ContentStrategy",
+        "TestArticle"
+      ],
+      "blockedNextSteps": [
+        "MarketWideTranslationExpansion",
+        "ProductCandidateDiscovery",
+        "ProductCandidateAnalysisBlock",
+        "MonetizationReview",
+        "AutomaticAffiliateLinkInsertion"
+      ],
+      "requiredGuards": [],
+      "signals": {
+        "dominantIntent": "informational",
+        "recommendedArticleType": "article",
+        "dominantContentTypes": [
+          "article"
+        ],
+        "buyerTerms": [
+          "価格",
+          "購入"
+        ],
+        "productTerms": [
+          "iphone"
+        ],
+        "informationalTerms": [
+          "公式"
+        ],
+        "rumorOrFutureTerms": [
+          "rumors",
+          "噂",
+          "未確認"
+        ],
+        "healthTerms": []
+      },
+      "createdAt": "2026-06-01T18:13:45.932637+00:00"
+    },
+    {
+      "id": "trend-route-test-article-content-strategy-trend-keyword-trend-cluster-kr-ko-kbo-올스타-팬투표-2026-kbo-올스타-팬투표-2026",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-kr-ko-kbo-올스타-팬투표-2026-kbo-올스타-팬투표-2026",
+      "strategyId": "content-strategy-trend-keyword-trend-cluster-kr-ko-kbo-올스타-팬투표-2026-kbo-올스타-팬투표-2026",
+      "keywordId": "trend-keyword-trend-cluster-kr-ko-kbo-올스타-팬투표-2026-kbo-올스타-팬투표-2026",
+      "market": "kr",
+      "language": "ko",
+      "slug": "kbo-올스타-팬투표-2026",
+      "keyword": "kbo 올스타 팬투표 2026",
+      "title": "KBO 올스타 팬투표 2026: 후보와 일정 확인할 점",
+      "summary": "2026 KBO 올스타전 팬투표가 시작된 흐름을 바탕으로, 후보 확인 방법과 투표 일정, 잠실구장 마지막 올스타전이라는 맥락, 팬이 헷갈리기 쉬운 확인사항을 정리합니다.",
+      "route": "informational_explainer",
+      "commerceFitScore": 0,
+      "informationalFitScore": 73,
+      "routeReason": "SERP and article signals are mainly policy, official, rumor, or informational; product links should be skipped.",
+      "localizationPolicy": {
+        "strategy": "source_market_only",
+        "targetRule": "source_market_only",
+        "createTranslationGroup": false,
+        "createLocalizedDrafts": false,
+        "requiresMarketAdaptation": false,
+        "translationOnlyIndexable": false,
+        "requiredLocalSignals": [],
+        "reason": "Informational topics stay in the source market unless a separate market trend/SERP opportunity is detected."
+      },
+      "allowedNextSteps": [
+        "ContentStrategy",
+        "TestArticle"
+      ],
+      "blockedNextSteps": [
+        "MarketWideTranslationExpansion",
+        "ProductCandidateDiscovery",
+        "ProductCandidateAnalysisBlock",
+        "MonetizationReview",
+        "AutomaticAffiliateLinkInsertion"
+      ],
+      "requiredGuards": [],
+      "signals": {
+        "dominantIntent": "informational",
+        "recommendedArticleType": "article",
+        "dominantContentTypes": [
+          "article"
+        ],
+        "buyerTerms": [],
+        "productTerms": [],
+        "informationalTerms": [
+          "기준"
+        ],
+        "rumorOrFutureTerms": [],
+        "healthTerms": []
+      },
+      "createdAt": "2026-06-01T18:13:45.934926+00:00"
+    },
+    {
+      "id": "trend-route-test-article-content-strategy-trend-keyword-trend-cluster-br-pt-br-iphone-16-promocao-brasil-iphone-16-promocao-brasil",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-br-pt-br-iphone-16-promocao-brasil-iphone-16-promocao-brasil",
+      "strategyId": "content-strategy-trend-keyword-trend-cluster-br-pt-br-iphone-16-promocao-brasil-iphone-16-promocao-brasil",
+      "keywordId": "trend-keyword-trend-cluster-br-pt-br-iphone-16-promocao-brasil-iphone-16-promocao-brasil",
+      "market": "br",
+      "language": "pt-br",
+      "slug": "iphone-16-promocao-brasil",
+      "keyword": "iphone 16 promocao brasil",
+      "title": "iPhone 16 em promoção no Brasil: o que verificar antes de comprar",
+      "summary": "Guia para decidir se uma promoção do iPhone 16 no Brasil vale a pena, com foco em preço real, garantia, nota fiscal, armazenamento e alternativas.",
+      "route": "review_comparison",
+      "commerceFitScore": 100,
+      "informationalFitScore": 8,
+      "routeReason": "SERP and article signals show buyer, review, deal, or product comparison intent.",
+      "localizationPolicy": {
+        "strategy": "translate_all_product_markets",
+        "targetRule": "all_enabled_markets",
+        "createTranslationGroup": true,
+        "createLocalizedDrafts": true,
+        "requiresMarketAdaptation": true,
+        "translationOnlyIndexable": false,
+        "requiredLocalSignals": [
+          "localized title/h1/meta",
+          "local search intent and SERP angle",
+          "local price, availability, warranty, retailer, and return-policy context",
+          "local product candidate availability or explicit no-offer note",
+          "non-boilerplate localized examples"
+        ],
+        "reason": "Product/review-comparison topics should be localized across enabled markets, then kept noindex until each market has local SERP, price, availability, warranty, retailer, and product-candidate context."
+      },
+      "allowedNextSteps": [
+        "ContentStrategy",
+        "TestArticle",
+        "TranslationGroup",
+        "MarketLocalizedDrafts",
+        "ProductCandidateDiscovery",
+        "ProductCandidateAnalysisBlock"
+      ],
+      "blockedNextSteps": [
+        "AutomaticAffiliateLinkInsertion"
+      ],
+      "requiredGuards": [],
+      "signals": {
+        "dominantIntent": "commercial",
+        "recommendedArticleType": "buyer_intent_test_post",
+        "dominantContentTypes": [
+          "deal",
+          "guide",
+          "official"
+        ],
+        "buyerTerms": [
+          "compare",
+          "comparison",
+          "price",
+          "deal",
+          "spec",
+          "warranty",
+          "seller",
+          "promo",
+          "promocao",
+          "promoção",
+          "comprar",
+          "preço"
+        ],
+        "productTerms": [
+          "iphone"
+        ],
+        "informationalTerms": [
+          "official"
+        ],
+        "rumorOrFutureTerms": [],
+        "healthTerms": []
+      },
+      "createdAt": "2026-06-01T18:13:45.937466+00:00"
+    },
+    {
+      "id": "trend-route-test-article-content-strategy-trend-keyword-trend-cluster-jp-ja-runway-aleph-2-ai-video-editing-runway-aleph-2-ai-video-editing",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-jp-ja-runway-aleph-2-ai-video-editing-runway-aleph-2-ai-video-editing",
+      "strategyId": "content-strategy-trend-keyword-trend-cluster-jp-ja-runway-aleph-2-ai-video-editing-runway-aleph-2-ai-video-editing",
+      "keywordId": "trend-keyword-trend-cluster-jp-ja-runway-aleph-2-ai-video-editing-runway-aleph-2-ai-video-editing",
+      "market": "jp",
+      "language": "ja",
+      "slug": "runway-aleph-2-ai-video-editing",
+      "keyword": "runway aleph 2 ai video editing",
+      "title": "Runway Aleph 2.0: AI動画編集ツールを試す前に比較すべき点",
+      "summary": "Runway Aleph 2.0とEdit Studioの新機能を、既存動画の編集で何が変わるのか、料金とクレジットをどう見るべきか、CapCutやAdobe系ツールと比較する前に何を確認すべきかまで整理します。",
+      "route": "review_comparison",
+      "commerceFitScore": 100,
+      "informationalFitScore": 26,
+      "routeReason": "SERP and article signals show buyer, review, deal, or product comparison intent.",
+      "localizationPolicy": {
+        "strategy": "translate_all_product_markets",
+        "targetRule": "all_enabled_markets",
+        "createTranslationGroup": true,
+        "createLocalizedDrafts": true,
+        "requiresMarketAdaptation": true,
+        "translationOnlyIndexable": false,
+        "requiredLocalSignals": [
+          "localized title/h1/meta",
+          "local search intent and SERP angle",
+          "local price, availability, warranty, retailer, and return-policy context",
+          "local product candidate availability or explicit no-offer note",
+          "non-boilerplate localized examples"
+        ],
+        "reason": "Product/review-comparison topics should be localized across enabled markets, then kept noindex until each market has local SERP, price, availability, warranty, retailer, and product-candidate context."
+      },
+      "allowedNextSteps": [
+        "ContentStrategy",
+        "TestArticle",
+        "TranslationGroup",
+        "MarketLocalizedDrafts",
+        "ProductCandidateDiscovery",
+        "ProductCandidateAnalysisBlock"
+      ],
+      "blockedNextSteps": [
+        "AutomaticAffiliateLinkInsertion"
+      ],
+      "requiredGuards": [],
+      "signals": {
+        "dominantIntent": "commercial_research",
+        "recommendedArticleType": "buyer_intent_test_post",
+        "dominantContentTypes": [
+          "article",
+          "official",
+          "guide"
+        ],
+        "buyerTerms": [
+          "comparison",
+          "pricing",
+          "比較"
+        ],
+        "productTerms": [
+          "runway",
+          "aleph",
+          "video editing",
+          "edit studio",
+          "mcp",
+          "adobe",
+          "premiere",
+          "capcut"
+        ],
+        "informationalTerms": [
+          "official",
+          "公式"
+        ],
+        "rumorOrFutureTerms": [
+          "噂"
+        ],
+        "healthTerms": []
+      },
+      "createdAt": "2026-06-01T18:13:45.939343+00:00"
+    },
+    {
+      "id": "trend-route-test-article-content-strategy-trend-keyword-trend-cluster-us-en-samsung-s90f-oled-deal-samsung-s90f-oled-deal",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-us-en-samsung-s90f-oled-deal-samsung-s90f-oled-deal",
+      "strategyId": "content-strategy-trend-keyword-trend-cluster-us-en-samsung-s90f-oled-deal-samsung-s90f-oled-deal",
+      "keywordId": "trend-keyword-trend-cluster-us-en-samsung-s90f-oled-deal-samsung-s90f-oled-deal",
+      "market": "us",
+      "language": "en",
+      "slug": "samsung-s90f-oled-deal",
+      "keyword": "samsung s90f oled deal",
+      "title": "Samsung S90F OLED deal: what US buyers should verify first",
+      "summary": "A practical US buying guide for Samsung S90F OLED deals: check the exact size, panel notes, gaming needs, return policy, and whether the discount is still real before buying.",
+      "route": "review_comparison",
+      "commerceFitScore": 100,
+      "informationalFitScore": 16,
+      "routeReason": "SERP and article signals show buyer, review, deal, or product comparison intent.",
+      "localizationPolicy": {
+        "strategy": "translate_all_product_markets",
+        "targetRule": "all_enabled_markets",
+        "createTranslationGroup": true,
+        "createLocalizedDrafts": true,
+        "requiresMarketAdaptation": true,
+        "translationOnlyIndexable": false,
+        "requiredLocalSignals": [
+          "localized title/h1/meta",
+          "local search intent and SERP angle",
+          "local price, availability, warranty, retailer, and return-policy context",
+          "local product candidate availability or explicit no-offer note",
+          "non-boilerplate localized examples"
+        ],
+        "reason": "Product/review-comparison topics should be localized across enabled markets, then kept noindex until each market has local SERP, price, availability, warranty, retailer, and product-candidate context."
+      },
+      "allowedNextSteps": [
+        "ContentStrategy",
+        "TestArticle",
+        "TranslationGroup",
+        "MarketLocalizedDrafts",
+        "ProductCandidateDiscovery",
+        "ProductCandidateAnalysisBlock"
+      ],
+      "blockedNextSteps": [
+        "AutomaticAffiliateLinkInsertion"
+      ],
+      "requiredGuards": [],
+      "signals": {
+        "dominantIntent": "commercial_research",
+        "recommendedArticleType": "buyer_intent_test_post",
+        "dominantContentTypes": [
+          "review",
+          "deal"
+        ],
+        "buyerTerms": [
+          "review",
+          "reviews",
+          "comparison",
+          "price",
+          "deal",
+          "discount",
+          "buy",
+          "buying",
+          "pricing",
+          "warranty",
+          "seller",
+          "retailer"
+        ],
+        "productTerms": [
+          "oled",
+          "tv",
+          "samsung",
+          "oled"
+        ],
+        "informationalTerms": [
+          "policy",
+          "tax"
+        ],
+        "rumorOrFutureTerms": [],
+        "healthTerms": []
+      },
+      "createdAt": "2026-06-01T18:13:45.941929+00:00"
+    },
+    {
+      "id": "trend-route-test-article-content-strategy-trend-keyword-trend-cluster-kr-ko-게이밍-모니터-구매-가이드-게이밍-모니터-추천",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-kr-ko-게이밍-모니터-구매-가이드-게이밍-모니터-추천",
+      "strategyId": "content-strategy-trend-keyword-trend-cluster-kr-ko-게이밍-모니터-구매-가이드-게이밍-모니터-추천",
+      "keywordId": "trend-keyword-trend-cluster-kr-ko-게이밍-모니터-구매-가이드-게이밍-모니터-추천",
+      "market": "kr",
+      "language": "ko",
+      "slug": "게이밍-모니터-추천",
+      "keyword": "게이밍 모니터 추천",
+      "title": "게이밍 모니터 추천 2026: QHD 180Hz와 OLED 중 먼저 볼 것",
+      "summary": "한국에서 게임 관심이 다시 올라온 흐름에 맞춰, 게이밍 모니터를 살 때 먼저 정해야 할 해상도, 주사율, 패널, 응답속도, AS와 가격대 기준을 한 번에 비교합니다.",
+      "route": "review_comparison",
+      "commerceFitScore": 100,
+      "informationalFitScore": 26,
+      "routeReason": "SERP and article signals show buyer, review, deal, or product comparison intent.",
+      "localizationPolicy": {
+        "strategy": "translate_all_product_markets",
+        "targetRule": "all_enabled_markets",
+        "createTranslationGroup": true,
+        "createLocalizedDrafts": true,
+        "requiresMarketAdaptation": true,
+        "translationOnlyIndexable": false,
+        "requiredLocalSignals": [
+          "localized title/h1/meta",
+          "local search intent and SERP angle",
+          "local price, availability, warranty, retailer, and return-policy context",
+          "local product candidate availability or explicit no-offer note",
+          "non-boilerplate localized examples"
+        ],
+        "reason": "Product/review-comparison topics should be localized across enabled markets, then kept noindex until each market has local SERP, price, availability, warranty, retailer, and product-candidate context."
+      },
+      "allowedNextSteps": [
+        "ContentStrategy",
+        "TestArticle",
+        "TranslationGroup",
+        "MarketLocalizedDrafts",
+        "ProductCandidateDiscovery",
+        "ProductCandidateAnalysisBlock"
+      ],
+      "blockedNextSteps": [
+        "AutomaticAffiliateLinkInsertion"
+      ],
+      "requiredGuards": [],
+      "signals": {
+        "dominantIntent": "commercial_research",
+        "recommendedArticleType": "buyer_intent_test_post",
+        "dominantContentTypes": [
+          "guide"
+        ],
+        "buyerTerms": [
+          "comparison",
+          "가격",
+          "비교",
+          "추천",
+          "구매",
+          "리뷰",
+          "제품"
+        ],
+        "productTerms": [
+          "oled",
+          "usb",
+          "qhd",
+          "oled",
+          "게이밍",
+          "게임",
+          "모니터",
+          "키보드",
+          "헤드셋"
+        ],
+        "informationalTerms": [
+          "정책",
+          "기준"
+        ],
+        "rumorOrFutureTerms": [
+          "출시"
+        ],
+        "healthTerms": []
+      },
+      "createdAt": "2026-06-01T18:13:45.943870+00:00"
+    },
+    {
+      "id": "trend-route-test-article-content-strategy-trend-keyword-trend-cluster-es-es-renta-2025-avisos-aeat-renta-2025-avisos-aeat",
+      "articleId": "test-article-content-strategy-trend-keyword-trend-cluster-es-es-renta-2025-avisos-aeat-renta-2025-avisos-aeat",
+      "strategyId": "content-strategy-trend-keyword-trend-cluster-es-es-renta-2025-avisos-aeat-renta-2025-avisos-aeat",
+      "keywordId": "trend-keyword-trend-cluster-es-es-renta-2025-avisos-aeat-renta-2025-avisos-aeat",
+      "market": "es",
+      "language": "es",
+      "slug": "renta-2025-avisos-aeat",
+      "keyword": "renta 2025 avisos aeat",
+      "title": "Renta 2025 y AEAT: qué comprobar antes de corregir una declaración",
+      "summary": "Guía rápida para entender los avisos de la AEAT en la Renta 2025, revisar errores comunes y saber qué comprobar antes de corregir una declaración.",
+      "route": "informational_explainer",
+      "commerceFitScore": 8,
+      "informationalFitScore": 95,
+      "routeReason": "SERP and article signals are mainly policy, official, rumor, or informational; product links should be skipped.",
+      "localizationPolicy": {
+        "strategy": "source_market_only",
+        "targetRule": "source_market_only",
+        "createTranslationGroup": false,
+        "createLocalizedDrafts": false,
+        "requiresMarketAdaptation": false,
+        "translationOnlyIndexable": false,
+        "requiredLocalSignals": [],
+        "reason": "Informational topics stay in the source market unless a separate market trend/SERP opportunity is detected."
+      },
+      "allowedNextSteps": [
+        "ContentStrategy",
+        "TestArticle"
+      ],
+      "blockedNextSteps": [
+        "MarketWideTranslationExpansion",
+        "ProductCandidateDiscovery",
+        "ProductCandidateAnalysisBlock",
+        "MonetizationReview",
+        "AutomaticAffiliateLinkInsertion"
+      ],
+      "requiredGuards": [],
+      "signals": {
+        "dominantIntent": "informational",
+        "recommendedArticleType": "official",
+        "dominantContentTypes": [
+          "official",
+          "article",
+          "guide"
+        ],
+        "buyerTerms": [
+          "plan"
+        ],
+        "productTerms": [],
+        "informationalTerms": [
+          "deadline",
+          "official",
+          "notice",
+          "renta",
+          "aeat",
+          "hacienda",
+          "declaración",
+          "avisos"
+        ],
+        "rumorOrFutureTerms": [],
+        "healthTerms": []
+      },
+      "createdAt": "2026-06-01T18:13:45.946433+00:00"
+    }
+  ],
+  "summary": {
+    "total": 7,
+    "reviewComparison": 4,
+    "informationalExplainer": 3
+  },
+  "policy": {
+    "routes": [
+      "informational_explainer",
+      "review_comparison"
+    ],
+    "productCandidateDiscoveryAllowed": [
+      "review_comparison"
+    ],
+    "localization": {
+      "informational_explainer": "source_market_only",
+      "review_comparison": "translate_all_product_markets",
+      "translationOnlyIndexable": false
+    },
+    "healthTopicsRequireGuard": true
+  },
+  "generatedAt": "2026-06-01T18:13:45.946444+00:00"
+}

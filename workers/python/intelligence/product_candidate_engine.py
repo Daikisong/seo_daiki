@@ -8,6 +8,7 @@ from workers.python.intelligence.product_candidate_paths import (
     PRODUCT_ANALYSIS_PATH,
     PRODUCT_CANDIDATES_PATH,
     TEST_ARTICLES_PATH,
+    TREND_MONETIZATION_ROUTES_PATH,
     now,
 )
 
@@ -15,6 +16,7 @@ __all__ = [
     "PRODUCT_ANALYSIS_PATH",
     "PRODUCT_CANDIDATES_PATH",
     "TEST_ARTICLES_PATH",
+    "TREND_MONETIZATION_ROUTES_PATH",
     "analyze_product_candidates",
     "build_product_analysis_block",
     "discover_product_candidates",

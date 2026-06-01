@@ -18,6 +18,8 @@ def add_trend_commands(subcommands: Subcommands) -> None:
     trend_report_parser.add_argument("--market")
     trend_keywords = subcommands.add_parser("trend:generate-keywords")
     trend_keywords.add_argument("--cluster-id")
+    trend_route = subcommands.add_parser("trend:route-monetization")
+    trend_route.add_argument("--article-id")
 
 
 def add_legacy_trend_commands(subcommands: Subcommands) -> None:

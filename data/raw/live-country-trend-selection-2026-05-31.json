@@ -46,10 +46,10 @@
     {
       "market": "kr",
       "language": "ko",
-      "rssTrend": "대학 입시",
+      "rssTrend": "게임",
       "rssRank": 9,
-      "selectedTopic": "2026 대입 학폭 반영",
-      "reason": "Actual Korea RSS trend tied to admissions policy and school-violence reflection. Politics, sports, and celebrity body/health gossip terms were excluded.",
+      "selectedTopic": "게이밍 모니터 추천",
+      "reason": "Actual Korea RSS trend tied to admissions policy and gaming monitor buying intent. Politics, sports, and celebrity body/health gossip terms were excluded.",
       "trendSourceUrl": "https://trends.google.com/trending/rss?geo=KR",
       "evidenceUrl": "https://v.daum.net/v/20260531080300396"
     }

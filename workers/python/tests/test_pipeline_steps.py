@@ -22,6 +22,7 @@ class PipelineStepsTest(unittest.TestCase):
 
         self.assertIn("trend:import-signals", names)
         self.assertIn("serp:summarize-opportunity", names)
+        self.assertIn("trend:route-monetization", names)
         self.assertIn("post:generate-test", names)
         self.assertNotIn("products:discover-candidates", names)
         self.assertNotIn("monetization:create-review", names)
@@ -36,7 +37,7 @@ class PipelineStepsTest(unittest.TestCase):
         product_names = [name for name, _action in post_to_product_analysis_steps(Path("products.csv"), "article-1")]
         monetization_names = [name for name, _action in monetization_review_steps("article-1")]
 
-        self.assertEqual(product_names[0], "products:import-candidates")
+        self.assertEqual(product_names[0], "trend:route-monetization")
         self.assertEqual(product_names[-1], "products:build-analysis-block")
         self.assertEqual(monetization_names, ["monetization:create-review", "monetization:draft-placements"])
 
@@ -63,6 +64,7 @@ class PipelineStepsTest(unittest.TestCase):
                 "serp:analyze-pages",
                 "serp:summarize-opportunity",
                 "serp:report",
+                "trend:route-monetization",
                 "strategy:create",
                 "strategy:generate-brief",
                 "post:generate-test",

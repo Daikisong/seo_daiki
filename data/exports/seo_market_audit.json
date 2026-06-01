@@ -231,8 +231,8 @@
       "eligible": false,
       "includeEmptyMarketsOverride": false,
       "counts": {
-        "trends": 1,
-        "serpOpportunities": 1,
+        "trends": 2,
+        "serpOpportunities": 2,
         "publicReadyPosts": 0
       },
       "reasons": []
@@ -245,8 +245,8 @@
       "eligible": false,
       "includeEmptyMarketsOverride": false,
       "counts": {
-        "trends": 1,
-        "serpOpportunities": 1,
+        "trends": 2,
+        "serpOpportunities": 2,
         "publicReadyPosts": 0
       },
       "reasons": []

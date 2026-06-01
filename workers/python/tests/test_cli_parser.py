@@ -34,6 +34,12 @@ class CliParserTests(unittest.TestCase):
 
         self.assertEqual(args.command, "verify:api-free-six")
 
+    def test_trend_route_monetization_parser(self) -> None:
+        args = build_parser().parse_args(["trend:route-monetization", "--article-id", "article-1"])
+
+        self.assertEqual(args.command, "trend:route-monetization")
+        self.assertEqual(args.article_id, "article-1")
+
     def test_disabled_offer_matching_returns_guidance(self) -> None:
         args = build_parser().parse_args(["match-affiliate-offers"])
 

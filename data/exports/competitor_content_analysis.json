@@ -46,7 +46,7 @@
         "affiliate focused"
       ],
       "extractionStatus": "summary_only",
-      "analyzedAt": "2026-05-31T12:17:07.531520+00:00"
+      "analyzedAt": "2026-06-01T18:13:45.926189+00:00"
     },
     {
       "id": "competitor-analysis-serp-result-serp-br-iphone-16-2",
@@ -92,7 +92,7 @@
         "needs current validation"
       ],
       "extractionStatus": "summary_only",
-      "analyzedAt": "2026-05-31T12:17:07.531531+00:00"
+      "analyzedAt": "2026-06-01T18:13:45.926201+00:00"
     },
     {
       "id": "competitor-analysis-serp-result-serp-br-iphone-16-3",
@@ -137,7 +137,7 @@
         "limited risk checklist"
       ],
       "extractionStatus": "summary_only",
-      "analyzedAt": "2026-05-31T12:17:07.531540+00:00"
+      "analyzedAt": "2026-06-01T18:13:45.926209+00:00"
     },
     {
       "id": "competitor-analysis-serp-result-serp-br-iphone-16-4",
@@ -183,7 +183,7 @@
         "no deal context"
       ],
       "extractionStatus": "summary_only",
-      "analyzedAt": "2026-05-31T12:17:07.531547+00:00"
+      "analyzedAt": "2026-06-01T18:13:45.926217+00:00"
     },
     {
       "id": "competitor-analysis-serp-result-serp-es-renta-aeat-1",
@@ -230,7 +230,7 @@
         "limited step detail"
       ],
       "extractionStatus": "summary_only",
-      "analyzedAt": "2026-05-31T12:17:07.531556+00:00"
+      "analyzedAt": "2026-06-01T18:13:45.926225+00:00"
     },
     {
       "id": "competitor-analysis-serp-result-serp-es-renta-aeat-2",
@@ -277,7 +277,7 @@
         "hard to scan for beginners"
       ],
       "extractionStatus": "summary_only",
-      "analyzedAt": "2026-05-31T12:17:07.531564+00:00"
+      "analyzedAt": "2026-06-01T18:13:45.926233+00:00"
     },
     {
       "id": "competitor-analysis-serp-result-serp-es-renta-aeat-3",
@@ -323,7 +323,7 @@
         "needs caution language"
       ],
       "extractionStatus": "summary_only",
-      "analyzedAt": "2026-05-31T12:17:07.531572+00:00"
+      "analyzedAt": "2026-06-01T18:13:45.926240+00:00"
     },
     {
       "id": "competitor-analysis-serp-result-serp-es-renta-aeat-4",
@@ -366,7 +366,7 @@
         "dense government language"
       ],
       "extractionStatus": "summary_only",
-      "analyzedAt": "2026-05-31T12:17:07.531579+00:00"
+      "analyzedAt": "2026-06-01T18:13:45.926247+00:00"
     },
     {
       "id": "competitor-analysis-serp-result-serp-jp-iphone-18-1",
@@ -413,7 +413,7 @@
         "not localized to Japan"
       ],
       "extractionStatus": "summary_only",
-      "analyzedAt": "2026-05-31T12:17:07.531587+00:00"
+      "analyzedAt": "2026-06-01T18:13:45.926255+00:00"
     },
     {
       "id": "competitor-analysis-serp-result-serp-jp-iphone-18-2",
@@ -458,7 +458,7 @@
         "many claims need confidence tags"
       ],
       "extractionStatus": "summary_only",
-      "analyzedAt": "2026-05-31T12:17:07.531624+00:00"
+      "analyzedAt": "2026-06-01T18:13:45.926263+00:00"
     },
     {
       "id": "competitor-analysis-serp-result-serp-jp-iphone-18-3",
@@ -504,7 +504,7 @@
         "not enough verification depth"
       ],
       "extractionStatus": "summary_only",
-      "analyzedAt": "2026-05-31T12:17:07.531643+00:00"
+      "analyzedAt": "2026-06-01T18:13:45.926270+00:00"
     },
     {
       "id": "competitor-analysis-serp-result-serp-jp-iphone-18-4",
@@ -547,26 +547,27 @@
         "too narrow for full guide"
       ],
       "extractionStatus": "summary_only",
-      "analyzedAt": "2026-05-31T12:17:07.531653+00:00"
+      "analyzedAt": "2026-06-01T18:13:45.926277+00:00"
     },
     {
-      "id": "competitor-analysis-serp-result-serp-kr-admissions-bullying-1",
-      "serpResultId": "serp-result-serp-kr-admissions-bullying-1",
-      "market": "kr",
-      "language": "ko",
-      "keyword": "2026 대입 학폭 반영",
-      "pageTitle": "'대입 의무 반영'에도 오히려 늘어난 고교 학교폭력",
-      "h1": "'대입 의무 반영'에도 오히려 늘어난 고교 학교폭력",
+      "id": "competitor-analysis-serp-result-serp-jp-runway-aleph-1",
+      "serpResultId": "serp-result-serp-jp-runway-aleph-1",
+      "market": "jp",
+      "language": "ja",
+      "keyword": "runway aleph 2 ai video editing",
+      "pageTitle": "Runway Aleph 2.0とEdit Studioの紹介",
+      "h1": "Runway Aleph 2.0とEdit Studioの紹介",
       "headingsJson": [
-        "학폭 증가",
-        "대입 반영",
-        "학생부 기록",
-        "현장 우려"
+        "概要",
+        "Aleph 2.0",
+        "Edit Studio",
+        "既存動画編集",
+        "公開時期"
       ],
-      "wordCountEstimate": 900,
+      "wordCountEstimate": 1200,
       "contentTypeGuess": "article",
-      "intentServed": "informational",
-      "monetizationPattern": "news",
+      "intentServed": "commercial_research",
+      "monetizationPattern": "tech_editorial",
       "affiliatePattern": "none_obvious",
       "comparisonTablePresent": false,
       "productLinksPresent": false,
@@ -576,154 +577,530 @@
       ],
       "contentAnglesJson": [
         "trend trigger",
-        "school violence increase",
-        "admissions concern"
+        "AI video editing",
+        "Edit Studio",
+        "existing video editing"
       ],
       "missingAnglesJson": [
-        "official admissions rule",
-        "student-parent checklist"
+        "pricing comparison",
+        "tool alternatives",
+        "commercial-use checklist"
       ],
       "strengthsJson": [
-        "very timely",
-        "explains why topic resurfaced"
+        "very timely Japanese context"
       ],
       "weaknessesJson": [
         "news-first",
-        "needs policy source"
+        "needs buyer checklist"
       ],
       "extractionStatus": "summary_only",
-      "analyzedAt": "2026-05-31T12:17:07.531667+00:00"
+      "analyzedAt": "2026-06-01T18:13:45.926327+00:00"
     },
     {
-      "id": "competitor-analysis-serp-result-serp-kr-admissions-bullying-2",
-      "serpResultId": "serp-result-serp-kr-admissions-bullying-2",
-      "market": "kr",
-      "language": "ko",
-      "keyword": "2026 대입 학폭 반영",
-      "pageTitle": "대교협 2026학년도 대학입학전형기본사항 확정 발표",
-      "h1": "대교협 2026학년도 대학입학전형기본사항 확정 발표",
+      "id": "competitor-analysis-serp-result-serp-jp-runway-aleph-2",
+      "serpResultId": "serp-result-serp-jp-runway-aleph-2",
+      "market": "jp",
+      "language": "ja",
+      "keyword": "runway aleph 2 ai video editing",
+      "pageTitle": "Runway Aleph 2 official product page",
+      "h1": "Runway Aleph 2 official product page",
       "headingsJson": [
-        "기본사항",
-        "전 전형 반영",
-        "대학별 반영",
-        "수험생 유의점"
+        "Hero demo",
+        "Key capabilities",
+        "Video editing examples",
+        "Product positioning"
       ],
-      "wordCountEstimate": 1500,
+      "wordCountEstimate": 1800,
+      "contentTypeGuess": "official",
+      "intentServed": "commercial",
+      "monetizationPattern": "manufacturer",
+      "affiliatePattern": "none_obvious",
+      "comparisonTablePresent": true,
+      "productLinksPresent": true,
+      "originalDataPresent": true,
+      "freshnessSignalsJson": [
+        "Official 2026 product page"
+      ],
+      "contentAnglesJson": [
+        "official feature claims",
+        "demo-led capability",
+        "model positioning"
+      ],
+      "missingAnglesJson": [
+        "pricing reality",
+        "workflow limits",
+        "independent comparison"
+      ],
+      "strengthsJson": [
+        "primary source",
+        "clear product framing"
+      ],
+      "weaknessesJson": [
+        "marketing copy",
+        "not comparative"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-06-01T18:13:45.926345+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-jp-runway-aleph-3",
+      "serpResultId": "serp-result-serp-jp-runway-aleph-3",
+      "market": "jp",
+      "language": "ja",
+      "keyword": "runway aleph 2 ai video editing",
+      "pageTitle": "Runway Edit Studio help guide",
+      "h1": "Runway Edit Studio help guide",
+      "headingsJson": [
+        "Getting started",
+        "How to edit",
+        "Prompting workflow",
+        "Export",
+        "Troubleshooting"
+      ],
+      "wordCountEstimate": 1600,
+      "contentTypeGuess": "guide",
+      "intentServed": "commercial_research",
+      "monetizationPattern": "help_center",
+      "affiliatePattern": "none_obvious",
+      "comparisonTablePresent": false,
+      "productLinksPresent": false,
+      "originalDataPresent": true,
+      "freshnessSignalsJson": [
+        "Updated 2026"
+      ],
+      "contentAnglesJson": [
+        "workflow",
+        "steps",
+        "feature limits",
+        "how-to guidance"
+      ],
+      "missingAnglesJson": [
+        "Japan creator use case",
+        "cost checklist",
+        "alternative tools"
+      ],
+      "strengthsJson": [
+        "practical help structure"
+      ],
+      "weaknessesJson": [
+        "not a review",
+        "limited comparison"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-06-01T18:13:45.926355+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-jp-runway-aleph-4",
+      "serpResultId": "serp-result-serp-jp-runway-aleph-4",
+      "market": "jp",
+      "language": "ja",
+      "keyword": "runway aleph 2 ai video editing",
+      "pageTitle": "Runway MCP Gen-4.5 Veo integration",
+      "h1": "Runway MCP Gen-4.5 Veo integration",
+      "headingsJson": [
+        "Runway MCP",
+        "Claude",
+        "ChatGPT",
+        "Gen-4.5",
+        "Veo",
+        "Workflow integration"
+      ],
+      "wordCountEstimate": 1300,
       "contentTypeGuess": "article",
-      "intentServed": "informational",
-      "monetizationPattern": "education_editorial",
+      "intentServed": "commercial_research",
+      "monetizationPattern": "tech_editorial",
       "affiliatePattern": "none_obvious",
       "comparisonTablePresent": false,
       "productLinksPresent": false,
       "originalDataPresent": false,
       "freshnessSignalsJson": [
-        "Published 2026"
+        "Published 29 May 2026"
       ],
       "contentAnglesJson": [
-        "official plan summary",
-        "all admissions tracks",
-        "school violence record"
+        "AI workflow",
+        "MCP integration",
+        "ChatGPT and Claude context"
       ],
       "missingAnglesJson": [
-        "official PDF reference",
-        "university-specific differences"
+        "tool comparison",
+        "pricing",
+        "commercial rights"
       ],
       "strengthsJson": [
-        "clear policy framing"
+        "useful integration angle"
       ],
       "weaknessesJson": [
-        "secondary source",
-        "needs examples"
+        "not focused on Aleph 2 editing"
       ],
       "extractionStatus": "summary_only",
-      "analyzedAt": "2026-05-31T12:17:07.531675+00:00"
+      "analyzedAt": "2026-06-01T18:13:45.926364+00:00"
     },
     {
-      "id": "competitor-analysis-serp-result-serp-kr-admissions-bullying-3",
-      "serpResultId": "serp-result-serp-kr-admissions-bullying-3",
+      "id": "competitor-analysis-serp-result-serp-kr-gaming-monitor-1",
+      "serpResultId": "serp-result-serp-kr-gaming-monitor-1",
       "market": "kr",
       "language": "ko",
-      "keyword": "2026 대입 학폭 반영",
-      "pageTitle": "고2 대입 땐 수시 80% 학폭 의무 반영",
-      "h1": "고2 대입 땐 수시 80% 학폭 의무 반영",
+      "keyword": "게이밍 모니터 추천",
+      "pageTitle": "게이밍 모니터 추천 TOP5",
+      "h1": "게이밍 모니터 추천 TOP5",
       "headingsJson": [
-        "모집 인원",
-        "수시 비중",
-        "학폭 반영",
-        "대교협 발표"
+        "추천 제품",
+        "핵심 스펙",
+        "구매 기준",
+        "장단점",
+        "가격대"
+      ],
+      "wordCountEstimate": 2100,
+      "contentTypeGuess": "guide",
+      "intentServed": "commercial_research",
+      "monetizationPattern": "affiliate_editorial",
+      "affiliatePattern": "likely",
+      "comparisonTablePresent": true,
+      "productLinksPresent": true,
+      "originalDataPresent": false,
+      "freshnessSignalsJson": [
+        "Checked 2026-06-01"
+      ],
+      "contentAnglesJson": [
+        "추천 목록",
+        "제품 카드",
+        "사양 요약",
+        "구매 기준"
+      ],
+      "missingAnglesJson": [
+        "실측 근거",
+        "AS 정책",
+        "모델 코드 확인"
+      ],
+      "strengthsJson": [
+        "빠른 선택에 좋음",
+        "제품 카드가 잘 보임"
+      ],
+      "weaknessesJson": [
+        "광고성 링크 가능성",
+        "가격 최신성 확인 필요"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-06-01T18:13:45.926373+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-kr-gaming-monitor-2",
+      "serpResultId": "serp-result-serp-kr-gaming-monitor-2",
+      "market": "kr",
+      "language": "ko",
+      "keyword": "게이밍 모니터 추천",
+      "pageTitle": "게이밍 모니터 추천 구매 가이드",
+      "h1": "게이밍 모니터 추천 구매 가이드",
+      "headingsJson": [
+        "해상도",
+        "주사율",
+        "패널",
+        "가격대",
+        "추천 모델"
+      ],
+      "wordCountEstimate": 1800,
+      "contentTypeGuess": "guide",
+      "intentServed": "commercial_research",
+      "monetizationPattern": "affiliate_editorial",
+      "affiliatePattern": "likely",
+      "comparisonTablePresent": true,
+      "productLinksPresent": true,
+      "originalDataPresent": false,
+      "freshnessSignalsJson": [
+        "Checked 2026-06-01"
+      ],
+      "contentAnglesJson": [
+        "입문자 설명",
+        "가격대",
+        "사양 비교"
+      ],
+      "missingAnglesJson": [
+        "입력 지연",
+        "보증",
+        "실구매 체크리스트"
+      ],
+      "strengthsJson": [
+        "초보자 친화적",
+        "문단이 읽기 쉬움"
+      ],
+      "weaknessesJson": [
+        "검증 자료가 제한적일 수 있음"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-06-01T18:13:45.926381+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-kr-gaming-monitor-3",
+      "serpResultId": "serp-result-serp-kr-gaming-monitor-3",
+      "market": "kr",
+      "language": "ko",
+      "keyword": "게이밍 모니터 추천",
+      "pageTitle": "게이밍 모니터 추천 순위",
+      "h1": "게이밍 모니터 추천 순위",
+      "headingsJson": [
+        "추천 순위",
+        "스펙",
+        "장점",
+        "단점",
+        "구매팁"
+      ],
+      "wordCountEstimate": 1900,
+      "contentTypeGuess": "guide",
+      "intentServed": "commercial_research",
+      "monetizationPattern": "affiliate_editorial",
+      "affiliatePattern": "likely",
+      "comparisonTablePresent": true,
+      "productLinksPresent": true,
+      "originalDataPresent": false,
+      "freshnessSignalsJson": [
+        "Checked 2026-06-01"
+      ],
+      "contentAnglesJson": [
+        "순위형 목록",
+        "장단점",
+        "구매 전 확인"
+      ],
+      "missingAnglesJson": [
+        "제품별 보증",
+        "세부 모델명",
+        "실측 리뷰 연결"
+      ],
+      "strengthsJson": [
+        "비교 구조가 명확함"
+      ],
+      "weaknessesJson": [
+        "순위 근거를 추가 확인해야 함"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-06-01T18:13:45.926389+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-kr-gaming-monitor-4",
+      "serpResultId": "serp-result-serp-kr-gaming-monitor-4",
+      "market": "kr",
+      "language": "ko",
+      "keyword": "게이밍 모니터 추천",
+      "pageTitle": "게이밍 모니터 선택 방법",
+      "h1": "게이밍 모니터 선택 방법",
+      "headingsJson": [
+        "해상도",
+        "주사율",
+        "응답속도",
+        "패널",
+        "크기"
+      ],
+      "wordCountEstimate": 1600,
+      "contentTypeGuess": "guide",
+      "intentServed": "commercial_research",
+      "monetizationPattern": "manufacturer",
+      "affiliatePattern": "none_obvious",
+      "comparisonTablePresent": false,
+      "productLinksPresent": true,
+      "originalDataPresent": true,
+      "freshnessSignalsJson": [
+        "Checked 2026-06-01"
+      ],
+      "contentAnglesJson": [
+        "공식 사양 설명",
+        "선택 기준",
+        "패널 차이"
+      ],
+      "missingAnglesJson": [
+        "경쟁 제품 비교",
+        "가격대",
+        "독립 평가"
+      ],
+      "strengthsJson": [
+        "사양 설명이 안정적임"
+      ],
+      "weaknessesJson": [
+        "제조사 관점이라 비교가 제한됨"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-06-01T18:13:45.926397+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-kr-kbo-allstar-vote-1",
+      "serpResultId": "serp-result-serp-kr-kbo-allstar-vote-1",
+      "market": "kr",
+      "language": "ko",
+      "keyword": "kbo 올스타 팬투표 2026",
+      "pageTitle": "프로야구 올스타전 팬 투표 후보 120명 명단 발표",
+      "h1": "프로야구 올스타전 팬 투표 후보 120명 명단 발표",
+      "headingsJson": [
+        "후보 발표",
+        "팬투표 시작",
+        "베스트12",
+        "일정",
+        "KBO"
+      ],
+      "wordCountEstimate": 850,
+      "contentTypeGuess": "article",
+      "intentServed": "informational",
+      "monetizationPattern": "news_editorial",
+      "affiliatePattern": "none_obvious",
+      "comparisonTablePresent": false,
+      "productLinksPresent": false,
+      "originalDataPresent": false,
+      "freshnessSignalsJson": [
+        "Checked 2026-06-02"
+      ],
+      "contentAnglesJson": [
+        "후보 120명",
+        "팬투표",
+        "베스트12",
+        "공식 일정"
+      ],
+      "missingAnglesJson": [
+        "앱 참여 방식",
+        "팬 체크리스트",
+        "선수 누락 맥락"
+      ],
+      "strengthsJson": [
+        "핵심 사실이 빠름",
+        "뉴스 신뢰도 높음"
+      ],
+      "weaknessesJson": [
+        "독자 행동 체크리스트는 부족"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-06-01T18:13:45.926406+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-kr-kbo-allstar-vote-2",
+      "serpResultId": "serp-result-serp-kr-kbo-allstar-vote-2",
+      "market": "kr",
+      "language": "ko",
+      "keyword": "kbo 올스타 팬투표 2026",
+      "pageTitle": "Shinhan Bank to open KBO All-Star Game fan voting on June 1",
+      "h1": "Shinhan Bank to open KBO All-Star Game fan voting on June 1",
+      "headingsJson": [
+        "Fan voting",
+        "Shinhan SOL Bank",
+        "KBO All-Star",
+        "June 1",
+        "Best12"
+      ],
+      "wordCountEstimate": 700,
+      "contentTypeGuess": "article",
+      "intentServed": "informational",
+      "monetizationPattern": "news_editorial",
+      "affiliatePattern": "none_obvious",
+      "comparisonTablePresent": false,
+      "productLinksPresent": false,
+      "originalDataPresent": false,
+      "freshnessSignalsJson": [
+        "Checked 2026-06-02"
+      ],
+      "contentAnglesJson": [
+        "투표 시작일",
+        "앱 참여",
+        "스폰서 맥락"
+      ],
+      "missingAnglesJson": [
+        "한국어 독자용 설명",
+        "후보 확인표",
+        "주의점"
+      ],
+      "strengthsJson": [
+        "투표 경로가 명확함"
+      ],
+      "weaknessesJson": [
+        "영문 보도라 한국어 팬 설명 보강 필요"
+      ],
+      "extractionStatus": "summary_only",
+      "analyzedAt": "2026-06-01T18:13:45.926414+00:00"
+    },
+    {
+      "id": "competitor-analysis-serp-result-serp-kr-kbo-allstar-vote-3",
+      "serpResultId": "serp-result-serp-kr-kbo-allstar-vote-3",
+      "market": "kr",
+      "language": "ko",
+      "keyword": "kbo 올스타 팬투표 2026",
+      "pageTitle": "올스타 팬투표 류현진 후보 제외 이슈",
+      "h1": "올스타 팬투표 류현진 후보 제외 이슈",
+      "headingsJson": [
+        "류현진",
+        "후보 제외",
+        "팬투표",
+        "잠실구장",
+        "올스타"
       ],
       "wordCountEstimate": 1200,
       "contentTypeGuess": "article",
       "intentServed": "informational",
-      "monetizationPattern": "news",
+      "monetizationPattern": "sports_editorial",
       "affiliatePattern": "none_obvious",
       "comparisonTablePresent": false,
       "productLinksPresent": false,
       "originalDataPresent": false,
       "freshnessSignalsJson": [
-        "Published 2024"
+        "Checked 2026-06-02"
       ],
       "contentAnglesJson": [
-        "admissions plan",
-        "application year",
-        "policy overview"
+        "선수 누락",
+        "팬 반응",
+        "후보 기준",
+        "잠실구장 맥락"
       ],
       "missingAnglesJson": [
-        "latest 2026 update",
-        "student action list"
+        "공식 후보표 연결",
+        "감정적 제목 완화",
+        "투표 실무 안내"
       ],
       "strengthsJson": [
-        "good background"
+        "팬 관심 포인트가 강함"
       ],
       "weaknessesJson": [
-        "not current enough alone"
+        "이슈 중심이라 전체 일정 설명은 부족"
       ],
       "extractionStatus": "summary_only",
-      "analyzedAt": "2026-05-31T12:17:07.531683+00:00"
+      "analyzedAt": "2026-06-01T18:13:45.926426+00:00"
     },
     {
-      "id": "competitor-analysis-serp-result-serp-kr-admissions-bullying-4",
-      "serpResultId": "serp-result-serp-kr-admissions-bullying-4",
+      "id": "competitor-analysis-serp-result-serp-kr-kbo-allstar-vote-4",
+      "serpResultId": "serp-result-serp-kr-kbo-allstar-vote-4",
       "market": "kr",
       "language": "ko",
-      "keyword": "2026 대입 학폭 반영",
-      "pageTitle": "2026 대입 전 전형에 학폭 기록 반영 조치사항별 불이익 정도는",
-      "h1": "2026 대입 전 전형에 학폭 기록 반영 조치사항별 불이익 정도는",
+      "keyword": "kbo 올스타 팬투표 2026",
+      "pageTitle": "잠실구장 마지막 올스타전 베스트12 후보 발표",
+      "h1": "잠실구장 마지막 올스타전 베스트12 후보 발표",
       "headingsJson": [
-        "조치사항",
-        "대학별 감점",
-        "전형별 반영",
-        "주의사항"
+        "잠실구장",
+        "마지막 올스타전",
+        "후보 120명",
+        "팬투표",
+        "베스트12"
       ],
-      "wordCountEstimate": 1400,
-      "contentTypeGuess": "guide",
+      "wordCountEstimate": 750,
+      "contentTypeGuess": "article",
       "intentServed": "informational",
-      "monetizationPattern": "education_editorial",
+      "monetizationPattern": "portal_news",
       "affiliatePattern": "none_obvious",
       "comparisonTablePresent": false,
       "productLinksPresent": false,
       "originalDataPresent": false,
       "freshnessSignalsJson": [
-        "Published 2025"
+        "Checked 2026-06-02"
       ],
       "contentAnglesJson": [
-        "measure levels",
-        "possible disadvantages",
-        "university differences"
+        "잠실구장 마지막 행사",
+        "후보 발표",
+        "팬투표 관심"
       ],
       "missingAnglesJson": [
-        "official caveat",
-        "avoid universal penalty claim"
+        "티켓 일정",
+        "관람 준비",
+        "공식 일정 확인"
       ],
       "strengthsJson": [
-        "actionable detail"
+        "배경 설명이 좋음"
       ],
       "weaknessesJson": [
-        "may imply fixed outcomes",
-        "needs caution"
+        "구체적 행동 체크리스트 부족"
       ],
       "extractionStatus": "summary_only",
-      "analyzedAt": "2026-05-31T12:17:07.531691+00:00"
+      "analyzedAt": "2026-06-01T18:13:45.926434+00:00"
     },
     {
       "id": "competitor-analysis-serp-result-serp-us-samsung-s90f-1",
@@ -771,7 +1148,7 @@
         "price can expire"
       ],
       "extractionStatus": "summary_only",
-      "analyzedAt": "2026-05-31T12:17:07.531698+00:00"
+      "analyzedAt": "2026-06-01T18:13:45.926442+00:00"
     },
     {
       "id": "competitor-analysis-serp-result-serp-us-samsung-s90f-2",
@@ -819,7 +1196,7 @@
         "too technical for quick deal readers"
       ],
       "extractionStatus": "summary_only",
-      "analyzedAt": "2026-05-31T12:17:07.531706+00:00"
+      "analyzedAt": "2026-06-01T18:13:45.926449+00:00"
     },
     {
       "id": "competitor-analysis-serp-result-serp-us-samsung-s90f-3",
@@ -867,7 +1244,7 @@
         "single-size framing"
       ],
       "extractionStatus": "summary_only",
-      "analyzedAt": "2026-05-31T12:17:07.531713+00:00"
+      "analyzedAt": "2026-06-01T18:13:45.926457+00:00"
     },
     {
       "id": "competitor-analysis-serp-result-serp-us-samsung-s90f-4",
@@ -915,7 +1292,7 @@
         "deal timing absent"
       ],
       "extractionStatus": "summary_only",
-      "analyzedAt": "2026-05-31T12:17:07.531720+00:00"
+      "analyzedAt": "2026-06-01T18:13:45.926464+00:00"
     }
   ]
 }

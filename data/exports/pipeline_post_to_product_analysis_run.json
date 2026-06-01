@@ -1,36 +1,48 @@
 {
   "pipeline": "post_to_product_analysis",
   "status": "pass",
-  "started_at": "2026-05-26T20:26:52.688190+00:00",
-  "finished_at": "2026-05-26T20:26:52.690669+00:00",
+  "started_at": "2026-06-01T13:19:25.357140+00:00",
+  "finished_at": "2026-06-01T13:19:25.378761+00:00",
   "steps": [
+    {
+      "name": "trend:route-monetization",
+      "status": "pass",
+      "output": "/home/eorb915/projects/seo_daiki/data/exports/trend_monetization_routes.json",
+      "output_path": "/home/eorb915/projects/seo_daiki/data/exports/trend_monetization_routes.json",
+      "started_at": "2026-06-01T13:19:25.357148+00:00",
+      "finished_at": "2026-06-01T13:19:25.375107+00:00"
+    },
     {
       "name": "products:import-candidates",
       "status": "pass",
       "output": "/home/eorb915/projects/seo_daiki/data/exports/product_candidates.json",
-      "started_at": "2026-05-26T20:26:52.688199+00:00",
-      "finished_at": "2026-05-26T20:26:52.688708+00:00"
+      "output_path": "/home/eorb915/projects/seo_daiki/data/exports/product_candidates.json",
+      "started_at": "2026-06-01T13:19:25.375110+00:00",
+      "finished_at": "2026-06-01T13:19:25.375983+00:00"
     },
     {
       "name": "products:discover-candidates",
       "status": "pass",
       "output": "/home/eorb915/projects/seo_daiki/data/exports/product_candidates.json",
-      "started_at": "2026-05-26T20:26:52.688711+00:00",
-      "finished_at": "2026-05-26T20:26:52.689792+00:00"
+      "output_path": "/home/eorb915/projects/seo_daiki/data/exports/product_candidates.json",
+      "started_at": "2026-06-01T13:19:25.375986+00:00",
+      "finished_at": "2026-06-01T13:19:25.377232+00:00"
     },
     {
       "name": "products:analyze-candidates",
       "status": "pass",
       "output": "/home/eorb915/projects/seo_daiki/data/exports/product_candidate_analysis.json",
-      "started_at": "2026-05-26T20:26:52.689795+00:00",
-      "finished_at": "2026-05-26T20:26:52.690389+00:00"
+      "output_path": "/home/eorb915/projects/seo_daiki/data/exports/product_candidate_analysis.json",
+      "started_at": "2026-06-01T13:19:25.377235+00:00",
+      "finished_at": "2026-06-01T13:19:25.378206+00:00"
     },
     {
       "name": "products:build-analysis-block",
       "status": "pass",
       "output": "/home/eorb915/projects/seo_daiki/data/exports/product_candidate_analysis.json",
-      "started_at": "2026-05-26T20:26:52.690391+00:00",
-      "finished_at": "2026-05-26T20:26:52.690667+00:00"
+      "output_path": "/home/eorb915/projects/seo_daiki/data/exports/product_candidate_analysis.json",
+      "started_at": "2026-06-01T13:19:25.378209+00:00",
+      "finished_at": "2026-06-01T13:19:25.378758+00:00"
     }
   ],
   "monetizedLinksInserted": false

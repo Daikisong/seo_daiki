@@ -1,6 +1,39 @@
 {
   "keywords": [
     {
+      "id": "trend-keyword-trend-cluster-kr-ko-게이밍-모니터-구매-가이드-게이밍-모니터-구매-가이드",
+      "clusterId": "trend-cluster-kr-ko-게이밍-모니터-구매-가이드",
+      "market": "kr",
+      "language": "ko",
+      "keyword": "게이밍 모니터 구매 가이드",
+      "searchIntentGuess": "informational",
+      "priorityScore": 77.78,
+      "serpStatus": "pending",
+      "status": "serp_pending"
+    },
+    {
+      "id": "trend-keyword-trend-cluster-kr-ko-게이밍-모니터-구매-가이드-게이밍-모니터-구매-기준",
+      "clusterId": "trend-cluster-kr-ko-게이밍-모니터-구매-가이드",
+      "market": "kr",
+      "language": "ko",
+      "keyword": "게이밍 모니터 구매 기준",
+      "searchIntentGuess": "informational",
+      "priorityScore": 76.28,
+      "serpStatus": "pending",
+      "status": "serp_pending"
+    },
+    {
+      "id": "trend-keyword-trend-cluster-kr-ko-게이밍-모니터-구매-가이드-게이밍-모니터-추천",
+      "clusterId": "trend-cluster-kr-ko-게이밍-모니터-구매-가이드",
+      "market": "kr",
+      "language": "ko",
+      "keyword": "게이밍 모니터 추천",
+      "searchIntentGuess": "informational",
+      "priorityScore": 74.78,
+      "serpStatus": "pending",
+      "status": "serp_pending"
+    },
+    {
       "id": "trend-keyword-trend-cluster-br-pt-br-iphone-16-promocao-brasil-iphone-16-promocao-brasil",
       "clusterId": "trend-cluster-br-pt-br-iphone-16-promocao-brasil",
       "market": "br",
@@ -41,6 +74,28 @@
       "keyword": "samsung s90f oled review",
       "searchIntentGuess": "informational",
       "priorityScore": 75.53,
+      "serpStatus": "pending",
+      "status": "serp_pending"
+    },
+    {
+      "id": "trend-keyword-trend-cluster-jp-ja-runway-aleph-2-ai-video-editing-runway-aleph-2-ai-video-editing",
+      "clusterId": "trend-cluster-jp-ja-runway-aleph-2-ai-video-editing",
+      "market": "jp",
+      "language": "ja",
+      "keyword": "runway aleph 2 ai video editing",
+      "searchIntentGuess": "informational",
+      "priorityScore": 76.02,
+      "serpStatus": "pending",
+      "status": "serp_pending"
+    },
+    {
+      "id": "trend-keyword-trend-cluster-jp-ja-runway-aleph-2-ai-video-editing-runway-aleph-2-edit-studio",
+      "clusterId": "trend-cluster-jp-ja-runway-aleph-2-ai-video-editing",
+      "market": "jp",
+      "language": "ja",
+      "keyword": "runway aleph 2 edit studio",
+      "searchIntentGuess": "informational",
+      "priorityScore": 74.52,
       "serpStatus": "pending",
       "status": "serp_pending"
     },
@@ -100,24 +155,24 @@
       "status": "serp_pending"
     },
     {
-      "id": "trend-keyword-trend-cluster-kr-ko-2026-대입-학폭-반영-2026-대입-학폭-반영",
-      "clusterId": "trend-cluster-kr-ko-2026-대입-학폭-반영",
+      "id": "trend-keyword-trend-cluster-kr-ko-kbo-올스타-팬투표-2026-kbo-올스타-팬투표-2026",
+      "clusterId": "trend-cluster-kr-ko-kbo-올스타-팬투표-2026",
       "market": "kr",
       "language": "ko",
-      "keyword": "2026 대입 학폭 반영",
+      "keyword": "kbo 올스타 팬투표 2026",
       "searchIntentGuess": "informational",
-      "priorityScore": 72.12,
+      "priorityScore": 70.29,
       "serpStatus": "pending",
       "status": "serp_pending"
     },
     {
-      "id": "trend-keyword-trend-cluster-kr-ko-2026-대입-학폭-반영-대입-학교폭력-의무-반영",
-      "clusterId": "trend-cluster-kr-ko-2026-대입-학폭-반영",
+      "id": "trend-keyword-trend-cluster-kr-ko-kbo-올스타-팬투표-2026-kbo-올스타전-팬투표",
+      "clusterId": "trend-cluster-kr-ko-kbo-올스타-팬투표-2026",
       "market": "kr",
       "language": "ko",
-      "keyword": "대입 학교폭력 의무 반영",
+      "keyword": "kbo 올스타전 팬투표",
       "searchIntentGuess": "informational",
-      "priorityScore": 70.62,
+      "priorityScore": 68.79,
       "serpStatus": "pending",
       "status": "serp_pending"
     }

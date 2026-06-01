@@ -66,6 +66,9 @@ export function readMarketPosts(market: MarketConfig): MarketPostView[] {
           note: text(record(item).note)
         })),
         seoReadinessScore: Number(row.seoReadinessScore) || 0,
+        contentBranch: contentBranchValue(row),
+        monetizationRoute: text(row.monetizationRoute),
+        marketExpansionPolicy: text(row.marketExpansionPolicy),
         monetizationDeferred: row.monetizationDeferred !== false,
         productCandidateState: text(row.productCandidateState) || "pending",
         affiliateLinks: array(row.affiliateLinks),
@@ -73,6 +76,28 @@ export function readMarketPosts(market: MarketConfig): MarketPostView[] {
         publishStatus: text(row.publishStatus)
       };
     });
+}
+
+function contentBranchValue(row: Record<string, unknown>): MarketPostView["contentBranch"] {
+  const explicit = text(row.contentBranch);
+  if (explicit === "review" || explicit === "news") {
+    return explicit;
+  }
+  const monetizationRoute = text(row.monetizationRoute);
+  if (monetizationRoute === "review_comparison") {
+    return "review";
+  }
+  if (monetizationRoute === "informational_explainer") {
+    return "news";
+  }
+  const expansionPolicy = text(row.marketExpansionPolicy);
+  if (expansionPolicy === "translate_all_product_markets") {
+    return "review";
+  }
+  if (expansionPolicy === "source_market_only") {
+    return "news";
+  }
+  return text(row.productCandidateState) === "skipped_informational" ? "news" : "review";
 }
 
 function verdictBoxValue(value: unknown): MarketPostView["verdictBox"] {

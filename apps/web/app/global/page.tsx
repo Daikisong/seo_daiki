@@ -7,10 +7,10 @@ export default function GlobalPage() {
     <>
       <SiteHeader />
       <main className="mx-auto max-w-6xl px-4 py-10">
-        <p className="text-sm font-semibold uppercase text-teal-700">Global Market Trend Desk</p>
-        <h1 className="mt-3 text-4xl font-semibold">Global overview</h1>
+        <p className="text-sm font-semibold uppercase text-teal-700">Review Guide</p>
+        <h1 className="mt-3 text-4xl font-semibold">Market overview</h1>
         <p className="mt-3 max-w-3xl text-neutral-700">
-          Global pages summarize cross-market patterns. They do not replace country/language trend desks.
+          Choose a country and language to see local reviews, rankings, and buying checks.
         </p>
         <div className="mt-8 grid gap-3 md:grid-cols-3">
           <Link className="rounded-md border border-neutral-200 bg-white p-4 hover:border-teal-700" href="/global/trend-map/">Trend map</Link>

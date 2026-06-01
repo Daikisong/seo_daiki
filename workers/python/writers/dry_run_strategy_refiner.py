@@ -91,5 +91,9 @@ def localized_recommended_angle(language: str, keyword_text: str, opportunity: d
     if language == "ja":
         return f"{keyword_text} について、確定情報と噂を分け、日本の読者が確認すべき点を整理する。"
     if language == "ko":
-        return f"{keyword_text} 이슈를 정책 근거와 학생·학부모 확인사항 중심으로 정리한다."
+        if "kbo" in keyword_text.lower() or "올스타" in keyword_text:
+            return f"{keyword_text} 흐름을 팬투표 일정, 후보 명단, 참여 방식, 관람 준비 중심으로 정리한다."
+        if "모니터" in keyword_text or "게이밍" in keyword_text:
+            return f"{keyword_text} 수요를 실제 구매 기준, 사양 비교, AS 확인사항 중심으로 정리한다."
+        return f"{keyword_text} 이슈를 공식 출처, 일정, 독자 확인사항 중심으로 정리한다."
     return opportunity.get("recommendedAngle") or f"Create a market-specific no-link test post for {keyword_text}."

@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import Any
 
 from workers.python.common import read_json, slugify, write_json
+from workers.python.intelligence.product_candidate_paths import TREND_MONETIZATION_ROUTES_PATH
 from workers.python.writers.dry_run_strategy_refiner import dry_run_strategy_refiner
 from workers.python.writers.market_content_artifacts import (
     CONTENT_STRATEGIES_PATH,
@@ -19,7 +20,9 @@ def create_content_strategy(keyword_id: str | None = None) -> str:
     clusters = read_json(TREND_CLUSTERS_PATH, {"clusters": []}).get("clusters", [])
     opportunities = read_json(SERP_OPPORTUNITY_PATH, {"opportunities": []}).get("opportunities", [])
     analyses = read_json(SERP_ANALYSIS_PATH, {"analyses": []}).get("analyses", [])
+    routes = read_json(TREND_MONETIZATION_ROUTES_PATH, {"routes": []}).get("routes", [])
     strategies = content_strategy_records(keywords, clusters, opportunities, analyses, keyword_id)
+    strategies = attach_monetization_routes(strategies, routes)
     return str(write_json(CONTENT_STRATEGIES_PATH, {"strategies": strategies}))
 
 
@@ -65,3 +68,42 @@ def content_strategy_records(
             }
         )
     return strategies
+
+
+def attach_monetization_routes(strategies: list[dict[str, Any]], routes: list[Any]) -> list[dict[str, Any]]:
+    route_by_keyword_id = {
+        str(route.get("keywordId")): route
+        for route in routes
+        if isinstance(route, dict) and route.get("keywordId")
+    }
+    for strategy in strategies:
+        route = route_by_keyword_id.get(str(strategy.get("keywordId")))
+        if not route:
+            continue
+        strategy["monetizationRoute"] = route.get("route")
+        strategy["contentBranch"] = content_branch_for_route(route)
+        strategy["commerceFitScore"] = route.get("commerceFitScore")
+        strategy["informationalFitScore"] = route.get("informationalFitScore")
+        strategy["localizationPolicyJson"] = route.get("localizationPolicy")
+        strategy["marketExpansionPolicy"] = (route.get("localizationPolicy") or {}).get("strategy")
+        strategy["productCandidateNeedsJson"] = product_candidate_needs_for_route(route)
+    return strategies
+
+
+def content_branch_for_route(route: dict[str, Any]) -> str:
+    return "review" if route.get("route") == "review_comparison" else "news"
+
+
+def product_candidate_needs_for_route(route: dict[str, Any]) -> list[str]:
+    if route.get("route") == "review_comparison":
+        needs = [
+            "Product candidate analysis is allowed after the test article exists.",
+            "Future candidates must be verified before any monetized placement.",
+        ]
+        if route.get("requiredGuards"):
+            needs.append("Health or claims guard must be completed before review.")
+        return needs
+    return [
+        "Product candidate analysis is skipped for this informational explainer.",
+        "Use sources, dates, checklists, and official context instead of merchant links.",
+    ]

@@ -36,7 +36,7 @@ The post renderer is no longer a thin status card. Each generated test post now 
 | ES/es | Google Trends RSS `agencia tributaria renta 2025` | Renta 2025 AEAT notices | `/es/es/posts/renta-2025-avisos-aeat/` |
 | BR/pt-br | Google Trends RSS `iphone 16` | iPhone 16 promotion in Brazil | `/br/pt-br/posts/iphone-16-promocao-brasil/` |
 | JP/ja | Google Trends RSS `アイフォン` | iPhone 18 rumors in Japan | `/jp/ja/posts/iphone-18-rumors-japan/` |
-| KR/ko | Google Trends RSS `대학 입시` | 2026 admissions and school-violence reflection | `/kr/ko/posts/2026-대입-학폭-반영/` |
+| KR/ko | Google Trends RSS `게임` | 2026 admissions and gaming monitor buying intent | `/kr/ko/posts/게이밍-모니터-추천/` |
 
 ## Current Counts
 
@@ -68,7 +68,7 @@ Article scores:
 | `renta-2025-avisos-aeat` | 100 |
 | `iphone-16-promocao-brasil` | 100 |
 | `iphone-18-rumors-japan` | 100 |
-| `2026-대입-학폭-반영` | 100 |
+| `게이밍-모니터-추천` | 100 |
 
 The audit now fails below 98 points. It requires the core reader/SEO blocks plus top-page format evidence: article metadata, key takeaways, verdict box, pros/cons-style decision signals, top pages checked, hero image, substantial summary/body, quick facts, checklist, comparison table, source links, internal links, safe monetization state, and a clean index/noindex state.
 

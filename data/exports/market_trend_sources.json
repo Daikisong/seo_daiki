@@ -13,7 +13,7 @@
       "configJson": {
         "importFile": "/home/eorb915/projects/seo_daiki/data/seeds/trend-signals.csv"
       },
-      "lastCollectedAt": "2026-05-31T12:17:07.527880+00:00"
+      "lastCollectedAt": "2026-06-01T18:13:45.921320+00:00"
     },
     {
       "id": "trend-source-es-es-google_trending_now_export",
@@ -28,7 +28,7 @@
       "configJson": {
         "importFile": "/home/eorb915/projects/seo_daiki/data/seeds/trend-signals.csv"
       },
-      "lastCollectedAt": "2026-05-31T12:17:07.527909+00:00"
+      "lastCollectedAt": "2026-06-01T18:13:45.921382+00:00"
     },
     {
       "id": "trend-source-br-pt-br-google_trending_now_export",
@@ -43,7 +43,7 @@
       "configJson": {
         "importFile": "/home/eorb915/projects/seo_daiki/data/seeds/trend-signals.csv"
       },
-      "lastCollectedAt": "2026-05-31T12:17:07.527926+00:00"
+      "lastCollectedAt": "2026-06-01T18:13:45.921407+00:00"
     },
     {
       "id": "trend-source-jp-ja-google_trending_now_export",
@@ -58,12 +58,12 @@
       "configJson": {
         "importFile": "/home/eorb915/projects/seo_daiki/data/seeds/trend-signals.csv"
       },
-      "lastCollectedAt": "2026-05-31T12:17:07.527943+00:00"
+      "lastCollectedAt": "2026-06-01T18:13:45.921424+00:00"
     },
     {
       "id": "trend-source-kr-ko-google_trending_now_export",
       "sourceType": "google_trending_now_export",
-      "name": "Google Trends RSS KR 2026-05-31",
+      "name": "Google Trends RSS KR 2026-06-01",
       "market": "kr",
       "language": "ko",
       "country": "KR",
@@ -73,7 +73,7 @@
       "configJson": {
         "importFile": "/home/eorb915/projects/seo_daiki/data/seeds/trend-signals.csv"
       },
-      "lastCollectedAt": "2026-05-31T12:17:07.527958+00:00"
+      "lastCollectedAt": "2026-06-01T18:13:45.921454+00:00"
     }
   ]
 }

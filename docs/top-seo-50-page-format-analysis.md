@@ -104,7 +104,7 @@ The top pages are not visually complicated. They are usually dense, but the winn
 | renta_2025 | Renta 2025 Hacienda avisos antes de multarte guía Xataka OCU 2026 | gl=es hl=es | 10 |
 | iphone_18 | iPhone 18 rumors guide everything we know 2026 | gl=us hl=en | 6 |
 | iphone_18_jp | iPhone 18 rumors Japan guide 発売日 価格 2026 | gl=jp hl=ja | 4 |
-| kr_admission_bullying | 2026 대입 학폭 반영 총정리 대학별 모집요강 | gl=kr hl=ko | 5 |
+| kr_gaming_monitor | 게이밍 모니터 추천 QHD 180Hz OLED | gl=kr hl=ko | 5 |
 
 ## Adopt / Remove Decisions
 

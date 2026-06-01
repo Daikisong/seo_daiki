@@ -18,6 +18,7 @@ EXPECTED_PIPELINE_STEPS = [
     "serp:analyze-pages",
     "serp:summarize-opportunity",
     "serp:report",
+    "trend:route-monetization",
     "strategy:create",
     "strategy:generate-brief",
     "post:generate-test",
@@ -138,7 +139,7 @@ def verify_api_free_six() -> str:
         all(
             row.get("affiliateLinks") == []
             and row.get("monetizationDeferred") is True
-            and row.get("productCandidateState") == "pending"
+            and row.get("productCandidateState") in {"pending", "allowed_pending", "skipped_informational"}
             and row.get("indexStatus") == "noindex"
             and row.get("publishStatus") in {"pending", "published"}
             for row in articles

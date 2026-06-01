@@ -1,20 +1,26 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { getSiteUrl } from "@global-import-lab/seo";
 import { AnalyticsScripts } from "@/components/seo/AnalyticsScripts";
 import "./globals.css";
+import "./styles/market-shell-and-sections.css";
+import "./styles/market-article-detail.css";
+import "./styles/market-public-overrides.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: {
-    default: "Global Import Lab",
-    template: "%s | Global Import Lab"
+    default: "Review Guide",
+    template: "%s | Review Guide"
   },
-  description: "A global trend-to-content research and publishing system with market-specific SEO silos."
+  description: "Market-specific reviews and buying guides based on trend checks, source review, and practical comparison criteria."
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const requestHeaders = await headers();
+  const htmlLang = htmlLanguage(requestHeaders.get("x-market-language"));
   return (
-    <html lang="en">
+    <html lang={htmlLang}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -29,4 +35,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       </body>
     </html>
   );
+}
+
+function htmlLanguage(language: string | null): string {
+  const supported = new Set(["en", "es", "pt-br", "pt", "fr", "de", "it", "nl", "pl", "tr", "id", "ja", "ko"]);
+  return language && supported.has(language) ? language : "en";
 }

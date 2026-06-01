@@ -14,6 +14,7 @@ from workers.python.intelligence.market_trend_engine import (
     score_market_trends,
     trend_report,
 )
+from workers.python.intelligence.trend_monetization_router import route_trend_monetization
 
 
 def run_trend_command(args: Namespace) -> DispatchResult:
@@ -33,4 +34,6 @@ def run_trend_command(args: Namespace) -> DispatchResult:
         return handled(trend_report(args.market))
     if args.command == "trend:generate-keywords":
         return handled(generate_trend_keywords(args.cluster_id))
+    if args.command == "trend:route-monetization":
+        return handled(route_trend_monetization(args.article_id))
     return NOT_HANDLED

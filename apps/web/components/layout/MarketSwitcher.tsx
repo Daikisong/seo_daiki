@@ -7,7 +7,7 @@ export function MarketSwitcher() {
   return (
     <nav aria-label="Market switcher" className="flex flex-wrap gap-2 text-xs text-neutral-600">
       {markets.slice(0, 6).map((market) => (
-        <Link className="focus-ring rounded-sm hover:text-neutral-950" href={`${market.pathPrefix}/`} key={`${market.market}-${market.language}`}>
+        <Link className="focus-ring rounded-sm hover:text-neutral-950" href={`${market.pathPrefix}/reviews/`} key={`${market.market}-${market.language}`}>
           {market.country}/{market.language}
         </Link>
       ))}

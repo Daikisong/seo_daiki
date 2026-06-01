@@ -3,6 +3,102 @@
   "minimumScore": 100,
   "articleReports": [
     {
+      "slug": "게이밍-모니터-추천",
+      "score": 100,
+      "checks": [
+        {
+          "name": "hero image with alt and caption",
+          "pass": true,
+          "points": 8
+        },
+        {
+          "name": "article metadata",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "summary is reader-facing",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "at least six body sections",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "first section gives the answer early",
+          "pass": true,
+          "points": 4
+        },
+        {
+          "name": "substantial body length",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "reviewer and checked date",
+          "pass": true,
+          "points": 8
+        },
+        {
+          "name": "key takeaways",
+          "pass": true,
+          "points": 7
+        },
+        {
+          "name": "verdict box",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "quick facts",
+          "pass": true,
+          "points": 5
+        },
+        {
+          "name": "checklist UI data",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "comparison table",
+          "pass": true,
+          "points": 7
+        },
+        {
+          "name": "official policy sources lead official-policy topics",
+          "pass": true,
+          "points": 4
+        },
+        {
+          "name": "source links with checked date",
+          "pass": true,
+          "points": 12
+        },
+        {
+          "name": "no visible internal workflow phrasing",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "localized visible support text",
+          "pass": true,
+          "points": 5
+        },
+        {
+          "name": "safe monetization state",
+          "pass": true,
+          "points": 2
+        },
+        {
+          "name": "test post remains noindex until promotion",
+          "pass": true,
+          "points": 2
+        }
+      ]
+    },
+    {
       "slug": "iphone-16-promocao-brasil",
       "score": 100,
       "checks": [
@@ -100,6 +196,102 @@
     },
     {
       "slug": "samsung-s90f-oled-deal",
+      "score": 100,
+      "checks": [
+        {
+          "name": "hero image with alt and caption",
+          "pass": true,
+          "points": 8
+        },
+        {
+          "name": "article metadata",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "summary is reader-facing",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "at least six body sections",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "first section gives the answer early",
+          "pass": true,
+          "points": 4
+        },
+        {
+          "name": "substantial body length",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "reviewer and checked date",
+          "pass": true,
+          "points": 8
+        },
+        {
+          "name": "key takeaways",
+          "pass": true,
+          "points": 7
+        },
+        {
+          "name": "verdict box",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "quick facts",
+          "pass": true,
+          "points": 5
+        },
+        {
+          "name": "checklist UI data",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "comparison table",
+          "pass": true,
+          "points": 7
+        },
+        {
+          "name": "official policy sources lead official-policy topics",
+          "pass": true,
+          "points": 4
+        },
+        {
+          "name": "source links with checked date",
+          "pass": true,
+          "points": 12
+        },
+        {
+          "name": "no visible internal workflow phrasing",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "localized visible support text",
+          "pass": true,
+          "points": 5
+        },
+        {
+          "name": "safe monetization state",
+          "pass": true,
+          "points": 2
+        },
+        {
+          "name": "test post remains noindex until promotion",
+          "pass": true,
+          "points": 2
+        }
+      ]
+    },
+    {
+      "slug": "runway-aleph-2-ai-video-editing",
       "score": 100,
       "checks": [
         {
@@ -387,7 +579,7 @@
       ]
     },
     {
-      "slug": "2026-대입-학폭-반영",
+      "slug": "kbo-올스타-팬투표-2026",
       "score": 100,
       "checks": [
         {
@@ -659,6 +851,60 @@
   ],
   "routeReports": [
     {
+      "slug": "게이밍-모니터-추천",
+      "path": "/kr/ko/posts/%EA%B2%8C%EC%9D%B4%EB%B0%8D-%EB%AA%A8%EB%8B%88%ED%84%B0-%EC%B6%94%EC%B2%9C/",
+      "checks": [
+        {
+          "name": "route returned html",
+          "pass": true
+        },
+        {
+          "name": "review summary rendered",
+          "pass": true
+        },
+        {
+          "name": "method strip rendered",
+          "pass": true
+        },
+        {
+          "name": "reader path rendered",
+          "pass": true
+        },
+        {
+          "name": "Image #1 topbar rendered",
+          "pass": true
+        },
+        {
+          "name": "fit card rendered",
+          "pass": true
+        },
+        {
+          "name": "side cards rendered",
+          "pass": true
+        },
+        {
+          "name": "reader path before answer before decision cards",
+          "pass": true
+        },
+        {
+          "name": "sources rendered",
+          "pass": true
+        },
+        {
+          "name": "comparison table rendered",
+          "pass": true
+        },
+        {
+          "name": "no public SERP clutter",
+          "pass": true
+        },
+        {
+          "name": "no public internal research links",
+          "pass": true
+        }
+      ]
+    },
+    {
       "slug": "iphone-16-promocao-brasil",
       "path": "/br/pt-br/posts/iphone-16-promocao-brasil/",
       "checks": [
@@ -767,8 +1013,8 @@
       ]
     },
     {
-      "slug": "iphone-18-rumors-japan",
-      "path": "/jp/ja/posts/iphone-18-rumors-japan/",
+      "slug": "runway-aleph-2-ai-video-editing",
+      "path": "/jp/ja/posts/runway-aleph-2-ai-video-editing/",
       "checks": [
         {
           "name": "route returned html",
@@ -808,6 +1054,52 @@
         },
         {
           "name": "comparison table rendered",
+          "pass": true
+        },
+        {
+          "name": "no public SERP clutter",
+          "pass": true
+        },
+        {
+          "name": "no public internal research links",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "slug": "iphone-18-rumors-japan",
+      "path": "/jp/ja/posts/iphone-18-rumors-japan/",
+      "checks": [
+        {
+          "name": "route returned html",
+          "pass": true
+        },
+        {
+          "name": "news detail rendered",
+          "pass": true
+        },
+        {
+          "name": "news topbar rendered",
+          "pass": true
+        },
+        {
+          "name": "news table of contents rendered",
+          "pass": true
+        },
+        {
+          "name": "news keypoints rendered",
+          "pass": true
+        },
+        {
+          "name": "news body rendered",
+          "pass": true
+        },
+        {
+          "name": "news sources rendered",
+          "pass": true
+        },
+        {
+          "name": "NewsArticle JSON-LD rendered",
           "pass": true
         },
         {
@@ -829,39 +1121,31 @@
           "pass": true
         },
         {
-          "name": "review summary rendered",
+          "name": "news detail rendered",
           "pass": true
         },
         {
-          "name": "method strip rendered",
+          "name": "news topbar rendered",
           "pass": true
         },
         {
-          "name": "reader path rendered",
+          "name": "news table of contents rendered",
           "pass": true
         },
         {
-          "name": "Image #1 topbar rendered",
+          "name": "news keypoints rendered",
           "pass": true
         },
         {
-          "name": "fit card rendered",
+          "name": "news body rendered",
           "pass": true
         },
         {
-          "name": "side cards rendered",
+          "name": "news sources rendered",
           "pass": true
         },
         {
-          "name": "reader path before answer before decision cards",
-          "pass": true
-        },
-        {
-          "name": "sources rendered",
-          "pass": true
-        },
-        {
-          "name": "comparison table rendered",
+          "name": "NewsArticle JSON-LD rendered",
           "pass": true
         },
         {
@@ -875,47 +1159,39 @@
       ]
     },
     {
-      "slug": "2026-대입-학폭-반영",
-      "path": "/kr/ko/posts/2026-%EB%8C%80%EC%9E%85-%ED%95%99%ED%8F%AD-%EB%B0%98%EC%98%81/",
+      "slug": "kbo-올스타-팬투표-2026",
+      "path": "/kr/ko/posts/kbo-%EC%98%AC%EC%8A%A4%ED%83%80-%ED%8C%AC%ED%88%AC%ED%91%9C-2026/",
       "checks": [
         {
           "name": "route returned html",
           "pass": true
         },
         {
-          "name": "review summary rendered",
+          "name": "news detail rendered",
           "pass": true
         },
         {
-          "name": "method strip rendered",
+          "name": "news topbar rendered",
           "pass": true
         },
         {
-          "name": "reader path rendered",
+          "name": "news table of contents rendered",
           "pass": true
         },
         {
-          "name": "Image #1 topbar rendered",
+          "name": "news keypoints rendered",
           "pass": true
         },
         {
-          "name": "fit card rendered",
+          "name": "news body rendered",
           "pass": true
         },
         {
-          "name": "side cards rendered",
+          "name": "news sources rendered",
           "pass": true
         },
         {
-          "name": "reader path before answer before decision cards",
-          "pass": true
-        },
-        {
-          "name": "sources rendered",
-          "pass": true
-        },
-        {
-          "name": "comparison table rendered",
+          "name": "NewsArticle JSON-LD rendered",
           "pass": true
         },
         {

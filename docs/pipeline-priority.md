@@ -9,9 +9,9 @@ trend score
 trend keyword generation
 SERP import
 SERP analysis
+trend monetization routing
 strategy generation
 test article generation
-trend monetization routing
 ```
 
 Default pipeline does not run:
@@ -29,10 +29,36 @@ Separate later pipelines:
 
 `pipeline:post-to-product-analysis` should only run for articles routed as:
 
-- `commerce_ready`
-- `health_commerce_guarded`
+- `review_comparison`
 
 It should skip:
 
-- `research_only`
-- `blocked_for_monetization`
+- `informational_explainer`
+
+Market expansion rule:
+
+```text
+review_comparison
+-> product-related article
+-> create translation/localization candidates for all enabled markets
+-> translated drafts stay noindex until local SERP, price, availability, warranty, retailer, and product-candidate context are added
+
+informational_explainer
+-> explanation/policy/local information article
+-> keep source market/language only
+-> do not run market-wide translation expansion
+```
+
+Simple example:
+
+```text
+대입 정책 trend
+-> informational_explainer
+-> explanation article only
+-> KR/ko only if it was a Korean trend
+
+OLED 할인 trend
+-> review_comparison
+-> product candidate analysis can run after the test article
+-> can become localized drafts for US/en, JP/ja, DE/de, ES/es, KR/ko, etc.
+```

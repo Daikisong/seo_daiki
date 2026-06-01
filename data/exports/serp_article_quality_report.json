@@ -2,9 +2,19 @@
   "passed": true,
   "minimumSerpReferences": 3,
   "minimumOverlappingSources": 2,
-  "articleCount": 5,
+  "articleCount": 6,
   "failedCount": 0,
   "reports": [
+    {
+      "slug": "게이밍-모니터-추천",
+      "market": "kr",
+      "language": "ko",
+      "passed": true,
+      "issues": [],
+      "serpReferenceCount": 4,
+      "uniqueSerpDomains": 4,
+      "overlappingSourceCount": 3
+    },
     {
       "slug": "iphone-16-promocao-brasil",
       "market": "br",
@@ -19,6 +29,16 @@
       "slug": "samsung-s90f-oled-deal",
       "market": "us",
       "language": "en",
+      "passed": true,
+      "issues": [],
+      "serpReferenceCount": 4,
+      "uniqueSerpDomains": 4,
+      "overlappingSourceCount": 4
+    },
+    {
+      "slug": "runway-aleph-2-ai-video-editing",
+      "market": "jp",
+      "language": "ja",
       "passed": true,
       "issues": [],
       "serpReferenceCount": 4,
@@ -44,16 +64,6 @@
       "serpReferenceCount": 4,
       "uniqueSerpDomains": 4,
       "overlappingSourceCount": 4
-    },
-    {
-      "slug": "2026-대입-학폭-반영",
-      "market": "kr",
-      "language": "ko",
-      "passed": true,
-      "issues": [],
-      "serpReferenceCount": 4,
-      "uniqueSerpDomains": 4,
-      "overlappingSourceCount": 3
     }
   ]
 }

@@ -20,6 +20,7 @@ from workers.python.intelligence.market_trend_engine import (
     score_market_trends,
     trend_report,
 )
+from workers.python.intelligence.trend_monetization_router import route_trend_monetization
 from workers.python.pipeline_types import PipelineStep
 from workers.python.serp.serp_intelligence import (
     analyze_serp_pages,
@@ -64,6 +65,7 @@ def trend_to_post_steps(trend_signal_file: Path | None = None, serp_results_file
                 ("serp:analyze-pages", analyze_serp_pages),
                 ("serp:summarize-opportunity", summarize_serp_opportunity),
                 ("serp:report", serp_report),
+                ("trend:route-monetization", route_trend_monetization),
             ]
         )
     steps.extend(
@@ -97,6 +99,7 @@ def api_free_six_steps(trend_signal_file: Path | None = None, serp_results_file:
         ("serp:analyze-pages", analyze_serp_pages),
         ("serp:summarize-opportunity", summarize_serp_opportunity),
         ("serp:report", serp_report),
+        ("trend:route-monetization", route_trend_monetization),
         ("strategy:create", create_content_strategy),
         ("strategy:generate-brief", generate_content_brief),
         ("post:generate-test", generate_test_post),

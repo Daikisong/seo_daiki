@@ -5,7 +5,7 @@ from unittest.mock import patch
 
 from workers.python.writers import market_content_strategy
 from workers.python.writers.market_content_briefs import content_brief_records, generate_content_brief
-from workers.python.writers.market_content_strategy_records import content_strategy_records, create_content_strategy
+from workers.python.writers.market_content_strategy_records import attach_monetization_routes, content_strategy_records, create_content_strategy
 from workers.python.writers.market_test_articles import (
     generate_test_post,
     promote_index_candidate_records,
@@ -56,6 +56,29 @@ class MarketContentStrategyModuleTests(unittest.TestCase):
         self.assertTrue(strategy["monetizationDeferred"])
         self.assertIn("Original data or testing plan before claiming superiority", strategy["evidenceNeededJson"])
 
+    def test_attach_monetization_routes_adds_market_expansion_policy(self) -> None:
+        strategies = [{"id": "strategy-1", "keywordId": "kw-product"}]
+        routed = attach_monetization_routes(
+            strategies,
+            [
+                {
+                    "keywordId": "kw-product",
+                    "route": "review_comparison",
+                    "commerceFitScore": 92,
+                    "informationalFitScore": 5,
+                    "localizationPolicy": {
+                        "strategy": "translate_all_product_markets",
+                        "targetRule": "all_enabled_markets",
+                    },
+                }
+            ],
+        )
+
+        self.assertEqual(routed[0]["monetizationRoute"], "review_comparison")
+        self.assertEqual(routed[0]["contentBranch"], "review")
+        self.assertEqual(routed[0]["marketExpansionPolicy"], "translate_all_product_markets")
+        self.assertEqual(routed[0]["localizationPolicyJson"]["targetRule"], "all_enabled_markets")
+
     def test_content_brief_records_keep_forbidden_claims_and_no_link_rule(self) -> None:
         with patch("workers.python.writers.market_content_briefs.now", return_value="2026-05-28T00:00:00+00:00"):
             briefs = content_brief_records(
@@ -99,6 +122,7 @@ class MarketContentStrategyModuleTests(unittest.TestCase):
         self.assertEqual(articles[0]["publishStatus"], "pending")
         self.assertEqual(articles[0]["indexStatus"], "noindex")
         self.assertEqual(articles[0]["affiliateLinks"], [])
+        self.assertEqual(articles[0]["contentBranch"], "review")
         self.assertIn("## Quick Answer", articles[0]["contentMdx"])
 
     def test_publish_and_promote_records_update_only_requested_article(self) -> None:

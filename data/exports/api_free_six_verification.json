@@ -29,7 +29,7 @@
     {
       "name": "trend markets minimum",
       "status": "pass",
-      "detail": "5 trend markets found"
+      "detail": "4 trend markets found"
     },
     {
       "name": "serp results minimum",
@@ -135,8 +135,8 @@
   "generatedRoutes": [
     "/br/pt-br/posts/iphone-16-promocao-brasil/",
     "/us/en/posts/samsung-s90f-oled-deal/",
+    "/jp/ja/posts/runway-aleph-2-ai-video-editing/",
     "/jp/ja/posts/iphone-18-rumors-japan/",
-    "/es/es/posts/renta-2025-avisos-aeat/",
-    "/kr/ko/posts/2026-대입-학폭-반영/"
+    "/es/es/posts/renta-2025-avisos-aeat/"
   ]
 }

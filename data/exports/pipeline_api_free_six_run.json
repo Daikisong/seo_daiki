@@ -1,136 +1,144 @@
 {
   "pipeline": "api_free_six",
   "status": "pass",
-  "started_at": "2026-05-31T12:17:07.527255+00:00",
-  "finished_at": "2026-05-31T12:17:07.537068+00:00",
+  "started_at": "2026-05-31T19:07:48.049941+00:00",
+  "finished_at": "2026-05-31T19:07:48.076848+00:00",
   "steps": [
     {
       "name": "trend:init-markets",
       "status": "pass",
       "output": "/home/eorb915/projects/seo_daiki/data/exports/market_trend_sources.json",
       "output_path": "/home/eorb915/projects/seo_daiki/data/exports/market_trend_sources.json",
-      "started_at": "2026-05-31T12:17:07.527262+00:00",
-      "finished_at": "2026-05-31T12:17:07.527795+00:00"
+      "started_at": "2026-05-31T19:07:48.049947+00:00",
+      "finished_at": "2026-05-31T19:07:48.050484+00:00"
     },
     {
       "name": "trend:import-signals",
       "status": "pass",
       "output": "/home/eorb915/projects/seo_daiki/data/exports/market_trend_signals.json",
       "output_path": "/home/eorb915/projects/seo_daiki/data/exports/market_trend_signals.json",
-      "started_at": "2026-05-31T12:17:07.527799+00:00",
-      "finished_at": "2026-05-31T12:17:07.528604+00:00"
+      "started_at": "2026-05-31T19:07:48.050490+00:00",
+      "finished_at": "2026-05-31T19:07:48.051370+00:00"
     },
     {
       "name": "trend:normalize",
       "status": "pass",
       "output": "/home/eorb915/projects/seo_daiki/data/exports/market_trend_signals.json",
       "output_path": "/home/eorb915/projects/seo_daiki/data/exports/market_trend_signals.json",
-      "started_at": "2026-05-31T12:17:07.528607+00:00",
-      "finished_at": "2026-05-31T12:17:07.529034+00:00"
+      "started_at": "2026-05-31T19:07:48.051374+00:00",
+      "finished_at": "2026-05-31T19:07:48.052003+00:00"
     },
     {
       "name": "trend:cluster",
       "status": "pass",
       "output": "/home/eorb915/projects/seo_daiki/data/exports/trend_clusters.json",
       "output_path": "/home/eorb915/projects/seo_daiki/data/exports/trend_clusters.json",
-      "started_at": "2026-05-31T12:17:07.529036+00:00",
-      "finished_at": "2026-05-31T12:17:07.529384+00:00"
+      "started_at": "2026-05-31T19:07:48.052007+00:00",
+      "finished_at": "2026-05-31T19:07:48.052482+00:00"
     },
     {
       "name": "trend:score",
       "status": "pass",
       "output": "/home/eorb915/projects/seo_daiki/data/exports/trend_report.json",
       "output_path": "/home/eorb915/projects/seo_daiki/data/exports/trend_report.json",
-      "started_at": "2026-05-31T12:17:07.529385+00:00",
-      "finished_at": "2026-05-31T12:17:07.530121+00:00"
+      "started_at": "2026-05-31T19:07:48.052485+00:00",
+      "finished_at": "2026-05-31T19:07:48.053352+00:00"
     },
     {
       "name": "trend:generate-keywords",
       "status": "pass",
       "output": "/home/eorb915/projects/seo_daiki/data/exports/trend_keywords.json",
       "output_path": "/home/eorb915/projects/seo_daiki/data/exports/trend_keywords.json",
-      "started_at": "2026-05-31T12:17:07.530124+00:00",
-      "finished_at": "2026-05-31T12:17:07.530385+00:00"
+      "started_at": "2026-05-31T19:07:48.053364+00:00",
+      "finished_at": "2026-05-31T19:07:48.053678+00:00"
     },
     {
       "name": "trend:report",
       "status": "pass",
       "output": "/home/eorb915/projects/seo_daiki/data/exports/trend_report.json",
       "output_path": "/home/eorb915/projects/seo_daiki/data/exports/trend_report.json",
-      "started_at": "2026-05-31T12:17:07.530386+00:00",
-      "finished_at": "2026-05-31T12:17:07.530579+00:00"
+      "started_at": "2026-05-31T19:07:48.053681+00:00",
+      "finished_at": "2026-05-31T19:07:48.053909+00:00"
     },
     {
       "name": "serp:import-results",
       "status": "pass",
       "output": "/home/eorb915/projects/seo_daiki/data/exports/serp_results.json",
       "output_path": "/home/eorb915/projects/seo_daiki/data/exports/serp_results.json",
-      "started_at": "2026-05-31T12:17:07.530581+00:00",
-      "finished_at": "2026-05-31T12:17:07.531075+00:00"
+      "started_at": "2026-05-31T19:07:48.053911+00:00",
+      "finished_at": "2026-05-31T19:07:48.054433+00:00"
     },
     {
       "name": "serp:fetch-pages",
       "status": "pass",
       "output": "/home/eorb915/projects/seo_daiki/data/exports/serp_results.json",
       "output_path": "/home/eorb915/projects/seo_daiki/data/exports/serp_results.json",
-      "started_at": "2026-05-31T12:17:07.531076+00:00",
-      "finished_at": "2026-05-31T12:17:07.531365+00:00"
+      "started_at": "2026-05-31T19:07:48.054435+00:00",
+      "finished_at": "2026-05-31T19:07:48.054849+00:00"
     },
     {
       "name": "serp:analyze-pages",
       "status": "pass",
       "output": "/home/eorb915/projects/seo_daiki/data/exports/competitor_content_analysis.json",
       "output_path": "/home/eorb915/projects/seo_daiki/data/exports/competitor_content_analysis.json",
-      "started_at": "2026-05-31T12:17:07.531367+00:00",
-      "finished_at": "2026-05-31T12:17:07.532233+00:00"
+      "started_at": "2026-05-31T19:07:48.054852+00:00",
+      "finished_at": "2026-05-31T19:07:48.055803+00:00"
     },
     {
       "name": "serp:summarize-opportunity",
       "status": "pass",
       "output": "/home/eorb915/projects/seo_daiki/data/exports/serp_opportunity_report.json",
       "output_path": "/home/eorb915/projects/seo_daiki/data/exports/serp_opportunity_report.json",
-      "started_at": "2026-05-31T12:17:07.532236+00:00",
-      "finished_at": "2026-05-31T12:17:07.532819+00:00"
+      "started_at": "2026-05-31T19:07:48.055806+00:00",
+      "finished_at": "2026-05-31T19:07:48.056475+00:00"
     },
     {
       "name": "serp:report",
       "status": "pass",
       "output": "/home/eorb915/projects/seo_daiki/data/exports/serp_opportunity_report.json",
       "output_path": "/home/eorb915/projects/seo_daiki/data/exports/serp_opportunity_report.json",
-      "started_at": "2026-05-31T12:17:07.532820+00:00",
-      "finished_at": "2026-05-31T12:17:07.533217+00:00"
+      "started_at": "2026-05-31T19:07:48.056477+00:00",
+      "finished_at": "2026-05-31T19:07:48.056940+00:00"
+    },
+    {
+      "name": "trend:route-monetization",
+      "status": "pass",
+      "output": "/home/eorb915/projects/seo_daiki/data/exports/trend_monetization_routes.json",
+      "output_path": "/home/eorb915/projects/seo_daiki/data/exports/trend_monetization_routes.json",
+      "started_at": "2026-05-31T19:07:48.056943+00:00",
+      "finished_at": "2026-05-31T19:07:48.072779+00:00"
     },
     {
       "name": "strategy:create",
       "status": "pass",
       "output": "/home/eorb915/projects/seo_daiki/data/exports/content_strategies.json",
       "output_path": "/home/eorb915/projects/seo_daiki/data/exports/content_strategies.json",
-      "started_at": "2026-05-31T12:17:07.533224+00:00",
-      "finished_at": "2026-05-31T12:17:07.534340+00:00"
+      "started_at": "2026-05-31T19:07:48.072784+00:00",
+      "finished_at": "2026-05-31T19:07:48.073790+00:00"
     },
     {
       "name": "strategy:generate-brief",
       "status": "pass",
       "output": "/home/eorb915/projects/seo_daiki/data/exports/content_briefs.json",
       "output_path": "/home/eorb915/projects/seo_daiki/data/exports/content_briefs.json",
-      "started_at": "2026-05-31T12:17:07.534343+00:00",
-      "finished_at": "2026-05-31T12:17:07.534738+00:00"
+      "started_at": "2026-05-31T19:07:48.073793+00:00",
+      "finished_at": "2026-05-31T19:07:48.074301+00:00"
     },
     {
       "name": "post:generate-test",
       "status": "pass",
       "output": "/home/eorb915/projects/seo_daiki/data/exports/test_articles.json",
       "output_path": "/home/eorb915/projects/seo_daiki/data/exports/test_articles.json",
-      "started_at": "2026-05-31T12:17:07.534739+00:00",
-      "finished_at": "2026-05-31T12:17:07.536051+00:00"
+      "started_at": "2026-05-31T19:07:48.074303+00:00",
+      "finished_at": "2026-05-31T19:07:48.075753+00:00"
     },
     {
       "name": "post:publish-test --mode noindex",
       "status": "pass",
       "output": "/home/eorb915/projects/seo_daiki/data/exports/test_articles.json",
       "output_path": "/home/eorb915/projects/seo_daiki/data/exports/test_articles.json",
-      "started_at": "2026-05-31T12:17:07.536053+00:00",
-      "finished_at": "2026-05-31T12:17:07.537064+00:00"
+      "started_at": "2026-05-31T19:07:48.075756+00:00",
+      "finished_at": "2026-05-31T19:07:48.076844+00:00"
     }
   ],
   "apiFree": true,

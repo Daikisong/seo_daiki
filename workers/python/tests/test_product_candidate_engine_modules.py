@@ -17,12 +17,14 @@ from workers.python.intelligence.product_candidate_discovery import (
     article_search_text,
     candidate_matches_article,
     discover_product_candidates,
+    route_for_article,
 )
 from workers.python.intelligence.product_candidate_importer import import_product_candidates
 from workers.python.intelligence.product_candidate_paths import (
     PRODUCT_ANALYSIS_PATH,
     PRODUCT_CANDIDATES_PATH,
     TEST_ARTICLES_PATH,
+    TREND_MONETIZATION_ROUTES_PATH,
     now,
 )
 
@@ -37,6 +39,7 @@ class ProductCandidateEngineModulesTest(unittest.TestCase):
         self.assertEqual(product_candidate_engine.PRODUCT_ANALYSIS_PATH, PRODUCT_ANALYSIS_PATH)
         self.assertEqual(product_candidate_engine.PRODUCT_CANDIDATES_PATH, PRODUCT_CANDIDATES_PATH)
         self.assertEqual(product_candidate_engine.TEST_ARTICLES_PATH, TEST_ARTICLES_PATH)
+        self.assertEqual(product_candidate_engine.TREND_MONETIZATION_ROUTES_PATH, TREND_MONETIZATION_ROUTES_PATH)
 
     def test_discovery_helpers_match_article_topic_and_id(self) -> None:
         article = {
@@ -51,6 +54,44 @@ class ProductCandidateEngineModulesTest(unittest.TestCase):
         self.assertTrue(article_matches_id(article, "article-1"))
         self.assertIn("dosage", article_search_text(article))
         self.assertTrue(candidate_matches_article(candidate, article, article_search_text(article)))
+
+    def test_discovery_route_helper_skips_informational_articles(self) -> None:
+        article = {"id": "article-1", "market": "kr", "language": "ko", "slug": "economic-census-guide"}
+        route = route_for_article(
+            article,
+            {
+                "routes": [
+                    {
+                        "articleId": "article-1",
+                        "market": "kr",
+                        "language": "ko",
+                        "slug": "economic-census-guide",
+                        "route": "informational_explainer",
+                    }
+                ]
+            },
+        )
+
+        self.assertEqual(route["route"], "informational_explainer")  # type: ignore[index]
+
+    def test_discovery_route_helper_allows_review_articles(self) -> None:
+        article = {"id": "article-2", "market": "us", "language": "en", "slug": "samsung-s90f-oled-deal"}
+        route = route_for_article(
+            article,
+            {
+                "routes": [
+                    {
+                        "articleId": "article-2",
+                        "market": "us",
+                        "language": "en",
+                        "slug": "samsung-s90f-oled-deal",
+                        "route": "review_comparison",
+                    }
+                ]
+            },
+        )
+
+        self.assertEqual(route["route"], "review_comparison")  # type: ignore[index]
 
     def test_analysis_helpers_sort_and_keep_do_not_link_status(self) -> None:
         selected = selected_product_candidates(

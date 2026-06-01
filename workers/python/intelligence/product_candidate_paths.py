@@ -7,6 +7,7 @@ from workers.python.common import DATA
 TEST_ARTICLES_PATH = DATA / "exports" / "test_articles.json"
 PRODUCT_CANDIDATES_PATH = DATA / "exports" / "product_candidates.json"
 PRODUCT_ANALYSIS_PATH = DATA / "exports" / "product_candidate_analysis.json"
+TREND_MONETIZATION_ROUTES_PATH = DATA / "exports" / "trend_monetization_routes.json"
 
 
 def now() -> str:
