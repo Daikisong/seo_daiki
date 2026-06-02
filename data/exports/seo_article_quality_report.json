@@ -62,7 +62,7 @@
           "points": 6
         },
         {
-          "name": "comparison table",
+          "name": "structured article support",
           "pass": true,
           "points": 7
         },
@@ -158,7 +158,7 @@
           "points": 6
         },
         {
-          "name": "comparison table",
+          "name": "structured article support",
           "pass": true,
           "points": 7
         },
@@ -254,7 +254,7 @@
           "points": 6
         },
         {
-          "name": "comparison table",
+          "name": "structured article support",
           "pass": true,
           "points": 7
         },
@@ -350,7 +350,7 @@
           "points": 6
         },
         {
-          "name": "comparison table",
+          "name": "structured article support",
           "pass": true,
           "points": 7
         },
@@ -446,7 +446,7 @@
           "points": 6
         },
         {
-          "name": "comparison table",
+          "name": "structured article support",
           "pass": true,
           "points": 7
         },
@@ -542,7 +542,7 @@
           "points": 6
         },
         {
-          "name": "comparison table",
+          "name": "structured article support",
           "pass": true,
           "points": 7
         },
@@ -638,7 +638,103 @@
           "points": 6
         },
         {
-          "name": "comparison table",
+          "name": "structured article support",
+          "pass": true,
+          "points": 7
+        },
+        {
+          "name": "official policy sources lead official-policy topics",
+          "pass": true,
+          "points": 4
+        },
+        {
+          "name": "source links with checked date",
+          "pass": true,
+          "points": 12
+        },
+        {
+          "name": "no visible internal workflow phrasing",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "localized visible support text",
+          "pass": true,
+          "points": 5
+        },
+        {
+          "name": "safe monetization state",
+          "pass": true,
+          "points": 2
+        },
+        {
+          "name": "test post remains noindex until promotion",
+          "pass": true,
+          "points": 2
+        }
+      ]
+    },
+    {
+      "slug": "교육공무원-2026-확인사항",
+      "score": 100,
+      "checks": [
+        {
+          "name": "hero image with alt and caption",
+          "pass": true,
+          "points": 8
+        },
+        {
+          "name": "article metadata",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "summary is reader-facing",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "at least six body sections",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "first section gives the answer early",
+          "pass": true,
+          "points": 4
+        },
+        {
+          "name": "substantial body length",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "reviewer and checked date",
+          "pass": true,
+          "points": 8
+        },
+        {
+          "name": "key takeaways",
+          "pass": true,
+          "points": 7
+        },
+        {
+          "name": "verdict box",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "quick facts",
+          "pass": true,
+          "points": 5
+        },
+        {
+          "name": "checklist UI data",
+          "pass": true,
+          "points": 6
+        },
+        {
+          "name": "structured article support",
           "pass": true,
           "points": 7
         },
@@ -1091,6 +1187,10 @@
           "pass": true
         },
         {
+          "name": "no dashboard-like news utility panel",
+          "pass": true
+        },
+        {
           "name": "news body rendered",
           "pass": true
         },
@@ -1108,6 +1208,10 @@
         },
         {
           "name": "no public internal research links",
+          "pass": true
+        },
+        {
+          "name": "no serialized news internals",
           "pass": true
         }
       ]
@@ -1137,6 +1241,10 @@
           "pass": true
         },
         {
+          "name": "no dashboard-like news utility panel",
+          "pass": true
+        },
+        {
           "name": "news body rendered",
           "pass": true
         },
@@ -1154,6 +1262,10 @@
         },
         {
           "name": "no public internal research links",
+          "pass": true
+        },
+        {
+          "name": "no serialized news internals",
           "pass": true
         }
       ]
@@ -1183,6 +1295,10 @@
           "pass": true
         },
         {
+          "name": "no dashboard-like news utility panel",
+          "pass": true
+        },
+        {
           "name": "news body rendered",
           "pass": true
         },
@@ -1200,6 +1316,64 @@
         },
         {
           "name": "no public internal research links",
+          "pass": true
+        },
+        {
+          "name": "no serialized news internals",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "slug": "교육공무원-2026-확인사항",
+      "path": "/kr/ko/posts/%EA%B5%90%EC%9C%A1%EA%B3%B5%EB%AC%B4%EC%9B%90-2026-%ED%99%95%EC%9D%B8%EC%82%AC%ED%95%AD/",
+      "checks": [
+        {
+          "name": "route returned html",
+          "pass": true
+        },
+        {
+          "name": "news detail rendered",
+          "pass": true
+        },
+        {
+          "name": "news topbar rendered",
+          "pass": true
+        },
+        {
+          "name": "news table of contents rendered",
+          "pass": true
+        },
+        {
+          "name": "news keypoints rendered",
+          "pass": true
+        },
+        {
+          "name": "no dashboard-like news utility panel",
+          "pass": true
+        },
+        {
+          "name": "news body rendered",
+          "pass": true
+        },
+        {
+          "name": "news sources rendered",
+          "pass": true
+        },
+        {
+          "name": "NewsArticle JSON-LD rendered",
+          "pass": true
+        },
+        {
+          "name": "no public SERP clutter",
+          "pass": true
+        },
+        {
+          "name": "no public internal research links",
+          "pass": true
+        },
+        {
+          "name": "no serialized news internals",
           "pass": true
         }
       ]

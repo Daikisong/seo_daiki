@@ -90,6 +90,8 @@ news
 
 이 분리는 SEO와 수익화 모두에 중요하다. 예를 들어 입시 정책 글에 무리하게 상품 링크를 넣으면 신뢰가 깨진다. 반대로 게이밍 모니터 글에는 비교표, 체크리스트, 제품 후보 분석이 자연스럽다.
 
+뉴스 글은 공개 화면에서 내부 분석 패널을 보여주지 않는다. 필요한 확인 순서, 용어 설명, 주의점은 `sections` 본문 안에 문장으로 풀어 쓰고, 화면 하단에는 출처와 정정 안내만 둔다. 예를 들어 `교육공무원` 글은 “지원 전에 꼭 구분할 것”이라는 본문 섹션으로 설명하지, 별도 관리용 카드 묶음으로 노출하지 않는다.
+
 ## Article Page Modules
 
 현재 글 상세 페이지는 다음 파일들로 나뉜다.
@@ -110,6 +112,7 @@ apps/web/components/market/market-review-post-detail-labels.ts
 
 apps/web/components/market/MarketNewsPostDetail.tsx
   뉴스/정보형 상세 화면을 렌더링한다.
+  공개 흐름은 제목, 요점, 목차, 본문, 하단 출처/정정, 이전/다음 링크다.
 
 apps/web/components/market/market-news-post-detail-model.ts
   뉴스 화면의 section id, 목차 section, key point fallback, paragraph split을 담당한다.

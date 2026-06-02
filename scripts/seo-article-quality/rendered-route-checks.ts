@@ -10,6 +10,7 @@ export type RenderedRouteReport = {
 export function renderedArticleChecks(article: Article, siteUrl: string): RenderedRouteReport {
   const path = `/${article.market}/${article.language}/posts/${encodeURIComponent(article.slug ?? "")}/`;
   const html = fetchRenderedHtml(`${siteUrl}${path}`);
+  const visibleHtml = stripScriptData(html);
 
   if (article.contentBranch === "news") {
     return {
@@ -21,11 +22,13 @@ export function renderedArticleChecks(article: Article, siteUrl: string): Render
         { name: "news topbar rendered", pass: html.includes("market-article-topbar") },
         { name: "news table of contents rendered", pass: html.includes("market-news-toc") },
         { name: "news keypoints rendered", pass: html.includes("market-news-keypoints") },
+        { name: "no dashboard-like news utility panel", pass: noDashboardLikeNewsUtilityPanel(html) },
         { name: "news body rendered", pass: html.includes("market-news-body") },
         { name: "news sources rendered", pass: html.includes("market-news-source-correction") && html.includes("noopener noreferrer") },
         { name: "NewsArticle JSON-LD rendered", pass: html.includes("NewsArticle") },
-        { name: "no public SERP clutter", pass: noPublicSerpClutter(html) },
-        { name: "no public internal research links", pass: noPublicInternalResearchLinks(html) }
+        { name: "no public SERP clutter", pass: noPublicSerpClutter(visibleHtml) },
+        { name: "no public internal research links", pass: noPublicInternalResearchLinks(visibleHtml) },
+        { name: "no serialized news internals", pass: noSerializedNewsInternals(html) }
       ]
     };
   }
@@ -44,8 +47,8 @@ export function renderedArticleChecks(article: Article, siteUrl: string): Render
       { name: "reader path before answer before decision cards", pass: orderedReviewSections(html) },
       { name: "sources rendered", pass: html.includes("market-article-sources") && html.includes("noopener noreferrer") },
       { name: "comparison table rendered", pass: html.includes("market-article-table-section") && html.includes("<table") },
-      { name: "no public SERP clutter", pass: noPublicSerpClutter(html) },
-      { name: "no public internal research links", pass: noPublicInternalResearchLinks(html) }
+      { name: "no public SERP clutter", pass: noPublicSerpClutter(visibleHtml) },
+      { name: "no public internal research links", pass: noPublicInternalResearchLinks(visibleHtml) }
     ]
   };
 }
@@ -72,5 +75,43 @@ function noPublicSerpClutter(html: string): boolean {
 }
 
 function noPublicInternalResearchLinks(html: string): boolean {
-  return !["편집 큐", "트렌드 신호", "SERP 분석", "Global trend map"].some((phrase) => html.includes(phrase));
+  return !["편집 큐", "트렌드 신호", "SERP 분석", "Global trend map", "KR 상승 검색어로 확인", "확인 타임라인", "트렌드 확인 타임라인"].some(
+    (phrase) => html.includes(phrase)
+  );
+}
+
+function noSerializedNewsInternals(html: string): boolean {
+  return ![
+    "contentBranch",
+    "monetizationRoute",
+    "marketExpansionPolicy",
+    "monetizationDeferred",
+    "productCandidateState",
+    "seoReadinessScore",
+    "affiliateLinks",
+    "publishStatus",
+    "indexStatus",
+    "officialCheckLinks",
+    "affectedUsers",
+    "nextChecks",
+    "newsReaderQuestions",
+    "newsActionTable",
+    "newsGlossary",
+    "newsCommonMistakes"
+  ].some((phrase) => html.includes(phrase));
+}
+
+function noDashboardLikeNewsUtilityPanel(html: string): boolean {
+  return ![
+    "market-news-action-panel",
+    "market-news-official-links",
+    "market-news-reader-checks",
+    "market-news-reader-questions",
+    "market-news-action-table",
+    "market-news-explain-grid"
+  ].some((phrase) => html.includes(phrase));
+}
+
+function stripScriptData(html: string): string {
+  return html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "");
 }

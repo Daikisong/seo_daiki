@@ -81,8 +81,24 @@ export function buildNewsPostJsonLd({ canonical, market, post }: MarketArticleJs
 
 export function publicNewsPostForClient(post: MarketPostView): MarketPostView {
   const publicPost = { ...post };
+  delete (publicPost as unknown as Record<string, unknown>).id;
+  delete (publicPost as unknown as Record<string, unknown>).status;
+  delete (publicPost as unknown as Record<string, unknown>).quickFacts;
+  delete (publicPost as unknown as Record<string, unknown>).prosCons;
+  delete (publicPost as unknown as Record<string, unknown>).verdictBox;
+  delete (publicPost as unknown as Record<string, unknown>).checklist;
+  delete (publicPost as unknown as Record<string, unknown>).comparisonTable;
   delete (publicPost as unknown as Record<string, unknown>).internalLinks;
   delete (publicPost as unknown as Record<string, unknown>)["serp" + "References"];
+  delete (publicPost as unknown as Record<string, unknown>).seoReadinessScore;
+  delete (publicPost as unknown as Record<string, unknown>).contentBranch;
+  delete (publicPost as unknown as Record<string, unknown>).monetizationRoute;
+  delete (publicPost as unknown as Record<string, unknown>).marketExpansionPolicy;
+  delete (publicPost as unknown as Record<string, unknown>).monetizationDeferred;
+  delete (publicPost as unknown as Record<string, unknown>).productCandidateState;
+  delete (publicPost as unknown as Record<string, unknown>).affiliateLinks;
+  delete (publicPost as unknown as Record<string, unknown>).indexStatus;
+  delete (publicPost as unknown as Record<string, unknown>).publishStatus;
   return publicPost;
 }
 

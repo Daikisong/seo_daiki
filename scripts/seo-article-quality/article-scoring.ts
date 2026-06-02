@@ -18,6 +18,9 @@ const forbiddenVisiblePhrases = [
   "SERP 분석",
   "Trend signal",
   "트렌드 신호",
+  "KR 상승 검색어로 확인",
+  "확인 타임라인",
+  "트렌드 확인 타임라인",
   "상위 글",
   "검색 글",
   "El formato",
@@ -47,7 +50,7 @@ export function scoreArticle(article: Article) {
   add("verdict box", Boolean(article.verdictBox?.label && article.verdictBox?.body), 6);
   add("quick facts", (article.quickFacts ?? []).length >= 3, 5);
   add("checklist UI data", (article.checklist ?? []).length >= 5, 6);
-  add("comparison table", Boolean((article.comparisonTable?.columns ?? []).length >= 3 && (article.comparisonTable?.rows ?? []).length >= 3), 7);
+  add("structured article support", hasStructuredArticleSupport(article), 7);
   add("official policy sources lead official-policy topics", officialPolicySourcesLead(article), 4);
   add(
     "source links with checked date",
@@ -63,6 +66,14 @@ export function scoreArticle(article: Article) {
   const rawScore = checks.reduce((total, check) => total + (check.pass ? check.points : 0), 0);
   const score = Math.min(rawScore, 100);
   return { slug: article.slug, score, checks };
+}
+
+function hasStructuredArticleSupport(article: Article): boolean {
+  if (article.contentBranch === "news") {
+    return (article.sourceLinks ?? []).length >= 3 && (article.sections ?? []).length >= 6 && (article.keyTakeaways ?? []).length >= 3;
+  }
+  const table = article.comparisonTable;
+  return Boolean((table?.columns ?? []).length >= 3 && (table?.rows ?? []).length >= 3);
 }
 
 function visibleArticleText(article: Article): string {

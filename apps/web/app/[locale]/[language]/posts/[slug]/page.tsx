@@ -80,9 +80,9 @@ export default async function MarketPostPage({ params }: PageProps) {
           country={market.country}
           language={market.language}
           marketPath={market.pathPrefix}
-          nextPost={currentIndex >= 0 ? newsPosts[currentIndex + 1] : undefined}
+          nextPost={toAdjacentPostLink(currentIndex >= 0 ? newsPosts[currentIndex + 1] : undefined)}
           post={publicNewsPostForClient(post)}
-          previousPost={currentIndex > 0 ? newsPosts[currentIndex - 1] : undefined}
+          previousPost={toAdjacentPostLink(currentIndex > 0 ? newsPosts[currentIndex - 1] : undefined)}
         />
         <SiteFooter language={market.language} />
       </>
@@ -97,4 +97,8 @@ export default async function MarketPostPage({ params }: PageProps) {
       <SiteFooter language={market.language} />
     </>
   );
+}
+
+function toAdjacentPostLink(post?: { slug: string; title: string }) {
+  return post ? { slug: post.slug, title: post.title } : undefined;
 }

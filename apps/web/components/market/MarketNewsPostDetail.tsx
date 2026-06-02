@@ -13,8 +13,13 @@ interface MarketNewsPostDetailProps {
   language: string;
   marketPath: string;
   post: MarketPostView;
-  previousPost?: MarketPostView;
-  nextPost?: MarketPostView;
+  previousPost?: AdjacentNewsPostLink;
+  nextPost?: AdjacentNewsPostLink;
+}
+
+interface AdjacentNewsPostLink {
+  slug: string;
+  title: string;
 }
 
 export function MarketNewsPostDetail({

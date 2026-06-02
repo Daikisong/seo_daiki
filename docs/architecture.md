@@ -1,149 +1,120 @@
 # Architecture
 
-Current core architecture notes live in [`docs/core/architecture.md`](core/architecture.md). This file remains as the broader historical system overview, but new refactors should use `docs/core` as the first reference.
+현재 상세 아키텍처의 기준 문서는 [`docs/core/architecture.md`](core/architecture.md)다.
 
-Global Import Lab is built as a monorepo.
+이 파일은 새로 들어오는 에이전트가 큰 방향을 빠르게 잡기 위한 요약이다.
 
-```text
-apps/web          Next.js App Router frontend
-packages/db       Prisma schema and client
-packages/content  sample evidence inventory and the generated 110 URL plan
-packages/seo      canonical, hreflang, sitemap, JSON-LD helpers split by module
-packages/types    shared product/article/evidence types
-packages/validators quality gate and SEO validators
-workers/python    collection, intelligence, evidence, writer, and feedback CLI
-data              seeds, raw captures, snapshots, evidence packs, drafts, exports
-```
+## Current Product Model
 
-`packages/seo` keeps the main import stable through `src/index.ts`, but the helpers also exist as separate modules:
+`seo_daiki`는 지금 “제휴 자동 블로그”가 아니라 다음 흐름을 가진 시장별 트렌드 콘텐츠 시스템이다.
 
 ```text
-canonical.ts  locale config, localized section paths, canonical URLs
-hreflang.ts   hreflang map generation
-jsonld.ts     Article, Product, Review, BreadcrumbList, ItemList, Dataset JSON-LD
-sitemap.ts    indexable-page filtering and sitemap entry shaping
+국가별 트렌드 확인
+  -> SERP/상위 콘텐츠 형식 분석
+  -> review 또는 news 분기
+  -> 웹사이트 테스트 게시
+  -> 제품형 글만 상품 후보 분석
+  -> 사람 승인 뒤 수익 링크 삽입
 ```
 
-Hub pages emit `Article`, `CollectionPage`, `ItemList`, and `BreadcrumbList` JSON-LD. Compare pages emit `Article`, `ItemList`, `BreadcrumbList`, and one `Product` snippet per linked comparison product. For example, a charger comparison exposes both the comparison table and the individual products in structured data. The TypeScript quality gate also validates the generated schema helpers, so a review without product data is blocked before it can remain indexable.
-
-The important rule is simple: `Product` data comes first and `Article` pages come later.
-
-Article page types include hub, review, guide, compare, data, lab, methodology, and country-risk pages. Country-risk pages are stored as `Article.type = risk`, but public canonical URLs use market guide routes such as `/en-us/guides/aliexpress-chargers-us-buyers/`, `/en-gb/guides/aliexpress-chargers-uk-buyers/`, `/es-es/guias/cargadores-aliexpress-espana/`, and `/pt-br/guias/carregadores-aliexpress-brasil/`. Legacy `/[locale]/risk/[slug]/` URLs redirect to the market URL and the pages are backed by `MarketRisk`, review-signal, claim, and verified-claim evidence.
-
-Example:
+예:
 
 ```text
-seller title says "65W"
-variant map finds a 45W cheapest SKU
-verified claim records sustained output
-market risk records customs/plug/return risk
-article renders those facts and quality gate decides index/noindex
+게이밍 모니터 추천
+  -> review
+  -> 비교표, 체크리스트, 제품 후보 분석
+
+교육공무원 확인사항
+  -> news
+  -> 본문 중심 정보 글, 하단 출처, 수익화 없음
 ```
 
-This keeps the site closer to a product verification database than an affiliate post factory.
-
-The web repository can run in two modes:
+## Public Routes
 
 ```text
-default: sample evidence inventory from packages/content
-CONTENT_SOURCE=database: Prisma-backed Product/Article/EvidencePack records
+/{market}/{language}/reviews/
+/{market}/{language}/news/
+/{market}/{language}/posts/{slug}/
 ```
 
-예를 들어 로컬 DB가 아직 없으면 샘플 데이터로 빌드되고, Postgres를 띄운 뒤 `CONTENT_SOURCE=database pnpm dev`를 쓰면 같은 페이지 컴포넌트가 DB 레코드를 읽는다.
-
-The v1 worker queue is a cron-friendly CLI pipeline:
+예:
 
 ```text
-pnpm worker:pipeline -> data/exports/pipeline_run.json
+/kr/ko/reviews/
+/kr/ko/news/
+/kr/ko/posts/교육공무원-2026-확인사항/
+/jp/ja/reviews/
+/de/de/news/
 ```
 
-That single command runs seed import, identity graph, variant traps, seller claims, price truth, locale risk, review signals, verified claims, locale evidence packs, outlines, drafts, Search Console suggestions, URL inventory, and the Python quality gate. For example, the checked-in cron template in `docs/worker-cron.example` can run the local-data pipeline every night without adding Redis or Celery yet.
-
-Analytics and feedback paths:
+## Frontend Ownership
 
 ```text
-affiliate button -> /api/affiliate-click -> AffiliateClick -> target URL redirect
-affiliate button -> GA4 affiliate_click event when NEXT_PUBLIC_GA4_MEASUREMENT_ID is set
-Search Console rows -> SearchConsoleMetric -> PageRefreshSuggestion
-NEXT_PUBLIC_GA4_MEASUREMENT_ID -> GA4 script injection
+apps/web/app/[locale]/[language]/posts/[slug]/page.tsx
+  라우트, metadata, branch 결정.
+
+apps/web/components/market/MarketReviewPostDetail.tsx
+  제품 리뷰/비교형 상세 페이지.
+
+apps/web/components/market/MarketNewsPostDetail.tsx
+  정보형 뉴스 상세 페이지.
+
+apps/web/components/market/sections/
+  reviews, news, rankings, tips, community 같은 market section 페이지.
+
+apps/web/lib/market/
+  market 데이터 읽기, JSON-LD, market helper.
 ```
 
-Admin mutation paths:
+## News Page Boundary
+
+뉴스 페이지는 기사처럼 보여야 한다. 내부 분석 도구처럼 보이면 안 된다.
+
+현재 공개 뉴스 구조:
 
 ```text
-ADMIN_TOKEN -> /api/admin/article-status -> Article indexStatus/publishStatus/qualityScore
-ADMIN_TOKEN -> /api/admin/evidence-record -> Product/Variant/Claim/Risk/EvidencePack create/update
-ADMIN_TOKEN -> /api/admin/lab-evidence -> data/uploads/lab + LabEvidenceAsset in database mode
-ADMIN_TOKEN -> /api/admin/record-action -> archive/delete + AuditLog
-/api/lab-evidence-file/<storageKey> -> stored measurement file
+제목/요약
+이 글의 요점
+목차
+본문
+하단 출처와 정정
+이전/다음 글
 ```
 
-The quality admin view combines the quality gate with operations checks: evidence count, internal-link count, hreflang issues, schema issues, affiliate rel issues, and duplicate candidates from the product identity graph. For example, if two cable products share the same brand and title pattern but differ by wattage, the dashboard can surface that duplicate candidate without blocking the page.
+필요한 확인 순서나 용어 설명은 본문에 자연스럽게 쓴다. 별도 관리용 패널을 public UI에 다시 추가하지 않는다.
 
-Dataset downloads are served by `/datasets/<file>.csv`. The route maps file names such as `power-bank-claimed-mah-vs-real-wh.csv` or `usb-c-cable-100w-verification-table.csv` to the relevant product category and emits a small CSV from the same product repository used by the page.
-
-Archive keeps the record with `archivedAt` so normal database-backed content readers can filter it out. Delete physically removes the record. Both paths write an `AuditLog` row; product archive also marks related articles `noindex` and `draft`, for example archiving a charger record removes it from live product views without leaving its generated review indexable.
-
-Lab evidence storage defaults to local files. Setting `LAB_EVIDENCE_STORAGE_DRIVER=r2` or `s3` switches the same upload path to S3-compatible object storage and stores the remote public URL in `LabEvidenceAsset`.
-
-Worker persistence path:
+## Worker And Data
 
 ```text
-AliExpress/Open Platform search -> data/raw/aliexpress-*.json
-Python evidence packs -> pnpm db:admin -- import-worker-outputs -> Prisma product evidence tables
-Search Console snapshot -> pnpm db:admin -- import-search-console -> SearchConsoleMetric
-Search Console suggestions -> pnpm db:admin -- import-refresh-suggestions -> PageRefreshSuggestion
-PageRefreshSuggestion -> /admin/search-console or pnpm db:admin -- set-refresh-suggestion-status -> AuditLog
-data/snapshots + data/exports -> /admin/search-console performance and refresh tables
+workers/python
+  트렌드, SERP, 전략, 제품 후보, 수익화 검토 CLI.
+
+data/config
+  market 설정과 UI label.
+
+data/exports
+  현재 로컬 테스트 글, 리포트, 샘플 export.
 ```
 
-The checked-in sample seed covers 10 imported products. The worker snapshots include variant traps, seller claims, verified-claim placeholders, prices, locale risks, and locale-specific review signals so the evidence pack builder can produce index-gate-ready packs without inventing facts in the article writer.
+## Validation
 
-The checked-in article inventory now keeps the generated 110-URL plan conservative and adds explicit evidence-first URLs for the first 90-day structure:
+현재 handoff 전에 우선 돌려야 하는 명령:
 
 ```text
-/en/methodology/how-we-test-usb-c-chargers/
-/en/methodology/how-we-score-aliexpress-products/
-/en/methodology/price-truth-score/
-/en/data/65w-gan-charger-output-table/
-/en/data/usb-c-cable-100w-verification-table/
-/en/data/power-bank-claimed-mah-vs-real-wh/
-/en/usb-c-chargers/
-/en/usb-c-cables/
-/en/power-banks/
+pnpm typecheck
+pnpm seo:article-quality
+pnpm seo:market-audit
+pnpm build
 ```
 
-The price truth step is explicit:
+`pnpm seo:article-quality`는 공개 글 화면에 내부 작업 문구나 뉴스 관리용 패널이 다시 노출되는지 검사한다.
+
+## More Detail
 
 ```text
-price_snapshots.json -> build-price-truth -> price_truth.json -> evidence packs
+docs/core/architecture.md
+docs/core/korean-news-posting-template.md
+docs/core/trend-monetization-routing.md
+docs/core/seo-quality-audits.md
+docs/todo.md
 ```
-
-예를 들어 USB-C charger는 shipped price가 `$18` 미만이면 `buy`, `$18-$24`이면 `wait`, 그 이상이면 `avoid`가 된다. 같은 로직이 케이블, power bank, tool, sensor 카테고리별 임계값을 따로 쓴다.
-
-Article writing is split into outline and draft steps:
-
-```text
-evidence pack -> generate-outline -> data/outlines/<locale>-<type>.json
-outline + evidence pack -> generate-draft -> data/drafts/<locale>-<type>.md
-```
-
-예를 들어 review outline은 “판매자 주장 vs 검증 사실”, “옵션 함정”, “가격과 로컬 리스크”, “근거/업데이트 로그” 같은 섹션을 먼저 만들고, 각 섹션에 어떤 evidence record를 써야 하는지 적는다. 이렇게 하면 LLM 초안은 빈손으로 글을 쓰는 게 아니라 정해진 설계도 안에서만 문장을 만든다.
-
-The refresh worker looks for pages with enough impressions, low CTR, and average position 8-30. For each matching page/query row it estimates whether the current page sections cover the query terms, then exports a concrete missing-section recommendation, title/meta rewrite candidates, and internal links scored by same locale, same category, same claim, same problem, alternative price band, and risk overlap.
-
-For example, a query like `aliexpress charger not 65w` on a guide page can produce a section such as `Why this charger may not deliver the advertised wattage`, plus links from the USB-C charging hub, data table, and lab evidence pages.
-
-Persisted refresh suggestions keep the full rewrite payload in `PageRefreshSuggestion.actions`: action text, priority, diagnostics, missing sections, title/meta candidates, and internal-link candidates. The workflow is small: `open` means the suggestion has not been triaged, `planned` means it has been assigned for rewrite, `applied` means the content change was shipped, and `dismissed` means the suggestion was intentionally rejected. Status changes are available in `/admin/search-console` and the DB admin CLI, and each change writes an audit record.
-
-LLM draft generation uses a provider interface:
-
-```text
-LLM_PROVIDER=dry-run    placeholder draft, safe for local setup
-LLM_PROVIDER=openai     OPENAI_API_KEY + OPENAI_MODEL
-LLM_PROVIDER=gemini     GEMINI_API_KEY + GEMINI_MODEL
-LLM_PROVIDER=anthropic  ANTHROPIC_API_KEY + ANTHROPIC_MODEL
-LLM_PROVIDER=ollama     local Ollama HTTP endpoint
-```
-
-For example, switching from local Ollama to OpenAI changes environment variables, not the article generation command.
