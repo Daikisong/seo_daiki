@@ -36,7 +36,7 @@ export function marketResearchMetadata({
       title,
       description,
       url: canonical,
-      siteName: "Review Guide",
+      siteName: "Trend Picks - Jacob",
       type: "article",
       images: image ? [{ url: image }] : undefined
     },
@@ -67,7 +67,7 @@ export function metadataForArticle(article: Article, options: { forceNoindex?: b
       description: article.metaDescription,
       locale: localeConfig[article.locale].htmlLang,
       url: canonical,
-      siteName: "Review Guide",
+      siteName: "Trend Picks - Jacob",
       type: "article"
     }
   };

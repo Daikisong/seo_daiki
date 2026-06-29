@@ -4,10 +4,10 @@ import { generatedChargerProductSpecs } from "../packages/content/src/generated-
 import { generatedDeviceProductSpecs } from "../packages/content/src/generated-product-device-specs";
 import { generatedProductSpecs } from "../packages/content/src/product-fixtures";
 
-assert.equal(generatedChargerProductSpecs.length, 3);
+assert.equal(generatedChargerProductSpecs.length, 5);
 assert.equal(generatedCableProductSpecs.length, 1);
 assert.equal(generatedDeviceProductSpecs.length, 3);
-assert.equal(generatedProductSpecs.length, 7);
+assert.equal(generatedProductSpecs.length, 9);
 
 assert.deepEqual(
   generatedProductSpecs.map((spec) => spec.id),
@@ -15,6 +15,8 @@ assert.deepEqual(
     "prod-toocki-67w",
     "prod-rocoren-140w",
     "prod-kuulaa-30w",
+    "prod-anker-45w-foldable",
+    "prod-mcdodo-100w-travel-adapter",
     "prod-essager-cable-240w",
     "prod-zmi-20000-power-bank",
     "prod-hoto-screwdriver",
@@ -23,7 +25,7 @@ assert.deepEqual(
 );
 
 assert.equal(new Set(generatedProductSpecs.map((spec) => spec.sourceSlug)).size, generatedProductSpecs.length);
-assert.equal(generatedChargerProductSpecs.every((spec) => spec.category === "usb-c-chargers"), true);
+assert.equal(generatedChargerProductSpecs.every((spec) => spec.category.includes("charger")), true);
 assert.equal(generatedCableProductSpecs.every((spec) => spec.category === "usb-c-cables"), true);
 assert.equal(generatedDeviceProductSpecs.some((spec) => spec.category === "power-banks"), true);
 

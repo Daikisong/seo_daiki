@@ -4,7 +4,7 @@ import { buildSampleProducts } from "../packages/content/src/sample-products";
 const updatedAt = "2026-05-25";
 const products = buildSampleProducts(updatedAt);
 
-assert.equal(products.length, 10);
+assert.equal(products.length, 12);
 assert.equal(new Set(products.map((product) => product.id)).size, products.length);
 assert.deepEqual(
   products.slice(0, 3).map((product) => product.id),

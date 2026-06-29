@@ -40,7 +40,12 @@ assert.equal(articles.every((article) => article.internalLinks[0]?.reason === "t
 
 const trendArticles = articles.filter((article) => article.type === "trend");
 assert.equal(trendArticles.length, 3);
-assert.equal(trendArticles.every((article) => article.affiliateLinks.length === 0), true);
+const monetizedTrendArticles = trendArticles.filter((article) => article.affiliateLinks.length > 0);
+assert.equal(monetizedTrendArticles.length, 1);
+assert.equal(monetizedTrendArticles[0]?.id, "art-en-trend-travel-gan-charger");
+assert.equal(monetizedTrendArticles[0]?.affiliateLinks[0]?.placementStatus, "approved");
+assert.equal(monetizedTrendArticles[0]?.affiliateLinks[0]?.offerStatus, "active");
+assert.equal(trendArticles.filter((article) => article.affiliateLinks.length === 0).length, 2);
 assert.equal(trendArticles.every((article) => article.healthSensitivity === "none"), true);
 assert.equal(trendArticles.every((article) => article.complianceStatus === "unchecked"), true);
 

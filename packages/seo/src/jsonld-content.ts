@@ -14,6 +14,9 @@ export function buildArticleJsonLd(article: Article, siteUrl = getSiteUrl()) {
     inLanguage: localeConfig[article.locale].htmlLang,
     dateModified: article.lastUpdated,
     datePublished: article.lastUpdated,
+    author: { "@type": "Person", name: "Jacob" },
+    publisher: { "@type": "Organization", name: "Trend Picks - Jacob", url: siteUrl },
+    reviewedBy: { "@type": "Person", name: "Jacob" },
     mainEntityOfPage: url,
     url
   };
@@ -46,6 +49,6 @@ export function buildDatasetJsonLd(article: Article, siteUrl = getSiteUrl()) {
     inLanguage: localeConfig[article.locale].htmlLang,
     url: canonicalForArticle(article, siteUrl),
     dateModified: article.lastUpdated,
-    creator: { "@type": "Organization", name: "Global Import Lab" }
+    creator: { "@type": "Person", name: "Jacob" }
   };
 }

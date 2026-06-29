@@ -10,10 +10,13 @@ import "./styles/market-public-overrides.css";
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: {
-    default: "Review Guide",
-    template: "%s | Review Guide"
+    default: "Trend Picks - Jacob",
+    template: "%s | Trend Picks - Jacob"
   },
-  description: "Market-specific reviews and buying guides based on trend checks, source review, and practical comparison criteria."
+  description: "Trend Picks - Jacob.",
+  icons: {
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }]
+  }
 };
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

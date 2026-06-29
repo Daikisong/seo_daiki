@@ -5,6 +5,6 @@ export const localeConfig: Record<
   { label: string; htmlLang: string; marketName: string; country?: string }
 > = {
   en: { label: "English", htmlLang: "en", marketName: "Global English" },
-  es: { label: "Español", htmlLang: "es", marketName: "Spain and LATAM", country: "ES" },
-  "pt-br": { label: "Português (Brasil)", htmlLang: "pt-BR", marketName: "Brazil", country: "BR" }
+  es: { label: "Spanish", htmlLang: "es", marketName: "Spain and LATAM", country: "ES" },
+  "pt-br": { label: "Portuguese (Brazil)", htmlLang: "pt-BR", marketName: "Brazil", country: "BR" }
 };

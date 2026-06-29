@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { articles, evidencePacks, indexedArticles, plannedIndexTargetTotal, plannedUrlTotal, products } from "@global-import-lab/content";
 import { generatedProductFixtures } from "../packages/content/src/product-fixtures";
 
-assert.equal(products.length, 10);
+assert.equal(products.length, 12);
 assert.equal(evidencePacks.length, products.length * 3);
 assert.equal(articles.length, 151);
 assert.equal(indexedArticles().length, 72);
@@ -42,7 +42,7 @@ for (const pack of evidencePacks) {
 }
 
 const generated = generatedProductFixtures("2030-01-02");
-assert.equal(generated.length, 7);
+assert.equal(generated.length, 9);
 for (const product of generated) {
   assert.equal(product.identityConfidence, 0.74);
   assert.equal(product.variants.length, 2);

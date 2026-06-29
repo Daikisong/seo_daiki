@@ -10,14 +10,18 @@ assert.equal(marketsWithContentSlug, splitMarketsWithContentSlug);
 const us = findMarket("us", "en");
 assert.ok(us);
 
-const usTrend = readMarketTrends(us).find((trend) => trend.slug === "magnesium-sleep");
-assert.ok(usTrend);
+const usS90fTrend = readMarketTrends(us).find((trend) => trend.slug === "samsung-s90f-oled-deal");
+assert.ok(usS90fTrend);
+assert.equal(usS90fTrend.title, "Samsung S90F OLED deal: what US buyers should verify first");
+assert.match(usS90fTrend.summary, /US buying guide/);
+assert.ok(usS90fTrend.sections.length >= 3);
+assert.ok(usS90fTrend.sourceLinks.length >= 3);
 
-const marketsWithMagnesium = marketsWithContentSlug(enabledMarkets(), "trends", usTrend.slug);
-assert.equal(marketsWithMagnesium.some((market) => market.market === "us" && market.language === "en"), true);
-assert.equal(marketsWithMagnesium.some((market) => market.market === "gb" && market.language === "en"), false);
+const marketsWithS90f = marketsWithContentSlug(enabledMarkets(), "trends", usS90fTrend.slug);
+assert.equal(marketsWithS90f.some((market) => market.market === "us" && market.language === "en"), true);
+assert.equal(marketsWithS90f.some((market) => market.market === "gb" && market.language === "en"), false);
 assert.equal(
-  marketsWithMagnesium.every((market) => readMarketTrends(market).some((trend) => trend.slug === usTrend.slug)),
+  marketsWithS90f.every((market) => readMarketTrends(market).some((trend) => trend.slug === usS90fTrend.slug)),
   true
 );
 

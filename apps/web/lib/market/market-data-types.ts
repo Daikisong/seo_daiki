@@ -11,6 +11,11 @@ export interface MarketTrendView {
   category: string;
   status: string;
   summary: string;
+  angle: string;
+  sections: { heading: string; body: string }[];
+  checklist: string[];
+  sourceLinks: Array<{ label: string; url: string; note: string; checkedAt: string }>;
+  quickFacts: Array<{ label: string; value: string }>;
 }
 
 export interface MarketKeywordView {

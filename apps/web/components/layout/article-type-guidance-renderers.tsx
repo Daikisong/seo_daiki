@@ -2,7 +2,14 @@ import { MarketRiskMatrix } from "@/components/product/MarketRiskMatrix";
 import { ProductComparisonTable } from "@/components/compare/ProductComparisonTable";
 import { VariantTrapMap } from "@/components/product/VariantTrapMap";
 import type { ArticleTypeContentContext } from "./article-type-content-model";
-import { ArticleEvidenceFooter, HealthContentNotice, SectionGrid, TrendSignalCards } from "./article-type-content-parts";
+import {
+  ArticleEvidenceFooter,
+  HealthContentNotice,
+  SectionGrid,
+  TrendBackdataIntro,
+  TrendCommerceSection,
+  TrendEditorialSections
+} from "./article-type-content-parts";
 
 export function GuideArticleContent({ context }: { context: ArticleTypeContentContext }) {
   const { article, product } = context;
@@ -32,10 +39,10 @@ export function TrendArticleContent({ context }: { context: ArticleTypeContentCo
   const { article, categoryProducts } = context;
   return (
     <>
-      <TrendSignalCards />
-      <SectionGrid article={article} />
-      <ProductComparisonTable products={categoryProducts} />
-      <ArticleEvidenceFooter article={article} />
+      <TrendEditorialSections article={article} />
+      <TrendBackdataIntro article={article} products={categoryProducts} />
+      <TrendCommerceSection article={article} products={categoryProducts} />
+      <ArticleEvidenceFooter article={article} variant="editorial" />
     </>
   );
 }

@@ -7,15 +7,18 @@ export const travelGanTrendSpecs: TrendBlogArticleSpec[] = [
     locale: "en",
     slug: "travel-gan-charger-fake-wattage-trend",
     type: "trend",
-    title: "Travel GaN charger fake wattage trend evidence brief",
-    h1: "Travel GaN charger fake wattage trend evidence brief",
+    title: "Best travel GaN charger AliExpress trend: fake wattage checks and top 10 picks",
+    h1: "Best travel GaN charger AliExpress trend: fake wattage checks and top 10 picks",
     metaDescription:
-      "Why travel GaN charger fake-wattage searches are rising, which evidence is needed, and where cautious buyers should look next.",
+      "Quick answer on the travel GaN charger trend, fake-wattage checks, price-risk signals, and the Top 10 AliExpress-style picks to review.",
     summary:
-      "Search demand is rising around compact travel chargers, but the useful angle is evidence: SKU traps, output claims, price zones, and return risk.",
-    contentMdx: "trend source signals rising evidence verified variant price risk affiliate localization update log",
+      "Quick answer: compact travel chargers are trending because buyers want small high-wattage gear, but the useful guide must verify SKU, output, final price, plug type, shipping, and return risk before recommending picks.",
+    contentMdx:
+      "quick answer top 10 best travel gan charger aliexpress trend buyer guide compare price fake wattage evidence verified variant plug cable power bank shipping return risk affiliate localization update log baseus ugreen toocki rocoren kuulaa anker mcdodo essager zmi 30w 45w 65w 67w 100w 140w 240w foldable travel adapter",
     evidenceIds: ["vc-baseus-output", "vc-baseus-temp", "sc-baseus-65w-title", "risk-baseus-us", "rs-baseus-laptop-en"],
-    headings: ["Trend summary", "Why it is rising", "Evidence and source signals", "Related buyer problems", "Localization notes"]
+    headings: ["Quick answer", "Why it is trending", "What to check now", "Related buyer problems", "Localization notes"],
+    affiliateLabel: "Check live AliExpress charger prices",
+    affiliateHref: "https://www.aliexpress.com/wholesale?SearchText=travel%20GaN%20charger"
   },
   {
     group: "trend-travel-gan-charger",
