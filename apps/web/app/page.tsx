@@ -49,16 +49,16 @@ export default async function HomePage({
 
   return (
     <>
-      {!searchQuery && articles[0] ? (
-        <div className="hidden lg:block">
-          <HomeMagazineHero article={articles[0]} />
-        </div>
-      ) : null}
       <SiteHeader
         currentHref="/"
         navCategories={getPublicNavCategories()}
         searchQuery={searchQuery}
       />
+      {!searchQuery && articles[0] ? (
+        <div className="hidden lg:block">
+          <HomeMagazineHero article={articles[0]} />
+        </div>
+      ) : null}
       <TrendArchive
         archiveTitle={archiveTitle}
         articles={articles}
