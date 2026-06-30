@@ -1,48 +1,12 @@
-import type { Article, Product } from "@global-import-lab/types";
+import type { Article, Product } from "@/lib/trend-site/types";
 import type { ReactNode } from "react";
 import { AffiliateOutboundLink } from "@/components/seo/AffiliateOutboundLink";
-import { EvidenceList } from "@/components/product/EvidenceList";
-import { UpdateLog } from "@/components/seo/UpdateLog";
-import { affiliateTrackingHrefForArticle } from "@/lib/content/article-page-model";
 import {
   buildTrendRecommendationModel,
   type TrendRecommendation
-} from "@/lib/content/trend-recommendations";
+} from "@/lib/trend-site/recommendations";
 
-export function ArticleEvidenceFooter({
-  article,
-  includeUpdateLog = true,
-  variant = "default"
-}: {
-  article: Article;
-  includeUpdateLog?: boolean;
-  variant?: "default" | "editorial";
-}) {
-  if (variant === "editorial") {
-    return (
-      <section className="border-t border-neutral-200 pt-6">
-        <h2 className="text-sm font-black uppercase tracking-normal text-neutral-950">Evidence and update log</h2>
-        <p className="mt-2 text-sm leading-6 text-neutral-700">Last evidence refresh: {article.lastUpdated}</p>
-        {article.evidenceIds.length > 0 ? (
-          <ul className="mt-3 flex flex-wrap gap-2 text-xs text-neutral-600">
-            {article.evidenceIds.map((id) => (
-              <li className="border border-neutral-200 px-2 py-1 font-mono" key={id}>
-                {id}
-              </li>
-            ))}
-          </ul>
-        ) : null}
-      </section>
-    );
-  }
-
-  return (
-    <>
-      <EvidenceList evidenceIds={article.evidenceIds} />
-      {includeUpdateLog ? <UpdateLog lastUpdated={article.lastUpdated} /> : null}
-    </>
-  );
-}
+const articleBodyClass = "text-[15px] leading-[27px] text-neutral-800 md:text-base md:leading-[28.8px]";
 
 export function SectionGrid({ article, startIndex = 0 }: { article: Article; startIndex?: number }) {
   const sections = article.sections.slice(startIndex);
@@ -74,102 +38,82 @@ export function HealthContentNotice() {
   );
 }
 
-export function TrendEditorialSections({ article }: { article: Article }) {
-  const fallbackSections = [
-    {
-      heading: "Quick answer",
-      body: "Start with the practical answer, then explain what changed and what readers should check before buying."
-    },
-    {
-      heading: "Why it is trending",
-      body: "Use freshness, search demand, source signals, and repeated SERP patterns to explain why the topic is moving now."
-    },
-    {
-      heading: "What to check now",
-      body: "Check official sources, local availability, exact product variants, final price, and return risk before clicking."
-    }
-  ];
-  const sections = article.sections.length > 0 ? article.sections : fallbackSections;
+export function TrendEditorialSections({
+  article,
+  sections = article.sections
+}: {
+  article: Article;
+  sections?: Article["sections"];
+}) {
+  if (sections.length === 0) {
+    return null;
+  }
 
   return (
     <section className="space-y-10">
       {sections.map((section, index) => (
-        <section id={trendSectionId(index)} key={`${section.heading}-${index}`}>
+        <section id={trendSectionId(section.heading, index)} key={section.heading}>
           <TrendArticleHeading>{section.heading}</TrendArticleHeading>
-          <p className="mt-5 max-w-4xl text-base leading-8 text-neutral-800">{section.body}</p>
+          <p className={`mt-[25px] ${articleBodyClass}`}>{section.body}</p>
         </section>
       ))}
     </section>
   );
 }
 
-export function TrendBackdataIntro({ article, products }: { article: Article; products: Product[] }) {
-  const verifiedClaims = products.reduce((count, product) => count + product.verifiedClaims.length, 0);
-  const priceSnapshots = products.reduce((count, product) => count + product.priceSnapshots.length, 0);
-  const reviewSignals = products.reduce((count, product) => count + product.reviewSignals.length, 0);
-  const localRiskRows = products.reduce(
-    (count, product) => count + product.marketRisks.filter((risk) => risk.locale === article.locale).length,
-    0
-  );
-  const recommendationModel = buildTrendRecommendationModel(article, products);
-  const rows = [
-    {
-      label: "Search intent",
-      value: recommendationModel.eligible
-        ? recommendationModel.reasons.slice(0, 3).join(", ")
-        : "Trend is still treated as informational until purchase intent is clearer."
-    },
-    {
-      label: "Trend evidence",
-      value: `${article.evidenceIds.length} source or evidence signals attached to the article draft.`
-    },
-    {
-      label: "Product backing",
-      value: `${products.length} product records, ${verifiedClaims} verified claims, ${priceSnapshots} price snapshots, and ${reviewSignals} review-signal rows.`
-    },
-    {
-      label: "Local risk",
-      value:
-        localRiskRows > 0
-          ? `${localRiskRows} ${article.locale} risk rows used for shipping, certification, return, or import checks.`
-          : "Local risk should be verified before this page becomes a fully approved buyer guide."
-    }
-  ];
+export function TrendSignalBox({ article }: { article: Article }) {
+  const signal = article.trendSignalBox;
+  if (!signal) {
+    return null;
+  }
 
   return (
-    <section id="trend-data">
-      <p className="max-w-4xl text-base leading-8 text-neutral-800">
-        Before this becomes a recommendation list, Trend Picks checks the live trend against the same signals readers
-        expect from high-ranking review blogs: visible selection criteria, freshness, product proof, price context,
-        and local risk. The table below is the backdata used for this draft.
-      </p>
-      <div className="mt-5 divide-y divide-neutral-200 border-y border-neutral-200 md:hidden">
-        {rows.map((row) => (
-          <div className="py-3" key={row.label}>
-            <p className="text-xs font-black uppercase tracking-normal text-teal-700">{row.label}</p>
-            <p className="mt-1 text-sm leading-6 text-neutral-700">{row.value}</p>
-          </div>
+    <section className="border-l-4 border-cyan-500 bg-cyan-50 px-4 py-4" id="trend-signal">
+      <h2 className="text-lg font-black tracking-normal text-neutral-950">{signal.heading}</h2>
+      <p className="mt-2 text-sm leading-6 text-neutral-800">{signal.body}</p>
+      <div className="mt-4 grid gap-3 md:grid-cols-2">
+        {signal.items.map((item) => (
+          <p className="text-sm leading-6 text-neutral-800" key={item.label}>
+            <strong className="block text-neutral-950">{item.label}</strong>
+            {item.body}
+          </p>
         ))}
       </div>
-      <div className="mt-5 hidden overflow-x-auto border-y border-neutral-200 md:block">
-        <table className="min-w-[680px] text-sm">
-          <tbody>
-            {rows.map((row) => (
-              <tr className="border-b border-neutral-200 last:border-b-0" key={row.label}>
-                <th className="w-44 bg-neutral-50 px-3 py-3 text-left text-xs font-black uppercase tracking-normal text-teal-700">
-                  {row.label}
-                </th>
-                <td className="px-3 py-3 leading-6 text-neutral-700">{row.value}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      {signal.sourceNote ? <p className="mt-3 text-xs leading-5 text-neutral-600">{signal.sourceNote}</p> : null}
     </section>
   );
 }
 
-export function TrendCommerceSection({ article, products }: { article: Article; products: Product[] }) {
+export function TrendMarketplaceRule({ article }: { article: Article }) {
+  const rule = article.marketplaceRule;
+  if (!rule) {
+    return null;
+  }
+
+  return (
+    <section className="border-y border-neutral-200 py-6" id="marketplace-rule">
+      <TrendArticleHeading>{rule.heading}</TrendArticleHeading>
+      <p className={`mt-[25px] ${articleBodyClass}`}>{rule.body}</p>
+      <ul className="mt-4 grid gap-3 text-sm leading-6 text-neutral-700 md:grid-cols-3">
+        {rule.bullets.map((item) => (
+          <li className="border-l-4 border-teal-700 bg-teal-50 px-4 py-3" key={item}>
+            {item}
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+export function TrendCommerceSection({
+  article,
+  buyerContextSections = [],
+  products
+}: {
+  article: Article;
+  buyerContextSections?: Article["sections"];
+  products: Product[];
+}) {
   const recommendationModel = buildTrendRecommendationModel(article, products);
   if (!recommendationModel.eligible || recommendationModel.recommendations.length === 0) {
     return null;
@@ -180,111 +124,154 @@ export function TrendCommerceSection({ article, products }: { article: Article; 
   return (
     <section className="space-y-10 border-t border-neutral-200 pt-10" id="recommended-gear">
       <section>
-        <TrendArticleHeading>Top 10 practical picks for this trend</TrendArticleHeading>
-        <p className="mt-5 max-w-4xl text-base leading-8 text-neutral-800">
-          The trend summary above explains why people are searching now. This buying section keeps the same page
-          flow: compare the useful picks, check the evidence, then click only after the exact SKU, final price,
-          shipping, and return risk still make sense.
-        </p>
-        <p className="mt-4 max-w-4xl border-l-4 border-cyan-500 bg-cyan-50 px-4 py-3 text-sm leading-6 text-neutral-800">
-          Selection gate passed: {recommendationModel.reasons.slice(0, 3).join(", ")}. Outbound buttons may be
-          sponsored affiliate links, so this section stays tied to evidence and local-risk checks instead of acting
-          like a generic deal list.
+        <TrendArticleHeading>{article.expertCopy.topPicksHeading}</TrendArticleHeading>
+        <p className={`mt-[25px] ${articleBodyClass}`}>{article.expertCopy.topPicksIntro}</p>
+        <p className="mt-[25px] border-l-4 border-cyan-500 bg-cyan-50 px-4 py-3 text-[15px] leading-[27px] text-neutral-800 md:text-base md:leading-[28.8px]">
+          {article.expertCopy.topPicksRule}
         </p>
       </section>
 
-      <TrendSelectionMethod article={article} reasons={recommendationModel.reasons} />
-
       <TrendComparisonTable article={article} recommendations={recommendations} />
+      <TrendCountryBuyingRoutes article={article} />
+      <TrendAvoidList article={article} />
+      <TrendEditorialSections article={article} sections={buyerContextSections} />
 
       <section className="space-y-4" id="top-10-reviews">
-        <TrendArticleHeading>My in-depth notes on all 10 picks</TrendArticleHeading>
+        <TrendArticleHeading>{article.expertCopy.inDepthHeading}</TrendArticleHeading>
         {recommendations.map((item) => (
           <TrendRecommendationCard article={article} item={item} key={item.rank} />
         ))}
       </section>
 
-      <section className="grid gap-8 border-t border-neutral-200 pt-8 md:grid-cols-[1fr_0.9fr]" id="buying-checklist">
-        <div>
-          <h2 className="text-lg font-black tracking-normal text-neutral-950">Affiliate disclosure</h2>
-          <p className="mt-3 text-sm leading-6 text-neutral-700">
-            Trend Picks may earn a commission when readers buy through outbound links. Recommendations should be
-            checked against the exact SKU, final shipped price, seller rating, return path, and local import rules.
-          </p>
-        </div>
-        <div>
-          <h2 className="text-lg font-black tracking-normal text-neutral-950">Buying checklist</h2>
-          <ul className="mt-3 space-y-2 text-sm text-neutral-700">
-            {[
-              "Match the exact variant before clicking.",
-              "Check final price, shipping, coupon, and delivery estimate.",
-              "Avoid urgent purchases when cross-border shipping is slow.",
-              "Read low-star reviews for repeated safety or quality issues.",
-              "Prefer products with clear specs, photos, and return terms."
-            ].map((item) => (
-              <li className="flex gap-2" key={item}>
-                <span className="mt-1 h-3 w-3 rounded-sm border border-teal-700" aria-hidden />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <TrendFinalVerdict recommendations={recommendations} />
+      <TrendTopThreeRecommendations article={article} recommendations={recommendations} />
+      <TrendFinalThoughts article={article} />
+      <TrendBuyingChecklist article={article} />
       <TrendFAQ article={article} />
-      <TrendEditorialMethod article={article} products={products} recommendations={recommendations} />
+      <TrendUpdateLog article={article} />
     </section>
   );
 }
 
-function TrendFinalVerdict({ recommendations }: { recommendations: TrendRecommendation[] }) {
-  const topPick = recommendations[0];
+function TrendCountryBuyingRoutes({ article }: { article: Article }) {
+  const routes = article.countryBuyingRoutes ?? [];
+  if (routes.length === 0) {
+    return null;
+  }
 
   return (
-    <section className="border-t border-neutral-200 pt-8" id="final-thoughts">
-      <TrendArticleHeading>Final thoughts on this trend</TrendArticleHeading>
-      <div className="mt-5 max-w-4xl space-y-4 text-base leading-8 text-neutral-800">
-        <p>
-          This trend is useful only when the reader can connect the search spike to a product that still has the right
-          variant, live price, seller record, and local delivery path. If those checks fail, the safer recommendation is
-          to keep watching the trend instead of forcing a purchase.
-        </p>
-        {topPick ? (
-          <p>
-            The strongest starting point in this draft is <strong>{topPick.name}</strong>, but it should stay a
-            recommendation only while the exact SKU, wattage or specification claim, shipped price, and return route
-            still match the evidence on this page.
+    <section id="country-buying-routes">
+      <TrendArticleHeading>Buying route by country</TrendArticleHeading>
+      <div className="mt-5 divide-y divide-neutral-200 border-y border-neutral-200">
+        {routes.map((item) => (
+          <p className="grid gap-2 py-4 text-sm leading-6 text-neutral-700 md:grid-cols-[150px_minmax(0,1fr)]" key={item.market}>
+            <strong className="text-neutral-950">{item.market}</strong>
+            <span>{item.route}</span>
           </p>
-        ) : null}
+        ))}
       </div>
     </section>
   );
 }
 
-function TrendFAQ({ article }: { article: Article }) {
-  const faqs = [
-    {
-      question: "Should every trend page include affiliate picks?",
-      answer:
-        "No. A trend should only become a buyer guide when the search intent, product evidence, approved merchant path, and local-risk checks all support recommendations."
-    },
-    {
-      question: "How often should this guide be refreshed?",
-      answer: `Refresh it whenever trend signals, seller availability, price snapshots, variant risk, or local rules change. This draft was last updated on ${article.lastUpdated}.`
-    },
-    {
-      question: "What should readers verify before clicking a link?",
-      answer:
-        "Check the exact SKU or variant, final shipped price, plug or compatibility requirements, seller rating, low-star review patterns, return terms, and any local import or certification rules."
-    }
-  ];
+function TrendAvoidList({ article }: { article: Article }) {
+  const avoidList = article.avoidList ?? [];
+  if (avoidList.length === 0 || !article.avoidListHeading) {
+    return null;
+  }
 
+  return (
+    <section id="cooling-products-to-avoid">
+      <TrendArticleHeading>{article.avoidListHeading}</TrendArticleHeading>
+      <div className="mt-5 grid gap-3 md:grid-cols-2">
+        {avoidList.map((item) => (
+          <article className="border-l-4 border-amber-500 bg-amber-50 px-4 py-3" key={item.label}>
+            <h3 className="text-sm font-black text-neutral-950">{item.label}</h3>
+            <p className="mt-1 text-sm leading-6 text-neutral-700">{item.reason}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function TrendTopThreeRecommendations({
+  article,
+  recommendations
+}: {
+  article: Article;
+  recommendations: TrendRecommendation[];
+}) {
+  const topThree = recommendations.slice(0, 3);
+
+  if (topThree.length === 0) {
+    return null;
+  }
+
+  return (
+    <section className="border-t border-neutral-200 pt-8" id="jacob-top-3">
+      <TrendArticleHeading>{article.expertCopy.topThreeHeading}</TrendArticleHeading>
+      <div className="mt-[25px] space-y-8">
+        {topThree.map((item) => (
+          <article key={item.rank}>
+            <h3 className="text-base font-black leading-7 tracking-normal text-neutral-950">
+              <span
+                aria-hidden
+                className="mr-2 inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#f4a949] text-[11px] font-black text-white"
+              >
+                {item.rank}
+              </span>
+              #{item.rank} {item.rankLabel} -{" "}
+              <a className="font-black text-[#2f7cd3] hover:underline" href={`#trend-pick-${item.rank}`}>
+                {item.name}
+              </a>
+            </h3>
+            <p className={`mt-2 ${articleBodyClass}`}>{item.expertReviewTake}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function TrendFinalThoughts({
+  article
+}: {
+  article: Article;
+}) {
+  return (
+    <section className="border-t border-neutral-200 pt-8" id="final-thoughts">
+      <TrendArticleHeading>{article.expertCopy.finalThoughtsHeading}</TrendArticleHeading>
+      <div className={`mt-[25px] space-y-[25px] ${articleBodyClass}`}>
+        {article.expertCopy.finalThoughts.map((paragraph) => (
+          <p key={paragraph}>{paragraph}</p>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function TrendBuyingChecklist({ article }: { article: Article }) {
+  return (
+    <section className="border-t border-neutral-200 pt-8" id="buying-checklist">
+      <h2 className="text-lg font-black tracking-normal text-neutral-950">{article.expertCopy.buyingChecklistHeading}</h2>
+      <ul className="mt-3 space-y-2 text-sm text-neutral-700">
+        {article.expertCopy.buyingChecklist.map((item) => (
+          <li className="flex gap-2" key={item}>
+            <span className="mt-1 h-3 w-3 rounded-sm border border-teal-700" aria-hidden />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+function TrendFAQ({ article }: { article: Article }) {
   return (
     <section className="border-t border-neutral-200 pt-8" id="faq">
       <TrendArticleHeading>FAQ</TrendArticleHeading>
       <div className="mt-5 divide-y divide-neutral-200 border-y border-neutral-200">
-        {faqs.map((faq) => (
+        {article.faqs.map((faq) => (
           <details className="group py-4" key={faq.question}>
             <summary className="cursor-pointer list-none text-base font-black text-neutral-950">
               <span className="mr-3 text-teal-700 group-open:text-orange-600">+</span>
@@ -298,81 +285,22 @@ function TrendFAQ({ article }: { article: Article }) {
   );
 }
 
-function TrendEditorialMethod({
-  article,
-  products,
-  recommendations
-}: {
-  article: Article;
-  products: Product[];
-  recommendations: TrendRecommendation[];
-}) {
-  const verifiedClaims = products.reduce((count, product) => count + product.verifiedClaims.length, 0);
-  const priceSnapshots = products.reduce((count, product) => count + product.priceSnapshots.length, 0);
-  const reviewSignals = products.reduce((count, product) => count + product.reviewSignals.length, 0);
-  const rows = [
-    ["Trend signal", `${article.evidenceIds.length} evidence IDs attached to the article model.`],
-    ["Product evidence", `${products.length} product records support ${recommendations.length} ranked picks.`],
-    ["Backdata", `${verifiedClaims} verified claims, ${priceSnapshots} price snapshots, and ${reviewSignals} review signals.`],
-    ["Affiliate rule", "Outbound links stay tied to approved merchants, disclosure, and local-risk checks."]
-  ] as const;
+function TrendUpdateLog({ article }: { article: Article }) {
+  if (article.expertCopy.updateLog.length === 0) {
+    return null;
+  }
 
   return (
-    <section className="border-t border-neutral-200 pt-8" id="editorial-method">
-      <TrendArticleHeading>Editorial method</TrendArticleHeading>
-      <p className="mt-5 max-w-4xl text-base leading-8 text-neutral-800">
-        Trend Picks is built as an editorial trend guide, not a random deal feed. The page starts with search and
-        freshness context, then adds product recommendations only when the content model has enough commerce intent,
-        evidence, product records, affiliate disclosure, and local-risk coverage.
-      </p>
-      <div className="mt-5 border-y border-neutral-200">
-        {rows.map(([label, value]) => (
-          <div className="grid gap-2 border-b border-neutral-200 py-4 last:border-b-0 md:grid-cols-[180px_minmax(0,1fr)]" key={label}>
-            <p className="text-sm font-black uppercase tracking-normal text-teal-700">{label}</p>
-            <p className="text-sm leading-6 text-neutral-700">{value}</p>
-          </div>
+    <section className="border-t border-neutral-200 pt-8" id="update-log">
+      <h2 className="text-lg font-black tracking-normal text-neutral-950">{article.expertCopy.updateLogHeading}</h2>
+      <ul className="mt-3 space-y-2 text-sm leading-6 text-neutral-700">
+        {article.expertCopy.updateLog.map((item) => (
+          <li className="flex gap-2" key={item}>
+            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-neutral-500" aria-hidden />
+            <span>{item}</span>
+          </li>
         ))}
-      </div>
-    </section>
-  );
-}
-
-function TrendSelectionMethod({ article, reasons }: { article: Article; reasons: string[] }) {
-  const criteria = [
-    {
-      label: "Search intent",
-      value: reasons.includes("commercial search intent")
-        ? "The trend has comparison, price, product, or buying language."
-        : "The trend needs clearer purchase language before monetized picks expand."
-    },
-    {
-      label: "Evidence fit",
-      value:
-        article.evidenceIds.length > 0
-          ? `${article.evidenceIds.length} evidence signals are attached before product ranking.`
-          : "Evidence should be attached before this becomes an approved buying guide."
-    },
-    {
-      label: "Local risk",
-      value: "Recommendations are checked against variant, shipping, returns, certification, and import-risk notes."
-    }
-  ];
-
-  return (
-    <section id="how-we-chose">
-      <TrendArticleHeading>How we chose these picks</TrendArticleHeading>
-      <p className="mt-5 max-w-4xl text-base leading-8 text-neutral-800">
-        This follows the same practical flow as a Top 10 buying guide: first confirm buyer intent, then compare
-        exact products, then surface risks before the outbound link.
-      </p>
-      <div className="mt-5 border-y border-neutral-200">
-        {criteria.map((item) => (
-          <div className="grid gap-2 border-b border-neutral-200 py-4 last:border-b-0 md:grid-cols-[180px_minmax(0,1fr)]" key={item.label}>
-            <p className="text-sm font-black uppercase tracking-normal text-teal-700">{item.label}</p>
-            <p className="text-sm leading-6 text-neutral-700">{item.value}</p>
-          </div>
-        ))}
-      </div>
+      </ul>
     </section>
   );
 }
@@ -384,40 +312,59 @@ function TrendComparisonTable({
   article: Article;
   recommendations: TrendRecommendation[];
 }) {
+  const hasCoolingFields = recommendations.every(
+    (item) =>
+      item.productKind &&
+      item.regionFit &&
+      item.coolingCapacity &&
+      item.hoseType &&
+      item.noiseLevel &&
+      item.roomSize &&
+      item.voltagePlug &&
+      item.returnRiskLabel
+  );
+
   return (
     <section id="top-10-comparison">
-      <TrendArticleHeading>Quick comparison table</TrendArticleHeading>
+      <TrendArticleHeading>{article.expertCopy.comparisonHeading}</TrendArticleHeading>
       <div className="mt-5">
-        <p className="text-sm leading-6 text-neutral-600">
-          Scan rank, fit, risk check, price, and action before reading the detailed notes.
-        </p>
+        <p className="text-sm leading-6 text-neutral-600">{article.expertCopy.comparisonIntro}</p>
       </div>
       <div className="mt-4 divide-y divide-neutral-200 border-y border-neutral-200 md:hidden">
         {recommendations.map((item) => (
           <article className="py-4" key={item.rank}>
             <div className="flex items-start gap-3">
-              <ProductVisual label={item.visual} compact />
+              <ProductVisual item={item} compact />
               <div className="min-w-0 flex-1">
-                <div className="flex items-center justify-between gap-3">
+                <div className="flex flex-col gap-1 min-[460px]:flex-row min-[460px]:items-start min-[460px]:justify-between min-[460px]:gap-3">
                   <h3 className="font-bold leading-snug text-neutral-950">
                     {item.rank}. {item.name}
                   </h3>
-                  <span className="shrink-0 text-sm font-black text-neutral-950">{item.price}</span>
+                  <span className="text-sm font-black leading-snug text-neutral-950">{item.price}</span>
                 </div>
                 <p className="mt-1 text-xs text-neutral-600">{item.bestFor}</p>
-                <p className="mt-1 text-xs text-neutral-600">Check: {item.keyCheck}</p>
-                {item.badge ? (
-                  <p className="mt-2 inline-flex rounded-sm bg-amber-100 px-2 py-1 text-xs font-bold text-amber-900">
-                    {item.badge}
-                  </p>
+                {hasCoolingFields ? (
+                  <>
+                    <p className="mt-1 text-xs text-neutral-600">Type: {item.productKind}</p>
+                    <p className="mt-1 text-xs text-neutral-600">Region: {item.regionFit}</p>
+                    <p className="mt-1 text-xs text-neutral-600">Capacity: {item.coolingCapacity}</p>
+                    <p className="mt-1 text-xs text-neutral-600">Noise: {item.noiseLevel}</p>
+                    <p className="mt-1 text-xs text-neutral-600">Room: {item.roomSize}</p>
+                    <p className="mt-1 text-xs text-neutral-600">Voltage / plug: {item.voltagePlug}</p>
+                    <p className="mt-1 text-xs text-neutral-600">Skip if: {item.whoShouldSkip}</p>
+                    <p className="mt-1 text-xs text-neutral-600">Return risk: {item.returnRiskLabel}</p>
+                  </>
                 ) : null}
+                <p className="mt-1 text-xs text-neutral-600">Check: {item.keyCheck}</p>
+                <p className="mt-1 text-xs text-neutral-600">Price checked: {item.priceCheckedAt}</p>
+                <EvidenceBadge level={item.evidenceLevel} />
                 <div className="mt-3">
                   <AffiliateOutboundLink
                     articleId={article.id}
                     href={trackingHrefForRecommendation(article, item)}
-                    label="View price"
+                    label={ctaLabelForRecommendation(item)}
                     locale={article.locale}
-                    productId={article.productId}
+                    productId={item.sourceProductId}
                     rel={item.rel}
                   />
                 </div>
@@ -427,16 +374,42 @@ function TrendComparisonTable({
         ))}
       </div>
       <div className="mt-4 hidden overflow-x-auto md:block">
-        <table className="min-w-[760px] text-sm">
+        <table className={`${hasCoolingFields ? "min-w-[1540px]" : "min-w-[980px]"} text-sm`}>
           <thead>
-            <tr className="bg-teal-800 text-left text-white">
-              <th className="border-teal-700 text-white">Rank</th>
-              <th className="border-teal-700 text-white">Pick</th>
-              <th className="border-teal-700 text-white">Best for</th>
-              <th className="border-teal-700 text-white">Key check</th>
-              <th className="border-teal-700 text-white">Price</th>
-              <th className="border-teal-700 text-white">Action</th>
-            </tr>
+            {hasCoolingFields ? (
+              <tr className="bg-teal-800 text-left text-white">
+                <th className="border-teal-700 !text-white">Rank</th>
+                <th className="border-teal-700 !text-white">Pick</th>
+                <th className="border-teal-700 !text-white">Exact variant</th>
+                <th className="border-teal-700 !text-white">Type</th>
+                <th className="border-teal-700 !text-white">Region fit</th>
+                <th className="border-teal-700 !text-white">BTU / capacity</th>
+                <th className="border-teal-700 !text-white">Hose / setup</th>
+                <th className="border-teal-700 !text-white">Noise</th>
+                <th className="border-teal-700 !text-white">Room size</th>
+                <th className="border-teal-700 !text-white">Voltage / plug</th>
+                <th className="border-teal-700 !text-white">Return risk</th>
+                <th className="border-teal-700 !text-white">Evidence</th>
+                <th className="border-teal-700 !text-white">Best for</th>
+                <th className="border-teal-700 !text-white">Skip if</th>
+                <th className="border-teal-700 !text-white">Price checked</th>
+                <th className="border-teal-700 !text-white">Price</th>
+                <th className="border-teal-700 !text-white">Action</th>
+              </tr>
+            ) : (
+              <tr className="bg-teal-800 text-left text-white">
+                <th className="border-teal-700 !text-white">Rank</th>
+                <th className="border-teal-700 !text-white">Pick</th>
+                <th className="border-teal-700 !text-white">Exact variant</th>
+                <th className="border-teal-700 !text-white">Evidence</th>
+                <th className="border-teal-700 !text-white">Best for</th>
+                <th className="border-teal-700 !text-white">Skip if</th>
+                <th className="border-teal-700 !text-white">Key check</th>
+                <th className="border-teal-700 !text-white">Price checked</th>
+                <th className="border-teal-700 !text-white">Price</th>
+                <th className="border-teal-700 !text-white">Action</th>
+              </tr>
+            )}
           </thead>
           <tbody>
             {recommendations.map((item) => (
@@ -444,23 +417,51 @@ function TrendComparisonTable({
                 <td className="font-bold text-neutral-950">{item.rank}</td>
                 <td>
                   <div className="flex items-center gap-3">
-                    <ProductVisual label={item.visual} compact />
+                    <ProductVisual item={item} compact />
                     <span>
                       <span className="block font-medium text-neutral-900">{item.name}</span>
                       {item.badge ? <span className="mt-1 block text-xs font-bold text-amber-700">{item.badge}</span> : null}
                     </span>
                   </div>
                 </td>
-                <td>{item.bestFor}</td>
-                <td>{item.keyCheck}</td>
+                {hasCoolingFields ? (
+                  <>
+                    <td>{item.exactVariant}</td>
+                    <td>{item.productKind}</td>
+                    <td>{item.regionFit}</td>
+                    <td>{item.coolingCapacity}</td>
+                    <td>{item.hoseType}</td>
+                    <td>{item.noiseLevel}</td>
+                    <td>{item.roomSize}</td>
+                    <td>{item.voltagePlug}</td>
+                    <td>{item.returnRiskLabel}</td>
+                    <td>
+                      <EvidenceBadge level={item.evidenceLevel} compact />
+                    </td>
+                    <td>{item.bestFor}</td>
+                    <td>{item.whoShouldSkip}</td>
+                    <td>{item.priceCheckedAt}</td>
+                  </>
+                ) : (
+                  <>
+                    <td>{item.exactVariant}</td>
+                    <td>
+                      <EvidenceBadge level={item.evidenceLevel} compact />
+                    </td>
+                    <td>{item.bestFor}</td>
+                    <td>{item.whoShouldSkip}</td>
+                    <td>{item.keyCheck}</td>
+                    <td>{item.priceCheckedAt}</td>
+                  </>
+                )}
                 <td className="font-semibold text-neutral-950">{item.price}</td>
                 <td>
                   <AffiliateOutboundLink
                     articleId={article.id}
                     href={trackingHrefForRecommendation(article, item)}
-                    label="View price"
+                    label={ctaLabelForRecommendation(item)}
                     locale={article.locale}
-                    productId={article.productId}
+                    productId={item.sourceProductId}
                     rel={item.rel}
                   />
                 </td>
@@ -469,10 +470,7 @@ function TrendComparisonTable({
           </tbody>
         </table>
       </div>
-      <p className="border-t border-neutral-200 py-3 text-xs text-neutral-500">
-        Prices are directional placeholders from the content model or search-intent fit. Verify live price and variant
-        before publishing an approved monetized placement.
-      </p>
+      <p className="border-t border-neutral-200 py-3 text-xs text-neutral-500">{article.expertCopy.comparisonFootnote}</p>
     </section>
   );
 }
@@ -482,58 +480,162 @@ function TrendRecommendationCard({ article, item }: { article: Article; item: Tr
     <article className="border-t border-neutral-200 py-7 first:border-t-0" id={`trend-pick-${item.rank}`}>
       <div className="grid gap-5 lg:grid-cols-[170px_minmax(0,1fr)_210px]">
         <div className="relative">
-          <span className="absolute left-2 top-2 bg-teal-800 px-2 py-1 text-xs font-bold text-white">
+          <span aria-hidden className="absolute left-2 top-2 bg-teal-800 px-2 py-1 text-xs font-bold text-white">
             {item.rank}
           </span>
-          <ProductVisual label={item.visual} large />
+          <ProductVisual item={item} large />
         </div>
         <div>
           <h3 className="text-xl font-black tracking-normal text-neutral-950">
             {item.rank}. {item.name}
           </h3>
-          {item.badge ? (
-            <p className="mt-2 inline-flex bg-amber-100 px-2 py-1 text-xs font-bold text-amber-900">{item.badge}</p>
-          ) : null}
-          <p className="mt-2 text-sm text-neutral-700">
-            <strong>Best for:</strong> {item.bestFor}
-          </p>
-          <p className="mt-1 text-sm text-neutral-700">
-            <strong>Key check:</strong> {item.keyCheck}
-          </p>
+          <div className="mt-2 flex flex-wrap items-center gap-2">
+            <EvidenceBadge level={item.evidenceLevel} />
+            {item.badge ? (
+              <p className="inline-flex bg-amber-100 px-2 py-1 text-xs font-bold text-amber-900">{item.badge}</p>
+            ) : null}
+          </div>
+          <p className={`mt-4 ${articleBodyClass}`}>{item.expertReviewTake}</p>
+          <DecisionBlock label="Evidence note" value={item.evidenceBasis} />
+          <DecisionBlock label="Why I recommend it" value={item.whyRecommend} />
+          <DecisionBlock label="Best for" value={item.whoFits} />
+          <DecisionBlock label="Skip if" value={item.whoShouldSkip} tone="warning" />
           <div className="mt-4 grid gap-4 md:grid-cols-2">
             <SignalList label="Pros" items={item.pros} tone="positive" />
+            <SignalList label="Repeated complaints to check" items={item.repeatedComplaints} tone="negative" />
+          </div>
+          <div className="mt-4 grid gap-3 text-sm leading-6 text-neutral-700 md:grid-cols-2">
+            <FactNote label="Key check" value={item.keyCheck} />
+            {item.productKind ? <FactNote label="Product type" value={item.productKind} /> : null}
+            {item.regionFit ? <FactNote label="Region fit" value={item.regionFit} /> : null}
+            {item.coolingCapacity ? <FactNote label="Cooling capacity" value={item.coolingCapacity} /> : null}
+            {item.hoseType ? <FactNote label="Hose / setup" value={item.hoseType} /> : null}
+            {item.noiseLevel ? <FactNote label="Noise" value={item.noiseLevel} /> : null}
+            {item.roomSize ? <FactNote label="Room size" value={item.roomSize} /> : null}
+            {item.voltagePlug ? <FactNote label="Voltage / plug" value={item.voltagePlug} /> : null}
+            <FactNote label="Exact variant" value={item.exactVariant} />
+            <FactNote label="Spec snapshot" value={item.specSummary} />
+            <FactNote label="Review pattern" value={item.reviewSummary} />
+            <FactNote label="Warranty / return" value={item.warrantyReturnNote} />
+            <FactNote label="Marketplace note" value={item.marketplaceNote} />
+          </div>
+          <SourceStack item={item} />
+          <div className="mt-4 grid gap-4 md:grid-cols-2">
             <SignalList label="Cons" items={item.cons} tone="negative" />
           </div>
         </div>
-        <div className="border-l-4 border-cyan-500 bg-cyan-50 p-4">
+        <div className="self-start border-l-4 border-cyan-500 bg-cyan-50 p-4">
           <p className="text-lg font-black text-neutral-950">{item.price}</p>
           <div className="mt-3">
             <AffiliateOutboundLink
               articleId={article.id}
               href={trackingHrefForRecommendation(article, item)}
-              label="Check AliExpress price"
+              label={ctaLabelForRecommendation(item)}
               locale={article.locale}
-              productId={article.productId}
+              productId={item.sourceProductId}
               rel={item.rel}
             />
           </div>
-          <p className="mt-4 text-xs font-bold uppercase text-neutral-500">My take</p>
-          <p className="mt-1 text-sm leading-6 text-neutral-700">{item.take}</p>
+          <p className="mt-4 text-xs font-bold uppercase text-neutral-600">Key Features</p>
+          <ul className="mt-2 space-y-2 text-sm leading-6 text-neutral-700">
+            {item.keyFeatures.map((feature) => (
+              <li className="flex gap-2" key={feature}>
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-600" aria-hidden />
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </article>
   );
 }
 
+function SourceStack({ item }: { item: TrendRecommendation }) {
+  const priceSource = [item.marketplaceSourceLabel, item.priceCheckedAt].filter(Boolean).join(" - ");
+  const rows = [
+    ["Spec checked", item.sourceLabel],
+    ["Review signal", item.reviewSourceLabel],
+    ["Marketplace checked", priceSource]
+  ].filter(([, value]) => value);
+
+  if (rows.length === 0) {
+    return null;
+  }
+
+  return (
+    <div className="mt-4 border-y border-neutral-200 py-3">
+      <p className="text-xs font-black uppercase text-neutral-500">Source stack</p>
+      <div className="mt-2 grid gap-2 text-xs leading-5 text-neutral-700 md:grid-cols-3">
+        {rows.map(([label, value]) => (
+          <p key={label}>
+            <strong className="block text-neutral-950">{label}</strong>
+            {value}
+          </p>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function DecisionBlock({ label, value, tone = "default" }: { label: string; value: string; tone?: "default" | "warning" }) {
+  const borderClass = tone === "warning" ? "border-amber-400 bg-amber-50" : "border-neutral-200 bg-white";
+  return (
+    <div className={`mt-4 border-l-4 px-4 py-3 ${borderClass}`}>
+      <p className="text-xs font-black uppercase text-neutral-500">{label}</p>
+      <p className="mt-1 text-sm leading-6 text-neutral-800">{value}</p>
+    </div>
+  );
+}
+
+function FactNote({ label, value }: { label: string; value: string }) {
+  return (
+    <p>
+      <strong className="text-neutral-950">{label}:</strong> {value}
+    </p>
+  );
+}
+
+function EvidenceBadge({ level, compact = false }: { level: TrendRecommendation["evidenceLevel"]; compact?: boolean }) {
+  const label = evidenceLevelLabel(level);
+  return (
+    <span
+      className={`inline-flex rounded-sm border border-cyan-200 bg-cyan-50 font-bold text-cyan-900 ${
+        compact ? "px-2 py-1 text-[11px] leading-4" : "px-2.5 py-1 text-xs"
+      }`}
+    >
+      {label}
+    </span>
+  );
+}
+
+
+function evidenceLevelLabel(level: TrendRecommendation["evidenceLevel"]) {
+  switch (level) {
+    case "direct-use":
+      return "Direct use";
+    case "review-pattern":
+      return "Review-backed";
+    case "public-spec":
+      return "Specs + buyer reviews";
+    case "insufficient":
+      return "Not enough evidence";
+  }
+}
+
 function SignalList({ label, items, tone }: { label: string; items: string[]; tone: "positive" | "negative" }) {
+  const isPositive = tone === "positive";
+  const labelClass = isPositive ? "text-[#1565c0]" : "text-[#c62828]";
+  const markClass = isPositive ? "text-[#1565c0]" : "text-[#c62828]";
+
   return (
     <div>
-      <p className="text-xs font-bold uppercase text-neutral-500">{label}</p>
+      <p className={`text-xs font-black uppercase ${labelClass}`}>{label}</p>
       <ul className="mt-2 space-y-1 text-sm text-neutral-700">
         {items.map((item) => (
           <li className="flex gap-2" key={item}>
-            <span className={tone === "positive" ? "font-bold text-teal-700" : "font-bold text-neutral-500"} aria-hidden>
-              {tone === "positive" ? "+" : "x"}
+            <span className={`font-black ${markClass}`} aria-hidden>
+              {isPositive ? "+" : "x"}
             </span>
             <span>{item}</span>
           </li>
@@ -543,66 +645,83 @@ function SignalList({ label, items, tone }: { label: string; items: string[]; to
   );
 }
 
-function ProductVisual({ label, compact = false, large = false }: { label: string; compact?: boolean; large?: boolean }) {
+function ProductVisual({ item, compact = false, large = false }: { item: TrendRecommendation; compact?: boolean; large?: boolean }) {
   const size = compact ? "h-10 w-10" : large ? "h-36 w-full" : "h-24 w-24";
-  const imageIndex = Number(label);
-  const hasProductImage = Number.isFinite(imageIndex);
-  const column = hasProductImage ? (imageIndex - 1) % 5 : 0;
-  const row = hasProductImage ? Math.floor((imageIndex - 1) / 5) : 0;
-  const backgroundPosition = `${column * 25}% ${row * 100}%`;
-
-  if (hasProductImage) {
+  if (item.imageUrl) {
     return (
       <div
-        aria-label={`Product thumbnail ${imageIndex}`}
-        className={`${size} shrink-0 border border-neutral-200 bg-white bg-[length:500%_200%]`}
+        aria-label={item.imageAlt}
+        className={`${size} shrink-0 border border-neutral-200 bg-white bg-contain bg-center bg-no-repeat`}
         role="img"
         style={{
-          backgroundImage: "url('/images/trend-products/trend-product-contact-sheet.png')",
-          backgroundPosition
+          backgroundImage: `url("${item.imageUrl}")`
         }}
       />
     );
   }
 
-  return (
-    <div
-      className={`${size} flex shrink-0 items-center justify-center border border-neutral-200 bg-cyan-50 text-center text-xs font-black text-teal-800`}
-    >
-      {label}
-    </div>
-  );
+  // TODO(pipeline): No numeric placeholder. Product images must come from the affiliate/merchant feed later.
+  // If this returns null in production, the ingestion/publishing gate should block the article before rendering.
+  return null;
 }
 
 function TrendArticleHeading({ children }: { children: ReactNode }) {
   return (
     <div className="flex items-end gap-4 border-b-4 border-cyan-500 pb-3">
-      <h2 className="flex-1 text-3xl font-black leading-tight tracking-normal text-sky-700 md:text-4xl">{children}</h2>
-      <span className="mb-2 h-3 w-3 rotate-45 bg-orange-500" aria-hidden />
+      <h2 className="min-w-0 flex-1 text-[28px] font-bold leading-[31px] tracking-normal text-[#2b2f33] md:text-[32px] md:leading-[35.2px]">
+        {children}
+      </h2>
+      <SectionSpark />
     </div>
   );
 }
 
-function trendSectionId(index: number) {
-  if (index === 0) {
+function SectionSpark() {
+  return (
+    <span
+      aria-hidden
+      className="mb-1 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-cyan-500 bg-white text-cyan-600 shadow-[0_2px_0_rgba(6,182,212,0.18)] min-[360px]:h-8 min-[360px]:w-8"
+    >
+      <svg className="h-3.5 w-3.5 min-[360px]:h-4 min-[360px]:w-4" fill="none" viewBox="0 0 24 24">
+        <path
+          d="M12 3.8 13.9 9l5.3 1.9-5.3 1.9L12 18l-1.9-5.2-5.3-1.9L10.1 9 12 3.8Z"
+          stroke="currentColor"
+          strokeLinejoin="round"
+          strokeWidth="1.9"
+        />
+        <path
+          d="M18.8 16.2 19.6 18l1.8.8-1.8.8-.8 1.8-.8-1.8-1.8-.8 1.8-.8.8-1.8Z"
+          fill="currentColor"
+        />
+      </svg>
+    </span>
+  );
+}
+
+function trendSectionId(heading: string, index: number) {
+  const normalizedHeading = heading
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+  if (normalizedHeading === "quick-answer") {
     return "quick-answer";
   }
-  if (index === 1) {
-    return "why-trending";
-  }
-  if (index === 2) {
-    return "what-to-check";
-  }
-  return undefined;
+  return normalizedHeading || `section-${index + 1}`;
 }
 
 function trackingHrefForRecommendation(article: Article, item: TrendRecommendation) {
-  return affiliateTrackingHrefForArticle(
-    {
-      label: item.name,
-      href: item.href,
-      rel: item.rel
-    },
-    article
-  );
+  // Keep the purchase path direct and resilient. Analytics is recorded in AffiliateOutboundLink;
+  // production affiliate ingestion should replace placeholder search URLs with validated deep links.
+  void article;
+  return item.href;
+}
+
+function ctaLabelForRecommendation(item: TrendRecommendation) {
+  if (item.hrefKind === "marketplace-search-route") {
+    return "Search current listings";
+  }
+  if (item.hrefKind === "merchant-product-page") {
+    return "View product page";
+  }
+  return "View price";
 }

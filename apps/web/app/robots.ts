@@ -1,16 +1,15 @@
 import type { MetadataRoute } from "next";
-import { getSiteUrl } from "@global-import-lab/seo";
+import { requestAbsoluteUrl } from "@/lib/trend-site/request-url";
 
-export default function robots(): MetadataRoute.Robots {
-  const siteUrl = getSiteUrl();
+export default async function robots(): Promise<MetadataRoute.Robots> {
   return {
     rules: [
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/admin/", "/api/"]
+        disallow: ["/api/"]
       }
     ],
-    sitemap: [`${siteUrl}/sitemap.xml`]
+    sitemap: [await requestAbsoluteUrl("/sitemap.xml")]
   };
 }

@@ -39,7 +39,8 @@ export function AffiliateOutboundLink({
           transport_type: "beacon"
         });
       }}
-      rel={rel}
+      rel={`${rel} noopener noreferrer`}
+      target="_blank"
     >
       {label}
       <ExternalLink aria-hidden size={16} />

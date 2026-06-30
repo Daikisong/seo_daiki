@@ -1,98 +1,47 @@
-# seo_daiki
+# TREND - Jacob
 
-Global Market Trend Desk + SERP Intelligence + Multilingual Publishing Lab + Optional Monetization Layer.
+TREND - Jacob is a personal product trend guide focused on marketplace products from AliExpress, Temu, Amazon, iHerb, and similar fast-moving commerce sites.
 
-This repository is not designed as an affiliate auto-blog first. The core product is a trend-to-content research and publishing system:
+The current site is intentionally small:
 
-1. Trend Engine
-2. SERP Intelligence
-3. Test Posting
-4. Product Candidate Analysis
-5. Human-approved monetization
-6. Live affiliate APIs later
+- Home page with Jacob's editorial positioning
+- Category archive pages under `/category/[slug]/`
+- One trend article under `/en/trends/travel-gan-charger-fake-wattage-trend/`
+- About, privacy, and do-not-sell pages
+- A guarded affiliate redirect endpoint at `/api/affiliate-click`
 
-## Operating Model
-
-The site uses one domain with separate market silos so the content does not become a mixed global blog.
-
-Examples:
-
-- `/us/en/` for the United States English trend desk
-- `/es/es/` for the Spain Spanish trend desk
-- `/br/pt-br/` for the Brazil Portuguese trend desk
-- `/jp/ja/` for the Japan Japanese trend desk
-- `/kr/ko/` for the Korea Korean trend desk
-
-Global pages such as `/global/trend-map/` summarize cross-market patterns, but they do not replace market-specific feeds.
-
-## Default Pipeline
-
-The default pipeline is trend-first and stops before monetization:
-
-```text
-MarketTrendSignal
-  -> TrendCluster
-  -> TrendKeyword
-  -> SerpSnapshot
-  -> CompetitorContentAnalysis
-  -> ContentStrategy
-  -> ContentBrief
-  -> TestArticleDraft
-```
-
-It does not run offer matching, distribution drafts, outreach, live affiliate APIs, or automatic monetized link insertion.
-
-## Key Commands
+## Commands
 
 ```bash
-pnpm pipeline:trend-to-post
-pnpm pipeline:post-to-product-analysis
-pnpm pipeline:monetization-review
-pnpm worker:pipeline
+corepack pnpm --filter @trend-jacob/web dev
+corepack pnpm --filter @trend-jacob/web typecheck
+corepack pnpm --filter @trend-jacob/web build
 ```
 
-Focused commands:
+The root shortcuts are:
 
 ```bash
-pnpm trend:import
-pnpm trend:cluster
-pnpm trend:score
-pnpm trend:report
-pnpm serp:import
-pnpm serp:analyze
-pnpm serp:report
-pnpm strategy:create
-pnpm post:generate-test
-pnpm products:import-candidates
-pnpm products:analyze-candidates
+corepack pnpm dev
+corepack pnpm typecheck
+corepack pnpm build
 ```
 
-## Safety Boundaries
+## Main Files
 
-- Google Trends-like data is treated as relative and sampled, not absolute search volume.
-- SERP analysis uses provider-based inputs such as manual CSV. Raw Google HTML scraping, proxy scraping, CAPTCHA bypass, and rank-checking spam are not implemented.
-- Product candidates are analysis blocks only until a human approves monetization.
-- Live AliExpress, Temu, Amazon, and iHerb API integrations are documented for later and disabled now.
-- Monetized placements must use human approval and `rel="sponsored nofollow"`.
+- `apps/web/app/page.tsx` - home page
+- `apps/web/app/category/[slug]/page.tsx` - category archive route
+- `apps/web/app/[locale]/trends/[slug]/page.tsx` - trend article route
+- `apps/web/components/layout/TrendArchive.tsx` - shared archive layout
+- `apps/web/components/layout/ArticlePage.tsx` - trend article detail layout
+- `apps/web/lib/trend-site/` - categories, routes, local article data, products, and recommendation model
 
-## Important Files
+## Editorial Direction
 
-- `data/config/markets.json` - 18 initial market configs.
-- `workers/python/pipeline.py` - trend-to-post and later-phase pipelines.
-- `workers/python/intelligence/market_trend_engine.py` - country/language trend engine.
-- `workers/python/serp/serp_intelligence.py` - manual/provider-based SERP intelligence.
-- `workers/python/writers/market_content_strategy.py` - strategy, brief, and test-post generation.
-- `workers/python/intelligence/product_candidate_engine.py` - manual product candidate analysis.
-- `docs/final-refactor-report.md` - refactor summary and verification record.
-- `docs/affiliate-api-playbook/` - future merchant API contracts and boundaries.
+Each guide should start with search demand and buyer risk, then move into products only when the topic has enough evidence. Recommendations should check:
 
-## Verification
-
-Common checks:
-
-```bash
-pnpm test
-pnpm typecheck
-pnpm seo:validate
-pnpm build
-```
+- Search demand and ranking patterns
+- Seller claims and exact variants
+- Price movement and final shipped price
+- Shipping terms and return paths
+- Review complaints and compliance risk
+- Affiliate fit and disclosure

@@ -1,4 +1,0 @@
-# Example cron entry for the v1 worker queue.
-# Runs the local-data pipeline every day at 03:20 server time and appends logs.
-
-20 3 * * * cd /home/eorb915/projects/seo_daiki && /usr/bin/env pnpm worker:pipeline >> data/exports/worker-cron.log 2>&1

@@ -1,31 +1,33 @@
 import type { MetadataRoute } from "next";
-import { absoluteUrl, buildSitemapEntries } from "@global-import-lab/seo";
-import { getIndexedArticles } from "@/lib/content/repository";
-import { enabledMarkets } from "@/lib/market/config";
-import { marketHomeSitemapEligibility } from "@/lib/seo/market-index-policy";
+import { getIndexedArticles } from "@/lib/trend-site/data";
+import { articlePath } from "@/lib/trend-site/routes";
+import { requestAbsoluteUrl } from "@/lib/trend-site/request-url";
+import { visibleTrendCategories } from "@/lib/trend-site/categories";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const articles = await getIndexedArticles();
-  const articleEntries = buildSitemapEntries(articles).map((entry) => ({
-    url: entry.url,
-    lastModified: new Date(entry.lastModified),
-    changeFrequency: entry.changeFrequency,
-    priority: entry.priority
-  }));
+  const articleEntries = await Promise.all(articles.map(async (article) => ({
+    url: await requestAbsoluteUrl(articlePath(article)),
+    lastModified: new Date(article.lastUpdated),
+    changeFrequency: "weekly" as const,
+    priority: 0.8
+  })));
   const now = new Date();
-  const marketEntries = enabledMarkets()
-    .filter((market) => marketHomeSitemapEligibility(market).eligible)
-    .map((market) => ({
-      url: absoluteUrl(`${market.pathPrefix}/`),
-      lastModified: now,
-      changeFrequency: "daily" as const,
-      priority: 0.8
-    }));
-  const globalEntries = ["/global/", "/global/trend-map/", "/global/topics/", "/global/methodology/", "/global/markets/"].map((path) => ({
-    url: absoluteUrl(path),
+  const staticEntries = await Promise.all([
+    "/",
+    "/about-me/",
+    "/contact/",
+    "/methodology/",
+    "/privacy-policy/",
+    "/terms-of-use/",
+    "/advertising-policy/",
+    "/do-not-sell-or-share/",
+    ...visibleTrendCategories.map((item) => item.href)
+  ].map(async (path) => ({
+    url: await requestAbsoluteUrl(path),
     lastModified: now,
     changeFrequency: "weekly" as const,
     priority: 0.7
-  }));
-  return [...articleEntries, ...marketEntries, ...globalEntries];
+  })));
+  return [...staticEntries, ...articleEntries];
 }

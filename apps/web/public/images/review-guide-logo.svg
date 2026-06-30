@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Review Guide logo">
-  <rect width="512" height="512" rx="96" fill="#146236"/>
-  <path d="M150 132h212c22 0 40 18 40 40v168c0 22-18 40-40 40H150c-22 0-40-18-40-40V172c0-22 18-40 40-40Z" fill="#fff"/>
-  <path d="M166 196h180" stroke="#146236" stroke-width="28" stroke-linecap="round"/>
-  <path d="M166 258h134" stroke="#146236" stroke-width="28" stroke-linecap="round"/>
-  <path d="M166 320h88" stroke="#146236" stroke-width="28" stroke-linecap="round"/>
-  <circle cx="352" cy="300" r="42" fill="#eaf6ee" stroke="#146236" stroke-width="22"/>
-  <path d="m382 330 34 34" stroke="#146236" stroke-width="24" stroke-linecap="round"/>
-</svg>

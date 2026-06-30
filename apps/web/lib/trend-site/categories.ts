@@ -1,0 +1,106 @@
+import type { Article, ArticleType } from "./types";
+import { isIndexableLocale } from "./locales";
+
+export const trendSiteName = "TREND - Jacob";
+
+export const trendHomeDescription =
+  "Trend-led buyer guides across AliExpress, Temu, Amazon, iHerb, and fast-moving marketplaces.";
+
+export const trendArticleTypes = new Set<ArticleType>(["trend"]);
+
+export type TrendCategory = {
+  label: string;
+  slug: string;
+  href: string;
+  keywords: readonly string[];
+  isPublic?: boolean;
+};
+
+export const trendCategories = [
+  {
+    label: "Home Trends",
+    slug: "home-trends",
+    href: "/category/home-trends/",
+    isPublic: true,
+    keywords: ["home", "kitchen", "cleaner", "humidifier", "fan", "air conditioner", "organizer", "steam"]
+  },
+  {
+    label: "Garden Trends",
+    slug: "garden-trends",
+    href: "/category/garden-trends/",
+    isPublic: false,
+    keywords: ["garden", "yard", "lawn", "outdoor light", "pruning", "leaf", "pressure washer"]
+  },
+  {
+    label: "Auto Trends",
+    slug: "auto-trends",
+    href: "/category/auto-trends/",
+    isPublic: false,
+    keywords: ["car", "auto", "dash cam", "jump starter", "tire", "vehicle", "compressor"]
+  },
+  {
+    label: "Outdoor Trends",
+    slug: "outdoor-trends",
+    href: "/category/outdoor-trends/",
+    isPublic: false,
+    keywords: ["camping", "outdoor", "tent", "sleeping bag", "solar", "portable power", "hiking"]
+  },
+  {
+    label: "Tool Trends",
+    slug: "tool-trends",
+    href: "/category/tool-trends/",
+    isPublic: false,
+    keywords: ["tool", "drill", "soldering", "multimeter", "welder", "chainsaw", "oscilloscope"]
+  },
+  {
+    label: "Electronics Trends",
+    slug: "electronics-trends",
+    href: "/category/electronics-trends/",
+    isPublic: true,
+    keywords: ["charger", "gan", "usb-c", "cable", "power bank", "adapter", "monitor", "electronics"]
+  },
+  {
+    label: "Personal Mobility Trends",
+    slug: "personal-mobility-trends",
+    href: "/category/personal-mobility-trends/",
+    isPublic: false,
+    keywords: ["bike", "scooter", "wheelset", "mobility", "ebike", "electric bike"]
+  }
+] as const satisfies readonly TrendCategory[];
+
+export const visibleTrendCategories = trendCategories.filter((category) => category.isPublic);
+
+export function trendCategoryBySlug(slug: string) {
+  return trendCategories.find((category) => category.slug === slug);
+}
+
+export function trendCategoryForArticle(article: Article): TrendCategory {
+  const haystack = `${article.title} ${article.h1} ${article.slug} ${article.summary} ${article.contentMdx}`.toLowerCase();
+  const categoryPool = visibleTrendCategories.length > 0 ? visibleTrendCategories : [trendCategories[0]];
+  const initialScore: { category: TrendCategory; score: number } = { category: categoryPool[0], score: 0 };
+  return categoryPool.reduce<{ category: TrendCategory; score: number }>(
+    (best, category) => {
+      const score = category.keywords.reduce((count, keyword) => count + keywordMatchCount(haystack, keyword), 0);
+      return score > best.score ? { category, score } : best;
+    },
+    initialScore
+  ).category;
+}
+
+function keywordMatchCount(haystack: string, keyword: string) {
+  const normalizedKeyword = keyword.toLowerCase();
+  if (!normalizedKeyword) {
+    return 0;
+  }
+  return haystack.split(normalizedKeyword).length - 1;
+}
+
+export function visibleTrendArticles(articles: Article[]) {
+  return articles
+    .filter((article) => isIndexableLocale(article.locale) && trendArticleTypes.has(article.type))
+    .filter((article) => article.publishStatus === "published" && article.indexStatus === "index");
+}
+
+export function sortTrendArticles(a: Article, b: Article) {
+  return Date.parse(b.lastUpdated) - Date.parse(a.lastUpdated);
+}
