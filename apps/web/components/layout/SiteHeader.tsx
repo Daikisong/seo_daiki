@@ -10,15 +10,19 @@ import {
   visibleTrendCategories,
 } from "@/lib/trend-site/categories";
 
-const navItems = [
-  { label: "Home", href: "/" },
-  ...visibleTrendCategories.map((category) => ({
-    label: category.label,
-    href: category.href,
-  })),
+const categoryNavItems = visibleTrendCategories.map((category) => ({
+  label: category.label,
+  href: category.href,
+}));
+
+const primaryNavItems = [{ label: "Home", href: "/" }, ...categoryNavItems];
+
+const secondaryNavItems = [
   { label: "Method", href: "/methodology/" },
   { label: "About TrendBrief", href: "/about-me/" },
-] as const;
+];
+
+const mobileNavItems = [...primaryNavItems, ...secondaryNavItems];
 
 export function SiteHeader({
   currentHref,
@@ -61,7 +65,7 @@ export function SiteHeader({
             }`}
             id="site-mobile-menu"
           >
-            {navItems.map((item) => (
+            {mobileNavItems.map((item) => (
               <Link
                 className={`focus-ring block border-t border-[#7899c0] px-5 py-4 text-[16px] leading-6 hover:bg-[#7899c0] ${
                   isActiveNavItem(item.href, currentHref) ? "bg-[#7899c0]" : ""
@@ -89,23 +93,49 @@ export function SiteHeader({
         aria-label="Primary navigation"
         className="mx-auto hidden max-w-[1170px] bg-[#5d84b4] px-6 text-white xl:block"
       >
-        <div className="flex flex-wrap">
-          {navItems.map((item) => (
-            <Link
-              className={`focus-ring block px-3 py-4 text-[15px] leading-6 hover:bg-[#7899c0] ${
-                isActiveNavItem(item.href, currentHref ?? "/")
-                  ? "bg-[#7899c0]"
-                  : ""
-              }`}
+        <div className="flex flex-wrap justify-center">
+          {primaryNavItems.map((item) => (
+            <DesktopNavLink
+              currentHref={currentHref}
               href={item.href}
               key={item.href}
-            >
-              {item.label}
-            </Link>
+              label={item.label}
+            />
+          ))}
+        </div>
+        <div className="flex flex-wrap justify-center border-t border-[#7fa0c4]">
+          {secondaryNavItems.map((item) => (
+            <DesktopNavLink
+              currentHref={currentHref}
+              href={item.href}
+              key={item.href}
+              label={item.label}
+            />
           ))}
         </div>
       </nav>
     </header>
+  );
+}
+
+function DesktopNavLink({
+  currentHref,
+  href,
+  label,
+}: {
+  currentHref?: string;
+  href: string;
+  label: string;
+}) {
+  return (
+    <Link
+      className={`focus-ring block px-3 py-4 text-[15px] leading-6 hover:bg-[#7899c0] ${
+        isActiveNavItem(href, currentHref ?? "/") ? "bg-[#7899c0]" : ""
+      }`}
+      href={href}
+    >
+      {label}
+    </Link>
   );
 }
 
