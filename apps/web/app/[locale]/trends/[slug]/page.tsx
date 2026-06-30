@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { ArticlePage } from "@/components/layout/ArticlePage";
 import {
   getIndexedArticles,
+  getPublicNavCategories,
   getStaticTrendParams,
   getTrendArticle,
   getTrendProducts,
@@ -71,6 +72,7 @@ export default async function TrendPage({ params }: PageProps) {
   return (
     <ArticlePage
       article={article}
+      navCategories={getPublicNavCategories()}
       pageUrl={await requestAbsoluteUrl(articlePath(article))}
       products={getTrendProducts()}
       publisherUrl={await requestAbsoluteUrl("/")}

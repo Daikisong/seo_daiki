@@ -36,14 +36,7 @@ export const trendAuthors = [
       "Repeated buyer-review complaint patterns",
       "Trend-to-buyer-problem mapping",
     ],
-    coveredCategories: [
-      "Home Briefs",
-      "Electronics Briefs",
-      "Outdoor Briefs",
-      "Tool Briefs",
-      "Auto Briefs",
-      "Personal Mobility Briefs",
-    ],
+    coveredCategories: ["Home Briefs"],
     localeCoverage: ["en"],
     methodologyNote:
       "Jacob uses checkable public specs, merchant listings, current prices, source reviews, and buyer-review patterns to make the buying decision clearer.",
@@ -52,7 +45,7 @@ export const trendAuthors = [
     publicProfile: true,
     latestArticles: [],
     evidenceNote:
-      "When a Brief includes original usage notes, they are tied to the exact product variant and the context that made the observation useful.",
+      "Briefs tie practical observations to exact variants, source labels, price dates, review patterns, and return-path notes so the buying case stays checkable.",
   },
   {
     id: "trendbrief-editors",
@@ -76,10 +69,10 @@ export const trendAuthors = [
       "The desk checks that a Brief shows useful buyer-facing evidence: specs, source reviews, marketplace route, price checked date, repeated complaints, and return path.",
     sameAs: [],
     authorPagePath: "/authors/trendbrief-editors/",
-    publicProfile: false,
+    publicProfile: true,
     latestArticles: [],
     evidenceNote:
-      "Briefs use plain source labels, price dates, review patterns, and return-path notes so readers can check the recommendation without reading internal workflow language.",
+      "Briefs use plain source labels, price dates, review patterns, and return-path notes so readers can check the recommendation quickly.",
   },
 ] as const satisfies readonly TrendAuthor[];
 

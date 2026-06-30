@@ -144,6 +144,7 @@ export function TrendRecentUpdate({ article }: { article: Article }) {
   if (!latestUpdate) {
     return null;
   }
+  const parsedUpdate = parseDatedUpdate(latestUpdate);
 
   return (
     <section
@@ -154,7 +155,14 @@ export function TrendRecentUpdate({ article }: { article: Article }) {
         Recent update
       </p>
       <p className="mt-2 text-sm leading-6 text-neutral-800">
-        <InlineEmphasis>{latestUpdate}</InlineEmphasis>
+        {parsedUpdate ? (
+          <>
+            <strong className="text-neutral-950">{parsedUpdate.date}:</strong>{" "}
+            <InlineEmphasis>{parsedUpdate.body}</InlineEmphasis>
+          </>
+        ) : (
+          <InlineEmphasis>{latestUpdate}</InlineEmphasis>
+        )}
       </p>
     </section>
   );
@@ -198,8 +206,8 @@ export function TrendCommerceSection({
         </p>
       </section>
 
-      <TrendQuickList article={article} recommendations={recommendations} />
       <TrendCountryBuyingRoutes article={article} />
+      <TrendQuickList article={article} recommendations={recommendations} />
       <TrendEditorialSections
         article={article}
         sections={buyerContextSections}
@@ -537,7 +545,9 @@ function TrendAuthorBio({ article }: { article: Article }) {
 function TrendRelatedClusters({ article }: { article: Article }) {
   const related = article.relatedArticles ?? [];
   const latest = article.latestInCategory ?? [];
-  if (related.length === 0 && latest.length === 0) {
+  const visibleRelated = related.length >= 2 ? related : [];
+  const visibleLatest = latest.length >= 2 ? latest : [];
+  if (visibleRelated.length === 0 && visibleLatest.length === 0) {
     return null;
   }
 
@@ -545,8 +555,8 @@ function TrendRelatedClusters({ article }: { article: Article }) {
     <section className="border-t border-neutral-200 pt-8" id="related-briefs">
       <TrendArticleHeading>Read more from TrendBrief</TrendArticleHeading>
       <div className="mt-5 grid gap-6 md:grid-cols-2">
-        <RelatedList title="Related Briefs" items={related} />
-        <RelatedList title="Latest in this category" items={latest} />
+        <RelatedList title="Related Briefs" items={visibleRelated} />
+        <RelatedList title="Latest in this category" items={visibleLatest} />
       </div>
     </section>
   );
@@ -668,22 +678,30 @@ function TrendComparisonTable({
           </article>
         ))}
       </div>
-      <div className="mt-4 hidden md:block">
-        <table className="w-full table-fixed border-y border-neutral-200 text-sm">
+      <div className="mt-4 hidden overflow-x-auto md:block">
+        <table className="min-w-[1420px] border-y border-neutral-200 text-sm">
           <colgroup>
-            <col style={{ width: "7%" }} />
-            <col style={{ width: "33%" }} />
-            <col style={{ width: "27%" }} />
+            <col style={{ width: "5%" }} />
             <col style={{ width: "18%" }} />
-            <col style={{ width: "15%" }} />
+            <col style={{ width: "11%" }} />
+            <col style={{ width: "14%" }} />
+            <col style={{ width: "14%" }} />
+            <col style={{ width: "13%" }} />
+            <col style={{ width: "11%" }} />
+            <col style={{ width: "14%" }} />
           </colgroup>
           <thead>
             <tr className="bg-teal-800 text-left text-white">
               <th className="border-teal-700 !text-white">Rank</th>
               <th className="border-teal-700 !text-white">Pick</th>
-              <th className="border-teal-700 !text-white">Best fit</th>
-              <th className="border-teal-700 !text-white">Check first</th>
-              <th className="border-teal-700 !text-white">Price</th>
+              <th className="border-teal-700 !text-white">Type</th>
+              <th className="border-teal-700 !text-white">Key spec</th>
+              <th className="border-teal-700 !text-white">Best for</th>
+              <th className="border-teal-700 !text-white">Region / returns</th>
+              <th className="border-teal-700 !text-white">
+                Complaint to check
+              </th>
+              <th className="border-teal-700 !text-white">Evidence / route</th>
             </tr>
           </thead>
           <tbody>
@@ -714,11 +732,40 @@ function TrendComparisonTable({
                 </td>
                 <td>
                   <p className="font-medium leading-5 text-neutral-900">
-                    {compactComparisonText(item.bestFor, 96)}
+                    {compactComparisonText(
+                      item.productKind ?? item.bestFor,
+                      82,
+                    )}
                   </p>
+                </td>
+                <td>
                   {hasCoolingFields && item.coolingCapacity ? (
-                    <p className="mt-1 text-xs font-bold text-teal-800">
-                      {compactComparisonText(item.coolingCapacity, 42)}
+                    <div className="space-y-1 text-xs leading-5">
+                      <p className="font-bold text-teal-800">
+                        {compactComparisonText(item.coolingCapacity, 46)}
+                      </p>
+                      <p className="text-neutral-700">
+                        {compactComparisonText(
+                          [item.roomSize, item.hoseType, item.noiseLevel]
+                            .filter(Boolean)
+                            .join(" / "),
+                          78,
+                        )}
+                      </p>
+                    </div>
+                  ) : null}
+                </td>
+                <td className="text-neutral-700">
+                  {compactComparisonText(item.bestFor, 96)}
+                </td>
+                <td className="text-neutral-700">
+                  <p>{compactComparisonText(item.regionFit, 74)}</p>
+                  <p className="mt-1 text-xs font-bold text-amber-700">
+                    {compactComparisonText(item.returnRiskLabel, 60)}
+                  </p>
+                  {item.voltagePlug ? (
+                    <p className="mt-1 text-xs text-neutral-600">
+                      {compactComparisonText(item.voltagePlug, 58)}
                     </p>
                   ) : null}
                 </td>
@@ -726,6 +773,17 @@ function TrendComparisonTable({
                   {compactComparisonText(comparisonWatchText(item), 86)}
                 </td>
                 <td>
+                  <p className="text-xs font-bold uppercase text-teal-800">
+                    {evidenceLabel(item.evidenceLevel)}
+                  </p>
+                  <p className="mt-1 text-xs leading-5 text-neutral-600">
+                    {compactComparisonText(
+                      [item.marketplaceSourceLabel, item.priceCheckedAt]
+                        .filter(Boolean)
+                        .join(" / "),
+                      78,
+                    )}
+                  </p>
                   <p className="font-black leading-5 text-neutral-950">
                     {item.price}
                   </p>
@@ -768,7 +826,7 @@ function TrendRecommendationCard({
       className="border-t border-neutral-200 py-7 first:border-t-0"
       id={`trend-pick-${item.rank}`}
     >
-      <div className="grid gap-5 lg:grid-cols-[220px_minmax(0,1fr)_230px]">
+      <div className="grid gap-5 lg:grid-cols-[220px_minmax(0,1fr)]">
         <div className="relative">
           <span
             aria-hidden
@@ -778,7 +836,7 @@ function TrendRecommendationCard({
           </span>
           <ProductVisual item={item} large />
         </div>
-        <div>
+        <div className="min-w-0">
           <p className="text-xs font-black uppercase tracking-normal text-amber-700">
             {item.rankLabel}
           </p>
@@ -790,11 +848,12 @@ function TrendRecommendationCard({
           </p>
           <div className="mt-3 flex flex-wrap items-center gap-2">
             <EvidencePill item={item} />
+            <ReviewSignalPill item={item} />
           </div>
           <p className={`mt-4 ${articleBodyClass}`}>
             <InlineEmphasis>{item.expertReviewTake}</InlineEmphasis>
           </p>
-          <DecisionBlock label="TrendBrief note" value={item.whyRecommend} />
+          <DecisionBlock label="Editor's verdict" value={item.whyRecommend} />
           <DecisionBlock label="Best for" value={item.whoFits} />
           <DecisionBlock
             label="Skip if"
@@ -803,10 +862,17 @@ function TrendRecommendationCard({
           />
           <div className="mt-4 grid gap-4 md:grid-cols-2">
             <SignalList
-              label="Reasons to consider"
+              label="Reasons to buy"
               items={item.pros}
               tone="positive"
             />
+            <SignalList
+              label="Reasons to avoid"
+              items={item.cons}
+              tone="negative"
+            />
+          </div>
+          <div className="mt-4">
             <SignalList
               label="Repeated complaints to check"
               items={item.repeatedComplaints}
@@ -815,15 +881,8 @@ function TrendRecommendationCard({
           </div>
           <ProductSpecsTable item={item} />
           <SourceStack item={item} />
-          <div className="mt-4 grid gap-4 md:grid-cols-2">
-            <SignalList
-              label="Reasons to skip"
-              items={item.cons}
-              tone="negative"
-            />
-          </div>
         </div>
-        <div className="self-start border-l-4 border-cyan-500 bg-cyan-50 p-4">
+        <div className="border-l-4 border-cyan-500 bg-cyan-50 p-4 lg:col-start-2">
           <p className="text-xs font-black uppercase text-neutral-600">
             Today's best route
           </p>
@@ -843,6 +902,14 @@ function TrendRecommendationCard({
           <p className="mt-4 text-sm leading-6 text-neutral-700">
             <InlineEmphasis>{item.marketplaceNote}</InlineEmphasis>
           </p>
+          <a
+            className="mt-4 inline-block text-sm font-black text-[#2f7cd3] underline decoration-[#2f7cd3] decoration-2 underline-offset-4 hover:text-teal-800"
+            href={item.reviewSourceUrl}
+            rel="nofollow noopener noreferrer"
+            target="_blank"
+          >
+            Full source review
+          </a>
           <p className="mt-4 text-xs font-bold uppercase text-neutral-600">
             Key Features
           </p>
@@ -871,18 +938,18 @@ function SourceStack({ item }: { item: TrendRecommendation }) {
     .join(" - ");
   const rows = [
     [
-      "Product page",
+      "Spec checked",
       item.sourceLabel,
       item.sourceUrl,
       "nofollow noopener noreferrer",
     ],
     [
-      "Review reference",
+      "Source review",
       item.reviewSourceLabel,
       item.reviewSourceUrl,
       "nofollow noopener noreferrer",
     ],
-    ["Price check", priceSource, item.href, `${item.rel} noopener noreferrer`],
+    ["Seller route", priceSource, item.href, `${item.rel} noopener noreferrer`],
   ].filter((row): row is [string, string, string, string] => Boolean(row[1]));
 
   if (rows.length === 0) {
@@ -917,6 +984,18 @@ function EvidencePill({ item }: { item: TrendRecommendation }) {
   return (
     <span className="inline-flex bg-neutral-100 px-2 py-1 text-xs font-black uppercase tracking-normal text-neutral-700">
       {evidenceLabel(item.evidenceLevel)}
+    </span>
+  );
+}
+
+function ReviewSignalPill({ item }: { item: TrendRecommendation }) {
+  if (!item.reviewSignalCount) {
+    return null;
+  }
+
+  return (
+    <span className="inline-flex bg-cyan-50 px-2 py-1 text-xs font-black uppercase tracking-normal text-teal-800">
+      Marketplace review signal: {item.reviewSignalCount}+ buyer mentions
     </span>
   );
 }
@@ -1137,4 +1216,12 @@ function compactComparisonText(value: string, maxLength: number) {
     return normalized;
   }
   return `${normalized.slice(0, Math.max(0, maxLength - 3)).trim()}...`;
+}
+
+function parseDatedUpdate(value: string) {
+  const match = value.match(/^(\d{4}-\d{2}-\d{2}):\s*(.+)$/);
+  if (!match) {
+    return undefined;
+  }
+  return { date: match[1], body: match[2] };
 }

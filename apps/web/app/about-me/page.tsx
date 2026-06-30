@@ -6,6 +6,7 @@ import {
   trendSiteName,
 } from "@/lib/trend-site/categories";
 import { requestAbsoluteUrl } from "@/lib/trend-site/request-url";
+import { getPublicNavCategories } from "@/lib/trend-site/data";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -20,7 +21,10 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function AboutMePage() {
   return (
     <>
-      <SiteHeader currentHref="/about-me/" />
+      <SiteHeader
+        currentHref="/about-me/"
+        navCategories={getPublicNavCategories()}
+      />
       <main className="mx-auto max-w-3xl px-4 py-10 text-neutral-900">
         <h1 className="text-[21px] font-bold leading-[23.1px] tracking-normal text-[#2b2f33] md:text-[25.6px] md:leading-[28.16px] xl:text-[32px] xl:leading-[35.2px]">
           About {trendSiteName}

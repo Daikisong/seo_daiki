@@ -9,7 +9,10 @@ import {
   publicTrendAuthors,
   trendAuthors,
 } from "@/lib/trend-site/authors";
-import { getIndexedArticles } from "@/lib/trend-site/data";
+import {
+  getIndexedArticles,
+  getPublicNavCategories,
+} from "@/lib/trend-site/data";
 import {
   trendContentUnitPlural,
   trendSiteDescription,
@@ -57,7 +60,10 @@ export default async function AuthorPage({ params }: AuthorPageProps) {
 
   return (
     <>
-      <SiteHeader currentHref={author.authorPagePath} />
+      <SiteHeader
+        currentHref={author.authorPagePath}
+        navCategories={getPublicNavCategories()}
+      />
       <main className="mx-auto max-w-[960px] px-5 py-10 text-neutral-900">
         <JsonLd data={authorJsonLd(author, pageUrl)} />
         <header className="grid gap-6 border-b border-neutral-200 pb-8 md:grid-cols-[120px_minmax(0,1fr)]">

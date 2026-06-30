@@ -74,6 +74,11 @@ const DIRECT_USE_CLAIM_PATTERNS = [
   /\btested\s+for\s+(?:\d+\s+)?(?:days?|weeks?|months?)\b/i,
   /\bpersonally\s+used\s+for\s+(?:a|\d+)\s+(?:days?|weeks?|months?)\b/i,
   /\bpersonally\s+tested\b/i,
+  /\bour\s+tester\b/i,
+  /\btried\s+and\s+tested\b/i,
+  /\bour\s+expert\s+review\b/i,
+  /\bin-house\s+product\s+testing\b/i,
+  /\btested\s+by\s+(?:our|trendbrief|jacob)\b/i,
 ] as const;
 
 const FORBIDDEN_INTERNAL_PROCESS_PATTERNS = [
@@ -102,6 +107,14 @@ const FORBIDDEN_INTERNAL_PROCESS_PATTERNS = [
   /\bLLM evidence\b/i,
   /\bSEO checked\b/i,
   /\bfollowed Google helpful content guidance\b/i,
+] as const;
+
+const FORBIDDEN_DEFENSIVE_EVIDENCE_PATTERNS = [
+  /\bwe\s+(?:did\s+not|didn't)\s+test\b/i,
+  /\b(i|we|jacob|trendbrief)\s+(?:am|are|is)\s+not\s+(?:a\s+)?(?:testing\s+)?lab\b/i,
+  /\bnot\s+(?:a\s+)?(?:full-time\s+)?product\s+testing\s+(?:team|lab)\b/i,
+  /\bnot\s+tested\s+in\s+(?:a|our|the)\s+lab\b/i,
+  /\bnot\s+directly\s+tested\b/i,
 ] as const;
 
 export function runArticleQualityGate(
@@ -154,6 +167,18 @@ export function runArticleQualityGate(
         "hard",
         "Public article copy exposes internal SEO, SERP, Search Console, monetization, or LLM workflow language.",
         "Remove internal workflow proof text and rewrite it as buyer-facing outcomes, checks, warnings, or product decisions.",
+      ),
+    );
+  }
+
+  if (hasForbiddenDefensiveEvidenceCopy(publicText)) {
+    hardBlockers.push(
+      blocker(
+        "FORBIDDEN_DEFENSIVE_EVIDENCE_COPY",
+        article.id,
+        "hard",
+        "Public article copy over-explains that TrendBrief did not test products.",
+        "Remove defensive proof text. Show the useful buying evidence instead: exact variant, source review, price route, return path, and repeated complaints.",
       ),
     );
   }
@@ -689,7 +714,11 @@ function checkDirectUseClaims(
   blockers: QualityGateBlocker[],
 ) {
   const articleText = [
+    article.title,
+    article.h1,
+    article.metaDescription,
     article.summary,
+    article.affiliateDisclosure,
     article.trendSignalBox?.heading,
     article.trendSignalBox?.body,
     article.trendSignalBox?.sourceNote,
@@ -735,17 +764,38 @@ function checkDirectUseClaims(
 
   for (const product of products) {
     const productText = [
+      product.canonicalName,
+      product.exactVariant,
+      product.category,
+      product.brandClaim,
+      product.sourceLabel,
+      product.reviewSourceLabel,
+      product.marketplaceSourceLabel,
+      product.imageAlt,
+      product.priceLabel,
+      product.productKind,
+      product.regionFit,
+      product.coolingCapacity,
+      product.hoseType,
+      product.noiseLevel,
+      product.roomSize,
+      product.voltagePlug,
+      product.returnRiskLabel,
       product.evidenceBasis,
       product.specSummary,
       product.reviewSummary,
       product.safetyNote,
+      product.bestFor,
       product.whyRecommend,
       product.whoFits,
       product.whoShouldSkip,
+      product.keyCheck,
+      product.editorialRankLabel,
       ...product.repeatedComplaints,
       product.warrantyReturnNote,
       product.marketplaceNote,
       product.expertReviewTake,
+      ...product.keyFeatures,
       ...product.editorialPros,
       ...product.editorialCons,
     ].join(" ");
@@ -1138,6 +1188,12 @@ function hasForbiddenInternalProcessCopy(value: string) {
   );
 }
 
+function hasForbiddenDefensiveEvidenceCopy(value: string) {
+  return FORBIDDEN_DEFENSIVE_EVIDENCE_PATTERNS.some((pattern) =>
+    pattern.test(value),
+  );
+}
+
 function hasDirectUseClaim(value: string) {
   return DIRECT_USE_CLAIM_PATTERNS.some((pattern) => pattern.test(value));
 }
@@ -1357,8 +1413,20 @@ function articleTextForQuality(article: Article, products: Product[] = []) {
     ...products.flatMap((product) => [
       product.canonicalName,
       product.exactVariant,
+      product.category,
+      product.brandClaim,
+      product.sourceLabel,
+      product.reviewSourceLabel,
+      product.marketplaceSourceLabel,
+      product.imageAlt,
       product.priceLabel,
+      product.productKind,
       product.regionFit,
+      product.coolingCapacity,
+      product.hoseType,
+      product.noiseLevel,
+      product.roomSize,
+      product.voltagePlug,
       product.returnRiskLabel,
       product.evidenceBasis,
       product.specSummary,
@@ -1368,10 +1436,13 @@ function articleTextForQuality(article: Article, products: Product[] = []) {
       product.whyRecommend,
       product.whoFits,
       product.whoShouldSkip,
+      product.keyCheck,
+      product.editorialRankLabel,
       product.warrantyReturnNote,
       product.marketplaceNote,
       product.expertReviewTake,
       ...product.repeatedComplaints,
+      ...product.keyFeatures,
       ...product.editorialPros,
       ...product.editorialCons,
     ]),

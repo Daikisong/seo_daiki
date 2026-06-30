@@ -3,6 +3,7 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { trendSiteName } from "@/lib/trend-site/categories";
 import { requestAbsoluteUrl } from "@/lib/trend-site/request-url";
+import { getPublicNavCategories } from "@/lib/trend-site/data";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -17,7 +18,10 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function AdvertisingPolicyPage() {
   return (
     <>
-      <SiteHeader currentHref="/advertising-policy/" />
+      <SiteHeader
+        currentHref="/advertising-policy/"
+        navCategories={getPublicNavCategories()}
+      />
       <main className="mx-auto max-w-3xl px-4 py-10 text-neutral-900">
         <h1 className="text-[21px] font-bold leading-[23.1px] tracking-normal text-[#2b2f33] md:text-[25.6px] md:leading-[28.16px] xl:text-[32px] xl:leading-[35.2px]">
           Advertising and Affiliate Policy
@@ -36,8 +40,8 @@ export default function AdvertisingPolicyPage() {
           </p>
           <p>
             Sponsored or paid placements should be labeled when they are
-            published. Original usage notes appear only with the exact product
-            variant and the context behind the observation.
+            published. When a Brief includes usage notes, the copy should name
+            the exact product variant and the context behind the observation.
           </p>
         </div>
       </main>

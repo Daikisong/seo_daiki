@@ -6,7 +6,10 @@ import {
   TrendArchive,
   filterArchiveArticles,
 } from "@/components/layout/TrendArchive";
-import { getIndexedArticles } from "@/lib/trend-site/data";
+import {
+  getIndexedArticles,
+  getPublicNavCategories,
+} from "@/lib/trend-site/data";
 import {
   sortTrendArticles,
   trendContentUnitPlural,
@@ -86,7 +89,11 @@ export default async function CategoryPage({
 
   return (
     <>
-      <SiteHeader currentHref={category.href} searchQuery={searchQuery} />
+      <SiteHeader
+        currentHref={category.href}
+        navCategories={getPublicNavCategories()}
+        searchQuery={searchQuery}
+      />
       <TrendArchive
         activeCategory={category}
         archiveTitle={archiveTitle}

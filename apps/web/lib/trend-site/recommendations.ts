@@ -25,6 +25,7 @@ export interface TrendRecommendation {
   voltagePlug?: string;
   returnRiskLabel: string;
   evidenceLevel: EvidenceLevel;
+  reviewSignalCount: number;
   evidenceBasis: string;
   specSummary: string;
   reviewSummary: string;
@@ -236,6 +237,7 @@ function buildRecommendationItems(
       voltagePlug: product.voltagePlug,
       returnRiskLabel: product.returnRiskLabel,
       evidenceLevel: product.evidenceLevel,
+      reviewSignalCount: productReviewSignalCount(product),
       evidenceBasis: product.evidenceBasis,
       specSummary: product.specSummary,
       reviewSummary: product.reviewSummary,
@@ -465,4 +467,11 @@ function productEvidenceIds(product: Product) {
     ...product.reviewSignals.map((signal) => signal.id),
     ...product.marketRisks.map((risk) => risk.id),
   ].filter(Boolean);
+}
+
+function productReviewSignalCount(product: Product) {
+  return product.reviewSignals.reduce(
+    (total, signal) => total + signal.count,
+    0,
+  );
 }

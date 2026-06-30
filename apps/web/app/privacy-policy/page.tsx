@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
+import { getPublicNavCategories } from "@/lib/trend-site/data";
 import { trendContactEmail, trendSiteName } from "@/lib/trend-site/categories";
 import { requestAbsoluteUrl } from "@/lib/trend-site/request-url";
 
@@ -17,7 +18,10 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function PrivacyPolicyPage() {
   return (
     <>
-      <SiteHeader currentHref="/privacy-policy/" />
+      <SiteHeader
+        currentHref="/privacy-policy/"
+        navCategories={getPublicNavCategories()}
+      />
       <main className="mx-auto max-w-3xl px-4 py-10 text-neutral-900">
         <h1 className="text-[21px] font-bold leading-[23.1px] tracking-normal text-[#2b2f33] md:text-[25.6px] md:leading-[28.16px] xl:text-[32px] xl:leading-[35.2px]">
           Privacy Policy

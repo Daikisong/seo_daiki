@@ -12,9 +12,9 @@ export const heatwaveArticle: Article = {
     "Europe heatwave portable AC trend 2026: top 10 cooling picks before fans sell out",
   h1: "Europe heatwave portable AC trend 2026: top 10 cooling picks before fans sell out",
   metaDescription:
-    "Jacob's brief on portable ACs, fans, BTU checks, window kits, and the cooling products worth comparing during Europe's 2026 heatwave.",
+    "TrendBrief buyer notes on portable ACs, fans, BTU checks, window kits, and cooling products worth comparing during Europe's 2026 heatwave.",
   summary:
-    "Hey, it's Jacob from TrendBrief. The real trend signal this time is not a gadget launch; it is Europe heatwave searches moving alongside stories about record temperatures, low household AC adoption, and shoppers fighting over fans and air conditioners. That turns the search problem into a buying problem fast: people need to know which products are **real compressor air conditioners**, which are **only fans or evaporative coolers**, and which listings are risky when stock is tight.",
+    "TrendBrief is tracking Europe's heatwave searches alongside stories about record temperatures, low household AC adoption, and shoppers fighting over fans and air conditioners. That turns the search problem into a buying problem fast: people need to know which products are **real compressor air conditioners**, which are **only fans or evaporative coolers**, and which listings are risky when stock is tight.",
   affiliateDisclosure:
     "Outbound product buttons may be paid affiliate links. For heavy cooling appliances, verify local stock, voltage, warranty territory, delivery date, and bulky-item returns before buying.",
   imageUrl: "/images/trend-heroes/europe-heatwave-portable-ac-hero.png",
@@ -116,34 +116,6 @@ export const heatwaveArticle: Article = {
       label: "Wrong-voltage heavy imports",
       reason:
         "A cheap imported AC becomes a bad deal if plug, 220-240 V compatibility, warranty territory, or bulky returns do not work locally.",
-    },
-  ],
-  relatedArticles: [
-    {
-      label: "How TrendBrief builds buyer notes",
-      href: "/methodology/",
-      description:
-        "The source, price, review-pattern, and return-path checks behind each Brief.",
-    },
-    {
-      label: "Home Briefs",
-      href: "/category/home-trends/",
-      description:
-        "More home and climate buying notes will collect here as the category fills out.",
-    },
-    {
-      label: "Latest Briefs",
-      href: "/#latest-briefs",
-      description:
-        "Return to the newest TrendBrief notes across active categories.",
-    },
-  ],
-  latestInCategory: [
-    {
-      label: "Europe heatwave portable AC trend 2026",
-      href: "/en/trends/europe-heatwave-portable-ac-trend-2026/",
-      description:
-        "This Brief is the current Home Brief anchor for Europe heatwave cooling demand.",
     },
   ],
   sections: [

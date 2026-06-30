@@ -12,4 +12,8 @@ __pycache__
 .pytest_cache
 .artifacts
 .playwright-libs
+output/playwright/
+output/qa-*/
+output/cloudflare*/
+output/production-preview/
 output/pipeline-runs/

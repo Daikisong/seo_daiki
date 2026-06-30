@@ -25,6 +25,7 @@ try {
   await assertSitemap();
   await assertCategories();
   await assertArticles();
+  await assertAuthors();
   await assertPlannedLocale404();
   console.log("Smoke checks passed.");
 } finally {
@@ -68,6 +69,11 @@ async function assertHomeBranding() {
   assertIncludes(text, "Latest Briefs", "home should label content as Briefs");
   assertIncludes(
     text,
+    "What to buy",
+    "home should expose the shopping magazine navigation section",
+  );
+  assertIncludes(
+    text,
     "brief-title-link",
     "home article titles should keep the colored underline title style",
   );
@@ -81,6 +87,20 @@ async function assertHomeBranding() {
     "latest-posts",
     "home must not use the old latest-posts anchor",
   );
+  for (const emptyCategoryLabel of [
+    "Garden Briefs",
+    "Auto Briefs",
+    "Outdoor Briefs",
+    "Tool Briefs",
+    "Electronics Briefs",
+    "Personal Mobility Briefs",
+  ]) {
+    assertNotIncludes(
+      text,
+      emptyCategoryLabel,
+      `home navigation must not expose empty category ${emptyCategoryLabel}`,
+    );
+  }
 }
 
 async function assertSitemap() {
@@ -180,6 +200,33 @@ async function assertArticles() {
       /SERP provider|Search Console|LLM signals|Commercial search intent|Evidence fit|Monetization link available|ranked products by|evidence quality|source stack|evidence note|recommendation strength/i,
       `${path} must not expose internal workflow language`,
     );
+    assertNotMatches(
+      text,
+      /we did not test|we didn't test|not a lab|not a testing lab|not tested in (?:a|our|the) lab|not directly tested|not a full-time product testing|we tested|our tester|tried and tested|our expert review|in-house product testing/i,
+      `${path} must not use defensive not-tested copy as public trust text`,
+    );
+    for (const expectedArticleModule of [
+      "The quick list",
+      "Where to check by country",
+      "Editor's verdict",
+      "Specifications",
+      "Today's best route",
+      "Reasons to buy",
+      "Reasons to avoid",
+      "Source review",
+      "Marketplace review signal",
+    ]) {
+      assertIncludes(
+        text,
+        expectedArticleModule,
+        `${path} should render ${expectedArticleModule}`,
+      );
+    }
+    assertNotIncludes(
+      text,
+      "Reasons to skip",
+      `${path} should use reader-facing Reasons to avoid wording`,
+    );
 
     if (path.includes("europe-heatwave-portable-ac")) {
       assertIncludes(
@@ -190,18 +237,73 @@ async function assertArticles() {
       assertOrdered(
         text,
         [
+          "europe-heatwave-portable-ac-hero.png",
+          "Jump to",
+          'id="recent-update"',
+          'id="trend-signal"',
+        ],
+        `${path} should keep hero before jump nav, then recent update and trend signal`,
+      );
+      assertOrdered(
+        text,
+        ['id="country-buying-routes"', 'id="quick-list"'],
+        `${path} should show buying routes before the quick product list`,
+      );
+      assertOrdered(
+        text,
+        ['id="quick-list"', 'id="top-10-reviews"', 'id="top-10-comparison"'],
+        `${path} should render quick list, product notes, then comparison table`,
+      );
+      assertOrdered(
+        text,
+        [
           "Final Thoughts on the Best Portable AC and Cooling Picks",
           "Cooling products I would not treat as portable AC",
           "What portable AC can and cannot solve",
           "Cooling options to compare first",
           "Before you buy",
+          'id="faq"',
+          'id="update-log"',
+          'id="about-author"',
         ],
-        `${path} should keep supporting clarification sections after final thoughts`,
+        `${path} should keep supporting clarification sections after final thoughts and before FAQ/update/author`,
       );
     }
   }
 
   await assertStatus("/en/trends/travel-gan-charger-fake-wattage-trend/", 404);
+}
+
+async function assertAuthors() {
+  const jacob = await fetchText("/authors/jacob/");
+  assertIncludes(jacob, "Jacob", "Jacob author page should render");
+  assertIncludes(
+    jacob,
+    "Marketplace Research Editor",
+    "Jacob author page should show the public role",
+  );
+  assertMatches(
+    jacob,
+    /Latest[\s\S]*Briefs[\s\S]*by[\s\S]*Jacob/,
+    "Jacob author page should render the author article list",
+  );
+
+  const editors = await fetchText("/authors/trendbrief-editors/");
+  assertIncludes(
+    editors,
+    "TrendBrief Editors",
+    "TrendBrief Editors author page should render",
+  );
+  assertIncludes(
+    editors,
+    "Editorial Desk",
+    "TrendBrief Editors page should show the public role",
+  );
+  assertMatches(
+    editors,
+    /Latest[\s\S]*Briefs[\s\S]*by[\s\S]*TrendBrief Editors/,
+    "TrendBrief Editors page should render the author article list",
+  );
 }
 
 async function assertPlannedLocale404() {

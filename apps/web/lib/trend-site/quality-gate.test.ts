@@ -447,6 +447,78 @@ test("blocks broader hands-on testing claims without matching direct-use evidenc
     ],
     ["UNSUPPORTED_DIRECT_USE_PRODUCT_CLAIM"],
   );
+  assertCodes(
+    article(),
+    [
+      product({
+        keyCheck:
+          "Our tester found the hose kit easier than the seller page suggests.",
+      }),
+    ],
+    ["UNSUPPORTED_DIRECT_USE_PRODUCT_CLAIM"],
+  );
+  assertCodes(
+    article(),
+    [
+      product({
+        reviewSourceLabel: "Tried and tested portable AC comparison",
+      }),
+    ],
+    ["UNSUPPORTED_DIRECT_USE_PRODUCT_CLAIM"],
+  );
+  assertCodes(
+    article(),
+    [
+      product({
+        sourceLabel: "Our expert review of the EU model",
+      }),
+    ],
+    ["UNSUPPORTED_DIRECT_USE_PRODUCT_CLAIM"],
+  );
+  assertCodes(
+    article(),
+    [
+      product({
+        editorialPros: [
+          "In-house product testing showed stable cooling",
+          "Clear retailer route",
+        ],
+      }),
+    ],
+    ["UNSUPPORTED_DIRECT_USE_PRODUCT_CLAIM"],
+  );
+  assertCodes(
+    article({
+      h1: "We tested the best portable ACs for Europe's heatwave",
+    }),
+    products(10),
+    ["UNSUPPORTED_DIRECT_USE_CLAIM"],
+  );
+  assertCodes(
+    article({
+      metaDescription:
+        "Our tester compared portable ACs for renters during Europe's heatwave.",
+    }),
+    products(10),
+    ["UNSUPPORTED_DIRECT_USE_CLAIM"],
+  );
+  assertCodes(
+    article({
+      affiliateDisclosure:
+        "Outbound links may be paid. Our tester confirmed these routes before publication.",
+    }),
+    products(10),
+    ["UNSUPPORTED_DIRECT_USE_CLAIM"],
+  );
+  assertCodes(
+    article(),
+    [
+      product({
+        bestFor: "Buyers who want the model our tester picked first.",
+      }),
+    ],
+    ["UNSUPPORTED_DIRECT_USE_PRODUCT_CLAIM"],
+  );
 });
 
 test("blocks internal SEO, SERP, Search Console, monetization, and LLM process language in public copy", () => {
@@ -529,15 +601,50 @@ test("blocks internal SEO, SERP, Search Console, monetization, and LLM process l
   );
 });
 
+test("blocks defensive not-tested copy in public article fields", () => {
+  assertCodes(
+    article({
+      summary:
+        "TrendBrief is not a testing lab, but this guide still compares product routes.",
+    }),
+    products(10),
+    ["FORBIDDEN_DEFENSIVE_EVIDENCE_COPY"],
+  );
+  assertCodes(
+    article({
+      expertCopy: {
+        ...article().expertCopy,
+        topPicksIntro:
+          "We did not test these products in a lab, so check specs before buying.",
+      },
+    }),
+    products(10),
+    ["FORBIDDEN_DEFENSIVE_EVIDENCE_COPY"],
+  );
+  assertCodes(
+    article({
+      sections: [
+        ...article().sections,
+        {
+          heading: "Trust note",
+          body: "These products are not directly tested by Jacob.",
+        },
+      ],
+    }),
+    products(10),
+    ["FORBIDDEN_DEFENSIVE_EVIDENCE_COPY"],
+  );
+});
+
 test("main article author must be a public author profile", () => {
   assert.throws(
     () =>
       validateArticleContent([
         article({
-          authorId: "trendbrief-editors",
+          authorId: "missing-author",
         }),
       ]),
-    /public author profile/,
+    /published author profile/,
   );
 });
 

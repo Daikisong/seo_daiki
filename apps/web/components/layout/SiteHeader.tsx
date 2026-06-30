@@ -7,33 +7,40 @@ import { useState } from "react";
 import {
   trendContentUnitPlural,
   trendSiteName,
-  visibleTrendCategories,
+  type TrendCategory,
 } from "@/lib/trend-site/categories";
 
-const categoryNavItems = visibleTrendCategories.map((category) => ({
-  label: category.label,
-  href: category.href,
-}));
-
-const primaryNavItems = [{ label: "Home", href: "/" }, ...categoryNavItems];
-
-const secondaryNavItems = [
-  { label: "Method", href: "/methodology/" },
+const utilityNavItems = [
+  { label: "Newsletter", href: "/#newsletter" },
   { label: "About TrendBrief", href: "/about-me/" },
+  { label: "Method", href: "/methodology/" },
 ];
-
-const mobileNavItems = [...primaryNavItems, ...secondaryNavItems];
 
 export function SiteHeader({
   currentHref,
   locale: _locale,
+  navCategories = [],
   searchQuery = "",
 }: {
   locale?: string;
   currentHref?: string;
+  navCategories?: readonly TrendCategory[];
   searchQuery?: string;
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const categoryNavItems = navCategories.map((category) => ({
+    label: categoryNavLabel(category.label),
+    href: category.href,
+  }));
+  const primaryNavItems = [
+    { label: "Home", href: "/" },
+    { label: "Trends", href: "/#latest-briefs" },
+    { label: "What to buy", href: "/#what-to-buy" },
+    { label: "Buying Guides", href: "/methodology/" },
+    ...categoryNavItems,
+    { label: "Editors", href: "/authors/trendbrief-editors/" },
+  ];
+  const mobileNavItems = [...primaryNavItems, ...utilityNavItems];
 
   return (
     <header className="bg-white">
@@ -54,7 +61,7 @@ export function SiteHeader({
           <div className="flex min-h-[118px] items-center justify-center">
             <LogoMark />
           </div>
-          <HeaderSearch searchQuery={searchQuery} />
+          <HeaderSearch id="mobile-header-search" searchQuery={searchQuery} />
           <nav
             aria-hidden={!menuOpen}
             aria-label="Mobile navigation"
@@ -85,8 +92,29 @@ export function SiteHeader({
         </div>
       </div>
       <div className="hidden xl:block">
-        <div className="mx-auto flex max-w-[1170px] items-center justify-center px-10 py-5">
-          <LogoMark />
+        <div className="mx-auto grid max-w-[1170px] grid-cols-[250px_minmax(280px,1fr)_320px] items-center gap-8 px-10 py-3">
+          <div className="justify-self-start">
+            <LogoMark />
+          </div>
+          <HeaderSearch id="desktop-header-search" searchQuery={searchQuery} />
+          <nav
+            aria-label="Utility navigation"
+            className="flex justify-end gap-4 text-sm font-bold text-[#2f343b]"
+          >
+            {utilityNavItems.map((item) => (
+              <Link
+                className={`focus-ring rounded-sm hover:text-[#2f7cd3] ${
+                  isActiveNavItem(item.href, currentHref)
+                    ? "text-[#2f7cd3]"
+                    : ""
+                }`}
+                href={item.href}
+                key={item.href}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
         </div>
       </div>
       <nav
@@ -95,16 +123,6 @@ export function SiteHeader({
       >
         <div className="flex flex-wrap justify-center">
           {primaryNavItems.map((item) => (
-            <DesktopNavLink
-              currentHref={currentHref}
-              href={item.href}
-              key={item.href}
-              label={item.label}
-            />
-          ))}
-        </div>
-        <div className="flex flex-wrap justify-center border-t border-[#7fa0c4]">
-          {secondaryNavItems.map((item) => (
             <DesktopNavLink
               currentHref={currentHref}
               href={item.href}
@@ -129,7 +147,7 @@ function DesktopNavLink({
 }) {
   return (
     <Link
-      className={`focus-ring block px-3 py-4 text-[15px] leading-6 hover:bg-[#7899c0] ${
+      className={`focus-ring block px-3 py-3 text-[15px] leading-6 hover:bg-[#7899c0] ${
         isActiveNavItem(href, currentHref ?? "/") ? "bg-[#7899c0]" : ""
       }`}
       href={href}
@@ -146,16 +164,22 @@ function isActiveNavItem(href: string, currentHref: string | undefined) {
   return href === currentHref;
 }
 
-function HeaderSearch({ searchQuery }: { searchQuery: string }) {
+function HeaderSearch({
+  id,
+  searchQuery,
+}: {
+  id: string;
+  searchQuery: string;
+}) {
   return (
-    <form action="/" className="mt-4 flex" role="search">
-      <label className="sr-only" htmlFor="mobile-header-search">
+    <form action="/" className="mt-4 flex xl:mt-0" role="search">
+      <label className="sr-only" htmlFor={id}>
         Search {trendContentUnitPlural.toLowerCase()}
       </label>
       <input
         className="h-10 min-w-0 flex-1 rounded-[3px] border border-[#c5c8cc] px-3 pr-11 text-[16px] text-neutral-950 outline-none focus:border-[#7d9bc0]"
         defaultValue={searchQuery}
-        id="mobile-header-search"
+        id={id}
         name="s"
         suppressHydrationWarning
         type="search"
@@ -180,7 +204,7 @@ function LogoMark() {
     >
       <Image
         alt={trendSiteName}
-        className="h-[118px] w-auto object-contain sm:h-[132px] xl:h-[150px]"
+        className="h-[118px] w-auto object-contain sm:h-[132px] xl:h-[72px]"
         height={285}
         priority
         src="/brand/trendbrief-logo-main.png"
@@ -188,4 +212,11 @@ function LogoMark() {
       />
     </Link>
   );
+}
+
+function categoryNavLabel(label: string) {
+  if (label === "Home Briefs") {
+    return "Home & Climate";
+  }
+  return label;
 }
