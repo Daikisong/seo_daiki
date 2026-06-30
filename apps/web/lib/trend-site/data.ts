@@ -1,19 +1,31 @@
 import type { Article, Product } from "./types";
-import { isIndexableLocale } from "./locales";
 import { validateLocalizationClusters } from "./seo";
+import { visibleTrendArticles } from "./categories";
 import { heatwaveArticle, trendArticle } from "./content/articles";
 import { europeHeatwaveProductRecords } from "./content/europe-heatwave-product-records";
 import { recordsToProducts } from "./content/product-record-transform";
 import { travelGanProductRecords } from "./content/travel-gan-product-records";
-import { validateArticleContent, validateProductContent, validateQualityGates } from "./content/content-validation";
+import {
+  validateArticleContent,
+  validateProductContent,
+  validateQualityGates,
+} from "./content/content-validation";
 
 export { heatwaveArticle, trendArticle } from "./content/articles";
 
 const trendArticles: Article[] = [heatwaveArticle, trendArticle];
 
 export const trendProducts: Product[] = [
-  ...recordsToProducts(travelGanProductRecords, "travel-gan-charger", "travel gan charger"),
-  ...recordsToProducts(europeHeatwaveProductRecords, "europe-heatwave-cooling", "portable air conditioner heatwave cooling")
+  ...recordsToProducts(
+    travelGanProductRecords,
+    "travel-gan-charger",
+    "travel gan charger",
+  ),
+  ...recordsToProducts(
+    europeHeatwaveProductRecords,
+    "europe-heatwave-cooling",
+    "portable air conditioner heatwave cooling",
+  ),
 ];
 
 validateArticleContent(trendArticles);
@@ -22,16 +34,16 @@ validateLocalizationClusters(trendArticles);
 validateQualityGates(trendArticles, trendProducts);
 
 export function getIndexedArticles() {
-  return trendArticles.filter(
-    (article) => article.publishStatus === "published" && article.indexStatus === "index" && isIndexableLocale(article.locale)
-  );
+  return visibleTrendArticles(trendArticles);
 }
 
 export function getTrendArticle(locale: string, slug: string) {
   if (!locale || !slug) {
     return undefined;
   }
-  return getIndexedArticles().find((article) => article.locale === locale && article.slug === slug);
+  return getIndexedArticles().find(
+    (article) => article.locale === locale && article.slug === slug,
+  );
 }
 
 export function getTrendProducts() {
@@ -39,5 +51,8 @@ export function getTrendProducts() {
 }
 
 export function getStaticTrendParams() {
-  return getIndexedArticles().map((article) => ({ locale: article.locale, slug: article.slug }));
+  return getIndexedArticles().map((article) => ({
+    locale: article.locale,
+    slug: article.slug,
+  }));
 }

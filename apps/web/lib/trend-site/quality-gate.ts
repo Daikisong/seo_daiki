@@ -56,6 +56,8 @@ export type QualityGateResult = {
 type QualityGateContext = {
   allArticles?: Article[];
   siteOrigin?: string;
+  mode?: "dry-run" | "production";
+  approvedTemporaryImageUrls?: readonly string[];
 };
 
 const DIRECT_USE_CLAIM_PATTERNS = [
@@ -141,6 +143,8 @@ export function runArticleQualityGate(
     );
   }
 
+  checkProductionArticleAssets(article, hardBlockers, context);
+
   const publicText = articleTextForQuality(article, products);
   if (hasForbiddenInternalProcessCopy(publicText)) {
     hardBlockers.push(
@@ -205,6 +209,17 @@ export function runArticleQualityGate(
           "hard",
           "Affiliate link is not a direct HTTPS outbound URL.",
           "Use the merchant or affiliate deep link as href and keep analytics separate.",
+        ),
+      );
+    }
+    if (isProductionPlaceholderUrl(link.href, context)) {
+      hardBlockers.push(
+        blocker(
+          "PRODUCTION_PLACEHOLDER_URL",
+          `${article.id}:${link.label}`,
+          "hard",
+          "Production affiliate links must not use fixture, test, example, or placeholder URLs.",
+          "Replace the link with an approved merchant or affiliate URL before production publishing.",
         ),
       );
     }
@@ -553,6 +568,8 @@ function checkProductHardGates(
       ),
     );
   }
+
+  checkProductionProductAssets(product, blockers, context);
 
   const requiredCollections: Array<[string, unknown[]]> = [
     ["repeatedComplaints", product.repeatedComplaints],
@@ -1115,6 +1132,111 @@ function hasForbiddenInternalProcessCopy(value: string) {
 
 function hasDirectUseClaim(value: string) {
   return DIRECT_USE_CLAIM_PATTERNS.some((pattern) => pattern.test(value));
+}
+
+function checkProductionArticleAssets(
+  article: Article,
+  blockers: QualityGateBlocker[],
+  context: QualityGateContext,
+) {
+  if (!isProductionMode(context)) {
+    return;
+  }
+  if (isProductionPlaceholderUrl(article.imageUrl, context, { image: true })) {
+    blockers.push(
+      blocker(
+        "PRODUCTION_PLACEHOLDER_IMAGE",
+        `${article.id}.imageUrl`,
+        "hard",
+        "Production article image must not use fixture, test, example, or placeholder URLs.",
+        "Use an approved product, merchant, or editorial image before production publishing.",
+      ),
+    );
+  }
+}
+
+function checkProductionProductAssets(
+  product: Product,
+  blockers: QualityGateBlocker[],
+  context: QualityGateContext,
+) {
+  if (!isProductionMode(context)) {
+    return;
+  }
+
+  const checkedUrls: Array<[string, string, { image?: boolean }?]> = [
+    ["merchantUrl", product.merchantUrl],
+    ["sourceUrl", product.sourceUrl],
+    ["reviewSourceUrl", product.reviewSourceUrl],
+    ["imageUrl", product.imageUrl, { image: true }],
+  ];
+
+  for (const [field, url, options] of checkedUrls) {
+    if (isProductionPlaceholderUrl(url, context, options)) {
+      blockers.push(
+        blocker(
+          options?.image
+            ? "PRODUCTION_PLACEHOLDER_IMAGE"
+            : "PRODUCTION_PLACEHOLDER_URL",
+          `${product.id}.${field}`,
+          "hard",
+          options?.image
+            ? "Production product image must come from an approved product, merchant, affiliate-feed, or explicitly approved temporary image source."
+            : "Production product URL must not use fixture, test, example, or placeholder URLs.",
+          options?.image
+            ? "Replace the image with a merchant/feed image, or explicitly approve a temporary image for manual static use."
+            : "Replace fixture URLs with approved merchant, retailer, review, or affiliate URLs before production publishing.",
+        ),
+      );
+    }
+  }
+}
+
+function isProductionPlaceholderUrl(
+  value: string,
+  context: QualityGateContext,
+  options: { image?: boolean } = {},
+) {
+  if (!isProductionMode(context)) {
+    return false;
+  }
+  if (options.image && context.approvedTemporaryImageUrls?.includes(value)) {
+    return false;
+  }
+
+  try {
+    const url = new URL(value);
+    const hostname = url.hostname.toLowerCase();
+    const path = url.pathname.toLowerCase();
+    const fullUrl = url.href.toLowerCase();
+    const exampleHostnames = new Set([
+      "example.com",
+      "example.org",
+      "example.net",
+    ]);
+    return (
+      exampleHostnames.has(hostname) ||
+      hostname.endsWith(".example.com") ||
+      hostname.endsWith(".example.org") ||
+      hostname.endsWith(".example.net") ||
+      hostname.endsWith(".example") ||
+      hostname.endsWith(".test") ||
+      hostname === "merchant.example" ||
+      hostname === "reviews.example" ||
+      hostname === "example-serp-source.test" ||
+      hostname === "trend-jacob.example" ||
+      path.includes("placeholder") ||
+      path.includes("fixture") ||
+      fullUrl.includes("placeholder") ||
+      fullUrl.includes("fixture")
+    );
+  } catch {
+    return true;
+  }
+}
+
+function isProductionMode(context: QualityGateContext) {
+  return context.mode === "production";
 }
 
 function needsCountryBuyingRoutes(article: Article) {

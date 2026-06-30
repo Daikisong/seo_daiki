@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
+import { trendSiteName } from "@/lib/trend-site/categories";
 import { requestAbsoluteUrl } from "@/lib/trend-site/request-url";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Advertising and Affiliate Policy | TREND - Jacob",
-    description: "Advertising and affiliate policy for TREND - Jacob.",
+    title: `Advertising and Affiliate Policy | ${trendSiteName}`,
+    description: `Advertising and affiliate policy for ${trendSiteName}.`,
     alternates: {
-      canonical: await requestAbsoluteUrl("/advertising-policy/")
-    }
+      canonical: await requestAbsoluteUrl("/advertising-policy/"),
+    },
   };
 }
 
@@ -23,17 +24,20 @@ export default function AdvertisingPolicyPage() {
         </h1>
         <div className="mt-[25px] space-y-[25px] text-[15px] leading-[21px] text-neutral-800 md:text-base md:leading-6">
           <p>
-            TREND - Jacob may earn a commission when readers buy through some outbound product links. Those links may
-            point to AliExpress, Temu, Amazon, iHerb, or other merchants.
+            {trendSiteName} may earn a commission when readers buy through some
+            outbound product links. Those links may point to AliExpress, Temu,
+            Amazon, iHerb, or other merchants.
           </p>
           <p>
-            Affiliate availability does not decide whether a product deserves a recommendation. A product still needs a
-            clear buyer fit, understandable specs, a price that makes sense, and risks readers can check before
-            checkout.
+            Affiliate availability does not decide whether a product deserves a
+            recommendation. A product still needs a clear buyer fit,
+            understandable specs, a price that makes sense, and risks readers
+            can check before checkout.
           </p>
           <p>
-            Sponsored or paid placements should be labeled when they are published. Product pages should not claim
-            direct use unless Jacob actually used the product.
+            Sponsored or paid placements should be labeled when they are
+            published. Product pages should not claim direct use unless Jacob
+            actually used the product.
           </p>
         </div>
       </main>

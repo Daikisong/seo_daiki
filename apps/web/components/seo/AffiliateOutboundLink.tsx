@@ -23,11 +23,11 @@ export function AffiliateOutboundLink({
   label,
   locale,
   productId,
-  rel
+  rel,
 }: AffiliateOutboundLinkProps) {
   return (
     <a
-      className="focus-ring inline-flex items-center gap-2 rounded-md bg-teal-700 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-800"
+      className="focus-ring inline-flex items-center gap-2 whitespace-nowrap rounded-md bg-teal-700 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-800"
       href={href}
       onClick={() => {
         window.gtag?.("event", "affiliate_click", {
@@ -36,7 +36,7 @@ export function AffiliateOutboundLink({
           link_url: outboundTargetFromHref(href),
           locale,
           product_id: productId,
-          transport_type: "beacon"
+          transport_type: "beacon",
         });
       }}
       rel={`${rel} noopener noreferrer`}
@@ -51,7 +51,11 @@ export function AffiliateOutboundLink({
 function outboundTargetFromHref(href: string) {
   try {
     const url = new URL(href, window.location.origin);
-    return url.searchParams.get("placementId") ?? url.searchParams.get("target") ?? href;
+    return (
+      url.searchParams.get("placementId") ??
+      url.searchParams.get("target") ??
+      href
+    );
   } catch {
     return href;
   }

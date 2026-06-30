@@ -9,11 +9,15 @@ export function articleRobots(article: Article) {
 
   return {
     index: false,
-    follow: true
+    follow: true,
   };
 }
 
-export function articleLanguageAlternates(article: Article, indexedArticles: Article[], siteUrl?: string) {
+export function articleLanguageAlternates(
+  article: Article,
+  indexedArticles: Article[],
+  siteUrl?: string,
+) {
   if (!article.localization?.clusterId) {
     return undefined;
   }
@@ -21,8 +25,15 @@ export function articleLanguageAlternates(article: Article, indexedArticles: Art
   // Hreflang is intentionally opt-in. Trend pages from different countries
   // should not be clustered just because they share a category or product type.
   const variants = indexedArticles
-    .filter((candidate) => candidate.localization?.clusterId === article.localization?.clusterId)
-    .filter((candidate) => candidate.indexStatus === "index" && candidate.publishStatus === "published")
+    .filter(
+      (candidate) =>
+        candidate.localization?.clusterId === article.localization?.clusterId,
+    )
+    .filter(
+      (candidate) =>
+        candidate.indexStatus === "index" &&
+        candidate.publishStatus === "published",
+    )
     .filter((candidate) => isIndexableLocale(candidate.locale));
 
   if (variants.length < 2) {
@@ -30,11 +41,18 @@ export function articleLanguageAlternates(article: Article, indexedArticles: Art
   }
 
   const languages = Object.fromEntries(
-    variants.map((variant) => [hreflangForLocale(variant.locale), absoluteUrl(articlePath(variant), siteUrl)])
+    variants.map((variant) => [
+      hreflangForLocale(variant.locale),
+      absoluteUrl(articlePath(variant), siteUrl),
+    ]),
   );
-  const xDefault = variants.find((variant) => variant.localization?.xDefault) ?? variants.find((variant) => variant.locale === "en");
+  const xDefault =
+    variants.find((variant) => variant.localization?.xDefault) ??
+    variants.find((variant) => variant.locale === "en");
 
-  return xDefault ? { ...languages, "x-default": absoluteUrl(articlePath(xDefault), siteUrl) } : languages;
+  return xDefault
+    ? { ...languages, "x-default": absoluteUrl(articlePath(xDefault), siteUrl) }
+    : languages;
 }
 
 export function validateLocalizationClusters(articles: Article[]) {
@@ -51,15 +69,24 @@ export function validateLocalizationClusters(articles: Article[]) {
 
   for (const [clusterId, variants] of groups.entries()) {
     if (variants.length < 2) {
-      throw new Error(`${clusterId} hreflang cluster needs at least two complete localized variants.`);
+      throw new Error(
+        `${clusterId} hreflang cluster needs at least two complete localized variants.`,
+      );
     }
 
     for (const variant of variants) {
-      if (variant.indexStatus !== "index" || variant.publishStatus !== "published") {
-        throw new Error(`${variant.id} cannot be inside a hreflang cluster until it is published and indexable.`);
+      if (
+        variant.indexStatus !== "index" ||
+        variant.publishStatus !== "published"
+      ) {
+        throw new Error(
+          `${variant.id} cannot be inside a hreflang cluster until it is published and indexable.`,
+        );
       }
       if (!isIndexableLocale(variant.locale)) {
-        throw new Error(`${variant.id} uses planned locale ${variant.locale}; open the locale before clustering.`);
+        throw new Error(
+          `${variant.id} uses planned locale ${variant.locale}; open the locale before clustering.`,
+        );
       }
     }
   }

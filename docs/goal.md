@@ -1,8 +1,8 @@
-지금 작업하면서 
+지금 작업하면서
 상위 SERP 구조를 보면 “뉴스/이슈 단독”보다 “현재 heatwave로 AC·팬
-  수요가 폭증했고, 어떤 냉방기기를 사야 하는지”로 바로 넘어가는 글
-  이 강합니다. 그래서 새 글은 Europe heatwave -> portable AC/fan
-  buying decision -> Top 10 practical picks 플로우로 만들겠습니다.
+수요가 폭증했고, 어떤 냉방기기를 사야 하는지”로 바로 넘어가는 글
+이 강합니다. 그래서 새 글은 Europe heatwave -> portable AC/fan
+buying decision -> Top 10 practical picks 플로우로 만들겠습니다.
 
 라고 했는데 그거 완벽하게 레퍼런스로 걔네는 어떻게 트렌드글쓰면서 우리처럼 제품으로 넘어가는데 상위에 있는지 진짜 우리 페이지랑 비교해서 완벽분석해줄래?
 진짜 꼼꼼하고 상위 SERP에 있던 애들 싹 한번 분석해주라 간단한거 하나하나 다 그게 힌트가 될 수 있으니깐 꼼꼼하게 몇번이나 봤으면 좋겠어

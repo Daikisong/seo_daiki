@@ -91,7 +91,7 @@ const BUYER_DECISION_TERMS = [
   ["humidifier", 7],
   ["portable", 5],
   ["travel", 5],
-  ["iherb", 8]
+  ["iherb", 8],
 ] as const;
 
 const INFORMATIONAL_RISK_TERMS = [
@@ -121,7 +121,7 @@ const INFORMATIONAL_RISK_TERMS = [
   ["immigration", 12],
   ["government", 10],
   ["lottery", 10],
-  ["school closing", 12]
+  ["school closing", 12],
 ] as const;
 
 const PRODUCT_TOKEN_STOPWORDS = new Set([
@@ -138,45 +138,80 @@ const PRODUCT_TOKEN_STOPWORDS = new Set([
   "pro",
   "max",
   "mini",
-  "plus"
+  "plus",
 ]);
 
-export function buildTrendRecommendations(article: Article, products: Product[]): TrendRecommendation[] {
+export function buildTrendRecommendations(
+  article: Article,
+  products: Product[],
+): TrendRecommendation[] {
   return buildTrendRecommendationModel(article, products).recommendations;
 }
 
-export function buildTrendRecommendationModel(article: Article, products: Product[]): TrendRecommendationModel {
-  const candidateProducts = selectRecommendationCandidateProducts(article, products);
+export function buildTrendRecommendationModel(
+  article: Article,
+  products: Product[],
+): TrendRecommendationModel {
+  const candidateProducts = selectRecommendationCandidateProducts(
+    article,
+    products,
+  );
   const scoredProducts = scoreProductsForArticle(article, candidateProducts);
-  const buyerDecisionScore = weightedTermScore(articleSearchText(article), BUYER_DECISION_TERMS, 60);
-  const riskPenalty = weightedTermScore(articleSearchText(article), INFORMATIONAL_RISK_TERMS, 60);
+  const buyerDecisionScore = weightedTermScore(
+    articleSearchText(article),
+    BUYER_DECISION_TERMS,
+    60,
+  );
+  const riskPenalty = weightedTermScore(
+    articleSearchText(article),
+    INFORMATIONAL_RISK_TERMS,
+    60,
+  );
   const productScore = Math.min(scoredProducts[0]?.score ?? 0, 30);
-  const evidenceScore = evidenceFitScore(article, scoredProducts.map((item) => item.product));
+  const evidenceScore = evidenceFitScore(
+    article,
+    scoredProducts.map((item) => item.product),
+  );
   const affiliateScore = affiliateFitScore(article);
-  const score = Math.max(0, buyerDecisionScore + productScore + evidenceScore + affiliateScore - riskPenalty);
-  const recommendationProducts = recommendationReadyProducts(scoredProducts.map((item) => item.product));
+  const score = Math.max(
+    0,
+    buyerDecisionScore +
+      productScore +
+      evidenceScore +
+      affiliateScore -
+      riskPenalty,
+  );
+  const recommendationProducts = recommendationReadyProducts(
+    scoredProducts.map((item) => item.product),
+  );
   const eligible =
     score >= 45 &&
     productScore >= 10 &&
     recommendationProducts.length >= 10 &&
-    uniqueProductAffiliateHrefCount(article, recommendationProducts.slice(0, 10)) >= 10 &&
+    uniqueProductAffiliateHrefCount(
+      article,
+      recommendationProducts.slice(0, 10),
+    ) >= 10 &&
     riskPenalty <= buyerDecisionScore + productScore;
   if (!eligible) {
     return {
       eligible,
       score,
-      recommendations: []
+      recommendations: [],
     };
   }
 
   return {
     eligible,
     score,
-    recommendations: buildRecommendationItems(article, recommendationProducts)
+    recommendations: buildRecommendationItems(article, recommendationProducts),
   };
 }
 
-function buildRecommendationItems(article: Article, products: Product[]): TrendRecommendation[] {
+function buildRecommendationItems(
+  article: Article,
+  products: Product[],
+): TrendRecommendation[] {
   return products.slice(0, 10).map((product, index) => {
     return {
       rank: index + 1,
@@ -223,28 +258,43 @@ function buildRecommendationItems(article: Article, products: Product[]): TrendR
       expertReviewTake: product.expertReviewTake,
       href: productAffiliateHref(article, product),
       hrefKind: product.merchantUrlKind,
-      rel: "sponsored nofollow"
+      rel: "sponsored nofollow",
     };
   });
 }
 
 function scoreProductsForArticle(article: Article, products: Product[]) {
   return products
-    .map((product, index) => ({ product, score: productRelevanceScore(article, product), index }))
-    .filter((item) => item.score >= 10 && hasTopicalProductOverlap(article, item.product))
+    .map((product, index) => ({
+      product,
+      score: productRelevanceScore(article, product),
+      index,
+    }))
+    .filter(
+      (item) =>
+        item.score >= 10 && hasTopicalProductOverlap(article, item.product),
+    )
     .sort((first, second) => first.index - second.index);
 }
 
 function productRelevanceScore(article: Article, product: Product) {
   const articleText = articleSearchText(article);
   const articleTokens = tokenSet(articleText);
-  const productText = normalizeText(`${product.canonicalName} ${product.category}`);
+  const productText = normalizeText(
+    `${product.canonicalName} ${product.category}`,
+  );
   const productTokens = productText
     .split(" ")
     .map(stemToken)
-    .filter((token) => token.length >= 3 && !PRODUCT_TOKEN_STOPWORDS.has(token));
+    .filter(
+      (token) => token.length >= 3 && !PRODUCT_TOKEN_STOPWORDS.has(token),
+    );
 
-  let score = normalizeText(articleText).includes(normalizeText(product.canonicalName)) ? 18 : 0;
+  let score = normalizeText(articleText).includes(
+    normalizeText(product.canonicalName),
+  )
+    ? 18
+    : 0;
 
   for (const token of new Set(productTokens)) {
     if (articleTokens.has(token)) {
@@ -270,19 +320,36 @@ function productRelevanceScore(article: Article, product: Product) {
 
 function evidenceFitScore(article: Article, relevantProducts: Product[]) {
   const articleEvidence = Math.min(article.evidenceIds.length * 3, 12);
-  const evidenceReadyCount = recommendationReadyProducts(relevantProducts).length;
-  const productEvidence = evidenceReadyCount >= 10 ? 10 : evidenceReadyCount >= 3 ? 6 : evidenceReadyCount > 0 ? 3 : 0;
+  const evidenceReadyCount =
+    recommendationReadyProducts(relevantProducts).length;
+  const productEvidence =
+    evidenceReadyCount >= 10
+      ? 10
+      : evidenceReadyCount >= 3
+        ? 6
+        : evidenceReadyCount > 0
+          ? 3
+          : 0;
   return articleEvidence + productEvidence;
 }
 
 function affiliateFitScore(article: Article) {
-  if (article.affiliateLinks.some((link) => link.placementStatus === "approved" && link.offerStatus !== "inactive")) {
+  if (
+    article.affiliateLinks.some(
+      (link) =>
+        link.placementStatus === "approved" && link.offerStatus !== "inactive",
+    )
+  ) {
     return 10;
   }
   return article.affiliateLinks.length > 0 ? 6 : 0;
 }
 
-function weightedTermScore(text: string, terms: readonly (readonly [string, number])[], maxScore: number) {
+function weightedTermScore(
+  text: string,
+  terms: readonly (readonly [string, number])[],
+  maxScore: number,
+) {
   const normalized = normalizeText(text);
   const tokens = tokenSet(text);
   let score = 0;
@@ -309,7 +376,7 @@ function articleSearchText(article: Article) {
     article.summary,
     article.contentMdx,
     ...article.sections.flatMap((section) => [section.heading, section.body]),
-    ...article.affiliateLinks.flatMap((link) => [link.label, link.href])
+    ...article.affiliateLinks.flatMap((link) => [link.label, link.href]),
   ].join(" ");
 }
 
@@ -319,10 +386,17 @@ function tokenSet(text: string) {
 
 function hasTopicalProductOverlap(article: Article, product: Product) {
   const articleTokens = tokenSet(articleSearchText(article));
-  const productTokens = normalizeText(`${product.canonicalName} ${product.category} ${product.brandClaim ?? ""}`)
+  const productTokens = normalizeText(
+    `${product.canonicalName} ${product.category} ${product.brandClaim ?? ""}`,
+  )
     .split(" ")
     .map(stemToken)
-    .filter((token) => token.length >= 3 && !PRODUCT_TOKEN_STOPWORDS.has(token) && token !== "style");
+    .filter(
+      (token) =>
+        token.length >= 3 &&
+        !PRODUCT_TOKEN_STOPWORDS.has(token) &&
+        token !== "style",
+    );
 
   return productTokens.some((token) => articleTokens.has(token));
 }
@@ -371,12 +445,17 @@ function recommendationReadyProducts(products: Product[]) {
       productEvidenceIds(product).length > 0 &&
       product.priceSnapshots.length > 0 &&
       product.marketRisks.length > 0 &&
-      product.reviewSignals.length > 0
+      product.reviewSignals.length > 0,
   );
 }
 
-function uniqueProductAffiliateHrefCount(article: Article, products: Product[]) {
-  return new Set(products.map((product) => productAffiliateHref(article, product))).size;
+function uniqueProductAffiliateHrefCount(
+  article: Article,
+  products: Product[],
+) {
+  return new Set(
+    products.map((product) => productAffiliateHref(article, product)),
+  ).size;
 }
 
 function productEvidenceIds(product: Product) {
@@ -384,6 +463,6 @@ function productEvidenceIds(product: Product) {
     ...product.verifiedClaims.map((claim) => claim.id),
     ...product.priceSnapshots.map((snapshot) => snapshot.id),
     ...product.reviewSignals.map((signal) => signal.id),
-    ...product.marketRisks.map((risk) => risk.id)
+    ...product.marketRisks.map((risk) => risk.id),
   ].filter(Boolean);
 }

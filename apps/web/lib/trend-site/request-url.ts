@@ -18,14 +18,22 @@ async function getRequestSiteUrl() {
   }
 
   const requestHeaders = await headers();
-  const host = requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host");
+  const host =
+    requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host");
   if (!host) {
     return configuredSiteUrl;
   }
 
-  const forwardedProto = requestHeaders.get("x-forwarded-proto")?.split(",")[0]?.trim();
+  const forwardedProto = requestHeaders
+    .get("x-forwarded-proto")
+    ?.split(",")[0]
+    ?.trim();
   const firstHost = host.split(",")[0]?.trim();
-  const protocol = forwardedProto || (firstHost.startsWith("localhost") || firstHost.startsWith("127.0.0.1") ? "http" : "https");
+  const protocol =
+    forwardedProto ||
+    (firstHost.startsWith("localhost") || firstHost.startsWith("127.0.0.1")
+      ? "http"
+      : "https");
 
   return `${protocol}://${firstHost}`;
 }

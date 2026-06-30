@@ -1,10 +1,6 @@
 {
   "trendCandidateId": "fixture-europe-heatwave-portable-ac-2026",
-  "dominantFormats": [
-    "publisher",
-    "blog",
-    "retailer"
-  ],
+  "dominantFormats": ["publisher", "blog", "retailer"],
   "commonSections": [
     "quick answer",
     "product shortlist",

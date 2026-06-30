@@ -1,14 +1,14 @@
-# TREND - Jacob buyer decision operating model
+# TrendBrief buyer decision operating model
 
 Date: 2026-06-30
 
 ## Position
 
-TREND - Jacob should not compete with TechRadar, WIRED, Food & Wine, or People as a fake testing lab. The site should compete as a small, honest buyer-decision desk.
+TrendBrief should not compete with TechRadar, WIRED, Food & Wine, or People as a fake testing lab. The site should compete as a small, honest buyer-decision desk.
 
 Public position:
 
-> TREND - Jacob compresses the research a buyer would normally do across product specs, marketplace listings, price snapshots, warranty routes, seller terms, and repeated review complaints.
+> TrendBrief compresses the research a buyer would normally do across product specs, marketplace listings, price snapshots, warranty routes, seller terms, and repeated review complaints.
 
 This is closer to the useful part of iGood: a page that turns a broad product question into a clear buying path.
 
@@ -27,7 +27,7 @@ iGood is not only ranking because it looks like a product blog. It works because
 - what FAQ questions block the purchase
 - why some readers should avoid the category
 
-That is the part TREND - Jacob should adapt.
+That is the part TrendBrief should adapt.
 
 ## What we should not copy
 
@@ -49,15 +49,15 @@ Use this reader-facing flow:
 3. Quick answer: how the issue becomes a product decision.
 4. Top 10 practical picks.
 5. Quick comparison table.
-6. What this product is not.
-7. Alternative comparison.
-8. How to choose.
-9. In-depth notes on all 10 picks.
-10. Top 3 recommendations.
-11. Final thoughts.
-12. Before-you-buy checklist.
-13. FAQ.
-14. Update log.
+6. How to choose and review-signal warnings needed before product notes.
+7. In-depth notes on all 10 picks.
+8. Top 3 recommendations.
+9. Final thoughts.
+10. Supporting clarification: what this product is not, alternative
+    comparison, and avoid list.
+11. Before-you-buy checklist.
+12. FAQ.
+13. Update log.
 
 ## Required product block
 
@@ -90,7 +90,7 @@ Direct-use notes
 Review-backed picks
 
 - Public specs plus review coverage, marketplace reviews, community discussion, price snapshots, seller terms, and repeated complaints.
-- This is the default level for many TREND - Jacob guides.
+- This is the default level for many TrendBrief guides.
 
 Specs-first comparisons
 
@@ -111,7 +111,7 @@ Static demo data may contain generated-looking fields, but those fields represen
 
 ## Competitive angle
 
-iGood often summarizes reviews, but TREND - Jacob should make the review signal more decision-grade:
+iGood often summarizes reviews, but TrendBrief should make the review signal more decision-grade:
 
 - repeated praise
 - repeated complaints
@@ -140,7 +140,9 @@ before publication:
   source links.
 - A short avoid list when readers can confuse adjacent product classes, such as
   compressor ACs versus fans, evaporative coolers, smart controllers, and USB
-  mini coolers.
+  mini coolers. This is supporting SEO and reader-protection content, so place
+  it after final thoughts instead of interrupting the main Top 10 and product
+  note flow.
 - Public navigation should expose only categories with real published content.
   Future categories can stay internal until there are enough articles to make
   the site look intentionally edited instead of hollow.

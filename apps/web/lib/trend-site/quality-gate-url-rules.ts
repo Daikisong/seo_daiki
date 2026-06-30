@@ -4,7 +4,10 @@ export type DirectOutboundContext = {
   siteOrigin?: string;
 };
 
-export function isDirectHttpsOutbound(value: string, context: DirectOutboundContext = {}) {
+export function isDirectHttpsOutbound(
+  value: string,
+  context: DirectOutboundContext = {},
+) {
   try {
     const url = new URL(value);
     const siteOrigin = context.siteOrigin ?? configuredSiteOrigin();
@@ -35,10 +38,17 @@ export function isMarketplaceSearchUrl(value: string) {
     const search = url.searchParams;
     return (
       (host.endsWith("aliexpress.com") &&
-        (path.includes("/wholesale") || search.has("SearchText") || search.has("searchText") || search.has("keyword"))) ||
+        (path.includes("/wholesale") ||
+          search.has("SearchText") ||
+          search.has("searchText") ||
+          search.has("keyword"))) ||
       (isAmazonHost(host) && (path === "/s" || search.has("k"))) ||
-      (host.endsWith("temu.com") && (path.includes("search") || search.has("search_key") || search.has("q"))) ||
-      (host.endsWith("iherb.com") && (path.includes("/search") || search.has("kw") || search.has("q")))
+      (host.endsWith("temu.com") &&
+        (path.includes("search") ||
+          search.has("search_key") ||
+          search.has("q"))) ||
+      (host.endsWith("iherb.com") &&
+        (path.includes("/search") || search.has("kw") || search.has("q")))
     );
   } catch {
     return false;
@@ -46,7 +56,12 @@ export function isMarketplaceSearchUrl(value: string) {
 }
 
 function isAmazonHost(host: string) {
-  return host === "amazon.com" || host.endsWith(".amazon.com") || /^www\.amazon\.[a-z.]+$/.test(host) || /^amazon\.[a-z.]+$/.test(host);
+  return (
+    host === "amazon.com" ||
+    host.endsWith(".amazon.com") ||
+    /^www\.amazon\.[a-z.]+$/.test(host) ||
+    /^amazon\.[a-z.]+$/.test(host)
+  );
 }
 
 function configuredSiteOrigin() {

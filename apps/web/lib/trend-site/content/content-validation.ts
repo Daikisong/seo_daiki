@@ -1,5 +1,6 @@
 import type { Article, Product } from "../types";
 import { assertSupportedLocale, isIndexableLocale } from "../locales";
+import { trendCategoryBySlug } from "../categories";
 import { assertQualityGatePass } from "../quality-gate";
 import { getSiteUrl } from "../routes";
 import { getArticleEvidenceSource } from "./article-evidence";
@@ -19,6 +20,11 @@ export function validateArticleContent(articles: Article[]) {
     );
     assertPresent(article.imageUrl, `${article.id}.imageUrl`);
     assertPresent(article.summary, `${article.id}.summary`);
+    if (article.categorySlug && !trendCategoryBySlug(article.categorySlug)) {
+      throw new Error(
+        `${article.id}.categorySlug references unknown category ${article.categorySlug}.`,
+      );
+    }
     assertPresent(
       article.expertCopy.topPicksIntro,
       `${article.id}.expertCopy.topPicksIntro`,
@@ -177,14 +183,30 @@ export function validateProductContent(products: Product[]) {
   }
 }
 
-export function validateQualityGates(articles: Article[], products: Product[]) {
+type ContentQualityGateOptions = {
+  mode?: "dry-run" | "production";
+  approvedTemporaryImageUrls?: readonly string[];
+};
+
+export function validateQualityGates(
+  articles: Article[],
+  products: Product[],
+  options: ContentQualityGateOptions = {},
+) {
   const siteOrigin = new URL(getSiteUrl()).origin;
+  const mode = options.mode ?? contentValidationMode();
   for (const article of articles) {
     assertQualityGatePass(article, products, {
       allArticles: articles,
       siteOrigin,
+      mode,
+      approvedTemporaryImageUrls: options.approvedTemporaryImageUrls,
     });
   }
+}
+
+function contentValidationMode() {
+  return process.env.NODE_ENV === "production" ? "production" : "dry-run";
 }
 
 function assertTrendSignalBox(

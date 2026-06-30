@@ -2,21 +2,21 @@
 
 ## Scope
 
-This document is a reference teardown of iGood (`https://igood.tw/`) for TREND - Jacob. It focuses on the public site shape, article structure, HTML/CSS signals, author/persona system, footer trust layer, and the detailed article `https://igood.tw/posts/2358`.
+This document is a reference teardown of iGood (`https://igood.tw/`) for TrendBrief. It focuses on the public site shape, article structure, HTML/CSS signals, author/persona system, footer trust layer, and the detailed article `https://igood.tw/posts/2358`.
 
 The goal is not to copy iGood. The useful reference is the system: a broad shopping guide site that turns categories, expert/editor personas, public research, comparison tables, and product schema into reader-facing buying decisions.
 
 Primary pages inspected:
 
-| Page | URL | Why it matters |
-| --- | --- | --- |
-| Home | `https://igood.tw/` | Homepage layout, navigation, category system, ranking sections, footer |
-| Water cooling fan article | `https://igood.tw/posts/2358` | Full product guide article structure, table blocks, product schema, FAQ |
-| About | `https://igood.tw/about` | Brand promise, editorial positioning, company identity |
-| Team | `https://igood.tw/our-team` | Multi-author/persona system |
-| Recommendation method | `https://igood.tw/how-we-recommend` | Public trust/methodology page |
-| Reviews category | `https://igood.tw/categories/reviews` | Archive/listing UX for review content |
-| Author page | `https://igood.tw/author/louise` | Author profile and author archive pattern |
+| Page                      | URL                                   | Why it matters                                                          |
+| ------------------------- | ------------------------------------- | ----------------------------------------------------------------------- |
+| Home                      | `https://igood.tw/`                   | Homepage layout, navigation, category system, ranking sections, footer  |
+| Water cooling fan article | `https://igood.tw/posts/2358`         | Full product guide article structure, table blocks, product schema, FAQ |
+| About                     | `https://igood.tw/about`              | Brand promise, editorial positioning, company identity                  |
+| Team                      | `https://igood.tw/our-team`           | Multi-author/persona system                                             |
+| Recommendation method     | `https://igood.tw/how-we-recommend`   | Public trust/methodology page                                           |
+| Reviews category          | `https://igood.tw/categories/reviews` | Archive/listing UX for review content                                   |
+| Author page               | `https://igood.tw/author/louise`      | Author profile and author archive pattern                               |
 
 ## High-level identity
 
@@ -31,8 +31,8 @@ The visible promise is simple:
 
 This is close to the site direction we want, but our public positioning should be more precise:
 
-- TREND - Jacob is not a direct-test lab like Wired or a heavy hands-on review outlet.
-- TREND - Jacob should be a review, spec, price, warranty, seller, and complaint-pattern buying decision site.
+- TrendBrief is not a direct-test lab like Wired or a heavy hands-on review outlet.
+- TrendBrief should be a review, spec, price, warranty, seller, and complaint-pattern buying decision site.
 - The reader-facing promise should be: "I compare public specs, live/known price context, warranty/return paths, seller information, and repeated user-review complaints so readers can avoid the confusing parts of buying."
 
 ## Site architecture
@@ -43,32 +43,32 @@ iGood uses a broad category navigation model. The homepage exposes a logo, a pri
 
 Top-level shopping/category routes:
 
-| Label | Route pattern | Role |
-| --- | --- | --- |
-| `iGood 降價雷達` | `/categories/igood-radar` | Deal/price radar entry |
-| `3C 用品` | `/categories/techs` | Electronics and tech |
-| `傢俱寢具` | `/categories/furniture-bedding` | Furniture and bedding |
-| `商品快報` | `/categories/product-news` | Fast product news |
-| `家電` | `/categories/appliances` | Appliances |
-| `寵物` | `/categories/pet-supplies` | Pet products |
-| `廚房用品` | `/categories/kitchenwares` | Kitchenware |
-| `日用品` | `/categories/daily-necessities` | Daily necessities |
-| `母嬰用品` | `/categories/baby-care-products` | Baby and childcare |
-| `生活小物` | `/categories/lifestyles` | Small lifestyle products |
-| `生活知識` | `/categories/knowledge` | Practical knowledge and issue-led articles |
-| `編輯提案` | `/categories/ideas` | Editorial curation |
-| `美妝保養` | `/categories/beauty-care` | Beauty and skincare |
-| `開箱評測` | `/categories/reviews` | Unboxing/reviews |
-| `食品` | `/categories/foods` | Food |
+| Label            | Route pattern                    | Role                                       |
+| ---------------- | -------------------------------- | ------------------------------------------ |
+| `iGood ?�價?�達` | `/categories/igood-radar`        | Deal/price radar entry                     |
+| `3C ?�品`        | `/categories/techs`              | Electronics and tech                       |
+| `?�俱寢具`       | `/categories/furniture-bedding`  | Furniture and bedding                      |
+| `?�品快報`       | `/categories/product-news`       | Fast product news                          |
+| `家電`           | `/categories/appliances`         | Appliances                                 |
+| `寵物`           | `/categories/pet-supplies`       | Pet products                               |
+| `廚房?�品`       | `/categories/kitchenwares`       | Kitchenware                                |
+| `?�用??          | `/categories/daily-necessities`  | Daily necessities                          |
+| `母嬰?�品`       | `/categories/baby-care-products` | Baby and childcare                         |
+| `?�活小物`       | `/categories/lifestyles`         | Small lifestyle products                   |
+| `?�活?�識`       | `/categories/knowledge`          | Practical knowledge and issue-led articles |
+| `編輯?�案`       | `/categories/ideas`              | Editorial curation                         |
+| `美妝保養`       | `/categories/beauty-care`        | Beauty and skincare                        |
+| `?��?評測`       | `/categories/reviews`            | Unboxing/reviews                           |
+| `食品`           | `/categories/foods`              | Food                                       |
 
 About/company routes:
 
-| Label | Route |
-| --- | --- |
-| `關於我們` | `/about` |
-| `我們的團隊` | `/our-team` |
-| `產品推薦方式` | `/how-we-recommend` |
-| `最新消息` | `/categories/news` |
+| Label          | Route               |
+| -------------- | ------------------- |
+| `?�於?��?      | `/about`            |
+| `?�們的?�隊`   | `/our-team`         |
+| `?�品?�薦?�式` | `/how-we-recommend` |
+| `?�?�消??      | `/categories/news`  |
 
 The important reference is that iGood does not hide category breadth. It makes broad lifestyle/product categories explicit. For us, this supports a global trend guide taxonomy, but our labels should stay product-decision focused, for example:
 
@@ -88,7 +88,7 @@ The important reference is that iGood does not hide category breadth. It makes b
 
 Structured data includes a Website `SearchAction` route using `/search/{search_term_string}`. This means site search is part of the SEO and UX model, not only a visual control.
 
-For TREND - Jacob, search should eventually index:
+For TrendBrief, search should eventually index:
 
 - article titles;
 - product names;
@@ -103,16 +103,16 @@ iGood's homepage is a magazine-style shopping portal. It is not a landing page w
 
 Observed homepage flow:
 
-| Section | What it does | Reference value |
-| --- | --- | --- |
-| Header/navigation | Logo, category menu, about links, price radar | Makes site scope obvious |
-| Featured/current cards | Top row of current product-led posts | Fast freshness signal |
-| `開箱評測` | Review/unboxing cards with image, category, title, excerpt, more link | Shows product experience content early |
-| `熱門文章` | Ranked popular articles from 1 to 8 | Strong internal discovery and social proof |
-| `近期文章` | Recent article grid/list | Freshness and crawl depth |
-| `生活知識` | Issue and knowledge-led articles that bridge to product needs | Very relevant to our trend-to-product model |
-| `好特務` | Sponsored/campaign-like section | Monetization/content partnership slot |
-| Footer | Disclosure, about links, policy links, group links | Trust and compliance layer |
+| Section                | What it does                                                          | Reference value                             |
+| ---------------------- | --------------------------------------------------------------------- | ------------------------------------------- |
+| Header/navigation      | Logo, category menu, about links, price radar                         | Makes site scope obvious                    |
+| Featured/current cards | Top row of current product-led posts                                  | Fast freshness signal                       |
+| `?��?評測`             | Review/unboxing cards with image, category, title, excerpt, more link | Shows product experience content early      |
+| `?��??�章`             | Ranked popular articles from 1 to 8                                   | Strong internal discovery and social proof  |
+| `近期?�章`             | Recent article grid/list                                              | Freshness and crawl depth                   |
+| `?�活?�識`             | Issue and knowledge-led articles that bridge to product needs         | Very relevant to our trend-to-product model |
+| `好特??                | Sponsored/campaign-like section                                       | Monetization/content partnership slot       |
+| Footer                 | Disclosure, about links, policy links, group links                    | Trust and compliance layer                  |
 
 The strongest pattern for our homepage:
 
@@ -130,41 +130,41 @@ iGood's footer is doing more than copyright. It is a trust, disclosure, corporat
 
 Footer elements observed and requested for tracking:
 
-| Footer item | Public meaning |
-| --- | --- |
-| `隨時關注好物推薦` | Follow/subscribe social prompt |
-| `聯繫我們` | Contact entry |
-| `關於iGood` | About group heading |
-| `關於我們` | About page |
-| `最新消息` | News/category updates |
-| `產品推薦方式` | Methodology/trust page |
-| `我們的團隊` | Team/persona proof |
-| `集團介紹` | Corporate group page |
-| `加入我們` | Recruiting |
-| `合作洽談` | Partnership/business contact |
-| `條款與政策` | Policy group heading |
-| `隱私條款` | Privacy policy |
-| `使用條款` | Terms of use |
-| `廣告內容政策` | Advertising content policy |
-| `逛逛iGood` | Browse group heading |
-| `熱門文章` | Popular posts archive |
-| `開箱評測` | Reviews category |
-| `近期文章` | Recent posts archive |
-| `使用者觀點` | User perspective content |
-| `tnl media group` | Parent/network trust signal |
-| `© 2026 Polydice, Inc. & TNL Mediagene` | Corporate copyright |
-| `Business Insider Taiwan` | Network link |
-| `Cool3c` | Network link |
-| `iGood` | Current brand link |
-| `INSIDE` | Network link |
-| `ROOMIE Taiwan` | Network link |
-| `愛料理` | Network link |
-| `運動視界` | Network link |
-| `關鍵評論網` | Network link |
+| Footer item                             | Public meaning                 |
+| --------------------------------------- | ------------------------------ |
+| `?�時?�注好物?�薦`                      | Follow/subscribe social prompt |
+| `??��?��?                               | Contact entry                  |
+| `?�於iGood`                             | About group heading            |
+| `?�於?��?                               | About page                     |
+| `?�?�消??                               | News/category updates          |
+| `?�品?�薦?�式`                          | Methodology/trust page         |
+| `?�們的?�隊`                            | Team/persona proof             |
+| `?�團介紹`                              | Corporate group page           |
+| `?�入?��?                               | Recruiting                     |
+| `?�作洽談`                              | Partnership/business contact   |
+| `條款?�政�?                             | Policy group heading           |
+| `?�私條款`                              | Privacy policy                 |
+| `使用條款`                              | Terms of use                   |
+| `廣告?��??�策`                          | Advertising content policy     |
+| `?�逛iGood`                             | Browse group heading           |
+| `?��??�章`                              | Popular posts archive          |
+| `?��?評測`                              | Reviews category               |
+| `近期?�章`                              | Recent posts archive           |
+| `使用?��?�?                             | User perspective content       |
+| `tnl media group`                       | Parent/network trust signal    |
+| `© 2026 Polydice, Inc. & TNL Mediagene` | Corporate copyright            |
+| `Business Insider Taiwan`               | Network link                   |
+| `Cool3c`                                | Network link                   |
+| `iGood`                                 | Current brand link             |
+| `INSIDE`                                | Network link                   |
+| `ROOMIE Taiwan`                         | Network link                   |
+| `?�料??                                 | Network link                   |
+| `?�動視界`                              | Network link                   |
+| `?�鍵評論�?                             | Network link                   |
 
 iGood also places an affiliate/commercial disclosure in the footer. The practical point is not to make the disclosure huge inside every article. The footer can carry site-wide disclosure, while article-level outbound buttons can carry concise wording when needed.
 
-For TREND - Jacob:
+For TrendBrief:
 
 - Footer should include `About Jacob`, `How recommendations work`, `Contact`, `Privacy Policy`, `Terms of Use`, `Advertising and Affiliate Policy`, `Popular Posts`, `Reviews`, `Recent Posts`.
 - We do not need a fake media group layer.
@@ -186,9 +186,9 @@ iGood's about page has a clear public story:
 9. It offers recommendations, unboxing/testing, and expert interviews.
 10. It anchors the company to Polydice and TNL Mediagene.
 
-For us, the equivalent page should avoid claiming direct testing unless we actually tested. A better TREND - Jacob about frame:
+For us, the equivalent page should avoid claiming direct testing unless we actually tested. A better TrendBrief about frame:
 
-> TREND - Jacob tracks fast-moving search interest and turns it into practical buying guides. Jacob compares public specs, price changes, seller terms, marketplace differences, warranty routes, and repeated user-review complaints so readers can decide what to buy, what to skip, and what to verify before clicking a price button.
+> TrendBrief tracks fast-moving search interest and turns it into practical buying guides. Jacob compares public specs, price changes, seller terms, marketplace differences, warranty routes, and repeated user-review complaints so readers can decide what to buy, what to skip, and what to verify before clicking a price button.
 
 ## Recommendation-method page model
 
@@ -196,16 +196,16 @@ iGood has a dedicated public methodology page. This matters because it lets indi
 
 Observed methodology themes:
 
-| Theme | What iGood says publicly | How we should adapt |
-| --- | --- | --- |
-| Clear principles | Product articles explain what to check before the picks | Our article intros and checklists should explain the actual buyer variables |
-| Readability | Tables and text make the buying decision easier | Keep comparison tables tight and scannable |
-| Consistency | Article sections follow a repeatable guide structure | Use stable article fields, but prose must be generated per post |
-| Buzz/popularity | Forums, ecommerce rankings, and online opinions inform candidates | Use SERP, trend, marketplace, review, and complaint signals internally |
-| User opinions | Real user comments are referenced | Summarize repeated complaints and praise patterns |
-| Order is not pure ranking | Products are grouped by feature/use case | Our ranking can be explicit, but every rank needs a reason |
-| Editorial independence | Commercial links do not directly decide recommendations | Keep affiliate matching separate from suitability scoring |
-| First-hand experience | iGood uses user interviews/blogger unboxing for some content | We should be transparent if our basis is public specs/reviews rather than hands-on tests |
+| Theme                     | What iGood says publicly                                          | How we should adapt                                                                      |
+| ------------------------- | ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| Clear principles          | Product articles explain what to check before the picks           | Our article intros and checklists should explain the actual buyer variables              |
+| Readability               | Tables and text make the buying decision easier                   | Keep comparison tables tight and scannable                                               |
+| Consistency               | Article sections follow a repeatable guide structure              | Use stable article fields, but prose must be generated per post                          |
+| Buzz/popularity           | Forums, ecommerce rankings, and online opinions inform candidates | Use SERP, trend, marketplace, review, and complaint signals internally                   |
+| User opinions             | Real user comments are referenced                                 | Summarize repeated complaints and praise patterns                                        |
+| Order is not pure ranking | Products are grouped by feature/use case                          | Our ranking can be explicit, but every rank needs a reason                               |
+| Editorial independence    | Commercial links do not directly decide recommendations           | Keep affiliate matching separate from suitability scoring                                |
+| First-hand experience     | iGood uses user interviews/blogger unboxing for some content      | We should be transparent if our basis is public specs/reviews rather than hands-on tests |
 
 Important boundary for our project:
 
@@ -219,27 +219,27 @@ iGood's strongest reference point is the multi-persona editorial system. The tea
 
 Team groups:
 
-| Group | Examples | Function |
-| --- | --- | --- |
-| Founders | dlackty, Fox | Company/founding credibility |
-| Official editorial identities | `愛好物編輯`, `商品快報`, `精選轉載`, `精選書摘` | Non-personal publishing channels |
-| iGood editors | Celia, Chi, Clare, Fannie, Jourdan, Krystina, Louise, Luna, Mina, Phoebe, Sofia, Sophie, Stella, Ting, Yang | Distinct editor/persona proof |
-| Resident writers | Food, travel, family, kitchen, lifestyle creators | Specialist and real-life-use personas |
-| External media | Cool3C, every little d, health media, Roomie, Stacker | Syndication and authority extension |
-| Sponsored/partner identity | `好特務` | Commercial/sponsored content channel |
+| Group                         | Examples                                                                                                    | Function                              |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------------- |
+| Founders                      | dlackty, Fox                                                                                                | Company/founding credibility          |
+| Official editorial identities | `?��??�編�?, `?�品快報`, `精選轉載`, `精選?�摘`                                                             | Non-personal publishing channels      |
+| iGood editors                 | Celia, Chi, Clare, Fannie, Jourdan, Krystina, Louise, Luna, Mina, Phoebe, Sofia, Sophie, Stella, Ting, Yang | Distinct editor/persona proof         |
+| Resident writers              | Food, travel, family, kitchen, lifestyle creators                                                           | Specialist and real-life-use personas |
+| External media                | Cool3C, every little d, health media, Roomie, Stacker                                                       | Syndication and authority extension   |
+| Sponsored/partner identity    | `好特??                                                                                                     | Commercial/sponsored content channel  |
 
 Persona examples worth adapting conceptually:
 
-| Persona type | iGood example pattern | Useful takeaway |
-| --- | --- | --- |
-| Budget/student buyer | Student/small-budget perspective | Good for low-cost gadget, dorm, travel posts |
-| Category researcher | Editor who researches before buying | Good for spec/review synthesis persona |
-| Kitchen/home expert | Homemaker/mother/kitchen appliance angle | Good for appliance and household content |
-| Sleep/product specialist | Years of sleep product research | Good for category expertise pages |
-| Forum-heavy buyer | Editor who checks forums before buying | Good for complaint-pattern articles |
+| Persona type               | iGood example pattern                         | Useful takeaway                                     |
+| -------------------------- | --------------------------------------------- | --------------------------------------------------- |
+| Budget/student buyer       | Student/small-budget perspective              | Good for low-cost gadget, dorm, travel posts        |
+| Category researcher        | Editor who researches before buying           | Good for spec/review synthesis persona              |
+| Kitchen/home expert        | Homemaker/mother/kitchen appliance angle      | Good for appliance and household content            |
+| Sleep/product specialist   | Years of sleep product research               | Good for category expertise pages                   |
+| Forum-heavy buyer          | Editor who checks forums before buying        | Good for complaint-pattern articles                 |
 | Ecommerce/marketing editor | Ecommerce integration and unboxing experience | Good for marketplace risk and sales-copy skepticism |
 
-For TREND - Jacob:
+For TrendBrief:
 
 - Jacob can be the lead brand persona.
 - Category sub-personas can exist as content-generation voices, but they should not be fake named experts unless we intentionally build those profiles.
@@ -270,7 +270,7 @@ For our site:
 
 ## Category and archive pages
 
-The `開箱評測` category page is a standard archive with:
+The `?��?評測` category page is a standard archive with:
 
 - breadcrumb;
 - category title;
@@ -294,35 +294,35 @@ The category description is important. It tells readers what kind of content bel
 
 Observed technical signals:
 
-| Signal | Observation | Interpretation |
-| --- | --- | --- |
-| Framework | Next.js script chunks include route-level app chunks such as `/app/posts/[postId]/page` | Likely Next.js App Router frontend |
-| `__NEXT_DATA__` | Not found in inspected post HTML | Uses newer app/router/RSC-style payload rather than classic pages data |
-| Sentry markers | Hundreds of Sentry-related markers in rendered HTML/scripts | Production error monitoring is integrated |
-| WordPress traces | CSS and classes such as `wp-table-builder`, `wp-block`, uploads paths | Content likely comes from WordPress/editorial CMS blocks or migrated WP content |
-| Product links | Many `momoshop` links in article HTML/schema | Marketplace monetization is embedded |
-| JSON-LD | Organization, Website/SearchAction, Article, Breadcrumb, Product schemas | Strong structured-data layer |
+| Signal           | Observation                                                                             | Interpretation                                                                  |
+| ---------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| Framework        | Next.js script chunks include route-level app chunks such as `/app/posts/[postId]/page` | Likely Next.js App Router frontend                                              |
+| `__NEXT_DATA__`  | Not found in inspected post HTML                                                        | Uses newer app/router/RSC-style payload rather than classic pages data          |
+| Sentry markers   | Hundreds of Sentry-related markers in rendered HTML/scripts                             | Production error monitoring is integrated                                       |
+| WordPress traces | CSS and classes such as `wp-table-builder`, `wp-block`, uploads paths                   | Content likely comes from WordPress/editorial CMS blocks or migrated WP content |
+| Product links    | Many `momoshop` links in article HTML/schema                                            | Marketplace monetization is embedded                                            |
+| JSON-LD          | Organization, Website/SearchAction, Article, Breadcrumb, Product schemas                | Strong structured-data layer                                                    |
 
 ### CSS files
 
 The post page loads several CSS resources:
 
-| CSS file | Approx. size | Purpose inferred |
-| --- | ---: | --- |
-| `/_next/static/css/1ab1fc1868cad013.css` | 34 KB | App/global layout and utilities |
-| `/_next/static/css/8b699656505cf4b3.css` | 21 KB | Post/content specific styles |
-| `/css/blocks.style.build.css` | 76 KB | WordPress block styles |
-| `/css/wp-table-builder-frontend.css` | 14 KB | Product/comparison table builder styles |
+| CSS file                                 | Approx. size | Purpose inferred                        |
+| ---------------------------------------- | -----------: | --------------------------------------- |
+| `/_next/static/css/1ab1fc1868cad013.css` |        34 KB | App/global layout and utilities         |
+| `/_next/static/css/8b699656505cf4b3.css` |        21 KB | Post/content specific styles            |
+| `/css/blocks.style.build.css`            |        76 KB | WordPress block styles                  |
+| `/css/wp-table-builder-frontend.css`     |        14 KB | Product/comparison table builder styles |
 
 Frequent class families:
 
-| Class/pattern | Meaning |
-| --- | --- |
-| `wptb-*` | WP Table Builder product-card and comparison-table layout |
-| `wp-block-*` | WordPress block content |
-| `post-content` | Article body styling boundary |
-| `post-recommendation` | Product recommendation area |
-| `ub_table-of-contents` | Table-of-contents block |
+| Class/pattern           | Meaning                                                   |
+| ----------------------- | --------------------------------------------------------- |
+| `wptb-*`                | WP Table Builder product-card and comparison-table layout |
+| `wp-block-*`            | WordPress block content                                   |
+| `post-content`          | Article body styling boundary                             |
+| `post-recommendation`   | Product recommendation area                               |
+| `ub_table-of-contents`  | Table-of-contents block                                   |
 | Tailwind-like utilities | Layout spacing, flex, text size, border, rounded controls |
 
 Reference lesson:
@@ -336,15 +336,15 @@ Reference lesson:
 
 The inspected article exposes multiple JSON-LD objects:
 
-| Schema type | What it covers | Why it matters |
-| --- | --- | --- |
-| Organization | `寶利拾股份有限公司` / Polydice, parent group TNL Mediagene | Entity trust |
-| Website | Site URL and search action | Search integration |
-| Article | Headline, description, URL, published/modified dates, article body | Article indexing |
-| BreadcrumbList | Home > category > article | Site hierarchy |
-| Product | Each recommended product with brand/name/image/offer | Product-rich result eligibility and machine-readable picks |
+| Schema type    | What it covers                                                     | Why it matters                                             |
+| -------------- | ------------------------------------------------------------------ | ---------------------------------------------------------- |
+| Organization   | `寶利?�股份有?�公?? / Polydice, parent group TNL Mediagene         | Entity trust                                               |
+| Website        | Site URL and search action                                         | Search integration                                         |
+| Article        | Headline, description, URL, published/modified dates, article body | Article indexing                                           |
+| BreadcrumbList | Home > category > article                                          | Site hierarchy                                             |
+| Product        | Each recommended product with brand/name/image/offer               | Product-rich result eligibility and machine-readable picks |
 
-For TREND - Jacob, the structured-data target should be:
+For TrendBrief, the structured-data target should be:
 
 - Organization or Person, depending legal setup;
 - Website with SearchAction;
@@ -358,7 +358,7 @@ For TREND - Jacob, the structured-data target should be:
 
 Article title:
 
-`2026年10款水冷扇推薦：夏日避暑好夥伴！省電、清涼、好移動的水冷扇都在這`
+`2026�?0款水?�扇?�薦：夏?�避?��?夥伴！省?�、清涼、�?移動?�水?�扇?�在??
 
 The article is a "best 10 product guide" for water-cooling fans. It is a good reference because it combines:
 
@@ -377,43 +377,43 @@ The article is a "best 10 product guide" for water-cooling fans. It is a good re
 
 ### Article flow
 
-| Order | Section | Function |
-| ---: | --- | --- |
-| 1 | H1 title | Search-targeted title with year, quantity, category, benefit |
-| 2 | Intro | Frames summer heat, fan weakness, AC electricity concern, water-cooling fan as option |
-| 3 | `什麼是水冷扇？跟移動式冷氣差在哪？` | Explains category and compares with portable AC |
-| 4 | Comparison table | Water-cooling fan vs portable AC: pros, cons, suitable environment |
-| 5 | `水冷扇怎麼挑？4 個選購眉角看這邊` | Buyer criteria before product list |
-| 6 | Criteria h3 sections | Size, tank capacity/removable tank, modes, mobility |
-| 7 | `精選 10 款清涼水冷扇推薦` | Product recommendation entry |
-| 8 | `普通水冷扇推薦` | Segment: normal-size units |
-| 9 | Six product blocks | Product cards with image, rank, title, model, price, links, narrative, specs |
-| 10 | `桌上型／迷你型水冷扇推薦` | Segment: desktop/mini units |
-| 11 | Four product blocks | Same product-card pattern |
-| 12 | `10 款水冷扇推薦一覽表` | Full comparison table |
-| 13 | `水冷扇常見問題` | FAQ objections and maintenance questions |
-| 14 | `小結：水冷扇降溫能力有限` | Final caveat and realistic expectation |
-| 15 | Author card | Louise bio and author link |
-| 16 | Tags/sidebar/footer | Internal discovery and trust layer |
+| Order | Section                              | Function                                                                              |
+| ----: | ------------------------------------ | ------------------------------------------------------------------------------------- |
+|     1 | H1 title                             | Search-targeted title with year, quantity, category, benefit                          |
+|     2 | Intro                                | Frames summer heat, fan weakness, AC electricity concern, water-cooling fan as option |
+|     3 | `什麼是水冷?�？跟移?�式?�氣�?��?�？` | Explains category and compares with portable AC                                       |
+|     4 | Comparison table                     | Water-cooling fan vs portable AC: pros, cons, suitable environment                    |
+|     5 | `水冷?�怎麼?�？4 ?�選購眉角看?�邊`   | Buyer criteria before product list                                                    |
+|     6 | Criteria h3 sections                 | Size, tank capacity/removable tank, modes, mobility                                   |
+|     7 | `精選 10 款清涼水?�扇?�薦`           | Product recommendation entry                                                          |
+|     8 | `??��水?�扇?�薦`                     | Segment: normal-size units                                                            |
+|     9 | Six product blocks                   | Product cards with image, rank, title, model, price, links, narrative, specs          |
+|    10 | `桌上?�／迷你?�水?�扇?�薦`           | Segment: desktop/mini units                                                           |
+|    11 | Four product blocks                  | Same product-card pattern                                                             |
+|    12 | `10 款水?�扇?�薦一覽表`              | Full comparison table                                                                 |
+|    13 | `水冷?�常見問�?                      | FAQ objections and maintenance questions                                              |
+|    14 | `小結：水?�扇?�溫?�力?�限`           | Final caveat and realistic expectation                                                |
+|    15 | Author card                          | Louise bio and author link                                                            |
+|    16 | Tags/sidebar/footer                  | Internal discovery and trust layer                                                    |
 
 ### Heading map
 
 Important headings:
 
-| Heading | Role |
-| --- | --- |
-| `什麼是水冷扇？跟移動式冷氣差在哪？` | Category definition and adjacent-category comparison |
-| `水冷扇怎麼挑？4 個選購眉角看這邊` | Buying checklist before recommendations |
-| `1.留意體積大小` | Size/use-space criterion |
-| `2.水箱容量、水箱可不可拆` | Tank and maintenance criterion |
-| `3.有沒有多樣化的功能模式` | Modes/features criterion |
-| `4.移動便利性` | Portability criterion |
-| `精選 10 款清涼水冷扇推薦` | Top-list entry |
-| `普通水冷扇推薦` | Segment heading |
-| `桌上型／迷你型水冷扇推薦` | Segment heading |
-| `10 款水冷扇推薦一覽表` | Full comparison table |
-| `水冷扇常見問題` | FAQ |
-| `小結：水冷扇降溫能力有限` | Final caveat |
+| Heading                              | Role                                                 |
+| ------------------------------------ | ---------------------------------------------------- |
+| `什麼是水冷?�？跟移?�式?�氣�?��?�？` | Category definition and adjacent-category comparison |
+| `水冷?�怎麼?�？4 ?�選購眉角看?�邊`   | Buying checklist before recommendations              |
+| `1.?�意體積大小`                     | Size/use-space criterion                             |
+| `2.水�?容量?�水箱可不可??            | Tank and maintenance criterion                       |
+| `3.?�沒?�多樣化?�功?�模�?            | Modes/features criterion                             |
+| `4.移動便利??                        | Portability criterion                                |
+| `精選 10 款清涼水?�扇?�薦`           | Top-list entry                                       |
+| `??��水?�扇?�薦`                     | Segment heading                                      |
+| `桌上?�／迷你?�水?�扇?�薦`           | Segment heading                                      |
+| `10 款水?�扇?�薦一覽表`              | Full comparison table                                |
+| `水冷?�常見問�?                      | FAQ                                                  |
+| `小結：水?�扇?�溫?�力?�限`           | Final caveat                                         |
 
 This flow is important because it teaches before it sells. The article does not open directly with a grid of products. It first tells the reader what the category can and cannot do.
 
@@ -423,18 +423,18 @@ Each product recommendation is built like a mini landing block.
 
 Observed fields:
 
-| Field | Example role |
-| --- | --- |
-| Product image | Visual identification |
-| Rank number | Creates top 10 structure |
-| Product title | Brand/product name |
-| Model | Exact model identifier |
-| Price | Price anchor |
-| Purchase links | Marketplace/official outbound actions |
-| Short subtitle | One-line reason or positioning |
-| Narrative paragraph | Why this product is included |
-| Spec bullets | Water tank, power, size, weight, origin, warranty, functions/accessories |
-| Link button/anchor | Monetization path |
+| Field               | Example role                                                             |
+| ------------------- | ------------------------------------------------------------------------ |
+| Product image       | Visual identification                                                    |
+| Rank number         | Creates top 10 structure                                                 |
+| Product title       | Brand/product name                                                       |
+| Model               | Exact model identifier                                                   |
+| Price               | Price anchor                                                             |
+| Purchase links      | Marketplace/official outbound actions                                    |
+| Short subtitle      | One-line reason or positioning                                           |
+| Narrative paragraph | Why this product is included                                             |
+| Spec bullets        | Water tank, power, size, weight, origin, warranty, functions/accessories |
+| Link button/anchor  | Monetization path                                                        |
 
 The full comparison table repeats normalized fields across all 10 products:
 
@@ -451,18 +451,18 @@ The full comparison table repeats normalized fields across all 10 products:
 
 ### Products found in article schema
 
-| Rank | Brand | Product/model | Listed price signal |
-| ---: | --- | --- | ---: |
-| 1 | 日虎 | `LA-3036 瞬冷移動 DC 變頻水冷扇` | 12800 |
-| 2 | THOMSON | `TM-SAF16 極致美型空氣濾淨降溫微電腦水冷扇` | 4690 |
-| 3 | HERAN 禾聯 | `HWF-07ND020 負離子移動式水冷扇` | 3590 |
-| 4 | 尚朋堂 | `SPY-E200 微電腦觸控水冷扇` | 4290 |
-| 5 | LAPOLO | `LA-6503 水冷扇` | 2990 |
-| 6 | 勳風 | `AHF-K0098 冰晶水冷扇涼風扇移動式水冷氣-水冷+冰晶` | 2980 |
-| 7 | 大家源 | `TCY-890101 桌上型 USB 冰涼水冷扇` | 2990 |
-| 8 | Evapolar | `evaCHILL 第三代隨身個人冷氣機` | 4499 |
-| 9 | KINYO | `UF-1908 復古冰冷風扇` | 999 |
-| 10 | THOMSON | `TM-SAF15U 隨身移動式水冷扇` | 1690 |
+| Rank | Brand      | Product/model                                      | Listed price signal |
+| ---: | ---------- | -------------------------------------------------- | ------------------: |
+|    1 | ?�虎       | `LA-3036 ?�冷移動 DC 變頻水冷??                    |               12800 |
+|    2 | THOMSON    | `TM-SAF16 極致美型空氣濾淨?�溫�?��??��?�扇`        |                4690 |
+|    3 | HERAN 禾聯 | `HWF-07ND020 負離子移?�式水冷??                    |                3590 |
+|    4 | 尚朋??     | `SPY-E200 �?��??��?�水?�扇`                        |                4290 |
+|    5 | LAPOLO     | `LA-6503 水冷??                                    |                2990 |
+|    6 | ?�風       | `AHF-K0098 ?�晶水冷?�涼風扇移動式水?�氣-水冷+?�晶` |                2980 |
+|    7 | 大�?�?     | `TCY-890101 桌上??USB ?�涼水冷??                   |                2990 |
+|    8 | Evapolar   | `evaCHILL 第三代隨身個人?�氣�?                     |                4499 |
+|    9 | KINYO      | `UF-1908 復古?�冷風扇`                             |                 999 |
+|   10 | THOMSON    | `TM-SAF15U ?�身移動式水?�扇`                       |                1690 |
 
 The product schema is useful, but there is a risk for our site: product prices and availability change quickly. If we output `Product` and `Offer` schema, our pipeline needs a refresh rule or a clear snapshot date.
 
@@ -481,7 +481,7 @@ iGood's FAQ covers the objections a buyer would naturally have:
 
 The final conclusion is especially useful because it limits the claim. It says the category has limited cooling ability and is not a full replacement for stronger cooling in every environment.
 
-For TREND - Jacob, every category guide should include this kind of "when this breaks" section. This is more useful than generic SEO filler.
+For TrendBrief, every category guide should include this kind of "when this breaks" section. This is more useful than generic SEO filler.
 
 Examples:
 
@@ -509,23 +509,23 @@ iGood is a strong reference, but our site can be more useful in buyer-decision b
 
 Observed gaps/opportunities:
 
-| Gap | Why it matters | Our improvement |
-| --- | --- | --- |
-| Product narratives often explain why included but do not always say who should avoid | Readers need negative-fit guidance | Add "Who should not buy this" |
-| Repeated review complaints are not always isolated as a field | Review mining is a major buyer value | Add "Repeated complaints" per product |
-| Warranty/return route exists in specs but is not always interpreted | Cross-market buying risk depends on return path | Add warranty/return explanation |
-| Price is shown, but price movement/marketplace spread is limited | Affiliate products vary by country and marketplace | Add final shipped price, price snapshot, marketplace comparison |
-| Product order can be category grouping rather than true ranking | Reader may misunderstand order | Make rank logic explicit or label by use case |
-| Product schema includes offer prices that can age | SEO risk if stale | Add refresh date and data freshness controls |
-| Direct testing language may not fit our model | We should not overclaim | Use public evidence/review-pattern disclosure |
+| Gap                                                                                  | Why it matters                                     | Our improvement                                                 |
+| ------------------------------------------------------------------------------------ | -------------------------------------------------- | --------------------------------------------------------------- |
+| Product narratives often explain why included but do not always say who should avoid | Readers need negative-fit guidance                 | Add "Who should not buy this"                                   |
+| Repeated review complaints are not always isolated as a field                        | Review mining is a major buyer value               | Add "Repeated complaints" per product                           |
+| Warranty/return route exists in specs but is not always interpreted                  | Cross-market buying risk depends on return path    | Add warranty/return explanation                                 |
+| Price is shown, but price movement/marketplace spread is limited                     | Affiliate products vary by country and marketplace | Add final shipped price, price snapshot, marketplace comparison |
+| Product order can be category grouping rather than true ranking                      | Reader may misunderstand order                     | Make rank logic explicit or label by use case                   |
+| Product schema includes offer prices that can age                                    | SEO risk if stale                                  | Add refresh date and data freshness controls                    |
+| Direct testing language may not fit our model                                        | We should not overclaim                            | Use public evidence/review-pattern disclosure                   |
 
-## TREND - Jacob adaptation
+## TrendBrief adaptation
 
 ### Site positioning
 
 Recommended public positioning:
 
-> TREND - Jacob tracks fast-moving search interest and turns it into practical buying guides. Jacob compares public specs, prices, warranty routes, seller terms, marketplace differences, and repeated review complaints so readers can decide what to buy, what to skip, and what to verify before checkout.
+> TrendBrief tracks fast-moving search interest and turns it into practical buying guides. Jacob compares public specs, prices, warranty routes, seller terms, marketplace differences, and repeated review complaints so readers can decide what to buy, what to skip, and what to verify before checkout.
 
 Avoid:
 
@@ -538,18 +538,18 @@ Avoid:
 
 Recommended article page structure:
 
-| Order | Section | Purpose |
-| ---: | --- | --- |
-| 1 | Title | Trend + buyer category + year or freshness |
-| 2 | Intro | What issue is moving now, why readers care |
-| 3 | Quick answer | Bridge issue to product decision |
-| 4 | Top 10 practical picks | Immediate product direction |
-| 5 | Quick comparison table | Rank, pick, best for, key check, price, action |
-| 6 | In-depth notes on all 10 picks | Generated Jacob/category expert prose |
-| 7 | Top 3 recommendations | Personal/editorial conclusion, with links |
-| 8 | Final thoughts | Practical final guidance and caveats |
-| 9 | Before-you-buy checklist | Buyer-facing checks only |
-| 10 | FAQ | Stable category objections and marketplace questions |
+| Order | Section                        | Purpose                                              |
+| ----: | ------------------------------ | ---------------------------------------------------- |
+|     1 | Title                          | Trend + buyer category + year or freshness           |
+|     2 | Intro                          | What issue is moving now, why readers care           |
+|     3 | Quick answer                   | Bridge issue to product decision                     |
+|     4 | Top 10 practical picks         | Immediate product direction                          |
+|     5 | Quick comparison table         | Rank, pick, best for, key check, price, action       |
+|     6 | In-depth notes on all 10 picks | Generated Jacob/category expert prose                |
+|     7 | Top 3 recommendations          | Personal/editorial conclusion, with links            |
+|     8 | Final thoughts                 | Practical final guidance and caveats                 |
+|     9 | Before-you-buy checklist       | Buyer-facing checks only                             |
+|    10 | FAQ                            | Stable category objections and marketplace questions |
 
 This matches the user's desired flow:
 
@@ -570,19 +570,19 @@ Each product block should render structured data generated by the content/data l
 
 Required public fields:
 
-| Field | What it should answer |
-| --- | --- |
-| Rank/use-case label | Why this product appears in the list |
-| Product name and exact variant | What exact listing/model the reader should compare |
-| Price snapshot | What price range or final shipped price was observed |
-| Best for | Who this fits |
-| Why recommend | Practical reason to consider it |
-| Who should not buy | Negative-fit guidance |
-| Repeated complaints | Review-pattern summary, not raw review dump |
-| Specs that matter | Only buyer-relevant specs |
-| Warranty/return route | What happens if it fails or arrives wrong |
-| Marketplace note | AliExpress/Temu/Amazon/iHerb/local marketplace fit |
-| Action link | Opens in a new tab through our affiliate/outbound tracking route |
+| Field                          | What it should answer                                            |
+| ------------------------------ | ---------------------------------------------------------------- |
+| Rank/use-case label            | Why this product appears in the list                             |
+| Product name and exact variant | What exact listing/model the reader should compare               |
+| Price snapshot                 | What price range or final shipped price was observed             |
+| Best for                       | Who this fits                                                    |
+| Why recommend                  | Practical reason to consider it                                  |
+| Who should not buy             | Negative-fit guidance                                            |
+| Repeated complaints            | Review-pattern summary, not raw review dump                      |
+| Specs that matter              | Only buyer-relevant specs                                        |
+| Warranty/return route          | What happens if it fails or arrives wrong                        |
+| Marketplace note               | AliExpress/Temu/Amazon/iHerb/local marketplace fit               |
+| Action link                    | Opens in a new tab through our affiliate/outbound tracking route |
 
 The four fields the user requested should be mandatory:
 
@@ -627,12 +627,12 @@ Visible text should sound like a natural buying editor, not like a checklist ren
 
 Recommended minimal public author system:
 
-| Page/element | Content |
-| --- | --- |
-| Author card | Jacob, TREND - Jacob editor, focuses on trend-led buying decisions using specs, price, seller terms, and review patterns |
-| Author page | Bio, evidence basis, categories covered, recent articles |
-| Method page | Explain how recommendations use public specs, marketplace data, user-review patterns, and price/return checks |
-| Category mode | Electronics, Home, Beauty, Health, Food, Travel, Outdoor |
+| Page/element  | Content                                                                                                               |
+| ------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Author card   | Jacob, TrendBrief editor, focuses on trend-led buying decisions using specs, price, seller terms, and review patterns |
+| Author page   | Bio, evidence basis, categories covered, recent articles                                                              |
+| Method page   | Explain how recommendations use public specs, marketplace data, user-review patterns, and price/return checks         |
+| Category mode | Electronics, Home, Beauty, Health, Food, Travel, Outdoor                                                              |
 
 Do not invent fake doctors, engineers, or direct-test specialists unless we have real collaborators.
 
@@ -640,12 +640,12 @@ Do not invent fake doctors, engineers, or direct-test specialists unless we have
 
 Recommended footer groups:
 
-| Group | Links |
-| --- | --- |
-| About TREND - Jacob | About Jacob, How recommendations work, Team/Authors if real, Contact |
-| Policies | Privacy Policy, Terms of Use, Advertising and Affiliate Policy, Do Not Sell or Share if relevant |
-| Browse | Trends, Popular Posts, Reviews, Recent Posts, Categories |
-| Disclosure | Short affiliate disclosure and copyright |
+| Group            | Links                                                                                            |
+| ---------------- | ------------------------------------------------------------------------------------------------ |
+| About TrendBrief | About Jacob, How recommendations work, Team/Authors if real, Contact                             |
+| Policies         | Privacy Policy, Terms of Use, Advertising and Affiliate Policy, Do Not Sell or Share if relevant |
+| Browse           | Trends, Popular Posts, Reviews, Recent Posts, Categories                                         |
+| Disclosure       | Short affiliate disclosure and copyright                                                         |
 
 Footer should be compact. It should not create a fake corporate network.
 
@@ -780,7 +780,7 @@ iGood's reference value is not only design. The real system is:
 - final caveat section;
 - footer policy and disclosure layer.
 
-For TREND - Jacob, the winning adaptation is to keep the same reader-friendly guide structure, but improve product usefulness with sharper decision fields:
+For TrendBrief, the winning adaptation is to keep the same reader-friendly guide structure, but improve product usefulness with sharper decision fields:
 
 1. why recommend;
 2. who fits;
@@ -793,4 +793,3 @@ For TREND - Jacob, the winning adaptation is to keep the same reader-friendly gu
 9. concise action button.
 
 That lets the site be honest about not being a direct-test lab while still giving stronger buying help than a generic affiliate list.
-

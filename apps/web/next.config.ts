@@ -9,23 +9,23 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "www.midea.com"
+        hostname: "www.midea.com",
       },
       {
         protocol: "https",
-        hostname: "us.ugreen.com"
-      }
-    ]
+        hostname: "us.ugreen.com",
+      },
+    ],
   },
   async redirects() {
     return [
       {
         source: "/favicon.ico",
         destination: "/favicon.svg",
-        permanent: false
-      }
+        permanent: false,
+      },
     ];
-  }
+  },
 };
 
 export default nextConfig;

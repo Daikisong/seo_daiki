@@ -1,6 +1,11 @@
-# TREND - Jacob
+# TrendBrief
 
-TREND - Jacob is a buyer-decision trend guide for fast-moving marketplace products across AliExpress, Temu, Amazon, iHerb, and local retailers.
+TrendBrief publishes buyer notes for fast-moving trends across AliExpress, Temu, Amazon, iHerb, and local retailers.
+
+- Public brand: TrendBrief
+- Operator and author: Jacob
+- Site description: Buyer notes for fast-moving trends
+- Content unit: Briefs
 
 The site is not a translation farm or a fake testing-lab site. The operating model is:
 
@@ -20,6 +25,7 @@ This repository is a static/manual MVP with publishing guardrails.
 - The planned 18-locale model is defined, but planned locales stay hidden/noindex until opened.
 - Quality gates are implemented for product evidence, direct-use claims, internal-process copy, locale safety, hreflang safety, affiliate links, and thin recommendation pages.
 - The trend-to-affiliate pipeline exists as a dry-run skeleton only. It does not publish routes, write sitemap entries, or open locale pages automatically.
+- Local dry-run artifacts are written under ignored `output/pipeline-runs/`; keep only curated examples in `docs/examples/pipeline-run/`.
 
 ## Commands
 

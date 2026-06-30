@@ -8,7 +8,7 @@ const allowedAffiliateHosts = [
   "amazon.com",
   "www.amazon.com",
   "iherb.com",
-  "www.iherb.com"
+  "www.iherb.com",
 ];
 
 export function GET(request: NextRequest) {
@@ -21,7 +21,10 @@ export function GET(request: NextRequest) {
   // If the rendered button points to a placeholder, the redirect may work technically while still being a bad user link.
   const parsed = safeMarketplaceUrl(targetUrl);
   if (!parsed) {
-    return NextResponse.json({ error: "Invalid marketplace URL" }, { status: 400 });
+    return NextResponse.json(
+      { error: "Invalid marketplace URL" },
+      { status: 400 },
+    );
   }
 
   return NextResponse.redirect(parsed, 302);

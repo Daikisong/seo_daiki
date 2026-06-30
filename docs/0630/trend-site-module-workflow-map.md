@@ -1,4 +1,4 @@
-# TREND - Jacob module and workflow map
+# TrendBrief module and workflow map
 
 Date: 2026-06-30
 
@@ -63,7 +63,7 @@ a fake product testing lab.
 
 - Build-time/content-layer validation.
 - Blocks missing generated article/product fields before rendering.
-- Keeps “no public prose fallback” enforceable.
+- Keeps ?�no public prose fallback??enforceable.
 
 ## SEO and Publishing Gates
 

@@ -1,14 +1,19 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { visibleTrendCategories, trendCategories } from "./categories";
+import {
+  trendCategories,
+  trendCategoryForArticle,
+  visibleTrendArticles,
+  visibleTrendCategories,
+} from "./categories";
 import { getIndexedArticles, getStaticTrendParams } from "./data";
 import {
   defaultLocale,
   hreflangForLocale,
   indexableLocaleCodes,
   isIndexableLocale,
-  targetLocaleConfigs
+  targetLocaleConfigs,
 } from "./locales";
 import { articleLanguageAlternates, validateLocalizationClusters } from "./seo";
 
@@ -30,13 +35,13 @@ const EXPECTED_LOCALES = [
   "sv-se",
   "tr-tr",
   "th-th",
-  "vi-vn"
+  "vi-vn",
 ] as const;
 
 test("central locale config defines the planned 18-locale model without invalid hreflang codes", () => {
   assert.deepEqual(
     targetLocaleConfigs.map((config) => config.code),
-    [...EXPECTED_LOCALES]
+    [...EXPECTED_LOCALES],
   );
   assert.equal(targetLocaleConfigs.length, 18);
   assert.equal(defaultLocale, "en");
@@ -55,15 +60,22 @@ test("only opened locales can enter public article indexes and static trend para
   assert.deepEqual(indexableLocaleCodes(), ["en"]);
   assert.equal(isIndexableLocale("en"), true);
   for (const locale of EXPECTED_LOCALES.filter((locale) => locale !== "en")) {
-    assert.equal(isIndexableLocale(locale), false, `${locale} should stay planned until real localized content is ready`);
+    assert.equal(
+      isIndexableLocale(locale),
+      false,
+      `${locale} should stay planned until real localized content is ready`,
+    );
   }
 
   const indexedArticles = getIndexedArticles();
   assert.ok(indexedArticles.length > 0);
-  assert.equal(indexedArticles.every((article) => isIndexableLocale(article.locale)), true);
+  assert.equal(
+    indexedArticles.every((article) => isIndexableLocale(article.locale)),
+    true,
+  );
   assert.deepEqual(
     getStaticTrendParams().map((params) => params.locale),
-    indexedArticles.map((article) => article.locale)
+    indexedArticles.map((article) => article.locale),
   );
 });
 
@@ -71,16 +83,45 @@ test("hreflang stays opt-in and never clusters articles only because they share 
   const articles = getIndexedArticles();
   const article = articles[0];
   assert.ok(article);
-  assert.equal(articleLanguageAlternates(article, articles, "https://trend-jacob.test"), undefined);
+  assert.equal(
+    articleLanguageAlternates(article, articles, "https://trend-jacob.test"),
+    undefined,
+  );
 
-  const singletonVariant = { ...article, localization: { clusterId: "singleton-cluster" } };
-  assert.throws(() => validateLocalizationClusters([singletonVariant]), /needs at least two complete localized variants/);
+  const singletonVariant = {
+    ...article,
+    localization: { clusterId: "singleton-cluster" },
+  };
+  assert.throws(
+    () => validateLocalizationClusters([singletonVariant]),
+    /needs at least two complete localized variants/,
+  );
 });
 
 test("public category surface exposes only categories intentionally opened in navigation and sitemap", () => {
-  const visibleSlugs = new Set<string>(visibleTrendCategories.map((category) => category.slug));
+  const visibleSlugs = new Set<string>(
+    visibleTrendCategories.map((category) => category.slug),
+  );
   assert.ok(visibleSlugs.size > 0);
   for (const category of trendCategories) {
     assert.equal(visibleSlugs.has(category.slug), Boolean(category.isPublic));
   }
+});
+
+test("hidden category articles keep their explicit category but stay off the public article surface", () => {
+  const article = getIndexedArticles()[0];
+  assert.ok(article);
+
+  const hiddenCategoryArticle = {
+    ...article,
+    id: "future-garden-article",
+    slug: "future-garden-article",
+    categorySlug: "garden-trends",
+  };
+
+  assert.equal(
+    trendCategoryForArticle(hiddenCategoryArticle).slug,
+    "garden-trends",
+  );
+  assert.deepEqual(visibleTrendArticles([hiddenCategoryArticle]), []);
 });

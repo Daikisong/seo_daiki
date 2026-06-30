@@ -1,6 +1,6 @@
 {
-  "run_id": "dry-run-2026-06-30t10-29-24-153z",
-  "generated_at": "2026-06-30T10:29:24.153Z",
+  "run_id": "dry-run-2026-06-30t11-37-41-072z",
+  "generated_at": "2026-06-30T11:37:41.072Z",
   "mode": "dry-run",
   "trend_candidate": {
     "id": "fixture-europe-heatwave-portable-ac-2026",
@@ -45,7 +45,7 @@
       "id": "serp-1",
       "keyword": "Europe heatwave portable AC",
       "locale": "en",
-      "observedAt": "2026-06-30T10:29:24.153Z",
+      "observedAt": "2026-06-30T11:37:41.072Z",
       "url": "https://example-serp-source.test/1",
       "title": "Europe heatwave portable AC buying guide example",
       "sourceType": "publisher",
@@ -55,7 +55,7 @@
       "id": "serp-2",
       "keyword": "portable air conditioner Europe",
       "locale": "en",
-      "observedAt": "2026-06-30T10:29:24.153Z",
+      "observedAt": "2026-06-30T11:37:41.072Z",
       "url": "https://example-serp-source.test/2",
       "title": "portable air conditioner Europe buying guide example",
       "sourceType": "blog",
@@ -65,7 +65,7 @@
       "id": "serp-3",
       "keyword": "mobile air conditioner heatwave",
       "locale": "en",
-      "observedAt": "2026-06-30T10:29:24.153Z",
+      "observedAt": "2026-06-30T11:37:41.072Z",
       "url": "https://example-serp-source.test/3",
       "title": "mobile air conditioner heatwave buying guide example",
       "sourceType": "retailer",
@@ -74,11 +74,7 @@
   ],
   "serp_pattern_analysis": {
     "trendCandidateId": "fixture-europe-heatwave-portable-ac-2026",
-    "dominantFormats": [
-      "publisher",
-      "blog",
-      "retailer"
-    ],
+    "dominantFormats": ["publisher", "blog", "retailer"],
     "commonSections": [
       "quick answer",
       "product shortlist",
@@ -507,7 +503,7 @@
       "evidenceType": "official-spec",
       "sourceLabel": "Fixture brand spec page 1",
       "url": "https://merchant.example/products/portable-ac-1/specs",
-      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "checkedAt": "2026-06-30T11:37:41.072Z",
       "summary": "Official or retailer product details used for exact variant and spec checks."
     },
     {
@@ -525,7 +521,7 @@
       "evidenceType": "review-complaint",
       "sourceLabel": "Fixture buyer complaints 1",
       "url": "https://reviews.example/portable-ac-1",
-      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "checkedAt": "2026-06-30T11:37:41.072Z",
       "summary": "Buyers mention hose fit, night noise, drainage, and bulky returns."
     },
     {
@@ -533,7 +529,7 @@
       "productCandidateId": "fixture-portable-ac-1",
       "evidenceType": "local-risk",
       "sourceLabel": "Local fit note",
-      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "checkedAt": "2026-06-30T11:37:41.072Z",
       "summary": "Check voltage, plug, window kit, stock route, warranty territory, and bulky-return terms."
     },
     {
@@ -542,7 +538,7 @@
       "evidenceType": "official-spec",
       "sourceLabel": "Fixture brand spec page 2",
       "url": "https://merchant.example/products/portable-ac-2/specs",
-      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "checkedAt": "2026-06-30T11:37:41.072Z",
       "summary": "Official or retailer product details used for exact variant and spec checks."
     },
     {
@@ -560,7 +556,7 @@
       "evidenceType": "review-complaint",
       "sourceLabel": "Fixture buyer complaints 2",
       "url": "https://reviews.example/portable-ac-2",
-      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "checkedAt": "2026-06-30T11:37:41.072Z",
       "summary": "Buyers mention hose fit, night noise, drainage, and bulky returns."
     },
     {
@@ -568,7 +564,7 @@
       "productCandidateId": "fixture-portable-ac-2",
       "evidenceType": "local-risk",
       "sourceLabel": "Local fit note",
-      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "checkedAt": "2026-06-30T11:37:41.072Z",
       "summary": "Check voltage, plug, window kit, stock route, warranty territory, and bulky-return terms."
     },
     {
@@ -577,7 +573,7 @@
       "evidenceType": "official-spec",
       "sourceLabel": "Fixture brand spec page 3",
       "url": "https://merchant.example/products/portable-ac-3/specs",
-      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "checkedAt": "2026-06-30T11:37:41.072Z",
       "summary": "Official or retailer product details used for exact variant and spec checks."
     },
     {
@@ -595,7 +591,7 @@
       "evidenceType": "review-complaint",
       "sourceLabel": "Fixture buyer complaints 3",
       "url": "https://reviews.example/portable-ac-3",
-      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "checkedAt": "2026-06-30T11:37:41.072Z",
       "summary": "Buyers mention hose fit, night noise, drainage, and bulky returns."
     },
     {
@@ -603,7 +599,7 @@
       "productCandidateId": "fixture-portable-ac-3",
       "evidenceType": "local-risk",
       "sourceLabel": "Local fit note",
-      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "checkedAt": "2026-06-30T11:37:41.072Z",
       "summary": "Check voltage, plug, window kit, stock route, warranty territory, and bulky-return terms."
     },
     {
@@ -612,7 +608,7 @@
       "evidenceType": "official-spec",
       "sourceLabel": "Fixture brand spec page 4",
       "url": "https://merchant.example/products/portable-ac-4/specs",
-      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "checkedAt": "2026-06-30T11:37:41.072Z",
       "summary": "Official or retailer product details used for exact variant and spec checks."
     },
     {
@@ -630,7 +626,7 @@
       "evidenceType": "review-complaint",
       "sourceLabel": "Fixture buyer complaints 4",
       "url": "https://reviews.example/portable-ac-4",
-      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "checkedAt": "2026-06-30T11:37:41.072Z",
       "summary": "Buyers mention hose fit, night noise, drainage, and bulky returns."
     },
     {
@@ -638,7 +634,7 @@
       "productCandidateId": "fixture-portable-ac-4",
       "evidenceType": "local-risk",
       "sourceLabel": "Local fit note",
-      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "checkedAt": "2026-06-30T11:37:41.072Z",
       "summary": "Check voltage, plug, window kit, stock route, warranty territory, and bulky-return terms."
     },
     {
@@ -647,7 +643,7 @@
       "evidenceType": "official-spec",
       "sourceLabel": "Fixture brand spec page 5",
       "url": "https://merchant.example/products/portable-ac-5/specs",
-      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "checkedAt": "2026-06-30T11:37:41.072Z",
       "summary": "Official or retailer product details used for exact variant and spec checks."
     },
     {
@@ -665,7 +661,7 @@
       "evidenceType": "review-complaint",
       "sourceLabel": "Fixture buyer complaints 5",
       "url": "https://reviews.example/portable-ac-5",
-      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "checkedAt": "2026-06-30T11:37:41.072Z",
       "summary": "Buyers mention hose fit, night noise, drainage, and bulky returns."
     },
     {
@@ -673,7 +669,7 @@
       "productCandidateId": "fixture-portable-ac-5",
       "evidenceType": "local-risk",
       "sourceLabel": "Local fit note",
-      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "checkedAt": "2026-06-30T11:37:41.072Z",
       "summary": "Check voltage, plug, window kit, stock route, warranty territory, and bulky-return terms."
     },
     {
@@ -682,7 +678,7 @@
       "evidenceType": "official-spec",
       "sourceLabel": "Fixture brand spec page 6",
       "url": "https://merchant.example/products/portable-ac-6/specs",
-      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "checkedAt": "2026-06-30T11:37:41.072Z",
       "summary": "Official or retailer product details used for exact variant and spec checks."
     },
     {
@@ -700,7 +696,7 @@
       "evidenceType": "review-complaint",
       "sourceLabel": "Fixture buyer complaints 6",
       "url": "https://reviews.example/portable-ac-6",
-      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "checkedAt": "2026-06-30T11:37:41.072Z",
       "summary": "Buyers mention hose fit, night noise, drainage, and bulky returns."
     },
     {
@@ -708,7 +704,7 @@
       "productCandidateId": "fixture-portable-ac-6",
       "evidenceType": "local-risk",
       "sourceLabel": "Local fit note",
-      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "checkedAt": "2026-06-30T11:37:41.072Z",
       "summary": "Check voltage, plug, window kit, stock route, warranty territory, and bulky-return terms."
     },
     {
@@ -717,7 +713,7 @@
       "evidenceType": "official-spec",
       "sourceLabel": "Fixture brand spec page 7",
       "url": "https://merchant.example/products/portable-ac-7/specs",
-      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "checkedAt": "2026-06-30T11:37:41.072Z",
       "summary": "Official or retailer product details used for exact variant and spec checks."
     },
     {
@@ -735,7 +731,7 @@
       "evidenceType": "review-complaint",
       "sourceLabel": "Fixture buyer complaints 7",
       "url": "https://reviews.example/portable-ac-7",
-      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "checkedAt": "2026-06-30T11:37:41.072Z",
       "summary": "Buyers mention hose fit, night noise, drainage, and bulky returns."
     },
     {
@@ -743,7 +739,7 @@
       "productCandidateId": "fixture-portable-ac-7",
       "evidenceType": "local-risk",
       "sourceLabel": "Local fit note",
-      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "checkedAt": "2026-06-30T11:37:41.072Z",
       "summary": "Check voltage, plug, window kit, stock route, warranty territory, and bulky-return terms."
     },
     {
@@ -752,7 +748,7 @@
       "evidenceType": "official-spec",
       "sourceLabel": "Fixture brand spec page 8",
       "url": "https://merchant.example/products/portable-ac-8/specs",
-      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "checkedAt": "2026-06-30T11:37:41.072Z",
       "summary": "Official or retailer product details used for exact variant and spec checks."
     },
     {
@@ -770,7 +766,7 @@
       "evidenceType": "review-complaint",
       "sourceLabel": "Fixture buyer complaints 8",
       "url": "https://reviews.example/portable-ac-8",
-      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "checkedAt": "2026-06-30T11:37:41.072Z",
       "summary": "Buyers mention hose fit, night noise, drainage, and bulky returns."
     },
     {
@@ -778,7 +774,7 @@
       "productCandidateId": "fixture-portable-ac-8",
       "evidenceType": "local-risk",
       "sourceLabel": "Local fit note",
-      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "checkedAt": "2026-06-30T11:37:41.072Z",
       "summary": "Check voltage, plug, window kit, stock route, warranty territory, and bulky-return terms."
     },
     {
@@ -787,7 +783,7 @@
       "evidenceType": "official-spec",
       "sourceLabel": "Fixture brand spec page 9",
       "url": "https://merchant.example/products/portable-ac-9/specs",
-      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "checkedAt": "2026-06-30T11:37:41.072Z",
       "summary": "Official or retailer product details used for exact variant and spec checks."
     },
     {
@@ -805,7 +801,7 @@
       "evidenceType": "review-complaint",
       "sourceLabel": "Fixture buyer complaints 9",
       "url": "https://reviews.example/portable-ac-9",
-      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "checkedAt": "2026-06-30T11:37:41.072Z",
       "summary": "Buyers mention hose fit, night noise, drainage, and bulky returns."
     },
     {
@@ -813,7 +809,7 @@
       "productCandidateId": "fixture-portable-ac-9",
       "evidenceType": "local-risk",
       "sourceLabel": "Local fit note",
-      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "checkedAt": "2026-06-30T11:37:41.072Z",
       "summary": "Check voltage, plug, window kit, stock route, warranty territory, and bulky-return terms."
     },
     {
@@ -822,7 +818,7 @@
       "evidenceType": "official-spec",
       "sourceLabel": "Fixture brand spec page 10",
       "url": "https://merchant.example/products/portable-ac-10/specs",
-      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "checkedAt": "2026-06-30T11:37:41.072Z",
       "summary": "Official or retailer product details used for exact variant and spec checks."
     },
     {
@@ -840,7 +836,7 @@
       "evidenceType": "review-complaint",
       "sourceLabel": "Fixture buyer complaints 10",
       "url": "https://reviews.example/portable-ac-10",
-      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "checkedAt": "2026-06-30T11:37:41.072Z",
       "summary": "Buyers mention hose fit, night noise, drainage, and bulky returns."
     },
     {
@@ -848,7 +844,7 @@
       "productCandidateId": "fixture-portable-ac-10",
       "evidenceType": "local-risk",
       "sourceLabel": "Local fit note",
-      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "checkedAt": "2026-06-30T11:37:41.072Z",
       "summary": "Check voltage, plug, window kit, stock route, warranty territory, and bulky-return terms."
     }
   ],
@@ -858,6 +854,7 @@
     "title": "Europe heatwave portable AC guide 2026: real cooling picks and risky mini coolers",
     "slug": "europe-heatwave-portable-ac-dry-run",
     "productCategory": "portable air conditioner heatwave cooling",
+    "categorySlug": "home-trends",
     "angle": "Issue-to-product bridge for heatwave cooling decisions.",
     "introBridge": "Explain the heatwave issue briefly, then move into the practical decision: real compressor ACs, local fit, return route, and products to avoid.",
     "requiredSections": [
@@ -879,6 +876,7 @@
     "h1": "Europe heatwave portable AC guide 2026: real cooling picks and risky mini coolers",
     "summary": "Heatwave searches are rising, but the buying problem is choosing a real room-cooling product instead of a weak mini cooler or wrong-voltage import.",
     "productCategory": "portable air conditioner heatwave cooling",
+    "categorySlug": "home-trends",
     "indexStatus": "noindex",
     "publishStatus": "draft",
     "contentBlocks": [
@@ -902,7 +900,7 @@
   },
   "quality_gate_report": {
     "status": "PASS",
-    "canPublish": true,
+    "contentGatePass": true,
     "sourceStatus": "PASS",
     "next_step": "manual_publish_review",
     "blockers": []

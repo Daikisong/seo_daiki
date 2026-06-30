@@ -189,13 +189,19 @@ Reading from Germany? See the German guide.
 Good:
 
 ```html
-<link rel="canonical" href="https://example.com/de-de/trends/mobile-klimaanlage-hitzewelle-2026/" />
+<link
+  rel="canonical"
+  href="https://example.com/de-de/trends/mobile-klimaanlage-hitzewelle-2026/"
+/>
 ```
 
 Bad:
 
 ```html
-<link rel="canonical" href="https://example.com/en/trends/portable-ac-heatwave-2026/" />
+<link
+  rel="canonical"
+  href="https://example.com/en/trends/portable-ac-heatwave-2026/"
+/>
 ```
 
 독일어 페이지가 영어 페이지를 canonical로 가리키면 독일어 페이지의 독립 색인 신호가 약해질 수 있다.
@@ -250,11 +256,31 @@ BTU, SACC, dual-hose, return policy, large-room cooling 중심
 예시:
 
 ```html
-<link rel="alternate" hreflang="en-us" href="https://example.com/en-us/trends/portable-ac-heatwave-2026/" />
-<link rel="alternate" hreflang="en-gb" href="https://example.com/en-gb/trends/portable-ac-heatwave-2026/" />
-<link rel="alternate" hreflang="de-de" href="https://example.com/de-de/trends/mobile-klimaanlage-hitzewelle-2026/" />
-<link rel="alternate" hreflang="fr-fr" href="https://example.com/fr-fr/trends/climatiseur-mobile-canicule-2026/" />
-<link rel="alternate" hreflang="x-default" href="https://example.com/en/trends/portable-ac-heatwave-2026/" />
+<link
+  rel="alternate"
+  hreflang="en-us"
+  href="https://example.com/en-us/trends/portable-ac-heatwave-2026/"
+/>
+<link
+  rel="alternate"
+  hreflang="en-gb"
+  href="https://example.com/en-gb/trends/portable-ac-heatwave-2026/"
+/>
+<link
+  rel="alternate"
+  hreflang="de-de"
+  href="https://example.com/de-de/trends/mobile-klimaanlage-hitzewelle-2026/"
+/>
+<link
+  rel="alternate"
+  hreflang="fr-fr"
+  href="https://example.com/fr-fr/trends/climatiseur-mobile-canicule-2026/"
+/>
+<link
+  rel="alternate"
+  hreflang="x-default"
+  href="https://example.com/en/trends/portable-ac-heatwave-2026/"
+/>
 ```
 
 #### hreflang 제외 예시
@@ -550,15 +576,15 @@ Hard gates still decide publishability.
 
 LLM selects one primary page type:
 
-| Code | Page Type | Use Case |
-|---|---|---|
-| A | Trend explainer + Top 10 practical picks | Trend naturally maps to products |
-| B | Buying guide + comparison table | User needs decision criteria first |
-| C | Deal / sale page | Event-driven shopping such as Prime Day |
-| D | Fake/real or risk guide | Counterfeit, compatibility, voltage, safety, shipping risk |
-| E | Accessory checklist | Main product is too risky/heavy, accessories are monetizable |
-| F | Existing money page update | Trend should update an existing page instead of creating a new one |
-| G | Research backlog | Trend exists but buyer problem/product evidence is not ready |
+| Code | Page Type                                | Use Case                                                           |
+| ---- | ---------------------------------------- | ------------------------------------------------------------------ |
+| A    | Trend explainer + Top 10 practical picks | Trend naturally maps to products                                   |
+| B    | Buying guide + comparison table          | User needs decision criteria first                                 |
+| C    | Deal / sale page                         | Event-driven shopping such as Prime Day                            |
+| D    | Fake/real or risk guide                  | Counterfeit, compatibility, voltage, safety, shipping risk         |
+| E    | Accessory checklist                      | Main product is too risky/heavy, accessories are monetizable       |
+| F    | Existing money page update               | Trend should update an existing page instead of creating a new one |
+| G    | Research backlog                         | Trend exists but buyer problem/product evidence is not ready       |
 
 Do not force every trend into “Top 10 products.”
 
@@ -651,12 +677,12 @@ Schema:
 
 Evidence levels:
 
-| Level | Meaning | Publish Use |
-|---|---|---|
-| A | Direct use / direct photos / usage period available | Strong recommendation possible |
-| B | Review-backed + official specs + marketplace data | Normal recommendation possible |
-| C | Specs-first comparison only | Conditional mention, lower confidence |
-| D | Insufficient evidence | Do not recommend |
+| Level | Meaning                                             | Publish Use                           |
+| ----- | --------------------------------------------------- | ------------------------------------- |
+| A     | Direct use / direct photos / usage period available | Strong recommendation possible        |
+| B     | Review-backed + official specs + marketplace data   | Normal recommendation possible        |
+| C     | Specs-first comparison only                         | Conditional mention, lower confidence |
+| D     | Insufficient evidence                               | Do not recommend                      |
 
 ### 6.11 Article Strategy
 
@@ -792,11 +818,13 @@ Recommended UI structure:
 **Key check:** ...
 
 **Repeated complaints to verify before buying**
+
 - ...
 - ...
 - ...
 
 **Source stack**
+
 - Official spec: ...
 - Marketplace: ...
 - Review signal: ...
@@ -1143,7 +1171,12 @@ Product click tracking must not make the purchase link fragile.
 Good:
 
 ```html
-<a href="https://merchant.example/product" rel="sponsored nofollow" data-click-id="...">View price</a>
+<a
+  href="https://merchant.example/product"
+  rel="sponsored nofollow"
+  data-click-id="..."
+  >View price</a
+>
 ```
 
 Analytics may run separately.

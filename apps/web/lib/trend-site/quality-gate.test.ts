@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
+import { validateQualityGates } from "./content/content-validation";
 import { isIndexableLocale } from "./locales";
 import { runArticleQualityGate } from "./quality-gate";
 import type { Article, Product } from "./types";
@@ -117,6 +118,74 @@ test("blocks internal redirect and API product CTA URLs", () => {
     ],
     ["FRAGILE_PRODUCT_HREF"],
   );
+});
+
+test("production mode blocks fixture URLs and placeholder images", () => {
+  const result = runArticleQualityGate(article(), products(10), {
+    allArticles: [article()],
+    siteOrigin: SITE_ORIGIN,
+    mode: "production",
+  });
+  const resultCodes = codes(result);
+  assert.equal(resultCodes.includes("PRODUCTION_PLACEHOLDER_URL"), true);
+  assert.equal(resultCodes.includes("PRODUCTION_PLACEHOLDER_IMAGE"), true);
+});
+
+test("production content validation rejects fixture domains", () => {
+  assert.throws(
+    () =>
+      validateQualityGates([article()], products(10), {
+        mode: "production",
+      }),
+    /PRODUCTION_PLACEHOLDER/,
+  );
+});
+
+test("production mode blocks unapproved example subdomain images", () => {
+  const temporaryImageUrl =
+    "https://cdn.example.com/manual/approved-temp-product.jpg";
+  const result = runArticleQualityGate(
+    article({ imageUrl: temporaryImageUrl }),
+    products(10, {
+      merchantUrl: "https://www.amazon.com/dp/B000000001",
+      merchantUrlKind: "merchant-product-page",
+      sourceUrl: "https://www.midea.com/uk/air-treatment/product-specs",
+      reviewSourceUrl: "https://www.trustedreviews.com/reviews/portable-ac",
+      imageUrl: temporaryImageUrl,
+    }),
+    {
+      allArticles: [article({ imageUrl: temporaryImageUrl })],
+      siteOrigin: SITE_ORIGIN,
+      mode: "production",
+    },
+  );
+
+  assert.equal(codes(result).includes("PRODUCTION_PLACEHOLDER_IMAGE"), true);
+});
+
+test("production mode permits explicitly approved temporary images for manual static articles", () => {
+  const temporaryImageUrl =
+    "https://cdn.example.com/manual/approved-temp-product.jpg";
+  const result = runArticleQualityGate(
+    article({ imageUrl: temporaryImageUrl }),
+    products(10, {
+      merchantUrl: "https://www.amazon.com/dp/B000000001",
+      merchantUrlKind: "merchant-product-page",
+      sourceUrl: "https://www.midea.com/uk/air-treatment/product-specs",
+      reviewSourceUrl: "https://www.trustedreviews.com/reviews/portable-ac",
+      imageUrl: temporaryImageUrl,
+    }),
+    {
+      allArticles: [article({ imageUrl: temporaryImageUrl })],
+      siteOrigin: SITE_ORIGIN,
+      mode: "production",
+      approvedTemporaryImageUrls: [temporaryImageUrl],
+    },
+  );
+
+  const resultCodes = codes(result);
+  assert.equal(resultCodes.includes("PRODUCTION_PLACEHOLDER_URL"), false);
+  assert.equal(resultCodes.includes("PRODUCTION_PLACEHOLDER_IMAGE"), false);
 });
 
 test("requires marketplace search URLs to be labeled as search routes", () => {
@@ -667,8 +736,8 @@ function article(overrides: Partial<Article> = {}): Article {
     locale: "en",
     slug: "test-guide",
     type: "trend",
-    title: "Heatwave portable AC buying guide",
-    h1: "Heatwave portable AC buying guide",
+    title: "Heatwave portable AC brief",
+    h1: "Heatwave portable AC brief",
     metaDescription:
       "Compare portable AC price, returns, warranty, voltage, and buyer complaints before buying.",
     summary:
@@ -677,7 +746,7 @@ function article(overrides: Partial<Article> = {}): Article {
       "Outbound product buttons may be paid affiliate links.",
     imageUrl: "https://merchant.example/image.jpg",
     productCategory: "test-category",
-    contentMdx: "portable ac heatwave buying guide returns warranty price",
+    contentMdx: "portable ac heatwave brief returns warranty price",
     trendSignalBox: {
       heading: "Why this matters now",
       body: "Heatwave demand can make weak listings look more attractive than they are.",

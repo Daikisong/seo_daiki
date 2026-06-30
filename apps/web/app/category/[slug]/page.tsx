@@ -2,13 +2,18 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
-import { TrendArchive, filterArchiveArticles } from "@/components/layout/TrendArchive";
+import {
+  TrendArchive,
+  filterArchiveArticles,
+} from "@/components/layout/TrendArchive";
 import { getIndexedArticles } from "@/lib/trend-site/data";
 import {
   sortTrendArticles,
+  trendContentUnitPlural,
   trendCategoryBySlug,
+  trendSiteName,
   visibleTrendCategories,
-  visibleTrendArticles
+  visibleTrendArticles,
 } from "@/lib/trend-site/categories";
 import { requestAbsoluteUrl } from "@/lib/trend-site/request-url";
 
@@ -21,22 +26,27 @@ export function generateStaticParams() {
   return visibleTrendCategories.map((category) => ({ slug: category.slug }));
 }
 
-export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: CategoryPageProps): Promise<Metadata> {
   const { slug } = await params;
   const category = trendCategoryBySlug(slug);
   if (!category || !category.isPublic) {
     return {};
   }
   return {
-    title: `${category.label} | TREND - Jacob`,
-    description: `${category.label} from TREND - Jacob: marketplace buying guides across AliExpress, Temu, Amazon, iHerb, and other fast-moving shops.`,
+    title: `${category.label} | ${trendSiteName}`,
+    description: `${category.label} from ${trendSiteName}: ${trendContentUnitPlural.toLowerCase()} for fast-moving marketplace trends.`,
     alternates: {
-      canonical: await requestAbsoluteUrl(category.href)
-    }
+      canonical: await requestAbsoluteUrl(category.href),
+    },
   };
 }
 
-export default async function CategoryPage({ params, searchParams }: CategoryPageProps) {
+export default async function CategoryPage({
+  params,
+  searchParams,
+}: CategoryPageProps) {
   const { slug } = await params;
   const category = trendCategoryBySlug(slug);
   if (!category || !category.isPublic) {
@@ -45,9 +55,17 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
 
   const resolvedSearchParams = await searchParams;
   const searchQuery = firstParam(resolvedSearchParams?.s).trim();
-  const articles = visibleTrendArticles(await getIndexedArticles()).sort(sortTrendArticles);
-  const filteredArticles = filterArchiveArticles(articles, searchQuery, category);
-  const archiveTitle = searchQuery ? `Search results for "${searchQuery}"` : category.label;
+  const articles = visibleTrendArticles(await getIndexedArticles()).sort(
+    sortTrendArticles,
+  );
+  const filteredArticles = filterArchiveArticles(
+    articles,
+    searchQuery,
+    category,
+  );
+  const archiveTitle = searchQuery
+    ? `Search results for "${searchQuery}"`
+    : category.label;
 
   return (
     <>
@@ -65,5 +83,5 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
 }
 
 function firstParam(value: string | string[] | undefined) {
-  return Array.isArray(value) ? value[0] ?? "" : value ?? "";
+  return Array.isArray(value) ? (value[0] ?? "") : (value ?? "");
 }

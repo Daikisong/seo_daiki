@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
+import { trendSiteName } from "@/lib/trend-site/categories";
 import { requestAbsoluteUrl } from "@/lib/trend-site/request-url";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Terms of Use | TREND - Jacob",
-    description: "Terms of use for TREND - Jacob.",
+    title: `Terms of Use | ${trendSiteName}`,
+    description: `Terms of use for ${trendSiteName}.`,
     alternates: {
-      canonical: await requestAbsoluteUrl("/terms-of-use/")
-    }
+      canonical: await requestAbsoluteUrl("/terms-of-use/"),
+    },
   };
 }
 
@@ -23,16 +24,19 @@ export default function TermsOfUsePage() {
         </h1>
         <div className="mt-[25px] space-y-[25px] text-[15px] leading-[21px] text-neutral-800 md:text-base md:leading-6">
           <p>
-            TREND - Jacob publishes informational buying guides. Product prices, stock, shipping terms, warranty
-            routes, return windows, and marketplace listings can change after publication.
+            {trendSiteName} publishes informational buyer notes and briefs.
+            Product prices, stock, shipping terms, warranty routes, return
+            windows, and marketplace listings can change after publication.
           </p>
           <p>
-            Readers should verify the exact product variant, seller, final shipped price, local compatibility, warranty
-            territory, and return path before buying.
+            Readers should verify the exact product variant, seller, final
+            shipped price, local compatibility, warranty territory, and return
+            path before buying.
           </p>
           <p>
-            TREND - Jacob may link to third-party marketplaces. Purchases, refunds, delivery issues, and account
-            questions are handled by the merchant under that merchant&apos;s own terms.
+            {trendSiteName} may link to third-party marketplaces. Purchases,
+            refunds, delivery issues, and account questions are handled by the
+            merchant under that merchant&apos;s own terms.
           </p>
         </div>
       </main>

@@ -1,10 +1,10 @@
-# TREND - Jacob Multilingual SEO Operating Model
+# TrendBrief Multilingual SEO Operating Model
 
 Date: 2026-06-30
 
 ## Position
 
-TREND - Jacob should not become a site that translates one English affiliate
+TrendBrief should not become a site that translates one English affiliate
 post into 18 languages. The operating model is a country-triggered buyer
 decision site:
 
@@ -112,13 +112,19 @@ Each localized article canonical points to itself.
 Good:
 
 ```html
-<link rel="canonical" href="https://example.com/de-de/trends/hitzewelle-mobile-klimaanlage-2026/" />
+<link
+  rel="canonical"
+  href="https://example.com/de-de/trends/hitzewelle-mobile-klimaanlage-2026/"
+/>
 ```
 
 Bad:
 
 ```html
-<link rel="canonical" href="https://example.com/en/trends/europe-heatwave-portable-ac-trend-2026/" />
+<link
+  rel="canonical"
+  href="https://example.com/en/trends/europe-heatwave-portable-ac-trend-2026/"
+/>
 ```
 
 Do not canonical a localized page to English unless the localized page should

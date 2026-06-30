@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "canPublish": true,
+  "contentGatePass": true,
   "sourceStatus": "PASS",
   "next_step": "manual_publish_review",
   "blockers": []

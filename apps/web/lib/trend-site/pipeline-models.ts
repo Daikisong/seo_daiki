@@ -138,6 +138,7 @@ export type ArticleStrategy = {
   title: string;
   slug: string;
   productCategory: string;
+  categorySlug?: string;
   angle: string;
   introBridge: string;
   requiredSections: string[];
@@ -153,6 +154,7 @@ export type ArticleDraft = {
   h1: string;
   summary: string;
   productCategory: string;
+  categorySlug?: string;
   indexStatus: Article["indexStatus"];
   publishStatus: "draft";
   contentBlocks: Array<{
@@ -161,6 +163,9 @@ export type ArticleDraft = {
       | "quick-answer"
       | "top-picks"
       | "comparison"
+      | "category-clarification"
+      | "alternative-comparison"
+      | "review-warning"
       | "checklist"
       | "faq";
     heading: string;
@@ -179,7 +184,7 @@ export type QualityGateReportStatus = "PASS" | "REPAIR_REQUIRED" | "BLOCKED";
 
 export type PipelineQualityGateResult = {
   status: QualityGateReportStatus;
-  canPublish: boolean;
+  contentGatePass: boolean;
   sourceStatus: string;
   next_step:
     | "manual_publish_review"

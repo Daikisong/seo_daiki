@@ -14,7 +14,7 @@ export const targetLocaleConfigs = [
     htmlLang: "en",
     languageName: "English",
     marketName: "Global English",
-    status: "indexable"
+    status: "indexable",
   },
   {
     code: "en-us",
@@ -22,7 +22,7 @@ export const targetLocaleConfigs = [
     htmlLang: "en-US",
     languageName: "English",
     marketName: "United States",
-    status: "planned"
+    status: "planned",
   },
   {
     code: "en-gb",
@@ -30,7 +30,7 @@ export const targetLocaleConfigs = [
     htmlLang: "en-GB",
     languageName: "English",
     marketName: "United Kingdom",
-    status: "planned"
+    status: "planned",
   },
   {
     code: "de-de",
@@ -38,7 +38,7 @@ export const targetLocaleConfigs = [
     htmlLang: "de-DE",
     languageName: "Deutsch",
     marketName: "Germany",
-    status: "planned"
+    status: "planned",
   },
   {
     code: "fr-fr",
@@ -46,7 +46,7 @@ export const targetLocaleConfigs = [
     htmlLang: "fr-FR",
     languageName: "Français",
     marketName: "France",
-    status: "planned"
+    status: "planned",
   },
   {
     code: "it-it",
@@ -54,7 +54,7 @@ export const targetLocaleConfigs = [
     htmlLang: "it-IT",
     languageName: "Italiano",
     marketName: "Italy",
-    status: "planned"
+    status: "planned",
   },
   {
     code: "es-es",
@@ -62,7 +62,7 @@ export const targetLocaleConfigs = [
     htmlLang: "es-ES",
     languageName: "Español",
     marketName: "Spain",
-    status: "planned"
+    status: "planned",
   },
   {
     code: "ko-kr",
@@ -70,7 +70,7 @@ export const targetLocaleConfigs = [
     htmlLang: "ko-KR",
     languageName: "한국어",
     marketName: "South Korea",
-    status: "planned"
+    status: "planned",
   },
   {
     code: "ja-jp",
@@ -78,7 +78,7 @@ export const targetLocaleConfigs = [
     htmlLang: "ja-JP",
     languageName: "日本語",
     marketName: "Japan",
-    status: "planned"
+    status: "planned",
   },
   {
     code: "zh-tw",
@@ -86,7 +86,7 @@ export const targetLocaleConfigs = [
     htmlLang: "zh-TW",
     languageName: "繁體中文",
     marketName: "Taiwan",
-    status: "planned"
+    status: "planned",
   },
   {
     code: "zh-hk",
@@ -94,7 +94,7 @@ export const targetLocaleConfigs = [
     htmlLang: "zh-HK",
     languageName: "繁體中文",
     marketName: "Hong Kong",
-    status: "planned"
+    status: "planned",
   },
   {
     code: "pt-br",
@@ -102,7 +102,7 @@ export const targetLocaleConfigs = [
     htmlLang: "pt-BR",
     languageName: "Português",
     marketName: "Brazil",
-    status: "planned"
+    status: "planned",
   },
   {
     code: "nl-nl",
@@ -110,7 +110,7 @@ export const targetLocaleConfigs = [
     htmlLang: "nl-NL",
     languageName: "Nederlands",
     marketName: "Netherlands",
-    status: "planned"
+    status: "planned",
   },
   {
     code: "pl-pl",
@@ -118,7 +118,7 @@ export const targetLocaleConfigs = [
     htmlLang: "pl-PL",
     languageName: "Polski",
     marketName: "Poland",
-    status: "planned"
+    status: "planned",
   },
   {
     code: "sv-se",
@@ -126,7 +126,7 @@ export const targetLocaleConfigs = [
     htmlLang: "sv-SE",
     languageName: "Svenska",
     marketName: "Sweden",
-    status: "planned"
+    status: "planned",
   },
   {
     code: "tr-tr",
@@ -134,7 +134,7 @@ export const targetLocaleConfigs = [
     htmlLang: "tr-TR",
     languageName: "Türkçe",
     marketName: "Turkey",
-    status: "planned"
+    status: "planned",
   },
   {
     code: "th-th",
@@ -142,7 +142,7 @@ export const targetLocaleConfigs = [
     htmlLang: "th-TH",
     languageName: "ไทย",
     marketName: "Thailand",
-    status: "planned"
+    status: "planned",
   },
   {
     code: "vi-vn",
@@ -150,8 +150,8 @@ export const targetLocaleConfigs = [
     htmlLang: "vi-VN",
     languageName: "Tiếng Việt",
     marketName: "Vietnam",
-    status: "planned"
-  }
+    status: "planned",
+  },
 ] as const;
 
 export type Locale = (typeof targetLocaleConfigs)[number]["code"];
@@ -159,7 +159,9 @@ export type LocaleStatus = (typeof targetLocaleConfigs)[number]["status"];
 
 export const defaultLocale: Locale = "en";
 
-const localeConfigByCode = new Map(targetLocaleConfigs.map((config) => [config.code, config]));
+const localeConfigByCode = new Map(
+  targetLocaleConfigs.map((config) => [config.code, config]),
+);
 
 export function isSupportedLocale(value: string): value is Locale {
   return localeConfigByCode.has(value as Locale);
@@ -178,7 +180,9 @@ export function isIndexableLocale(locale: Locale) {
 }
 
 export function indexableLocaleCodes() {
-  return targetLocaleConfigs.filter((config) => config.status === "indexable").map((config) => config.code);
+  return targetLocaleConfigs
+    .filter((config) => config.status === "indexable")
+    .map((config) => config.code);
 }
 
 export function hreflangForLocale(locale: Locale) {
@@ -187,6 +191,8 @@ export function hreflangForLocale(locale: Locale) {
 
 export function assertSupportedLocale(locale: string, fieldName: string) {
   if (!isSupportedLocale(locale)) {
-    throw new Error(`${fieldName} uses unsupported locale "${locale}". Add it to targetLocaleConfigs first.`);
+    throw new Error(
+      `${fieldName} uses unsupported locale "${locale}". Add it to targetLocaleConfigs first.`,
+    );
   }
 }

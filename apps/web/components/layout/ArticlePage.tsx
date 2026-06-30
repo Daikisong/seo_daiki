@@ -2,6 +2,11 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import type { Article, Product } from "@/lib/trend-site/types";
 import { absoluteUrl, articlePath } from "@/lib/trend-site/routes";
 import { localeToHtmlLang } from "@/lib/trend-site/locales";
+import {
+  trendAuthorName,
+  trendContentUnitName,
+  trendSiteName,
+} from "@/lib/trend-site/categories";
 import { ArticleTypeContent } from "./ArticleTypeContent";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
@@ -42,8 +47,8 @@ export function ArticlePage({
             </h1>
             <div className="mt-[15px] flex flex-wrap items-center gap-x-4 gap-y-2 text-[12.75px] leading-[21.675px] text-neutral-600 md:mt-5 md:text-[13.6px] md:leading-[23.12px]">
               <span>Updated {article.lastUpdated}</span>
-              <span>By Jacob</span>
-              <span>Buyer decision guide</span>
+              <span>By {trendAuthorName}</span>
+              <span>{trendContentUnitName}</span>
             </div>
             <p className="mt-[25px] text-[15px] leading-[27px] text-neutral-700 md:text-base md:leading-[28.8px]">
               {article.summary}
@@ -75,10 +80,10 @@ export function articleJsonLdWithUrls(
     inLanguage: localeToHtmlLang(article.locale),
     dateModified: article.lastUpdated,
     datePublished: article.lastUpdated,
-    author: { "@type": "Person", name: "Jacob" },
+    author: { "@type": "Person", name: trendAuthorName },
     publisher: {
       "@type": "Organization",
-      name: "TREND - Jacob",
+      name: trendSiteName,
       url: publisherUrl,
     },
     mainEntityOfPage: url,

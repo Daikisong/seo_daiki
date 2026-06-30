@@ -12,3 +12,4 @@ __pycache__
 .pytest_cache
 .artifacts
 .playwright-libs
+output/pipeline-runs/

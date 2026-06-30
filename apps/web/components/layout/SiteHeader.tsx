@@ -3,19 +3,26 @@
 import Link from "next/link";
 import { Search } from "lucide-react";
 import { useState } from "react";
-import { visibleTrendCategories } from "@/lib/trend-site/categories";
+import {
+  trendContentUnitPlural,
+  trendSiteName,
+  visibleTrendCategories,
+} from "@/lib/trend-site/categories";
 
 const navItems = [
   { label: "Home", href: "/" },
-  ...visibleTrendCategories.map((category) => ({ label: category.label, href: category.href })),
+  ...visibleTrendCategories.map((category) => ({
+    label: category.label,
+    href: category.href,
+  })),
   { label: "Method", href: "/methodology/" },
-  { label: "About Jacob", href: "/about-me/" }
+  { label: "About Jacob", href: "/about-me/" },
 ] as const;
 
 export function SiteHeader({
   currentHref,
   locale: _locale,
-  searchQuery = ""
+  searchQuery = "",
 }: {
   locale?: string;
   currentHref?: string;
@@ -47,7 +54,9 @@ export function SiteHeader({
             aria-hidden={!menuOpen}
             aria-label="Mobile navigation"
             className={`-mx-5 overflow-hidden bg-[#5d84b4] text-white transition-[max-height,opacity,margin] duration-300 ease-out motion-reduce:transition-none ${
-              menuOpen ? "mt-6 max-h-[560px] opacity-100" : "mt-0 max-h-0 opacity-0"
+              menuOpen
+                ? "mt-6 max-h-[560px] opacity-100"
+                : "mt-0 max-h-0 opacity-0"
             }`}
             id="site-mobile-menu"
           >
@@ -75,12 +84,17 @@ export function SiteHeader({
           <LogoMark />
         </div>
       </div>
-      <nav aria-label="Primary navigation" className="mx-auto hidden max-w-[1170px] bg-[#5d84b4] px-10 text-white xl:block">
+      <nav
+        aria-label="Primary navigation"
+        className="mx-auto hidden max-w-[1170px] bg-[#5d84b4] px-10 text-white xl:block"
+      >
         <div className="flex flex-wrap">
           {navItems.map((item) => (
             <Link
               className={`focus-ring block px-5 py-5 text-base hover:bg-[#7899c0] ${
-                isActiveNavItem(item.href, currentHref ?? "/") ? "bg-[#7899c0]" : ""
+                isActiveNavItem(item.href, currentHref ?? "/")
+                  ? "bg-[#7899c0]"
+                  : ""
               }`}
               href={item.href}
               key={item.href}
@@ -105,7 +119,7 @@ function HeaderSearch({ searchQuery }: { searchQuery: string }) {
   return (
     <form action="/" className="mt-4 flex" role="search">
       <label className="sr-only" htmlFor="mobile-header-search">
-        Search posts
+        Search {trendContentUnitPlural.toLowerCase()}
       </label>
       <input
         className="h-10 min-w-0 flex-1 rounded-[3px] border border-[#c5c8cc] px-3 pr-11 text-[16px] text-neutral-950 outline-none focus:border-[#7d9bc0]"
@@ -128,14 +142,17 @@ function HeaderSearch({ searchQuery }: { searchQuery: string }) {
 
 function LogoMark() {
   return (
-    <Link className="focus-ring inline-flex min-w-0 items-center gap-2 rounded-sm min-[360px]:gap-3 sm:gap-4" href="/">
+    <Link
+      className="focus-ring inline-flex min-w-0 items-center gap-2 rounded-sm min-[360px]:gap-3 sm:gap-4"
+      href="/"
+    >
       <span className="relative h-[58px] w-[58px] shrink-0 overflow-hidden rounded-full border border-[#cdd5df] bg-[#eef3f7] min-[360px]:h-[76px] min-[360px]:w-[76px] sm:h-[92px] sm:w-[92px]">
         <span className="absolute left-1/2 top-[18%] h-[28%] w-[48%] -translate-x-1/2 rounded-t-full bg-[#24384a]" />
         <span className="absolute left-1/2 top-[30%] h-[36%] w-[36%] -translate-x-1/2 rounded-full bg-[#f0c7aa]" />
         <span className="absolute bottom-[7%] left-1/2 h-[36%] w-[66%] -translate-x-1/2 rounded-t-full bg-[#7f9ebd]" />
       </span>
       <span className="whitespace-nowrap text-[22px] font-black leading-none tracking-normal text-[#103a59] min-[360px]:text-[28px] sm:text-[34px]">
-        TREND<span className="hidden min-[360px]:inline"> - Jacob</span>
+        {trendSiteName}
       </span>
     </Link>
   );

@@ -1,9 +1,20 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { fixtureProductCandidates, fixtureTrendCandidate } from "./pipeline-fixture";
-import { buildDraftHreflangAlternates, localeDuplicateRepairTasks, runTrendToAffiliatePipelineDryRun } from "./pipeline-runner";
-import type { ArticleDraft, ProductCandidate, TrendCandidate } from "./pipeline-models";
+import {
+  fixtureProductCandidates,
+  fixtureTrendCandidate,
+} from "./pipeline-fixture";
+import {
+  buildDraftHreflangAlternates,
+  localeDuplicateRepairTasks,
+  runTrendToAffiliatePipelineDryRun,
+} from "./pipeline-runner";
+import type {
+  ArticleDraft,
+  ProductCandidate,
+  TrendCandidate,
+} from "./pipeline-models";
 
 test("pipeline missing local fit returns repair task", () => {
   const productCandidates = cloneProducts();
@@ -11,7 +22,10 @@ test("pipeline missing local fit returns repair task", () => {
 
   const artifacts = runTrendToAffiliatePipelineDryRun({ productCandidates });
 
-  assert.equal(hasRepairTask(artifacts.repair_tasks, "MISSING_LOCAL_FIT"), true);
+  assert.equal(
+    hasRepairTask(artifacts.repair_tasks, "MISSING_LOCAL_FIT"),
+    true,
+  );
   assert.equal(artifacts.publish_candidate.canPublish, false);
 });
 
@@ -23,12 +37,15 @@ test("pipeline missing evidence returns repair task", () => {
     officialSpecSource: undefined,
     marketplaceSource: undefined,
     priceCheckedAt: undefined,
-    reviewComplaintSignal: undefined
+    reviewComplaintSignal: undefined,
   };
 
   const artifacts = runTrendToAffiliatePipelineDryRun({ productCandidates });
 
-  assert.equal(hasRepairTask(artifacts.repair_tasks, "MISSING_PRODUCT_EVIDENCE"), true);
+  assert.equal(
+    hasRepairTask(artifacts.repair_tasks, "MISSING_PRODUCT_EVIDENCE"),
+    true,
+  );
   assert.equal(artifacts.publish_candidate.canPublish, false);
 });
 
@@ -36,13 +53,18 @@ test("pipeline internal affiliate redirect blocks publish", () => {
   const productCandidates = cloneProducts();
   productCandidates[0] = {
     ...productCandidates[0],
-    merchantUrl: "https://trend-jacob.example/api/affiliate-click/fixture-portable-ac-1"
+    merchantUrl:
+      "https://trend-jacob.example/api/affiliate-click/fixture-portable-ac-1",
   };
 
   const artifacts = runTrendToAffiliatePipelineDryRun({ productCandidates });
 
   assert.equal(artifacts.quality_gate_report.status, "BLOCKED");
-  assert.equal(hasRepairTask(artifacts.repair_tasks, "FRAGILE_PRODUCT_HREF"), true);
+  assert.equal(artifacts.quality_gate_report.contentGatePass, false);
+  assert.equal(
+    hasRepairTask(artifacts.repair_tasks, "FRAGILE_PRODUCT_HREF"),
+    true,
+  );
   assert.equal(artifacts.publish_candidate.canPublish, false);
 });
 
@@ -52,7 +74,7 @@ test("pipeline planned locale stays noindex and out of sitemap", () => {
     locale: "de-de",
     market: "Germany",
     seedKeyword: "Hitzewelle mobile Klimaanlage",
-    trendTitle: "Germany heatwave mobile AC buying problem"
+    trendTitle: "Germany heatwave mobile AC buying problem",
   };
 
   const artifacts = runTrendToAffiliatePipelineDryRun({ trendCandidate });
@@ -66,8 +88,11 @@ test("pipeline planned locale stays noindex and out of sitemap", () => {
 test("pipeline dry-run never auto-publishes or writes sitemap candidates", () => {
   const artifacts = runTrendToAffiliatePipelineDryRun();
 
+  assert.equal(artifacts.article_strategy.categorySlug, "home-trends");
+  assert.equal(artifacts.article_draft.categorySlug, "home-trends");
   assert.equal(artifacts.article_draft.publishStatus, "draft");
   assert.equal(artifacts.article_draft.indexStatus, "noindex");
+  assert.equal(artifacts.quality_gate_report.contentGatePass, true);
   assert.equal(artifacts.publish_candidate.canPublish, false);
   assert.equal(artifacts.publish_candidate.manualReviewReady, true);
   assert.equal(artifacts.publish_candidate.manualOnly, true);
@@ -85,14 +110,14 @@ test("pipeline hreflang only generated for true localized alternatives", () => {
       clusterId: "heatwave",
       coreTrendId: "heatwave-2026",
       buyerProblemId: "portable-ac",
-      xDefault: true
-    }
+      xDefault: true,
+    },
   });
   const looseRelated = draft({
     id: "draft-en-related",
     locale: "en",
     slug: "summer-fan-guide",
-    indexStatus: "index"
+    indexStatus: "index",
   });
   const plannedTrueAlternative = draft({
     id: "draft-de",
@@ -102,17 +127,31 @@ test("pipeline hreflang only generated for true localized alternatives", () => {
     localization: {
       clusterId: "heatwave",
       coreTrendId: "heatwave-2026",
-      buyerProblemId: "portable-ac"
-    }
+      buyerProblemId: "portable-ac",
+    },
   });
 
-  assert.deepEqual(buildDraftHreflangAlternates(base, [base, looseRelated]), {});
-  assert.deepEqual(buildDraftHreflangAlternates(base, [base, plannedTrueAlternative]), {});
+  assert.deepEqual(
+    buildDraftHreflangAlternates(base, [base, looseRelated]),
+    {},
+  );
+  assert.deepEqual(
+    buildDraftHreflangAlternates(base, [base, plannedTrueAlternative]),
+    {},
+  );
 });
 
 test("pipeline near-duplicate locale pages require repair", () => {
-  const first = draft({ id: "draft-en", locale: "en", slug: "heatwave-guide-en" });
-  const second = draft({ id: "draft-en-us", locale: "en-us", slug: "heatwave-guide-us" });
+  const first = draft({
+    id: "draft-en",
+    locale: "en",
+    slug: "heatwave-guide-en",
+  });
+  const second = draft({
+    id: "draft-en-us",
+    locale: "en-us",
+    slug: "heatwave-guide-us",
+  });
 
   const tasks = localeDuplicateRepairTasks([first, second]);
 
@@ -123,18 +162,28 @@ test("pipeline direct-use claim without direct-use evidence blocks publish", () 
   const productCandidates = cloneProducts();
   productCandidates[0] = {
     ...productCandidates[0],
-    bestFor: "I personally tested this unit for travelers who need fast cooling."
+    bestFor:
+      "I personally tested this unit for travelers who need fast cooling.",
   };
 
   const artifacts = runTrendToAffiliatePipelineDryRun({ productCandidates });
 
   assert.equal(artifacts.quality_gate_report.status, "BLOCKED");
-  assert.equal(hasRepairTask(artifacts.repair_tasks, "UNSUPPORTED_DIRECT_USE_PRODUCT_CLAIM"), true);
+  assert.equal(artifacts.quality_gate_report.contentGatePass, false);
+  assert.equal(
+    hasRepairTask(
+      artifacts.repair_tasks,
+      "UNSUPPORTED_DIRECT_USE_PRODUCT_CLAIM",
+    ),
+    true,
+  );
   assert.equal(artifacts.publish_candidate.canPublish, false);
 });
 
 function cloneProducts(): ProductCandidate[] {
-  return JSON.parse(JSON.stringify(fixtureProductCandidates)) as ProductCandidate[];
+  return JSON.parse(
+    JSON.stringify(fixtureProductCandidates),
+  ) as ProductCandidate[];
 }
 
 function hasRepairTask(tasks: Array<{ code: string }>, code: string) {
@@ -147,8 +196,8 @@ function draft(overrides: Partial<ArticleDraft> = {}): ArticleDraft {
     strategyId: "strategy",
     locale: "en",
     slug: "draft",
-    title: "Heatwave portable AC buying guide",
-    h1: "Heatwave portable AC buying guide",
+    title: "Heatwave portable AC brief",
+    h1: "Heatwave portable AC brief",
     summary:
       "Heatwave demand makes shoppers compare real compressor ACs, mini coolers, delivery timing, voltage, return routes, and product fit.",
     productCategory: "portable air conditioner heatwave cooling",
@@ -158,15 +207,15 @@ function draft(overrides: Partial<ArticleDraft> = {}): ArticleDraft {
       {
         role: "intro",
         heading: "What is moving now",
-        body: "Heatwave demand makes shoppers compare real compressor ACs, mini coolers, delivery timing, voltage, return routes, and product fit."
+        body: "Heatwave demand makes shoppers compare real compressor ACs, mini coolers, delivery timing, voltage, return routes, and product fit.",
       },
       {
         role: "quick-answer",
         heading: "Quick answer",
-        body: "Buyers should compare real compressor ACs, local seller routes, voltage, window fit, and returns before clicking price buttons."
-      }
+        body: "Buyers should compare real compressor ACs, local seller routes, voltage, window fit, and returns before clicking price buttons.",
+      },
     ],
     affiliateLinks: [],
-    ...overrides
+    ...overrides,
   };
 }

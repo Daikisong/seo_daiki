@@ -73,6 +73,7 @@ export function runTrendToAffiliatePipelineDryRun(
   const qualityGate = runArticleQualityGate(qualityGateInput, products, {
     allArticles: [qualityGateInput],
     siteOrigin: "https://trend-jacob.example",
+    mode: "dry-run",
   });
   const qualityGateReport = buildQualityGateReport(qualityGate);
   const repairTasks = [
@@ -87,7 +88,7 @@ export function runTrendToAffiliatePipelineDryRun(
   ];
   const publishCandidate = buildPublishCandidate(
     articleDraft,
-    qualityGateReport.status === "PASS",
+    qualityGateReport.contentGatePass,
     repairTasks,
     [articleDraft, ...(input.relatedDrafts ?? [])],
   );
@@ -147,7 +148,7 @@ function buildSerpObservations(
     locale: candidate.locale,
     observedAt,
     url: `https://example-serp-source.test/${index + 1}`,
-    title: `${keyword} buying guide example`,
+    title: `${keyword} brief example`,
     sourceType: index === 0 ? "publisher" : index === 1 ? "blog" : "retailer",
     notes:
       "Fixture observation used to shape buyer questions, comparison sections, and risk warnings.",
@@ -240,6 +241,7 @@ function buildArticleStrategy(
       "Europe heatwave portable AC guide 2026: real cooling picks and risky mini coolers",
     slug: "europe-heatwave-portable-ac-dry-run",
     productCategory: buyerProblem.productCategory,
+    categorySlug: categorySlugForProductCategory(buyerProblem.productCategory),
     angle: "Issue-to-product bridge for heatwave cooling decisions.",
     introBridge:
       "Explain the heatwave issue briefly, then move into the practical decision: real compressor ACs, local fit, return route, and products to avoid.",
@@ -248,12 +250,34 @@ function buildArticleStrategy(
       "Quick answer",
       "Top 10 practical picks",
       "Comparison table",
+      "Review-signal warnings before product notes",
+      "Supporting clarification after final thoughts",
       "Before-you-buy checklist",
       "FAQ",
     ],
     marketplaceRule:
       "Local retailers for heavy compressor ACs; marketplaces for accessories only when terms are clear.",
   };
+}
+
+function categorySlugForProductCategory(productCategory: string) {
+  const normalizedCategory = productCategory.toLowerCase();
+  if (
+    normalizedCategory.includes("air conditioner") ||
+    normalizedCategory.includes("cooling") ||
+    normalizedCategory.includes("fan") ||
+    normalizedCategory.includes("home")
+  ) {
+    return "home-trends";
+  }
+  if (
+    normalizedCategory.includes("charger") ||
+    normalizedCategory.includes("electronics") ||
+    normalizedCategory.includes("usb")
+  ) {
+    return "electronics-trends";
+  }
+  return undefined;
 }
 
 function buildArticleDraft(
@@ -270,6 +294,7 @@ function buildArticleDraft(
     summary:
       "Heatwave searches are rising, but the buying problem is choosing a real room-cooling product instead of a weak mini cooler or wrong-voltage import.",
     productCategory: strategy.productCategory,
+    categorySlug: strategy.categorySlug,
     indexStatus: "noindex",
     publishStatus: "draft",
     contentBlocks: [
@@ -568,6 +593,7 @@ function articleDraftToQualityArticle(
     affiliateDisclosure:
       "Price buttons may be paid affiliate links when approved later.",
     imageUrl: "https://merchant.example/images/pipeline-article.jpg",
+    categorySlug: draft.categorySlug,
     productCategory: draft.productCategory,
     contentMdx: draft.contentBlocks
       .map((block) => `${block.heading}\n${block.body}`)
@@ -617,7 +643,7 @@ function articleDraftToQualityArticle(
     requiresCountryBuyingRoutes: true,
     requiresAvoidList: true,
     sections: draft.contentBlocks.map((block) => ({
-      role: block.role === "quick-answer" ? "quick-answer" : undefined,
+      role: articleSectionRoleForDraftBlock(block.role),
       heading: block.heading,
       body: block.body,
     })),
@@ -678,6 +704,20 @@ function articleDraftToQualityArticle(
     indexStatus: draft.indexStatus,
     publishStatus: "published",
   };
+}
+
+function articleSectionRoleForDraftBlock(
+  role: ArticleDraft["contentBlocks"][number]["role"],
+) {
+  if (
+    role === "quick-answer" ||
+    role === "category-clarification" ||
+    role === "alternative-comparison" ||
+    role === "review-warning"
+  ) {
+    return role;
+  }
+  return undefined;
 }
 
 function buildPublishCandidate(

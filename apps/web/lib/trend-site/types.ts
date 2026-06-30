@@ -23,7 +23,11 @@ export type AffiliateLink = {
 };
 
 export type ArticleSection = {
-  role?: "quick-answer";
+  role?:
+    | "quick-answer"
+    | "category-clarification"
+    | "alternative-comparison"
+    | "review-warning";
   heading: string;
   body: string;
   evidenceIds?: string[];
@@ -88,6 +92,7 @@ export type Article = {
   summary: string;
   affiliateDisclosure: string;
   imageUrl: string;
+  categorySlug?: string;
   productCategory?: string;
   contentMdx: string;
   trendSignalBox?: ArticleSignalBox;

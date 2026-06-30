@@ -2,7 +2,7 @@
 
 ## Trend SEO Content Rules
 
-This project is a reader-facing trend and product guide site. SEO research,
+This project is a reader-facing trend and product brief site. SEO research,
 SERP analysis, trend detection, product scoring, affiliate matching, and risk
 checks are important, but they are internal workflow inputs. Do not expose
 internal workflow language in public article copy unless the user explicitly
@@ -10,13 +10,23 @@ asks for a methodology page.
 
 ## Core Positioning
 
-TREND - Jacob is a trend-led buyer decision site. Do not position the site as a
+TrendBrief is a trend-led buyer decision site. Do not position the site as a
 large testing lab, newsroom, or full-time product test team unless that evidence
 actually exists. The public position is:
 
-> A trend-led buyer decision site that compresses the research a buyer would
-> otherwise do across specs, marketplace listings, prices, warranties, return
-> terms, seller signals, and repeated user-review complaints.
+> Buyer notes for fast-moving trends.
+
+The public brand is TrendBrief. The operator and author is Jacob. The content
+unit is a Brief or Briefs. Public navigation, metadata, CTAs, archive labels,
+and reader-facing copy should use those names instead of older names such as
+TREND - Jacob, Trend Picks, generic guide language, or post/article labels where
+Brief is more accurate.
+
+The practical editorial promise is:
+
+> TrendBrief compresses the research a buyer would otherwise do across specs,
+> marketplace listings, prices, warranties, return terms, seller signals, and
+> repeated user-review complaints.
 
 Do not claim direct testing unless the product was actually used by Jacob or a
 real named collaborator. If the evidence is public specs, third-party reviews,
@@ -42,7 +52,7 @@ thin affiliate pages:
 
 iGood ranks because it compresses a searcher's buying journey into one page,
 not because every post is a laboratory test. Use that insight, but adapt it
-honestly for TREND - Jacob.
+honestly for TrendBrief.
 
 Preferred article flow:
 
@@ -52,15 +62,17 @@ Preferred article flow:
    solve.
 4. Top 10 practical picks.
 5. Full comparison table with shared fields.
-6. Product/category misunderstanding: what this product is not.
-7. Alternative comparison: nearby options the reader may confuse.
-8. Selection criteria and review-signal warnings.
-9. In-depth product notes.
-10. Top 3 recommendation summary.
-11. Final thoughts: when to buy, wait, or choose another category.
-12. Before-you-buy checklist.
-13. FAQ.
-14. Reader-facing update log: price checked date, product changed date, and
+6. Selection criteria and review-signal warnings that readers need before the
+   product notes.
+7. In-depth product notes.
+8. Top 3 recommendation summary.
+9. Final thoughts: when to buy, wait, or choose another category.
+10. Supporting clarification sections for SEO and reader protection:
+    product/category misunderstanding, adjacent-category comparison, and avoid
+    lists.
+11. Before-you-buy checklist.
+12. FAQ.
+13. Reader-facing update log: price checked date, product changed date, and
     why a product was added/removed when relevant.
 
 Do not publish a generic Top 10 list that jumps straight from trend headline to
@@ -116,7 +128,9 @@ short buyer-facing avoid list. Examples:
 - Wrong-voltage heavy imports can become bad purchases even when cheap.
 
 The avoid list should protect the reader from the mistake the trend creates. It
-is not a place to show methodology.
+is not a place to show methodology. Avoid lists are supporting clarification
+content, not the primary buying flow; place them after final thoughts and before
+the final checklist/FAQ unless the user explicitly asks otherwise.
 
 ## Public Navigation Should Not Look Empty
 
@@ -127,7 +141,7 @@ like a thin AI affiliate shell.
 
 ## Multilingual and Multi-Regional SEO Rules
 
-TREND - Jacob is a country-triggered buyer-decision site, not a translation
+TrendBrief is a country-triggered buyer-decision site, not a translation
 farm. The model is:
 
 ```text
@@ -446,11 +460,12 @@ flow defined above:
 2. Quick answer that bridges the issue to the product/category decision.
 3. Top 10 practical picks.
 4. Quick comparison table with shared fields.
-5. Product/category misunderstanding and adjacent-category comparison.
-6. Selection criteria and review-signal warnings.
-7. In-depth notes on each pick.
-8. Top 3 recommendation summary.
-9. Final thoughts: buy, wait, avoid, or choose another category.
+5. Selection criteria and review-signal warnings.
+6. In-depth notes on each pick.
+7. Top 3 recommendation summary.
+8. Final thoughts: buy, wait, avoid, or choose another category.
+9. Supporting clarification sections: product/category misunderstanding,
+   adjacent-category comparison, and avoid list.
 10. Before-you-buy checklist.
 11. FAQ.
 12. Reader-facing update log when useful.
