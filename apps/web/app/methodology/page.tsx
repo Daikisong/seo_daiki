@@ -15,24 +15,24 @@ export async function generateMetadata(): Promise<Metadata> {
 
 const evidenceLevels = [
   {
-    title: "Evidence A: direct-use notes",
+    title: "Direct-use notes",
     body:
       "Jacob has used the product directly or has original usage notes. The article should state the usage window and the exact variant."
   },
   {
-    title: "Evidence B: review-backed picks",
+    title: "Review-pattern picks",
     body:
       "The product is judged from public specs, merchant listings, price snapshots, seller terms, and repeated patterns in buyer reviews or credible third-party coverage."
   },
   {
-    title: "Evidence C: specs-first comparisons",
+    title: "Specs-first comparisons",
     body:
-      "The product has enough public spec and listing information to compare, but recommendation strength stays conservative until stronger review data is available."
+      "The product has enough public spec and listing information to compare, but the recommendation stays conservative until stronger buyer feedback is available."
   },
   {
-    title: "Evidence D: hold for clearer evidence",
+    title: "Hold for clearer proof",
     body:
-      "The product should usually stay out of recommendation lists until the exact variant, price, seller route, and review signals are clearer."
+      "The product should usually stay out of recommendation lists until the exact variant, price, seller route, and buyer feedback are clearer."
   }
 ] as const;
 
@@ -63,7 +63,7 @@ export default function MethodologyPage() {
 
         <section className="mt-10">
           <h2 className="border-b-4 border-cyan-500 pb-3 text-[28px] font-bold leading-[31px] tracking-normal text-[#2b2f33] md:text-[32px] md:leading-[35.2px]">
-            Recommendation strength
+            How each pick is supported
           </h2>
           <div className="mt-5 divide-y divide-neutral-200 border-y border-neutral-200">
             {evidenceLevels.map((level) => (
@@ -96,8 +96,8 @@ export default function MethodologyPage() {
               readers should check before buying.
             </li>
             <li>
-              <strong className="text-neutral-950">Source stack:</strong> the product page or spec source, the review
-              signal, and the marketplace route or price-check date used for the current guide.
+              <strong className="text-neutral-950">Checked sources:</strong> the product page or spec source, the review
+              source, and the marketplace route or price-check date used for the current guide.
             </li>
             <li>
               <strong className="text-neutral-950">Region fit:</strong> the country, voltage, plug, warranty, return,

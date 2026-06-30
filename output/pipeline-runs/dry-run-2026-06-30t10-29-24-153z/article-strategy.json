@@ -1,0 +1,18 @@
+{
+  "trendCandidateId": "fixture-europe-heatwave-portable-ac-2026",
+  "targetLocale": "en",
+  "title": "Europe heatwave portable AC guide 2026: real cooling picks and risky mini coolers",
+  "slug": "europe-heatwave-portable-ac-dry-run",
+  "productCategory": "portable air conditioner heatwave cooling",
+  "angle": "Issue-to-product bridge for heatwave cooling decisions.",
+  "introBridge": "Explain the heatwave issue briefly, then move into the practical decision: real compressor ACs, local fit, return route, and products to avoid.",
+  "requiredSections": [
+    "Intro",
+    "Quick answer",
+    "Top 10 practical picks",
+    "Comparison table",
+    "Before-you-buy checklist",
+    "FAQ"
+  ],
+  "marketplaceRule": "Local retailers for heavy compressor ACs; marketplaces for accessories only when terms are clear."
+}

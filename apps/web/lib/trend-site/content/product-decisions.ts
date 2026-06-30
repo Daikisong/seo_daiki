@@ -45,7 +45,7 @@ export const generatedProductDecisions = {
     evidenceBasis:
       "Review-backed pick: third-party review coverage, public Anker information, and marketplace price context make authenticity, local warranty, and final price the main buyer checks.",
     whyRecommend:
-      "It is the premium benchmark for readers who care more about brand confidence and review depth than the cheapest AliExpress price.",
+      "It is the premium benchmark for readers who care more about brand confidence and broad public coverage than the cheapest AliExpress price.",
     whoFits: "Laptop travelers who want a compact 100 W charger and are willing to compare import pricing against local Anker stock.",
     whoShouldSkip:
       "Skip it if the AliExpress price is close to Amazon or a local Anker store, because returns and authenticity are usually easier locally.",
@@ -121,12 +121,12 @@ export const generatedProductDecisions = {
     evidenceBasis:
       "Specs-first pick: public Rocoren listing data and limited third-party visibility make seller proof, exact 2C2A desktop layout, cable bundle, and return terms the main buyer checks.",
     whyRecommend:
-      "The 2C2A desktop layout and 100 W claim are attractive for spec hunters, but the recommendation stays conservative because review depth is thinner.",
+      "The 2C2A desktop layout and 100 W claim are attractive for spec hunters, but I would stay conservative because buyer feedback is thinner.",
     whoFits: "Buyers comfortable checking seller proof who want four ports, a desk cable, and 100 W class output at a value price.",
     whoShouldSkip:
       "Skip it if you need the confidence of stronger review coverage or cannot verify the same 2C2A desktop layout in live photos.",
     repeatedComplaints: [
-      "Spec-heavy listings can hide weak real-world review depth.",
+      "Spec-heavy listings can hide weak real-world buyer feedback.",
       "Multiport output split needs verification before laptop use.",
       "Seller return confidence is the main risk, not just the brand name."
     ],

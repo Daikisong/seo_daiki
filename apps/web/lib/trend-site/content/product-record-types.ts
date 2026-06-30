@@ -1,4 +1,4 @@
-import type { EvidenceLevel, Product } from "../types";
+import type { EvidenceLevel, Product, ProductPriceState } from "../types";
 
 export type ProductRecord = {
   name: string;
@@ -6,8 +6,9 @@ export type ProductRecord = {
   brandClaim: string;
   rankLabel: string;
   watts: string;
-  price: number;
+  price: number | null;
   priceLabel: string;
+  priceState?: ProductPriceState;
   priceCountry?: string;
   priceCurrency?: string;
   riskCountry?: string;

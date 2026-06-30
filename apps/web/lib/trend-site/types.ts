@@ -4,13 +4,20 @@ export type { Locale };
 
 export type ArticleType = "trend";
 
-export type EvidenceLevel = "direct-use" | "review-pattern" | "public-spec" | "insufficient";
+export type EvidenceLevel =
+  "direct-use" | "review-pattern" | "public-spec" | "insufficient";
+
+export type ProductPriceState =
+  "checked" | "range" | "unavailable" | "search-route";
 
 export type AffiliateLink = {
   label: string;
   href: string;
   rel: string;
-  linkType?: "affiliate-deep-link" | "merchant-product-page" | "marketplace-search-route";
+  linkType?:
+    | "affiliate-deep-link"
+    | "merchant-product-page"
+    | "marketplace-search-route";
   placementStatus?: "approved";
   offerStatus?: "active" | "inactive";
 };
@@ -113,7 +120,10 @@ export type Product = {
   productRole: "main" | "accessory";
   brandClaim?: string;
   merchantUrl: string;
-  merchantUrlKind: "affiliate-deep-link" | "merchant-product-page" | "marketplace-search-route";
+  merchantUrlKind:
+    | "affiliate-deep-link"
+    | "merchant-product-page"
+    | "marketplace-search-route";
   sourceUrl: string;
   sourceLabel: string;
   reviewSourceUrl: string;
@@ -123,6 +133,7 @@ export type Product = {
   imageUrl: string;
   imageAlt: string;
   priceLabel: string;
+  priceState: ProductPriceState;
   productKind?: string;
   regionFit: string;
   coolingCapacity?: string;
@@ -164,8 +175,10 @@ export type Product = {
     productId: string;
     country: string;
     currency: string;
-    price: number;
-    finalPrice?: number;
+    price: number | null;
+    finalPrice?: number | null;
+    priceLabel: string;
+    priceState: ProductPriceState;
   }>;
   reviewSignals: Array<{
     id: string;

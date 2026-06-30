@@ -83,7 +83,7 @@ export const travelGanProductRecords: ProductRecord[] = [
     pros: [
       "100 W class gives more laptop headroom than 65 W travel chargers.",
       "Three-port layout is enough for laptop, phone, and accessory charging without becoming a desk station.",
-      "UGREEN's official listing gives stronger spec and review confidence than anonymous marketplace-only chargers."
+      "UGREEN's official listing gives clearer specs and more buyer feedback than anonymous marketplace-only chargers."
     ],
     cons: [
       "More charger than a phone-only traveler needs.",
@@ -98,7 +98,7 @@ export const travelGanProductRecords: ProductRecord[] = [
     name: "Anker Prime 100W GaN Wall Charger 3 Ports",
     exactVariant: "Anker Prime 100W GaN Wall Charger 3 Ports",
     brandClaim: "Anker",
-    rankLabel: "Best premium review-backed alternative",
+    rankLabel: "Best premium Anker alternative",
     watts: "100",
     price: 69,
     priceLabel: "$69",
@@ -120,7 +120,7 @@ export const travelGanProductRecords: ProductRecord[] = [
       "TechRadar's review praises fast charging, build quality, and intelligent temperature monitoring while calling out the higher price.",
     safetyNote:
       "Best bought locally if warranty matters; use AliExpress only when seller authenticity and final price are meaningfully better.",
-    bestFor: "Buyers who want a premium 100 W benchmark and are willing to pay more for review-backed confidence.",
+    bestFor: "Buyers who want a premium 100 W benchmark and are willing to pay more for brand confidence and broader coverage.",
     decision: generatedProductDecisions["Anker Prime 100W GaN Wall Charger 3 Ports"],
     keyCheck: "Compare the AliExpress final price against Amazon or a local Anker store before treating it as a deal.",
     keyFeatures: ["100 W GaNPrime output", "2 USB-C + 1 USB-A", "Temperature monitoring"],
@@ -301,7 +301,7 @@ export const travelGanProductRecords: ProductRecord[] = [
     specSummary:
       "Amazon listing data describes a 100 W GaN desktop charger with two USB-C ports, two USB-A ports, a 1.5 m cable, and a 45 W + 45 W split when both main USB-C ports are used.",
     reviewSummary:
-      "Public review depth is thinner than UGREEN, Anker, or Baseus, so I treat the listing specs as useful but require live seller proof.",
+      "There is less public buyer feedback than UGREEN, Anker, or Baseus, so the listing needs clearer seller proof.",
     safetyNote:
       "A spec-heavy value pick; only buy when the live listing shows the same 2C2A desktop layout, cable, and plug type.",
     bestFor: "Spec hunters who want a desk-friendly 100 W charger and four ports but are comfortable checking the seller more carefully.",
@@ -316,7 +316,7 @@ export const travelGanProductRecords: ProductRecord[] = [
       "Good value candidate when the AliExpress listing is clear and recent reviews are strong."
     ],
     cons: [
-      "Less third-party review depth than UGREEN, Anker, Baseus, or AOHi.",
+      "Less third-party coverage than UGREEN, Anker, Baseus, or AOHi.",
       "The multiport power split needs careful checking before using it as a laptop charger.",
       "Return confidence depends heavily on the individual seller."
     ],
@@ -347,7 +347,7 @@ export const travelGanProductRecords: ProductRecord[] = [
     specSummary:
       "Retail listing describes a 65 W 3-port GaN charger kit with a 60 W USB-C cable and US plug body plus EU and UK adapters.",
     reviewSummary:
-      "Retail pages give good spec detail but weak review depth, so this is a kit-value pick rather than a strongly review-backed pick.",
+      "Retail pages give useful spec detail, but buyer feedback is thinner than the stronger-known charger brands.",
     safetyNote:
       "Buy only if the live listing includes the same adapter kit and cable rating; otherwise compare it like a plain 65 W charger.",
     bestFor: "Travelers who specifically want a charger, regional adapters, and a cable as one matched kit.",
@@ -355,14 +355,14 @@ export const travelGanProductRecords: ProductRecord[] = [
     keyCheck: "The listing should show the CH-8442 kit, EU/UK adapters, and the 60 W USB-C cable together.",
     keyFeatures: ["65 W 3-port charger", "60 W USB-C cable", "EU/UK travel adapters"],
     bestTake:
-      "Mcdodo is useful when the kit matters: charger, travel adapters, and a cable in one box. That is practical after the cabin-fire trend because fewer loose accessories are easier to inspect. The downside is review confidence. I would not rank it above the stronger review-backed brands unless the exact kit is visible and the seller terms are good.",
+      "Mcdodo is useful when the kit matters: charger, travel adapters, and a cable in one box. That is practical after the cabin-fire trend because fewer loose accessories are easier to inspect. I would keep it below the stronger-known charger brands unless the exact kit is visible and the seller terms are good.",
     pros: [
       "Includes the kind of cable-and-adapter kit travelers often need to buy separately.",
       "65 W output is enough for many light laptop and tablet setups.",
       "Fireproof shell and protection claims are relevant, provided the listing matches the CH-8442 kit."
     ],
     cons: [
-      "Public review depth is weaker than the top picks.",
+      "Public buyer feedback is thinner than the top picks.",
       "A bundled cable is only useful if its rating is clearly shown and matches the charger.",
       "Some sellers may list charger-only and kit versions together, so photos matter."
     ],
@@ -374,7 +374,7 @@ export const travelGanProductRecords: ProductRecord[] = [
     name: "AOHi Magcube 140W PD3.1 GaN Charger 2C1A",
     exactVariant: "AOHi Magcube 140W PD3.1 GaN Charger 2C1A",
     brandClaim: "AOHi",
-    rankLabel: "Best 140W review-backed laptop charger",
+    rankLabel: "Best 140W laptop charger",
     watts: "140",
     price: 69,
     priceLabel: "$69",
@@ -393,10 +393,10 @@ export const travelGanProductRecords: ProductRecord[] = [
     specSummary:
       "ChargerLAB review describes a 140 W PD3.1 2C1A GaN charger, and the teardown highlights both USB-C ports supporting up to 140 W.",
     reviewSummary:
-      "ChargerLAB provides stronger technical review depth than typical marketplace comments, including output and internal teardown context.",
+      "ChargerLAB provides more detailed technical coverage than typical marketplace comments, including output and teardown context.",
     safetyNote:
       "Best for laptop-first travelers; overkill for phone-only travel and only useful with the right 140 W cable.",
-    bestFor: "Laptop-first travelers who can actually use 140 W PD3.1 and want stronger technical review depth.",
+    bestFor: "Laptop-first travelers who can actually use 140 W PD3.1 and want more detailed technical coverage.",
     decision: generatedProductDecisions["AOHi Magcube 140W PD3.1 GaN Charger 2C1A"],
     keyCheck: "Only makes sense with a 140 W-capable USB-C cable and a listing that matches the reviewed 2C1A model.",
     keyFeatures: ["140 W PD3.1 output", "2 USB-C + 1 USB-A", "High-power laptop focus"],
@@ -439,7 +439,7 @@ export const travelGanProductRecords: ProductRecord[] = [
     specSummary:
       "Marketplace listing and video coverage describe a 140 W 2C1A GaN charger for laptops and phones.",
     reviewSummary:
-      "Video review coverage exists, but broader public review confidence is thinner than AOHi, Anker, UGREEN, or Baseus.",
+      "Video coverage exists, but broader public buyer feedback is thinner than AOHi, Anker, UGREEN, or Baseus.",
     safetyNote:
       "Treat as a bargain high-wattage option; verify recent reviews, plug type, cable rating, and seller return path before buying.",
     bestFor: "High-wattage bargain hunters who are willing to verify seller history, cable rating, and heat complaints.",

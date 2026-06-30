@@ -13,15 +13,27 @@ interface ArticlePageProps {
   publisherUrl?: string;
 }
 
-export function ArticlePage({ article, pageUrl, products, publisherUrl }: ArticlePageProps) {
+export function ArticlePage({
+  article,
+  pageUrl,
+  products,
+  publisherUrl,
+}: ArticlePageProps) {
   const htmlLang = localeToHtmlLang(article.locale);
 
   return (
     <>
       <SiteHeader locale={article.locale} currentHref={articlePath(article)} />
-      <main className="mx-auto max-w-[1090px] px-5 py-5 md:py-8" lang={htmlLang}>
+      <main
+        className="mx-auto max-w-[1090px] px-5 py-5 md:py-8"
+        lang={htmlLang}
+      >
         <JsonLd
-          data={articleJsonLdWithUrls(article, pageUrl ?? absoluteUrl(articlePath(article)), publisherUrl ?? absoluteUrl("/"))}
+          data={articleJsonLdWithUrls(
+            article,
+            pageUrl ?? absoluteUrl(articlePath(article)),
+            publisherUrl ?? absoluteUrl("/"),
+          )}
         />
         <article className="space-y-[25px]">
           <header className="border-b border-neutral-200 pb-[25px]">
@@ -49,7 +61,11 @@ export function ArticlePage({ article, pageUrl, products, publisherUrl }: Articl
   );
 }
 
-export function articleJsonLdWithUrls(article: Article, url: string, publisherUrl: string) {
+export function articleJsonLdWithUrls(
+  article: Article,
+  url: string,
+  publisherUrl: string,
+) {
   return {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -60,9 +76,12 @@ export function articleJsonLdWithUrls(article: Article, url: string, publisherUr
     dateModified: article.lastUpdated,
     datePublished: article.lastUpdated,
     author: { "@type": "Person", name: "Jacob" },
-    publisher: { "@type": "Organization", name: "TREND - Jacob", url: publisherUrl },
-    reviewedBy: { "@type": "Person", name: "Jacob" },
+    publisher: {
+      "@type": "Organization",
+      name: "TREND - Jacob",
+      url: publisherUrl,
+    },
     mainEntityOfPage: url,
-    url
+    url,
   };
 }

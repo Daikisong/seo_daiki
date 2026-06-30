@@ -5,29 +5,48 @@ import { selectRecommendationCandidateProducts } from "./recommendation-product-
 import type { Article, Product } from "./types";
 
 test("selects only main products in the article product category", () => {
-  const selected = selectRecommendationCandidateProducts(article({ productCategory: "chargers" }), [
-    product({ id: "charger-main", category: "chargers", productRole: "main" }),
-    product({ id: "charger-accessory", category: "chargers", productRole: "accessory" }),
-    product({ id: "cooling-main", category: "cooling", productRole: "main" })
-  ]);
+  const selected = selectRecommendationCandidateProducts(
+    article({ productCategory: "chargers" }),
+    [
+      product({
+        id: "charger-main",
+        category: "chargers",
+        productRole: "main",
+      }),
+      product({
+        id: "charger-accessory",
+        category: "chargers",
+        productRole: "accessory",
+      }),
+      product({ id: "cooling-main", category: "cooling", productRole: "main" }),
+    ],
+  );
 
   assert.deepEqual(
     selected.map((item) => item.id),
-    ["charger-main"]
+    ["charger-main"],
   );
 });
 
-test("falls back to all main products when the article has no product category", () => {
-  const selected = selectRecommendationCandidateProducts(article({ productCategory: undefined }), [
-    product({ id: "charger-main", category: "chargers", productRole: "main" }),
-    product({ id: "charger-accessory", category: "chargers", productRole: "accessory" }),
-    product({ id: "cooling-main", category: "cooling", productRole: "main" })
-  ]);
-
-  assert.deepEqual(
-    selected.map((item) => item.id),
-    ["charger-main", "cooling-main"]
+test("returns no recommendation products when the article has no product category", () => {
+  const selected = selectRecommendationCandidateProducts(
+    article({ productCategory: undefined }),
+    [
+      product({
+        id: "charger-main",
+        category: "chargers",
+        productRole: "main",
+      }),
+      product({
+        id: "charger-accessory",
+        category: "chargers",
+        productRole: "accessory",
+      }),
+      product({ id: "cooling-main", category: "cooling", productRole: "main" }),
+    ],
   );
+
+  assert.deepEqual(selected, []);
 });
 
 function article(overrides: Partial<Article> = {}): Article {
@@ -60,14 +79,14 @@ function article(overrides: Partial<Article> = {}): Article {
       buyingChecklistHeading: "Checklist",
       buyingChecklist: [],
       updateLogHeading: "Update log",
-      updateLog: []
+      updateLog: [],
     },
     evidenceIds: [],
     affiliateLinks: [],
     lastUpdated: "2026-06-30",
     indexStatus: "index",
     publishStatus: "published",
-    ...overrides
+    ...overrides,
   };
 }
 
@@ -89,6 +108,7 @@ function product(overrides: Partial<Product> = {}): Product {
     imageUrl: "https://example.com/product.jpg",
     imageAlt: "Product",
     priceLabel: "$1",
+    priceState: "checked",
     regionFit: "Region",
     returnRiskLabel: "Return",
     evidenceLevel: "public-spec",
@@ -113,6 +133,6 @@ function product(overrides: Partial<Product> = {}): Product {
     priceSnapshots: [],
     reviewSignals: [],
     marketRisks: [],
-    ...overrides
+    ...overrides,
   };
 }

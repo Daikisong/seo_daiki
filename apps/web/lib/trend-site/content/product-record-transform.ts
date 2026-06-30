@@ -1,15 +1,24 @@
 import type { Product } from "../types";
 import type { ProductRecord } from "./product-record-types";
 
-export function recordsToProducts(records: ProductRecord[], idPrefix: string, category: string): Product[] {
+export function recordsToProducts(
+  records: ProductRecord[],
+  idPrefix: string,
+  category: string,
+): Product[] {
   return records.map((record, index) => {
     const id = `${idPrefix}-${index + 1}`;
     return productRecordToProduct(record, id, category);
   });
 }
 
-export function productRecordToProduct(record: ProductRecord, id: string, category: string): Product {
+export function productRecordToProduct(
+  record: ProductRecord,
+  id: string,
+  category: string,
+): Product {
   const decision = record.decision;
+  const priceState = record.priceState ?? inferPriceState(record);
   return {
     id,
     canonicalName: record.name,
@@ -30,6 +39,7 @@ export function productRecordToProduct(record: ProductRecord, id: string, catego
     imageUrl: record.imageUrl,
     imageAlt: record.imageAlt,
     priceLabel: record.priceLabel,
+    priceState,
     productKind: record.productKind,
     regionFit: record.regionFit,
     coolingCapacity: record.coolingCapacity,
@@ -62,8 +72,8 @@ export function productRecordToProduct(record: ProductRecord, id: string, catego
         productId: id,
         testType: record.verifiedClaimType ?? "output",
         resultValue: record.watts,
-        unit: record.verifiedClaimUnit ?? "W"
-      }
+        unit: record.verifiedClaimUnit ?? "W",
+      },
     ],
     priceSnapshots: [
       {
@@ -72,17 +82,20 @@ export function productRecordToProduct(record: ProductRecord, id: string, catego
         country: record.priceCountry ?? "US",
         currency: record.priceCurrency ?? "USD",
         price: record.price,
-        finalPrice: record.price
-      }
+        finalPrice: record.price,
+        priceLabel: record.priceLabel,
+        priceState,
+      },
     ],
     reviewSignals: [
       {
         id: `${id}-reviews`,
         productId: id,
         locale: "en",
-        topic: "review depth, spec clarity, heat behavior, and variant accuracy",
-        count: record.reviewCount
-      }
+        topic:
+          "review depth, spec clarity, heat behavior, and variant accuracy",
+        count: record.reviewCount,
+      },
     ],
     marketRisks: [
       {
@@ -91,8 +104,18 @@ export function productRecordToProduct(record: ProductRecord, id: string, catego
         locale: "en",
         country: record.riskCountry ?? record.priceCountry ?? "US",
         certificationRisk: record.certificationRisk,
-        returnRisk: record.returnRisk
-      }
-    ]
+        returnRisk: record.returnRisk,
+      },
+    ],
   };
+}
+
+function inferPriceState(record: ProductRecord) {
+  if (record.merchantUrlKind === "marketplace-search-route") {
+    return "search-route";
+  }
+  if (record.price === null) {
+    return "unavailable";
+  }
+  return record.priceLabel.includes("-") ? "range" : "checked";
 }

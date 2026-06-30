@@ -73,7 +73,7 @@ async function assertArticles() {
     assertNotIncludes(text, 'href="/out', `${path} must not render internal redirect hrefs`);
     assertNotMatches(
       text,
-      /SERP provider|Search Console|LLM signals|Commercial search intent|Evidence fit|Monetization link available/i,
+      /SERP provider|Search Console|LLM signals|Commercial search intent|Evidence fit|Monetization link available|ranked products by|evidence quality|source stack|evidence note|recommendation strength/i,
       `${path} must not expose internal workflow language`
     );
   }

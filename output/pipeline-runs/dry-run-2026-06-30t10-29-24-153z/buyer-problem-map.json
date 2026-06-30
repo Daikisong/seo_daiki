@@ -1,0 +1,26 @@
+{
+  "trendCandidateId": "fixture-europe-heatwave-portable-ac-2026",
+  "issueSummary": "Heatwave searches can push readers toward fast cooling purchases.",
+  "buyerProblem": "The reader needs to separate real compressor ACs from fans, mini coolers, and risky imports.",
+  "productCategory": "portable air conditioner heatwave cooling",
+  "mustCompare": [
+    "compressor AC class",
+    "BTU and room size",
+    "window kit",
+    "noise",
+    "voltage",
+    "return path"
+  ],
+  "avoidConfusions": [
+    "USB mini cooler",
+    "fan-only tower",
+    "smart AC controller sold as cooling hardware"
+  ],
+  "localFitRequirements": [
+    "local voltage",
+    "plug type",
+    "delivery date",
+    "warranty territory",
+    "bulky-return route"
+  ]
+}

@@ -320,7 +320,7 @@ export const heatwaveArticle: Article = {
   expertCopy: {
     topPicksHeading: "Top 10 practical picks for this trend",
     topPicksIntro:
-      "For this heatwave guide, I ranked products by buyer fit, product class, region risk, and evidence quality. Europe-local inverter, mobile-split, and monoblock portable ACs come first because voltage, stock, delivery, window setup, warranty, and bulky returns matter as much as the BTU number during a shortage.",
+      "Start with Europe-local inverter, mobile-split, and monoblock portable ACs that clearly show voltage, stock, delivery timing, window setup, warranty, and bulky-return terms. During a shortage, a real compressor AC is only useful if it can be installed in your room, delivered in time, and returned if the fit is wrong.",
     topPicksRule:
       "My buying rule: if the listing does not show SACC/DOE BTU, room size, hose/window kit, noise level, drainage method, voltage, and return terms, treat it as a risky heatwave panic buy.",
     comparisonHeading: "Quick comparison table",

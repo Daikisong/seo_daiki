@@ -357,7 +357,6 @@ function TrendComparisonTable({
                 ) : null}
                 <p className="mt-1 text-xs text-neutral-600">Check: {item.keyCheck}</p>
                 <p className="mt-1 text-xs text-neutral-600">Price checked: {item.priceCheckedAt}</p>
-                <EvidenceBadge level={item.evidenceLevel} />
                 <div className="mt-3">
                   <AffiliateOutboundLink
                     articleId={article.id}
@@ -373,93 +372,51 @@ function TrendComparisonTable({
           </article>
         ))}
       </div>
-      <div className="mt-4 hidden overflow-x-auto md:block">
-        <table className={`${hasCoolingFields ? "min-w-[1540px]" : "min-w-[980px]"} text-sm`}>
+      <div className="mt-4 hidden md:block">
+        <table className="w-full table-fixed text-sm">
+          <colgroup>
+            <col style={{ width: "5%" }} />
+            <col style={{ width: "25%" }} />
+            <col style={{ width: "18%" }} />
+            <col style={{ width: "17%" }} />
+            <col style={{ width: "18%" }} />
+            <col style={{ width: "7%" }} />
+            <col style={{ width: "10%" }} />
+          </colgroup>
           <thead>
-            {hasCoolingFields ? (
-              <tr className="bg-teal-800 text-left text-white">
-                <th className="border-teal-700 !text-white">Rank</th>
-                <th className="border-teal-700 !text-white">Pick</th>
-                <th className="border-teal-700 !text-white">Exact variant</th>
-                <th className="border-teal-700 !text-white">Type</th>
-                <th className="border-teal-700 !text-white">Region fit</th>
-                <th className="border-teal-700 !text-white">BTU / capacity</th>
-                <th className="border-teal-700 !text-white">Hose / setup</th>
-                <th className="border-teal-700 !text-white">Noise</th>
-                <th className="border-teal-700 !text-white">Room size</th>
-                <th className="border-teal-700 !text-white">Voltage / plug</th>
-                <th className="border-teal-700 !text-white">Return risk</th>
-                <th className="border-teal-700 !text-white">Evidence</th>
-                <th className="border-teal-700 !text-white">Best for</th>
-                <th className="border-teal-700 !text-white">Skip if</th>
-                <th className="border-teal-700 !text-white">Price checked</th>
-                <th className="border-teal-700 !text-white">Price</th>
-                <th className="border-teal-700 !text-white">Action</th>
-              </tr>
-            ) : (
-              <tr className="bg-teal-800 text-left text-white">
-                <th className="border-teal-700 !text-white">Rank</th>
-                <th className="border-teal-700 !text-white">Pick</th>
-                <th className="border-teal-700 !text-white">Exact variant</th>
-                <th className="border-teal-700 !text-white">Evidence</th>
-                <th className="border-teal-700 !text-white">Best for</th>
-                <th className="border-teal-700 !text-white">Skip if</th>
-                <th className="border-teal-700 !text-white">Key check</th>
-                <th className="border-teal-700 !text-white">Price checked</th>
-                <th className="border-teal-700 !text-white">Price</th>
-                <th className="border-teal-700 !text-white">Action</th>
-              </tr>
-            )}
+            <tr className="bg-teal-800 text-left text-white">
+              <th className="border-teal-700 !text-white">Rank</th>
+              <th className="border-teal-700 !text-white">Pick</th>
+              <th className="border-teal-700 !text-white">Best for</th>
+              <th className="border-teal-700 !text-white">Skip if</th>
+              <th className="border-teal-700 !text-white">Key check</th>
+              <th className="border-teal-700 !text-white">Price</th>
+              <th className="border-teal-700 !text-white">Action</th>
+            </tr>
           </thead>
           <tbody>
             {recommendations.map((item) => (
               <tr key={item.rank}>
-                <td className="font-bold text-neutral-950">{item.rank}</td>
+                <td className="break-words font-bold text-neutral-950">{item.rank}</td>
                 <td>
                   <div className="flex items-center gap-3">
                     <ProductVisual item={item} compact />
-                    <span>
+                    <span className="min-w-0">
                       <span className="block font-medium text-neutral-900">{item.name}</span>
+                      <span className="mt-1 block break-words text-xs leading-5 text-neutral-500">{item.exactVariant}</span>
                       {item.badge ? <span className="mt-1 block text-xs font-bold text-amber-700">{item.badge}</span> : null}
                     </span>
                   </div>
                 </td>
-                {hasCoolingFields ? (
-                  <>
-                    <td>{item.exactVariant}</td>
-                    <td>{item.productKind}</td>
-                    <td>{item.regionFit}</td>
-                    <td>{item.coolingCapacity}</td>
-                    <td>{item.hoseType}</td>
-                    <td>{item.noiseLevel}</td>
-                    <td>{item.roomSize}</td>
-                    <td>{item.voltagePlug}</td>
-                    <td>{item.returnRiskLabel}</td>
-                    <td>
-                      <EvidenceBadge level={item.evidenceLevel} compact />
-                    </td>
-                    <td>{item.bestFor}</td>
-                    <td>{item.whoShouldSkip}</td>
-                    <td>{item.priceCheckedAt}</td>
-                  </>
-                ) : (
-                  <>
-                    <td>{item.exactVariant}</td>
-                    <td>
-                      <EvidenceBadge level={item.evidenceLevel} compact />
-                    </td>
-                    <td>{item.bestFor}</td>
-                    <td>{item.whoShouldSkip}</td>
-                    <td>{item.keyCheck}</td>
-                    <td>{item.priceCheckedAt}</td>
-                  </>
-                )}
-                <td className="font-semibold text-neutral-950">{item.price}</td>
+                <td className="break-words text-neutral-700">{item.bestFor}</td>
+                <td className="break-words text-neutral-700">{item.whoShouldSkip}</td>
+                <td className="break-words text-neutral-700">{item.keyCheck}</td>
+                <td className="break-words font-semibold text-neutral-950">{item.price}</td>
                 <td>
                   <AffiliateOutboundLink
                     articleId={article.id}
                     href={trackingHrefForRecommendation(article, item)}
-                    label={ctaLabelForRecommendation(item)}
+                    label={compactCtaLabelForRecommendation(item)}
                     locale={article.locale}
                     productId={item.sourceProductId}
                     rel={item.rel}
@@ -490,13 +447,11 @@ function TrendRecommendationCard({ article, item }: { article: Article; item: Tr
             {item.rank}. {item.name}
           </h3>
           <div className="mt-2 flex flex-wrap items-center gap-2">
-            <EvidenceBadge level={item.evidenceLevel} />
             {item.badge ? (
               <p className="inline-flex bg-amber-100 px-2 py-1 text-xs font-bold text-amber-900">{item.badge}</p>
             ) : null}
           </div>
           <p className={`mt-4 ${articleBodyClass}`}>{item.expertReviewTake}</p>
-          <DecisionBlock label="Evidence note" value={item.evidenceBasis} />
           <DecisionBlock label="Why I recommend it" value={item.whyRecommend} />
           <DecisionBlock label="Best for" value={item.whoFits} />
           <DecisionBlock label="Skip if" value={item.whoShouldSkip} tone="warning" />
@@ -554,9 +509,9 @@ function TrendRecommendationCard({ article, item }: { article: Article; item: Tr
 function SourceStack({ item }: { item: TrendRecommendation }) {
   const priceSource = [item.marketplaceSourceLabel, item.priceCheckedAt].filter(Boolean).join(" - ");
   const rows = [
-    ["Spec checked", item.sourceLabel],
-    ["Review signal", item.reviewSourceLabel],
-    ["Marketplace checked", priceSource]
+    ["Product details", item.sourceLabel],
+    ["Review source", item.reviewSourceLabel],
+    ["Price route", priceSource]
   ].filter(([, value]) => value);
 
   if (rows.length === 0) {
@@ -565,7 +520,7 @@ function SourceStack({ item }: { item: TrendRecommendation }) {
 
   return (
     <div className="mt-4 border-y border-neutral-200 py-3">
-      <p className="text-xs font-black uppercase text-neutral-500">Source stack</p>
+      <p className="text-xs font-black uppercase text-neutral-500">Checked before listing</p>
       <div className="mt-2 grid gap-2 text-xs leading-5 text-neutral-700 md:grid-cols-3">
         {rows.map(([label, value]) => (
           <p key={label}>
@@ -594,33 +549,6 @@ function FactNote({ label, value }: { label: string; value: string }) {
       <strong className="text-neutral-950">{label}:</strong> {value}
     </p>
   );
-}
-
-function EvidenceBadge({ level, compact = false }: { level: TrendRecommendation["evidenceLevel"]; compact?: boolean }) {
-  const label = evidenceLevelLabel(level);
-  return (
-    <span
-      className={`inline-flex rounded-sm border border-cyan-200 bg-cyan-50 font-bold text-cyan-900 ${
-        compact ? "px-2 py-1 text-[11px] leading-4" : "px-2.5 py-1 text-xs"
-      }`}
-    >
-      {label}
-    </span>
-  );
-}
-
-
-function evidenceLevelLabel(level: TrendRecommendation["evidenceLevel"]) {
-  switch (level) {
-    case "direct-use":
-      return "Direct use";
-    case "review-pattern":
-      return "Review-backed";
-    case "public-spec":
-      return "Specs + buyer reviews";
-    case "insufficient":
-      return "Not enough evidence";
-  }
 }
 
 function SignalList({ label, items, tone }: { label: string; items: string[]; tone: "positive" | "negative" }) {
@@ -724,4 +652,11 @@ function ctaLabelForRecommendation(item: TrendRecommendation) {
     return "View product page";
   }
   return "View price";
+}
+
+function compactCtaLabelForRecommendation(item: TrendRecommendation) {
+  if (item.hrefKind === "marketplace-search-route") {
+    return "Search";
+  }
+  return "View";
 }

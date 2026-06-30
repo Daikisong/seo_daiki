@@ -2,8 +2,13 @@ import { generatedProductDecisions } from "./product-decisions";
 import { heatwaveBenchmarkProductRecords } from "./heatwave-benchmark-product-records";
 import type { ProductRecord } from "./product-record-types";
 
-function heatwaveBenchmarkRecord(name: string, overrides: Partial<ProductRecord>): ProductRecord {
-  const record = heatwaveBenchmarkProductRecords.find((candidate) => candidate.name === name);
+function heatwaveBenchmarkRecord(
+  name: string,
+  overrides: Partial<ProductRecord>,
+): ProductRecord {
+  const record = heatwaveBenchmarkProductRecords.find(
+    (candidate) => candidate.name === name,
+  );
   if (!record) {
     throw new Error(`Missing heatwave benchmark record: ${name}`);
   }
@@ -13,7 +18,8 @@ function heatwaveBenchmarkRecord(name: string, overrides: Partial<ProductRecord>
 export const europeHeatwaveProductRecords: ProductRecord[] = [
   {
     name: "Midea PortaSplit 12000 BTU Mobile Split Air Conditioner",
-    exactVariant: "Midea PortaSplit 12000 BTU / 3.5 kW Mobile Split Air Conditioner",
+    exactVariant:
+      "Midea PortaSplit 12000 BTU / 3.5 kW Mobile Split Air Conditioner",
     brandClaim: "Midea",
     rankLabel: "Best Europe-first heatwave AC",
     watts: "12000",
@@ -24,11 +30,14 @@ export const europeHeatwaveProductRecords: ProductRecord[] = [
     priceCountry: "IT",
     priceCurrency: "EUR",
     riskCountry: "EU",
-    merchantUrl: "https://www.idealo.it/confronta-prezzi/204374464/midea-portasplit-3-5-kw.html",
+    merchantUrl:
+      "https://www.idealo.it/confronta-prezzi/204374464/midea-portasplit-3-5-kw.html",
     merchantUrlKind: "marketplace-search-route",
-    sourceUrl: "https://www.midea.com/uk/air-treatment/porta-split-air-conditioner.portasplit",
+    sourceUrl:
+      "https://www.midea.com/uk/air-treatment/porta-split-air-conditioner.portasplit",
     sourceLabel: "Midea UK PortaSplit product page",
-    reviewSourceUrl: "https://www.idealo.it/confronta-prezzi/204374464/midea-portasplit-3-5-kw.html",
+    reviewSourceUrl:
+      "https://www.idealo.it/confronta-prezzi/204374464/midea-portasplit-3-5-kw.html",
     reviewSourceLabel: "Idealo Europe PortaSplit price and review signal",
     marketplaceSourceLabel: "Italy / Europe price-comparison route",
     priceCheckedAt: "2026-06-29",
@@ -36,12 +45,16 @@ export const europeHeatwaveProductRecords: ProductRecord[] = [
       "https://www.midea.com/content/dam/midea-aem/uk/air-treatment/porta-split-air-conditioner/PortaSplit-Product-1.png",
     imageAlt: "Midea PortaSplit mobile split air conditioner",
     productKind: "Europe-local mobile split compressor AC",
-    regionFit: "Europe-first fit for Germany, Italy, UK, and nearby local-stock routes",
+    regionFit:
+      "Europe-first fit for Germany, Italy, UK, and nearby local-stock routes",
     coolingCapacity: "12,000 BTU / 3.5 kW",
     hoseType: "Mobile split setup with indoor and outdoor units",
-    noiseLevel: "Silent mode down to 39 dB on Midea's product page; verify installation conditions.",
-    roomSize: "Medium European rooms where the outdoor unit can be placed safely.",
-    voltagePlug: "Europe/UK local routes; confirm country plug, bracket kit, and warranty",
+    noiseLevel:
+      "Silent mode down to 39 dB on Midea's product page; verify installation conditions.",
+    roomSize:
+      "Medium European rooms where the outdoor unit can be placed safely.",
+    voltagePlug:
+      "Europe/UK local routes; confirm country plug, bracket kit, and warranty",
     returnRiskLabel: "Stock and bulky split-unit return risk",
     specSummary:
       "Midea lists PortaSplit as a 12,000 BTU / 3.5 kW mobile split air conditioner with A++ cooling, silent mode down to 39 dB, and no technician-required installation.",
@@ -49,39 +62,52 @@ export const europeHeatwaveProductRecords: ProductRecord[] = [
       "European price and availability signals make PortaSplit the most relevant Midea route for this topic because it is built around local voltage, local retail stock, and heatwave demand.",
     safetyNote:
       "Best first check for European heatwave buyers, but the balcony/window mounting route, stock status, and heavy return pickup still need to fit the room.",
-    bestFor: "European renters who want stronger real cooling without installing a permanent split system.",
-    decision: generatedProductDecisions["Midea PortaSplit 12000 BTU Mobile Split Air Conditioner"],
-    keyCheck: "Confirm local stock, included outdoor-unit support, window/balcony fit, and bulky return pickup before paying heatwave pricing.",
-    keyFeatures: ["12,000 BTU / 3.5 kW cooling", "A++ cooling class", "Mobile split design"],
+    bestFor:
+      "European renters who want stronger real cooling without installing a permanent split system.",
+    decision:
+      generatedProductDecisions[
+        "Midea PortaSplit 12000 BTU Mobile Split Air Conditioner"
+      ],
+    keyCheck:
+      "Confirm local stock, included outdoor-unit support, window/balcony fit, and bulky return pickup before paying heatwave pricing.",
+    keyFeatures: [
+      "12,000 BTU / 3.5 kW cooling",
+      "A++ cooling class",
+      "Mobile split design",
+    ],
     bestTake:
       "PortaSplit is the first product I would check for this specific Europe heatwave angle because it solves the mismatch that hurts many imported portable AC buys: local voltage, real room cooling, and a setup designed for European renters. It is still a heavy appliance, so I would only buy it from a route with visible stock and a realistic return path.",
     pros: [
       "Europe-local mobile split design is more relevant than importing a US portable AC.",
       "12,000 BTU / 3.5 kW output is credible for real room cooling.",
-      "The indoor/outdoor split format avoids some single-hose portable AC compromises."
+      "The indoor/outdoor split format avoids some single-hose portable AC compromises.",
     ],
     cons: [
       "More expensive and more involved to place than a normal monoblock portable AC.",
       "Balcony, sill, bracket, and hose routing can break the setup in some flats.",
-      "Heatwave demand can push stock and delivery dates out quickly."
+      "Heatwave demand can push stock and delivery dates out quickly.",
     ],
     reviewCount: 24,
     certificationRisk: "low",
-    returnRisk: "medium"
+    returnRisk: "medium",
   },
-  heatwaveBenchmarkRecord("De'Longhi Pinguino GentleJet Inverter Portable Air Conditioner", {
-    rankLabel: "Best premium Europe-local monoblock AC",
-    merchantUrl:
-      "https://www.delonghi.com/en-gb/p/portable-air-conditioners-pinguino-gentlejet-inverter-portable-air-conditioner-pacap130igentlejet/PACAP130IGENTLEJET.html?pid=0151455007",
-    merchantUrlKind: "merchant-product-page",
-    priceCountry: "GB",
-    priceCurrency: "GBP",
-    riskCountry: "GB",
-    verifiedClaimType: "cooling-capacity",
-    verifiedClaimUnit: "BTU",
-    regionFit: "Premium Europe-first fit for UK and nearby local-stock routes",
-    returnRiskLabel: "Premium local warranty and return route required"
-  }),
+  heatwaveBenchmarkRecord(
+    "De'Longhi Pinguino GentleJet Inverter Portable Air Conditioner",
+    {
+      rankLabel: "Best premium Europe-local monoblock AC",
+      merchantUrl:
+        "https://www.delonghi.com/en-gb/p/portable-air-conditioners-pinguino-gentlejet-inverter-portable-air-conditioner-pacap130igentlejet/PACAP130IGENTLEJET.html?pid=0151455007",
+      merchantUrlKind: "merchant-product-page",
+      priceCountry: "GB",
+      priceCurrency: "GBP",
+      riskCountry: "GB",
+      verifiedClaimType: "cooling-capacity",
+      verifiedClaimUnit: "BTU",
+      regionFit:
+        "Premium Europe-first fit for UK and nearby local-stock routes",
+      returnRiskLabel: "Premium local warranty and return route required",
+    },
+  ),
   {
     name: "Olimpia Splendid Dolceclima Air Pro 14 HP WiFi",
     exactVariant: "Olimpia Splendid Dolceclima Air Pro 14 HP WiFi",
@@ -98,7 +124,8 @@ export const europeHeatwaveProductRecords: ProductRecord[] = [
     merchantUrl:
       "https://www.pccomponentes.com/olimpia-splendid-dolceclima-air-pro-14-hp-wifi-aire-acondicionado-portatil-frio-calor-3500-frigorias",
     merchantUrlKind: "merchant-product-page",
-    sourceUrl: "https://www.olimpiasplendid.com/air-conditioners/airconditioners-portables/dolceclima-air-pro-14-hp",
+    sourceUrl:
+      "https://www.olimpiasplendid.com/air-conditioners/airconditioners-portables/dolceclima-air-pro-14-hp",
     sourceLabel: "Olimpia Splendid Air Pro 14 HP product page",
     reviewSourceUrl:
       "https://www.pccomponentes.com/olimpia-splendid-dolceclima-air-pro-14-hp-wifi-aire-acondicionado-portatil-frio-calor-3500-frigorias",
@@ -106,14 +133,19 @@ export const europeHeatwaveProductRecords: ProductRecord[] = [
     marketplaceSourceLabel: "Spain / EU appliance retailer route",
     priceCheckedAt: "2026-06-29",
     imageUrl: "https://media.s-bol.com/YWOVNXOQV5q2/924x1200.jpg",
-    imageAlt: "Olimpia Splendid Dolceclima Air Pro 14 HP WiFi portable air conditioner",
+    imageAlt:
+      "Olimpia Splendid Dolceclima Air Pro 14 HP WiFi portable air conditioner",
     productKind: "Europe-local real compressor portable AC",
-    regionFit: "Spain, Italy, Benelux, and nearby EU routes when exact HP/WiFi variant is in stock",
+    regionFit:
+      "Spain, Italy, Benelux, and nearby EU routes when exact HP/WiFi variant is in stock",
     coolingCapacity: "14,000 BTU / 3.5 kW class",
     hoseType: "Single-hose monoblock portable setup",
-    noiseLevel: "High-output monoblock noise; verify dB and sleep-mode reviews before bedroom use.",
-    roomSize: "Medium-to-larger Southern Europe rooms when hose routing is practical.",
-    voltagePlug: "220-240 V EU route; confirm plug, warranty country, and heat-pump variant",
+    noiseLevel:
+      "High-output monoblock noise; verify dB and sleep-mode reviews before bedroom use.",
+    roomSize:
+      "Medium-to-larger Southern Europe rooms when hose routing is practical.",
+    voltagePlug:
+      "220-240 V EU route; confirm plug, warranty country, and heat-pump variant",
     returnRiskLabel: "Heavy local-retailer return risk",
     specSummary:
       "Olimpia Splendid positions Air Pro 14 HP as a high-output portable AC line with heat-pump functionality and app-enabled variants for European homes.",
@@ -121,25 +153,34 @@ export const europeHeatwaveProductRecords: ProductRecord[] = [
       "Spanish and EU retailer listings make this a practical local-stock route for buyers who need a strong monoblock AC without importing a non-local heavy appliance.",
     safetyNote:
       "Useful for hotter Southern European rooms, but the exact Air Pro 14 HP/WiFi suffix and return pickup need to be visible before checkout.",
-    bestFor: "Spain, Italy, and nearby EU buyers who need a powerful local portable AC route.",
-    decision: generatedProductDecisions["Olimpia Splendid Dolceclima Air Pro 14 HP WiFi"],
-    keyCheck: "Confirm Air Pro 14 HP/WiFi suffix, local stock, delivery date, noise expectations, and return pickup.",
-    keyFeatures: ["14,000 BTU class cooling", "Heat-pump variant", "WiFi/app route on matching model"],
+    bestFor:
+      "Spain, Italy, and nearby EU buyers who need a powerful local portable AC route.",
+    decision:
+      generatedProductDecisions[
+        "Olimpia Splendid Dolceclima Air Pro 14 HP WiFi"
+      ],
+    keyCheck:
+      "Confirm Air Pro 14 HP/WiFi suffix, local stock, delivery date, noise expectations, and return pickup.",
+    keyFeatures: [
+      "14,000 BTU class cooling",
+      "Heat-pump variant",
+      "WiFi/app route on matching model",
+    ],
     bestTake:
       "Olimpia Splendid is the high-output local appliance pick. I like it for Southern Europe because the brand and retailer route feel more realistic than importing a random compressor unit during a heatwave. The tradeoff is weight, noise, and exact-variant confusion.",
     pros: [
       "Strong cooling class for hotter EU rooms.",
       "Local appliance-retailer routes are more practical than cross-border heavy imports.",
-      "Heat-pump and WiFi variants can add value after summer."
+      "Heat-pump and WiFi variants can add value after summer.",
     ],
     cons: [
       "Variant suffixes can be confusing across retailers.",
       "Higher-output monoblock ACs are not quiet or light.",
-      "Returns need a local heavy-goods route."
+      "Returns need a local heavy-goods route.",
     ],
     reviewCount: 67,
     certificationRisk: "low",
-    returnRisk: "medium"
+    returnRisk: "medium",
   },
   {
     name: "MeacoCool MC Series Pro 10000 BTU Portable Air Conditioner",
@@ -164,13 +205,16 @@ export const europeHeatwaveProductRecords: ProductRecord[] = [
     reviewSourceLabel: "Meaco UK air-conditioner stock route",
     marketplaceSourceLabel: "UK local retailer route",
     priceCheckedAt: "2026-06-29",
-    imageUrl: "https://media.diy.com/is/image/KingfisherDigital/5060409604396_01c",
+    imageUrl:
+      "https://media.diy.com/is/image/KingfisherDigital/5060409604396_01c",
     imageAlt: "MeacoCool MC Series Pro 10000 BTU portable air conditioner",
     productKind: "UK-local real compressor portable AC",
-    regionFit: "UK route for bedrooms, offices, and medium rooms when stock is live",
+    regionFit:
+      "UK route for bedrooms, offices, and medium rooms when stock is live",
     coolingCapacity: "10,000 BTU",
     hoseType: "Single-hose portable setup with window kit route",
-    noiseLevel: "Bedroom/office candidate; verify Meaco listed dB and quiet-mode reviews.",
+    noiseLevel:
+      "Bedroom/office candidate; verify Meaco listed dB and quiet-mode reviews.",
     roomSize: "Small-to-medium UK rooms where 10,000 BTU is enough.",
     voltagePlug: "220-240 V UK route; confirm included kit and guarantee",
     returnRiskLabel: "Stock-date and local return risk",
@@ -180,25 +224,30 @@ export const europeHeatwaveProductRecords: ProductRecord[] = [
       "Meaco stock signals and UK retailer data make this a practical buy when the buyer wants local delivery and returns more than a high-output import.",
     safetyNote:
       "Good for one room, not an open-plan flat; check stock, delivery date, window kit, and noise before treating it as a heatwave fix.",
-    bestFor: "UK buyers cooling a bedroom, office, or medium room with a local return route.",
-    decision: generatedProductDecisions["MeacoCool MC Series Pro 10000 BTU Portable Air Conditioner"],
-    keyCheck: "Confirm stock date, 220-240 V UK route, window-kit contents, room size, and return handling.",
+    bestFor:
+      "UK buyers cooling a bedroom, office, or medium room with a local return route.",
+    decision:
+      generatedProductDecisions[
+        "MeacoCool MC Series Pro 10000 BTU Portable Air Conditioner"
+      ],
+    keyCheck:
+      "Confirm stock date, 220-240 V UK route, window-kit contents, room size, and return handling.",
     keyFeatures: ["10,000 BTU cooling", "UK retailer route", "Medium-room fit"],
     bestTake:
       "MeacoCool is the sensible UK pick when the room is not huge and the buyer wants a local route. I would not stretch it into a sun-facing open-plan flat, but for a bedroom or office it is exactly the kind of boring, verifiable option that beats a risky import.",
     pros: [
       "Local UK route makes delivery and returns more realistic.",
       "10,000 BTU class is enough for many single-room heatwave problems.",
-      "Better fit for practical buyers than no-name imported AC listings."
+      "Better fit for practical buyers than no-name imported AC listings.",
     ],
     cons: [
       "Stock can disappear during hot spells.",
       "Single-hose performance depends heavily on window sealing.",
-      "Not enough capacity for large or open-plan rooms."
+      "Not enough capacity for large or open-plan rooms.",
     ],
     reviewCount: 38,
     certificationRisk: "low",
-    returnRisk: "low"
+    returnRisk: "low",
   },
   {
     name: "Duux North Smart Air Conditioner 9K BTU",
@@ -213,18 +262,23 @@ export const europeHeatwaveProductRecords: ProductRecord[] = [
     priceCountry: "GB",
     priceCurrency: "GBP",
     riskCountry: "GB",
-    merchantUrl: "https://www.amazon.co.uk/Duux-DXMA22UK-North-Smart-Conditioner/dp/B0C46GJDMB",
+    merchantUrl:
+      "https://www.amazon.co.uk/Duux-DXMA22UK-North-Smart-Conditioner/dp/B0C46GJDMB",
     merchantUrlKind: "merchant-product-page",
-    sourceUrl: "https://duux.co.uk/product/north-smart-air-conditioner-9k-btu-h-silent-with-heating-function-grey/",
+    sourceUrl:
+      "https://duux.co.uk/product/north-smart-air-conditioner-9k-btu-h-silent-with-heating-function-grey/",
     sourceLabel: "Duux North 9K product page",
-    reviewSourceUrl: "https://www.idealhome.co.uk/all-rooms/duux-north-9k-smart-air-conditioner-review",
+    reviewSourceUrl:
+      "https://www.idealhome.co.uk/all-rooms/duux-north-9k-smart-air-conditioner-review",
     reviewSourceLabel: "Ideal Home Duux North 9K review",
     marketplaceSourceLabel: "UK local retailer / Amazon UK route",
     priceCheckedAt: "2026-06-29",
-    imageUrl: "https://cdn.mos.cms.futurecdn.net/zTFBBjWT3CaA4VzPGCjFan-1280-80.jpg.webp",
+    imageUrl:
+      "https://cdn.mos.cms.futurecdn.net/zTFBBjWT3CaA4VzPGCjFan-1280-80.jpg.webp",
     imageAlt: "Duux North Smart Air Conditioner 9K BTU",
     productKind: "UK / Europe real compressor portable AC",
-    regionFit: "Small-room UK and nearby Europe fit when live stock and support are available",
+    regionFit:
+      "Small-room UK and nearby Europe fit when live stock and support are available",
     coolingCapacity: "9,000 BTU",
     hoseType: "Single-hose smart portable setup with window kit",
     noiseLevel: "Check current Amazon UK dB and bedroom-use complaints.",
@@ -237,29 +291,37 @@ export const europeHeatwaveProductRecords: ProductRecord[] = [
       "Ideal Home's review signal highlights the stylish design, smart control, included window kit, and the practical drawbacks: price, noise, weight, and not being the most powerful option.",
     safetyNote:
       "Best treated as a small-room comfort AC, not a whole-flat heatwave rescue product.",
-    bestFor: "Bedrooms and smaller rooms where design, app control, and included kit matter.",
-    decision: generatedProductDecisions["Duux North Smart Air Conditioner 9K BTU"],
-    keyCheck: "Confirm live stock, 9,000 BTU fit, included window kit, noise tolerance, and heavy-goods returns.",
-    keyFeatures: ["9,000 BTU cooling", "Smart app control", "Window kit included on matching route"],
+    bestFor:
+      "Bedrooms and smaller rooms where design, app control, and included kit matter.",
+    decision:
+      generatedProductDecisions["Duux North Smart Air Conditioner 9K BTU"],
+    keyCheck:
+      "Confirm live stock, 9,000 BTU fit, included window kit, noise tolerance, and heavy-goods returns.",
+    keyFeatures: [
+      "9,000 BTU cooling",
+      "Smart app control",
+      "Window kit included on matching route",
+    ],
     bestTake:
       "Duux is the stylish small-room option. I would choose it for a bedroom or office where app control and appearance matter, but I would be strict about room size because the 9K class can disappoint when the heat load is bigger than the marketing photo suggests.",
     pros: [
       "More polished design than many boxy portable ACs.",
       "Smart control and included kit are useful for renters.",
-      "A real compressor AC, not a decorative mini cooler."
+      "A real compressor AC, not a decorative mini cooler.",
     ],
     cons: [
       "Expensive for the 9,000 BTU class.",
       "Noise and weight still matter despite the smart design.",
-      "Availability can be inconsistent during heatwave demand."
+      "Availability can be inconsistent during heatwave demand.",
     ],
     reviewCount: 42,
     certificationRisk: "low",
-    returnRisk: "medium"
+    returnRisk: "medium",
   },
   {
     name: "electriQ EcoSilent 10000 BTU Smart Quiet Portable Air Conditioner",
-    exactVariant: "electriQ EcoSilent10W 10000 BTU Smart Quiet Portable Air Conditioner",
+    exactVariant:
+      "electriQ EcoSilent10W 10000 BTU Smart Quiet Portable Air Conditioner",
     brandClaim: "electriQ",
     rankLabel: "Best UK value smart AC route",
     watts: "10000",
@@ -270,23 +332,31 @@ export const europeHeatwaveProductRecords: ProductRecord[] = [
     priceCountry: "GB",
     priceCurrency: "GBP",
     riskCountry: "GB",
-    merchantUrl: "https://www.electriq.co.uk/p/ecosilent10w/electriq-ecosilent10w",
+    merchantUrl:
+      "https://www.electriq.co.uk/p/ecosilent10w/electriq-ecosilent10w",
     merchantUrlKind: "merchant-product-page",
-    sourceUrl: "https://www.electriq.co.uk/p/ecosilent10w/electriq-ecosilent10w",
+    sourceUrl:
+      "https://www.electriq.co.uk/p/ecosilent10w/electriq-ecosilent10w",
     sourceLabel: "electriQ EcoSilent10W product page",
-    reviewSourceUrl: "https://www.idealhome.co.uk/buying-guide-reviews/best-portable-air-conditioners-241345",
+    reviewSourceUrl:
+      "https://www.idealhome.co.uk/buying-guide-reviews/best-portable-air-conditioners-241345",
     reviewSourceLabel: "Ideal Home portable AC guide context",
     marketplaceSourceLabel: "Buy It Direct / Aircon Direct UK route",
     priceCheckedAt: "2026-06-29",
     imageUrl: "https://www.electriq.co.uk/images/EcoSilent10W_1_Classic.jpg",
-    imageAlt: "electriQ EcoSilent 10000 BTU smart quiet portable air conditioner",
+    imageAlt:
+      "electriQ EcoSilent 10000 BTU smart quiet portable air conditioner",
     productKind: "UK-local real compressor portable AC",
-    regionFit: "UK value fit when exact EcoSilent10W or listed replacement model is available",
+    regionFit:
+      "UK value fit when exact EcoSilent10W or listed replacement model is available",
     coolingCapacity: "10,000 BTU",
     hoseType: "Single-hose smart portable setup",
-    noiseLevel: "EcoSilent-positioned UK model; verify current dB and compressor complaints.",
-    roomSize: "Small-to-medium UK rooms where quiet operation matters more than maximum capacity.",
-    voltagePlug: "220-240 V UK route; confirm exact replacement, plug, and warranty",
+    noiseLevel:
+      "EcoSilent-positioned UK model; verify current dB and compressor complaints.",
+    roomSize:
+      "Small-to-medium UK rooms where quiet operation matters more than maximum capacity.",
+    voltagePlug:
+      "220-240 V UK route; confirm exact replacement, plug, and warranty",
     returnRiskLabel: "Similar-model substitution risk",
     specSummary:
       "electriQ lists EcoSilent10W as a 10,000 BTU smart quiet portable AC route for medium rooms with local UK appliance-retailer support.",
@@ -294,25 +364,34 @@ export const europeHeatwaveProductRecords: ProductRecord[] = [
       "UK guide and retailer signals make it a local-value comparison point, especially when buyers need to compare replacement models instead of assuming every 10,000 BTU listing is equivalent.",
     safetyNote:
       "Useful only when the exact product or replacement model is clear; do not assume a suggested alternative has the same noise, kit, or capacity profile.",
-    bestFor: "UK buyers who want smart controls and a local appliance-seller route at the 10,000 BTU class.",
-    decision: generatedProductDecisions["electriQ EcoSilent 10000 BTU Smart Quiet Portable Air Conditioner"],
-    keyCheck: "Confirm exact EcoSilent10W availability or compare any suggested replacement model line by line.",
-    keyFeatures: ["10,000 BTU cooling", "Smart-control route", "UK appliance-retailer support"],
+    bestFor:
+      "UK buyers who want smart controls and a local appliance-seller route at the 10,000 BTU class.",
+    decision:
+      generatedProductDecisions[
+        "electriQ EcoSilent 10000 BTU Smart Quiet Portable Air Conditioner"
+      ],
+    keyCheck:
+      "Confirm exact EcoSilent10W availability or compare any suggested replacement model line by line.",
+    keyFeatures: [
+      "10,000 BTU cooling",
+      "Smart-control route",
+      "UK appliance-retailer support",
+    ],
     bestTake:
       "electriQ is the value-style UK route I would use when the buyer wants a local seller and clear specs. The caution is replacement drift: if the exact model is out, compare the substitute rather than treating all 10K portable ACs as the same product.",
     pros: [
       "UK appliance-retailer route is more practical than a vague import.",
       "10,000 BTU class is a useful medium-room target.",
-      "Smart features help when pre-cooling a room before sleep or work."
+      "Smart features help when pre-cooling a room before sleep or work.",
     ],
     cons: [
       "Exact model availability can shift.",
       "Single-hose setup still needs good window sealing.",
-      "Replacement models may differ in noise, kit, and warranty details."
+      "Replacement models may differ in noise, kit, and warranty details.",
     ],
     reviewCount: 31,
     certificationRisk: "low",
-    returnRisk: "medium"
+    returnRisk: "medium",
   },
   {
     name: "Russell Hobbs RHPAC3001 3 in 1 Portable Air Conditioner",
@@ -354,25 +433,34 @@ export const europeHeatwaveProductRecords: ProductRecord[] = [
       "Currys shows a strong local retail signal with a visible GBP 299 price and 111-review rating context, making this a practical UK small-room comparison point.",
     safetyNote:
       "Use it for a small room only; the listed room fit and noise level make it a poor match for large bedrooms or open-plan flats.",
-    bestFor: "UK buyers who want a budget local retailer route for one small room.",
-    decision: generatedProductDecisions["Russell Hobbs RHPAC3001 3 in 1 Portable Air Conditioner"],
-    keyCheck: "Confirm 14 m2 room fit, 62-64 dB noise tolerance, delivery timing, and large-item return process.",
-    keyFeatures: ["2.05 kW cooling", "3-in-1 cooling/dehumidifier route", "Currys UK local price"],
+    bestFor:
+      "UK buyers who want a budget local retailer route for one small room.",
+    decision:
+      generatedProductDecisions[
+        "Russell Hobbs RHPAC3001 3 in 1 Portable Air Conditioner"
+      ],
+    keyCheck:
+      "Confirm 14 m2 room fit, 62-64 dB noise tolerance, delivery timing, and large-item return process.",
+    keyFeatures: [
+      "2.05 kW cooling",
+      "3-in-1 cooling/dehumidifier route",
+      "Currys UK local price",
+    ],
     bestTake:
       "Russell Hobbs is the no-drama UK small-room pick. It is not the unit I would buy for a large sun-facing room, but at the local-retailer price it gives a buyer clear specs, a visible review signal, and a return route that is easier to understand than a cross-border import.",
     pros: [
       "Clear Currys price, spec, and review context.",
       "Good fit for small rooms where a 10K or 14K unit is unnecessary.",
-      "Local UK route is easier to handle than an imported heavy appliance."
+      "Local UK route is easier to handle than an imported heavy appliance.",
     ],
     cons: [
       "Room-size fit is limited.",
       "Noise is not bedroom-silent.",
-      "Large-item delivery and return handling still need checking."
+      "Large-item delivery and return handling still need checking.",
     ],
     reviewCount: 111,
     certificationRisk: "low",
-    returnRisk: "medium"
+    returnRisk: "medium",
   },
   {
     name: "Bush 9K Portable Air Conditioner",
@@ -395,13 +483,15 @@ export const europeHeatwaveProductRecords: ProductRecord[] = [
     reviewSourceLabel: "Argos verified review and return signal",
     marketplaceSourceLabel: "Argos UK retailer route",
     priceCheckedAt: "2026-06-29",
-    imageUrl: "https://media.4rgos.it/i/Argos/7891092_R_Z001A?w=750&h=440&qlt=70",
+    imageUrl:
+      "https://media.4rgos.it/i/Argos/7891092_R_Z001A?w=750&h=440&qlt=70",
     imageAlt: "Bush 9K portable air conditioner",
     productKind: "UK-local real compressor portable AC",
     regionFit: "UK budget route for one small room via Argos",
     coolingCapacity: "9,000 BTU",
     hoseType: "Single-hose portable setup with 150 cm hose",
-    noiseLevel: "64 dB listed by Argos; check whether that is acceptable for night use.",
+    noiseLevel:
+      "64 dB listed by Argos; check whether that is acceptable for night use.",
     roomSize: "Small-room budget route; avoid for large or open-plan rooms.",
     voltagePlug: "UK local route; confirm delivery and return collection terms",
     returnRiskLabel: "Paid collection return risk",
@@ -411,56 +501,72 @@ export const europeHeatwaveProductRecords: ProductRecord[] = [
       "Argos shows a verified-review signal and explicitly states the large-item return collection cost, which is useful for heatwave buyers trying to judge real return friction.",
     safetyNote:
       "A sensible budget pick only when the room is small enough and the buyer accepts the stated noise and potential collection charge.",
-    bestFor: "UK buyers who want a straightforward Argos budget unit for one small room.",
+    bestFor:
+      "UK buyers who want a straightforward Argos budget unit for one small room.",
     decision: generatedProductDecisions["Bush 9K Portable Air Conditioner"],
-    keyCheck: "Confirm 9,000 BTU is enough, 64 dB noise is acceptable, and the Argos return collection cost is acceptable.",
-    keyFeatures: ["9,000 BTU output", "150 cm hose included", "Argos UK verified review route"],
+    keyCheck:
+      "Confirm 9,000 BTU is enough, 64 dB noise is acceptable, and the Argos return collection cost is acceptable.",
+    keyFeatures: [
+      "9,000 BTU output",
+      "150 cm hose included",
+      "Argos UK verified review route",
+    ],
     bestTake:
       "Bush is the budget UK fallback I would use when the buyer wants a clear local store route more than a premium brand. The page is useful because it does not hide the tradeoffs: small room fit, 64 dB noise, and a return collection cost if the product is not faulty.",
     pros: [
       "Clear 9,000 BTU and hose details.",
       "Argos review and return information are easy to check.",
-      "Useful lower-cost route during heatwave stock pressure."
+      "Useful lower-cost route during heatwave stock pressure.",
     ],
     cons: [
       "Only suitable for small rooms.",
       "64 dB noise can be too much for sleep.",
-      "Non-fault returns may carry a collection charge."
+      "Non-fault returns may carry a collection charge.",
     ],
     reviewCount: 9,
     certificationRisk: "low",
-    returnRisk: "medium"
+    returnRisk: "medium",
   },
   {
     name: "electriQ Slimline 9000 BTU Portable Air Conditioner SF10000E",
-    exactVariant: "electriQ Slimline 9000 BTU Portable Air Conditioner SF10000E",
+    exactVariant:
+      "electriQ Slimline 9000 BTU Portable Air Conditioner SF10000E",
     brandClaim: "electriQ",
     rankLabel: "Best slimline UK value pick",
     watts: "9000",
     verifiedClaimType: "cooling-capacity",
     verifiedClaimUnit: "BTU",
-    price: 0,
+    price: null,
     priceLabel: "Check UK price",
+    priceState: "unavailable",
     priceCountry: "GB",
     priceCurrency: "GBP",
     riskCountry: "GB",
-    merchantUrl: "https://www.appliancesdirect.co.uk/amcor_8000_btu_portable_air_conditioner_sf10000e/version.asp",
+    merchantUrl:
+      "https://www.appliancesdirect.co.uk/amcor_8000_btu_portable_air_conditioner_sf10000e/version.asp",
     merchantUrlKind: "merchant-product-page",
-    sourceUrl: "https://www.appliancesdirect.co.uk/amcor_8000_btu_portable_air_conditioner_sf10000e/version.asp",
+    sourceUrl:
+      "https://www.appliancesdirect.co.uk/amcor_8000_btu_portable_air_conditioner_sf10000e/version.asp",
     sourceLabel: "Appliances Direct electriQ SF10000E page",
-    reviewSourceUrl: "https://www.appliancesdirect.co.uk/amcor_8000_btu_portable_air_conditioner_sf10000e/version.asp",
+    reviewSourceUrl:
+      "https://www.appliancesdirect.co.uk/amcor_8000_btu_portable_air_conditioner_sf10000e/version.asp",
     reviewSourceLabel: "Appliances Direct setup and spec signal",
     marketplaceSourceLabel: "Appliances Direct UK retailer route",
     priceCheckedAt: "2026-06-29",
-    imageUrl: "https://www.appliancesdirect.co.uk/Images/SF10000E_1_LargeProductImage.jpg",
+    imageUrl:
+      "https://www.appliancesdirect.co.uk/Images/SF10000E_1_LargeProductImage.jpg",
     imageAlt: "electriQ Slimline 9000 BTU portable air conditioner SF10000E",
     productKind: "UK-local real compressor portable AC",
-    regionFit: "UK small-to-medium room route when current or similar stock is available",
+    regionFit:
+      "UK small-to-medium room route when current or similar stock is available",
     coolingCapacity: "9,000 BTU",
     hoseType: "Single-hose setup with included hose and sash/slide window kit",
-    noiseLevel: "Check current Appliances Direct noise details and replacement-model reviews.",
-    roomSize: "Small-to-medium rooms, kitchens, offices, caravans, or boats where slim placement matters.",
-    voltagePlug: "UK retailer route; confirm current model and included accessories",
+    noiseLevel:
+      "Check current Appliances Direct noise details and replacement-model reviews.",
+    roomSize:
+      "Small-to-medium rooms, kitchens, offices, caravans, or boats where slim placement matters.",
+    voltagePlug:
+      "UK retailer route; confirm current model and included accessories",
     returnRiskLabel: "Replacement-model and stock risk",
     specSummary:
       "Appliances Direct describes the SF10000E as a 9,000 BTU slimline portable AC for small to medium rooms, with hose, fishtail adaptor, sash/slide window kit, remote, washable pre-filter, and dehumidifier mode.",
@@ -468,25 +574,34 @@ export const europeHeatwaveProductRecords: ProductRecord[] = [
       "The listing gives unusually practical setup detail, which helps buyers check whether their window route and room size work before buying.",
     safetyNote:
       "If the page routes to similar products, compare replacement specs instead of assuming every 9,000 BTU slimline unit is equivalent.",
-    bestFor: "UK buyers who need a slimline setup for a smaller bedroom, kitchen, office, caravan, or boat.",
-    decision: generatedProductDecisions["electriQ Slimline 9000 BTU Portable Air Conditioner SF10000E"],
-    keyCheck: "Confirm current stock or replacement model, included hose/window kit, and room-size fit.",
-    keyFeatures: ["9,000 BTU cooling", "Slimline body", "Hose and sash/slide kit listed"],
+    bestFor:
+      "UK buyers who need a slimline setup for a smaller bedroom, kitchen, office, caravan, or boat.",
+    decision:
+      generatedProductDecisions[
+        "electriQ Slimline 9000 BTU Portable Air Conditioner SF10000E"
+      ],
+    keyCheck:
+      "Confirm current stock or replacement model, included hose/window kit, and room-size fit.",
+    keyFeatures: [
+      "9,000 BTU cooling",
+      "Slimline body",
+      "Hose and sash/slide kit listed",
+    ],
     bestTake:
       "The SF10000E is the practical setup-detail pick. I like that the retailer explains the hose, adaptor, and window kit rather than just shouting BTU. The main caution is availability and replacement drift.",
     pros: [
       "Detailed setup information helps avoid window-kit surprises.",
       "9,000 BTU class fits many smaller UK rooms.",
-      "Slimline body is easier to place than larger high-output units."
+      "Slimline body is easier to place than larger high-output units.",
     ],
     cons: [
       "Current price or replacement status can change.",
       "Not enough for large rooms.",
-      "Single-hose performance depends on sealing the exhaust route."
+      "Single-hose performance depends on sealing the exhaust route.",
     ],
     reviewCount: 18,
     certificationRisk: "low",
-    returnRisk: "medium"
+    returnRisk: "medium",
   },
   {
     name: "electriQ P15CW 14000 BTU Smart Portable Air Conditioner",
@@ -496,28 +611,37 @@ export const europeHeatwaveProductRecords: ProductRecord[] = [
     watts: "14000",
     verifiedClaimType: "cooling-capacity",
     verifiedClaimUnit: "BTU",
-    price: 0,
+    price: null,
     priceLabel: "Check UK price",
+    priceState: "unavailable",
     priceCountry: "GB",
     priceCurrency: "GBP",
     riskCountry: "GB",
-    merchantUrl: "https://www.appliancesdirect.co.uk/p/p15cw/electriq-p15cw-air-conditioner",
+    merchantUrl:
+      "https://www.appliancesdirect.co.uk/p/p15cw/electriq-p15cw-air-conditioner",
     merchantUrlKind: "merchant-product-page",
-    sourceUrl: "https://www.appliancesdirect.co.uk/p/p15cw/electriq-p15cw-air-conditioner",
+    sourceUrl:
+      "https://www.appliancesdirect.co.uk/p/p15cw/electriq-p15cw-air-conditioner",
     sourceLabel: "Appliances Direct electriQ P15CW page",
-    reviewSourceUrl: "https://www.appliancesdirect.co.uk/p/p15cw/electriq-p15cw-air-conditioner",
+    reviewSourceUrl:
+      "https://www.appliancesdirect.co.uk/p/p15cw/electriq-p15cw-air-conditioner",
     reviewSourceLabel: "Appliances Direct high-capacity spec signal",
     marketplaceSourceLabel: "Appliances Direct UK retailer route",
     priceCheckedAt: "2026-06-29",
-    imageUrl: "https://www.appliancesdirect.co.uk/Images/P15CW_1_LargeProductImage.jpg",
+    imageUrl:
+      "https://www.appliancesdirect.co.uk/Images/P15CW_1_LargeProductImage.jpg",
     imageAlt: "electriQ P15CW 14000 BTU smart portable air conditioner",
     productKind: "UK-local real compressor portable AC",
-    regionFit: "UK high-capacity local route for larger rooms when exhaust setup is possible",
+    regionFit:
+      "UK high-capacity local route for larger rooms when exhaust setup is possible",
     coolingCapacity: "14,000 BTU",
     hoseType: "Single-hose smart portable setup with window kit route",
-    noiseLevel: "Large monoblock noise; verify dB and fan/compressor complaints for living spaces.",
-    roomSize: "Up to 38 m2 retailer claim; best for larger UK rooms with workable exhaust setup.",
-    voltagePlug: "UK retailer route; confirm plug, warranty, and delivery handling",
+    noiseLevel:
+      "Large monoblock noise; verify dB and fan/compressor complaints for living spaces.",
+    roomSize:
+      "Up to 38 m2 retailer claim; best for larger UK rooms with workable exhaust setup.",
+    voltagePlug:
+      "UK retailer route; confirm plug, warranty, and delivery handling",
     returnRiskLabel: "Large-room sizing and heavy return risk",
     specSummary:
       "Appliances Direct lists the P15CW as a 14,000 BTU smart portable AC for rooms up to 38 m2, with WiFi control, dehumidifier mode, A energy class, and included setup accessories.",
@@ -525,24 +649,33 @@ export const europeHeatwaveProductRecords: ProductRecord[] = [
       "The page gives a clear high-capacity UK comparison point for buyers who would otherwise overbuy a risky imported heavy AC during a shortage.",
     safetyNote:
       "A strong local high-output pick, but only when the exhaust route and bulky return process are acceptable.",
-    bestFor: "UK buyers cooling larger rooms who need more capacity than 7,000-10,000 BTU models.",
-    decision: generatedProductDecisions["electriQ P15CW 14000 BTU Smart Portable Air Conditioner"],
-    keyCheck: "Confirm 14,000 BTU is needed, exhaust routing works, and large-appliance returns are practical.",
-    keyFeatures: ["14,000 BTU cooling", "Smart WiFi control", "Up to 38 m2 room claim"],
+    bestFor:
+      "UK buyers cooling larger rooms who need more capacity than 7,000-10,000 BTU models.",
+    decision:
+      generatedProductDecisions[
+        "electriQ P15CW 14000 BTU Smart Portable Air Conditioner"
+      ],
+    keyCheck:
+      "Confirm 14,000 BTU is needed, exhaust routing works, and large-appliance returns are practical.",
+    keyFeatures: [
+      "14,000 BTU cooling",
+      "Smart WiFi control",
+      "Up to 38 m2 room claim",
+    ],
     bestTake:
       "P15CW is the bigger-room local route. It is not subtle, and it is not the first unit I would put in a small bedroom, but it gives UK buyers a clearer high-output alternative to importing a heavy AC with unknown returns.",
     pros: [
       "High-capacity 14,000 BTU class for larger rooms.",
       "Local retailer page explains smart controls, dehumidifier mode, and setup.",
-      "Better fit for severe heat loads than small 7K-9K units."
+      "Better fit for severe heat loads than small 7K-9K units.",
     ],
     cons: [
       "Overkill for small rooms.",
       "Large body and hose setup make returns more painful.",
-      "Smart controls do not matter if the window route is poor."
+      "Smart controls do not matter if the window route is poor.",
     ],
     reviewCount: 24,
     certificationRisk: "low",
-    returnRisk: "medium"
-  }
+    returnRisk: "medium",
+  },
 ];

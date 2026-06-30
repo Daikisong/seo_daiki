@@ -1,29 +1,46 @@
 # TREND - Jacob
 
-TREND - Jacob is a personal product trend guide focused on marketplace products from AliExpress, Temu, Amazon, iHerb, and similar fast-moving commerce sites.
+TREND - Jacob is a buyer-decision trend guide for fast-moving marketplace products across AliExpress, Temu, Amazon, iHerb, and local retailers.
 
-The current site is intentionally small:
+The site is not a translation farm or a fake testing-lab site. The operating model is:
 
-- Home page with Jacob's editorial positioning
-- Category archive pages under `/category/[slug]/`
-- One trend article under `/en/trends/travel-gan-charger-fake-wattage-trend/`
-- About, privacy, and do-not-sell pages
-- A guarded affiliate redirect endpoint at `/api/affiliate-click`
+1. Detect a country or language-market trend.
+2. Translate the trend into a concrete buyer problem.
+3. Compare practical product routes, exact variants, prices, review complaints, local fit, shipping, warranty, and return risk.
+4. Publish only when the article and product evidence pass the quality gates.
+
+## Current Status
+
+This repository is a static/manual MVP with publishing guardrails.
+
+- Public articles currently include:
+  - `/en/trends/europe-heatwave-portable-ac-trend-2026/`
+  - `/en/trends/travel-gan-charger-fake-wattage-trend/`
+- Only `en` is open for indexing.
+- The planned 18-locale model is defined, but planned locales stay hidden/noindex until opened.
+- Quality gates are implemented for product evidence, direct-use claims, internal-process copy, locale safety, hreflang safety, affiliate links, and thin recommendation pages.
+- The trend-to-affiliate pipeline exists as a dry-run skeleton only. It does not publish routes, write sitemap entries, or open locale pages automatically.
 
 ## Commands
 
 ```bash
-corepack pnpm --filter @trend-jacob/web dev
-corepack pnpm --filter @trend-jacob/web typecheck
-corepack pnpm --filter @trend-jacob/web build
-```
-
-The root shortcuts are:
-
-```bash
 corepack pnpm dev
 corepack pnpm typecheck
+corepack pnpm test
 corepack pnpm build
+corepack pnpm smoke
+corepack pnpm pipeline:dry-run
+```
+
+The web package equivalents are:
+
+```bash
+corepack pnpm --filter @trend-jacob/web dev
+corepack pnpm --filter @trend-jacob/web typecheck
+corepack pnpm --filter @trend-jacob/web test
+corepack pnpm --filter @trend-jacob/web build
+corepack pnpm --filter @trend-jacob/web smoke
+corepack pnpm --filter @trend-jacob/web pipeline:dry-run
 ```
 
 ## Main Files
@@ -31,17 +48,64 @@ corepack pnpm build
 - `apps/web/app/page.tsx` - home page
 - `apps/web/app/category/[slug]/page.tsx` - category archive route
 - `apps/web/app/[locale]/trends/[slug]/page.tsx` - trend article route
-- `apps/web/components/layout/TrendArchive.tsx` - shared archive layout
 - `apps/web/components/layout/ArticlePage.tsx` - trend article detail layout
-- `apps/web/lib/trend-site/` - categories, routes, local article data, products, and recommendation model
+- `apps/web/components/layout/article-type-content-parts.tsx` - reader-facing article blocks
+- `apps/web/lib/trend-site/locales.ts` - 18-locale config and indexability rules
+- `apps/web/lib/trend-site/seo.ts` - canonical, sitemap, noindex, and opt-in hreflang logic
+- `apps/web/lib/trend-site/quality-gate.ts` - publish safety gates
+- `apps/web/lib/trend-site/content/` - manual article and product evidence records
+- `apps/web/lib/trend-site/pipeline-*.ts` - dry-run pipeline models, fixtures, writer, and runner
 
-## Editorial Direction
+## Content Rules
 
-Each guide should start with search demand and buyer risk, then move into products only when the topic has enough evidence. Recommendations should check:
+Reader-facing article copy must show buyer outcomes, not internal workflow proof.
 
-- Search demand and ranking patterns
-- Seller claims and exact variants
-- Price movement and final shipped price
-- Shipping terms and return paths
-- Review complaints and compliance risk
-- Affiliate fit and disclosure
+Use public copy for:
+
+- exact variant and SKU caveats
+- final price labels and price status
+- plug, voltage, wattage, compatibility, and included accessories
+- seller return path and warranty route
+- repeated buyer complaints
+- shipping delay or import risk
+- practical pros and cons
+- who should buy, wait, or avoid
+
+Keep these internal unless writing a methodology page:
+
+- SERP provider checks
+- Search Console signals
+- LLM or prompt decisions
+- commercial intent scoring
+- monetization-link availability
+- internal SEO workflow notes
+
+## International SEO Model
+
+Use one global domain with fixed locale subdirectories.
+
+- Good: `/en/`, `/en-gb/`, `/de-de/`, `/fr-fr/`, `/ko-kr/`
+- Do not serve different languages from the same URL by IP, cookie, or browser language.
+- Do not auto-open planned locales.
+- Do not generate hreflang clusters by category alone.
+- Use hreflang only for true localized alternatives of the same core trend and buyer decision.
+- Each localized page must use a self-referencing canonical.
+
+## Price Model
+
+Do not use `0` as a placeholder price.
+
+- Use `priceState: "checked"` with a positive numeric price.
+- Use `priceState: "search-route"` for marketplace/search comparison routes.
+- Use `priceState: "range"` when the public price label is a range.
+- Use `priceState: "unavailable"` with `price: null` when the live price is not visible.
+
+## Pipeline Rule
+
+The current pipeline is dry-run only. It may create typed artifacts and repair tasks, but it must not:
+
+- publish a public route
+- add a draft to sitemap
+- open a planned locale
+- create hreflang alternates for incomplete variants
+- replace manual review

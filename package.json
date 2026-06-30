@@ -6,11 +6,15 @@
   "scripts": {
     "dev": "corepack pnpm --filter @trend-jacob/web dev",
     "build": "corepack pnpm --filter @trend-jacob/web build",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "pipeline:dry-run": "corepack pnpm --filter @trend-jacob/web pipeline:dry-run",
     "smoke": "corepack pnpm --filter @trend-jacob/web smoke",
     "test": "corepack pnpm --filter @trend-jacob/web test",
     "typecheck": "corepack pnpm --filter @trend-jacob/web typecheck"
   },
   "devDependencies": {
+    "prettier": "^3.9.4",
     "typescript": "6.0.3"
   }
 }

@@ -1,0 +1,921 @@
+{
+  "run_id": "dry-run-2026-06-30t10-29-24-153z",
+  "generated_at": "2026-06-30T10:29:24.153Z",
+  "mode": "dry-run",
+  "trend_candidate": {
+    "id": "fixture-europe-heatwave-portable-ac-2026",
+    "locale": "en",
+    "market": "Global English",
+    "detectedAt": "2026-06-30T00:00:00.000Z",
+    "source": "fixture",
+    "seedKeyword": "Europe heatwave portable AC",
+    "trendTitle": "Europe heatwave portable AC buying problem",
+    "trendUrlHint": "/en/trends/europe-heatwave-portable-ac-trend-2026/",
+    "evidence": [
+      {
+        "sourceLabel": "Fixture trend note",
+        "observedAt": "2026-06-30T00:00:00.000Z",
+        "note": "Heatwave searches create demand for room-cooling products and buyer confusion around mini coolers."
+      }
+    ]
+  },
+  "keyword_expansion": {
+    "trendCandidateId": "fixture-europe-heatwave-portable-ac-2026",
+    "primaryKeyword": "Europe heatwave portable AC",
+    "localKeywords": [
+      "Europe heatwave portable AC",
+      "portable air conditioner Europe",
+      "mobile air conditioner heatwave",
+      "real compressor AC vs air cooler"
+    ],
+    "buyerKeywords": [
+      "portable AC return policy",
+      "portable AC window kit",
+      "portable AC voltage plug Europe",
+      "portable AC BTU room size"
+    ],
+    "avoidKeywords": [
+      "USB mini air cooler",
+      "fan sold as air conditioner",
+      "wrong voltage portable AC"
+    ]
+  },
+  "serp_observations": [
+    {
+      "id": "serp-1",
+      "keyword": "Europe heatwave portable AC",
+      "locale": "en",
+      "observedAt": "2026-06-30T10:29:24.153Z",
+      "url": "https://example-serp-source.test/1",
+      "title": "Europe heatwave portable AC buying guide example",
+      "sourceType": "publisher",
+      "notes": "Fixture observation used to shape buyer questions, comparison sections, and risk warnings."
+    },
+    {
+      "id": "serp-2",
+      "keyword": "portable air conditioner Europe",
+      "locale": "en",
+      "observedAt": "2026-06-30T10:29:24.153Z",
+      "url": "https://example-serp-source.test/2",
+      "title": "portable air conditioner Europe buying guide example",
+      "sourceType": "blog",
+      "notes": "Fixture observation used to shape buyer questions, comparison sections, and risk warnings."
+    },
+    {
+      "id": "serp-3",
+      "keyword": "mobile air conditioner heatwave",
+      "locale": "en",
+      "observedAt": "2026-06-30T10:29:24.153Z",
+      "url": "https://example-serp-source.test/3",
+      "title": "mobile air conditioner heatwave buying guide example",
+      "sourceType": "retailer",
+      "notes": "Fixture observation used to shape buyer questions, comparison sections, and risk warnings."
+    }
+  ],
+  "serp_pattern_analysis": {
+    "trendCandidateId": "fixture-europe-heatwave-portable-ac-2026",
+    "dominantFormats": [
+      "publisher",
+      "blog",
+      "retailer"
+    ],
+    "commonSections": [
+      "quick answer",
+      "product shortlist",
+      "comparison table",
+      "FAQ",
+      "buying risks"
+    ],
+    "gapsToExploit": [
+      "separate compressor ACs from mini coolers",
+      "show return and voltage risk",
+      "add country buying routes"
+    ],
+    "readerQuestions": [
+      "Is this a real air conditioner?",
+      "Can I return it locally?",
+      "Will the window kit fit?"
+    ]
+  },
+  "buyer_problem_map": {
+    "trendCandidateId": "fixture-europe-heatwave-portable-ac-2026",
+    "issueSummary": "Heatwave searches can push readers toward fast cooling purchases.",
+    "buyerProblem": "The reader needs to separate real compressor ACs from fans, mini coolers, and risky imports.",
+    "productCategory": "portable air conditioner heatwave cooling",
+    "mustCompare": [
+      "compressor AC class",
+      "BTU and room size",
+      "window kit",
+      "noise",
+      "voltage",
+      "return path"
+    ],
+    "avoidConfusions": [
+      "USB mini cooler",
+      "fan-only tower",
+      "smart AC controller sold as cooling hardware"
+    ],
+    "localFitRequirements": [
+      "local voltage",
+      "plug type",
+      "delivery date",
+      "warranty territory",
+      "bulky-return route"
+    ]
+  },
+  "commercial_fit_report": {
+    "trendCandidateId": "fixture-europe-heatwave-portable-ac-2026",
+    "status": "eligible",
+    "monetizableMarketplaces": [
+      "Amazon",
+      "AliExpress",
+      "Temu",
+      "Local retailer"
+    ],
+    "affiliateFitNotes": [
+      "Heavy compressor ACs should prefer local retailer routes.",
+      "AliExpress and Temu are better fits for accessories unless local stock and returns are clear."
+    ],
+    "riskNotes": [
+      "Do not turn a general heatwave news item into product links unless the buyer problem is concrete."
+    ]
+  },
+  "product_candidates": [
+    {
+      "id": "fixture-portable-ac-1",
+      "name": "Fixture Portable AC 1",
+      "exactVariant": "Fixture Portable AC 1 9000 BTU",
+      "category": "portable air conditioner heatwave cooling",
+      "productRole": "main",
+      "merchantUrl": "https://merchant.example/products/portable-ac-1",
+      "merchantUrlKind": "merchant-product-page",
+      "price": 400,
+      "priceLabel": "$400",
+      "priceState": "checked",
+      "priceCountry": "GB",
+      "priceCurrency": "GBP",
+      "priceCheckedAt": "2026-06-30",
+      "evidenceLevel": "review-pattern",
+      "officialSpecSource": {
+        "label": "Fixture brand spec page 1",
+        "url": "https://merchant.example/products/portable-ac-1/specs"
+      },
+      "marketplaceSource": {
+        "label": "Fixture merchant route 1",
+        "url": "https://merchant.example/products/portable-ac-1"
+      },
+      "reviewComplaintSignal": {
+        "label": "Fixture buyer complaints 1",
+        "url": "https://reviews.example/portable-ac-1",
+        "summary": "Buyers mention hose fit, night noise, drainage, and bulky returns.",
+        "count": 25
+      },
+      "localRiskNote": "Check voltage, plug, window kit, stock route, warranty territory, and bulky-return terms.",
+      "returnRiskLabel": "Bulky return route must be visible before checkout.",
+      "bestFor": "One-room cooling where a window hose can be installed.",
+      "skipIf": "Skip if you cannot vent hot air outside or return a heavy appliance locally.",
+      "keyCheck": "Confirm compressor AC class, BTU rating, hose kit, voltage, delivery date, and return route."
+    },
+    {
+      "id": "fixture-portable-ac-2",
+      "name": "Fixture Portable AC 2",
+      "exactVariant": "Fixture Portable AC 2 9000 BTU",
+      "category": "portable air conditioner heatwave cooling",
+      "productRole": "main",
+      "merchantUrl": "https://merchant.example/products/portable-ac-2",
+      "merchantUrlKind": "merchant-product-page",
+      "price": 401,
+      "priceLabel": "$401",
+      "priceState": "checked",
+      "priceCountry": "GB",
+      "priceCurrency": "GBP",
+      "priceCheckedAt": "2026-06-30",
+      "evidenceLevel": "review-pattern",
+      "officialSpecSource": {
+        "label": "Fixture brand spec page 2",
+        "url": "https://merchant.example/products/portable-ac-2/specs"
+      },
+      "marketplaceSource": {
+        "label": "Fixture merchant route 2",
+        "url": "https://merchant.example/products/portable-ac-2"
+      },
+      "reviewComplaintSignal": {
+        "label": "Fixture buyer complaints 2",
+        "url": "https://reviews.example/portable-ac-2",
+        "summary": "Buyers mention hose fit, night noise, drainage, and bulky returns.",
+        "count": 26
+      },
+      "localRiskNote": "Check voltage, plug, window kit, stock route, warranty territory, and bulky-return terms.",
+      "returnRiskLabel": "Bulky return route must be visible before checkout.",
+      "bestFor": "One-room cooling where a window hose can be installed.",
+      "skipIf": "Skip if you cannot vent hot air outside or return a heavy appliance locally.",
+      "keyCheck": "Confirm compressor AC class, BTU rating, hose kit, voltage, delivery date, and return route."
+    },
+    {
+      "id": "fixture-portable-ac-3",
+      "name": "Fixture Portable AC 3",
+      "exactVariant": "Fixture Portable AC 3 9000 BTU",
+      "category": "portable air conditioner heatwave cooling",
+      "productRole": "main",
+      "merchantUrl": "https://merchant.example/products/portable-ac-3",
+      "merchantUrlKind": "merchant-product-page",
+      "price": 402,
+      "priceLabel": "$402",
+      "priceState": "checked",
+      "priceCountry": "GB",
+      "priceCurrency": "GBP",
+      "priceCheckedAt": "2026-06-30",
+      "evidenceLevel": "review-pattern",
+      "officialSpecSource": {
+        "label": "Fixture brand spec page 3",
+        "url": "https://merchant.example/products/portable-ac-3/specs"
+      },
+      "marketplaceSource": {
+        "label": "Fixture merchant route 3",
+        "url": "https://merchant.example/products/portable-ac-3"
+      },
+      "reviewComplaintSignal": {
+        "label": "Fixture buyer complaints 3",
+        "url": "https://reviews.example/portable-ac-3",
+        "summary": "Buyers mention hose fit, night noise, drainage, and bulky returns.",
+        "count": 27
+      },
+      "localRiskNote": "Check voltage, plug, window kit, stock route, warranty territory, and bulky-return terms.",
+      "returnRiskLabel": "Bulky return route must be visible before checkout.",
+      "bestFor": "One-room cooling where a window hose can be installed.",
+      "skipIf": "Skip if you cannot vent hot air outside or return a heavy appliance locally.",
+      "keyCheck": "Confirm compressor AC class, BTU rating, hose kit, voltage, delivery date, and return route."
+    },
+    {
+      "id": "fixture-portable-ac-4",
+      "name": "Fixture Portable AC 4",
+      "exactVariant": "Fixture Portable AC 4 9000 BTU",
+      "category": "portable air conditioner heatwave cooling",
+      "productRole": "main",
+      "merchantUrl": "https://merchant.example/products/portable-ac-4",
+      "merchantUrlKind": "merchant-product-page",
+      "price": 403,
+      "priceLabel": "$403",
+      "priceState": "checked",
+      "priceCountry": "GB",
+      "priceCurrency": "GBP",
+      "priceCheckedAt": "2026-06-30",
+      "evidenceLevel": "review-pattern",
+      "officialSpecSource": {
+        "label": "Fixture brand spec page 4",
+        "url": "https://merchant.example/products/portable-ac-4/specs"
+      },
+      "marketplaceSource": {
+        "label": "Fixture merchant route 4",
+        "url": "https://merchant.example/products/portable-ac-4"
+      },
+      "reviewComplaintSignal": {
+        "label": "Fixture buyer complaints 4",
+        "url": "https://reviews.example/portable-ac-4",
+        "summary": "Buyers mention hose fit, night noise, drainage, and bulky returns.",
+        "count": 28
+      },
+      "localRiskNote": "Check voltage, plug, window kit, stock route, warranty territory, and bulky-return terms.",
+      "returnRiskLabel": "Bulky return route must be visible before checkout.",
+      "bestFor": "One-room cooling where a window hose can be installed.",
+      "skipIf": "Skip if you cannot vent hot air outside or return a heavy appliance locally.",
+      "keyCheck": "Confirm compressor AC class, BTU rating, hose kit, voltage, delivery date, and return route."
+    },
+    {
+      "id": "fixture-portable-ac-5",
+      "name": "Fixture Portable AC 5",
+      "exactVariant": "Fixture Portable AC 5 9000 BTU",
+      "category": "portable air conditioner heatwave cooling",
+      "productRole": "main",
+      "merchantUrl": "https://merchant.example/products/portable-ac-5",
+      "merchantUrlKind": "merchant-product-page",
+      "price": 404,
+      "priceLabel": "$404",
+      "priceState": "checked",
+      "priceCountry": "GB",
+      "priceCurrency": "GBP",
+      "priceCheckedAt": "2026-06-30",
+      "evidenceLevel": "review-pattern",
+      "officialSpecSource": {
+        "label": "Fixture brand spec page 5",
+        "url": "https://merchant.example/products/portable-ac-5/specs"
+      },
+      "marketplaceSource": {
+        "label": "Fixture merchant route 5",
+        "url": "https://merchant.example/products/portable-ac-5"
+      },
+      "reviewComplaintSignal": {
+        "label": "Fixture buyer complaints 5",
+        "url": "https://reviews.example/portable-ac-5",
+        "summary": "Buyers mention hose fit, night noise, drainage, and bulky returns.",
+        "count": 29
+      },
+      "localRiskNote": "Check voltage, plug, window kit, stock route, warranty territory, and bulky-return terms.",
+      "returnRiskLabel": "Bulky return route must be visible before checkout.",
+      "bestFor": "One-room cooling where a window hose can be installed.",
+      "skipIf": "Skip if you cannot vent hot air outside or return a heavy appliance locally.",
+      "keyCheck": "Confirm compressor AC class, BTU rating, hose kit, voltage, delivery date, and return route."
+    },
+    {
+      "id": "fixture-portable-ac-6",
+      "name": "Fixture Portable AC 6",
+      "exactVariant": "Fixture Portable AC 6 9000 BTU",
+      "category": "portable air conditioner heatwave cooling",
+      "productRole": "main",
+      "merchantUrl": "https://merchant.example/products/portable-ac-6",
+      "merchantUrlKind": "merchant-product-page",
+      "price": 405,
+      "priceLabel": "$405",
+      "priceState": "checked",
+      "priceCountry": "GB",
+      "priceCurrency": "GBP",
+      "priceCheckedAt": "2026-06-30",
+      "evidenceLevel": "review-pattern",
+      "officialSpecSource": {
+        "label": "Fixture brand spec page 6",
+        "url": "https://merchant.example/products/portable-ac-6/specs"
+      },
+      "marketplaceSource": {
+        "label": "Fixture merchant route 6",
+        "url": "https://merchant.example/products/portable-ac-6"
+      },
+      "reviewComplaintSignal": {
+        "label": "Fixture buyer complaints 6",
+        "url": "https://reviews.example/portable-ac-6",
+        "summary": "Buyers mention hose fit, night noise, drainage, and bulky returns.",
+        "count": 30
+      },
+      "localRiskNote": "Check voltage, plug, window kit, stock route, warranty territory, and bulky-return terms.",
+      "returnRiskLabel": "Bulky return route must be visible before checkout.",
+      "bestFor": "One-room cooling where a window hose can be installed.",
+      "skipIf": "Skip if you cannot vent hot air outside or return a heavy appliance locally.",
+      "keyCheck": "Confirm compressor AC class, BTU rating, hose kit, voltage, delivery date, and return route."
+    },
+    {
+      "id": "fixture-portable-ac-7",
+      "name": "Fixture Portable AC 7",
+      "exactVariant": "Fixture Portable AC 7 9000 BTU",
+      "category": "portable air conditioner heatwave cooling",
+      "productRole": "main",
+      "merchantUrl": "https://merchant.example/products/portable-ac-7",
+      "merchantUrlKind": "merchant-product-page",
+      "price": 406,
+      "priceLabel": "$406",
+      "priceState": "checked",
+      "priceCountry": "GB",
+      "priceCurrency": "GBP",
+      "priceCheckedAt": "2026-06-30",
+      "evidenceLevel": "review-pattern",
+      "officialSpecSource": {
+        "label": "Fixture brand spec page 7",
+        "url": "https://merchant.example/products/portable-ac-7/specs"
+      },
+      "marketplaceSource": {
+        "label": "Fixture merchant route 7",
+        "url": "https://merchant.example/products/portable-ac-7"
+      },
+      "reviewComplaintSignal": {
+        "label": "Fixture buyer complaints 7",
+        "url": "https://reviews.example/portable-ac-7",
+        "summary": "Buyers mention hose fit, night noise, drainage, and bulky returns.",
+        "count": 31
+      },
+      "localRiskNote": "Check voltage, plug, window kit, stock route, warranty territory, and bulky-return terms.",
+      "returnRiskLabel": "Bulky return route must be visible before checkout.",
+      "bestFor": "One-room cooling where a window hose can be installed.",
+      "skipIf": "Skip if you cannot vent hot air outside or return a heavy appliance locally.",
+      "keyCheck": "Confirm compressor AC class, BTU rating, hose kit, voltage, delivery date, and return route."
+    },
+    {
+      "id": "fixture-portable-ac-8",
+      "name": "Fixture Portable AC 8",
+      "exactVariant": "Fixture Portable AC 8 9000 BTU",
+      "category": "portable air conditioner heatwave cooling",
+      "productRole": "main",
+      "merchantUrl": "https://merchant.example/products/portable-ac-8",
+      "merchantUrlKind": "merchant-product-page",
+      "price": 407,
+      "priceLabel": "$407",
+      "priceState": "checked",
+      "priceCountry": "GB",
+      "priceCurrency": "GBP",
+      "priceCheckedAt": "2026-06-30",
+      "evidenceLevel": "review-pattern",
+      "officialSpecSource": {
+        "label": "Fixture brand spec page 8",
+        "url": "https://merchant.example/products/portable-ac-8/specs"
+      },
+      "marketplaceSource": {
+        "label": "Fixture merchant route 8",
+        "url": "https://merchant.example/products/portable-ac-8"
+      },
+      "reviewComplaintSignal": {
+        "label": "Fixture buyer complaints 8",
+        "url": "https://reviews.example/portable-ac-8",
+        "summary": "Buyers mention hose fit, night noise, drainage, and bulky returns.",
+        "count": 32
+      },
+      "localRiskNote": "Check voltage, plug, window kit, stock route, warranty territory, and bulky-return terms.",
+      "returnRiskLabel": "Bulky return route must be visible before checkout.",
+      "bestFor": "One-room cooling where a window hose can be installed.",
+      "skipIf": "Skip if you cannot vent hot air outside or return a heavy appliance locally.",
+      "keyCheck": "Confirm compressor AC class, BTU rating, hose kit, voltage, delivery date, and return route."
+    },
+    {
+      "id": "fixture-portable-ac-9",
+      "name": "Fixture Portable AC 9",
+      "exactVariant": "Fixture Portable AC 9 9000 BTU",
+      "category": "portable air conditioner heatwave cooling",
+      "productRole": "main",
+      "merchantUrl": "https://merchant.example/products/portable-ac-9",
+      "merchantUrlKind": "merchant-product-page",
+      "price": 408,
+      "priceLabel": "$408",
+      "priceState": "checked",
+      "priceCountry": "GB",
+      "priceCurrency": "GBP",
+      "priceCheckedAt": "2026-06-30",
+      "evidenceLevel": "review-pattern",
+      "officialSpecSource": {
+        "label": "Fixture brand spec page 9",
+        "url": "https://merchant.example/products/portable-ac-9/specs"
+      },
+      "marketplaceSource": {
+        "label": "Fixture merchant route 9",
+        "url": "https://merchant.example/products/portable-ac-9"
+      },
+      "reviewComplaintSignal": {
+        "label": "Fixture buyer complaints 9",
+        "url": "https://reviews.example/portable-ac-9",
+        "summary": "Buyers mention hose fit, night noise, drainage, and bulky returns.",
+        "count": 33
+      },
+      "localRiskNote": "Check voltage, plug, window kit, stock route, warranty territory, and bulky-return terms.",
+      "returnRiskLabel": "Bulky return route must be visible before checkout.",
+      "bestFor": "One-room cooling where a window hose can be installed.",
+      "skipIf": "Skip if you cannot vent hot air outside or return a heavy appliance locally.",
+      "keyCheck": "Confirm compressor AC class, BTU rating, hose kit, voltage, delivery date, and return route."
+    },
+    {
+      "id": "fixture-portable-ac-10",
+      "name": "Fixture Portable AC 10",
+      "exactVariant": "Fixture Portable AC 10 9000 BTU",
+      "category": "portable air conditioner heatwave cooling",
+      "productRole": "main",
+      "merchantUrl": "https://merchant.example/products/portable-ac-10",
+      "merchantUrlKind": "merchant-product-page",
+      "price": 409,
+      "priceLabel": "$409",
+      "priceState": "checked",
+      "priceCountry": "GB",
+      "priceCurrency": "GBP",
+      "priceCheckedAt": "2026-06-30",
+      "evidenceLevel": "review-pattern",
+      "officialSpecSource": {
+        "label": "Fixture brand spec page 10",
+        "url": "https://merchant.example/products/portable-ac-10/specs"
+      },
+      "marketplaceSource": {
+        "label": "Fixture merchant route 10",
+        "url": "https://merchant.example/products/portable-ac-10"
+      },
+      "reviewComplaintSignal": {
+        "label": "Fixture buyer complaints 10",
+        "url": "https://reviews.example/portable-ac-10",
+        "summary": "Buyers mention hose fit, night noise, drainage, and bulky returns.",
+        "count": 34
+      },
+      "localRiskNote": "Check voltage, plug, window kit, stock route, warranty territory, and bulky-return terms.",
+      "returnRiskLabel": "Bulky return route must be visible before checkout.",
+      "bestFor": "One-room cooling where a window hose can be installed.",
+      "skipIf": "Skip if you cannot vent hot air outside or return a heavy appliance locally.",
+      "keyCheck": "Confirm compressor AC class, BTU rating, hose kit, voltage, delivery date, and return route."
+    }
+  ],
+  "evidence_ledger": [
+    {
+      "id": "fixture-europe-heatwave-portable-ac-2026-trend-1",
+      "trendCandidateId": "fixture-europe-heatwave-portable-ac-2026",
+      "evidenceType": "trend",
+      "sourceLabel": "Fixture trend note",
+      "checkedAt": "2026-06-30T00:00:00.000Z",
+      "summary": "Heatwave searches create demand for room-cooling products and buyer confusion around mini coolers."
+    },
+    {
+      "id": "fixture-portable-ac-1-official-spec",
+      "productCandidateId": "fixture-portable-ac-1",
+      "evidenceType": "official-spec",
+      "sourceLabel": "Fixture brand spec page 1",
+      "url": "https://merchant.example/products/portable-ac-1/specs",
+      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "summary": "Official or retailer product details used for exact variant and spec checks."
+    },
+    {
+      "id": "fixture-portable-ac-1-marketplace",
+      "productCandidateId": "fixture-portable-ac-1",
+      "evidenceType": "marketplace",
+      "sourceLabel": "Fixture merchant route 1",
+      "url": "https://merchant.example/products/portable-ac-1",
+      "checkedAt": "2026-06-30",
+      "summary": "Marketplace or merchant route used for price and seller-route checks."
+    },
+    {
+      "id": "fixture-portable-ac-1-review-complaint",
+      "productCandidateId": "fixture-portable-ac-1",
+      "evidenceType": "review-complaint",
+      "sourceLabel": "Fixture buyer complaints 1",
+      "url": "https://reviews.example/portable-ac-1",
+      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "summary": "Buyers mention hose fit, night noise, drainage, and bulky returns."
+    },
+    {
+      "id": "fixture-portable-ac-1-local-risk",
+      "productCandidateId": "fixture-portable-ac-1",
+      "evidenceType": "local-risk",
+      "sourceLabel": "Local fit note",
+      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "summary": "Check voltage, plug, window kit, stock route, warranty territory, and bulky-return terms."
+    },
+    {
+      "id": "fixture-portable-ac-2-official-spec",
+      "productCandidateId": "fixture-portable-ac-2",
+      "evidenceType": "official-spec",
+      "sourceLabel": "Fixture brand spec page 2",
+      "url": "https://merchant.example/products/portable-ac-2/specs",
+      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "summary": "Official or retailer product details used for exact variant and spec checks."
+    },
+    {
+      "id": "fixture-portable-ac-2-marketplace",
+      "productCandidateId": "fixture-portable-ac-2",
+      "evidenceType": "marketplace",
+      "sourceLabel": "Fixture merchant route 2",
+      "url": "https://merchant.example/products/portable-ac-2",
+      "checkedAt": "2026-06-30",
+      "summary": "Marketplace or merchant route used for price and seller-route checks."
+    },
+    {
+      "id": "fixture-portable-ac-2-review-complaint",
+      "productCandidateId": "fixture-portable-ac-2",
+      "evidenceType": "review-complaint",
+      "sourceLabel": "Fixture buyer complaints 2",
+      "url": "https://reviews.example/portable-ac-2",
+      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "summary": "Buyers mention hose fit, night noise, drainage, and bulky returns."
+    },
+    {
+      "id": "fixture-portable-ac-2-local-risk",
+      "productCandidateId": "fixture-portable-ac-2",
+      "evidenceType": "local-risk",
+      "sourceLabel": "Local fit note",
+      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "summary": "Check voltage, plug, window kit, stock route, warranty territory, and bulky-return terms."
+    },
+    {
+      "id": "fixture-portable-ac-3-official-spec",
+      "productCandidateId": "fixture-portable-ac-3",
+      "evidenceType": "official-spec",
+      "sourceLabel": "Fixture brand spec page 3",
+      "url": "https://merchant.example/products/portable-ac-3/specs",
+      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "summary": "Official or retailer product details used for exact variant and spec checks."
+    },
+    {
+      "id": "fixture-portable-ac-3-marketplace",
+      "productCandidateId": "fixture-portable-ac-3",
+      "evidenceType": "marketplace",
+      "sourceLabel": "Fixture merchant route 3",
+      "url": "https://merchant.example/products/portable-ac-3",
+      "checkedAt": "2026-06-30",
+      "summary": "Marketplace or merchant route used for price and seller-route checks."
+    },
+    {
+      "id": "fixture-portable-ac-3-review-complaint",
+      "productCandidateId": "fixture-portable-ac-3",
+      "evidenceType": "review-complaint",
+      "sourceLabel": "Fixture buyer complaints 3",
+      "url": "https://reviews.example/portable-ac-3",
+      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "summary": "Buyers mention hose fit, night noise, drainage, and bulky returns."
+    },
+    {
+      "id": "fixture-portable-ac-3-local-risk",
+      "productCandidateId": "fixture-portable-ac-3",
+      "evidenceType": "local-risk",
+      "sourceLabel": "Local fit note",
+      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "summary": "Check voltage, plug, window kit, stock route, warranty territory, and bulky-return terms."
+    },
+    {
+      "id": "fixture-portable-ac-4-official-spec",
+      "productCandidateId": "fixture-portable-ac-4",
+      "evidenceType": "official-spec",
+      "sourceLabel": "Fixture brand spec page 4",
+      "url": "https://merchant.example/products/portable-ac-4/specs",
+      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "summary": "Official or retailer product details used for exact variant and spec checks."
+    },
+    {
+      "id": "fixture-portable-ac-4-marketplace",
+      "productCandidateId": "fixture-portable-ac-4",
+      "evidenceType": "marketplace",
+      "sourceLabel": "Fixture merchant route 4",
+      "url": "https://merchant.example/products/portable-ac-4",
+      "checkedAt": "2026-06-30",
+      "summary": "Marketplace or merchant route used for price and seller-route checks."
+    },
+    {
+      "id": "fixture-portable-ac-4-review-complaint",
+      "productCandidateId": "fixture-portable-ac-4",
+      "evidenceType": "review-complaint",
+      "sourceLabel": "Fixture buyer complaints 4",
+      "url": "https://reviews.example/portable-ac-4",
+      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "summary": "Buyers mention hose fit, night noise, drainage, and bulky returns."
+    },
+    {
+      "id": "fixture-portable-ac-4-local-risk",
+      "productCandidateId": "fixture-portable-ac-4",
+      "evidenceType": "local-risk",
+      "sourceLabel": "Local fit note",
+      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "summary": "Check voltage, plug, window kit, stock route, warranty territory, and bulky-return terms."
+    },
+    {
+      "id": "fixture-portable-ac-5-official-spec",
+      "productCandidateId": "fixture-portable-ac-5",
+      "evidenceType": "official-spec",
+      "sourceLabel": "Fixture brand spec page 5",
+      "url": "https://merchant.example/products/portable-ac-5/specs",
+      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "summary": "Official or retailer product details used for exact variant and spec checks."
+    },
+    {
+      "id": "fixture-portable-ac-5-marketplace",
+      "productCandidateId": "fixture-portable-ac-5",
+      "evidenceType": "marketplace",
+      "sourceLabel": "Fixture merchant route 5",
+      "url": "https://merchant.example/products/portable-ac-5",
+      "checkedAt": "2026-06-30",
+      "summary": "Marketplace or merchant route used for price and seller-route checks."
+    },
+    {
+      "id": "fixture-portable-ac-5-review-complaint",
+      "productCandidateId": "fixture-portable-ac-5",
+      "evidenceType": "review-complaint",
+      "sourceLabel": "Fixture buyer complaints 5",
+      "url": "https://reviews.example/portable-ac-5",
+      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "summary": "Buyers mention hose fit, night noise, drainage, and bulky returns."
+    },
+    {
+      "id": "fixture-portable-ac-5-local-risk",
+      "productCandidateId": "fixture-portable-ac-5",
+      "evidenceType": "local-risk",
+      "sourceLabel": "Local fit note",
+      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "summary": "Check voltage, plug, window kit, stock route, warranty territory, and bulky-return terms."
+    },
+    {
+      "id": "fixture-portable-ac-6-official-spec",
+      "productCandidateId": "fixture-portable-ac-6",
+      "evidenceType": "official-spec",
+      "sourceLabel": "Fixture brand spec page 6",
+      "url": "https://merchant.example/products/portable-ac-6/specs",
+      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "summary": "Official or retailer product details used for exact variant and spec checks."
+    },
+    {
+      "id": "fixture-portable-ac-6-marketplace",
+      "productCandidateId": "fixture-portable-ac-6",
+      "evidenceType": "marketplace",
+      "sourceLabel": "Fixture merchant route 6",
+      "url": "https://merchant.example/products/portable-ac-6",
+      "checkedAt": "2026-06-30",
+      "summary": "Marketplace or merchant route used for price and seller-route checks."
+    },
+    {
+      "id": "fixture-portable-ac-6-review-complaint",
+      "productCandidateId": "fixture-portable-ac-6",
+      "evidenceType": "review-complaint",
+      "sourceLabel": "Fixture buyer complaints 6",
+      "url": "https://reviews.example/portable-ac-6",
+      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "summary": "Buyers mention hose fit, night noise, drainage, and bulky returns."
+    },
+    {
+      "id": "fixture-portable-ac-6-local-risk",
+      "productCandidateId": "fixture-portable-ac-6",
+      "evidenceType": "local-risk",
+      "sourceLabel": "Local fit note",
+      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "summary": "Check voltage, plug, window kit, stock route, warranty territory, and bulky-return terms."
+    },
+    {
+      "id": "fixture-portable-ac-7-official-spec",
+      "productCandidateId": "fixture-portable-ac-7",
+      "evidenceType": "official-spec",
+      "sourceLabel": "Fixture brand spec page 7",
+      "url": "https://merchant.example/products/portable-ac-7/specs",
+      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "summary": "Official or retailer product details used for exact variant and spec checks."
+    },
+    {
+      "id": "fixture-portable-ac-7-marketplace",
+      "productCandidateId": "fixture-portable-ac-7",
+      "evidenceType": "marketplace",
+      "sourceLabel": "Fixture merchant route 7",
+      "url": "https://merchant.example/products/portable-ac-7",
+      "checkedAt": "2026-06-30",
+      "summary": "Marketplace or merchant route used for price and seller-route checks."
+    },
+    {
+      "id": "fixture-portable-ac-7-review-complaint",
+      "productCandidateId": "fixture-portable-ac-7",
+      "evidenceType": "review-complaint",
+      "sourceLabel": "Fixture buyer complaints 7",
+      "url": "https://reviews.example/portable-ac-7",
+      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "summary": "Buyers mention hose fit, night noise, drainage, and bulky returns."
+    },
+    {
+      "id": "fixture-portable-ac-7-local-risk",
+      "productCandidateId": "fixture-portable-ac-7",
+      "evidenceType": "local-risk",
+      "sourceLabel": "Local fit note",
+      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "summary": "Check voltage, plug, window kit, stock route, warranty territory, and bulky-return terms."
+    },
+    {
+      "id": "fixture-portable-ac-8-official-spec",
+      "productCandidateId": "fixture-portable-ac-8",
+      "evidenceType": "official-spec",
+      "sourceLabel": "Fixture brand spec page 8",
+      "url": "https://merchant.example/products/portable-ac-8/specs",
+      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "summary": "Official or retailer product details used for exact variant and spec checks."
+    },
+    {
+      "id": "fixture-portable-ac-8-marketplace",
+      "productCandidateId": "fixture-portable-ac-8",
+      "evidenceType": "marketplace",
+      "sourceLabel": "Fixture merchant route 8",
+      "url": "https://merchant.example/products/portable-ac-8",
+      "checkedAt": "2026-06-30",
+      "summary": "Marketplace or merchant route used for price and seller-route checks."
+    },
+    {
+      "id": "fixture-portable-ac-8-review-complaint",
+      "productCandidateId": "fixture-portable-ac-8",
+      "evidenceType": "review-complaint",
+      "sourceLabel": "Fixture buyer complaints 8",
+      "url": "https://reviews.example/portable-ac-8",
+      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "summary": "Buyers mention hose fit, night noise, drainage, and bulky returns."
+    },
+    {
+      "id": "fixture-portable-ac-8-local-risk",
+      "productCandidateId": "fixture-portable-ac-8",
+      "evidenceType": "local-risk",
+      "sourceLabel": "Local fit note",
+      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "summary": "Check voltage, plug, window kit, stock route, warranty territory, and bulky-return terms."
+    },
+    {
+      "id": "fixture-portable-ac-9-official-spec",
+      "productCandidateId": "fixture-portable-ac-9",
+      "evidenceType": "official-spec",
+      "sourceLabel": "Fixture brand spec page 9",
+      "url": "https://merchant.example/products/portable-ac-9/specs",
+      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "summary": "Official or retailer product details used for exact variant and spec checks."
+    },
+    {
+      "id": "fixture-portable-ac-9-marketplace",
+      "productCandidateId": "fixture-portable-ac-9",
+      "evidenceType": "marketplace",
+      "sourceLabel": "Fixture merchant route 9",
+      "url": "https://merchant.example/products/portable-ac-9",
+      "checkedAt": "2026-06-30",
+      "summary": "Marketplace or merchant route used for price and seller-route checks."
+    },
+    {
+      "id": "fixture-portable-ac-9-review-complaint",
+      "productCandidateId": "fixture-portable-ac-9",
+      "evidenceType": "review-complaint",
+      "sourceLabel": "Fixture buyer complaints 9",
+      "url": "https://reviews.example/portable-ac-9",
+      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "summary": "Buyers mention hose fit, night noise, drainage, and bulky returns."
+    },
+    {
+      "id": "fixture-portable-ac-9-local-risk",
+      "productCandidateId": "fixture-portable-ac-9",
+      "evidenceType": "local-risk",
+      "sourceLabel": "Local fit note",
+      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "summary": "Check voltage, plug, window kit, stock route, warranty territory, and bulky-return terms."
+    },
+    {
+      "id": "fixture-portable-ac-10-official-spec",
+      "productCandidateId": "fixture-portable-ac-10",
+      "evidenceType": "official-spec",
+      "sourceLabel": "Fixture brand spec page 10",
+      "url": "https://merchant.example/products/portable-ac-10/specs",
+      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "summary": "Official or retailer product details used for exact variant and spec checks."
+    },
+    {
+      "id": "fixture-portable-ac-10-marketplace",
+      "productCandidateId": "fixture-portable-ac-10",
+      "evidenceType": "marketplace",
+      "sourceLabel": "Fixture merchant route 10",
+      "url": "https://merchant.example/products/portable-ac-10",
+      "checkedAt": "2026-06-30",
+      "summary": "Marketplace or merchant route used for price and seller-route checks."
+    },
+    {
+      "id": "fixture-portable-ac-10-review-complaint",
+      "productCandidateId": "fixture-portable-ac-10",
+      "evidenceType": "review-complaint",
+      "sourceLabel": "Fixture buyer complaints 10",
+      "url": "https://reviews.example/portable-ac-10",
+      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "summary": "Buyers mention hose fit, night noise, drainage, and bulky returns."
+    },
+    {
+      "id": "fixture-portable-ac-10-local-risk",
+      "productCandidateId": "fixture-portable-ac-10",
+      "evidenceType": "local-risk",
+      "sourceLabel": "Local fit note",
+      "checkedAt": "2026-06-30T10:29:24.153Z",
+      "summary": "Check voltage, plug, window kit, stock route, warranty territory, and bulky-return terms."
+    }
+  ],
+  "article_strategy": {
+    "trendCandidateId": "fixture-europe-heatwave-portable-ac-2026",
+    "targetLocale": "en",
+    "title": "Europe heatwave portable AC guide 2026: real cooling picks and risky mini coolers",
+    "slug": "europe-heatwave-portable-ac-dry-run",
+    "productCategory": "portable air conditioner heatwave cooling",
+    "angle": "Issue-to-product bridge for heatwave cooling decisions.",
+    "introBridge": "Explain the heatwave issue briefly, then move into the practical decision: real compressor ACs, local fit, return route, and products to avoid.",
+    "requiredSections": [
+      "Intro",
+      "Quick answer",
+      "Top 10 practical picks",
+      "Comparison table",
+      "Before-you-buy checklist",
+      "FAQ"
+    ],
+    "marketplaceRule": "Local retailers for heavy compressor ACs; marketplaces for accessories only when terms are clear."
+  },
+  "article_draft": {
+    "id": "draft-fixture-europe-heatwave-portable-ac-2026",
+    "strategyId": "fixture-europe-heatwave-portable-ac-2026",
+    "locale": "en",
+    "slug": "europe-heatwave-portable-ac-dry-run",
+    "title": "Europe heatwave portable AC guide 2026: real cooling picks and risky mini coolers",
+    "h1": "Europe heatwave portable AC guide 2026: real cooling picks and risky mini coolers",
+    "summary": "Heatwave searches are rising, but the buying problem is choosing a real room-cooling product instead of a weak mini cooler or wrong-voltage import.",
+    "productCategory": "portable air conditioner heatwave cooling",
+    "indexStatus": "noindex",
+    "publishStatus": "draft",
+    "contentBlocks": [
+      {
+        "role": "intro",
+        "heading": "What is moving now",
+        "body": "Heatwave demand can make cooling products sell quickly and make weak listings look more attractive than they are."
+      },
+      {
+        "role": "quick-answer",
+        "heading": "Quick answer",
+        "body": "For this issue, compare real compressor ACs by room size, hose setup, voltage, delivery timing, and return route."
+      },
+      {
+        "role": "top-picks",
+        "heading": "Top 10 practical picks",
+        "body": "Use the product shortlist only after checking exact variants and local availability."
+      }
+    ],
+    "affiliateLinks": []
+  },
+  "quality_gate_report": {
+    "status": "PASS",
+    "canPublish": true,
+    "sourceStatus": "PASS",
+    "next_step": "manual_publish_review",
+    "blockers": []
+  },
+  "repair_tasks": [],
+  "publish_candidate": {
+    "articleDraftId": "draft-fixture-europe-heatwave-portable-ac-2026",
+    "canPublish": false,
+    "manualReviewReady": true,
+    "manualOnly": true,
+    "sitemapAction": "none",
+    "publicRouteAction": "none",
+    "hreflangAlternates": {},
+    "reason": "Ready for manual review only; dry-run never writes public routes or sitemap entries."
+  }
+}

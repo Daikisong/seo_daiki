@@ -1,0 +1,9 @@
+{
+  "articleDraftId": "draft-fixture-europe-heatwave-portable-ac-2026",
+  "canPublish": true,
+  "manualOnly": true,
+  "sitemapAction": "none",
+  "publicRouteAction": "none",
+  "hreflangAlternates": {},
+  "reason": "Ready for manual review only; dry-run never writes public routes or sitemap entries."
+}
