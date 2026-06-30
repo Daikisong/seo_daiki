@@ -705,6 +705,14 @@ function checkDirectUseClaims(
       route.route,
     ]) ?? []),
     ...(article.avoidList?.flatMap((item) => [item.label, item.reason]) ?? []),
+    ...(article.relatedArticles?.flatMap((item) => [
+      item.label,
+      item.description,
+    ]) ?? []),
+    ...(article.latestInCategory?.flatMap((item) => [
+      item.label,
+      item.description,
+    ]) ?? []),
     ...article.sections.flatMap((section) => [section.heading, section.body]),
     ...article.faqs.flatMap((faq) => [faq.question, faq.answer]),
     ...articleExpertCopyText(article),
@@ -1199,6 +1207,41 @@ function checkProductionProductAssets(
       );
     }
   }
+
+  if (product.imageUrl && !isApprovedProductImageRoute(product, context)) {
+    blockers.push(
+      blocker(
+        "PRODUCTION_UNAPPROVED_PRODUCT_IMAGE",
+        `${product.id}.imageUrl`,
+        "hard",
+        "Production product image must be from the merchant, source, review page host, or an explicitly approved temporary image source.",
+        "Use a merchant/feed image, or add a reviewed temporary static image URL to the manual approval list.",
+      ),
+    );
+  }
+}
+
+function isApprovedProductImageRoute(
+  product: Product,
+  context: QualityGateContext,
+) {
+  if (context.approvedTemporaryImageUrls?.includes(product.imageUrl)) {
+    return true;
+  }
+
+  try {
+    const imageHost = new URL(product.imageUrl).hostname.toLowerCase();
+    const approvedHosts = [
+      product.merchantUrl,
+      product.sourceUrl,
+      product.reviewSourceUrl,
+    ].map((value) => new URL(value).hostname.toLowerCase());
+    return approvedHosts.some(
+      (host) => imageHost === host || imageHost.endsWith(`.${host}`),
+    );
+  } catch {
+    return false;
+  }
 }
 
 function isProductionPlaceholderUrl(
@@ -1300,6 +1343,14 @@ function articleTextForQuality(article: Article, products: Product[] = []) {
       route.route,
     ]) ?? []),
     ...(article.avoidList?.flatMap((item) => [item.label, item.reason]) ?? []),
+    ...(article.relatedArticles?.flatMap((item) => [
+      item.label,
+      item.description,
+    ]) ?? []),
+    ...(article.latestInCategory?.flatMap((item) => [
+      item.label,
+      item.description,
+    ]) ?? []),
     ...article.sections.flatMap((section) => [section.heading, section.body]),
     ...article.faqs.flatMap((faq) => [faq.question, faq.answer]),
     ...articleExpertCopyText(article),
@@ -1332,6 +1383,7 @@ function articleExpertCopyText(article: Article) {
     article.expertCopy.topPicksHeading,
     article.expertCopy.topPicksIntro,
     article.expertCopy.topPicksRule,
+    article.expertCopy.quickListIntro,
     article.expertCopy.comparisonHeading,
     article.expertCopy.comparisonIntro,
     article.expertCopy.comparisonFootnote,

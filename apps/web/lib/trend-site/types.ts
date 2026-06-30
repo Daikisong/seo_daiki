@@ -68,6 +68,7 @@ export type ArticleExpertCopy = {
   topPicksHeading: string;
   topPicksIntro: string;
   topPicksRule: string;
+  quickListIntro: string;
   comparisonHeading: string;
   comparisonIntro: string;
   comparisonFootnote: string;
@@ -81,8 +82,17 @@ export type ArticleExpertCopy = {
   updateLog: string[];
 };
 
+export type ArticleRelatedLink = {
+  label: string;
+  href: string;
+  description: string;
+};
+
 export type Article = {
   id: string;
+  authorId: string;
+  productEvidenceById?: string;
+  editedById?: string;
   locale: Locale;
   slug: string;
   type: ArticleType;
@@ -100,6 +110,8 @@ export type Article = {
   countryBuyingRoutes?: ArticleCountryRoute[];
   avoidListHeading?: string;
   avoidList?: ArticleAvoidItem[];
+  relatedArticles?: ArticleRelatedLink[];
+  latestInCategory?: ArticleRelatedLink[];
   targetRegion?: string;
   requiresCountryBuyingRoutes?: boolean;
   requiresAvoidList?: boolean;

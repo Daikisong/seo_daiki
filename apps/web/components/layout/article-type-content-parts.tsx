@@ -1,6 +1,7 @@
 import type { Article, Product } from "@/lib/trend-site/types";
 import type { ReactNode } from "react";
 import { AffiliateOutboundLink } from "@/components/seo/AffiliateOutboundLink";
+import { getTrendAuthorById } from "@/lib/trend-site/authors";
 import {
   buildTrendRecommendationModel,
   type TrendRecommendation,
@@ -138,6 +139,27 @@ export function TrendMarketplaceRule({ article }: { article: Article }) {
   );
 }
 
+export function TrendRecentUpdate({ article }: { article: Article }) {
+  const latestUpdate = article.expertCopy.updateLog[0];
+  if (!latestUpdate) {
+    return null;
+  }
+
+  return (
+    <section
+      className="border border-neutral-200 bg-neutral-50 px-4 py-4"
+      id="recent-update"
+    >
+      <p className="text-xs font-black uppercase tracking-normal text-neutral-500">
+        Recent update
+      </p>
+      <p className="mt-2 text-sm leading-6 text-neutral-800">
+        <InlineEmphasis>{latestUpdate}</InlineEmphasis>
+      </p>
+    </section>
+  );
+}
+
 export function TrendCommerceSection({
   article,
   buyerContextSections = [],
@@ -176,10 +198,7 @@ export function TrendCommerceSection({
         </p>
       </section>
 
-      <TrendComparisonTable
-        article={article}
-        recommendations={recommendations}
-      />
+      <TrendQuickList article={article} recommendations={recommendations} />
       <TrendCountryBuyingRoutes article={article} />
       <TrendEditorialSections
         article={article}
@@ -199,6 +218,10 @@ export function TrendCommerceSection({
         ))}
       </section>
 
+      <TrendComparisonTable
+        article={article}
+        recommendations={recommendations}
+      />
       <TrendTopThreeRecommendations
         article={article}
         recommendations={recommendations}
@@ -212,6 +235,77 @@ export function TrendCommerceSection({
       <TrendBuyingChecklist article={article} />
       <TrendFAQ article={article} />
       <TrendUpdateLog article={article} />
+      <TrendAuthorBio article={article} />
+      <TrendRelatedClusters article={article} />
+    </section>
+  );
+}
+
+function TrendQuickList({
+  article,
+  recommendations,
+}: {
+  article: Article;
+  recommendations: TrendRecommendation[];
+}) {
+  return (
+    <section id="quick-list">
+      <TrendArticleHeading>The quick list</TrendArticleHeading>
+      <p className={`mt-[25px] ${articleBodyClass}`}>
+        <InlineEmphasis>{article.expertCopy.quickListIntro}</InlineEmphasis>
+      </p>
+      <div className="mt-5 grid gap-4 md:grid-cols-2">
+        {recommendations.map((item) => (
+          <article
+            className="grid gap-4 border border-neutral-200 bg-white p-4 min-[520px]:grid-cols-[96px_minmax(0,1fr)]"
+            key={item.rank}
+          >
+            <div className="relative">
+              <span
+                aria-hidden
+                className="absolute left-2 top-2 z-10 bg-teal-800 px-2 py-1 text-xs font-black text-white"
+              >
+                {item.rank}
+              </span>
+              <ProductVisual item={item} />
+            </div>
+            <div className="min-w-0">
+              <p className="text-xs font-black uppercase tracking-normal text-amber-700">
+                {item.rankLabel}
+              </p>
+              <h3 className="mt-1 text-base font-black leading-6 text-neutral-950">
+                <a
+                  className="hover:text-[#2f7cd3]"
+                  href={`#trend-pick-${item.rank}`}
+                >
+                  {item.name}
+                </a>
+              </h3>
+              <p className="mt-2 text-sm leading-6 text-neutral-700">
+                <InlineEmphasis>
+                  {compactComparisonText(item.bestFor, 120)}
+                </InlineEmphasis>
+              </p>
+              <div className="mt-3 flex flex-wrap items-center gap-3">
+                <AffiliateOutboundLink
+                  articleId={article.id}
+                  href={trackingHrefForRecommendation(article, item)}
+                  label={priceCtaLabel()}
+                  locale={article.locale}
+                  productId={item.sourceProductId}
+                  rel={item.rel}
+                />
+                <a
+                  className="text-sm font-black text-[#2f7cd3] hover:underline"
+                  href={`#trend-pick-${item.rank}`}
+                >
+                  Read more below
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
     </section>
   );
 }
@@ -406,6 +500,91 @@ function TrendUpdateLog({ article }: { article: Article }) {
   );
 }
 
+function TrendAuthorBio({ article }: { article: Article }) {
+  const author = getTrendAuthorById(article.authorId);
+  if (!author) {
+    return null;
+  }
+
+  return (
+    <section className="border-t border-neutral-200 pt-8" id="about-author">
+      <TrendArticleHeading>About the author</TrendArticleHeading>
+      <div className="mt-5 grid gap-4 border border-neutral-200 bg-neutral-50 p-5 md:grid-cols-[86px_minmax(0,1fr)]">
+        <div
+          aria-hidden
+          className="flex h-20 w-20 items-center justify-center rounded-full bg-[#5d84b4] text-xl font-black text-white"
+        >
+          {author.avatarInitials}
+        </div>
+        <div>
+          <h3 className="text-lg font-black text-neutral-950">{author.name}</h3>
+          <p className="text-sm font-bold text-neutral-600">{author.role}</p>
+          <p className="mt-3 text-sm leading-6 text-neutral-700">
+            {author.shortBio} {author.methodologyNote}
+          </p>
+          <a
+            className="mt-4 inline-flex text-sm font-black text-[#2f7cd3] hover:underline"
+            href={author.authorPagePath}
+          >
+            See all Briefs by {author.name}
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function TrendRelatedClusters({ article }: { article: Article }) {
+  const related = article.relatedArticles ?? [];
+  const latest = article.latestInCategory ?? [];
+  if (related.length === 0 && latest.length === 0) {
+    return null;
+  }
+
+  return (
+    <section className="border-t border-neutral-200 pt-8" id="related-briefs">
+      <TrendArticleHeading>Read more from TrendBrief</TrendArticleHeading>
+      <div className="mt-5 grid gap-6 md:grid-cols-2">
+        <RelatedList title="Related Briefs" items={related} />
+        <RelatedList title="Latest in this category" items={latest} />
+      </div>
+    </section>
+  );
+}
+
+function RelatedList({
+  title,
+  items,
+}: {
+  title: string;
+  items: NonNullable<Article["relatedArticles"]>;
+}) {
+  if (items.length === 0) {
+    return null;
+  }
+
+  return (
+    <section>
+      <h3 className="text-base font-black text-neutral-950">{title}</h3>
+      <div className="mt-3 divide-y divide-neutral-200 border-y border-neutral-200">
+        {items.map((item) => (
+          <article className="py-4" key={item.href}>
+            <a
+              className="text-base font-black leading-6 text-neutral-950 underline decoration-[#2f7cd3] decoration-2 underline-offset-4 hover:text-[#2f7cd3]"
+              href={item.href}
+            >
+              {item.label}
+            </a>
+            <p className="mt-2 text-sm leading-6 text-neutral-700">
+              <InlineEmphasis>{item.description}</InlineEmphasis>
+            </p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function TrendComparisonTable({
   article,
   recommendations,
@@ -589,7 +768,7 @@ function TrendRecommendationCard({
       className="border-t border-neutral-200 py-7 first:border-t-0"
       id={`trend-pick-${item.rank}`}
     >
-      <div className="grid gap-5 lg:grid-cols-[170px_minmax(0,1fr)_210px]">
+      <div className="grid gap-5 lg:grid-cols-[220px_minmax(0,1fr)_230px]">
         <div className="relative">
           <span
             aria-hidden
@@ -600,20 +779,22 @@ function TrendRecommendationCard({
           <ProductVisual item={item} large />
         </div>
         <div>
-          <h3 className="text-xl font-black tracking-normal text-neutral-950">
-            {item.rank}. {item.name}
+          <p className="text-xs font-black uppercase tracking-normal text-amber-700">
+            {item.rankLabel}
+          </p>
+          <h3 className="mt-1 text-xl font-black tracking-normal text-neutral-950">
+            {item.name}
           </h3>
-          <div className="mt-2 flex flex-wrap items-center gap-2">
-            {item.badge ? (
-              <p className="inline-flex bg-amber-100 px-2 py-1 text-xs font-bold text-amber-900">
-                {item.badge}
-              </p>
-            ) : null}
+          <p className="mt-2 text-sm font-bold leading-6 text-neutral-700">
+            {item.bestFor}
+          </p>
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            <EvidencePill item={item} />
           </div>
           <p className={`mt-4 ${articleBodyClass}`}>
             <InlineEmphasis>{item.expertReviewTake}</InlineEmphasis>
           </p>
-          <DecisionBlock label="Why I recommend it" value={item.whyRecommend} />
+          <DecisionBlock label="TrendBrief note" value={item.whyRecommend} />
           <DecisionBlock label="Best for" value={item.whoFits} />
           <DecisionBlock
             label="Skip if"
@@ -621,52 +802,34 @@ function TrendRecommendationCard({
             tone="warning"
           />
           <div className="mt-4 grid gap-4 md:grid-cols-2">
-            <SignalList label="Pros" items={item.pros} tone="positive" />
+            <SignalList
+              label="Reasons to consider"
+              items={item.pros}
+              tone="positive"
+            />
             <SignalList
               label="Repeated complaints to check"
               items={item.repeatedComplaints}
               tone="negative"
             />
           </div>
-          <div className="mt-4 grid gap-3 text-sm leading-6 text-neutral-700 md:grid-cols-2">
-            <FactNote label="Key check" value={item.keyCheck} />
-            {item.productKind ? (
-              <FactNote label="Product type" value={item.productKind} />
-            ) : null}
-            {item.regionFit ? (
-              <FactNote label="Region fit" value={item.regionFit} />
-            ) : null}
-            {item.coolingCapacity ? (
-              <FactNote label="Cooling capacity" value={item.coolingCapacity} />
-            ) : null}
-            {item.hoseType ? (
-              <FactNote label="Hose / setup" value={item.hoseType} />
-            ) : null}
-            {item.noiseLevel ? (
-              <FactNote label="Noise" value={item.noiseLevel} />
-            ) : null}
-            {item.roomSize ? (
-              <FactNote label="Room size" value={item.roomSize} />
-            ) : null}
-            {item.voltagePlug ? (
-              <FactNote label="Voltage / plug" value={item.voltagePlug} />
-            ) : null}
-            <FactNote label="Exact variant" value={item.exactVariant} />
-            <FactNote label="Key details" value={item.specSummary} />
-            <FactNote label="Review clues" value={item.reviewSummary} />
-            <FactNote
-              label="Warranty / return"
-              value={item.warrantyReturnNote}
-            />
-            <FactNote label="Marketplace note" value={item.marketplaceNote} />
-          </div>
+          <ProductSpecsTable item={item} />
           <SourceStack item={item} />
           <div className="mt-4 grid gap-4 md:grid-cols-2">
-            <SignalList label="Cons" items={item.cons} tone="negative" />
+            <SignalList
+              label="Reasons to skip"
+              items={item.cons}
+              tone="negative"
+            />
           </div>
         </div>
         <div className="self-start border-l-4 border-cyan-500 bg-cyan-50 p-4">
-          <p className="text-lg font-black text-neutral-950">{item.price}</p>
+          <p className="text-xs font-black uppercase text-neutral-600">
+            Today's best route
+          </p>
+          <p className="mt-1 text-lg font-black text-neutral-950">
+            {item.price}
+          </p>
           <div className="mt-3">
             <AffiliateOutboundLink
               articleId={article.id}
@@ -677,6 +840,9 @@ function TrendRecommendationCard({
               rel={item.rel}
             />
           </div>
+          <p className="mt-4 text-sm leading-6 text-neutral-700">
+            <InlineEmphasis>{item.marketplaceNote}</InlineEmphasis>
+          </p>
           <p className="mt-4 text-xs font-bold uppercase text-neutral-600">
             Key Features
           </p>
@@ -704,10 +870,20 @@ function SourceStack({ item }: { item: TrendRecommendation }) {
     .filter(Boolean)
     .join(" - ");
   const rows = [
-    ["Product page", item.sourceLabel],
-    ["Review reference", item.reviewSourceLabel],
-    ["Price checked", priceSource],
-  ].filter(([, value]) => value);
+    [
+      "Product page",
+      item.sourceLabel,
+      item.sourceUrl,
+      "nofollow noopener noreferrer",
+    ],
+    [
+      "Review reference",
+      item.reviewSourceLabel,
+      item.reviewSourceUrl,
+      "nofollow noopener noreferrer",
+    ],
+    ["Price check", priceSource, item.href, `${item.rel} noopener noreferrer`],
+  ].filter((row): row is [string, string, string, string] => Boolean(row[1]));
 
   if (rows.length === 0) {
     return null;
@@ -719,15 +895,91 @@ function SourceStack({ item }: { item: TrendRecommendation }) {
         Where to verify
       </p>
       <div className="mt-2 grid gap-2 text-xs leading-5 text-neutral-700 md:grid-cols-3">
-        {rows.map(([label, value]) => (
+        {rows.map(([label, value, href, rel]) => (
           <p key={label}>
             <strong className="block text-neutral-950">{label}</strong>
-            <InlineEmphasis>{value}</InlineEmphasis>
+            <a
+              className="font-bold text-[#2f7cd3] underline decoration-[#2f7cd3] decoration-2 underline-offset-4 hover:text-teal-800"
+              href={href}
+              rel={rel}
+              target="_blank"
+            >
+              <InlineEmphasis>{value}</InlineEmphasis>
+            </a>
           </p>
         ))}
       </div>
     </div>
   );
+}
+
+function EvidencePill({ item }: { item: TrendRecommendation }) {
+  return (
+    <span className="inline-flex bg-neutral-100 px-2 py-1 text-xs font-black uppercase tracking-normal text-neutral-700">
+      {evidenceLabel(item.evidenceLevel)}
+    </span>
+  );
+}
+
+function ProductSpecsTable({ item }: { item: TrendRecommendation }) {
+  const specs: Array<[string, string]> = [];
+  addSpec(specs, "Product type", item.productKind);
+  addSpec(specs, "Cooling capacity", item.coolingCapacity);
+  addSpec(specs, "Room size", item.roomSize);
+  addSpec(specs, "Noise", item.noiseLevel);
+  addSpec(specs, "Hose / setup", item.hoseType);
+  addSpec(specs, "Voltage / plug", item.voltagePlug);
+  addSpec(specs, "Region fit", item.regionFit);
+  addSpec(specs, "Return risk", item.returnRiskLabel);
+  addSpec(specs, "Exact variant", item.exactVariant);
+  addSpec(specs, "Key check", item.keyCheck);
+  addSpec(specs, "Key details", item.specSummary);
+  addSpec(specs, "Review clues", item.reviewSummary);
+  addSpec(specs, "Warranty / return", item.warrantyReturnNote);
+
+  return (
+    <div className="mt-5">
+      <p className="text-xs font-black uppercase text-neutral-500">
+        Specifications
+      </p>
+      <dl className="mt-2 divide-y divide-neutral-200 border-y border-neutral-200 text-sm leading-6">
+        {specs.map(([label, value]) => (
+          <div
+            className="grid gap-1 py-2 md:grid-cols-[150px_minmax(0,1fr)]"
+            key={label}
+          >
+            <dt className="font-black text-neutral-950">{label}</dt>
+            <dd className="text-neutral-700">
+              <InlineEmphasis>{value}</InlineEmphasis>
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  );
+}
+
+function addSpec(
+  specs: Array<[string, string]>,
+  label: string,
+  value: string | undefined,
+) {
+  if (value) {
+    specs.push([label, value]);
+  }
+}
+
+function evidenceLabel(level: TrendRecommendation["evidenceLevel"]) {
+  switch (level) {
+    case "direct-use":
+      return "Original usage notes";
+    case "review-pattern":
+      return "Review-backed";
+    case "public-spec":
+      return "Specs-first";
+    case "insufficient":
+      return "Hold for clearer proof";
+  }
 }
 
 function DecisionBlock({
@@ -750,15 +1002,6 @@ function DecisionBlock({
         <InlineEmphasis>{value}</InlineEmphasis>
       </p>
     </div>
-  );
-}
-
-function FactNote({ label, value }: { label: string; value: string }) {
-  return (
-    <p>
-      <strong className="text-neutral-950">{label}:</strong>{" "}
-      <InlineEmphasis>{value}</InlineEmphasis>
-    </p>
   );
 }
 
@@ -803,7 +1046,7 @@ function ProductVisual({
   compact?: boolean;
   large?: boolean;
 }) {
-  const size = compact ? "h-10 w-10" : large ? "h-36 w-full" : "h-24 w-24";
+  const size = compact ? "h-10 w-10" : large ? "h-52 w-full" : "h-24 w-24";
   if (item.imageUrl) {
     return (
       <div

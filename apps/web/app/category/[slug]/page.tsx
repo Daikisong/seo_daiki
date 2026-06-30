@@ -10,9 +10,10 @@ import { getIndexedArticles } from "@/lib/trend-site/data";
 import {
   sortTrendArticles,
   trendContentUnitPlural,
+  hasIndexableTrendCategoryArticles,
+  indexableTrendCategories,
   trendCategoryBySlug,
   trendSiteName,
-  visibleTrendCategories,
   visibleTrendArticles,
 } from "@/lib/trend-site/categories";
 import { requestAbsoluteUrl } from "@/lib/trend-site/request-url";
@@ -23,7 +24,9 @@ type CategoryPageProps = {
 };
 
 export function generateStaticParams() {
-  return visibleTrendCategories.map((category) => ({ slug: category.slug }));
+  return indexableTrendCategories(getIndexedArticles()).map((category) => ({
+    slug: category.slug,
+  }));
 }
 
 export async function generateMetadata({
@@ -33,6 +36,20 @@ export async function generateMetadata({
   const category = trendCategoryBySlug(slug);
   if (!category || !category.isPublic) {
     return {};
+  }
+  const hasArticles = hasIndexableTrendCategoryArticles(
+    category,
+    getIndexedArticles(),
+  );
+  if (!hasArticles) {
+    return {
+      title: `${category.label} | ${trendSiteName}`,
+      description: `${category.label} from ${trendSiteName}: ${trendContentUnitPlural.toLowerCase()} will appear here after enough real Briefs are published.`,
+      robots: {
+        index: false,
+        follow: true,
+      },
+    };
   }
   return {
     title: `${category.label} | ${trendSiteName}`,
@@ -49,15 +66,15 @@ export default async function CategoryPage({
 }: CategoryPageProps) {
   const { slug } = await params;
   const category = trendCategoryBySlug(slug);
+  const articles = visibleTrendArticles(await getIndexedArticles()).sort(
+    sortTrendArticles,
+  );
   if (!category || !category.isPublic) {
     notFound();
   }
 
   const resolvedSearchParams = await searchParams;
   const searchQuery = firstParam(resolvedSearchParams?.s).trim();
-  const articles = visibleTrendArticles(await getIndexedArticles()).sort(
-    sortTrendArticles,
-  );
   const filteredArticles = filterArchiveArticles(
     articles,
     searchQuery,

@@ -2,6 +2,9 @@ import type { Article } from "../types";
 
 export const heatwaveArticle: Article = {
   id: "trend-europe-heatwave-portable-ac",
+  authorId: "jacob",
+  productEvidenceById: "trendbrief-editors",
+  editedById: "trendbrief-editors",
   locale: "en",
   slug: "europe-heatwave-portable-ac-trend-2026",
   type: "trend",
@@ -115,6 +118,34 @@ export const heatwaveArticle: Article = {
         "A cheap imported AC becomes a bad deal if plug, 220-240 V compatibility, warranty territory, or bulky returns do not work locally.",
     },
   ],
+  relatedArticles: [
+    {
+      label: "How TrendBrief builds buyer notes",
+      href: "/methodology/",
+      description:
+        "The source, price, review-pattern, and return-path checks behind each Brief.",
+    },
+    {
+      label: "Home Briefs",
+      href: "/category/home-trends/",
+      description:
+        "More home and climate buying notes will collect here as the category fills out.",
+    },
+    {
+      label: "Latest Briefs",
+      href: "/#latest-briefs",
+      description:
+        "Return to the newest TrendBrief notes across active categories.",
+    },
+  ],
+  latestInCategory: [
+    {
+      label: "Europe heatwave portable AC trend 2026",
+      href: "/en/trends/europe-heatwave-portable-ac-trend-2026/",
+      description:
+        "This Brief is the current Home Brief anchor for Europe heatwave cooling demand.",
+    },
+  ],
   sections: [
     {
       role: "quick-answer",
@@ -148,6 +179,8 @@ export const heatwaveArticle: Article = {
       "Start with Europe-local inverter, mobile-split, and monoblock portable ACs that clearly show voltage, stock, delivery timing, window setup, warranty, and bulky-return terms. During a shortage, a real compressor AC is only useful if it can be installed in your room, delivered in time, and returned if the fit is wrong.",
     topPicksRule:
       "My buying rule: if the listing does not show SACC/DOE BTU, room size, hose/window kit, noise level, drainage method, voltage, and return terms, treat it as a risky heatwave panic buy.",
+    quickListIntro:
+      "Start here if you only need the shortlist. Each pick links to the fuller product note below, where the variant, route, repeated complaints, and return risk are easier to check.",
     comparisonHeading: "Quick comparison table",
     comparisonIntro:
       "Use this table as a fast shortlist, not the full review. First separate **real compressor AC options** from risky heatwave panic buys, then read the product notes below for setup fit, stock, return terms, review complaints, and the final buying call.",

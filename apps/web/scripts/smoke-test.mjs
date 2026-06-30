@@ -97,19 +97,33 @@ async function assertSitemap() {
   );
   assertIncludes(
     text,
+    "/category/home-trends/",
+    "sitemap should include category routes only after they have indexable briefs",
+  );
+  assertNotIncludes(
+    text,
     "/garden-trends/",
-    "sitemap should include visible planned category routes during pre-launch staging",
+    "sitemap must not include empty planned category routes",
   );
 }
 
 async function assertCategories() {
   await fetchText("/category/home-trends/");
-  await fetchText("/category/garden-trends/");
-  await fetchText("/category/auto-trends/");
-  await fetchText("/category/outdoor-trends/");
-  await fetchText("/category/tool-trends/");
-  await fetchText("/category/electronics-trends/");
-  await fetchText("/category/personal-mobility-trends/");
+  await assertNoindexCategory("/category/garden-trends/");
+  await assertNoindexCategory("/category/auto-trends/");
+  await assertNoindexCategory("/category/outdoor-trends/");
+  await assertNoindexCategory("/category/tool-trends/");
+  await assertNoindexCategory("/category/electronics-trends/");
+  await assertNoindexCategory("/category/personal-mobility-trends/");
+}
+
+async function assertNoindexCategory(path) {
+  const text = await fetchText(path);
+  assertIncludes(
+    text,
+    "noindex",
+    `${path} should remain noindex until real briefs are published`,
+  );
 }
 
 async function assertArticles() {
@@ -150,6 +164,11 @@ async function assertArticles() {
       text,
       "/api/affiliate-click",
       `${path} must not depend on the affiliate-click API for navigation`,
+    );
+    assertIncludes(
+      text,
+      'rel="sponsored nofollow noopener noreferrer"',
+      `${path} source-stack price checks should keep sponsored outbound rel`,
     );
     assertNotIncludes(
       text,

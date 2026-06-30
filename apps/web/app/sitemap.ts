@@ -2,10 +2,12 @@ import type { MetadataRoute } from "next";
 import { getIndexedArticles } from "@/lib/trend-site/data";
 import { articlePath } from "@/lib/trend-site/routes";
 import { requestAbsoluteUrl } from "@/lib/trend-site/request-url";
-import { visibleTrendCategories } from "@/lib/trend-site/categories";
+import { indexableTrendCategories } from "@/lib/trend-site/categories";
+import { publicTrendAuthors } from "@/lib/trend-site/authors";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const articles = await getIndexedArticles();
+  const categoryEntries = indexableTrendCategories(articles);
   const articleEntries = await Promise.all(
     articles.map(async (article) => ({
       url: await requestAbsoluteUrl(articlePath(article)),
@@ -25,7 +27,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       "/terms-of-use/",
       "/advertising-policy/",
       "/do-not-sell-or-share/",
-      ...visibleTrendCategories.map((item) => item.href),
+      ...publicTrendAuthors.map((author) => author.authorPagePath),
+      ...categoryEntries.map((item) => item.href),
     ].map(async (path) => ({
       url: await requestAbsoluteUrl(path),
       lastModified: now,

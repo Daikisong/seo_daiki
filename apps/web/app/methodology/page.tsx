@@ -16,8 +16,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 const evidenceLevels = [
   {
-    title: "Direct-use notes",
-    body: "Jacob has used the product directly or has original usage notes. The article should state the usage window and the exact variant.",
+    title: "Original usage notes",
+    body: "When Jacob has original usage notes for the exact product variant, the Brief can include the usage window, setup context, and practical observations.",
   },
   {
     title: "Review-pattern picks",

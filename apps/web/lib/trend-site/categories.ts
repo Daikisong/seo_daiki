@@ -133,6 +133,26 @@ export const visibleTrendCategories = trendCategories.filter(
   (category) => category.isPublic,
 );
 
+export function indexableTrendCategories(articles: Article[]) {
+  const articleCategorySlugs = new Set(
+    visibleTrendArticles(articles).map(
+      (article) => trendCategoryForArticle(article).slug,
+    ),
+  );
+  return visibleTrendCategories.filter((category) =>
+    articleCategorySlugs.has(category.slug),
+  );
+}
+
+export function hasIndexableTrendCategoryArticles(
+  category: TrendCategory,
+  articles: Article[],
+) {
+  return visibleTrendArticles(articles).some(
+    (article) => trendCategoryForArticle(article).slug === category.slug,
+  );
+}
+
 export function trendCategoryBySlug(slug: string) {
   return trendCategories.find((category) => category.slug === slug);
 }

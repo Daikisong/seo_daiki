@@ -583,6 +583,9 @@ function articleDraftToQualityArticle(
 ): Article {
   return {
     id: draft.id,
+    authorId: "jacob",
+    productEvidenceById: "trendbrief-editors",
+    editedById: "trendbrief-editors",
     locale: draft.locale,
     slug: draft.slug,
     type: "trend",
@@ -668,6 +671,8 @@ function articleDraftToQualityArticle(
         "Start with products that show local fit, exact model details, and return terms.",
       topPicksRule:
         "Treat a changed model number, seller, voltage, or bundle as a different product.",
+      quickListIntro:
+        "Start with the shortlist, then use the product notes below to check variant fit, price route, repeated complaints, and return risk.",
       comparisonHeading: "Quick comparison table",
       comparisonIntro:
         "Use the table to narrow by room fit, product class, and return risk.",

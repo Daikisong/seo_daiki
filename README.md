@@ -7,7 +7,7 @@ TrendBrief publishes buyer notes for fast-moving trends across AliExpress, Temu,
 - Site description: Buyer notes for fast-moving trends
 - Content unit: Briefs
 
-The site is not a translation farm or a fake testing-lab site. The operating model is:
+The operating model is:
 
 1. Detect a country or language-market trend.
 2. Translate the trend into a concrete buyer problem.

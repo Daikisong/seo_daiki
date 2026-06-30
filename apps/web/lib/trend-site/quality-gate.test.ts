@@ -1,7 +1,10 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { validateQualityGates } from "./content/content-validation";
+import {
+  validateArticleContent,
+  validateQualityGates,
+} from "./content/content-validation";
 import { isIndexableLocale } from "./locales";
 import { runArticleQualityGate } from "./quality-gate";
 import type { Article, Product } from "./types";
@@ -163,6 +166,54 @@ test("production mode blocks unapproved example subdomain images", () => {
   assert.equal(codes(result).includes("PRODUCTION_PLACEHOLDER_IMAGE"), true);
 });
 
+test("production mode blocks unapproved off-route product images", () => {
+  const offRouteImageUrl =
+    "https://cdn.shopify.com/s/files/1/0000/0000/files/product.jpg";
+  const result = runArticleQualityGate(
+    article(),
+    products(10, {
+      merchantUrl: "https://www.amazon.com/dp/B000000001",
+      merchantUrlKind: "merchant-product-page",
+      sourceUrl: "https://www.midea.com/uk/air-treatment/product-specs",
+      reviewSourceUrl: "https://www.trustedreviews.com/reviews/portable-ac",
+      imageUrl: offRouteImageUrl,
+    }),
+    {
+      allArticles: [article()],
+      siteOrigin: SITE_ORIGIN,
+      mode: "production",
+    },
+  );
+
+  assert.equal(
+    codes(result).includes("PRODUCTION_UNAPPROVED_PRODUCT_IMAGE"),
+    true,
+  );
+});
+
+test("production mode permits product images from source host", () => {
+  const result = runArticleQualityGate(
+    article(),
+    products(10, {
+      merchantUrl: "https://www.amazon.com/dp/B000000001",
+      merchantUrlKind: "merchant-product-page",
+      sourceUrl: "https://www.midea.com/uk/air-treatment/product-specs",
+      reviewSourceUrl: "https://www.trustedreviews.com/reviews/portable-ac",
+      imageUrl: "https://www.midea.com/content/dam/midea/product.jpg",
+    }),
+    {
+      allArticles: [article()],
+      siteOrigin: SITE_ORIGIN,
+      mode: "production",
+    },
+  );
+
+  assert.equal(
+    codes(result).includes("PRODUCTION_UNAPPROVED_PRODUCT_IMAGE"),
+    false,
+  );
+});
+
 test("production mode permits local editorial article hero images", () => {
   const articleHeroImage =
     "/images/trend-heroes/europe-heatwave-portable-ac-hero.png";
@@ -187,7 +238,7 @@ test("production mode permits local editorial article hero images", () => {
 
 test("production mode permits explicitly approved temporary images for manual static articles", () => {
   const temporaryImageUrl =
-    "https://cdn.example.com/manual/approved-temp-product.jpg";
+    "https://cdn.shopify.com/s/files/1/0000/0000/files/approved-temp-product.jpg";
   const result = runArticleQualityGate(
     article({ imageUrl: temporaryImageUrl }),
     products(10, {
@@ -208,6 +259,10 @@ test("production mode permits explicitly approved temporary images for manual st
   const resultCodes = codes(result);
   assert.equal(resultCodes.includes("PRODUCTION_PLACEHOLDER_URL"), false);
   assert.equal(resultCodes.includes("PRODUCTION_PLACEHOLDER_IMAGE"), false);
+  assert.equal(
+    resultCodes.includes("PRODUCTION_UNAPPROVED_PRODUCT_IMAGE"),
+    false,
+  );
 });
 
 test("requires marketplace search URLs to be labeled as search routes", () => {
@@ -432,6 +487,57 @@ test("blocks internal SEO, SERP, Search Console, monetization, and LLM process l
     }),
     products(10),
     ["FORBIDDEN_INTERNAL_PROCESS_COPY"],
+  );
+  assertCodes(
+    article({
+      expertCopy: {
+        ...article().expertCopy,
+        quickListIntro:
+          "SERP provider and LLM signals created this quick list.",
+      },
+    }),
+    products(10),
+    ["FORBIDDEN_INTERNAL_PROCESS_COPY"],
+  );
+  assertCodes(
+    article({
+      relatedArticles: [
+        {
+          label: "Internal method",
+          href: "/methodology/",
+          description:
+            "Search Console, SERP provider, and LLM evidence created this recommendation.",
+        },
+      ],
+    }),
+    products(10),
+    ["FORBIDDEN_INTERNAL_PROCESS_COPY"],
+  );
+  assertCodes(
+    article({
+      latestInCategory: [
+        {
+          label: "Internal latest",
+          href: "/category/home-trends/",
+          description:
+            "Commercial search intent and monetization link available.",
+        },
+      ],
+    }),
+    products(10),
+    ["FORBIDDEN_INTERNAL_PROCESS_COPY"],
+  );
+});
+
+test("main article author must be a public author profile", () => {
+  assert.throws(
+    () =>
+      validateArticleContent([
+        article({
+          authorId: "trendbrief-editors",
+        }),
+      ]),
+    /public author profile/,
   );
 });
 
@@ -755,6 +861,9 @@ function allBlockers(result: ReturnType<typeof runArticleQualityGate>) {
 function article(overrides: Partial<Article> = {}): Article {
   return {
     id: "article-1",
+    authorId: "jacob",
+    productEvidenceById: "trendbrief-editors",
+    editedById: "trendbrief-editors",
     locale: "en",
     slug: "test-guide",
     type: "trend",
@@ -840,6 +949,7 @@ function article(overrides: Partial<Article> = {}): Article {
         "These picks compare exact variants, seller routes, and buyer-risk signals.",
       topPicksRule:
         "Treat a changed model number, plug, seller, or bundle as a different product.",
+      quickListIntro: "Start with the shortlist, then read product notes.",
       comparisonHeading: "Quick comparison table",
       comparisonIntro:
         "Use the table to narrow the list by practical buyer checks.",

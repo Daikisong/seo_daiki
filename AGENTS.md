@@ -34,6 +34,12 @@ marketplace listings, or review-pattern analysis, explain the checkable evidence
 positively instead of repeating defensive phrases like "not a lab" or "not
 tested in a lab" in public copy.
 
+Do not overcorrect by filling public articles with phrases like "we did not
+test this directly." The reader-facing page should simply avoid unsupported
+hands-on claims and show the positive evidence layer instead: specs checked,
+review-backed, marketplace route, repeated complaints, price checked date,
+variant risk, and return path.
+
 The model is closer to an honest small editorial desk than a large lab. The
 site can still be expert and useful by making the buying decision clearer than
 thin affiliate pages:

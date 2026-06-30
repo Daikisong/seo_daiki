@@ -36,8 +36,8 @@ export default function AdvertisingPolicyPage() {
           </p>
           <p>
             Sponsored or paid placements should be labeled when they are
-            published. Product pages should not claim direct use unless Jacob
-            actually used the product.
+            published. Original usage notes appear only with the exact product
+            variant and the context behind the observation.
           </p>
         </div>
       </main>

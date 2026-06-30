@@ -206,7 +206,7 @@ export const europeHeatwaveProductRecords: ProductRecord[] = [
     marketplaceSourceLabel: "UK local retailer page",
     priceCheckedAt: "2026-06-29",
     imageUrl:
-      "https://media.diy.com/is/image/KingfisherDigital/5060409604396_01c",
+      "https://aircareappliances.co.uk/cdn/shop/files/MeacoCoolAirconSmall10000.jpg?crop=center&height=1200&v=1720611716&width=1200",
     imageAlt: "MeacoCool MC Series Pro 10000 BTU portable air conditioner",
     productKind: "UK-local real compressor portable AC",
     regionFit:

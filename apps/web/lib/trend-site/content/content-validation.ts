@@ -1,5 +1,6 @@
 import type { Article, Product } from "../types";
 import { assertSupportedLocale, isIndexableLocale } from "../locales";
+import { getTrendAuthorById } from "../authors";
 import { trendCategoryBySlug } from "../categories";
 import { assertQualityGatePass } from "../quality-gate";
 import { getSiteUrl } from "../routes";
@@ -7,6 +8,18 @@ import { getArticleEvidenceSource } from "./article-evidence";
 
 export function validateArticleContent(articles: Article[]) {
   for (const article of articles) {
+    assertAuthorExists(article.authorId, `${article.id}.authorId`, {
+      publicProfileRequired: true,
+    });
+    if (article.productEvidenceById) {
+      assertAuthorExists(
+        article.productEvidenceById,
+        `${article.id}.productEvidenceById`,
+      );
+    }
+    if (article.editedById) {
+      assertAuthorExists(article.editedById, `${article.id}.editedById`);
+    }
     assertSupportedLocale(article.locale, `${article.id}.locale`);
     if (article.indexStatus === "index" && !isIndexableLocale(article.locale)) {
       throw new Error(
@@ -32,6 +45,10 @@ export function validateArticleContent(articles: Article[]) {
     assertPresent(
       article.expertCopy.topPicksRule,
       `${article.id}.expertCopy.topPicksRule`,
+    );
+    assertPresent(
+      article.expertCopy.quickListIntro,
+      `${article.id}.expertCopy.quickListIntro`,
     );
     assertPresent(
       article.expertCopy.comparisonIntro,
@@ -292,6 +309,22 @@ function assertKnownArticleEvidenceIds(values: string[], fieldName: string) {
       throw new Error(`${fieldName}.${value}.url must be an HTTPS source URL.`);
     }
   }
+}
+
+function assertAuthorExists(
+  authorId: string | undefined,
+  fieldName: string,
+  options: { publicProfileRequired?: boolean } = {},
+) {
+  assertPresent(authorId, fieldName);
+  const author = getTrendAuthorById(authorId);
+  if (!author) {
+    throw new Error(`${fieldName} must reference a published author profile.`);
+  }
+  if (options.publicProfileRequired && !author.publicProfile) {
+    throw new Error(`${fieldName} must reference a public author profile.`);
+  }
+  assertPresent(author.authorPagePath, `${fieldName}.authorPagePath`);
 }
 
 function assertPresent(value: string | undefined, fieldName: string) {

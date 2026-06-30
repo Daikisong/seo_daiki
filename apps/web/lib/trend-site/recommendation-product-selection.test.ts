@@ -52,6 +52,9 @@ test("returns no recommendation products when the article has no product categor
 function article(overrides: Partial<Article> = {}): Article {
   return {
     id: "article",
+    authorId: "jacob",
+    productEvidenceById: "trendbrief-editors",
+    editedById: "trendbrief-editors",
     locale: "en",
     slug: "article",
     type: "trend",
@@ -69,6 +72,7 @@ function article(overrides: Partial<Article> = {}): Article {
       topPicksHeading: "Top picks",
       topPicksIntro: "Intro",
       topPicksRule: "Rule",
+      quickListIntro: "Quick list intro",
       comparisonHeading: "Comparison",
       comparisonIntro: "Intro",
       comparisonFootnote: "Footnote",
