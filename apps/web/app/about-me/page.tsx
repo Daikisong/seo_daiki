@@ -9,8 +9,8 @@ import { requestAbsoluteUrl } from "@/lib/trend-site/request-url";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: `About Jacob | ${trendSiteName}`,
-    description: `About Jacob, the operator behind ${trendSiteName}: ${trendSiteDescription}.`,
+    title: `About ${trendSiteName} | ${trendSiteName}`,
+    description: `About ${trendSiteName}, Jacob, and the standard behind ${trendSiteDescription}.`,
     alternates: {
       canonical: await requestAbsoluteUrl("/about-me/"),
     },
@@ -23,7 +23,7 @@ export default function AboutMePage() {
       <SiteHeader currentHref="/about-me/" />
       <main className="mx-auto max-w-3xl px-4 py-10 text-neutral-900">
         <h1 className="text-[21px] font-bold leading-[23.1px] tracking-normal text-[#2b2f33] md:text-[25.6px] md:leading-[28.16px] xl:text-[32px] xl:leading-[35.2px]">
-          About Jacob
+          About {trendSiteName}
         </h1>
         <div className="mt-[25px] space-y-[25px] text-[15px] leading-[21px] text-neutral-800 md:text-base md:leading-6">
           <p>

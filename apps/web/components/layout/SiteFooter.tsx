@@ -20,7 +20,7 @@ export function SiteFooter(_: { language?: string } = {}) {
         </div>
         <FooterGroup
           links={[
-            { href: "/about-me/", label: "About Jacob" },
+            { href: "/about-me/", label: "About TrendBrief" },
             { href: "/methodology/", label: "How Briefs work" },
             { href: "/contact/", label: "Contact" },
             { href: "/#latest-briefs", label: "Latest Briefs" },

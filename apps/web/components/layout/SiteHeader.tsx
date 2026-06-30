@@ -16,7 +16,7 @@ const navItems = [
     href: category.href,
   })),
   { label: "Method", href: "/methodology/" },
-  { label: "About Jacob", href: "/about-me/" },
+  { label: "About TrendBrief", href: "/about-me/" },
 ] as const;
 
 export function SiteHeader({

@@ -167,7 +167,7 @@ function ArchivePost({ article }: { article: Article }) {
     <article className="pb-8">
       <h2 className="max-w-[720px] text-[18px] font-bold leading-[19.8px] tracking-normal text-[#2b2f33] md:text-[30px] md:leading-[33px]">
         <Link
-          className="focus-ring rounded-sm hover:text-[#2f7cd3]"
+          className="focus-ring rounded-sm underline decoration-[#b8c8d8] decoration-2 underline-offset-[5px] hover:text-[#2f7cd3] hover:decoration-[#2f7cd3]"
           href={articlePath(article)}
         >
           {article.title}
