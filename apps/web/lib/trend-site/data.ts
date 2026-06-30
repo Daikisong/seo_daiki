@@ -1,6 +1,6 @@
 import type { Article, Product } from "./types";
 import { validateLocalizationClusters } from "./seo";
-import { indexableTrendCategories, visibleTrendArticles } from "./categories";
+import { visibleTrendArticles, visibleTrendCategories } from "./categories";
 import { heatwaveArticle } from "./content/articles";
 import { europeHeatwaveProductRecords } from "./content/europe-heatwave-product-records";
 import { recordsToProducts } from "./content/product-record-transform";
@@ -42,7 +42,7 @@ export function getIndexedArticles() {
 }
 
 export function getPublicNavCategories() {
-  return indexableTrendCategories(getIndexedArticles());
+  return visibleTrendCategories;
 }
 
 export function getTrendArticle(locale: string, slug: string) {

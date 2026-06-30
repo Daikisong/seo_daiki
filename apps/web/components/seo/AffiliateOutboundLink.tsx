@@ -4,6 +4,7 @@ import { ExternalLink } from "lucide-react";
 
 interface AffiliateOutboundLinkProps {
   articleId: string;
+  compact?: boolean;
   href: string;
   label: string;
   locale: string;
@@ -19,15 +20,20 @@ declare global {
 
 export function AffiliateOutboundLink({
   articleId,
+  compact = false,
   href,
   label,
   locale,
   productId,
   rel,
 }: AffiliateOutboundLinkProps) {
+  const sizeClass = compact
+    ? "gap-1 whitespace-normal px-3 py-2 text-center text-xs leading-4"
+    : "gap-2 whitespace-nowrap px-4 py-2 text-sm";
+
   return (
     <a
-      className="focus-ring inline-flex items-center gap-2 whitespace-nowrap rounded-md bg-teal-700 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-800"
+      className={`focus-ring inline-flex items-center justify-center rounded-md bg-teal-700 font-semibold text-white hover:bg-teal-800 ${sizeClass}`}
       href={href}
       onClick={() => {
         window.gtag?.("event", "affiliate_click", {
@@ -43,7 +49,7 @@ export function AffiliateOutboundLink({
       target="_blank"
     >
       {label}
-      <ExternalLink aria-hidden size={16} />
+      <ExternalLink aria-hidden size={compact ? 13 : 16} />
     </a>
   );
 }

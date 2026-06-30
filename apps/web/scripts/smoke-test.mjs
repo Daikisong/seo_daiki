@@ -51,10 +51,15 @@ async function waitForServer(url) {
 async function assertHomeBranding() {
   const text = await fetchText("/");
   assertIncludes(text, "TrendBrief", "home should use the public brand");
-  assertIncludes(
+  assertNotIncludes(
+    text,
+    "trendbrief-wordmark-editorial.png",
+    "home should not render the old raster wordmark with a boxed background",
+  );
+  assertNotIncludes(
     text,
     "trendbrief-logo-main.png",
-    "home should render the provided header logo asset",
+    "home should not render the previous oversized raster logo asset",
   );
   assertIncludes(
     text,
@@ -72,6 +77,11 @@ async function assertHomeBranding() {
     "What to buy",
     "home should expose the shopping magazine navigation section",
   );
+  assertNotIncludes(
+    text,
+    "Sponsor placement",
+    "home should not render ad placeholders before ads exist",
+  );
   assertIncludes(
     text,
     "brief-title-link",
@@ -87,18 +97,19 @@ async function assertHomeBranding() {
     "latest-posts",
     "home must not use the old latest-posts anchor",
   );
-  for (const emptyCategoryLabel of [
-    "Garden Briefs",
-    "Auto Briefs",
-    "Outdoor Briefs",
-    "Tool Briefs",
-    "Electronics Briefs",
-    "Personal Mobility Briefs",
+  for (const plannedCategoryLabel of [
+    "Home &amp; Climate",
+    "Garden",
+    "Auto",
+    "Outdoor",
+    "Tool",
+    "Electronics",
+    "Personal Mobility",
   ]) {
-    assertNotIncludes(
+    assertIncludes(
       text,
-      emptyCategoryLabel,
-      `home navigation must not expose empty category ${emptyCategoryLabel}`,
+      plannedCategoryLabel,
+      `pre-launch home navigation should expose planned category ${plannedCategoryLabel}`,
     );
   }
 }
@@ -214,7 +225,7 @@ async function assertArticles() {
       "Reasons to buy",
       "Reasons to avoid",
       "Source review",
-      "Marketplace review signal",
+      "Seller route",
     ]) {
       assertIncludes(
         text,
@@ -238,11 +249,11 @@ async function assertArticles() {
         text,
         [
           "europe-heatwave-portable-ac-hero.png",
-          "Jump to",
           'id="recent-update"',
+          "Jump to",
           'id="trend-signal"',
         ],
-        `${path} should keep hero before jump nav, then recent update and trend signal`,
+        `${path} should keep hero before recent update, jump nav, and trend signal`,
       );
       assertOrdered(
         text,
@@ -251,8 +262,8 @@ async function assertArticles() {
       );
       assertOrdered(
         text,
-        ['id="quick-list"', 'id="top-10-reviews"', 'id="top-10-comparison"'],
-        `${path} should render quick list, product notes, then comparison table`,
+        ['id="quick-list"', 'id="top-10-comparison"', 'id="top-10-reviews"'],
+        `${path} should render quick list, comparison table, then product notes`,
       );
       assertOrdered(
         text,

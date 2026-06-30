@@ -31,16 +31,25 @@ export function TrendArchive({
 }) {
   const latestBriefs = articles;
   const activeCategories = indexableTrendCategories(articles);
+  if (showIntro) {
+    return (
+      <main className="bg-white text-neutral-950">
+        {articles[0] ? (
+          <div className="lg:hidden">
+            <HomeMagazineHero article={articles[0]} />
+          </div>
+        ) : null}
+        <div className="mx-auto max-w-[1170px] px-5 py-10 xl:px-10">
+          <HomeIntro activeCategories={activeCategories} articles={articles} />
+        </div>
+      </main>
+    );
+  }
+
   return (
     <main className="bg-white text-neutral-950">
-      <div className="mx-auto grid max-w-[1170px] gap-12 px-4 py-8 xl:min-h-[960px] xl:grid-cols-[minmax(0,700px)_300px] xl:gap-[90px] xl:px-10">
+      <div className="mx-auto grid max-w-[1170px] gap-12 px-5 py-10 xl:min-h-[960px] xl:grid-cols-[minmax(0,760px)_300px] xl:gap-[90px] xl:px-10">
         <div>
-          {showIntro ? (
-            <HomeIntro
-              activeCategories={activeCategories}
-              articles={articles}
-            />
-          ) : null}
           <section id="latest-briefs">
             {archiveTitle ? (
               <div className="mb-6">
@@ -122,7 +131,7 @@ export function TrendArchive({
 }
 
 export function HomeIntro({
-  activeCategories,
+  activeCategories: _activeCategories,
   articles,
 }: {
   activeCategories: TrendCategory[];
@@ -130,94 +139,126 @@ export function HomeIntro({
 }) {
   const leadArticle = articles[0];
   return (
-    <section className="mb-10 space-y-8 text-neutral-900">
-      <div>
-        <p className="text-xs font-black uppercase tracking-normal text-[#5d84b4]">
-          {trendHomeDescription}
+    <section className="mb-12 space-y-10 text-neutral-900">
+      <div
+        className="border-b border-neutral-300 pb-4 md:flex md:items-end md:justify-between md:gap-8"
+        id="what-to-buy"
+      >
+        <div>
+          <p className="text-[12px] font-black uppercase tracking-[0.18em] text-[#d80057]">
+            {trendHomeDescription}
+          </p>
+          <h1 className="mt-2 font-serif text-[36px] font-normal leading-[40px] tracking-[-0.01em] text-[#061936] md:text-[54px] md:leading-[58px]">
+            What to buy when a trend moves fast
+          </h1>
+        </div>
+        <p className="mt-4 max-w-[310px] text-[15px] leading-6 text-neutral-700 md:mt-0 md:text-right">
+          Briefs turn noisy search spikes into clear buying notes: what solves
+          the problem, what does not, and what to check before clicking.
         </p>
-        <h1 className="mt-2 text-[26px] font-black leading-[29px] tracking-normal text-[#2b2f33] md:text-[34px] md:leading-[37px]">
-          {trendSiteName} turns fast-moving trends into practical buying Briefs.
-        </h1>
       </div>
       {leadArticle ? (
-        <section className="border-y border-neutral-200 py-6" id="what-to-buy">
-          <p className="text-xs font-black uppercase tracking-normal text-neutral-500">
-            Lead story
-          </p>
-          <Link
-            className="group mt-4 grid gap-5 md:grid-cols-[220px_minmax(0,1fr)]"
-            href={articlePath(leadArticle)}
-          >
-            <Image
-              alt={`${leadArticle.title} thumbnail`}
-              className="aspect-[16/10] w-full object-cover"
-              height={220}
-              priority
-              src={articleImage(leadArticle)}
-              width={340}
-            />
-            <span>
-              <span className="brief-title-link block text-[24px] font-black leading-[28px] text-[#2b2f33] group-hover:text-[#2f7cd3]">
-                {leadArticle.title}
-              </span>
-              <span className="mt-3 block text-[15px] leading-6 text-neutral-700">
-                {postExcerpt(
-                  stripInlineEmphasisSyntax(leadArticle.summary),
-                  220,
-                )}
-              </span>
-              <span className="mt-4 inline-block text-sm font-black text-[#2f7cd3]">
-                Read the Brief
-              </span>
+        <section
+          className="grid gap-8 border-b border-neutral-200 pb-10 md:grid-cols-[minmax(0,680px)_minmax(260px,1fr)]"
+          id="latest-briefs"
+        >
+          <Link className="group block" href={articlePath(leadArticle)}>
+            <span className="block overflow-hidden">
+              <Image
+                alt={`${leadArticle.title} thumbnail`}
+                className="aspect-[16/10] w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                height={420}
+                priority
+                src={articleImage(leadArticle)}
+                width={670}
+              />
+            </span>
+            <span className="mt-4 block text-[12px] font-black uppercase tracking-[0.16em] text-[#d80057]">
+              Lead Brief
+            </span>
+            <span className="brief-title-link mt-2 block font-serif text-[32px] font-normal leading-[36px] text-[#061936] group-hover:text-[#2f7cd3] md:text-[40px] md:leading-[44px]">
+              {leadArticle.title}
+            </span>
+            <span className="mt-4 block max-w-[650px] text-[16px] leading-7 text-neutral-700">
+              {postExcerpt(stripInlineEmphasisSyntax(leadArticle.summary), 250)}
+            </span>
+            <span className="mt-4 inline-block text-sm font-black uppercase tracking-[0.08em] text-[#d80057]">
+              Read the Brief
             </span>
           </Link>
-        </section>
-      ) : null}
-      {activeCategories.length > 0 ? (
-        <section>
-          <h2 className="border-b-4 border-cyan-500 pb-3 text-[24px] font-black leading-[28px] text-[#2b2f33]">
-            What to buy
-          </h2>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {activeCategories.map((category) => (
-              <Link
-                className="border border-[#5d84b4] px-3 py-2 text-sm font-black text-[#2f343b] hover:bg-[#5d84b4] hover:text-white"
-                href={category.href}
-                key={category.slug}
-              >
-                {category.label}
-              </Link>
-            ))}
+          <div className="border-t border-neutral-300 pt-5 md:border-l md:border-t-0 md:pl-8 md:pt-0">
+            <p className="text-[12px] font-black uppercase tracking-[0.16em] text-[#d80057]">
+              In this Brief
+            </p>
+            <ul className="mt-4 space-y-4 text-[16px] leading-7 text-neutral-800">
+              <li className="border-t border-neutral-200 pt-4 first:border-t-0 first:pt-0">
+                Which cooling products actually lower room temperature.
+              </li>
+              <li className="border-t border-neutral-200 pt-4">
+                Which fan, cooler, controller, and import listings to treat as
+                separate categories.
+              </li>
+              <li className="border-t border-neutral-200 pt-4">
+                What to check before paying: voltage, window fit, delivery,
+                stock, warranty, and return route.
+              </li>
+            </ul>
           </div>
         </section>
       ) : null}
-      <section className="grid gap-4 md:grid-cols-2" id="newsletter">
-        <div className="border-l-4 border-cyan-500 bg-cyan-50 p-4">
-          <h2 className="text-lg font-black text-neutral-950">
-            TrendBrief Editors
-          </h2>
-          <p className="mt-2 text-sm leading-6 text-neutral-700">
-            Briefs focus on exact variants, seller routes, current price checks,
-            repeated buyer complaints, and the point where a trend becomes a
-            practical buying decision.
-          </p>
-        </div>
-        <div className="border-l-4 border-[#5d84b4] bg-neutral-50 p-4">
-          <h2 className="text-lg font-black text-neutral-950">
+      <section
+        className="border-y border-neutral-300 py-6 md:flex md:items-center md:justify-between md:gap-8"
+        id="newsletter"
+      >
+        <div>
+          <p className="text-[12px] font-black uppercase tracking-[0.16em] text-[#d80057]">
             Get the next Brief
-          </h2>
-          <p className="mt-2 text-sm leading-6 text-neutral-700">
-            Newsletter signup opens with the public launch. Until then, start
-            with the current Briefs and the method page.
           </p>
-          <Link
-            className="mt-3 inline-block text-sm font-black text-[#2f7cd3] hover:underline"
-            href="/methodology/"
-          >
-            How Briefs work
-          </Link>
+          <h2 className="mt-2 font-serif text-[30px] font-normal leading-[34px] text-[#061936]">
+            Buyer notes for the next fast-moving trend
+          </h2>
         </div>
+        <p className="mt-3 max-w-[390px] text-[15px] leading-6 text-neutral-700 md:mt-0">
+          Newsletter signup opens with the public launch. For now, start with
+          the current Briefs and the method page.
+        </p>
+        <Link
+          className="mt-4 inline-block bg-neutral-100 px-5 py-3 text-sm font-black text-black hover:bg-neutral-200 md:mt-0"
+          href="/methodology/"
+        >
+          How Briefs work
+        </Link>
       </section>
+    </section>
+  );
+}
+
+export function HomeMagazineHero({ article }: { article: Article }) {
+  return (
+    <section className="relative overflow-hidden bg-[#061936]">
+      <Link className="group block" href={articlePath(article)}>
+        <div className="relative min-h-[385px] xl:min-h-[475px]">
+          <Image
+            alt={`${article.title} hero image`}
+            className="absolute inset-0 h-full w-full object-cover"
+            height={900}
+            priority
+            sizes="100vw"
+            src={articleImage(article)}
+            width={1600}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/5" />
+          <div className="absolute left-5 top-4 font-serif text-[35px] font-bold leading-none text-white drop-shadow xl:left-8 xl:top-5">
+            {trendSiteName}
+          </div>
+          <div className="absolute inset-x-6 bottom-9 mx-auto max-w-[720px] bg-white px-7 py-5 text-center shadow-[0_4px_18px_rgba(0,0,0,0.12)] xl:bottom-10 xl:px-12 xl:py-6">
+            <h2 className="font-serif text-[31px] font-normal leading-[34px] text-black xl:text-[38px] xl:leading-[42px]">
+              {article.title}
+            </h2>
+            <div className="absolute inset-x-0 bottom-0 h-[7px] bg-gradient-to-r from-[#d80057] via-[#d80057] to-[#ff4f3f]" />
+          </div>
+        </div>
+      </Link>
     </section>
   );
 }

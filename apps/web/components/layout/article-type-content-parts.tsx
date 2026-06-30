@@ -87,7 +87,7 @@ export function TrendSignalBox({ article }: { article: Article }) {
 
   return (
     <section
-      className="border-l-4 border-cyan-500 bg-cyan-50 px-4 py-4"
+      className="border-l-4 border-[#d80057] bg-[#fff4f8] px-4 py-4"
       id="trend-signal"
     >
       <h2 className="text-lg font-black tracking-normal text-neutral-950">
@@ -201,7 +201,7 @@ export function TrendCommerceSection({
         <p className={`mt-[25px] ${articleBodyClass}`}>
           {article.expertCopy.topPicksIntro}
         </p>
-        <p className="mt-[25px] border-l-4 border-cyan-500 bg-cyan-50 px-4 py-3 text-[15px] leading-[27px] text-neutral-800 md:text-base md:leading-[28.8px]">
+        <p className="mt-[25px] border-l-4 border-[#d80057] bg-[#fff4f8] px-4 py-3 text-[15px] leading-[27px] text-neutral-800 md:text-base md:leading-[28.8px]">
           {article.expertCopy.topPicksRule}
         </p>
       </section>
@@ -211,6 +211,10 @@ export function TrendCommerceSection({
       <TrendEditorialSections
         article={article}
         sections={buyerContextSections}
+      />
+      <TrendComparisonTable
+        article={article}
+        recommendations={recommendations}
       />
 
       <section className="space-y-4" id="top-10-reviews">
@@ -225,11 +229,6 @@ export function TrendCommerceSection({
           />
         ))}
       </section>
-
-      <TrendComparisonTable
-        article={article}
-        recommendations={recommendations}
-      />
       <TrendTopThreeRecommendations
         article={article}
         recommendations={recommendations}
@@ -646,7 +645,7 @@ function TrendComparisonTable({
                 </p>
                 {hasCoolingFields ? (
                   <div className="mt-2 flex flex-wrap gap-1.5">
-                    <span className="bg-cyan-50 px-2 py-1 text-[11px] font-bold text-teal-900">
+                    <span className="bg-[#fff4f8] px-2 py-1 text-[11px] font-bold text-[#061936]">
                       {compactComparisonText(
                         item.coolingCapacity ?? item.productKind ?? "",
                         32,
@@ -666,6 +665,7 @@ function TrendComparisonTable({
                 <div className="mt-3">
                   <AffiliateOutboundLink
                     articleId={article.id}
+                    compact
                     href={trackingHrefForRecommendation(article, item)}
                     label={priceCtaLabel()}
                     locale={article.locale}
@@ -678,41 +678,47 @@ function TrendComparisonTable({
           </article>
         ))}
       </div>
-      <div className="mt-4 hidden overflow-x-auto md:block">
-        <table className="min-w-[1420px] border-y border-neutral-200 text-sm">
+      <div className="mt-4 hidden md:block">
+        <table className="w-full table-fixed border-y border-neutral-200 text-[13px] leading-5">
           <colgroup>
-            <col style={{ width: "5%" }} />
-            <col style={{ width: "18%" }} />
-            <col style={{ width: "11%" }} />
-            <col style={{ width: "14%" }} />
-            <col style={{ width: "14%" }} />
+            <col style={{ width: "6%" }} />
+            <col style={{ width: "24%" }} />
+            <col style={{ width: "23%" }} />
+            <col style={{ width: "24%" }} />
+            <col style={{ width: "10%" }} />
             <col style={{ width: "13%" }} />
-            <col style={{ width: "11%" }} />
-            <col style={{ width: "14%" }} />
           </colgroup>
           <thead>
-            <tr className="bg-teal-800 text-left text-white">
-              <th className="border-teal-700 !text-white">Rank</th>
-              <th className="border-teal-700 !text-white">Pick</th>
-              <th className="border-teal-700 !text-white">Type</th>
-              <th className="border-teal-700 !text-white">Key spec</th>
-              <th className="border-teal-700 !text-white">Best for</th>
-              <th className="border-teal-700 !text-white">Region / returns</th>
-              <th className="border-teal-700 !text-white">
-                Complaint to check
+            <tr className="bg-[#061936] text-left text-white">
+              <th className="break-words border-[#061936] px-2 py-3 !text-white">
+                Rank
               </th>
-              <th className="border-teal-700 !text-white">Evidence / route</th>
+              <th className="break-words border-[#061936] px-2 py-3 !text-white">
+                Pick
+              </th>
+              <th className="break-words border-[#061936] px-2 py-3 !text-white">
+                Best for
+              </th>
+              <th className="break-words border-[#061936] px-2 py-3 !text-white">
+                Check first
+              </th>
+              <th className="break-words border-[#061936] px-2 py-3 !text-white">
+                Price
+              </th>
+              <th className="break-words border-[#061936] px-2 py-3 !text-white">
+                Action
+              </th>
             </tr>
           </thead>
           <tbody>
             {recommendations.map((item) => (
               <tr className="odd:bg-white even:bg-neutral-50" key={item.rank}>
-                <td>
+                <td className="break-words px-2 py-3 align-top">
                   <span className="inline-flex h-8 w-8 items-center justify-center bg-teal-800 text-sm font-black text-white">
                     {item.rank}
                   </span>
                 </td>
-                <td>
+                <td className="break-words px-2 py-3 align-top">
                   <div className="flex items-center gap-3">
                     <ProductVisual item={item} compact />
                     <span className="min-w-0">
@@ -730,80 +736,44 @@ function TrendComparisonTable({
                     </span>
                   </div>
                 </td>
-                <td>
-                  <p className="font-medium leading-5 text-neutral-900">
-                    {compactComparisonText(
-                      item.productKind ?? item.bestFor,
-                      82,
-                    )}
-                  </p>
+                <td className="break-words px-2 py-3 align-top text-neutral-700">
+                  {compactComparisonText(item.bestFor, 120)}
                 </td>
-                <td>
-                  {hasCoolingFields && item.coolingCapacity ? (
-                    <div className="space-y-1 text-xs leading-5">
-                      <p className="font-bold text-teal-800">
-                        {compactComparisonText(item.coolingCapacity, 46)}
-                      </p>
-                      <p className="text-neutral-700">
-                        {compactComparisonText(
-                          [item.roomSize, item.hoseType, item.noiseLevel]
-                            .filter(Boolean)
-                            .join(" / "),
-                          78,
-                        )}
-                      </p>
-                    </div>
-                  ) : null}
-                </td>
-                <td className="text-neutral-700">
-                  {compactComparisonText(item.bestFor, 96)}
-                </td>
-                <td className="text-neutral-700">
-                  <p>{compactComparisonText(item.regionFit, 74)}</p>
-                  <p className="mt-1 text-xs font-bold text-amber-700">
-                    {compactComparisonText(item.returnRiskLabel, 60)}
-                  </p>
-                  {item.voltagePlug ? (
+                <td className="break-words px-2 py-3 align-top text-neutral-700">
+                  <p>{compactComparisonText(comparisonWatchText(item), 104)}</p>
+                  {hasCoolingFields ? (
                     <p className="mt-1 text-xs text-neutral-600">
-                      {compactComparisonText(item.voltagePlug, 58)}
+                      {compactComparisonText(
+                        [item.coolingCapacity, item.voltagePlug]
+                          .filter(Boolean)
+                          .join(" / "),
+                        96,
+                      )}
                     </p>
                   ) : null}
                 </td>
-                <td className="text-neutral-700">
-                  {compactComparisonText(comparisonWatchText(item), 86)}
-                </td>
-                <td>
-                  <p className="text-xs font-bold uppercase text-teal-800">
-                    {evidenceLabel(item.evidenceLevel)}
-                  </p>
-                  <p className="mt-1 text-xs leading-5 text-neutral-600">
-                    {compactComparisonText(
-                      [item.marketplaceSourceLabel, item.priceCheckedAt]
-                        .filter(Boolean)
-                        .join(" / "),
-                      78,
-                    )}
-                  </p>
+                <td className="break-words px-2 py-3 align-top">
                   <p className="font-black leading-5 text-neutral-950">
                     {item.price}
                   </p>
-                  <div className="mt-2">
-                    <AffiliateOutboundLink
-                      articleId={article.id}
-                      href={trackingHrefForRecommendation(article, item)}
-                      label={priceCtaLabel()}
-                      locale={article.locale}
-                      productId={item.sourceProductId}
-                      rel={item.rel}
-                    />
-                  </div>
+                </td>
+                <td className="break-words px-2 py-3 align-top">
+                  <AffiliateOutboundLink
+                    articleId={article.id}
+                    compact
+                    href={trackingHrefForRecommendation(article, item)}
+                    label={priceCtaLabel()}
+                    locale={article.locale}
+                    productId={item.sourceProductId}
+                    rel={item.rel}
+                  />
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <div className="mt-4 border-l-4 border-cyan-500 bg-cyan-50 px-4 py-3">
+      <div className="mt-4 border-l-4 border-[#d80057] bg-[#fff4f8] px-4 py-3">
         <p className="text-sm font-semibold leading-6 text-neutral-900">
           <InlineEmphasis>
             {article.expertCopy.comparisonFootnote}
@@ -823,66 +793,59 @@ function TrendRecommendationCard({
 }) {
   return (
     <article
-      className="border-t border-neutral-200 py-7 first:border-t-0"
+      className="scroll-mt-5 border-t border-neutral-200 py-10 first:border-t-0"
       id={`trend-pick-${item.rank}`}
     >
-      <div className="grid gap-5 lg:grid-cols-[220px_minmax(0,1fr)]">
-        <div className="relative">
-          <span
-            aria-hidden
-            className="absolute left-2 top-2 bg-teal-800 px-2 py-1 text-xs font-bold text-white"
-          >
-            {item.rank}
-          </span>
-          <ProductVisual item={item} large />
-        </div>
-        <div className="min-w-0">
-          <p className="text-xs font-black uppercase tracking-normal text-amber-700">
+      <div className="mx-auto max-w-[800px]">
+        <div className="relative mb-4 flex justify-center">
+          <div className="absolute inset-x-0 top-1/2 h-[3px] -translate-y-1/2 bg-[#1a1a1a]" />
+          <p className="relative bg-[#1a1a1a] px-12 py-2 text-center font-serif text-[22px] font-bold leading-7 text-white">
             {item.rankLabel}
           </p>
-          <h3 className="mt-1 text-xl font-black tracking-normal text-neutral-950">
-            {item.name}
-          </h3>
-          <p className="mt-2 text-sm font-bold leading-6 text-neutral-700">
-            {item.bestFor}
-          </p>
-          <div className="mt-3 flex flex-wrap items-center gap-2">
-            <EvidencePill item={item} />
-            <ReviewSignalPill item={item} />
-          </div>
-          <p className={`mt-4 ${articleBodyClass}`}>
-            <InlineEmphasis>{item.expertReviewTake}</InlineEmphasis>
-          </p>
-          <DecisionBlock label="Editor's verdict" value={item.whyRecommend} />
-          <DecisionBlock label="Best for" value={item.whoFits} />
-          <DecisionBlock
-            label="Skip if"
-            value={item.whoShouldSkip}
-            tone="warning"
-          />
-          <div className="mt-4 grid gap-4 md:grid-cols-2">
-            <SignalList
-              label="Reasons to buy"
-              items={item.pros}
-              tone="positive"
-            />
-            <SignalList
-              label="Reasons to avoid"
-              items={item.cons}
-              tone="negative"
-            />
-          </div>
-          <div className="mt-4">
-            <SignalList
-              label="Repeated complaints to check"
-              items={item.repeatedComplaints}
-              tone="negative"
-            />
-          </div>
-          <ProductSpecsTable item={item} />
-          <SourceStack item={item} />
         </div>
-        <div className="border-l-4 border-cyan-500 bg-cyan-50 p-4 lg:col-start-2">
+        <ProductVisual item={item} showcase />
+        <p className="mt-2 text-xs leading-5 text-neutral-500">
+          Image credit: product source
+        </p>
+        <h3 className="mx-auto mt-5 max-w-[720px] text-center font-serif text-[27px] font-bold uppercase leading-[33px] text-[#d80057]">
+          {item.rank}. {item.name}
+        </h3>
+        <p className="mt-2 text-center text-xs font-black uppercase tracking-[0.18em] text-neutral-500">
+          ★★★★☆
+        </p>
+        <p className="mt-2 text-center text-base leading-7 text-neutral-700">
+          {item.bestFor}
+        </p>
+        <div className="mt-6 border-y border-neutral-200 py-4">
+          <p className="mb-3 text-lg font-black uppercase text-neutral-800">
+            Specifications
+          </p>
+          <ProductSpecsTable item={item} compact />
+        </div>
+        <p className={`mt-5 ${articleBodyClass}`}>
+          <InlineEmphasis>{item.expertReviewTake}</InlineEmphasis>
+        </p>
+        <DecisionBlock label="Editor's verdict" value={item.whyRecommend} />
+        <div className="mt-4 grid gap-4 md:grid-cols-2">
+          <SignalList
+            label="Reasons to buy"
+            items={item.pros}
+            tone="positive"
+          />
+          <SignalList
+            label="Reasons to avoid"
+            items={item.cons}
+            tone="negative"
+          />
+        </div>
+        <div className="mt-4">
+          <SignalList
+            label="Repeated complaints to check"
+            items={item.repeatedComplaints}
+            tone="negative"
+          />
+        </div>
+        <div className="mt-5 bg-neutral-50 p-4">
           <p className="text-xs font-black uppercase text-neutral-600">
             Today's best route
           </p>
@@ -902,31 +865,8 @@ function TrendRecommendationCard({
           <p className="mt-4 text-sm leading-6 text-neutral-700">
             <InlineEmphasis>{item.marketplaceNote}</InlineEmphasis>
           </p>
-          <a
-            className="mt-4 inline-block text-sm font-black text-[#2f7cd3] underline decoration-[#2f7cd3] decoration-2 underline-offset-4 hover:text-teal-800"
-            href={item.reviewSourceUrl}
-            rel="nofollow noopener noreferrer"
-            target="_blank"
-          >
-            Full source review
-          </a>
-          <p className="mt-4 text-xs font-bold uppercase text-neutral-600">
-            Key Features
-          </p>
-          <ul className="mt-2 space-y-2 text-sm leading-6 text-neutral-700">
-            {item.keyFeatures.map((feature) => (
-              <li className="flex gap-2" key={feature}>
-                <span
-                  className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-600"
-                  aria-hidden
-                />
-                <span>
-                  <InlineEmphasis>{feature}</InlineEmphasis>
-                </span>
-              </li>
-            ))}
-          </ul>
         </div>
+        <SourceStack item={item} />
       </div>
     </article>
   );
@@ -980,27 +920,13 @@ function SourceStack({ item }: { item: TrendRecommendation }) {
   );
 }
 
-function EvidencePill({ item }: { item: TrendRecommendation }) {
-  return (
-    <span className="inline-flex bg-neutral-100 px-2 py-1 text-xs font-black uppercase tracking-normal text-neutral-700">
-      {evidenceLabel(item.evidenceLevel)}
-    </span>
-  );
-}
-
-function ReviewSignalPill({ item }: { item: TrendRecommendation }) {
-  if (!item.reviewSignalCount) {
-    return null;
-  }
-
-  return (
-    <span className="inline-flex bg-cyan-50 px-2 py-1 text-xs font-black uppercase tracking-normal text-teal-800">
-      Marketplace review signal: {item.reviewSignalCount}+ buyer mentions
-    </span>
-  );
-}
-
-function ProductSpecsTable({ item }: { item: TrendRecommendation }) {
+function ProductSpecsTable({
+  compact = false,
+  item,
+}: {
+  compact?: boolean;
+  item: TrendRecommendation;
+}) {
   const specs: Array<[string, string]> = [];
   addSpec(specs, "Product type", item.productKind);
   addSpec(specs, "Cooling capacity", item.coolingCapacity);
@@ -1018,10 +944,16 @@ function ProductSpecsTable({ item }: { item: TrendRecommendation }) {
 
   return (
     <div className="mt-5">
-      <p className="text-xs font-black uppercase text-neutral-500">
-        Specifications
-      </p>
-      <dl className="mt-2 divide-y divide-neutral-200 border-y border-neutral-200 text-sm leading-6">
+      {!compact ? (
+        <p className="text-xs font-black uppercase text-neutral-500">
+          Specifications
+        </p>
+      ) : null}
+      <dl
+        className={`divide-y divide-neutral-200 text-sm leading-6 ${
+          compact ? "" : "mt-2 border-y border-neutral-200"
+        }`}
+      >
         {specs.map(([label, value]) => (
           <div
             className="grid gap-1 py-2 md:grid-cols-[150px_minmax(0,1fr)]"
@@ -1045,19 +977,6 @@ function addSpec(
 ) {
   if (value) {
     specs.push([label, value]);
-  }
-}
-
-function evidenceLabel(level: TrendRecommendation["evidenceLevel"]) {
-  switch (level) {
-    case "direct-use":
-      return "Original usage notes";
-    case "review-pattern":
-      return "Review-backed";
-    case "public-spec":
-      return "Specs-first";
-    case "insufficient":
-      return "Hold for clearer proof";
   }
 }
 
@@ -1120,12 +1039,20 @@ function ProductVisual({
   item,
   compact = false,
   large = false,
+  showcase = false,
 }: {
   item: TrendRecommendation;
   compact?: boolean;
   large?: boolean;
+  showcase?: boolean;
 }) {
-  const size = compact ? "h-10 w-10" : large ? "h-52 w-full" : "h-24 w-24";
+  const size = compact
+    ? "h-10 w-10"
+    : showcase
+      ? "h-[760px] w-full max-md:h-[460px]"
+      : large
+        ? "h-52 w-full"
+        : "h-24 w-24";
   if (item.imageUrl) {
     return (
       <div
@@ -1146,38 +1073,11 @@ function ProductVisual({
 
 function TrendArticleHeading({ children }: { children: ReactNode }) {
   return (
-    <div className="flex items-end gap-4 border-b-4 border-cyan-500 pb-3">
-      <h2 className="min-w-0 flex-1 text-[28px] font-bold leading-[31px] tracking-normal text-[#2b2f33] md:text-[32px] md:leading-[35.2px]">
+    <div className="border-b-4 border-[#d80057] pb-3">
+      <h2 className="font-serif text-[30px] font-bold leading-[33px] tracking-normal text-[#2b2f33] md:text-[36px] md:leading-[39.6px]">
         {children}
       </h2>
-      <SectionSpark />
     </div>
-  );
-}
-
-function SectionSpark() {
-  return (
-    <span
-      aria-hidden
-      className="mb-1 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-cyan-500 bg-white text-cyan-600 shadow-[0_2px_0_rgba(6,182,212,0.18)] min-[360px]:h-8 min-[360px]:w-8"
-    >
-      <svg
-        className="h-3.5 w-3.5 min-[360px]:h-4 min-[360px]:w-4"
-        fill="none"
-        viewBox="0 0 24 24"
-      >
-        <path
-          d="M12 3.8 13.9 9l5.3 1.9-5.3 1.9L12 18l-1.9-5.2-5.3-1.9L10.1 9 12 3.8Z"
-          stroke="currentColor"
-          strokeLinejoin="round"
-          strokeWidth="1.9"
-        />
-        <path
-          d="M18.8 16.2 19.6 18l1.8.8-1.8.8-.8 1.8-.8-1.8-1.8-.8 1.8-.8.8-1.8Z"
-          fill="currentColor"
-        />
-      </svg>
-    </span>
   );
 }
 

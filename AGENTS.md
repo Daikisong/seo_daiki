@@ -1,5 +1,19 @@
 # AGENTS.md
 
+## Browser Backend Preference
+
+For any browser, browsing, UX review, benchmark, screenshot, web reference, or
+website inspection task, use Chrome Browser Use through the chrome:Chrome
+plugin first.
+
+On this machine, do not start with the in-app browser/iab, brower skill, CDP,
+standalone Playwright, or temporary Chrome profiles. Use those only if the user
+explicitly asks for that fallback, or if Chrome Browser Use fails after a
+direct attempt.
+
+If Chrome Browser Use fails, report the exact error first before trying another
+browser backend.
+
 ## Trend SEO Content Rules
 
 This project is a reader-facing trend and product brief site. SEO research,

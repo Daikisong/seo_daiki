@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import {
+  HomeMagazineHero,
   TrendArchive,
   filterArchiveArticles,
 } from "@/components/layout/TrendArchive";
@@ -48,6 +49,11 @@ export default async function HomePage({
 
   return (
     <>
+      {!searchQuery && articles[0] ? (
+        <div className="hidden lg:block">
+          <HomeMagazineHero article={articles[0]} />
+        </div>
+      ) : null}
       <SiteHeader
         currentHref="/"
         navCategories={getPublicNavCategories()}

@@ -8,7 +8,6 @@ import { localeToHtmlLang } from "@/lib/trend-site/locales";
 import {
   type TrendCategory,
   trendContentUnitName,
-  trendSiteDescription,
   trendSiteName,
 } from "@/lib/trend-site/categories";
 import { InlineEmphasis } from "./InlineEmphasis";
@@ -42,7 +41,7 @@ export function ArticlePage({
         navCategories={navCategories}
       />
       <main
-        className="mx-auto max-w-[1170px] px-5 py-4 md:py-6"
+        className="mx-auto max-w-[1170px] px-5 py-10 md:py-14"
         lang={htmlLang}
       >
         <JsonLd
@@ -52,40 +51,55 @@ export function ArticlePage({
             publisherUrl ?? absoluteUrl("/"),
           )}
         />
-        <article className="space-y-4 md:space-y-5">
-          <header className="border-b border-neutral-200 pb-4">
+        <article className="space-y-8">
+          <header className="mx-auto max-w-[890px] text-center">
             <nav
               aria-label="Breadcrumb"
-              className="mb-4 text-xs font-bold uppercase tracking-normal text-neutral-500"
+              className="mb-4 flex items-center justify-center gap-3 text-[11px] font-black uppercase tracking-[0.08em] text-[#061936]"
             >
-              <a className="hover:text-[#2f7cd3]" href="/">
+              <a
+                className="underline decoration-neutral-400 underline-offset-3 hover:text-[#d80057]"
+                href="/"
+              >
                 Home
               </a>
-              <span className="mx-2 text-neutral-300">/</span>
+              <span aria-hidden className="text-black">
+                ›
+              </span>
+              <span>What to buy</span>
+              <span aria-hidden className="text-black">
+                ›
+              </span>
               <span>{trendContentUnitName}</span>
             </nav>
-            <h1 className="mt-0 text-[24px] font-black leading-[27px] tracking-normal text-neutral-950 md:text-[38px] md:leading-[42px]">
+            <h1 className="mt-0 font-serif text-[34px] font-normal leading-[38px] tracking-normal text-black md:text-[46px] md:leading-[52px]">
               {article.h1}
             </h1>
-            <p className="mt-4 text-[15px] leading-[25px] text-neutral-700 md:text-base md:leading-[27px]">
+            <p className="mx-auto mt-6 max-w-[760px] text-[16px] leading-[25px] text-black md:text-[18px] md:leading-[28px]">
               <InlineEmphasis>{article.summary}</InlineEmphasis>
             </p>
             <ArticleByline article={article} />
           </header>
 
-          <figure className="overflow-hidden bg-neutral-100">
+          <figure className="mx-auto max-w-[1170px] overflow-hidden bg-neutral-100">
             <Image
               alt={`${article.title} hero image`}
-              className="aspect-[21/9] w-full object-cover"
+              className="aspect-[16/7] w-full object-cover"
               height={613}
               priority
               sizes="(min-width: 1090px) 1090px, calc(100vw - 40px)"
               src={article.imageUrl}
               width={1090}
             />
+            <figcaption className="mt-2 text-xs leading-5 text-neutral-600">
+              Image credit: TrendBrief
+            </figcaption>
           </figure>
-          <ArticleJumpLinks article={article} />
-          <TrendRecentUpdate article={article} />
+          <ArticleShareRow />
+          <div className="mx-auto max-w-[980px]">
+            <TrendRecentUpdate article={article} />
+            <ArticleJumpLinks article={article} />
+          </div>
           <div className="grid gap-10 xl:grid-cols-[minmax(0,850px)_280px] xl:items-start">
             <div className="min-w-0 space-y-[25px]">
               <ArticleTypeContent article={article} products={products} />
@@ -195,7 +209,7 @@ function ArticleRightRail({ article }: { article: Article }) {
 
 function RailBox({ children, title }: { children: ReactNode; title: string }) {
   return (
-    <section className="border-t-4 border-cyan-500 bg-neutral-50 p-4">
+    <section className="border-t-4 border-[#d80057] bg-neutral-50 p-4">
       <h2 className="text-base font-black text-neutral-950">{title}</h2>
       <div className="mt-3">{children}</div>
     </section>
@@ -204,59 +218,55 @@ function RailBox({ children, title }: { children: ReactNode; title: string }) {
 
 function ArticleByline({ article }: { article: Article }) {
   const author = getTrendAuthorById(article.authorId);
-  const evidenceEditor = getTrendAuthorById(article.productEvidenceById);
   if (!author) {
     throw new Error(`Missing public author for article: ${article.id}`);
   }
 
   return (
-    <div className="mt-4 border-y border-neutral-200 py-3">
-      <div className="grid gap-3 text-sm leading-6 text-neutral-700 md:grid-cols-3">
-        <p>
-          <span className="block text-xs font-black uppercase text-neutral-500">
-            Written by
-          </span>
+    <div className="mx-auto mt-8 max-w-[620px]">
+      <div className="flex flex-col items-center justify-center gap-4 text-[12px] leading-5 text-black md:flex-row">
+        <div
+          aria-hidden
+          className="flex h-12 w-12 items-center justify-center rounded-full bg-[#061936] font-serif text-lg font-bold text-white"
+        >
+          J
+        </div>
+        <p className="text-center md:text-left">
+          <span className="font-black uppercase">By </span>
           <a
-            className="font-black text-neutral-950 hover:text-[#2f7cd3]"
+            className="font-black uppercase text-black hover:text-[#d80057]"
             href={author.authorPagePath}
           >
             {author.name}
           </a>
-          <span className="block text-neutral-600">{author.role}</span>
-        </p>
-        <p>
-          <span className="block text-xs font-black uppercase text-neutral-500">
-            Product evidence by
+          <span className="ml-1 uppercase text-neutral-500">
+            Last updated {article.lastUpdated}
           </span>
-          {evidenceEditor ? (
-            <a
-              className="font-black text-neutral-950 hover:text-[#2f7cd3]"
-              href={evidenceEditor.authorPagePath}
-            >
-              {evidenceEditor.name}
-            </a>
-          ) : (
-            <span className="font-black text-neutral-950">
-              Specs, routes, prices, and review patterns
-            </span>
-          )}
-          <span className="block text-neutral-600">
-            Exact variant, stock, warranty, and return-path checks
-          </span>
-        </p>
-        <p>
-          <span className="block text-xs font-black uppercase text-neutral-500">
-            Last updated
-          </span>
-          <span className="font-black text-neutral-950">
-            {article.lastUpdated}
-          </span>
-          <span className="block text-neutral-600">{trendSiteDescription}</span>
         </p>
       </div>
-      <p className="mt-3 border-l-4 border-cyan-500 bg-cyan-50 px-4 py-2 text-sm leading-6 text-neutral-700">
+      <p className="mt-7 text-center text-[13px] leading-6 text-neutral-800">
         <InlineEmphasis>{article.affiliateDisclosure}</InlineEmphasis>
       </p>
+    </div>
+  );
+}
+
+function ArticleShareRow() {
+  return (
+    <div className="mx-auto flex max-w-[760px] flex-wrap items-center justify-center gap-4 border-b border-neutral-200 pb-6 text-sm text-black">
+      <span className="font-bold">Share this article</span>
+      <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#061936] text-xs font-black text-white">
+        f
+      </span>
+      <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-black text-xs font-black text-white">
+        x
+      </span>
+      <a
+        className="font-bold underline decoration-neutral-400 underline-offset-3 hover:text-[#d80057]"
+        href="/#newsletter"
+      >
+        Subscribe to our newsletter
+      </a>
     </div>
   );
 }
