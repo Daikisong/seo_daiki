@@ -46,6 +46,37 @@ a {
   text-decoration: none;
 }
 
+.brief-title-link {
+  color: #2b2f33;
+  text-decoration-color: rgba(93, 132, 180, 0.62);
+  text-decoration-line: underline;
+  text-decoration-skip-ink: auto;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}
+
+.brief-title-link:hover {
+  color: #2f7cd3;
+  text-decoration-color: #2f7cd3;
+}
+
+.reader-emphasis {
+  background: linear-gradient(
+    to top,
+    rgba(93, 132, 180, 0.22) 0%,
+    rgba(93, 132, 180, 0.22) 42%,
+    transparent 42%,
+    transparent 100%
+  );
+  color: #172033;
+  font-weight: 800;
+  text-decoration-color: rgba(93, 132, 180, 0.72);
+  text-decoration-line: underline;
+  text-decoration-skip-ink: none;
+  text-decoration-thickness: 0.14em;
+  text-underline-offset: 0.18em;
+}
+
 table {
   border-collapse: collapse;
   width: 100%;

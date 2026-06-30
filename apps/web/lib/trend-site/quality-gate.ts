@@ -1142,7 +1142,10 @@ function checkProductionArticleAssets(
   if (!isProductionMode(context)) {
     return;
   }
-  if (isProductionPlaceholderUrl(article.imageUrl, context, { image: true })) {
+  if (
+    !isApprovedEditorialArticleImage(article.imageUrl) &&
+    isProductionPlaceholderUrl(article.imageUrl, context, { image: true })
+  ) {
     blockers.push(
       blocker(
         "PRODUCTION_PLACEHOLDER_IMAGE",
@@ -1153,6 +1156,12 @@ function checkProductionArticleAssets(
       ),
     );
   }
+}
+
+function isApprovedEditorialArticleImage(value: string) {
+  return /^\/images\/trend-heroes\/[a-z0-9][a-z0-9._-]*\.(png|jpe?g|webp)$/i.test(
+    value,
+  );
 }
 
 function checkProductionProductAssets(

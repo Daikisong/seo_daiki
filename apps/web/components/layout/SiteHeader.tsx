@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { Search } from "lucide-react";
 import { useState } from "react";
@@ -32,7 +33,7 @@ export function SiteHeader({
 
   return (
     <header className="bg-white">
-      <div className="w-full px-5 pb-6 pt-6 xl:hidden">
+      <div className="w-full px-5 pb-5 pt-5 xl:hidden">
         <div className="relative">
           <button
             aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -46,7 +47,7 @@ export function SiteHeader({
             <span className="mt-[7px] block h-[3px] w-[38px] bg-current" />
             <span className="mt-[7px] block h-[3px] w-[38px] bg-current" />
           </button>
-          <div className="flex min-h-[112px] items-center justify-center">
+          <div className="flex min-h-[118px] items-center justify-center">
             <LogoMark />
           </div>
           <HeaderSearch searchQuery={searchQuery} />
@@ -79,19 +80,19 @@ export function SiteHeader({
           </nav>
         </div>
       </div>
-      <div className="mx-auto hidden max-w-[1170px] px-10 pb-10 pt-6 xl:block">
-        <div className="flex min-h-[106px] items-center justify-start">
+      <div className="hidden xl:block">
+        <div className="mx-auto flex max-w-[1170px] items-center justify-center px-10 py-5">
           <LogoMark />
         </div>
       </div>
       <nav
         aria-label="Primary navigation"
-        className="mx-auto hidden max-w-[1170px] bg-[#5d84b4] px-10 text-white xl:block"
+        className="mx-auto hidden max-w-[1170px] bg-[#5d84b4] px-6 text-white xl:block"
       >
         <div className="flex flex-wrap">
           {navItems.map((item) => (
             <Link
-              className={`focus-ring block px-5 py-5 text-base hover:bg-[#7899c0] ${
+              className={`focus-ring block px-3 py-4 text-[15px] leading-6 hover:bg-[#7899c0] ${
                 isActiveNavItem(item.href, currentHref ?? "/")
                   ? "bg-[#7899c0]"
                   : ""
@@ -143,17 +144,18 @@ function HeaderSearch({ searchQuery }: { searchQuery: string }) {
 function LogoMark() {
   return (
     <Link
-      className="focus-ring inline-flex min-w-0 items-center gap-2 rounded-sm min-[360px]:gap-3 sm:gap-4"
+      aria-label={trendSiteName}
+      className="focus-ring inline-flex rounded-sm"
       href="/"
     >
-      <span className="relative h-[58px] w-[58px] shrink-0 overflow-hidden rounded-full border border-[#cdd5df] bg-[#eef3f7] min-[360px]:h-[76px] min-[360px]:w-[76px] sm:h-[92px] sm:w-[92px]">
-        <span className="absolute left-1/2 top-[18%] h-[28%] w-[48%] -translate-x-1/2 rounded-t-full bg-[#24384a]" />
-        <span className="absolute left-1/2 top-[30%] h-[36%] w-[36%] -translate-x-1/2 rounded-full bg-[#f0c7aa]" />
-        <span className="absolute bottom-[7%] left-1/2 h-[36%] w-[66%] -translate-x-1/2 rounded-t-full bg-[#7f9ebd]" />
-      </span>
-      <span className="whitespace-nowrap text-[22px] font-black leading-none tracking-normal text-[#103a59] min-[360px]:text-[28px] sm:text-[34px]">
-        {trendSiteName}
-      </span>
+      <Image
+        alt={trendSiteName}
+        className="h-[118px] w-auto object-contain sm:h-[132px] xl:h-[150px]"
+        height={285}
+        priority
+        src="/brand/trendbrief-logo-main.png"
+        width={1010}
+      />
     </Link>
   );
 }

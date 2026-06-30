@@ -5,6 +5,7 @@ import {
   buildTrendRecommendationModel,
   type TrendRecommendation,
 } from "@/lib/trend-site/recommendations";
+import { InlineEmphasis } from "./InlineEmphasis";
 
 const articleBodyClass =
   "text-[15px] leading-[27px] text-neutral-800 md:text-base md:leading-[28.8px]";
@@ -68,7 +69,9 @@ export function TrendEditorialSections({
           key={section.heading}
         >
           <TrendArticleHeading>{section.heading}</TrendArticleHeading>
-          <p className={`mt-[25px] ${articleBodyClass}`}>{section.body}</p>
+          <p className={`mt-[25px] ${articleBodyClass}`}>
+            <InlineEmphasis>{section.body}</InlineEmphasis>
+          </p>
         </section>
       ))}
     </section>
@@ -89,12 +92,14 @@ export function TrendSignalBox({ article }: { article: Article }) {
       <h2 className="text-lg font-black tracking-normal text-neutral-950">
         {signal.heading}
       </h2>
-      <p className="mt-2 text-sm leading-6 text-neutral-800">{signal.body}</p>
+      <p className="mt-2 text-sm leading-6 text-neutral-800">
+        <InlineEmphasis>{signal.body}</InlineEmphasis>
+      </p>
       <div className="mt-4 grid gap-3 md:grid-cols-2">
         {signal.items.map((item) => (
           <p className="text-sm leading-6 text-neutral-800" key={item.label}>
             <strong className="block text-neutral-950">{item.label}</strong>
-            {item.body}
+            <InlineEmphasis>{item.body}</InlineEmphasis>
           </p>
         ))}
       </div>
@@ -116,14 +121,16 @@ export function TrendMarketplaceRule({ article }: { article: Article }) {
   return (
     <section className="border-y border-neutral-200 py-6" id="marketplace-rule">
       <TrendArticleHeading>{rule.heading}</TrendArticleHeading>
-      <p className={`mt-[25px] ${articleBodyClass}`}>{rule.body}</p>
+      <p className={`mt-[25px] ${articleBodyClass}`}>
+        <InlineEmphasis>{rule.body}</InlineEmphasis>
+      </p>
       <ul className="mt-4 grid gap-3 text-sm leading-6 text-neutral-700 md:grid-cols-3">
         {rule.bullets.map((item) => (
           <li
             className="border-l-4 border-teal-700 bg-teal-50 px-4 py-3"
             key={item}
           >
-            {item}
+            <InlineEmphasis>{item}</InlineEmphasis>
           </li>
         ))}
       </ul>
@@ -225,7 +232,9 @@ function TrendCountryBuyingRoutes({ article }: { article: Article }) {
             key={item.market}
           >
             <strong className="text-neutral-950">{item.market}</strong>
-            <span>{item.route}</span>
+            <span>
+              <InlineEmphasis>{item.route}</InlineEmphasis>
+            </span>
           </p>
         ))}
       </div>
@@ -252,7 +261,7 @@ function TrendAvoidList({ article }: { article: Article }) {
               {item.label}
             </h3>
             <p className="mt-1 text-sm leading-6 text-neutral-700">
-              {item.reason}
+              <InlineEmphasis>{item.reason}</InlineEmphasis>
             </p>
           </article>
         ))}
@@ -298,7 +307,7 @@ function TrendTopThreeRecommendations({
               </a>
             </h3>
             <p className={`mt-2 ${articleBodyClass}`}>
-              {item.expertReviewTake}
+              <InlineEmphasis>{item.expertReviewTake}</InlineEmphasis>
             </p>
           </article>
         ))}
@@ -315,7 +324,9 @@ function TrendFinalThoughts({ article }: { article: Article }) {
       </TrendArticleHeading>
       <div className={`mt-[25px] space-y-[25px] ${articleBodyClass}`}>
         {article.expertCopy.finalThoughts.map((paragraph) => (
-          <p key={paragraph}>{paragraph}</p>
+          <p key={paragraph}>
+            <InlineEmphasis>{paragraph}</InlineEmphasis>
+          </p>
         ))}
       </div>
     </section>
@@ -335,7 +346,9 @@ function TrendBuyingChecklist({ article }: { article: Article }) {
               className="mt-1 h-3 w-3 rounded-sm border border-teal-700"
               aria-hidden
             />
-            <span>{item}</span>
+            <span>
+              <InlineEmphasis>{item}</InlineEmphasis>
+            </span>
           </li>
         ))}
       </ul>
@@ -357,7 +370,7 @@ function TrendFAQ({ article }: { article: Article }) {
               {faq.question}
             </summary>
             <p className="mt-3 pl-7 text-sm leading-6 text-neutral-700">
-              {faq.answer}
+              <InlineEmphasis>{faq.answer}</InlineEmphasis>
             </p>
           </details>
         ))}
@@ -383,7 +396,9 @@ function TrendUpdateLog({ article }: { article: Article }) {
               className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-neutral-500"
               aria-hidden
             />
-            <span>{item}</span>
+            <span>
+              <InlineEmphasis>{item}</InlineEmphasis>
+            </span>
           </li>
         ))}
       </ul>
@@ -417,7 +432,7 @@ function TrendComparisonTable({
       </TrendArticleHeading>
       <div className="mt-5">
         <p className="text-sm leading-6 text-neutral-600">
-          {article.expertCopy.comparisonIntro}
+          <InlineEmphasis>{article.expertCopy.comparisonIntro}</InlineEmphasis>
         </p>
       </div>
       <div className="mt-4 divide-y divide-neutral-200 border-y border-neutral-200 md:hidden">
@@ -553,7 +568,9 @@ function TrendComparisonTable({
       </div>
       <div className="mt-4 border-l-4 border-cyan-500 bg-cyan-50 px-4 py-3">
         <p className="text-sm font-semibold leading-6 text-neutral-900">
-          {article.expertCopy.comparisonFootnote}
+          <InlineEmphasis>
+            {article.expertCopy.comparisonFootnote}
+          </InlineEmphasis>
         </p>
       </div>
     </section>
@@ -593,7 +610,9 @@ function TrendRecommendationCard({
               </p>
             ) : null}
           </div>
-          <p className={`mt-4 ${articleBodyClass}`}>{item.expertReviewTake}</p>
+          <p className={`mt-4 ${articleBodyClass}`}>
+            <InlineEmphasis>{item.expertReviewTake}</InlineEmphasis>
+          </p>
           <DecisionBlock label="Why I recommend it" value={item.whyRecommend} />
           <DecisionBlock label="Best for" value={item.whoFits} />
           <DecisionBlock
@@ -668,7 +687,9 @@ function TrendRecommendationCard({
                   className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-600"
                   aria-hidden
                 />
-                <span>{feature}</span>
+                <span>
+                  <InlineEmphasis>{feature}</InlineEmphasis>
+                </span>
               </li>
             ))}
           </ul>
@@ -701,7 +722,7 @@ function SourceStack({ item }: { item: TrendRecommendation }) {
         {rows.map(([label, value]) => (
           <p key={label}>
             <strong className="block text-neutral-950">{label}</strong>
-            {value}
+            <InlineEmphasis>{value}</InlineEmphasis>
           </p>
         ))}
       </div>
@@ -725,7 +746,9 @@ function DecisionBlock({
   return (
     <div className={`mt-4 border-l-4 px-4 py-3 ${borderClass}`}>
       <p className="text-xs font-black uppercase text-neutral-500">{label}</p>
-      <p className="mt-1 text-sm leading-6 text-neutral-800">{value}</p>
+      <p className="mt-1 text-sm leading-6 text-neutral-800">
+        <InlineEmphasis>{value}</InlineEmphasis>
+      </p>
     </div>
   );
 }
@@ -733,7 +756,8 @@ function DecisionBlock({
 function FactNote({ label, value }: { label: string; value: string }) {
   return (
     <p>
-      <strong className="text-neutral-950">{label}:</strong> {value}
+      <strong className="text-neutral-950">{label}:</strong>{" "}
+      <InlineEmphasis>{value}</InlineEmphasis>
     </p>
   );
 }
@@ -760,7 +784,9 @@ function SignalList({
             <span className={`font-black ${markClass}`} aria-hidden>
               {isPositive ? "+" : "x"}
             </span>
-            <span>{item}</span>
+            <span>
+              <InlineEmphasis>{item}</InlineEmphasis>
+            </span>
           </li>
         ))}
       </ul>

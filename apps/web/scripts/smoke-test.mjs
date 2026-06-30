@@ -52,10 +52,25 @@ async function assertHomeBranding() {
   assertIncludes(text, "TrendBrief", "home should use the public brand");
   assertIncludes(
     text,
+    "trendbrief-logo-main.png",
+    "home should render the provided header logo asset",
+  );
+  assertIncludes(
+    text,
+    "/brand/trendbrief-icon.svg",
+    "home metadata should use the brand icon",
+  );
+  assertIncludes(
+    text,
     "Buyer notes for fast-moving trends",
     "home should use the public site description",
   );
   assertIncludes(text, "Latest Briefs", "home should label content as Briefs");
+  assertIncludes(
+    text,
+    "brief-title-link",
+    "home article titles should keep the colored underline title style",
+  );
   assertNotIncludes(
     text,
     "TREND - Jacob",
@@ -80,24 +95,25 @@ async function assertSitemap() {
     "/de-de/",
     "sitemap must not include planned locale URLs",
   );
-  assertNotIncludes(
+  assertIncludes(
     text,
     "/garden-trends/",
-    "sitemap must not include hidden categories",
+    "sitemap should include visible planned category routes during pre-launch staging",
   );
 }
 
 async function assertCategories() {
   await fetchText("/category/home-trends/");
+  await fetchText("/category/garden-trends/");
+  await fetchText("/category/auto-trends/");
+  await fetchText("/category/outdoor-trends/");
+  await fetchText("/category/tool-trends/");
   await fetchText("/category/electronics-trends/");
-  await assertStatus("/category/garden-trends/", 404);
+  await fetchText("/category/personal-mobility-trends/");
 }
 
 async function assertArticles() {
-  const paths = [
-    "/en/trends/europe-heatwave-portable-ac-trend-2026/",
-    "/en/trends/travel-gan-charger-fake-wattage-trend/",
-  ];
+  const paths = ["/en/trends/europe-heatwave-portable-ac-trend-2026/"];
 
   for (const path of paths) {
     const text = await fetchText(path);
@@ -108,6 +124,12 @@ async function assertArticles() {
     );
     assertIncludes(text, "TrendBrief", `${path} should use the public brand`);
     assertIncludes(text, "Brief", `${path} should label the content unit`);
+    assertIncludes(text, "hero image", `${path} should render a hero image`);
+    assertIncludes(
+      text,
+      "reader-emphasis",
+      `${path} should render LLM/editor emphasis as colored underline markup`,
+    );
     assertNotIncludes(
       text,
       "TREND - Jacob",
@@ -141,6 +163,11 @@ async function assertArticles() {
     );
 
     if (path.includes("europe-heatwave-portable-ac")) {
+      assertIncludes(
+        text,
+        "europe-heatwave-portable-ac-hero.png",
+        `${path} should use the heatwave-specific hero image`,
+      );
       assertOrdered(
         text,
         [
@@ -154,6 +181,8 @@ async function assertArticles() {
       );
     }
   }
+
+  await assertStatus("/en/trends/travel-gan-charger-fake-wattage-trend/", 404);
 }
 
 async function assertPlannedLocale404() {

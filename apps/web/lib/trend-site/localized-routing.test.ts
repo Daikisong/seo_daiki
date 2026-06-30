@@ -108,20 +108,17 @@ test("public category surface exposes only categories intentionally opened in na
   }
 });
 
-test("hidden category articles keep their explicit category but stay off the public article surface", () => {
+test("explicit category articles stay attached to their intended public category", () => {
   const article = getIndexedArticles()[0];
   assert.ok(article);
 
-  const hiddenCategoryArticle = {
+  const categoryArticle = {
     ...article,
     id: "future-garden-article",
     slug: "future-garden-article",
     categorySlug: "garden-trends",
   };
 
-  assert.equal(
-    trendCategoryForArticle(hiddenCategoryArticle).slug,
-    "garden-trends",
-  );
-  assert.deepEqual(visibleTrendArticles([hiddenCategoryArticle]), []);
+  assert.equal(trendCategoryForArticle(categoryArticle).slug, "garden-trends");
+  assert.deepEqual(visibleTrendArticles([categoryArticle]), [categoryArticle]);
 });

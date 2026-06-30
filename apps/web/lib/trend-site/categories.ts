@@ -41,7 +41,7 @@ export const trendCategories = [
     label: "Garden Briefs",
     slug: "garden-trends",
     href: "/category/garden-trends/",
-    isPublic: false,
+    isPublic: true,
     keywords: [
       "garden",
       "yard",
@@ -56,7 +56,7 @@ export const trendCategories = [
     label: "Auto Briefs",
     slug: "auto-trends",
     href: "/category/auto-trends/",
-    isPublic: false,
+    isPublic: true,
     keywords: [
       "car",
       "auto",
@@ -71,7 +71,7 @@ export const trendCategories = [
     label: "Outdoor Briefs",
     slug: "outdoor-trends",
     href: "/category/outdoor-trends/",
-    isPublic: false,
+    isPublic: true,
     keywords: [
       "camping",
       "outdoor",
@@ -86,7 +86,7 @@ export const trendCategories = [
     label: "Tool Briefs",
     slug: "tool-trends",
     href: "/category/tool-trends/",
-    isPublic: false,
+    isPublic: true,
     keywords: [
       "tool",
       "drill",
@@ -117,7 +117,7 @@ export const trendCategories = [
     label: "Personal Mobility Briefs",
     slug: "personal-mobility-trends",
     href: "/category/personal-mobility-trends/",
-    isPublic: false,
+    isPublic: true,
     keywords: [
       "bike",
       "scooter",

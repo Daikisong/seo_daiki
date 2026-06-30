@@ -139,6 +139,12 @@ static category routes before there is enough real content for them. Keep future
 categories internal until there are published articles, otherwise the site looks
 like a thin AI affiliate shell.
 
+Current pre-launch staging intentionally shows the planned category menu so the
+site shape can be reviewed before the domain opens. Do not hide those category
+labels again just because the local mockup has only one article. Before a public
+domain/indexing launch, each visible category should have at least one real
+localized brief or be held back/noindexed again.
+
 ## Multilingual and Multi-Regional SEO Rules
 
 TrendBrief is a country-triggered buyer-decision site, not a translation
@@ -385,6 +391,25 @@ read and organized the messy buyer research. Good public fields include:
 
 Bad product blocks repeat the same warning for every item or simply restate the
 seller's spec sheet.
+
+### Reader Emphasis Markup
+
+When article prose has a genuinely important buyer-facing phrase, the
+content/data layer may wrap only that phrase in Markdown-style emphasis:
+`**important buyer phrase**`. The React renderer turns that into the
+TrendBrief colored underline emphasis style.
+
+Use this for short, high-value decision phrases only:
+
+- the product class the reader must not confuse
+- the main listing risk to verify
+- the concrete reason to buy, wait, or avoid
+- the exact compatibility, voltage, return, price, or variant caveat that can
+  break the purchase
+
+Do not use emphasis for internal workflow language, whole paragraphs, headings,
+CTA labels, product names repeated on every row, or generic SEO filler. If
+everything is highlighted, nothing is highlighted.
 
 ### Issue To Product Bridge
 

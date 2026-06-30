@@ -29,6 +29,7 @@ export async function generateMetadata({
     return {};
   }
   const canonicalUrl = await requestAbsoluteUrl(articlePath(article));
+  const imageUrl = new URL(article.imageUrl, canonicalUrl).toString();
   const languages = articleLanguageAlternates(
     article,
     getIndexedArticles(),
@@ -47,8 +48,15 @@ export async function generateMetadata({
       title: article.title,
       description: article.metaDescription,
       url: canonicalUrl,
+      images: [{ url: imageUrl, alt: article.title }],
       siteName: trendSiteName,
       type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: article.metaDescription,
+      images: [imageUrl],
     },
   };
 }

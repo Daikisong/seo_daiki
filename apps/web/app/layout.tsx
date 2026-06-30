@@ -15,7 +15,11 @@ export const metadata: Metadata = {
   },
   description: trendSiteDescription,
   icons: {
-    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+    icon: [
+      { url: "/brand/trendbrief-icon.svg", type: "image/svg+xml" },
+      { url: "/brand/trendbrief-icon-192.png", sizes: "192x192" },
+    ],
+    apple: [{ url: "/brand/trendbrief-icon-192.png", sizes: "192x192" }],
   },
 };
 

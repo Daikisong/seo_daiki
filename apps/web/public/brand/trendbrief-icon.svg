@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" role="img" aria-labelledby="title desc">
+  <title id="title">TrendBrief icon</title>
+  <desc id="desc">Brief document with bar chart and upward trend arrow.</desc>
+  <defs>
+    <linearGradient id="barBlue" x1="0" y1="84" x2="0" y2="28" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0284C7"/>
+      <stop offset="1" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="arrowBlue" x1="12" y1="74" x2="82" y2="20" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0284C7"/>
+      <stop offset="1" stop-color="#38BDF8"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(6 3)">
+    <path d="M9 1.5H62.5L82.5 21.5V83.5C82.5 87.4 79.4 90.5 75.5 90.5H9C5.1 90.5 2 87.4 2 83.5V8.5C2 4.6 5.1 1.5 9 1.5Z" fill="#F8FCFF" stroke="#0F172A" stroke-width="3"/>
+    <path d="M62.5 2V23H83" fill="#E0F2FE" stroke="#0F172A" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M17 19H51" stroke="#94A3B8" stroke-width="4" stroke-linecap="round"/>
+    <path d="M17 32H44" stroke="#CBD5E1" stroke-width="4" stroke-linecap="round"/>
+    <rect x="19" y="65" width="13" height="18" rx="2" fill="#FBBF24"/>
+    <rect x="38" y="52" width="13" height="31" rx="2" fill="url(#barBlue)"/>
+    <rect x="57" y="39" width="13" height="44" rx="2" fill="url(#barBlue)"/>
+    <path d="M10 79C24 72 36 63 47 53C59 42 67 31 76 20" fill="none" stroke="#0F172A" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity="0.16"/>
+    <path d="M10 76C24 69 36 60 47 50C59 39 67 28 76 17" fill="none" stroke="url(#arrowBlue)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M75 17L76.5 38.5L58.5 26" fill="#38BDF8" stroke="#0F172A" stroke-width="3" stroke-linejoin="round"/>
+  </g>
+</svg>

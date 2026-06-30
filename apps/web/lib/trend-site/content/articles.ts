@@ -1,184 +1,5 @@
 import type { Article } from "../types";
 
-export const trendArticle: Article = {
-  id: "trend-travel-gan-charger",
-  locale: "en",
-  slug: "travel-gan-charger-fake-wattage-trend",
-  type: "trend",
-  title:
-    "Best Travel GaN Chargers on AliExpress 2026: cabin charger fire trend and top 10 buyer-safe picks",
-  h1: "Best Travel GaN Chargers on AliExpress 2026: cabin charger fire trend and top 10 buyer-safe picks",
-  metaDescription:
-    "Jacob's brief on the cabin charger fire trend, airline battery rules, and the Top 10 travel GaN charger picks to compare on AliExpress.",
-  summary:
-    "Hey, it's Jacob from TrendBrief. Searches around cabin charger fires are really about lithium power banks, spare batteries, and charging gear that travelers cannot inspect quickly once it is packed away. A wall GaN charger is not the same risk as a lithium power bank because it does not carry a large internal battery, but the trend still changes the buying decision: travelers need a cleaner charger kit, fewer mystery adapters, better cables, and products with specs that can be verified before a trip.",
-  affiliateDisclosure:
-    "Price buttons may be paid affiliate links. Check the exact variant, seller, final shipped price, and return terms before buying.",
-  imageUrl:
-    "https://us.ugreen.com/cdn/shop/products/ugreen-65w-nexode-gan-usb-c-3-port-charger-with-usukeu-plug-for-travel-304097.png?v=1692790955",
-  categorySlug: "electronics-trends",
-  productCategory: "travel gan charger",
-  contentMdx:
-    "cabin charger fire airplane power bank fire FAA TSA lithium battery carry on travel gan charger aliexpress top 10 buyer guide UGREEN Nexode Pro 100W UGREEN Nexode 65W travel Anker Prime 100W Baseus GaN5 Pro 65W Baseus GaN5 Pro 100W Toocki 67W Rocoren 100W Mcdodo 65W AOHi Magcube 140W Essager 140W USB C PD PPS GaN charger review comparison price variant plug cable heat return risk affiliate marketplace",
-  trendSignalBox: {
-    heading: "Why this matters now",
-    body: "This guide is tied to travel charging safety searches, not a generic charger list. Cabin battery-fire stories make travelers re-check what is in the charging pouch before a flight.",
-    items: [
-      {
-        label: "Why readers care",
-        body: "The reader concern starts with lithium batteries and cabin storage, then spills into the wider charging kit: power banks, wall chargers, cables, and regional adapters.",
-      },
-      {
-        label: "What can go wrong",
-        body: "The practical risk is buying a vague high-wattage charger, wrong regional plug, weak cable bundle, or no-name adapter that cannot be checked before travel.",
-      },
-      {
-        label: "What to compare",
-        body: "This page keeps the wall-charger decision separate from power-bank rules and focuses on wattage split, plug kit, seller page clarity, heat complaints, and exact variant photos.",
-      },
-      {
-        label: "What this guide helps with",
-        body: "The useful product is the charger kit that makes travel charging simpler and easier to inspect, not the highest wattage number in the title.",
-      },
-    ],
-    sourceNote:
-      "Context comes from FAA/TSA lithium battery guidance, airline power-bank storage notes, charger specs, marketplace listings, and repeated buyer complaints around plug kits and wattage claims.",
-  },
-  marketplaceRule: {
-    heading: "My marketplace rule for this charger trend",
-    body: "AliExpress and Temu can make sense for small charging accessories when the exact variant, plug, cable bundle, seller record, and final shipped price are clear. Amazon or a local retailer is safer when warranty, fast delivery, authenticity, or returns matter more than the discount.",
-    bullets: [
-      "Use AliExpress or Temu only when the plug type, port layout, cable rating, seller page, and recent reviews match the product you want.",
-      "Use Amazon or a local retailer when the price gap is small or you need easier warranty and returns before travel.",
-      "Do not treat a wall GaN charger as a lithium power-bank safety solution; it solves a different travel-kit problem.",
-    ],
-  },
-  avoidListHeading:
-    "Charging products I would not treat as travel GaN chargers",
-  avoidList: [
-    {
-      label: "Lithium power banks",
-      reason:
-        "A power bank stores energy and follows airline battery rules. It is not the same product class as a wall GaN charger.",
-    },
-    {
-      label: "Regional plug adapters with no USB-C PD output",
-      reason:
-        "A plug adapter may help the charger fit the wall, but it does not replace a charger with a clear wattage split and safety marks.",
-    },
-    {
-      label: "Cable-only bundles",
-      reason:
-        "A USB-C cable can limit charging speed, but it is not the charger. Check the cable rating separately from the wall brick.",
-    },
-    {
-      label: "No-name high-wattage bricks with vague port diagrams",
-      reason:
-        "A 100 W or 140 W title is not useful if the listing hides the exact plug type, port split, certification photos, or return terms.",
-    },
-  ],
-  sections: [
-    {
-      role: "quick-answer",
-      heading: "Quick answer",
-      body: "Quick answer: if the trend is cabin charger fires, do not confuse a wall GaN charger with a lithium power bank. The power-bank rule is about battery storage and access in the cabin; the GaN charger decision is about reducing clutter, avoiding no-name adapters, matching the real wattage to your devices, and buying a charger whose ports, plug, cable, and safety claims can be checked before you fly.",
-      evidenceIds: [
-        "faa-lithium-batteries",
-        "tsa-power-banks",
-        "delta-power-bank-storage",
-      ],
-    },
-    {
-      role: "category-clarification",
-      heading: "What this charger guide is not",
-      body: "This guide focuses on wall chargers and the travel-kit decisions around them: port behavior, plug type, cable rating, variant photos, shipped price, and review patterns that do not show obvious buyer regret. It does not rank lithium power banks or replace airline battery rules.",
-    },
-    {
-      role: "alternative-comparison",
-      heading: "What to compare before the picks",
-      body: "Compare charger type, real port split, plug standard, included cable rating, device wattage, seller page, warranty path, and recent low-star reviews before comparing the headline wattage. A 140 W title is weaker than a 65 W charger if the cable, plug, or seller return terms are unclear.",
-    },
-    {
-      role: "review-warning",
-      heading: "What buyer reviews can reveal",
-      body: "The reviews worth reading first are not the five-star speed comments. Look for repeated heat complaints, buzzing, loose plugs, dead ports, wrong plug kits, missing cables, and buyers saying the product title did not match the item they received.",
-    },
-  ],
-  expertCopy: {
-    topPicksHeading: "Top 10 practical picks for this trend",
-    topPicksIntro:
-      "Use this shortlist if you want a cleaner charging pouch before a trip: one reliable wall charger, the right cable, no vague adapter brick, and listings whose photos, port layout, wattage split, seller page, and recent complaints can be checked quickly.",
-    topPicksRule:
-      "My buying rule: treat a listing as a different product if the live AliExpress page changes the plug type, port count, included cable, seller store, certification photos, or final shipped price.",
-    comparisonHeading: "Quick comparison table",
-    comparisonIntro:
-      "Use this table as a fast shortlist, not the full review. Pick two or three chargers that match your bag first, then read the product notes below for variant checks, seller warnings, repeated review complaints, and the final buying call.",
-    comparisonFootnote:
-      "The detailed notes below explain why each pick is here, what buyers complain about, what listing details need checking, and when I would skip it.",
-    inDepthHeading: "My in-depth notes on all 10 picks",
-    topThreeHeading:
-      "My Personal Top 3 Recommendations for Best Travel GaN Chargers on AliExpress in 2026",
-    finalThoughtsHeading:
-      "Final Thoughts on the Best Travel GaN Chargers on AliExpress in 2026",
-    finalThoughts: [
-      "The cabin charger fire trend should not push travelers into panic-buying random gear. The real lesson is simpler: keep lithium power banks visible and compliant with airline rules, then make the rest of the charging kit boring, compact, and easy to inspect.",
-      "For this AliExpress-style shortlist, I would start with UGREEN, Anker, Baseus, and AOHi when the trip depends on the charger. Toocki, Rocoren, Mcdodo, and Essager can still be useful value picks, but I would only buy them when the seller page has clear plug photos, port diagrams, recent reviews, and return terms I can live with.",
-      "The best travel GaN charger is not always the highest-wattage brick. It is the one that matches the laptop or phone you actually carry, works with the cable in your pouch, stays sensible on heat and weight, and still looks like the same product after you check the live listing.",
-    ],
-    buyingChecklistHeading: "Before you buy",
-    buyingChecklist: [
-      "Confirm the product is a wall charger, not a lithium power bank, when you are responding to cabin fire news.",
-      "Match the exact SKU, plug type, port layout, cable bundle, and wattage split shown in the live listing photos.",
-      "For laptop travel, check whether your device really needs 100 W or 140 W before carrying a larger brick.",
-      "Read recent low-star reviews for heat, loose plugs, dead ports, fake wattage claims, or confusing regional variants.",
-      "For flights, keep spare lithium batteries and power banks in carry-on and accessible; do not treat a wall charger as a substitute for airline battery rules.",
-    ],
-    updateLogHeading: "Latest checks",
-    updateLog: [
-      "2026-06-29: Updated around cabin battery-fire concern, charger-kit simplification, and AliExpress variant risk.",
-      "2026-06-29: Prices can move; re-check final shipped price, plug kit, cable bundle, and seller return terms before buying.",
-      "Before relying on this list later, re-check live seller pages, plug kits, cable bundles, price movement, and whether any pick is sold out.",
-    ],
-  },
-  faqs: [
-    {
-      question:
-        "Is a GaN wall charger the same risk as a lithium power bank on flights?",
-      answer:
-        "No. A wall charger does not store energy like a lithium power bank. The flight concern is mainly spare batteries and power banks, but the trend still makes it sensible to clean up the whole charging kit before travel.",
-    },
-    {
-      question: "Should I buy from AliExpress or a local marketplace?",
-      answer:
-        "Use AliExpress or Temu only when the final price is meaningfully lower and the exact plug, cable, seller, and return terms are clear. Use Amazon or a local retailer when warranty, delivery speed, or returns matter more.",
-    },
-    {
-      question: "What is the biggest fake-wattage trap?",
-      answer:
-        "The common trap is reading total charger wattage as if every port can deliver that number at the same time. Always check the port-split table and cable rating.",
-    },
-  ],
-  evidenceIds: [
-    "faa-lithium-batteries",
-    "tsa-power-banks",
-    "delta-power-bank-storage",
-    "atsb-power-bank-fire",
-  ],
-  affiliateLinks: [
-    {
-      label: "Check live AliExpress charger prices",
-      href: "https://www.aliexpress.com/wholesale?SearchText=travel%20GaN%20charger",
-      rel: "sponsored nofollow",
-      linkType: "marketplace-search-route",
-      placementStatus: "approved",
-      offerStatus: "active",
-    },
-  ],
-  lastUpdated: "2026-06-29",
-  indexStatus: "index",
-  publishStatus: "published",
-};
-
 export const heatwaveArticle: Article = {
   id: "trend-europe-heatwave-portable-ac",
   locale: "en",
@@ -190,11 +11,10 @@ export const heatwaveArticle: Article = {
   metaDescription:
     "Jacob's brief on portable ACs, fans, BTU checks, window kits, and the cooling products worth comparing during Europe's 2026 heatwave.",
   summary:
-    "Hey, it's Jacob from TrendBrief. The real trend signal this time is not a gadget launch; it is Europe heatwave searches moving alongside stories about record temperatures, low household AC adoption, and shoppers fighting over fans and air conditioners. That turns the search problem into a buying problem fast: people need to know which products are real compressor air conditioners, which are only fans or evaporative coolers, and which listings are risky when stock is tight.",
+    "Hey, it's Jacob from TrendBrief. The real trend signal this time is not a gadget launch; it is Europe heatwave searches moving alongside stories about record temperatures, low household AC adoption, and shoppers fighting over fans and air conditioners. That turns the search problem into a buying problem fast: people need to know which products are **real compressor air conditioners**, which are **only fans or evaporative coolers**, and which listings are risky when stock is tight.",
   affiliateDisclosure:
     "Outbound product buttons may be paid affiliate links. For heavy cooling appliances, verify local stock, voltage, warranty territory, delivery date, and bulky-item returns before buying.",
-  imageUrl:
-    "https://www.midea.com/content/dam/midea-aem/uk/air-treatment/porta-split-air-conditioner/PortaSplit-Product-1.png",
+  imageUrl: "/images/trend-heroes/europe-heatwave-portable-ac-hero.png",
   categorySlug: "home-trends",
   productCategory: "portable air conditioner heatwave cooling",
   targetRegion: "Europe",
@@ -204,7 +24,7 @@ export const heatwaveArticle: Article = {
     "europe heatwave 2026 portable air conditioner fan sold out air conditioner brief portable ac amazon aliexpress temu top 10 Midea PortaSplit DeLonghi Pinguino GentleJet Inverter Olimpia Splendid Dolceclima Air Pro 14 MeacoCool MC Series Pro 10000 Duux North 9K electriQ EcoSilent Russell Hobbs RHPAC3001 Bush 9K electriQ Slimline SF10000E electriQ P15CW BTU single hose inverter window kit noise drainage dehumidifier return risk affiliate marketplace UK Germany France Italy Spain Europe local voltage plug warranty",
   trendSignalBox: {
     heading: "Why this matters now",
-    body: "Europe's late-June heatwave is pushing more households to compare cooling products quickly, while stock, delivery dates, and return terms are getting harder to judge.",
+    body: "Europe's late-June heatwave is pushing more households to compare cooling products quickly, while **stock, delivery dates, and return terms** are getting harder to judge.",
     items: [
       {
         label: "People are searching now",
@@ -216,11 +36,11 @@ export const heatwaveArticle: Article = {
       },
       {
         label: "Why it matters",
-        body: "When shoppers rush, weak mini coolers, wrong-voltage imports, unclear model numbers, and bulky-return surprises become much more expensive mistakes.",
+        body: "When shoppers rush, **weak mini coolers, wrong-voltage imports, unclear model numbers, and bulky-return surprises** become much more expensive mistakes.",
       },
       {
         label: "What this guide helps with",
-        body: "This page separates real compressor ACs from fans, evaporative coolers, accessories, and smart controllers so the reader can avoid buying the wrong product class.",
+        body: "This page separates **real compressor ACs** from fans, evaporative coolers, accessories, and smart controllers so the reader can avoid buying the wrong product class.",
       },
     ],
     sourceNote:
@@ -228,7 +48,7 @@ export const heatwaveArticle: Article = {
   },
   marketplaceRule: {
     heading: "My marketplace rule for this heatwave",
-    body: "For heavy compressor air conditioners, the safest option is usually a local retailer or Amazon-style fulfillment with visible stock, local voltage, and usable bulky-item returns. AliExpress and Temu can still be useful, but mostly for the accessory layer around the main AC purchase.",
+    body: "For heavy compressor air conditioners, **the safest option is usually a local retailer or Amazon-style fulfillment** with visible stock, local voltage, and usable bulky-item returns. AliExpress and Temu can still be useful, but mostly for the accessory layer around the main AC purchase.",
     bullets: [
       "Use local retailers or Amazon for heavy compressor ACs when delivery speed, voltage, warranty, and returns matter.",
       "Use AliExpress or Temu mainly for window seals, hoses, adapters, small fans, filters, and cooling accessories.",
@@ -299,7 +119,7 @@ export const heatwaveArticle: Article = {
     {
       role: "quick-answer",
       heading: "Quick answer",
-      body: "Quick answer: if the trend is Europe's heatwave, do not buy the first cold-looking box with 'air cooler' in the title. Start with the room: if you need real temperature drop, look for a compressor portable AC with a clear SACC or DOE BTU rating, a window exhaust kit, noise data, drainage instructions, and a return path. Fans and controllers can be accessories, but this Top 10 only ranks products that can actually cool a room.",
+      body: "Quick answer: if the trend is Europe's heatwave, do not buy the first cold-looking box with 'air cooler' in the title. Start with the room: **if you need real temperature drop, look for a compressor portable AC** with a clear SACC or DOE BTU rating, a window exhaust kit, noise data, drainage instructions, and a return path. Fans and controllers can be accessories, but this Top 10 only ranks products that can actually cool a room.",
       evidenceIds: [
         "india-today-europe-heatwave-ac-searches",
         "reuters-europe-heatwave-ac-demand",
@@ -330,9 +150,9 @@ export const heatwaveArticle: Article = {
       "My buying rule: if the listing does not show SACC/DOE BTU, room size, hose/window kit, noise level, drainage method, voltage, and return terms, treat it as a risky heatwave panic buy.",
     comparisonHeading: "Quick comparison table",
     comparisonIntro:
-      "Use this table as a fast shortlist, not the full review. First separate real compressor AC options from risky heatwave panic buys, then read the product notes below for setup fit, stock, return terms, review complaints, and the final buying call.",
+      "Use this table as a fast shortlist, not the full review. First separate **real compressor AC options** from risky heatwave panic buys, then read the product notes below for setup fit, stock, return terms, review complaints, and the final buying call.",
     comparisonFootnote:
-      "The detailed notes below explain why each pick is here, what buyers should verify, what review patterns look weak, and when I would skip it.",
+      "**The detailed notes below** explain why each pick is here, what buyers should verify, what review patterns look weak, and when I would skip it.",
     inDepthHeading: "My in-depth notes on all 10 picks",
     topThreeHeading:
       "My Personal Top 3 Recommendations for Portable AC and Cooling Picks During Europe's 2026 Heatwave",

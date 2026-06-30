@@ -163,6 +163,28 @@ test("production mode blocks unapproved example subdomain images", () => {
   assert.equal(codes(result).includes("PRODUCTION_PLACEHOLDER_IMAGE"), true);
 });
 
+test("production mode permits local editorial article hero images", () => {
+  const articleHeroImage =
+    "/images/trend-heroes/europe-heatwave-portable-ac-hero.png";
+  const result = runArticleQualityGate(
+    article({ imageUrl: articleHeroImage }),
+    products(10, {
+      merchantUrl: "https://www.amazon.com/dp/B000000001",
+      merchantUrlKind: "merchant-product-page",
+      sourceUrl: "https://www.midea.com/uk/air-treatment/product-specs",
+      reviewSourceUrl: "https://www.trustedreviews.com/reviews/portable-ac",
+      imageUrl: "https://www.midea.com/content/dam/midea/product.jpg",
+    }),
+    {
+      allArticles: [article({ imageUrl: articleHeroImage })],
+      siteOrigin: SITE_ORIGIN,
+      mode: "production",
+    },
+  );
+
+  assert.equal(codes(result).includes("PRODUCTION_PLACEHOLDER_IMAGE"), false);
+});
+
 test("production mode permits explicitly approved temporary images for manual static articles", () => {
   const temporaryImageUrl =
     "https://cdn.example.com/manual/approved-temp-product.jpg";

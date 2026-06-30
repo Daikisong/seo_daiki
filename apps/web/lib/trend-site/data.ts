@@ -1,26 +1,20 @@
 import type { Article, Product } from "./types";
 import { validateLocalizationClusters } from "./seo";
 import { visibleTrendArticles } from "./categories";
-import { heatwaveArticle, trendArticle } from "./content/articles";
+import { heatwaveArticle } from "./content/articles";
 import { europeHeatwaveProductRecords } from "./content/europe-heatwave-product-records";
 import { recordsToProducts } from "./content/product-record-transform";
-import { travelGanProductRecords } from "./content/travel-gan-product-records";
 import {
   validateArticleContent,
   validateProductContent,
   validateQualityGates,
 } from "./content/content-validation";
 
-export { heatwaveArticle, trendArticle } from "./content/articles";
+export { heatwaveArticle } from "./content/articles";
 
-const trendArticles: Article[] = [heatwaveArticle, trendArticle];
+const trendArticles: Article[] = [heatwaveArticle];
 
 export const trendProducts: Product[] = [
-  ...recordsToProducts(
-    travelGanProductRecords,
-    "travel-gan-charger",
-    "travel gan charger",
-  ),
   ...recordsToProducts(
     europeHeatwaveProductRecords,
     "europe-heatwave-cooling",

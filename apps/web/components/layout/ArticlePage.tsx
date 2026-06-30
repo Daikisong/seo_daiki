@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { JsonLd } from "@/components/seo/JsonLd";
 import type { Article, Product } from "@/lib/trend-site/types";
 import { absoluteUrl, articlePath } from "@/lib/trend-site/routes";
@@ -7,6 +8,7 @@ import {
   trendContentUnitName,
   trendSiteName,
 } from "@/lib/trend-site/categories";
+import { InlineEmphasis } from "./InlineEmphasis";
 import { ArticleTypeContent } from "./ArticleTypeContent";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
@@ -50,11 +52,22 @@ export function ArticlePage({
               <span>By {trendAuthorName}</span>
               <span>{trendContentUnitName}</span>
             </div>
+            <figure className="mt-[25px] overflow-hidden bg-neutral-100">
+              <Image
+                alt={`${article.title} hero image`}
+                className="aspect-[16/9] w-full object-cover"
+                height={613}
+                priority
+                sizes="(min-width: 1090px) 1090px, calc(100vw - 40px)"
+                src={article.imageUrl}
+                width={1090}
+              />
+            </figure>
             <p className="mt-[25px] text-[15px] leading-[27px] text-neutral-700 md:text-base md:leading-[28.8px]">
-              {article.summary}
+              <InlineEmphasis>{article.summary}</InlineEmphasis>
             </p>
             <p className="mt-4 border-l-4 border-cyan-500 bg-cyan-50 px-4 py-3 text-sm leading-6 text-neutral-700">
-              {article.affiliateDisclosure}
+              <InlineEmphasis>{article.affiliateDisclosure}</InlineEmphasis>
             </p>
           </header>
 
@@ -71,12 +84,13 @@ export function articleJsonLdWithUrls(
   url: string,
   publisherUrl: string,
 ) {
+  const imageUrl = new URL(article.imageUrl, publisherUrl).toString();
   return {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: article.title,
     description: article.metaDescription,
-    image: article.imageUrl,
+    image: imageUrl,
     inLanguage: localeToHtmlLang(article.locale),
     dateModified: article.lastUpdated,
     datePublished: article.lastUpdated,

@@ -11,6 +11,7 @@ import {
   visibleTrendCategories,
   type TrendCategory,
 } from "@/lib/trend-site/categories";
+import { InlineEmphasis, stripInlineEmphasisSyntax } from "./InlineEmphasis";
 
 export function TrendArchive({
   activeCategory,
@@ -87,7 +88,7 @@ export function TrendArchive({
                     width={76}
                   />
                   <span className="block text-base leading-6 text-[#2f7cd3] group-hover:text-[#1f5f9f]">
-                    {article.title}
+                    <span className="brief-title-link">{article.title}</span>
                   </span>
                 </Link>
               ))}
@@ -167,7 +168,7 @@ function ArchivePost({ article }: { article: Article }) {
     <article className="pb-8">
       <h2 className="max-w-[720px] text-[18px] font-bold leading-[19.8px] tracking-normal text-[#2b2f33] md:text-[30px] md:leading-[33px]">
         <Link
-          className="focus-ring rounded-sm underline decoration-[#b8c8d8] decoration-2 underline-offset-[5px] hover:text-[#2f7cd3] hover:decoration-[#2f7cd3]"
+          className="brief-title-link focus-ring rounded-sm"
           href={articlePath(article)}
         >
           {article.title}
@@ -200,7 +201,7 @@ function ArchivePost({ article }: { article: Article }) {
         />
       </Link>
       <p className="mt-[25px] text-[15px] leading-[21px] text-neutral-800 md:text-base md:leading-6">
-        {postExcerpt(article.summary)}
+        {postExcerpt(stripInlineEmphasisSyntax(article.summary))}
       </p>
       <Link
         className="focus-ring mt-[14px] inline-block rounded-sm text-[15px] leading-[21px] text-[#2f7cd3] hover:text-[#1f5f9f] md:text-base md:leading-6"

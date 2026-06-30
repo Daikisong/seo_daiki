@@ -20,7 +20,6 @@ This repository is a static/manual MVP with publishing guardrails.
 
 - Public articles currently include:
   - `/en/trends/europe-heatwave-portable-ac-trend-2026/`
-  - `/en/trends/travel-gan-charger-fake-wattage-trend/`
 - Only `en` is open for indexing.
 - The planned 18-locale model is defined, but planned locales stay hidden/noindex until opened.
 - Quality gates are implemented for product evidence, direct-use claims, internal-process copy, locale safety, hreflang safety, affiliate links, and thin recommendation pages.
